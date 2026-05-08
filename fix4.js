@@ -1,4 +1,9 @@
-import { notFound } from 'next/navigation'
+const fs = require('fs')
+const path = require('path')
+
+const slugPage = path.join('src','app','[lang]','blog','[slug]','page.tsx')
+
+fs.writeFileSync(slugPage, `import { notFound } from 'next/navigation'
 import { marked } from 'marked'
 import { getPost, getAllSlugs } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
@@ -42,16 +47,16 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
       <nav className="flex items-center gap-2 text-xs text-gray-text mb-10 font-medium">
-        <Link href={`/${lang}`} className="hover:text-navy">{t('nav.home')}</Link>
+        <Link href={\`/\${lang}\`} className="hover:text-navy">{t('nav.home')}</Link>
         <span>/</span>
-        <Link href={`/${lang}/blog`} className="hover:text-navy">{t('nav.blog')}</Link>
+        <Link href={\`/\${lang}/blog\`} className="hover:text-navy">{t('nav.blog')}</Link>
         <span>/</span>
         <span className="text-navy">{post.title}</span>
       </nav>
 
       <div className="mb-6">
         <span className="cat-badge text-white text-xs" style={{ backgroundColor: cat?.color || '#0f1a3a' }}>
-          {cat?.emoji} {t(`cat.${post.category}` as any)}
+          {cat?.emoji} {t(\`cat.\${post.category}\` as any)}
         </span>
       </div>
 
@@ -96,10 +101,14 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="mt-10">
-        <Link href={`/${lang}/blog`} className="text-sm font-bold text-navy">
+        <Link href={\`/\${lang}/blog\`} className="text-sm font-bold text-navy">
           ← {lang === 'tr' ? 'Tüm yazılara dön' : 'Back to all posts'}
         </Link>
       </div>
     </article>
   )
 }
+`, 'utf8')
+
+console.log('Yazıldı:', slugPage)
+console.log('Kontrol:', fs.existsSync(slugPage) ? 'DOSYA VAR ✓' : 'DOSYA YOK ✗')
