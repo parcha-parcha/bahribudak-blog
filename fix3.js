@@ -1,4 +1,7 @@
-import { notFound } from 'next/navigation'
+const fs = require('fs')
+
+// Fix the slug page - replace next-mdx-remote with marked
+fs.writeFileSync("src/app/[lang]/blog/[slug]/page.tsx", `import { notFound } from 'next/navigation'
 import { marked } from 'marked'
 import { getPost, getAllSlugs } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
@@ -43,16 +46,16 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
       <nav className="flex items-center gap-2 text-xs text-gray-text mb-10 font-medium">
-        <Link href={`/${lang}`} className="hover:text-navy transition-colors">{t('nav.home')}</Link>
+        <Link href={\`/\${lang}\`} className="hover:text-navy transition-colors">{t('nav.home')}</Link>
         <span>/</span>
-        <Link href={`/${lang}/blog`} className="hover:text-navy transition-colors">{t('nav.blog')}</Link>
+        <Link href={\`/\${lang}/blog\`} className="hover:text-navy transition-colors">{t('nav.blog')}</Link>
         <span>/</span>
         <span className="text-navy truncate max-w-[200px]">{post.title}</span>
       </nav>
 
       <div className="mb-6">
         <span className="cat-badge text-white text-xs" style={{ backgroundColor: cat?.color || '#0f1a3a' }}>
-          {cat?.emoji} {t(`cat.${post.category}` as any)}
+          {cat?.emoji} {t(\`cat.\${post.category}\` as any)}
         </span>
       </div>
 
@@ -98,10 +101,12 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="mt-10">
-        <Link href={`/${lang}/blog`} className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-navy-light transition-colors">
+        <Link href={\`/\${lang}/blog\`} className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-navy-light transition-colors">
           ← {lang === 'tr' ? 'Tüm yazılara dön' : 'Back to all posts'}
         </Link>
       </div>
     </article>
   )
 }
+`)
+console.log('✓ slug page fixed')
