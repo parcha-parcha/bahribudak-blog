@@ -41,14 +41,14 @@ export default async function AboutPage({ params }: AboutProps) {
       {/* BB Card */}
       <div className="flex items-center gap-6 mb-12 p-8 bg-navy rounded-xl">
         <div className="w-20 h-20 rounded-full border-2 border-yellow-bb flex items-center justify-center flex-shrink-0">
-          <span className="font-['Great_Vibes'] text-yellow-bb text-3xl leading-none">BB</span>
+          <span className="font-bold text-yellow-bb text-2xl leading-none tracking-wide">BB</span>
         </div>
         <div>
-          <p className="font-bold text-white text-xl mb-1">Bahri Budak</p>
+          <p className="font-bold text-white text-xl mb-1 tracking-wide">Bahri Budak</p>
           <p className="text-white/60 text-sm">
             {lang === 'tr'
-              ? 'Kişisel Gelişim · Felsefe · Türkiye Gündemi · Tekstil'
-              : 'Personal Development · Philosophy · Turkey Agenda · Textile'}
+              ? 'Tekstil Sektörü · Genel Müdür Yardımcısı · Fotoğrafçı'
+              : 'Textile Industry · Vice General Manager · Photographer'}
           </p>
           <a
             href="https://linkedin.com/in/bahribudak"
