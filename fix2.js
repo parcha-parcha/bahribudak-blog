@@ -1,4 +1,18 @@
-import type { Metadata } from 'next'
+const fs = require('fs')
+const p = "src/app/[lang]/layout.tsx"
+let c = fs.readFileSync(p, 'utf8')
+
+c = c.replace(
+  "params: Promise<{ lang: string }>",
+  "params: Promise<{ lang: Lang }>"
+)
+c = c.replace(
+  "export async function generateMetadata({ params }: { params: Promise<{ lang: string }> })",
+  "export async function generateMetadata({ params }: { params: Promise<{ lang: string }> })"
+)
+
+// Full rewrite of the file
+fs.writeFileSync(p, `import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -19,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (!langs.includes(lang as Lang)) return {}
   return {
     alternates: {
-      canonical: `https://bahribudak.com/${lang}`,
+      canonical: \`https://bahribudak.com/\${lang}\`,
       languages: {
         'tr': 'https://bahribudak.com/tr',
         'en': 'https://bahribudak.com/en',
@@ -42,3 +56,5 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
     </div>
   )
 }
+`)
+console.log('✓ layout.tsx fixed')
