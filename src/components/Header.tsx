@@ -33,9 +33,9 @@ export default function Header({ lang }: HeaderProps) {
         {/* Logo / Signature */}
         <Link href={`/${lang}`} className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <span className="bb-signature text-white text-xl leading-none">BB</span>
+            <span style={{fontFamily:"'Poppins',sans-serif",fontWeight:700}} className="text-white text-xl leading-none tracking-wide">BB</span>
           </div>
-          <span className="bb-signature text-2xl text-navy hidden sm:block">Bahri Budak</span>
+          <span style={{fontFamily:"'Poppins',sans-serif",fontWeight:700}} className="text-2xl text-navy hidden sm:block">Bahri Budak</span>
         </Link>
 
         {/* Desktop Nav */}

@@ -15,9 +15,9 @@ export default function Footer({ lang }: { lang: Lang }) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full border-2 border-yellow-bb flex items-center justify-center">
-                <span className="font-['Great_Vibes'] text-yellow-bb text-xl leading-none">BB</span>
+                <span style={{fontFamily:"'Poppins',sans-serif",fontWeight:700}} className="text-yellow-bb text-xl leading-none tracking-wide">BB</span>
               </div>
-              <span className="font-['Great_Vibes'] text-2xl text-white">Bahri Budak</span>
+              <span style={{fontFamily:"'Poppins',sans-serif",fontWeight:700}} className="text-2xl text-white">Bahri Budak</span>
             </div>
             <p className="text-sm text-white/60 leading-relaxed">{t('footer.tagline')}</p>
             <div className="mt-4 w-8 h-0.5 bg-yellow-bb" />
