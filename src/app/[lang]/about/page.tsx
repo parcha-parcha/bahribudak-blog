@@ -47,8 +47,8 @@ export default async function AboutPage({ params }: AboutProps) {
           <p className="font-bold text-white text-xl mb-1">Bahri Budak</p>
           <p className="text-white/60 text-sm">
             {lang === 'tr'
-              ? 'Tekstil Sektörü · Genel Müdür Yardımcısı · Fotoğrafçı'
-              : 'Textile Industry · Vice General Manager · Photographer'}
+              ? 'Kişisel Gelişim · Felsefe · Türkiye Gündemi · Tekstil'
+              : 'Personal Development · Philosophy · Turkey Agenda · Textile'}
           </p>
           <a
             href="https://linkedin.com/in/bahribudak"
