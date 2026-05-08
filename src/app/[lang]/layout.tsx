@@ -7,14 +7,14 @@ import { langs } from '@/lib/i18n'
 
 interface LangLayoutProps {
   children: React.ReactNode
-  params: Promise<{ lang: Lang }>
+  params: Promise<{ lang: string }>
 }
 
 export async function generateStaticParams() {
   return langs.map(lang => ({ lang }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   if (!langs.includes(lang)) return {}
   return {
