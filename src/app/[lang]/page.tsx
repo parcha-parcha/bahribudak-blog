@@ -3,7 +3,8 @@ import PostCard from '@/components/PostCard'
 import { getAllPosts } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
-
+import QuoteOfDay from '@/components/QuoteOfDay'
+import VisitorCounter from '@/components/VisitorCounter'
 interface HomeProps {
   params: Promise<{ lang: Lang }>
 }
@@ -15,6 +16,10 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
+<QuoteOfDay />
+<div className="flex justify-center my-4">
+  <VisitorCounter />
+</div>
       {/* ── HERO ── */}
       <section className="bg-navy text-white overflow-hidden relative">
         <div className="absolute top-12 right-12 w-3 h-3 rounded-full bg-yellow-bb opacity-80" />
