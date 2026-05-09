@@ -68,7 +68,7 @@ export default function Header({ lang }: HeaderProps) {
           </Link>
 
           <a
-            href="https://www.linkedin.com/in/bahribudak"
+            href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-1.5 bg-navy text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-navy-light transition-colors"
