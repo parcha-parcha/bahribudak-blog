@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: ContactProps) {
 
         {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/bahribudak"
+          href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-5 p-5 bg-white border border-gray-border rounded-xl hover:border-navy hover:shadow-card transition-all group"
@@ -42,7 +42,7 @@ export default async function ContactPage({ params }: ContactProps) {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-text mb-1">LinkedIn</p>
-            <p className="font-semibold text-navy group-hover:text-navy-light">linkedin.com/in/bahribudak</p>
+            <p className="font-semibold text-navy group-hover:text-navy-light">www.linkedin.com/in/bahri-budak-052ab5b8</p>
           </div>
         </a>
 
