@@ -5,6 +5,7 @@ import { useTranslations, categories } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import QuoteOfDay from '@/components/QuoteOfDay'
 import VisitorCounter from '@/components/VisitorCounter'
+
 interface HomeProps {
   params: Promise<{ lang: Lang }>
 }
@@ -16,11 +17,12 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-<QuoteOfDay />
-<div className="flex justify-center my-4">
-  <VisitorCounter />
-</div>
-      {/* ── HERO ── */}
+      <QuoteOfDay />
+      <div className="flex justify-center my-4">
+        <VisitorCounter />
+      </div>
+
+      {/* HERO */}
       <section className="bg-navy text-white overflow-hidden relative">
         <div className="absolute top-12 right-12 w-3 h-3 rounded-full bg-yellow-bb opacity-80" />
         <div className="absolute top-24 right-20 w-1.5 h-1.5 rounded-full bg-yellow-bb opacity-50" />
@@ -43,8 +45,12 @@ export default async function HomePage({ params }: HomeProps) {
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
-             href="https://www.linkedin.com/in/bahri-budak-052ab5b8" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 rounded-full hover:border-yellow-bb hover:text-yellow-bb transition-all">
+              <a
+                href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 rounded-full hover:border-yellow-bb hover:text-yellow-bb transition-all"
+              >
                 LinkedIn
               </a>
             </div>
@@ -52,7 +58,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* ── CATEGORIES ── */}
+      {/* CATEGORIES */}
       <section className="bg-gray-soft border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="section-label text-center mb-10">{lang === 'tr' ? 'İçerik Kategorileri' : 'Content Categories'}</p>
@@ -73,7 +79,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* ── RECENT POSTS ── */}
+      {/* RECENT POSTS */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="flex items-center justify-between mb-10">
           <div>
@@ -96,7 +102,7 @@ export default async function HomePage({ params }: HomeProps) {
         )}
       </section>
 
-      {/* ── ABOUT STRIP ── */}
+      {/* ABOUT STRIP */}
       <section className="bg-yellow-pale border-y border-yellow-bb/20">
         <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
           <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center flex-shrink-0 shadow-lg">
