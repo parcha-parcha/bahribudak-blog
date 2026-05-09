@@ -48,7 +48,7 @@ export default async function ContactPage({ params }: ContactProps) {
 
         {/* Email */}
         <a
-          href="mailto:bahri.budak@gmail.com"
+          href="mailto:bahribudak@gmail.com"
           className="flex items-center gap-5 p-5 bg-white border border-gray-border rounded-xl hover:border-navy hover:shadow-card transition-all group"
         >
           <div className="w-12 h-12 bg-yellow-bb rounded-full flex items-center justify-center flex-shrink-0">
@@ -61,7 +61,7 @@ export default async function ContactPage({ params }: ContactProps) {
             <p className="text-xs font-bold uppercase tracking-widest text-gray-text mb-1">
               {lang === 'tr' ? 'E-posta' : 'Email'}
             </p>
-            <p className="font-semibold text-navy group-hover:text-navy-light">bahri.budak@gmail.com</p>
+            <p className="font-semibold text-navy group-hover:text-navy-light">bahribudak@gmail.com</p>
           </div>
         </a>
 
