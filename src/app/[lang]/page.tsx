@@ -43,7 +43,7 @@ export default async function HomePage({ params }: HomeProps) {
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
-              <a href="https://linkedin.com/in/bahribudak" target="_blank" rel="noopener noreferrer"
+              <a href=https:"//www.linkedin.com/in/bahri-budak-052ab5b8" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 rounded-full hover:border-yellow-bb hover:text-yellow-bb transition-all">
                 LinkedIn
               </a>

@@ -51,7 +51,7 @@ export default async function AboutPage({ params }: AboutProps) {
               : 'Personal Development · Philosophy · Turkey Agenda · Textile'}
           </p>
           <a
-            href="https://linkedin.com/in/bahribudak"
+            href=https:"//www.linkedin.com/in/bahri-budak-052ab5b8"
             target="_blank"
             rel="noopener noreferrer"
             className="text-yellow-bb text-sm font-bold mt-2 inline-block hover:underline"
