@@ -54,7 +54,7 @@ export default function Footer({ lang }: { lang: Lang }) {
               {lang === 'tr' ? 'Bağlantı' : 'Connect'}
             </p>
             <a
-              href="https://linkedin.com/in/bahribudak"
+              href="https://www.linkedin.com/in/bahribudak"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-white/70 hover:text-yellow-bb transition-colors flex items-center gap-2 mb-3"
