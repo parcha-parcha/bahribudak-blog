@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import PostCard from '@/components/PostCard'
 import { getAllPosts } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
@@ -23,15 +24,35 @@ export default async function HomePage({ params }: HomeProps) {
       </div>
 
       {/* HERO */}
-      <section className="bg-navy text-white overflow-hidden relative">
-        <div className="absolute top-12 right-12 w-3 h-3 rounded-full bg-yellow-bb opacity-80" />
-        <div className="absolute top-24 right-20 w-1.5 h-1.5 rounded-full bg-yellow-bb opacity-50" />
-        <div className="absolute bottom-16 left-16 w-2 h-2 rounded-full bg-yellow-bb opacity-60" />
+      <section className="relative overflow-hidden text-white" style={{background: '#08080c', minHeight: '380px'}}>
+
+        {/* Geometrik çizgiler */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
+            <div
+              key={i}
+              className="absolute top-0 bottom-0"
+              style={{
+                left: `${i * 6}%`,
+                width: '1px',
+                background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.04), transparent)',
+                transform: `skewX(-15deg)`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Alt sarı çizgi */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-bb" />
+
+        {/* Sol sarı dikey şerit */}
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-bb" />
 
-        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <div className="max-w-2xl animate-fade-up">
-            <p className="section-label text-white/50 mb-4">{t('hero.greeting')}</p>
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12">
+
+          {/* Sol: Metin */}
+          <div className="flex-1 max-w-2xl">
+            <p className="section-label text-white/40 mb-4">{t('hero.greeting')}</p>
             <h1 className="text-5xl md:text-6xl font-bold mb-2 leading-tight">{t('hero.name')}</h1>
             <div className="flex items-center gap-4 my-6">
               <div className="h-0.5 w-12 bg-yellow-bb" />
@@ -55,6 +76,24 @@ export default async function HomePage({ params }: HomeProps) {
               </a>
             </div>
           </div>
+
+          {/* Sağ: Fotoğraf */}
+          <div className="relative flex-shrink-0 hidden md:block">
+            <div className="relative w-64 h-64 lg:w-80 lg:h-80">
+              {/* Sarı çerçeve aksanı */}
+              <div className="absolute -top-3 -right-3 w-full h-full border-2 border-yellow-bb/40 rounded-2xl" />
+              <Image
+                src="/images/bahri-budak.jpg"
+                alt="Bahri Budak"
+                fill
+                className="object-cover object-top rounded-2xl"
+                priority
+              />
+              {/* Alt gradient */}
+              <div className="absolute inset-0 rounded-2xl" style={{background: 'linear-gradient(to top, rgba(8,8,12,0.4) 0%, transparent 50%)'}} />
+            </div>
+          </div>
+
         </div>
       </section>
 
