@@ -208,7 +208,7 @@ export default async function HomePage({ params }: HomeProps) {
       <section className="bg-yellow-pale border-y border-yellow-bb/20">
         <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
           <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center flex-shrink-0 shadow-lg">
-            <span className="font-['Great_Vibes'] text-white text-4xl leading-none">BB</span>
+            <span className="text-white text-2xl font-bold leading-none tracking-wide">BB</span>
           </div>
           <div className="yellow-strip">
             <p className="section-label mb-2">{t('about.title')}</p>
