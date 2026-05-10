@@ -64,6 +64,20 @@ export default function Footer({ lang }: { lang: Lang }) {
               </svg>
               linkedin.com/in/bahribudak
             </a>
+
+            {/* Adobe Stock */}
+            <a
+              href="https://stock.adobe.com/tr/contributor/203114603/bahribudak"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/70 hover:text-yellow-bb transition-colors flex items-center gap-2 mb-3"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+              </svg>
+              Adobe Stock Portfolyom
+            </a>
+
             <a
               href="https://bahribudak.com"
               className="text-sm text-white/70 hover:text-yellow-bb transition-colors flex items-center gap-2"
