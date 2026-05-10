@@ -1,5 +1,6 @@
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
+import ContactForm from '@/components/ContactForm'
 
 interface ContactProps {
   params: Promise<{ lang: string }>
@@ -26,7 +27,7 @@ export default async function ContactPage({ params }: ContactProps) {
       </p>
 
       {/* Contact cards */}
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-4">
 
         {/* LinkedIn */}
         <a
@@ -42,7 +43,7 @@ export default async function ContactPage({ params }: ContactProps) {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-text mb-1">LinkedIn</p>
-            <p className="font-semibold text-navy group-hover:text-navy-light">www.linkedin.com/in/bahri-budak-052ab5b8</p>
+            <p className="font-semibold text-navy group-hover:text-navy-light">linkedin.com/in/bahribudak</p>
           </div>
         </a>
 
@@ -82,6 +83,9 @@ export default async function ContactPage({ params }: ContactProps) {
         </div>
 
       </div>
+
+      {/* İletişim Formu */}
+      <ContactForm lang={lang} />
 
       <div className="mt-10">
         <Link href={`/${lang}`} className="text-sm font-bold text-navy">
