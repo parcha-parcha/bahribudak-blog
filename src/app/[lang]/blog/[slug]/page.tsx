@@ -58,6 +58,16 @@ export default async function PostPage({ params }: PostPageProps) {
       <h1 className="text-4xl font-bold text-navy mb-6">{post.title}</h1>
       <div className="w-16 h-1 bg-yellow-bb mb-8" />
 
+      {post.coverImage && (
+        <div className="w-full mb-10 rounded-xl overflow-hidden">
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="w-full object-cover rounded-xl"
+          />
+        </div>
+      )}
+
       <div className="flex items-center gap-4 text-sm text-gray-text mb-12 pb-8 border-b border-gray-border">
         <span className="font-semibold text-navy">Bahri Budak</span>
         <span>·</span>
