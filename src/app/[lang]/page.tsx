@@ -69,7 +69,7 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 max-w-2xl">
             <p className="section-label text-white/40 mb-4">{t('hero.greeting')}</p>
-            <h1 className="text-5xl md:text-6xl font-bold mb-2 leading-tight">{t('hero.name')}</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-2 leading-tight text-white">{t('hero.name')}</h1>
             <div className="flex items-center gap-4 my-6">
               <div className="h-0.5 w-12 bg-yellow-bb" />
               <span className="text-sm font-medium text-white/60">{t('hero.tagline')}</span>
