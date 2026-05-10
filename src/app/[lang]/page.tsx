@@ -83,7 +83,7 @@ export default async function HomePage({ params }: HomeProps) {
               {/* Sarı çerçeve aksanı */}
               <div className="absolute -top-3 -right-3 w-full h-full border-2 border-yellow-bb/40 rounded-2xl" />
               <Image
-                src="/images/bahri-budak.jpg"
+                src="/images/bahri-budak.jpeg"
                 alt="Bahri Budak"
                 fill
                 className="object-cover object-top rounded-2xl"
