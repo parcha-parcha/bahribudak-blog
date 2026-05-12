@@ -6,6 +6,7 @@ import { useTranslations, categories } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import QuoteOfDay from '@/components/QuoteOfDay'
 import VisitorCounter from '@/components/VisitorCounter'
+import MiniCalendar from '@/components/MiniCalendar'
 
 interface HomeProps {
   params: Promise<{ lang: Lang }>
@@ -108,6 +109,8 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
         </div>
       </section>
+
+      <MiniCalendar lang={lang} />
 
       {/* HİZMETLER */}
       <section className="bg-white border-b border-gray-border">
