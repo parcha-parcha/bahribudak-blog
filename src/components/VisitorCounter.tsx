@@ -6,15 +6,13 @@ export default function VisitorCounter() {
 
   useEffect(() => {
     const isOwner = localStorage.getItem('bb_owner') === 'true'
-
+    
     if (isOwner) {
-      // Sadece sayıyı oku, artırma
       fetch('/api/visitors')
         .then(res => res.json())
         .then(data => setCount(data.count))
         .catch(() => setCount(null))
     } else {
-      // Normal ziyaretçi — sayacı artır
       fetch('/api/visitors', { method: 'POST' })
         .then(res => res.json())
         .then(data => setCount(data.count))
