@@ -5,15 +5,18 @@ export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null)
 
   useEffect(() => {
-    const isOwner = localStorage.getItem('bb_owner') === 'true'
-    
-    if (isOwner) {
-      fetch('/api/visitors')
+    const lastVisit = localStorage.getItem('bb_last_visit')
+    const now = Date.now()
+    const oneDay = 24 * 60 * 60 * 1000
+
+    if (!lastVisit || now - parseInt(lastVisit) > oneDay) {
+      localStorage.setItem('bb_last_visit', now.toString())
+      fetch('/api/visitors', { method: 'POST' })
         .then(res => res.json())
         .then(data => setCount(data.count))
         .catch(() => setCount(null))
     } else {
-      fetch('/api/visitors', { method: 'POST' })
+      fetch('/api/visitors')
         .then(res => res.json())
         .then(data => setCount(data.count))
         .catch(() => setCount(null))
