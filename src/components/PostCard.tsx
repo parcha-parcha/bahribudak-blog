@@ -13,11 +13,14 @@ export default function PostCard({ post, lang }: PostCardProps) {
   const cat = categories.find(c => c.slug === post.category)
 
   return (
-    <article className="post-card group">
+    <article className="post-card group relative">
+      {/* Tüm kartı kaplayan tıklanabilir alan */}
+      <Link href={`/${lang}/blog/${post.slug}`} className="absolute inset-0 z-0" aria-label={post.title} />
+
       {/* Yellow top accent */}
       <div className="h-1 bg-yellow-bb w-full" />
 
-      <div className="p-6">
+      <div className="p-6 relative z-10">
         {/* Category + Reading time */}
         <div className="flex items-center justify-between mb-4">
           <span
@@ -33,9 +36,7 @@ export default function PostCard({ post, lang }: PostCardProps) {
 
         {/* Title */}
         <h2 className="text-xl font-bold text-navy mb-3 leading-snug group-hover:text-navy-light transition-colors">
-          <Link href={`/${lang}/blog/${post.slug}`}>
-            {post.title}
-          </Link>
+          {post.title}
         </h2>
 
         {/* Excerpt */}
@@ -51,15 +52,12 @@ export default function PostCard({ post, lang }: PostCardProps) {
             })}
           </time>
 
-          <Link
-            href={`/${lang}/blog/${post.slug}`}
-            className="text-xs font-bold text-navy flex items-center gap-1 hover:gap-2 transition-all"
-          >
+          <span className="text-xs font-bold text-navy flex items-center gap-1 group-hover:gap-2 transition-all">
             {t('blog.readMore')}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
-          </Link>
+          </span>
         </div>
       </div>
     </article>
