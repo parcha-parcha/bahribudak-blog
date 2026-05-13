@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tekstil Boyahanelerinde Sorunlar ve Cozumler</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d1117;--bg2:#161b22;--surface:#21262d;--a1:#2196F3;--a2:#00BCD4;--a3:#FF9800;--a4:#4CAF50;--danger:#F44336;--text:#f0f6fc;--text2:#b1bac4;--text3:#7d8590;--bdr:rgba(255,255,255,0.08)}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(33,150,243,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 80%,rgba(0,188,212,.10) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 50% 50%,rgba(255,152,0,.07) 0%,transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:48px 32px 60px}
+/* HEADER */
+.hdr{text-align:center;margin-bottom:44px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(33,150,243,.12);border:1px solid rgba(33,150,243,.3);border-radius:40px;padding:6px 18px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin-bottom:20px}
+.hdr h1{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.1;background:linear-gradient(135deg,var(--a1),var(--a2) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
+.hdr p{font-size:1.05rem;color:var(--text2);max-width:620px;margin:0 auto;line-height:1.7}
+.hline{width:80px;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:4px;margin:20px auto 0}
+/* SEC LABEL */
+.slbl{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.slbl::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(0,188,212,.3),transparent)}
+/* STAT ROW */
+.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+.scrd{background:var(--surface);border:1px solid var(--bdr);border-radius:14px;padding:22px 18px;text-align:center;transition:transform .2s}
+.scrd:hover{transform:translateY(-4px)}
+.sval{font-family:"Playfair Display",serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.sval.o{background:linear-gradient(135deg,var(--a3),#ffcc02);-webkit-background-clip:text;background-clip:text}
+.sval.g{background:linear-gradient(135deg,var(--a4),#8BC34A);-webkit-background-clip:text;background-clip:text}
+.sval.r{background:linear-gradient(135deg,var(--danger),#FF5722);-webkit-background-clip:text;background-clip:text}
+.slbl2{font-size:.78rem;color:var(--text3);margin-top:6px;line-height:1.4}
+/* PROB CARDS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-bottom:40px}
+.pc{background:var(--surface);border:1px solid var(--bdr);border-radius:16px;padding:24px 22px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:default}
+.pc:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(33,150,243,.15)}
+.pc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.pc.bl::before{background:linear-gradient(90deg,var(--a1),var(--a2))}
+.pc.or::before{background:linear-gradient(90deg,var(--a3),#ffcc02)}
+.pc.cy::before{background:linear-gradient(90deg,var(--a2),#26C6DA)}
+.pc.re::before{background:linear-gradient(90deg,var(--danger),#FF5722)}
+.pc.pu::before{background:linear-gradient(90deg,#9C27B0,#673AB7)}
+.ico{font-size:2.2rem;margin-bottom:12px;display:block}
+.ptit{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.pdsc{font-size:.84rem;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.pcause{background:rgba(255,255,255,.04);border-left:3px solid rgba(255,255,255,.15);border-radius:0 8px 8px 0;padding:8px 12px;font-size:.78rem;color:var(--text3);margin-bottom:12px}
+.pcause strong{color:var(--text2)}
+.stag{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:.76rem;font-weight:600}
+.pc.bl .stag{background:rgba(33,150,243,.15);color:var(--a1)}
+.pc.or .stag{background:rgba(255,152,0,.15);color:var(--a3)}
+.pc.cy .stag{background:rgba(0,188,212,.15);color:var(--a2)}
+.pc.re .stag{background:rgba(244,67,54,.15);color:var(--danger)}
+.pc.pu .stag{background:rgba(156,39,176,.15);color:#CE93D8}
+/* FLOW */
+.fsec{background:var(--surface);border:1px solid var(--bdr);border-radius:20px;padding:32px 28px;margin-bottom:40px}
+.fgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:20px}
+.fgrid::before{content:"";position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3),var(--a4));z-index:0}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 8px}
+.fdot{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:12px;border:2px solid var(--bdr);background:var(--bg2);box-shadow:0 0 0 4px var(--bg2)}
+.fdot.d1{border-color:var(--a1);background:rgba(33,150,243,.12)}
+.fdot.d2{border-color:var(--a2);background:rgba(0,188,212,.12)}
+.fdot.d3{border-color:var(--a3);background:rgba(255,152,0,.12)}
+.fdot.d4{border-color:var(--a4);background:rgba(76,175,80,.12)}
+.fdot.d5{border-color:#9C27B0;background:rgba(156,39,176,.12)}
+.fn{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.fs{font-size:.72rem;color:var(--text3);line-height:1.4}
+/* TWO COL */
+.tcol{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+.ibox{background:var(--surface);border:1px solid var(--bdr);border-radius:16px;padding:28px 24px}
+.ibox h3{font-size:1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.ilst{list-style:none}
+.ilst li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.85rem;color:var(--text2);line-height:1.5}
+.ilst li:last-child{border-bottom:none}
+.dbadge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:1px}
+/* TABLE */
+.stbl{background:var(--surface);border:1px solid var(--bdr);border-radius:20px;padding:32px 28px;margin-bottom:40px;overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead tr{border-bottom:1px solid rgba(255,255,255,.1)}
+thead th{text-align:left;padding:10px 14px;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+tbody tr{border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:13px 14px;font-size:.84rem;color:var(--text2);vertical-align:top;line-height:1.5}
+tbody td:first-child{color:var(--text);font-weight:600}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.73rem;font-weight:600}
+.pb{background:rgba(33,150,243,.15);color:var(--a1)}
+.po{background:rgba(255,152,0,.15);color:var(--a3)}
+.pg{background:rgba(76,175,80,.15);color:var(--a4)}
+.pr{background:rgba(244,67,54,.15);color:var(--danger)}
+.pc2{background:rgba(0,188,212,.15);color:var(--a2)}
+.pp{background:rgba(156,39,176,.15);color:#CE93D8}
+/* FOOTER */
+.ftr{text-align:center;padding:24px 0 0;border-top:1px solid var(--bdr)}
+.ftr p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.tag{background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:20px;padding:4px 14px;font-size:.73rem;color:var(--text3)}
+@media(max-width:768px){.wrap{padding:28px 16px 40px}.fgrid{grid-template-columns:repeat(3,1fr)}.fgrid::before{display:none}.tcol{grid-template-columns:1fr}.srow{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="mesh"></div>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="badge">&#127981; Endustriyel Tekstil &middot; Kalite &amp; Surdurulebilirlik</div>
+  <h1>Tekstil Boyahanelerinde<br>Sorunlar ve Cozumler</h1>
+  <p>Boyahane sureçlerinde en sik karsilasilan kalite, cevre ve operasyonel problemlerin kapsamli analizi ve cozum yontemleri</p>
+  <div class="hline"></div>
+</div>
+
+<div class="srow">
+  <div class="scrd"><div class="sval">%50</div><div class="slbl2">Su kalitesi kaynakli boyama sorunlari orani</div></div>
+  <div class="scrd"><div class="sval o">350 m3</div><div class="slbl2">Ton urun basina olusanatik su (maks.)</div></div>
+  <div class="scrd"><div class="sval g">7 Ay</div><div class="slbl2">Isi geri kazanim yatiriminin geri odeme suresi</div></div>
+  <div class="scrd"><div class="sval r">%7,2</div><div class="slbl2">Tekstilin Turkiye sanayi enerji tuketimindeki payi</div></div>
+</div>
+
+<div class="slbl">Ana Sorun Kategorileri</div>
+<div class="pgrid">
+  <div class="pc bl">
+    <span class="ico">&#127912;</span>
+    <div class="ptit">Abraj &amp; Renk Duzgunsuzlugu</div>
+    <div class="pdsc">Kumas yuzeyinde acik-koyu renkli bolgelerin olusması; en yaygin kalite sorunlarindan biridir.</div>
+    <div class="pcause"><strong>Neden:</strong> Yetersiz flotte hareketi, kotu karistirma, makine arizasi</div>
+    <span class="stag">&#10003; Recete revizyonu + makine kalibrasyonu</span>
+  </div>
+  <div class="pc or">
+    <span class="ico">&#9878;&#65039;</span>
+    <div class="ptit">Ton Farki &amp; Parti Varyasyonu</div>
+    <div class="pdsc">Boyanmis kumasin hedef rengi tutturamamasi; partiler arasinda tutarsiz sonuclar.</div>
+    <div class="pcause"><strong>Neden:</strong> Recete hatasi, su kalitesi, boyarmadde standardi varyasyonu</div>
+    <span class="stag">&#10003; Proses standardizasyonu + isik kabini kontrolu</span>
+  </div>
+  <div class="pc cy">
+    <span class="ico">&#128207;</span>
+    <div class="ptit">Kanat Farki (Kenar-Orta)</div>
+    <div class="pdsc">Kumasin kenarından ortasına dogru renk degisimi; sikma silindiri ve isi dagilimi kaynakli.</div>
+    <div class="pcause"><strong>Neden:</strong> Sikma silindiri kavislenme, isi dagilim farki, duzgunsuz sargi</div>
+    <span class="stag">&#10003; Silindir kalibrasyonu + sargi standardizasyonu</span>
+  </div>
+  <div class="pc or">
+    <span class="ico">&#128300;</span>
+    <div class="ptit">Oligomer Tozu (Polyester)</div>
+    <div class="pdsc">HT boyamalarda polyesterdeki oligomerlerin (~%1,5) yuzeye cikarak mat, tozlu gorunum olusturmasi.</div>
+    <div class="pcause"><strong>Neden:</strong> 100°C uzeri islem, asiri soguma, yetersiz dispergatör</div>
+    <span class="stag">&#10003; Dispergatör + 85°C bosaltma + indirgen yikama</span>
+  </div>
+  <div class="pc re">
+    <span class="ico">&#128167;</span>
+    <div class="ptit">Beyaz Cokelti &amp; Harelenme</div>
+    <div class="pdsc">Reaktif boyamalarda kumas yuzeyinde beyaz cokelti veya leke biciminde tuz tortuları.</div>
+    <div class="pcause"><strong>Neden:</strong> Bikarbonat &gt;250 ppm, pH &gt;7,5, su sertligi, sicaklik &gt;70°C</div>
+    <span class="stag">&#10003; Iyon tutucu sabun + RO suyu</span>
+  </div>
+  <div class="pc pu">
+    <span class="ico">&#9851;&#65039;</span>
+    <div class="ptit">Atik Su Kirliligi</div>
+    <div class="pdsc">Yüksek KOI, BOI ve TDS iceren boyahane atiksulari sucul ekosistemi tehdit eder.</div>
+    <div class="pcause"><strong>Neden:</strong> Boyarmadde ve kimyasal desarji, yetersiz aritma altyapisi</div>
+    <span class="stag">&#10003; Aritma tesisi + membran teknolojisi</span>
+  </div>
+</div>
+
+<div class="fsec">
+  <div class="slbl">Boyahane Proses Akisi &amp; Kritik Kontrol Noktalari</div>
+  <div class="fgrid">
+    <div class="fstep"><div class="fdot d1">&#129514;</div><div class="fn">On Terbiye</div><div class="fs">Hasil sokme, kasar, agartma</div></div>
+    <div class="fstep"><div class="fdot d2">&#127912;</div><div class="fn">Boyama</div><div class="fs">pH, sicaklik, flotte kontrolu</div></div>
+    <div class="fstep"><div class="fdot d3">&#128703;</div><div class="fn">Yikama</div><div class="fs">Sabunlama, durulama, indirgen yikama</div></div>
+    <div class="fstep"><div class="fdot d4">&#9989;</div><div class="fn">Kalite Kontrol</div><div class="fs">Renk olcumu, haslik testleri</div></div>
+    <div class="fstep"><div class="fdot d5">&#9851;&#65039;</div><div class="fn">Atik Yonetimi</div><div class="fs">Aritma, isi geri kazanimi</div></div>
+  </div>
+</div>
+
+<div class="tcol">
+  <div class="ibox">
+    <h3 style="color:#2196F3">&#127981; ISG &amp; Hava Kalitesi Sorunlari</h3>
+    <ul class="ilst">
+      <li><span class="dbadge" style="background:rgba(244,67,54,.15);color:#F44336">!</span><span><strong style="color:#f0f6fc">Kimyasal buharlar:</strong> Boyama, apre ve agartma islemlerinden kaynaklanan solunum tahrisi ve bas agrisi riski</span></li>
+      <li><span class="dbadge" style="background:rgba(255,152,0,.15);color:#FF9800">!</span><span><strong style="color:#f0f6fc">VOC (Ucucu Organik Bilesikler):</strong> Fixatif ve apre kimyasallarindan yayilan cevre ve is guvenligi tehlikeleri</span></li>
+      <li><span class="dbadge" style="background:rgba(33,150,243,.15);color:#2196F3">i</span><span><strong style="color:#f0f6fc">Lif tozu &amp; nem:</strong> Solunum hastaliklari, kuf olusumu ve alerji riskleri</span></li>
+      <li><span class="dbadge" style="background:rgba(76,175,80,.15);color:#4CAF50">&#10003;</span><span><strong style="color:#f0f6fc">Cozum:</strong> Aktif karbon filtreli aspirasyon, HEPA filtreli toz toplama, merkezi hava filtreleme</span></li>
+    </ul>
+  </div>
+  <div class="ibox">
+    <h3 style="color:#4CAF50">&#9889; Enerji &amp; Su Verimliligi</h3>
+    <ul class="ilst">
+      <li><span class="dbadge" style="background:rgba(244,67,54,.15);color:#F44336">&#8593;</span><span><strong style="color:#f0f6fc">Tekstil terbiye prosesleri</strong> sektor toplam enerjisinin <strong style="color:#F44336">%75'inden fazlasini</strong> tuketmektedir</span></li>
+      <li><span class="dbadge" style="background:rgba(0,188,212,.15);color:#00BCD4">&#128167;</span><span>Pamuk boyamada su <strong style="color:#f0f6fc">9-12 kez degistirilebilmekte</strong>; ortalama banyo sicakligi ~60°C</span></li>
+      <li><span class="dbadge" style="background:rgba(76,175,80,.15);color:#4CAF50">&#10003;</span><span><strong style="color:#f0f6fc">Isi geri kazanim:</strong> 250 ton/gun atik suda <strong style="color:#4CAF50">210.000 kWh/yil</strong> tasarruf, geri odeme 7 ay</span></li>
+      <li><span class="dbadge" style="background:rgba(76,175,80,.15);color:#4CAF50">&#10003;</span><span><strong style="color:#f0f6fc">Reverse osmosis + membran teknolojisi:</strong> Su geri donusum + enerji optimizasyonu</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="stbl">
+  <div class="slbl">Sorun - Neden - Cozum Referans Tablosu</div>
+  <table>
+    <thead><tr><th>Sorun</th><th>Kategori</th><th>Temel Nedenler</th><th>Cozum Yontemi</th></tr></thead>
+    <tbody>
+      <tr><td>Abraj / Renk Duzgunsuzlugu</td><td><span class="pill pb">Kalite</span></td><td>Yetersiz flotte hareketi, makine arizasi</td><td>Recete revizyonu, makine kalibrasyonu, numune boyama</td></tr>
+      <tr><td>Ton Farki</td><td><span class="pill pb">Kalite</span></td><td>Recete hatasi, su kalitesi, isik kaynagi farki</td><td>Proses standardizasyonu, isik kabini kullanimi</td></tr>
+      <tr><td>Kanat Farki</td><td><span class="pill pb">Kalite</span></td><td>Sikma silindiri kavislenme, isi farki</td><td>Silindir kalibrasyonu, sargi teknigi</td></tr>
+      <tr><td>Oligomer Tozu</td><td><span class="pill po">Kimyasal</span></td><td>Polyester HT boyama, asiri soguma</td><td>Dispergatör, 85°C bosaltma, indirgen yikama</td></tr>
+      <tr><td>Beyaz Cokelti / Harelenme</td><td><span class="pill po">Kimyasal</span></td><td>Yuksek bikarbonat, sertlik, yuksek pH</td><td>Iyon tutucu sabun, RO suyu, asidik yikama</td></tr>
+      <tr><td>Silikon Lekesi</td><td><span class="pill po">Kimyasal</span></td><td>Kolloidal kararsizlik, pH dalgalanmasi</td><td>Stabilite testi, pH izleme</td></tr>
+      <tr><td>Dusuk Renk Hasligi</td><td><span class="pill pr">Fiziksel</span></td><td>Yetersiz sabunlama, hidrolize boya</td><td>Kapsamli yikama, kaliteli boya secimi</td></tr>
+      <tr><td>Atiksu Kirliligi</td><td><span class="pill pc2">Cevre</span></td><td>Kimyasal ve boyarmadde desarji</td><td>Aritma tesisi, membran teknolojisi</td></tr>
+      <tr><td>Yuksek Enerji Tuketimi</td><td><span class="pill pg">Verimlilik</span></td><td>Isi kaybi, soguk su isitma maliyeti</td><td>Isi geri kazanim sistemleri</td></tr>
+      <tr><td>Hava Kalitesi / ISG</td><td><span class="pill pp">ISG</span></td><td>Kimyasal buhar, lif tozu, nem</td><td>Aspirasyon, aktif karbon + HEPA filtreler</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ftr">
+  <p>Kaynak: Tekstil Boyahanelerinde Sorunlar ve Cozumleri Arastirma Raporu &middot; Mayis 2026</p>
+  <div class="tags">
+    <span class="tag">#TekstilBoyama</span>
+    <span class="tag">#KaliteKontrol</span>
+    <span class="tag">#Surdurulebilirlik</span>
+    <span class="tag">#AtiksuAritma</span>
+    <span class="tag">#ISG</span>
+    <span class="tag">#EnerjiVerimliligi</span>
+    <span class="tag">#Boyahane</span>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
