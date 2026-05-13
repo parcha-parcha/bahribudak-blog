@@ -99,8 +99,8 @@ export default async function PostPage({ params }: PostPageProps) {
               ? 'Tekstil fabrikası yöneticisi. Kişisel gelişim, felsefe ve sektör yazıları üzerine içerik üretici.'
               : 'Textile factory manager. Content creator on personal growth, philosophy and industry.'}
           </p>
-          <a href="https://linkedin.com/in/bahribudak" target="_blank" rel="noopener noreferrer" className="text-yellow-bb text-sm font-bold">
-            linkedin.com/in/bahribudak →
+          <a href="https://www.linkedin.com/in/bahri-budak-052ab5b8" target="_blank" rel="noopener noreferrer" className="text-yellow-bb text-sm font-bold">
+            linkedin.com/in/bahri-budak-052ab5b8 →
           </a>
         </div>
       </div>
