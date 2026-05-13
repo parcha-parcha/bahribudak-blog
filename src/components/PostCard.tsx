@@ -14,17 +14,14 @@ export default function PostCard({ post, lang }: PostCardProps) {
 
   return (
     <article className="post-card group relative">
-      {/* Tüm kartı kaplayan tıklanabilir alan */}
-      <Link href={`/${lang}/blog/${post.slug}`} className="absolute inset-0 z-0" aria-label={post.title} />
-
       {/* Yellow top accent */}
       <div className="h-1 bg-yellow-bb w-full" />
 
-      <div className="p-6 relative z-10">
+      <div className="p-6">
         {/* Category + Reading time */}
         <div className="flex items-center justify-between mb-4">
           <span
-            className="cat-badge text-white"
+            className="cat-badge text-white relative z-10"
             style={{ backgroundColor: cat?.color || '#0f1a3a' }}
           >
             {cat?.emoji} {t(`cat.${post.category}` as any)}
@@ -34,9 +31,14 @@ export default function PostCard({ post, lang }: PostCardProps) {
           </span>
         </div>
 
-        {/* Title */}
+        {/* Title — after:absolute after:inset-0 tüm kartı tıklanabilir yapıyor */}
         <h2 className="text-xl font-bold text-navy mb-3 leading-snug group-hover:text-navy-light transition-colors">
-          {post.title}
+          <Link
+            href={`/${lang}/blog/${post.slug}`}
+            className="after:absolute after:inset-0"
+          >
+            {post.title}
+          </Link>
         </h2>
 
         {/* Excerpt */}
@@ -52,7 +54,7 @@ export default function PostCard({ post, lang }: PostCardProps) {
             })}
           </time>
 
-          <span className="text-xs font-bold text-navy flex items-center gap-1 group-hover:gap-2 transition-all">
+          <span className="text-xs font-bold text-navy flex items-center gap-1 group-hover:gap-2 transition-all relative z-10">
             {t('blog.readMore')}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
