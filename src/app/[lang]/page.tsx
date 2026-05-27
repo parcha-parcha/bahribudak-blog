@@ -19,25 +19,57 @@ export default async function HomePage({ params }: HomeProps) {
 
   const services = [
     {
-      category: lang === 'tr' ? 'Tekstil' : 'Textile',
+      category: lang === 'tr' ? 'Tekstil Danışmanlığı' : 'Textile Consulting',
       emoji: '🧵',
       items: lang === 'tr'
-        ? ['Fabrika yönetimi danışmanlığı', 'Üretim süreç optimizasyonu', 'Tekstil teknik danışmanlığı']
-        : ['Factory management consulting', 'Production process optimization', 'Textile technical consulting'],
+        ? [
+            'Boyahane & terbiye proses yönetimi',
+            'Fabrika & işletme yönetimi',
+            'Proses optimizasyonu & verimlilik analizi',
+            'Maliyet kontrolü & kriz yönetimi',
+            'Vardiya organizasyonu',
+          ]
+        : [
+            'Dyehouse & finishing process management',
+            'Factory & plant management',
+            'Process optimization & efficiency analysis',
+            'Cost control & crisis management',
+            'Shift organization',
+          ],
     },
     {
-      category: lang === 'tr' ? 'Tasarım' : 'Design',
+      category: lang === 'tr' ? 'Dijital Tasarım' : 'Digital Design',
       emoji: '🎨',
       items: lang === 'tr'
-        ? ['Tekstil katalog tasarımı (InDesign)', 'Marka kimliği & logo (Illustrator)', 'Ürün görseli düzenleme (Photoshop)', 'Dergi/broşür tasarımı (InDesign + CorelDraw)']
-        : ['Textile catalog design (InDesign)', 'Brand identity & logo (Illustrator)', 'Product image editing (Photoshop)', 'Magazine/brochure design (InDesign + CorelDraw)'],
+        ? [
+            'Tekstil katalog tasarımı (InDesign)',
+            'Marka kimliği & logo (Illustrator)',
+            'Ürün görseli düzenleme (Photoshop)',
+            'Dergi & broşür tasarımı',
+          ]
+        : [
+            'Textile catalog design (InDesign)',
+            'Brand identity & logo (Illustrator)',
+            'Product image editing (Photoshop)',
+            'Magazine & brochure design',
+          ],
     },
     {
-      category: lang === 'tr' ? 'İçerik & Danışmanlık' : 'Content & Consulting',
+      category: lang === 'tr' ? 'İçerik & Blog' : 'Content & Blog',
       emoji: '✍️',
       items: lang === 'tr'
-        ? ['LinkedIn içerik yönetimi', 'Sektörel blog yazarlığı']
-        : ['LinkedIn content management', 'Sectoral blog writing'],
+        ? [
+            'LinkedIn içerik yönetimi',
+            'Sektörel blog yazarlığı',
+            'Tekstil teknik içerik üretimi',
+            'Kişisel marka danışmanlığı',
+          ]
+        : [
+            'LinkedIn content management',
+            'Sectoral blog writing',
+            'Textile technical content production',
+            'Personal brand consulting',
+          ],
     },
   ]
 
@@ -112,8 +144,8 @@ export default async function HomePage({ params }: HomeProps) {
       ═══════════════════════════════════════════ */}
       <section className="bg-gray-soft border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row items-start gap-6">
-            <div className="flex-1 min-w-0">
+          <div className="flex flex-col md:flex-row items-stretch gap-6">
+            <div className="flex-1 min-w-0 bg-white rounded-2xl border border-gray-border overflow-hidden">
               <QuoteOfDay />
             </div>
             <div className="flex flex-col items-center gap-3 flex-shrink-0">
@@ -131,7 +163,6 @@ export default async function HomePage({ params }: HomeProps) {
         className="relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #08080c 0%, #0f1a3a 60%, #1a3a5c 100%)' }}
       >
-        {/* Dekoratif çizgiler */}
         <div className="absolute inset-0 pointer-events-none">
           {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
             <div
@@ -150,61 +181,26 @@ export default async function HomePage({ params }: HomeProps) {
 
         <div className="max-w-6xl mx-auto px-6 py-12 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-            <div className="flex flex-col items-center text-center group cursor-default">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
-                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
-                🧵
+            {[
+              { emoji: '🧵', tr: 'Tekstil', en: 'Textile', trSub: '35 yıl saha deneyimi', enSub: '35 years field experience' },
+              { emoji: '🏛️', tr: 'Felsefe', en: 'Philosophy', trSub: 'Düşünce & anlam', enSub: 'Thought & meaning' },
+              { emoji: '🇹🇷', tr: 'Türkiye', en: 'Turkey', trSub: 'Gündem & analiz', enSub: 'News & analysis' },
+              { emoji: '🌱', tr: 'Kişisel Gelişim', en: 'Self Growth', trSub: 'İlham & motivasyon', enSub: 'Inspiration & motivation' },
+            ].map((p) => (
+              <div key={p.tr} className="flex flex-col items-center text-center group cursor-default">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
+                  style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
+                  {p.emoji}
+                </div>
+                <span className="text-yellow-bb font-bold text-sm tracking-wide">
+                  {lang === 'tr' ? p.tr : p.en}
+                </span>
+                <span className="text-white/40 text-xs mt-1 leading-relaxed">
+                  {lang === 'tr' ? p.trSub : p.enSub}
+                </span>
               </div>
-              <span className="text-yellow-bb font-bold text-sm tracking-wide">
-                {lang === 'tr' ? 'Tekstil' : 'Textile'}
-              </span>
-              <span className="text-white/40 text-xs mt-1 leading-relaxed">
-                {lang === 'tr' ? '35 yıl saha deneyimi' : '35 years field experience'}
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center text-center group cursor-default">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
-                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
-                🏛️
-              </div>
-              <span className="text-yellow-bb font-bold text-sm tracking-wide">
-                {lang === 'tr' ? 'Felsefe' : 'Philosophy'}
-              </span>
-              <span className="text-white/40 text-xs mt-1 leading-relaxed">
-                {lang === 'tr' ? 'Düşünce & anlam' : 'Thought & meaning'}
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center text-center group cursor-default">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
-                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
-                🇹🇷
-              </div>
-              <span className="text-yellow-bb font-bold text-sm tracking-wide">
-                {lang === 'tr' ? 'Türkiye' : 'Turkey'}
-              </span>
-              <span className="text-white/40 text-xs mt-1 leading-relaxed">
-                {lang === 'tr' ? 'Gündem & analiz' : 'News & analysis'}
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center text-center group cursor-default">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
-                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
-                🌱
-              </div>
-              <span className="text-yellow-bb font-bold text-sm tracking-wide">
-                {lang === 'tr' ? 'Kişisel Gelişim' : 'Self Growth'}
-              </span>
-              <span className="text-white/40 text-xs mt-1 leading-relaxed">
-                {lang === 'tr' ? 'İlham & motivasyon' : 'Inspiration & motivation'}
-              </span>
-            </div>
-
+            ))}
           </div>
-
           <div className="flex items-center gap-3 mt-10 justify-center">
             <div className="h-px w-16 bg-yellow-bb/30" />
             <div className="w-1.5 h-1.5 rounded-full bg-yellow-bb" />
@@ -262,19 +258,19 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          6. HİZMETLER
+          6. HİZMETLER — Fiyatsız, CV'ye uygun
       ═══════════════════════════════════════════ */}
       <section className="bg-white border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="text-center mb-14">
             <p className="section-label mb-2">{lang === 'tr' ? 'Ne Yapabilirim?' : 'What I Can Do'}</p>
             <h2 className="text-3xl font-bold text-navy mb-4">
-              {lang === 'tr' ? 'Üretim Deneyimi + Dijital Tasarım Gücü' : 'Production Experience + Digital Design Power'}
+              {lang === 'tr' ? '35 Yıllık Saha Deneyimi + Dijital Yetkinlik' : '35 Years Field Experience + Digital Skills'}
             </h2>
             <p className="text-gray-text max-w-2xl mx-auto leading-relaxed">
               {lang === 'tr'
-                ? '35 yıllık tekstil saha deneyimini Adobe Photoshop, Illustrator, InDesign ve CorelDraw ile harmanlayan bir yönetici perspektifi.'
-                : '35 years of textile field experience combined with Adobe Photoshop, Illustrator, InDesign and CorelDraw expertise.'}
+                ? 'Boyahane ve terbiye proseslerinden fabrika yönetimine, dijital tasarımdan içerik üretimine uzanan geniş bir hizmet yelpazesi.'
+                : 'A wide range of services from dyehouse processes to factory management, digital design to content production.'}
             </p>
             <div className="flex justify-center gap-2 mt-4">
               <div className="w-8 h-0.5 bg-yellow-bb" />
@@ -312,21 +308,59 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          7. HAKKIMDA ŞERİDİ
+          7. HAKKIMDA — CV'den alınan 4 istatistik
       ═══════════════════════════════════════════ */}
-      <section className="bg-yellow-pale border-y border-yellow-bb/20">
-        <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center flex-shrink-0 shadow-lg">
-            <span className="text-white text-2xl font-bold leading-none tracking-wide">BB</span>
+      <section style={{ background: '#08080c' }} className="border-y border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+
+          {/* Üst başlık */}
+          <div className="flex flex-col md:flex-row items-center gap-10 mb-14">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: '#1a3a5c', border: '2px solid rgba(245,197,24,0.3)' }}>
+              <span className="text-white text-xl font-bold tracking-wide">BB</span>
+            </div>
+            <div>
+              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#f5c518' }}>
+                {lang === 'tr' ? 'Hakkımda' : 'About Me'}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                {lang === 'tr'
+                  ? 'Tekstil yöneticisinden içerik üreticisine'
+                  : 'From textile manager to content creator'}
+              </h2>
+              <p className="text-white/50 text-sm leading-relaxed max-w-xl">
+                {lang === 'tr'
+                  ? 'Ergene/Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika yönetimi alanlarında edindiğim 35 yıllık birikimi; felsefe, gündem ve kişisel gelişim yazılarıyla harmanlıyorum.'
+                  : 'I blend 35 years of dyehouse, finishing and factory management experience in the Ergene/Tekirdağ textile region with writing on philosophy, current affairs and self-development.'}
+              </p>
+              <Link href={`/${lang}/about`}
+                className="inline-flex items-center gap-1.5 text-sm font-bold mt-4 hover:underline underline-offset-4"
+                style={{ color: '#f5c518' }}>
+                {lang === 'tr' ? 'Daha fazlası →' : 'Learn more →'}
+              </Link>
+            </div>
           </div>
-          <div className="yellow-strip">
-            <p className="section-label mb-2">{t('about.title')}</p>
-            <p className="text-navy/80 leading-relaxed max-w-2xl">{t('about.text')}</p>
-            <Link href={`/${lang}/about`}
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-navy mt-4 hover:underline decoration-yellow-bb underline-offset-4">
-              {lang === 'tr' ? 'Daha fazlası →' : 'Learn more →'}
-            </Link>
+
+          {/* 4 İstatistik */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { number: '35', unit: lang === 'tr' ? 'Yıl' : 'Years', label: lang === 'tr' ? 'Tekstil Deneyimi' : 'Textile Experience' },
+              { number: '10+', unit: lang === 'tr' ? 'Şirket' : 'Companies', label: lang === 'tr' ? 'Yönetici Rolü' : 'Management Role' },
+              { number: '4', unit: lang === 'tr' ? 'Kategori' : 'Categories', label: lang === 'tr' ? 'İçerik Alanı' : 'Content Area' },
+              { number: 'GMY', unit: '', label: lang === 'tr' ? 'Genel Müdür Yardımcılığı' : 'Deputy General Manager' },
+            ].map((stat) => (
+              <div key={stat.label}
+                className="rounded-xl p-6 text-center"
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div className="flex items-end justify-center gap-1 mb-2">
+                  <span className="text-4xl font-bold" style={{ color: '#f5c518' }}>{stat.number}</span>
+                  {stat.unit && <span className="text-lg font-semibold text-white/60 mb-1">{stat.unit}</span>}
+                </div>
+                <p className="text-xs text-white/40 leading-snug">{stat.label}</p>
+              </div>
+            ))}
           </div>
+
         </div>
       </section>
     </>
