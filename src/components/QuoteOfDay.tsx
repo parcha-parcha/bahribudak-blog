@@ -92,11 +92,7 @@ export default function QuoteOfDay() {
         </cite>
       </div>
 
-      {/* Sol şerit */}
-      <div
-        className="absolute left-0 top-6 bottom-6 w-1 rounded-full"
-        style={{ background: 'linear-gradient(180deg, #f5c518, rgba(245,197,24,0.2))' }}
-      />
+
     </div>
   )
 }
