@@ -46,12 +46,61 @@ export default function QuoteOfDay() {
   const quote = getDayQuote()
 
   return (
-    <div className="quote-of-day">
-      <div className="quote-of-day__label">✦ Günün Sözü</div>
-      <blockquote className="quote-of-day__text">
+    <div className="relative h-full flex flex-col justify-center p-6 md:p-8 overflow-hidden"
+      style={{ minHeight: '180px' }}>
+
+      {/* Dekoratif büyük tırnak işareti — arka planda */}
+      <div
+        className="absolute top-0 left-4 font-bold leading-none select-none pointer-events-none"
+        style={{
+          fontSize: '140px',
+          color: 'rgba(245,197,24,0.12)',
+          fontFamily: 'Georgia, serif',
+          lineHeight: 1,
+        }}
+      >
+        "
+      </div>
+
+      {/* Etiket */}
+      <div className="flex items-center gap-2 mb-4 relative z-10">
+        <div className="w-5 h-px bg-yellow-bb" />
+        <span
+          className="text-xs font-bold tracking-widest uppercase"
+          style={{ color: '#f5c518' }}
+        >
+          Günün Sözü
+        </span>
+      </div>
+
+      {/* Alıntı metni */}
+      <blockquote
+        className="relative z-10 font-bold leading-snug mb-5"
+        style={{
+          fontSize: 'clamp(18px, 2.2vw, 26px)',
+          color: '#0f1a3a',
+          fontStyle: 'italic',
+        }}
+      >
         &ldquo;{quote.text}&rdquo;
       </blockquote>
-      <cite className="quote-of-day__author">— {quote.author}</cite>
+
+      {/* Yazar */}
+      <div className="flex items-center gap-3 relative z-10">
+        <div className="w-8 h-0.5 bg-yellow-bb" />
+        <cite
+          className="not-italic font-semibold text-sm"
+          style={{ color: '#4a6a8a' }}
+        >
+          {quote.author}
+        </cite>
+      </div>
+
+      {/* Sol dekoratif şerit */}
+      <div
+        className="absolute left-0 top-6 bottom-6 w-1 rounded-full"
+        style={{ background: 'linear-gradient(180deg, #f5c518, rgba(245,197,24,0.2))' }}
+      />
     </div>
   )
 }
