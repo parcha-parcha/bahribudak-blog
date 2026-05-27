@@ -10,17 +10,14 @@ const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July
 export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
   const [today, setToday] = useState<Date | null>(null)
 
-  useEffect(() => {
-    setToday(new Date())
-  }, [])
-
+  useEffect(() => { setToday(new Date()) }, [])
   if (!today) return null
 
   const year  = today.getFullYear()
   const month = today.getMonth()
   const day   = today.getDate()
 
-  const firstDay   = new Date(year, month, 1).getDay()
+  const firstDay    = new Date(year, month, 1).getDay()
   const startOffset = firstDay === 0 ? 6 : firstDay - 1
   const daysInMonth = new Date(year, month + 1, 0).getDate()
 
@@ -33,60 +30,65 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
   const MONTHS = lang === 'tr' ? MONTHS_TR : MONTHS_EN
 
   return (
-    /* ─── Değişen: py-12 → py-5, flex justify-center ─── */
-    <section className="bg-white border-b border-gray-border">
-      <div className="max-w-6xl mx-auto px-6 py-5 flex justify-center">
-
-        {/* ─── Değişen: max-w-sm → max-w-[260px], shadow-card → shadow-sm ─── */}
-        <div className="w-full max-w-[260px] bg-white rounded-xl border border-gray-border shadow-sm overflow-hidden">
-
-          {/* Header — aynı, sadece padding küçüldü */}
-          <div className="bg-navy px-3 py-2 flex items-center justify-between">
-            <span className="text-yellow-bb font-bold text-xs tracking-wide">
-              {MONTHS[month]}
-            </span>
-            <span className="text-white/50 text-xs">{year}</span>
-          </div>
-
-          {/* Gün başlıkları — py-2 → py-1 */}
-          <div className="grid grid-cols-7 border-b border-gray-border">
-            {DAYS.map(d => (
-              <div key={d} className="py-1 text-center text-[9px] font-bold text-navy/40 uppercase tracking-wide">
-                {d}
-              </div>
-            ))}
-          </div>
-
-          {/* Günler — aspect-square kaldırıldı, h-7 sabit yükseklik */}
-          <div className="grid grid-cols-7 p-1.5 gap-0.5">
-            {cells.map((cell, i) => (
-              <div
-                key={i}
-                className={`
-                  h-7 flex items-center justify-center rounded text-[11px] font-medium transition-all
-                  ${cell === null
-                    ? ''
-                    : cell === day
-                      ? 'bg-navy text-white font-bold ring-2 ring-yellow-bb ring-offset-1'
-                      : 'text-navy/80 hover:bg-gray-soft cursor-default'
-                  }
-                `}
-              >
-                {cell}
-              </div>
-            ))}
-          </div>
-
-          {/* Alt tarih — py-3 → py-2 */}
-          <div className="border-t border-gray-border px-3 py-2 flex items-center justify-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-yellow-bb flex-shrink-0" />
-            <span className="text-[11px] text-navy font-medium">
-              {day} {MONTHS[month]} {year}
-            </span>
-          </div>
-
-        </div>
+    <div
+      className="w-full rounded-xl overflow-hidden"
+      style={{
+        maxWidth: '260px',
+        background: '#0f1a3a',
+        border: '1px solid rgba(245,197,24,0.2)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+      }}
+    >
+      {/* Header */}
+      <div
+        className="px-4 py-2.5 flex items-center justify-between"
+        style={{ background: 'rgba(245,197,24,0.12)', borderBottom: '1px solid rgba(245,197,24,0.15)' }}
+      >
+        <span className="font-bold text-xs tracking-wide" style={{ color: '#f5c518' }}>
+          {MONTHS[month]}
+        </span>
+        <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{year}</span>
       </div>
-    </section>
+
+      {/* Gün başlıkları */}
+      <div className="grid grid-cols-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        {DAYS.map(d => (
+          <div key={d} className="py-1 text-center text-[9px] font-bold tracking-wide uppercase"
+            style={{ color: 'rgba(255,255,255,0.3)' }}>
+            {d}
+          </div>
+        ))}
+      </div>
+
+      {/* Günler */}
+      <div className="grid grid-cols-7 p-1.5 gap-0.5">
+        {cells.map((cell, i) => (
+          <div
+            key={i}
+            className="h-7 flex items-center justify-center rounded text-[11px] font-medium transition-all"
+            style={
+              cell === day
+                ? { background: '#f5c518', color: '#0f1a3a', fontWeight: 800, borderRadius: '6px' }
+                : cell
+                ? { color: 'rgba(255,255,255,0.7)' }
+                : {}
+            }
+          >
+            {cell}
+          </div>
+        ))}
+      </div>
+
+      {/* Alt tarih */}
+      <div
+        className="px-3 py-2 flex items-center justify-center gap-2"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#f5c518' }} />
+        <span className="text-[11px] font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>
+          {day} {MONTHS[month]} {year}
+        </span>
+      </div>
+    </div>
   )
 }

@@ -46,15 +46,19 @@ export default function QuoteOfDay() {
   const quote = getDayQuote()
 
   return (
-    <div className="relative h-full flex flex-col justify-center p-6 md:p-8 overflow-hidden"
-      style={{ minHeight: '180px' }}>
-
-      {/* Dekoratif büyük tırnak işareti — arka planda */}
+    <div
+      className="relative h-full flex flex-col justify-center px-8 py-8 overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #0f1a3a 0%, #1a3a5c 100%)',
+        minHeight: '200px',
+      }}
+    >
+      {/* Dekoratif büyük tırnak — arka plan */}
       <div
-        className="absolute top-0 left-4 font-bold leading-none select-none pointer-events-none"
+        className="absolute top-2 left-4 select-none pointer-events-none font-bold leading-none"
         style={{
-          fontSize: '140px',
-          color: 'rgba(245,197,24,0.12)',
+          fontSize: '120px',
+          color: 'rgba(245,197,24,0.15)',
           fontFamily: 'Georgia, serif',
           lineHeight: 1,
         }}
@@ -62,9 +66,15 @@ export default function QuoteOfDay() {
         "
       </div>
 
+      {/* Sağ üst dekoratif daire */}
+      <div
+        className="absolute -top-8 -right-8 w-32 h-32 rounded-full pointer-events-none"
+        style={{ background: 'rgba(245,197,24,0.07)', border: '1px solid rgba(245,197,24,0.1)' }}
+      />
+
       {/* Etiket */}
-      <div className="flex items-center gap-2 mb-4 relative z-10">
-        <div className="w-5 h-px bg-yellow-bb" />
+      <div className="flex items-center gap-2 mb-5 relative z-10">
+        <div className="w-6 h-px" style={{ background: '#f5c518' }} />
         <span
           className="text-xs font-bold tracking-widest uppercase"
           style={{ color: '#f5c518' }}
@@ -73,13 +83,14 @@ export default function QuoteOfDay() {
         </span>
       </div>
 
-      {/* Alıntı metni */}
+      {/* Alıntı */}
       <blockquote
-        className="relative z-10 font-bold leading-snug mb-5"
+        className="relative z-10 font-bold leading-snug mb-6"
         style={{
-          fontSize: 'clamp(18px, 2.2vw, 26px)',
-          color: '#0f1a3a',
+          fontSize: 'clamp(20px, 2.4vw, 28px)',
+          color: '#ffffff',
           fontStyle: 'italic',
+          textShadow: '0 2px 12px rgba(0,0,0,0.3)',
         }}
       >
         &ldquo;{quote.text}&rdquo;
@@ -87,19 +98,19 @@ export default function QuoteOfDay() {
 
       {/* Yazar */}
       <div className="flex items-center gap-3 relative z-10">
-        <div className="w-8 h-0.5 bg-yellow-bb" />
+        <div className="w-10 h-0.5 rounded-full" style={{ background: '#f5c518' }} />
         <cite
           className="not-italic font-semibold text-sm"
-          style={{ color: '#4a6a8a' }}
+          style={{ color: 'rgba(245,197,24,0.8)' }}
         >
           {quote.author}
         </cite>
       </div>
 
-      {/* Sol dekoratif şerit */}
+      {/* Sol alt dekoratif nokta */}
       <div
-        className="absolute left-0 top-6 bottom-6 w-1 rounded-full"
-        style={{ background: 'linear-gradient(180deg, #f5c518, rgba(245,197,24,0.2))' }}
+        className="absolute bottom-4 right-6 w-2 h-2 rounded-full"
+        style={{ background: '#f5c518', opacity: 0.4 }}
       />
     </div>
   )

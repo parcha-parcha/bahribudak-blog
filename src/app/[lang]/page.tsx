@@ -142,8 +142,8 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           2. GÜNÜN SOZU + TAKVİM + ZİYARETÇİ
       ═══════════════════════════════════════════ */}
-      <section className="bg-gray-soft border-b border-gray-border">
-        <div className="max-w-6xl mx-auto px-6 py-6">
+      <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
+        <div className="max-w-6xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row items-stretch gap-6">
             <div className="flex-1 min-w-0 bg-white rounded-2xl border border-gray-border overflow-hidden">
               <QuoteOfDay />
@@ -237,7 +237,7 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           5. KATEGORİLER
       ═══════════════════════════════════════════ */}
-      <section className="bg-gray-soft border-b border-gray-border">
+      <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="section-label text-center mb-10">{lang === 'tr' ? 'İçerik Kategorileri' : 'Content Categories'}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
