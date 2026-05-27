@@ -53,32 +53,20 @@ export default function QuoteOfDay() {
         minHeight: '200px',
       }}
     >
-      {/* Dekoratif büyük tırnak — arka plan */}
-      <div
-        className="absolute top-2 left-4 select-none pointer-events-none font-bold leading-none"
-        style={{
-          fontSize: '120px',
-          color: 'rgba(245,197,24,0.15)',
-          fontFamily: 'Georgia, serif',
-          lineHeight: 1,
-        }}
-      >
-        "
-      </div>
-
       {/* Sağ üst dekoratif daire */}
       <div
-        className="absolute -top-8 -right-8 w-32 h-32 rounded-full pointer-events-none"
-        style={{ background: 'rgba(245,197,24,0.07)', border: '1px solid rgba(245,197,24,0.1)' }}
+        className="absolute -top-8 -right-8 w-36 h-36 rounded-full pointer-events-none"
+        style={{ background: 'rgba(245,197,24,0.06)', border: '1px solid rgba(245,197,24,0.1)' }}
+      />
+      <div
+        className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full pointer-events-none"
+        style={{ background: 'rgba(245,197,24,0.04)' }}
       />
 
       {/* Etiket */}
       <div className="flex items-center gap-2 mb-5 relative z-10">
         <div className="w-6 h-px" style={{ background: '#f5c518' }} />
-        <span
-          className="text-xs font-bold tracking-widest uppercase"
-          style={{ color: '#f5c518' }}
-        >
+        <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#f5c518' }}>
           Günün Sözü
         </span>
       </div>
@@ -99,18 +87,15 @@ export default function QuoteOfDay() {
       {/* Yazar */}
       <div className="flex items-center gap-3 relative z-10">
         <div className="w-10 h-0.5 rounded-full" style={{ background: '#f5c518' }} />
-        <cite
-          className="not-italic font-semibold text-sm"
-          style={{ color: 'rgba(245,197,24,0.8)' }}
-        >
+        <cite className="not-italic font-semibold text-sm" style={{ color: 'rgba(245,197,24,0.85)' }}>
           {quote.author}
         </cite>
       </div>
 
-      {/* Sol alt dekoratif nokta */}
+      {/* Sol şerit */}
       <div
-        className="absolute bottom-4 right-6 w-2 h-2 rounded-full"
-        style={{ background: '#f5c518', opacity: 0.4 }}
+        className="absolute left-0 top-6 bottom-6 w-1 rounded-full"
+        style={{ background: 'linear-gradient(180deg, #f5c518, rgba(245,197,24,0.2))' }}
       />
     </div>
   )

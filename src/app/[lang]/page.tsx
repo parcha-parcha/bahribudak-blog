@@ -184,7 +184,7 @@ export default async function HomePage({ params }: HomeProps) {
             {[
               { emoji: '🧵', tr: 'Tekstil', en: 'Textile', trSub: '35 yıl saha deneyimi', enSub: '35 years field experience' },
               { emoji: '🏛️', tr: 'Felsefe', en: 'Philosophy', trSub: 'Düşünce & anlam', enSub: 'Thought & meaning' },
-              { emoji: '🇹🇷', tr: 'Türkiye', en: 'Turkey', trSub: 'Gündem & analiz', enSub: 'News & analysis' },
+              { emoji: '📰', tr: 'Türkiye', en: 'Turkey', trSub: 'Gündem & analiz', enSub: 'News & analysis' },
               { emoji: '🌱', tr: 'Kişisel Gelişim', en: 'Self Growth', trSub: 'İlham & motivasyon', enSub: 'Inspiration & motivation' },
             ].map((p) => (
               <div key={p.tr} className="flex flex-col items-center text-center group cursor-default">
