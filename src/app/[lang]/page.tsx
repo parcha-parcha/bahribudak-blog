@@ -43,9 +43,9 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      {/* ─────────────────────────────────────────
-          1. HERO  (değişmedi — harika görünüyor)
-      ───────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════
+          1. HERO
+      ═══════════════════════════════════════════ */}
       <section className="relative overflow-hidden text-white" style={{background: '#08080c', minHeight: '380px'}}>
         <div className="absolute inset-0 pointer-events-none">
           {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
@@ -107,32 +107,115 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────
+      {/* ═══════════════════════════════════════════
           2. GÜNÜN SOZU + TAKVİM + ZİYARETÇİ
-             Yan yana kompakt şerit (YENİ DÜZEN)
-      ───────────────────────────────────────── */}
+      ═══════════════════════════════════════════ */}
       <section className="bg-gray-soft border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-start gap-6">
-
-            {/* Sol: Günün Sözü — genişletilmiş */}
             <div className="flex-1 min-w-0">
               <QuoteOfDay />
             </div>
-
-            {/* Sağ: Takvim + Ziyaretçi Sayacı — yan panel */}
             <div className="flex flex-col items-center gap-3 flex-shrink-0">
               <MiniCalendar lang={lang} />
               <VisitorCounter />
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────
-          3. RECENT POSTS  (hero'ya yakın olsun)
-      ───────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════
+          3. PİLLAR BANNER — 4 İçerik Sütunu
+      ═══════════════════════════════════════════ */}
+      <section
+        className="relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #08080c 0%, #0f1a3a 60%, #1a3a5c 100%)' }}
+      >
+        {/* Dekoratif çizgiler */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
+            <div
+              key={i}
+              className="absolute top-0 bottom-0"
+              style={{
+                left: `${i * 6}%`,
+                width: '1px',
+                background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.03), transparent)',
+                transform: 'skewX(-15deg)',
+              }}
+            />
+          ))}
+        </div>
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-bb" />
+
+        <div className="max-w-6xl mx-auto px-6 py-12 relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+            <div className="flex flex-col items-center text-center group cursor-default">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
+                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
+                🧵
+              </div>
+              <span className="text-yellow-bb font-bold text-sm tracking-wide">
+                {lang === 'tr' ? 'Tekstil' : 'Textile'}
+              </span>
+              <span className="text-white/40 text-xs mt-1 leading-relaxed">
+                {lang === 'tr' ? '35 yıl saha deneyimi' : '35 years field experience'}
+              </span>
+            </div>
+
+            <div className="flex flex-col items-center text-center group cursor-default">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
+                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
+                🏛️
+              </div>
+              <span className="text-yellow-bb font-bold text-sm tracking-wide">
+                {lang === 'tr' ? 'Felsefe' : 'Philosophy'}
+              </span>
+              <span className="text-white/40 text-xs mt-1 leading-relaxed">
+                {lang === 'tr' ? 'Düşünce & anlam' : 'Thought & meaning'}
+              </span>
+            </div>
+
+            <div className="flex flex-col items-center text-center group cursor-default">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
+                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
+                🇹🇷
+              </div>
+              <span className="text-yellow-bb font-bold text-sm tracking-wide">
+                {lang === 'tr' ? 'Türkiye' : 'Turkey'}
+              </span>
+              <span className="text-white/40 text-xs mt-1 leading-relaxed">
+                {lang === 'tr' ? 'Gündem & analiz' : 'News & analysis'}
+              </span>
+            </div>
+
+            <div className="flex flex-col items-center text-center group cursor-default">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
+                style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
+                🌱
+              </div>
+              <span className="text-yellow-bb font-bold text-sm tracking-wide">
+                {lang === 'tr' ? 'Kişisel Gelişim' : 'Self Growth'}
+              </span>
+              <span className="text-white/40 text-xs mt-1 leading-relaxed">
+                {lang === 'tr' ? 'İlham & motivasyon' : 'Inspiration & motivation'}
+              </span>
+            </div>
+
+          </div>
+
+          <div className="flex items-center gap-3 mt-10 justify-center">
+            <div className="h-px w-16 bg-yellow-bb/30" />
+            <div className="w-1.5 h-1.5 rounded-full bg-yellow-bb" />
+            <div className="h-px w-16 bg-yellow-bb/30" />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. SON YAZILAR
+      ═══════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between mb-10">
           <div>
@@ -155,9 +238,9 @@ export default async function HomePage({ params }: HomeProps) {
         )}
       </section>
 
-      {/* ─────────────────────────────────────────
-          4. KATEGORİLER
-      ───────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════
+          5. KATEGORİLER
+      ═══════════════════════════════════════════ */}
       <section className="bg-gray-soft border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="section-label text-center mb-10">{lang === 'tr' ? 'İçerik Kategorileri' : 'Content Categories'}</p>
@@ -178,9 +261,9 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────
-          5. HİZMETLER
-      ───────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════
+          6. HİZMETLER
+      ═══════════════════════════════════════════ */}
       <section className="bg-white border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="text-center mb-14">
@@ -228,9 +311,9 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────
-          6. HAKKIMDA ŞERİDİ
-      ───────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════
+          7. HAKKIMDA ŞERİDİ
+      ═══════════════════════════════════════════ */}
       <section className="bg-yellow-pale border-y border-yellow-bb/20">
         <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
           <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center flex-shrink-0 shadow-lg">
