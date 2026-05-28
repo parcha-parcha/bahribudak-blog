@@ -38,7 +38,7 @@ export default async function HomePage({ params }: HomeProps) {
           ],
     },
     {
-      category: lang === 'tr' ? 'Dijital Tasarım' : 'Digital Design',
+      category: lang === 'tr' ? 'Görsel İçerik Tasarımı' : 'Visual Content Design',
       emoji: '🎨',
       items: lang === 'tr'
         ? [

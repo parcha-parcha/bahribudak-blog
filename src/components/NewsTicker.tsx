@@ -63,7 +63,7 @@ export default function NewsTicker() {
         <div
           className="flex gap-0 whitespace-nowrap"
           style={{
-            animation: paused ? 'none' : 'ticker 60s linear infinite',
+            animation: paused ? 'none' : 'ticker 120s linear infinite',
             display: 'inline-flex',
             gap: 0,
           }}
