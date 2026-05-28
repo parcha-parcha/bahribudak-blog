@@ -21,7 +21,7 @@ const services = [
   },
   {
     emoji: '🎨',
-    title: 'Dijital Tasarım',
+    title: 'Görsel İçerik Tasarımı',
     subtitle: 'Photoshop · Illustrator · InDesign · CorelDraw',
     description: 'Adobe Creative Suite araçlarıyla profesyonel grafik tasarım hizmetleri. Tekstil sektörüne özgü katalog, marka kimliği ve kurumsal tasarım çözümleri.',
     items: [
@@ -57,7 +57,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
   const { lang } = await params
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="max-w-3xl mx-auto px-6 pt-16 pb-8">
 
       {/* ── HEADER ── */}
       <div className="mb-14">
@@ -125,14 +125,14 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
       </div>
 
       {/* ── DIVIDER ── */}
-      <div className="my-10 flex items-center gap-4">
+      <div className="my-8 flex items-center gap-4">
         <div className="flex-1 h-px bg-gray-border" />
         <div className="w-2 h-2 rounded-full bg-yellow-bb" />
         <div className="flex-1 h-px bg-gray-border" />
       </div>
 
       {/* ── CTA ── */}
-      <div className="text-center">
+      <div className="text-center pb-4">
         <p className="text-navy/60 mb-6 text-sm">Projenizi konuşmak için hemen iletişime geçin.</p>
         <a
           href="mailto:bahribudak@gmail.com?subject=Hizmet Talebi"
