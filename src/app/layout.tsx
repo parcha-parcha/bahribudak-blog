@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: '%s | Bahri Budak',
   },
   description: 'Tekstil yöneticisi, düşünür ve içerik üreticisi Bahri Budak\'ın kişisel blogu.',
- metadataBase: new URL('https://bahribudak-blog.vercel.app'),
+  metadataBase: new URL('https://bahribudak-blog.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
- robots: {
+  robots: {
     index: true,
     follow: true,
   },
