@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
-  robots: {
+ robots: {
     index: true,
     follow: true,
   },
-}
-verification: {
+  verification: {
     google: 'OVSrNQr3Z1WQsMHZOk_c7OZAD5rqME7tf_HYl6WPLps',
   },
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
