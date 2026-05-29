@@ -4,9 +4,6 @@ import PostCard from '@/components/PostCard'
 import { getAllPosts } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
-import QuoteOfDay from '@/components/QuoteOfDay'
-import VisitorCounter from '@/components/VisitorCounter'
-import MiniCalendar from '@/components/MiniCalendar'
 
 interface HomeProps {
   params: Promise<{ lang: Lang }>
@@ -15,7 +12,7 @@ interface HomeProps {
 export default async function HomePage({ params }: HomeProps) {
   const { lang } = await params
   const t = useTranslations(lang)
-  const recentPosts = getAllPosts(lang).slice(0, 6)
+  const recentPosts = getAllPosts(lang).slice(0, 4)
 
   const services = [
     {
@@ -102,7 +99,11 @@ export default async function HomePage({ params }: HomeProps) {
             <h1 className="text-5xl md:text-6xl font-bold mb-2 leading-tight text-white">{t('hero.name')}</h1>
             <div className="flex items-center gap-4 my-6">
               <div className="h-0.5 w-12 bg-yellow-bb" />
-              <span className="text-sm font-medium text-white/60">{t('hero.tagline')}</span>
+              <span className="text-sm font-medium text-white/60">
+                {lang === 'tr'
+                  ? 'Tekstil, boyahane ve üretim yönetimi üzerine uygulamalı bilgiler'
+                  : 'Practical knowledge on textile, dyehouse and production management'}
+              </span>
             </div>
             <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-xl">{t('hero.description')}</p>
             <div className="flex flex-wrap gap-4">
@@ -140,77 +141,7 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          2. GÜNÜN SOZU + TAKVİM + ZİYARETÇİ
-      ═══════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-stretch gap-6">
-            <div className="flex-1 min-w-0 bg-white rounded-2xl border border-gray-border overflow-hidden">
-              <QuoteOfDay />
-            </div>
-            <div className="flex flex-col items-center gap-3 flex-shrink-0">
-              <MiniCalendar lang={lang} />
-              <VisitorCounter />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          3. PİLLAR BANNER — 4 İçerik Sütunu
-      ═══════════════════════════════════════════ */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #08080c 0%, #0f1a3a 60%, #1a3a5c 100%)' }}
-      >
-        <div className="absolute inset-0 pointer-events-none">
-          {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
-            <div
-              key={i}
-              className="absolute top-0 bottom-0"
-              style={{
-                left: `${i * 6}%`,
-                width: '1px',
-                background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.03), transparent)',
-                transform: 'skewX(-15deg)',
-              }}
-            />
-          ))}
-        </div>
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-bb" />
-
-        <div className="max-w-6xl mx-auto px-6 py-12 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { emoji: '🧵', tr: 'Tekstil', en: 'Textile', trSub: '35 yıl saha deneyimi', enSub: '35 years field experience' },
-              { emoji: '🏛️', tr: 'Felsefe', en: 'Philosophy', trSub: 'Düşünce & anlam', enSub: 'Thought & meaning' },
-              { emoji: '📰', tr: 'Türkiye', en: 'Turkey', trSub: 'Gündem & analiz', enSub: 'News & analysis' },
-              { emoji: '🌱', tr: 'Kişisel Gelişim', en: 'Self Growth', trSub: 'İlham & motivasyon', enSub: 'Inspiration & motivation' },
-            ].map((p) => (
-              <div key={p.tr} className="flex flex-col items-center text-center group cursor-default">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform group-hover:scale-110"
-                  style={{ background: 'rgba(245,197,24,0.12)', border: '1px solid rgba(245,197,24,0.25)' }}>
-                  {p.emoji}
-                </div>
-                <span className="text-yellow-bb font-bold text-sm tracking-wide">
-                  {lang === 'tr' ? p.tr : p.en}
-                </span>
-                <span className="text-white/40 text-xs mt-1 leading-relaxed">
-                  {lang === 'tr' ? p.trSub : p.enSub}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-3 mt-10 justify-center">
-            <div className="h-px w-16 bg-yellow-bb/30" />
-            <div className="w-1.5 h-1.5 rounded-full bg-yellow-bb" />
-            <div className="h-px w-16 bg-yellow-bb/30" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          4. SON YAZILAR
+          2. SON YAZILAR
       ═══════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between mb-10">
@@ -223,7 +154,7 @@ export default async function HomePage({ params }: HomeProps) {
           </Link>
         </div>
         {recentPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {recentPosts.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
           </div>
         ) : (
@@ -235,7 +166,7 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          5. KATEGORİLER
+          3. KATEGORİLER
       ═══════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
         <div className="max-w-6xl mx-auto px-6 py-16">
@@ -258,7 +189,7 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          6. HİZMETLER — Fiyatsız, CV'ye uygun
+          4. HİZMETLER
       ═══════════════════════════════════════════ */}
       <section className="bg-white border-b border-gray-border">
         <div className="max-w-6xl mx-auto px-6 py-20">
@@ -308,12 +239,11 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          7. HAKKIMDA — CV'den alınan 4 istatistik
+          5. HAKKIMDA
       ═══════════════════════════════════════════ */}
       <section style={{ background: '#08080c' }} className="border-y border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-16">
 
-          {/* Üst başlık */}
           <div className="flex flex-col md:flex-row items-center gap-10 mb-14">
             <div className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: '#1a3a5c', border: '2px solid rgba(245,197,24,0.3)' }}>
@@ -341,7 +271,6 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          {/* 4 İstatistik */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { number: '35', unit: lang === 'tr' ? 'Yıl' : 'Years', label: lang === 'tr' ? 'Tekstil Deneyimi' : 'Textile Experience' },
