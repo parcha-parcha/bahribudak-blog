@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
-
 export const metadata: Metadata = {
   title: {
     default: 'Bahri Budak',
     template: '%s | Bahri Budak',
   },
   description: 'Tekstil yöneticisi, düşünür ve içerik üreticisi Bahri Budak\'ın kişisel blogu.',
-  metadataBase: new URL('https://bahribudak-blog.vercel.app'),
+  metadataBase: new URL('https://bahribudak.com'),
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
@@ -26,7 +25,6 @@ export const metadata: Metadata = {
     google: 'OVSrNQr3Z1WQsMHZOk_c7OZAD5rqME7tf_HYl6WPLps',
   },
 }
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning>
