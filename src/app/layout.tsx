@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    google: 'OVSrNQr3Z1WQsMHZOk_c7OZAD5rqME7tf_HYl6WPLps',
+    google: '8lEut5GT1mdu1_nJg92Bg69sD0OKhcz0od-WN8nB_RM',
   },
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
