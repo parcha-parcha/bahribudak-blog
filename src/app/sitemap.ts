@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
 
-const siteUrl = 'https://bahribudak-blog.vercel.app'
+const siteUrl = 'https://bahribudak.com'
 const langs: Lang[] = ['tr', 'en']
 
 export default function sitemap(): MetadataRoute.Sitemap {
