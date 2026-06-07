@@ -18,12 +18,13 @@ export default function Header({ lang }: HeaderProps) {
   const switchedPath = pathname.replace(`/${lang}`, `/${otherLang}`)
 
   const navLinks = [
-    { href: `/${lang}`,            label: t('nav.home') },
-    { href: `/${lang}/blog`,       label: t('nav.blog') },
-    { href: `/${lang}/about`,      label: t('nav.about') },
-    { href: `/${lang}/hizmetler`,  label: lang === 'tr' ? 'Hizmetler' : 'Services' },
-    { href: `/${lang}/haberler`,   label: lang === 'tr' ? 'Haberler' : 'News' },
-    { href: `/${lang}/contact`,    label: t('nav.contact') },
+    { href: `/${lang}`,           label: t('nav.home') },
+    { href: `/${lang}/blog`,      label: t('nav.blog') },
+    { href: `/${lang}/about`,     label: t('nav.about') },
+    { href: `/${lang}/hizmetler`, label: lang === 'tr' ? 'Hizmetler' : 'Services' },
+    { href: `/${lang}/haberler`,  label: lang === 'tr' ? 'Haberler' : 'News' },
+    { href: `/${lang}/magazam`,   label: lang === 'tr' ? 'Magazam' : 'Store' },
+    { href: `/${lang}/contact`,   label: t('nav.contact') },
   ]
 
   return (
@@ -67,7 +68,7 @@ export default function Header({ lang }: HeaderProps) {
             {otherLang.toUpperCase()}
           </Link>
 
-          <a
+          
             href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
             target="_blank"
             rel="noopener noreferrer"
