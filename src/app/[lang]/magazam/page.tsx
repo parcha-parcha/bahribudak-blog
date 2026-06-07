@@ -1,497 +1,117 @@
-import type { Metadata } from 'next'
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import type { Lang } from '@/lib/i18n'
+import { useTranslations } from '@/lib/i18n'
 
-// ─── METADATA ────────────────────────────────────────────────────────────────
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string }
-}): Promise<Metadata> {
-  const tr = params.lang === 'tr'
-  return {
-    title: tr ? 'Magazam | Bahri Budak' : 'My Store | Bahri Budak',
-    description: tr
-      ? 'Boyahane ve tekstil üretimi için profesyonel teknik dökümanlar, eğitim materyalleri ve danışmanlık hizmetleri.'
-      : 'Professional technical documents, training materials and consulting services for dyehouse and textile production.',
-  }
+interface HeaderProps {
+  lang: Lang
 }
 
-// ─── TİPLER ──────────────────────────────────────────────────────────────────
-type Lang = 'tr' | 'en'
+export default function Header({ lang }: HeaderProps) {
+  const t = useTranslations(lang)
+  const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
 
-interface Product {
-  id: string
-  badge: string
-  title: { tr: string; en: string }
-  desc: { tr: string; en: string }
-  price: { tr: string; en: string }
-  gumroadUrl?: string
-  highlight?: boolean
-}
+  const otherLang = lang === 'tr' ? 'en' : 'tr'
+  const switchedPath = pathname.replace(`/${lang}`, `/${otherLang}`)
 
-// ─── ÜRÜNLER ─────────────────────────────────────────────────────────────────
-const products: Product[] = [
-  {
-    id: 'tam-arsiv',
-    badge: '🏆',
-    title: {
-      tr: 'Tam Arşiv — 88 Teknik Döküman',
-      en: 'Complete Archive — 88 Technical Documents',
-    },
-    desc: {
-      tr: 'Boyahane yönetimi için hazırlanmış 88 adet A4 teknik döküman. Prosedürler, formlar, iş talimatları ve kontrol listeleri tek ZIP dosyasında.',
-      en: '88 A4 technical documents prepared for dyehouse management. Procedures, forms, work instructions and checklists in a single ZIP file.',
-    },
-    price: { tr: '₺990', en: '$29' },
-    highlight: true,
-  },
-  {
-    id: 'bolum-bolum',
-    badge: '📂',
-    title: {
-      tr: 'Bölüm Bölüm Satış',
-      en: 'Individual Sections',
-    },
-    desc: {
-      tr: 'Tüm arşivi almak yerine sadece ihtiyacınız olan bölümü seçin. Her bölüm ayrı satın alınabilir.',
-      en: 'Choose only the section you need instead of the full archive. Each section is available separately.',
-    },
-    price: { tr: '₺149 – ₺299 / bölüm', en: '$5–$9 / section' },
-  },
-  {
-    id: 'aylik-gonderi',
-    badge: '📬',
-    title: {
-      tr: 'Aylık Özel Gönderi',
-      en: 'Monthly Special Report',
-    },
-    desc: {
-      tr: 'Her ay bir konuda derinlemesine teknik analiz, vaka çalışması veya saha raporu. Boyahane, finishing ve üretim yönetimi.',
-      en: 'An in-depth technical analysis, case study or field report on one topic each month. Dyehouse, finishing and production management.',
-    },
-    price: { tr: '₺199 / ay', en: '$6 / month' },
-  },
-  {
-    id: 'ozel-siparis',
-    badge: '🎯',
-    title: {
-      tr: 'Özel Sipariş & Danışmanlık',
-      en: 'Custom Order & Consulting',
-    },
-    desc: {
-      tr: 'Fabrikanıza özel prosedür, eğitim materyali veya teknik döküman hazırlanması. 35 yıllık boyahane deneyimiyle.',
-      en: 'Custom procedure, training material or technical document preparation for your facility. With 35 years of dyehouse experience.',
-    },
-    price: { tr: 'Fiyat teklifi alın', en: 'Get a quote' },
-  },
-]
+  const navLinks = [
+    { href: `/${lang}`,           label: t('nav.home') },
+    { href: `/${lang}/blog`,      label: t('nav.blog') },
+    { href: `/${lang}/about`,     label: t('nav.about') },
+    { href: `/${lang}/hizmetler`, label: lang === 'tr' ? 'Hizmetler' : 'Services' },
+    { href: `/${lang}/haberler`,  label: lang === 'tr' ? 'Haberler' : 'News' },
+    { href: `/${lang}/magazam`,   label: lang === 'tr' ? 'Magazam' : 'Store' },
+    { href: `/${lang}/contact`,   label: t('nav.contact') },
+  ]
 
-// ─── İÇERİK METİNLERİ ────────────────────────────────────────────────────────
-const content = {
-  tr: {
-    hero: 'Magazam',
-    heroSub: 'Boyahane ve tekstil üretimi için teknik dökümanlar',
-    heroDesc:
-      '35 yıllık saha deneyiminden damıtılmış prosedürler, formlar ve analiz araçları. Hazır kullan, zaman kazan.',
-    paymentTitle: 'Nasıl Satın Alınır?',
-    paymentDesc:
-      'İki farklı ödeme seçeneği sunuyorum. Dilediğinizi seçebilirsiniz.',
-    gumroad: 'Gumroad ile Öde',
-    gumroadDesc: 'Kredi kartı veya PayPal ile anında teslim.',
-    manual: 'IBAN ile Öde',
-    manualDesc: 'Havale/EFT sonrası WhatsApp veya e-posta ile bildirin, dosyayı hemen gönderirim.',
-    whatsapp: 'WhatsApp',
-    email: 'E-posta',
-    contact: 'İletişim',
-    buyBtn: 'Satın Al',
-    quoteBtn: 'Teklif Al',
-    highlight: 'En Popüler',
-  },
-  en: {
-    hero: 'My Store',
-    heroSub: 'Technical documents for dyehouse and textile production',
-    heroDesc:
-      'Procedures, forms and analysis tools distilled from 35 years of field experience. Ready to use, save time.',
-    paymentTitle: 'How to Purchase?',
-    paymentDesc: 'Two payment options are available. Choose whichever suits you.',
-    gumroad: 'Pay with Gumroad',
-    gumroadDesc: 'Instant delivery via credit card or PayPal.',
-    manual: 'Pay via Bank Transfer',
-    manualDesc: 'After transfer, notify me via WhatsApp or email and I will send the file immediately.',
-    whatsapp: 'WhatsApp',
-    email: 'Email',
-    contact: 'Contact',
-    buyBtn: 'Buy Now',
-    quoteBtn: 'Get a Quote',
-    highlight: 'Most Popular',
-  },
-}
-
-// ─── SAYFA ───────────────────────────────────────────────────────────────────
-export default function MagazamPage({
-  params,
-}: {
-  params: { lang: string }
-}) {
-  const lang = (params.lang === 'en' ? 'en' : 'tr') as Lang
-  const t = content[lang]
+  const linkedinSvg = (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.2 24 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  )
 
   return (
-    <main
-      style={{ fontFamily: "'Poppins', sans-serif", background: '#f9fafb', minHeight: '100vh' }}
-    >
-      {/* ── HERO ── */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0f1a3a 0%, #1a3a5c 100%)',
-          padding: '80px 24px 64px',
-          textAlign: 'center',
-        }}
-      >
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'inline-block',
-              background: '#f5c518',
-              color: '#0f1a3a',
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              padding: '4px 14px',
-              borderRadius: 4,
-              marginBottom: 20,
-              textTransform: 'uppercase',
-            }}
-          >
-            bahribudak.com
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-border">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link href={`/${lang}`} className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            <span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700 }} className="text-white text-xl leading-none tracking-wide">BB</span>
           </div>
-          <h1
-            style={{
-              color: '#ffffff',
-              fontSize: 'clamp(36px, 6vw, 56px)',
-              fontWeight: 800,
-              margin: '0 0 12px',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-            }}
+          <span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700 }} className="text-2xl text-navy hidden sm:block">Bahri Budak</span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-7">
+          {navLinks.map(link => {
+            const isActive = pathname === link.href
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-semibold transition-colors ${
+                  isActive
+                    ? 'text-navy border-b-2 border-yellow-bb pb-0.5'
+                    : 'text-gray-text hover:text-navy'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+        </nav>
+
+        {/* Sağ: Dil + LinkedIn */}
+        <div className="flex items-center gap-3">
+          <Link
+            href={switchedPath}
+            className="text-xs font-bold uppercase tracking-widest text-gray-text hover:text-navy border border-gray-border rounded-full px-3 py-1.5 transition-colors hover:border-navy"
           >
-            {t.hero}
-          </h1>
-          <p
-            style={{
-              color: '#f5c518',
-              fontSize: 18,
-              fontWeight: 600,
-              margin: '0 0 16px',
-            }}
+            {otherLang.toUpperCase()}
+          </Link>
+
+          
+            href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 bg-navy text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-navy-light transition-colors"
           >
-            {t.heroSub}
-          </p>
-          <p
-            style={{
-              color: '#94a3b8',
-              fontSize: 16,
-              lineHeight: 1.7,
-              margin: 0,
-            }}
+            {linkedinSvg}
+            LinkedIn
+          </a>
+
+          {/* Hamburger */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
           >
-            {t.heroDesc}
-          </p>
+            <div className="w-5 h-0.5 bg-navy mb-1" />
+            <div className="w-5 h-0.5 bg-navy mb-1" />
+            <div className="w-5 h-0.5 bg-navy" />
+          </button>
         </div>
-      </section>
+      </div>
 
-      {/* ── ÜRÜNLER ── */}
-      <section style={{ maxWidth: 960, margin: '0 auto', padding: '64px 24px' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 24,
-          }}
-        >
-          {products.map((p) => (
-            <div
-              key={p.id}
-              style={{
-                background: '#ffffff',
-                borderRadius: 16,
-                padding: '32px 28px',
-                border: p.highlight
-                  ? '2px solid #f5c518'
-                  : '1px solid #e5e7eb',
-                position: 'relative',
-                boxShadow: p.highlight
-                  ? '0 8px 32px rgba(245,197,24,0.15)'
-                  : '0 2px 8px rgba(0,0,0,0.06)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 16,
-              }}
+      {/* Mobil menü */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-border px-6 py-4 space-y-4">
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="block text-sm font-semibold text-navy hover:text-yellow-bb transition-colors"
+              onClick={() => setMenuOpen(false)}
             >
-              {/* Highlight rozeti */}
-              {p.highlight && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: -14,
-                    left: 28,
-                    background: '#f5c518',
-                    color: '#0f1a3a',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    padding: '3px 12px',
-                    borderRadius: 20,
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {t.highlight}
-                </div>
-              )}
-
-              {/* Badge + Başlık */}
-              <div>
-                <span style={{ fontSize: 28 }}>{p.badge}</span>
-                <h2
-                  style={{
-                    color: '#0f1a3a',
-                    fontSize: 18,
-                    fontWeight: 700,
-                    margin: '8px 0 0',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {p.title[lang]}
-                </h2>
-              </div>
-
-              {/* Açıklama */}
-              <p
-                style={{
-                  color: '#374151',
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  margin: 0,
-                  flexGrow: 1,
-                }}
-              >
-                {p.desc[lang]}
-              </p>
-
-              {/* Fiyat */}
-              <div
-                style={{
-                  borderTop: '1px solid #e5e7eb',
-                  paddingTop: 16,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 12,
-                  flexWrap: 'wrap',
-                }}
-              >
-                <span
-                  style={{
-                    color: '#0f1a3a',
-                    fontSize: 20,
-                    fontWeight: 800,
-                    letterSpacing: '-0.01em',
-                  }}
-                >
-                  {p.price[lang]}
-                </span>
-
-                {p.id === 'ozel-siparis' ? (
-                  <a
-                    href="mailto:bahribudak@gmail.com"
-                    style={{
-                      background: '#0f1a3a',
-                      color: '#ffffff',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      padding: '10px 20px',
-                      borderRadius: 8,
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {t.quoteBtn}
-                  </a>
-                ) : (
-                  <a
-                    href={p.gumroadUrl || '#iletisim'}
-                    style={{
-                      background: '#f5c518',
-                      color: '#0f1a3a',
-                      fontSize: 13,
-                      fontWeight: 700,
-                      padding: '10px 20px',
-                      borderRadius: 8,
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {t.buyBtn}
-                  </a>
-                )}
-              </div>
-            </div>
+              {link.label}
+            </Link>
           ))}
         </div>
-      </section>
-
-      {/* ── ÖDEME YÖNTEMLERİ ── */}
-      <section
-        id="iletisim"
-        style={{
-          background: '#ffffff',
-          borderTop: '1px solid #e5e7eb',
-          borderBottom: '1px solid #e5e7eb',
-          padding: '64px 24px',
-        }}
-      >
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <h2
-            style={{
-              color: '#0f1a3a',
-              fontSize: 28,
-              fontWeight: 800,
-              margin: '0 0 8px',
-              textAlign: 'center',
-            }}
-          >
-            {t.paymentTitle}
-          </h2>
-          <p
-            style={{
-              color: '#6b7280',
-              fontSize: 15,
-              textAlign: 'center',
-              margin: '0 0 40px',
-            }}
-          >
-            {t.paymentDesc}
-          </p>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 24,
-            }}
-          >
-            {/* Gumroad */}
-            <div
-              style={{
-                background: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: 12,
-                padding: '28px 24px',
-              }}
-            >
-              <div style={{ fontSize: 32, marginBottom: 12 }}>💳</div>
-              <h3 style={{ color: '#0f1a3a', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
-                {t.gumroad}
-              </h3>
-              <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 20px' }}>
-                {t.gumroadDesc}
-              </p>
-              <a
-                href="https://bahribudak.gumroad.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-block',
-                  background: '#0f1a3a',
-                  color: '#ffffff',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  padding: '10px 20px',
-                  borderRadius: 8,
-                  textDecoration: 'none',
-                }}
-              >
-                Gumroad →
-              </a>
-            </div>
-
-            {/* IBAN / Manuel */}
-            <div
-              style={{
-                background: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: 12,
-                padding: '28px 24px',
-              }}
-            >
-              <div style={{ fontSize: 32, marginBottom: 12 }}>🏦</div>
-              <h3 style={{ color: '#0f1a3a', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
-                {t.manual}
-              </h3>
-              <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 16px' }}>
-                {t.manualDesc}
-              </p>
-              <p
-                style={{
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  padding: '8px 12px',
-                  borderRadius: 6,
-                  margin: '0 0 16px',
-                  fontFamily: 'monospace',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                TR26 0013 4000 0179 1847 2000 01
-              </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                <a
-                  href="https://wa.me/905433382690"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    background: '#25d366',
-                    color: '#ffffff',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    padding: '9px 16px',
-                    borderRadius: 8,
-                    textDecoration: 'none',
-                  }}
-                >
-                  WhatsApp
-                </a>
-                <a
-                  href="mailto:bahribudak@gmail.com"
-                  style={{
-                    background: '#f5c518',
-                    color: '#0f1a3a',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    padding: '9px 16px',
-                    borderRadius: 8,
-                    textDecoration: 'none',
-                  }}
-                >
-                  E-posta
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── ALT FOOTER ── */}
-      <section style={{ padding: '40px 24px', textAlign: 'center' }}>
-        <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>
-          © {new Date().getFullYear()} Bahri Budak ·{' '}
-          <Link href={`/${lang}`} style={{ color: '#1a3a5c', textDecoration: 'none' }}>
-            bahribudak.com
-          </Link>
-        </p>
-      </section>
-    </main>
+      )}
+    </header>
   )
 }
