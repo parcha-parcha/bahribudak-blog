@@ -100,7 +100,6 @@ const content = {
     gumroadDesc: 'Kredi kartı veya PayPal ile anında teslim.',
     manual: 'IBAN ile Öde',
     manualDesc: 'Havale/EFT sonrası WhatsApp veya e-posta ile bildirin, dosyayı hemen gönderirim.',
-    iban: 'IBAN: TR__ ____ ____ ____ ____ ____ __',
     whatsapp: 'WhatsApp',
     email: 'E-posta',
     contact: 'İletişim',
@@ -119,7 +118,6 @@ const content = {
     gumroadDesc: 'Instant delivery via credit card or PayPal.',
     manual: 'Pay via Bank Transfer',
     manualDesc: 'After transfer, notify me via WhatsApp or email and I will send the file immediately.',
-    iban: 'IBAN: TR__ ____ ____ ____ ____ ____ __',
     whatsapp: 'WhatsApp',
     email: 'Email',
     contact: 'Contact',
@@ -446,11 +444,11 @@ export default function MagazamPage({
                   letterSpacing: '0.05em',
                 }}
               >
-                {t.iban}
+                TR26 0013 4000 0179 1847 2000 01
               </p>
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a
-                  href="https://wa.me/90XXXXXXXXXX"
+                  href="https://wa.me/905433382690"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
