@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-// ─── METADATA ────────────────────────────────────────────────────────────────
 export async function generateMetadata({
   params,
 }: {
@@ -16,7 +15,6 @@ export async function generateMetadata({
   }
 }
 
-// ─── TİPLER ──────────────────────────────────────────────────────────────────
 type Lang = 'tr' | 'en'
 
 interface Product {
@@ -29,11 +27,25 @@ interface Product {
   highlight?: boolean
 }
 
-// ─── ÜRÜNLER ─────────────────────────────────────────────────────────────────
 const products: Product[] = [
   {
-    id: 'tam-arsiv',
+    id: 'rys-belge-serisi',
     badge: '🏆',
+    title: {
+      tr: 'Boyahanelerde Renk İlavesi Yönetim Sistemi — RYS Belge Serisi',
+      en: 'Dyehouse Colour Addition Management System — RYS Document Series',
+    },
+    desc: {
+      tr: '35 yıllık saha deneyimiyle hazırlanmış renk ilavesi yönetim sistemi. 28 sayfa PDF + 17 ayrı .docx dosyası. Bölüm 1: İlk 6 bölüm. Bölüm 2: Maliyet hesaplama ve tasarruf analizi.',
+      en: 'Colour addition management system prepared with 35 years of field experience. 28-page PDF + 17 separate .docx files. Part 1: First 6 sections. Part 2: Cost calculation and savings analysis.',
+    },
+    price: { tr: '₺990', en: '$29' },
+    gumroadUrl: 'https://6762449615620.gumroad.com/l/pzpaal',
+    highlight: true,
+  },
+  {
+    id: 'tam-arsiv',
+    badge: '📂',
     title: {
       tr: 'Tam Arşiv — 88 Teknik Döküman',
       en: 'Complete Archive — 88 Technical Documents',
@@ -43,20 +55,6 @@ const products: Product[] = [
       en: '88 A4 technical documents prepared for dyehouse management. Procedures, forms, work instructions and checklists in a single ZIP file.',
     },
     price: { tr: '₺990', en: '$29' },
-    highlight: true,
-  },
-  {
-    id: 'bolum-bolum',
-    badge: '📂',
-    title: {
-      tr: 'Bölüm Bölüm Satış',
-      en: 'Individual Sections',
-    },
-    desc: {
-      tr: 'Tüm arşivi almak yerine sadece ihtiyacınız olan bölümü seçin. Her bölüm ayrı satın alınabilir.',
-      en: 'Choose only the section you need instead of the full archive. Each section is available separately.',
-    },
-    price: { tr: '₺149 – ₺299 / bölüm', en: '$5–$9 / section' },
   },
   {
     id: 'aylik-gonderi',
@@ -86,7 +84,6 @@ const products: Product[] = [
   },
 ]
 
-// ─── İÇERİK METİNLERİ ────────────────────────────────────────────────────────
 const content = {
   tr: {
     hero: 'Magazam',
@@ -94,8 +91,7 @@ const content = {
     heroDesc:
       '35 yıllık saha deneyiminden damıtılmış prosedürler, formlar ve analiz araçları. Hazır kullan, zaman kazan.',
     paymentTitle: 'Nasıl Satın Alınır?',
-    paymentDesc:
-      'İki farklı ödeme seçeneği sunuyorum. Dilediğinizi seçebilirsiniz.',
+    paymentDesc: 'İki farklı ödeme seçeneği sunuyorum. Dilediğinizi seçebilirsiniz.',
     gumroad: 'Gumroad ile Öde',
     gumroadDesc: 'Kredi kartı veya PayPal ile anında teslim.',
     manual: 'IBAN ile Öde',
@@ -105,7 +101,7 @@ const content = {
     contact: 'İletişim',
     buyBtn: 'Satın Al',
     quoteBtn: 'Teklif Al',
-    highlight: 'En Popüler',
+    highlight: 'Yeni',
   },
   en: {
     hero: 'My Store',
@@ -123,11 +119,10 @@ const content = {
     contact: 'Contact',
     buyBtn: 'Buy Now',
     quoteBtn: 'Get a Quote',
-    highlight: 'Most Popular',
+    highlight: 'New',
   },
 }
 
-// ─── SAYFA ───────────────────────────────────────────────────────────────────
 export default function MagazamPage({
   params,
 }: {
@@ -140,7 +135,7 @@ export default function MagazamPage({
     <main
       style={{ fontFamily: "'Poppins', sans-serif", background: '#f9fafb', minHeight: '100vh' }}
     >
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section
         style={{
           background: 'linear-gradient(135deg, #0f1a3a 0%, #1a3a5c 100%)',
@@ -177,30 +172,16 @@ export default function MagazamPage({
           >
             {t.hero}
           </h1>
-          <p
-            style={{
-              color: '#f5c518',
-              fontSize: 18,
-              fontWeight: 600,
-              margin: '0 0 16px',
-            }}
-          >
+          <p style={{ color: '#f5c518', fontSize: 18, fontWeight: 600, margin: '0 0 16px' }}>
             {t.heroSub}
           </p>
-          <p
-            style={{
-              color: '#94a3b8',
-              fontSize: 16,
-              lineHeight: 1.7,
-              margin: 0,
-            }}
-          >
+          <p style={{ color: '#94a3b8', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
             {t.heroDesc}
           </p>
         </div>
       </section>
 
-      {/* ── ÜRÜNLER ── */}
+      {/* ÜRÜNLER */}
       <section style={{ maxWidth: 960, margin: '0 auto', padding: '64px 24px' }}>
         <div
           style={{
@@ -216,9 +197,7 @@ export default function MagazamPage({
                 background: '#ffffff',
                 borderRadius: 16,
                 padding: '32px 28px',
-                border: p.highlight
-                  ? '2px solid #f5c518'
-                  : '1px solid #e5e7eb',
+                border: p.highlight ? '2px solid #f5c518' : '1px solid #e5e7eb',
                 position: 'relative',
                 boxShadow: p.highlight
                   ? '0 8px 32px rgba(245,197,24,0.15)'
@@ -228,7 +207,6 @@ export default function MagazamPage({
                 gap: 16,
               }}
             >
-              {/* Highlight rozeti */}
               {p.highlight && (
                 <div
                   style={{
@@ -249,7 +227,6 @@ export default function MagazamPage({
                 </div>
               )}
 
-              {/* Badge + Başlık */}
               <div>
                 <span style={{ fontSize: 28 }}>{p.badge}</span>
                 <h2
@@ -265,7 +242,6 @@ export default function MagazamPage({
                 </h2>
               </div>
 
-              {/* Açıklama */}
               <p
                 style={{
                   color: '#374151',
@@ -278,7 +254,6 @@ export default function MagazamPage({
                 {p.desc[lang]}
               </p>
 
-              {/* Fiyat */}
               <div
                 style={{
                   borderTop: '1px solid #e5e7eb',
@@ -320,6 +295,8 @@ export default function MagazamPage({
                 ) : (
                   <a
                     href={p.gumroadUrl || '#iletisim'}
+                    target={p.gumroadUrl ? '_blank' : undefined}
+                    rel={p.gumroadUrl ? 'noopener noreferrer' : undefined}
                     style={{
                       background: '#f5c518',
                       color: '#0f1a3a',
@@ -340,7 +317,7 @@ export default function MagazamPage({
         </div>
       </section>
 
-      {/* ── ÖDEME YÖNTEMLERİ ── */}
+      {/* ÖDEME YÖNTEMLERİ */}
       <section
         id="iletisim"
         style={{
@@ -397,7 +374,7 @@ export default function MagazamPage({
                 {t.gumroadDesc}
               </p>
               <a
-                href="https://bahribudak.gumroad.com"
+                href="https://6762449615620.gumroad.com/l/pzpaal"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -415,7 +392,7 @@ export default function MagazamPage({
               </a>
             </div>
 
-            {/* IBAN / Manuel */}
+            {/* IBAN */}
             <div
               style={{
                 background: '#f9fafb',
@@ -483,7 +460,7 @@ export default function MagazamPage({
         </div>
       </section>
 
-      {/* ── ALT FOOTER ── */}
+      {/* FOOTER */}
       <section style={{ padding: '40px 24px', textAlign: 'center' }}>
         <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>
           © {new Date().getFullYear()} Bahri Budak ·{' '}
