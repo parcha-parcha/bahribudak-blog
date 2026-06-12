@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -25,6 +26,11 @@ const config: Config = {
           mid: '#f0f4f8',
           text: '#64748b',
           border: '#e8edf3',
+        },
+        // Dark mode yüzeyleri
+        surface: {
+          dark: '#0b1530',      // ana koyu zemin
+          'dark-2': '#14264a',  // kart / yükseltilmiş yüzey
         },
       },
       fontFamily: {
