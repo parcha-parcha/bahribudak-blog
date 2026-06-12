@@ -73,7 +73,7 @@ export default async function HomePage({ params }: HomeProps) {
   return (
     <>
       {/* ═══════════════════════════════════════════
-          1. HERO
+          1. HERO  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
       <section className="relative overflow-hidden text-white" style={{background: '#08080c', minHeight: '380px'}}>
         <div className="absolute inset-0 pointer-events-none">
@@ -147,7 +147,7 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="flex items-center justify-between mb-10">
           <div>
             <p className="section-label">{t('blog.latestPosts')}</p>
-            <h2 className="text-3xl font-bold text-navy">{t('blog.allPosts')}</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white">{t('blog.allPosts')}</h2>
           </div>
           <Link href={`/${lang}/blog`} className="btn-outline text-sm">
             {lang === 'tr' ? 'Tümünü Gör' : 'View All'}
@@ -158,7 +158,7 @@ export default async function HomePage({ params }: HomeProps) {
             {recentPosts.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
           </div>
         ) : (
-          <div className="text-center py-20 text-gray-text">
+          <div className="text-center py-20 text-gray-text dark:text-slate-400">
             <div className="text-5xl mb-4">✍️</div>
             <p className="font-medium">{lang === 'tr' ? 'Yakında ilk yazı gelecek.' : 'First post coming soon.'}</p>
           </div>
@@ -166,7 +166,7 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. KATEGORİLER
+          3. KATEGORİLER  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
         <div className="max-w-6xl mx-auto px-6 py-16">
@@ -191,14 +191,14 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           4. HİZMETLER
       ═══════════════════════════════════════════ */}
-      <section className="bg-white border-b border-gray-border">
+      <section className="bg-white border-b border-gray-border dark:bg-surface-dark dark:border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-20">
           <div className="text-center mb-14">
             <p className="section-label mb-2">{lang === 'tr' ? 'Ne Yapabilirim?' : 'What I Can Do'}</p>
-            <h2 className="text-3xl font-bold text-navy mb-4">
+            <h2 className="text-3xl font-bold text-navy mb-4 dark:text-white">
               {lang === 'tr' ? '35 Yıllık Saha Deneyimi + Dijital Yetkinlik' : '35 Years Field Experience + Digital Skills'}
             </h2>
-            <p className="text-gray-text max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-text max-w-2xl mx-auto leading-relaxed dark:text-slate-400">
               {lang === 'tr'
                 ? 'Boyahane ve terbiye proseslerinden fabrika yönetimine, dijital tasarımdan içerik üretimine uzanan geniş bir hizmet yelpazesi.'
                 : 'A wide range of services from dyehouse processes to factory management, digital design to content production.'}
@@ -211,13 +211,13 @@ export default async function HomePage({ params }: HomeProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.category} className="bg-white rounded-2xl border border-gray-border p-8 hover:border-navy hover:shadow-card transition-all group">
+              <div key={service.category} className="bg-white rounded-2xl border border-gray-border p-8 hover:border-navy hover:shadow-card transition-all group dark:bg-surface-dark-2 dark:border-white/10 dark:hover:border-yellow-bb/40">
                 <div className="text-4xl mb-4">{service.emoji}</div>
                 <div className="w-8 h-1 bg-yellow-bb mb-4 group-hover:w-12 transition-all" />
-                <h3 className="text-lg font-bold text-navy mb-5">{service.category}</h3>
+                <h3 className="text-lg font-bold text-navy mb-5 dark:text-white">{service.category}</h3>
                 <ul className="space-y-3">
                   {service.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-text leading-relaxed">
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-text leading-relaxed dark:text-slate-300">
                       <span className="text-yellow-bb mt-0.5 flex-shrink-0">✦</span>
                       {item}
                     </li>
@@ -239,7 +239,7 @@ export default async function HomePage({ params }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          5. HAKKIMDA
+          5. HAKKIMDA  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
       <section style={{ background: '#08080c' }} className="border-y border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-16">
