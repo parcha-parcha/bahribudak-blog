@@ -26,13 +26,13 @@ export default function PostCard({ post, lang }: PostCardProps) {
           >
             {cat?.emoji} {t(`cat.${post.category}` as any)}
           </span>
-          <span className="text-xs text-gray-text font-medium">
+          <span className="text-xs text-gray-text font-medium dark:text-slate-400">
             {post.readingTime} {t('blog.readingTime')}
           </span>
         </div>
 
         {/* Title — after:absolute after:inset-0 tüm kartı tıklanabilir yapıyor */}
-        <h2 className="text-xl font-bold text-navy mb-3 leading-snug group-hover:text-navy-light transition-colors">
+        <h2 className="text-xl font-bold text-navy mb-3 leading-snug group-hover:text-navy-light transition-colors dark:text-white dark:group-hover:text-slate-200">
           <Link
             href={`/${lang}/blog/${post.slug}`}
             className="after:absolute after:inset-0"
@@ -42,19 +42,19 @@ export default function PostCard({ post, lang }: PostCardProps) {
         </h2>
 
         {/* Excerpt */}
-        <p className="text-sm text-gray-text leading-relaxed mb-6 line-clamp-3">
+        <p className="text-sm text-gray-text leading-relaxed mb-6 line-clamp-3 dark:text-slate-400">
           {post.excerpt}
         </p>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-border">
-          <time className="text-xs text-gray-text font-medium">
+        <div className="flex items-center justify-between pt-4 border-t border-gray-border dark:border-white/10">
+          <time className="text-xs text-gray-text font-medium dark:text-slate-400">
             {new Date(post.date).toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US', {
               day: 'numeric', month: 'long', year: 'numeric'
             })}
           </time>
 
-          <span className="text-xs font-bold text-navy flex items-center gap-1 group-hover:gap-2 transition-all">
+          <span className="text-xs font-bold text-navy flex items-center gap-1 group-hover:gap-2 transition-all dark:text-yellow-bb">
             {t('blog.readMore')}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
