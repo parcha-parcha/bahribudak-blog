@@ -75,7 +75,7 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
           <div className="relative z-10">
             <p className="section-label mb-5">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.98] tracking-[-0.055em] text-navy max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-navy max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
             <p className="mt-8 text-lg md:text-xl leading-relaxed text-navy/78 max-w-2xl">
@@ -87,27 +87,30 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="relative min-h-[430px] lg:min-h-[520px]">
-            <div className="absolute right-0 top-4 h-[330px] w-[82%] rotate-[-5deg] rounded-[36px] bg-[#DDE9FF]" />
-            <div className="absolute right-8 top-16 h-[360px] w-[78%] rotate-[3deg] rounded-[34px] bg-white shadow-2xl border border-white" />
-            <div className="absolute right-16 top-28 h-[260px] w-[72%] rounded-[30px] bg-[#061A33] overflow-hidden border border-navy/10">
-              <div className="absolute inset-0 bb-pattern opacity-35" />
-              <div className="relative p-7 h-full flex flex-col justify-between">
-                <div className="rounded-3xl bg-white p-5 shadow-xl">
-                  <BrandLogo className="h-20 w-full text-navy" />
-                </div>
-                <div className="grid grid-cols-3 gap-3 text-white">
-                  {['Boyahane', 'Terbiye', 'Kalite'].map((item, index) => (
-                    <div key={item} className="rounded-2xl border border-white/20 bg-white/10 p-3">
-                      <p className="text-xs text-white/55 mb-1">0{index + 1}</p>
-                      <p className="text-sm font-bold">{item}</p>
-                    </div>
-                  ))}
+          <div className="relative">
+            <div className="rounded-[34px] bg-white border border-gray-border shadow-xl overflow-hidden">
+              <div className="relative h-[300px] sm:h-[380px] lg:h-[520px] bg-[#F8FAFC]">
+                <img
+                  src="/images/hero-su-damlasi.jpg"
+                  alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/15 to-transparent" />
+                <div className="absolute left-5 right-5 bottom-5 rounded-3xl bg-white/90 backdrop-blur border border-white shadow-xl p-5 md:p-6">
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <BrandLogo className="h-12 md:h-14 w-44 text-navy" />
+                    <span className="hidden sm:inline-flex rounded-full bg-[#F3F6FA] px-4 py-2 text-xs font-bold text-navy/70 tracking-[0.18em] uppercase">Tekstil Proses</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 md:gap-3">
+                    {['Boyahane', 'Terbiye', 'Kalite'].map((item, index) => (
+                      <div key={item} className="rounded-2xl border border-gray-border bg-white p-3 md:p-4">
+                        <p className="text-[10px] md:text-xs text-accent-blue font-black mb-1">0{index + 1}</p>
+                        <p className="text-xs md:text-sm font-bold text-navy leading-tight">{item}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="absolute left-8 bottom-8 h-24 w-24 rounded-full bg-accent-blue flex items-center justify-center text-white text-5xl font-light">
-              BB
             </div>
           </div>
         </div>
