@@ -31,7 +31,6 @@ const skills = [
 
 const pillars = [
   { emoji: '🧵', label: 'Tekstil', desc: '35 yıllık saha deneyimi' },
-  { emoji: '🏛️', label: 'Felsefe', desc: 'Düşünce ve anlam arayışı' },
   { emoji: '🇹🇷', label: 'Türkiye', desc: 'Gündem ve sektör analizi' },
   { emoji: '🌱', label: 'Kişisel Gelişim', desc: 'İlham ve motivasyon' },
 ]
@@ -40,7 +39,7 @@ const stats = [
   { number: '35', unit: 'Yıl', label: 'Tekstil Deneyimi' },
   { number: '10+', unit: 'Şirket', label: 'Yönetici Rolü' },
   { number: 'GMY', unit: '', label: 'Genel Müdür Yrd.' },
-  { number: '4', unit: 'Sütun', label: 'İçerik Kategorisi' },
+  { number: '3', unit: 'Sütun', label: 'İçerik Kategorisi' },
 ]
 
 export default async function AboutPage({ params }: AboutProps) {
@@ -54,7 +53,7 @@ export default async function AboutPage({ params }: AboutProps) {
       <div className="mb-14">
         <p className="section-label">Hakkımda</p>
         <h1 className="text-4xl font-bold text-navy mb-4">
-          Tekstil — Felsefe —{' '}
+          Tekstil —{' '}
           <span className="text-yellow-bb">Türkiye</span> — Kişisel Gelişim
         </h1>
         <div className="w-12 h-1 bg-yellow-bb mb-6" />
@@ -91,7 +90,7 @@ export default async function AboutPage({ params }: AboutProps) {
       </div>
 
       {/* ── İSTATİSTİKLER ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-14">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-14">
         {stats.map((s) => (
           <div key={s.label}
             className="rounded-xl p-5 text-center border border-gray-border bg-white shadow-sm">
@@ -121,7 +120,7 @@ export default async function AboutPage({ params }: AboutProps) {
           <p>
             Genel Müdür Yardımcılığı deneyimiyle operasyonel birikimimi stratejik yönetim
             perspektifiyle birleştiriyorum. Ergene/Tekirdağ tekstil havzasında büyük ölçekli
-            işletmelerde edindiğim alan bilgisini; felsefe, kişisel gelişim ve Türkiye gündemi
+            işletmelerde edindiğim alan bilgisini; tekstil, kişisel gelişim ve Türkiye gündemi
             üzerine ürettiğim içeriklerle paylaşıyorum.
           </p>
           <p>
@@ -179,9 +178,9 @@ export default async function AboutPage({ params }: AboutProps) {
           Blog & İçerik
         </h2>
         <p className="text-navy/75 text-sm mb-6">
-          Dört ana sütun etrafında düzenli içerik üretiyorum.
+          Üç ana sütun etrafında düzenli içerik üretiyorum.
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {pillars.map((p) => (
             <Link key={p.label} href={`/${lang}/blog`}
               className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border bg-white hover:border-navy hover:shadow-card transition-all group">

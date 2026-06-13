@@ -13,14 +13,12 @@ export const ui = {
 
     // Categories
     'cat.kisisel-gelisim': 'Kişisel Gelişim',
-    'cat.felsefe': 'Felsefe',
     'cat.tekstil': 'Tekstil',
     'cat.turkiye-gundemi': 'Türkiye Gündemi',
     'cat.all': 'Tümü',
 
     // Category descriptions
     'cat.kisisel-gelisim.desc': 'Büyüme, alışkanlıklar ve zihinsel güç üzerine düşünceler.',
-    'cat.felsefe.desc': 'Antik filozoflardan modern hayata köprüler.',
     'cat.tekstil.desc': 'Sektör analizi, üretim ve sürdürülebilirlik.',
     'cat.turkiye-gundemi.desc': 'Ekonomi, politika ve toplumsal meseleler.',
 
@@ -36,13 +34,13 @@ export const ui = {
     // Hero
     'hero.greeting': 'Merhaba, ben',
     'hero.name': 'Bahri Budak',
-    'hero.tagline': 'Tekstil yöneticisi. Düşünür. İçerik üreticisi.',
-    'hero.description': 'Fabrika deneyimimi felsefe, kişisel gelişim ve sektör analiziyle harmanlıyorum. Her yazı bir sorudan doğar.',
+    'hero.tagline': 'Tekstil yöneticisi. Saha deneyimiyle içerik üreticisi.',
+    'hero.description': 'Fabrika yönetimi ve tekstil saha deneyimimi; sektör analizi, kişisel gelişim ve Türkiye gündemiyle birleştiriyorum. Her yazı gerçek bir ihtiyaçtan doğar.',
     'hero.cta': 'Yazıları Keşfet',
 
     // About snippet
     'about.title': 'Hakkımda',
-    'about.text': 'Tekstil fabrikası yöneticisiyim. İşimin içinde büyüdüm, her vardiyada hem üretim hem insan yönettim. Bu blog; o deneyimi felsefe, kişisel gelişim ve sektörel bakışla birleştirdiğim yerdir.',
+    'about.text': 'Tekstil fabrikası yöneticisiyim. İşimin içinde büyüdüm, her vardiyada hem üretim hem insan yönettim. Bu blog; saha deneyimini, kişisel gelişimi ve sektörel bakışı birleştirdiğim yerdir.',
 
     // Footer
     'footer.rights': 'Tüm hakları saklıdır.',
@@ -56,13 +54,11 @@ export const ui = {
     'nav.contact': 'Contact',
 
     'cat.kisisel-gelisim': 'Personal Growth',
-    'cat.felsefe': 'Philosophy',
     'cat.tekstil': 'Textile',
     'cat.turkiye-gundemi': 'Turkey Today',
     'cat.all': 'All',
 
     'cat.kisisel-gelisim.desc': 'Thoughts on growth, habits, and mental strength.',
-    'cat.felsefe.desc': 'Bridges from ancient philosophers to modern life.',
     'cat.tekstil.desc': 'Industry analysis, production and sustainability.',
     'cat.turkiye-gundemi.desc': 'Economy, politics and social issues.',
 
@@ -76,12 +72,12 @@ export const ui = {
 
     'hero.greeting': 'Hello, I am',
     'hero.name': 'Bahri Budak',
-    'hero.tagline': 'Textile manager. Thinker. Content creator.',
-    'hero.description': 'I blend factory management experience with philosophy, personal growth, and industry analysis. Every post starts with a question.',
+    'hero.tagline': 'Textile manager. Field-experience content creator.',
+    'hero.description': 'I combine factory management and textile field experience with industry analysis, personal growth and Turkey-focused commentary. Every post starts from a real need.',
     'hero.cta': 'Explore Posts',
 
     'about.title': 'About Me',
-    'about.text': 'I am a textile factory manager. I grew up inside the industry, managing both production and people through every shift. This blog is where that experience meets philosophy, personal development, and sector-level thinking.',
+    'about.text': 'I am a textile factory manager. I grew up inside the industry, managing both production and people through every shift. This blog is where field experience meets personal development and sector-level thinking.',
 
     'footer.rights': 'All rights reserved.',
     'footer.linkedin': 'LinkedIn',
@@ -97,7 +93,6 @@ export function useTranslations(lang: Lang) {
 
 export const categories = [
   { slug: 'kisisel-gelisim', color: '#3b82f6', emoji: '🧠' },
-  { slug: 'felsefe',         color: '#8b5cf6', emoji: '🏛️' },
   { slug: 'tekstil',         color: '#10b981', emoji: '🧵' },
   { slug: 'turkiye-gundemi', color: '#f59e0b', emoji: '🇹🇷' },
 ] as const

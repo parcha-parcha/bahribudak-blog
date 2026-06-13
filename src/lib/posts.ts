@@ -49,7 +49,11 @@ export function getAllPosts(lang: Lang): PostMeta[] {
     } as PostMeta
   })
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  const hiddenCategories = ['felsefe', 'philosophy']
+
+  return posts
+    .filter((p) => !hiddenCategories.includes(String(p.category).toLowerCase()))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export function getPostsByCategory(lang: Lang, category: string): PostMeta[] {

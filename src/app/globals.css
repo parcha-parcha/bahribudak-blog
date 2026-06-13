@@ -228,3 +228,40 @@
 .bb-readable-page .text-navy\/85 { color: rgba(11,35,67,.92) !important; }
 .bb-readable-page .text-navy\/90 { color: rgba(11,35,67,.96) !important; }
 .bb-readable-page .text-white\/75 { color: rgba(255,255,255,.90) !important; }
+
+
+/* REV7: Okunabilirlik ve felsefe sonrası kontrast düzeltmeleri */
+.bb-readable-page {
+  background: #F3F6FA !important;
+  color: #0B2343 !important;
+}
+.bb-readable-page h1,
+.bb-readable-page h2,
+.bb-readable-page h3,
+.bb-readable-page h4,
+.bb-readable-page p,
+.bb-readable-page span,
+.bb-readable-page a {
+  color: inherit;
+}
+.bb-readable-page .section-label {
+  color: #5D5F63 !important;
+}
+.bb-readable-page .text-navy {
+  color: #0B2343 !important;
+}
+.bb-readable-page .text-gray-text {
+  color: #5D5F63 !important;
+}
+.bb-readable-page .text-navy\/80 {
+  color: rgba(11,35,67,.86) !important;
+}
+.bb-readable-page .text-navy\/75 {
+  color: rgba(11,35,67,.78) !important;
+}
+.bb-readable-page .text-navy\/85 {
+  color: rgba(11,35,67,.88) !important;
+}
+.bb-readable-page .text-navy\/90 {
+  color: rgba(11,35,67,.92) !important;
+}

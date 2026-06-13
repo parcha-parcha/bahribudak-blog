@@ -36,10 +36,10 @@ const services = [
     emoji: '✍️',
     title: 'İçerik & Blog Yazarlığı',
     subtitle: 'LinkedIn · Blog · Tekstil · Kişisel Gelişim',
-    description: 'Sektörel bilgi ile felsefi derinliği bir araya getiren, SEO uyumlu özgün blog yazıları ve LinkedIn içerik yönetimi.',
+    description: 'Sektörel bilgi, saha deneyimi ve güncel yönetim bakışını bir araya getiren SEO uyumlu blog yazıları ve LinkedIn içerik yönetimi.',
     items: [
       'LinkedIn içerik yönetimi & strateji',
-      'Sektörel blog yazarlığı (tekstil, felsefe, gündem)',
+      'Sektörel blog yazarlığı (tekstil, gündem, kişisel gelişim)',
       'Tekstil teknik içerik üretimi',
       'Kişisel marka danışmanlığı',
     ],

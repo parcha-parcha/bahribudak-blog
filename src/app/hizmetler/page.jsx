@@ -52,7 +52,7 @@ const services = [
     id: 4,
     icon: "📝",
     title: "Blog Yazarlığı",
-    subtitle: "Tekstil · Felsefe · Kişisel Gelişim · Kurumsal",
+    subtitle: "Tekstil · Kişisel Gelişim · Türkiye Gündemi · Kurumsal",
     description:
       "SEO uyumlu, özgün ve derinlikli blog yazıları. Sektörel bilgi ile felsefi derinliği bir araya getiren içerikler.",
     price: null,
@@ -69,7 +69,7 @@ const services = [
 
 const reasons = [
   { icon: "🏭", text: "Yılların fabrika yönetimi deneyimi" },
-  { icon: "📚", text: "Felsefe ve kişisel gelişim birikimi" },
+  { icon: "📚", text: "Kişisel gelişim ve saha deneyimi birikimi" },
   { icon: "🇹🇷", text: "Türkiye tekstil sektörüne hakimiyet" },
   { icon: "🎯", text: "Sonuç odaklı, pratik çözümler" },
 ];

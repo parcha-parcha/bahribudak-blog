@@ -10,6 +10,7 @@ export default async function ContactPage({ params }: ContactProps) {
   const { lang } = await params
 
   return (
+    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
     <div className="max-w-2xl mx-auto px-6 py-16">
 
       <div className="mb-12">
@@ -22,8 +23,8 @@ export default async function ContactPage({ params }: ContactProps) {
 
       <p className="text-navy/80 leading-relaxed mb-10">
         {lang === 'tr'
-          ? 'Tekstil sektörü, kişisel gelişim veya felsefe üzerine düşüncelerinizi paylaşmak ister misiniz? Aşağıdaki kanallardan ulaşabilirsiniz.'
-          : 'Would you like to share your thoughts on the textile industry, personal development, or philosophy? You can reach me through the channels below.'}
+          ? 'Tekstil sektörü, kişisel gelişim veya Türkiye gündemi üzerine düşüncelerinizi paylaşmak ister misiniz? Aşağıdaki kanallardan ulaşabilirsiniz.'
+          : 'Would you like to share your thoughts on the textile industry, personal development, or Turkey-focused commentary? You can reach me through the channels below.'}
       </p>
 
       {/* Contact cards */}
@@ -93,5 +94,6 @@ export default async function ContactPage({ params }: ContactProps) {
         </Link>
       </div>
     </div>
+    </main>
   )
 }

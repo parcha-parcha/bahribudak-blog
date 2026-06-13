@@ -140,8 +140,8 @@ export default async function PostPage({ params }: PostPageProps) {
             <p className="font-bold text-lg mb-1">Bahri Budak</p>
             <p className="text-white/60 text-sm leading-relaxed mb-4">
               {lang === 'tr'
-                ? 'Tekstil fabrikası yöneticisi. Kişisel gelişim, felsefe ve sektör yazıları üzerine içerik üretici.'
-                : 'Textile factory manager. Content creator on personal growth, philosophy and industry.'}
+                ? 'Tekstil fabrikası yöneticisi. Tekstil, kişisel gelişim ve sektör yazıları üzerine içerik üretici.'
+                : 'Textile factory manager. Content creator on textile, personal growth and industry.'}
             </p>
             <a href="https://www.linkedin.com/in/bahri-budak-052ab5b8" target="_blank" rel="noopener noreferrer" className="text-yellow-bb text-sm font-bold">
               linkedin.com/in/bahri-budak-052ab5b8 →

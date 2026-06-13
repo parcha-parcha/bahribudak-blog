@@ -260,8 +260,8 @@ export default async function HomePage({ params }: HomeProps) {
               </h2>
               <p className="text-white/50 text-sm leading-relaxed max-w-xl">
                 {lang === 'tr'
-                  ? 'Ergene/Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika yönetimi alanlarında edindiğim 35 yıllık birikimi; felsefe, gündem ve kişisel gelişim yazılarıyla harmanlıyorum.'
-                  : 'I blend 35 years of dyehouse, finishing and factory management experience in the Ergene/Tekirdağ textile region with writing on philosophy, current affairs and self-development.'}
+                  ? 'Ergene/Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika yönetimi alanlarında edindiğim 35 yıllık birikimi; tekstil, gündem ve kişisel gelişim yazılarıyla paylaşıyorum.'
+                  : 'I share 35 years of dyehouse, finishing and factory management experience in the Ergene/Tekirdağ textile region through textile, current affairs and self-development writing.'}
               </p>
               <Link href={`/${lang}/about`}
                 className="inline-flex items-center gap-1.5 text-sm font-bold mt-4 hover:underline underline-offset-4"
@@ -275,7 +275,7 @@ export default async function HomePage({ params }: HomeProps) {
             {[
               { number: '35', unit: lang === 'tr' ? 'Yıl' : 'Years', label: lang === 'tr' ? 'Tekstil Deneyimi' : 'Textile Experience' },
               { number: '10+', unit: lang === 'tr' ? 'Şirket' : 'Companies', label: lang === 'tr' ? 'Yönetici Rolü' : 'Management Role' },
-              { number: '4', unit: lang === 'tr' ? 'Kategori' : 'Categories', label: lang === 'tr' ? 'İçerik Alanı' : 'Content Area' },
+              { number: '3', unit: lang === 'tr' ? 'Kategori' : 'Categories', label: lang === 'tr' ? 'İçerik Alanı' : 'Content Area' },
               { number: 'GMY', unit: '', label: lang === 'tr' ? 'Genel Müdür Yardımcılığı' : 'Deputy General Manager' },
             ].map((stat) => (
               <div key={stat.label}

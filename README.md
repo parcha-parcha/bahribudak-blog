@@ -46,7 +46,7 @@ src/
 title: "Yazı Başlığı"
 excerpt: "Kısa özet (kart görünümünde görünür)"
 date: "2025-05-08"
-category: "kisisel-gelisim"   # veya: felsefe | tekstil | turkiye-gundemi
+category: "kisisel-gelisim"   # veya: tekstil | turkiye-gundemi
 tags: ["etiket1", "etiket2"]
 ---
 
@@ -62,7 +62,6 @@ Paragraflar, listeler, kod blokları kullanabilirsin.
 | Slug | Türkçe | İngilizce |
 |------|--------|-----------|
 | `kisisel-gelisim` | Kişisel Gelişim | Personal Growth |
-| `felsefe` | Felsefe | Philosophy |
 | `tekstil` | Tekstil | Textile |
 | `turkiye-gundemi` | Türkiye Gündemi | Turkey Today |
 
@@ -97,3 +96,11 @@ Hakkımda ve Hizmetler sayfalarındaki düşük kontrast/silik yazı problemi gi
 ## Revizyon 5 – Logo Okunabilirlik Düzeltmesi
 
 Üst menüde koyu lacivert zemin üzerinde okunmayan BAHRİ BUDAK logo yazısı düzeltildi. Logo yazıları açık modda lacivert, koyu modda beyaz okunacak şekilde ayarlandı. Ayrıca `Magazam` menü yazımı `Mağazam` olarak düzeltildi.
+
+
+## Kurumsal Tasarım Revizyon 7
+
+- Footer logo okunabilirliği düzeltildi.
+- İletişim ve Blog sayfaları açık zemin / koyu yazı sistemine alındı.
+- Felsefe kategori kalıntıları kaldırıldı.
+- Hakkımda başlığı ve içerik sütun sayısı güncellendi.

@@ -18,6 +18,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   const filtered = activeCategory === 'all' ? allPosts : allPosts.filter(p => p.category === activeCategory)
 
   return (
+    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="mb-12">
         <p className="section-label">{t('blog.allPosts')}</p>
@@ -52,5 +53,6 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         </div>
       )}
     </div>
+    </main>
   )
 }
