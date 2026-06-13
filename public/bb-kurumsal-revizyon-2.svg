@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="#061A33"/>
+<path d="M0 0h1200v630H0z" fill="url(#p)" opacity=".35"/>
+<defs><pattern id="p" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M0 35H70M35 0V70" stroke="#2EA6D9" stroke-width="1" opacity=".18"/><path d="M0 0L70 70" stroke="#A9ABAE" stroke-width="1" opacity=".12"/></pattern></defs>
+<g transform="translate(90 185)">
+<path d="M36 0H109V65H36C15 65 4 53 4 32.5S15 0 36 0Z" fill="#5F6368"/>
+<path d="M120 0H190C211 0 222 12 222 32.5S211 65 190 65H120Z" fill="#AEB4BC"/>
+<path d="M36 93H109V158H36C15 158 4 146 4 125.5S15 93 36 93Z" fill="#DDE3EA"/>
+<path d="M120 93H190C211 93 222 105 222 125.5S211 158 190 158H120Z" fill="#5F6368"/>
+<rect x="47" y="33" width="31" height="17" rx="8.5" fill="#fff"/><rect x="155" y="33" width="31" height="17" rx="8.5" fill="#fff"/><rect x="43" y="107" width="31" height="17" rx="8.5" fill="#fff"/><rect x="153" y="107" width="31" height="17" rx="8.5" fill="#fff"/>
+</g>
+<text x="360" y="260" font-family="Arial" font-size="56" font-weight="700" letter-spacing="2" fill="#fff">BAHRİ BUDAK</text>
+<text x="365" y="315" font-family="Arial" font-size="22" letter-spacing="5" fill="#DDE3EA">KURUMSAL KİMLİK REVİZYON 2</text>
+<text x="365" y="390" font-family="Arial" font-size="28" fill="#2EA6D9">bahribudak.com/tr</text>
+</svg>

@@ -69,10 +69,10 @@
 
   /* ── CTA Button ── */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-yellow-bb text-navy
+    @apply inline-flex items-center gap-2 bg-accent-blue text-navy
            font-bold px-6 py-3 rounded-full
            transition-all duration-200
-           hover:bg-yellow-light hover:shadow-lg hover:scale-105;
+           hover:bg-[#5BBBE6] hover:shadow-lg hover:scale-105;
   }
 
   .btn-outline {
@@ -99,12 +99,12 @@
   @apply mb-6 text-[17px] leading-[1.85];
 }
 .prose-bb blockquote {
-  @apply border-l-4 border-yellow-bb bg-yellow-pale pl-6 pr-4 py-4 my-8 rounded-r-lg;
+  @apply border-l-4 border-accent-blue bg-accent-pale pl-6 pr-4 py-4 my-8 rounded-r-lg;
   font-style: italic;
   font-size: 1.1rem;
 }
 .prose-bb a {
-  @apply text-navy underline decoration-yellow-bb underline-offset-4 
+  @apply text-navy underline decoration-accent-blue underline-offset-4 
          hover:decoration-2 transition-all;
 }
 .prose-bb ul {

@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 
+// BB_REVIZYON_2_MARKER: kurumsal kimlik tasarım paketi
 const config: Config = {
   darkMode: 'class',
   content: [

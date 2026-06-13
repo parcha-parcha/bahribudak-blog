@@ -90,15 +90,15 @@ export default async function HomePage({ params }: HomeProps) {
             />
           ))}
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-bb" />
-        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-bb" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-blue" />
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent-blue" />
 
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 max-w-2xl">
             <p className="section-label text-white/40 mb-4">{t('hero.greeting')}</p>
             <h1 className="text-5xl md:text-6xl font-bold mb-2 leading-tight text-white">{t('hero.name')}</h1>
             <div className="flex items-center gap-4 my-6">
-              <div className="h-0.5 w-12 bg-yellow-bb" />
+              <div className="h-0.5 w-12 bg-accent-blue" />
               <span className="text-sm font-medium text-white/60">
                 {lang === 'tr'
                   ? 'Tekstil, boyahane ve üretim yönetimi üzerine uygulamalı bilgiler'
@@ -117,7 +117,7 @@ export default async function HomePage({ params }: HomeProps) {
                 href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 rounded-full hover:border-yellow-bb hover:text-yellow-bb transition-all"
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-3 rounded-full hover:border-accent-blue hover:text-accent-blue transition-all"
               >
                 LinkedIn
               </a>
@@ -126,7 +126,7 @@ export default async function HomePage({ params }: HomeProps) {
 
           <div className="relative flex-shrink-0 hidden md:block">
             <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-              <div className="absolute -top-3 -right-3 w-full h-full border-2 border-yellow-bb/40 rounded-2xl" />
+              <div className="absolute -top-3 -right-3 w-full h-full border-2 border-accent-blue/40 rounded-2xl" />
               <Image
                 src="/images/bahri-budak.jpeg"
                 alt="Bahri Budak"
@@ -204,21 +204,21 @@ export default async function HomePage({ params }: HomeProps) {
                 : 'A wide range of services from dyehouse processes to factory management, digital design to content production.'}
             </p>
             <div className="flex justify-center gap-2 mt-4">
-              <div className="w-8 h-0.5 bg-yellow-bb" />
+              <div className="w-8 h-0.5 bg-accent-blue" />
               <div className="w-2 h-0.5 bg-navy/30" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.category} className="bg-white rounded-2xl border border-gray-border p-8 hover:border-navy hover:shadow-card transition-all group dark:bg-surface-dark-2 dark:border-white/10 dark:hover:border-yellow-bb/40">
+              <div key={service.category} className="bg-white rounded-2xl border border-gray-border p-8 hover:border-navy hover:shadow-card transition-all group dark:bg-surface-dark-2 dark:border-white/10 dark:hover:border-accent-blue/40">
                 <div className="text-4xl mb-4">{service.emoji}</div>
-                <div className="w-8 h-1 bg-yellow-bb mb-4 group-hover:w-12 transition-all" />
+                <div className="w-8 h-1 bg-accent-blue mb-4 group-hover:w-12 transition-all" />
                 <h3 className="text-lg font-bold text-navy mb-5 dark:text-white">{service.category}</h3>
                 <ul className="space-y-3">
                   {service.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-text leading-relaxed dark:text-slate-300">
-                      <span className="text-yellow-bb mt-0.5 flex-shrink-0">✦</span>
+                      <span className="text-accent-blue mt-0.5 flex-shrink-0">✦</span>
                       {item}
                     </li>
                   ))}

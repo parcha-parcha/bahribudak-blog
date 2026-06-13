@@ -1,3 +1,7 @@
+# Bahri Budak Blog — Kurumsal Kimlik Revizyon 2
+
+Bu paket kurumsal kimlik renk sistemine göre hazırlanmış Revizyon 2 dosyalarını içerir.
+
 # Bahri Budak — Kişisel Blog
 
 Next.js 14 tabanlı, iki dilli (TR/EN) kişisel blog projesi.
