@@ -96,14 +96,14 @@ export default function HaberlerPage() {
             onClick={() => setFilter(f.key)}
             className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
             style={filter === f.key
-              ? { background: '#1a3a5c', color: '#f5c518', border: '1px solid #f5c518' }
+              ? { background: '#12365E', color: '#2EA6D9', border: '1px solid #2EA6D9' }
               : { background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb' }
             }
           >
             {f.label}
             {f.key === 'textile' && textileCount > 0 && (
               <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full"
-                style={{ background: 'rgba(245,197,24,0.15)', color: '#b8860b' }}>
+                style={{ background: 'rgba(46,166,217,0.18)', color: '#b8860b' }}>
                 {textileCount}
               </span>
             )}
@@ -144,7 +144,7 @@ export default function HaberlerPage() {
               <div className="flex items-center gap-2 mb-3">
                 <span
                   className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ background: item.category === 'textile' ? '#f5c518' : (SOURCE_COLORS[item.source] || '#6b7280') }}
+                  style={{ background: item.category === 'textile' ? '#2EA6D9' : (SOURCE_COLORS[item.source] || '#6b7280') }}
                 />
                 <span
                   className="text-[11px] font-bold tracking-wide uppercase"
@@ -155,9 +155,9 @@ export default function HaberlerPage() {
                 <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded"
                   style={
                     item.category === 'textile'
-                      ? { background: 'rgba(245,197,24,0.15)', color: '#b8860b' }
+                      ? { background: 'rgba(46,166,217,0.18)', color: '#b8860b' }
                       : item.lang === 'tr'
-                        ? { background: 'rgba(245,197,24,0.1)', color: '#b8860b' }
+                        ? { background: 'rgba(46,166,217,0.12)', color: '#b8860b' }
                         : { background: 'rgba(26,58,92,0.08)', color: '#6b7280' }
                   }>
                   {item.category === 'textile' ? '🧵 TEKSTİL' : item.lang === 'tr' ? 'TR' : 'EN'}

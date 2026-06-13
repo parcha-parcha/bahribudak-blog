@@ -138,7 +138,7 @@ export default function MagazamPage({
       {/* HERO */}
       <section
         style={{
-          background: 'linear-gradient(135deg, #0f1a3a 0%, #1a3a5c 100%)',
+          background: 'linear-gradient(135deg, #0B2343 0%, #12365E 100%)',
           padding: '80px 24px 64px',
           textAlign: 'center',
         }}
@@ -147,8 +147,8 @@ export default function MagazamPage({
           <div
             style={{
               display: 'inline-block',
-              background: '#f5c518',
-              color: '#0f1a3a',
+              background: '#2EA6D9',
+              color: '#0B2343',
               fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.12em',
@@ -172,7 +172,7 @@ export default function MagazamPage({
           >
             {t.hero}
           </h1>
-          <p style={{ color: '#f5c518', fontSize: 18, fontWeight: 600, margin: '0 0 16px' }}>
+          <p style={{ color: '#2EA6D9', fontSize: 18, fontWeight: 600, margin: '0 0 16px' }}>
             {t.heroSub}
           </p>
           <p style={{ color: '#94a3b8', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
@@ -197,10 +197,10 @@ export default function MagazamPage({
                 background: '#ffffff',
                 borderRadius: 16,
                 padding: '32px 28px',
-                border: p.highlight ? '2px solid #f5c518' : '1px solid #e5e7eb',
+                border: p.highlight ? '2px solid #2EA6D9' : '1px solid #e5e7eb',
                 position: 'relative',
                 boxShadow: p.highlight
-                  ? '0 8px 32px rgba(245,197,24,0.15)'
+                  ? '0 8px 32px rgba(46,166,217,0.18)'
                   : '0 2px 8px rgba(0,0,0,0.06)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -213,8 +213,8 @@ export default function MagazamPage({
                     position: 'absolute',
                     top: -14,
                     left: 28,
-                    background: '#f5c518',
-                    color: '#0f1a3a',
+                    background: '#2EA6D9',
+                    color: '#0B2343',
                     fontSize: 11,
                     fontWeight: 700,
                     letterSpacing: '0.1em',
@@ -231,7 +231,7 @@ export default function MagazamPage({
                 <span style={{ fontSize: 28 }}>{p.badge}</span>
                 <h2
                   style={{
-                    color: '#0f1a3a',
+                    color: '#0B2343',
                     fontSize: 18,
                     fontWeight: 700,
                     margin: '8px 0 0',
@@ -267,7 +267,7 @@ export default function MagazamPage({
               >
                 <span
                   style={{
-                    color: '#0f1a3a',
+                    color: '#0B2343',
                     fontSize: 20,
                     fontWeight: 800,
                     letterSpacing: '-0.01em',
@@ -280,7 +280,7 @@ export default function MagazamPage({
                   <a
                     href="mailto:bahribudak@gmail.com"
                     style={{
-                      background: '#0f1a3a',
+                      background: '#0B2343',
                       color: '#ffffff',
                       fontSize: 13,
                       fontWeight: 600,
@@ -298,8 +298,8 @@ export default function MagazamPage({
                     target={p.gumroadUrl ? '_blank' : undefined}
                     rel={p.gumroadUrl ? 'noopener noreferrer' : undefined}
                     style={{
-                      background: '#f5c518',
-                      color: '#0f1a3a',
+                      background: '#2EA6D9',
+                      color: '#0B2343',
                       fontSize: 13,
                       fontWeight: 700,
                       padding: '10px 20px',
@@ -330,7 +330,7 @@ export default function MagazamPage({
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <h2
             style={{
-              color: '#0f1a3a',
+              color: '#0B2343',
               fontSize: 28,
               fontWeight: 800,
               margin: '0 0 8px',
@@ -367,7 +367,7 @@ export default function MagazamPage({
               }}
             >
               <div style={{ fontSize: 32, marginBottom: 12 }}>💳</div>
-              <h3 style={{ color: '#0f1a3a', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
+              <h3 style={{ color: '#0B2343', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
                 {t.gumroad}
               </h3>
               <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 20px' }}>
@@ -379,7 +379,7 @@ export default function MagazamPage({
                 rel="noopener noreferrer"
                 style={{
                   display: 'inline-block',
-                  background: '#0f1a3a',
+                  background: '#0B2343',
                   color: '#ffffff',
                   fontSize: 13,
                   fontWeight: 600,
@@ -402,7 +402,7 @@ export default function MagazamPage({
               }}
             >
               <div style={{ fontSize: 32, marginBottom: 12 }}>🏦</div>
-              <h3 style={{ color: '#0f1a3a', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
+              <h3 style={{ color: '#0B2343', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
                 {t.manual}
               </h3>
               <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 16px' }}>
@@ -443,8 +443,8 @@ export default function MagazamPage({
                 <a
                   href="mailto:bahribudak@gmail.com"
                   style={{
-                    background: '#f5c518',
-                    color: '#0f1a3a',
+                    background: '#2EA6D9',
+                    color: '#0B2343',
                     fontSize: 13,
                     fontWeight: 600,
                     padding: '9px 16px',
@@ -464,7 +464,7 @@ export default function MagazamPage({
       <section style={{ padding: '40px 24px', textAlign: 'center' }}>
         <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>
           © {new Date().getFullYear()} Bahri Budak ·{' '}
-          <Link href={`/${lang}`} style={{ color: '#1a3a5c', textDecoration: 'none' }}>
+          <Link href={`/${lang}`} style={{ color: '#12365E', textDecoration: 'none' }}>
             bahribudak.com
           </Link>
         </p>

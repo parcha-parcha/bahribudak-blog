@@ -2,8 +2,8 @@
    GÜNÜN SÖZÜ
    ===================== */
 .quote-of-day {
-  background: #f8fafc;
-  border-left: 4px solid #f5c518;
+  background: #F3F6FA;
+  border-left: 4px solid #2EA6D9;
   border-radius: 8px;
   padding: 1.5rem 2rem;
   margin: 2rem 0;
@@ -15,21 +15,21 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #f5c518;
+  color: #2EA6D9;
   margin-bottom: 0.75rem;
 }
 
 .quote-of-day__text {
   font-size: 1.1rem;
   font-style: italic;
-  color: #1a3a5c;
+  color: #12365E;
   line-height: 1.7;
   margin: 0 0 0.75rem 0;
 }
 
 .quote-of-day__author {
   font-size: 0.875rem;
-  color: #7a96b0;
+  color: #A9ABAE;
   font-style: normal;
   font-weight: 600;
 }
@@ -42,9 +42,9 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.85rem;
-  color: #7a96b0;
+  color: #A9ABAE;
   padding: 0.3rem 0.75rem;
-  background: #f0f4f8;
+  background: #E8EDF3;
   border-radius: 999px;
 }
 

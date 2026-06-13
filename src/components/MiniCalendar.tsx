@@ -34,7 +34,7 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
       className="w-full rounded-xl overflow-hidden"
       style={{
         maxWidth: '260px',
-        background: '#0f1a3a',
+        background: '#0B2343',
         border: '1px solid rgba(245,197,24,0.2)',
         boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
       }}
@@ -42,9 +42,9 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
       {/* Header */}
       <div
         className="px-4 py-2.5 flex items-center justify-between"
-        style={{ background: 'rgba(245,197,24,0.12)', borderBottom: '1px solid rgba(245,197,24,0.15)' }}
+        style={{ background: 'rgba(245,197,24,0.12)', borderBottom: '1px solid rgba(46,166,217,0.18)' }}
       >
-        <span className="font-bold text-xs tracking-wide" style={{ color: '#f5c518' }}>
+        <span className="font-bold text-xs tracking-wide" style={{ color: '#2EA6D9' }}>
           {MONTHS[month]}
         </span>
         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{year}</span>
@@ -68,7 +68,7 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
             className="h-7 flex items-center justify-center rounded text-[11px] font-medium transition-all"
             style={
               cell === day
-                ? { background: '#f5c518', color: '#0f1a3a', fontWeight: 800, borderRadius: '6px' }
+                ? { background: '#2EA6D9', color: '#0B2343', fontWeight: 800, borderRadius: '6px' }
                 : cell
                 ? { color: 'rgba(255,255,255,0.7)' }
                 : {}
@@ -84,7 +84,7 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
         className="px-3 py-2 flex items-center justify-center gap-2"
         style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
       >
-        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#f5c518' }} />
+        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#2EA6D9' }} />
         <span className="text-[11px] font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>
           {day} {MONTHS[month]} {year}
         </span>

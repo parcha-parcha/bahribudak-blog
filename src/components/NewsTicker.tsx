@@ -23,10 +23,10 @@ export default function NewsTicker() {
 
   if (loading) {
     return (
-      <div style={{ background: '#0f1a3a', borderBottom: '1px solid rgba(245,197,24,0.15)' }}
+      <div style={{ background: '#0B2343', borderBottom: '1px solid rgba(46,166,217,0.18)' }}
         className="flex items-center px-4 py-2 gap-3">
         <span className="text-xs font-bold tracking-widest uppercase flex-shrink-0"
-          style={{ color: '#f5c518' }}>● HABERLER</span>
+          style={{ color: '#2EA6D9' }}>● HABERLER</span>
         <span className="text-white/30 text-xs animate-pulse">Yükleniyor...</span>
       </div>
     )
@@ -39,7 +39,7 @@ export default function NewsTicker() {
 
   return (
     <div
-      style={{ background: '#0f1a3a', borderBottom: '1px solid rgba(245,197,24,0.15)', overflow: 'hidden' }}
+      style={{ background: '#0B2343', borderBottom: '1px solid rgba(46,166,217,0.18)', overflow: 'hidden' }}
       className="flex items-center"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -48,12 +48,12 @@ export default function NewsTicker() {
       <div
         className="flex items-center gap-2 px-4 py-2.5 flex-shrink-0 z-10"
         style={{
-          background: '#f5c518',
+          background: '#2EA6D9',
           minWidth: '110px',
           justifyContent: 'center',
         }}
       >
-        <span className="text-[10px] font-black tracking-widest uppercase" style={{ color: '#0f1a3a' }}>
+        <span className="text-[10px] font-black tracking-widest uppercase" style={{ color: '#0B2343' }}>
           ● HABERLER
         </span>
       </div>
@@ -81,8 +81,8 @@ export default function NewsTicker() {
               <span
                 className="text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 rounded flex-shrink-0"
                 style={{
-                  background: item.lang === 'tr' ? 'rgba(245,197,24,0.15)' : 'rgba(255,255,255,0.08)',
-                  color: item.lang === 'tr' ? '#f5c518' : 'rgba(255,255,255,0.5)',
+                  background: item.lang === 'tr' ? 'rgba(46,166,217,0.18)' : 'rgba(255,255,255,0.08)',
+                  color: item.lang === 'tr' ? '#2EA6D9' : 'rgba(255,255,255,0.5)',
                   border: item.lang === 'tr' ? '1px solid rgba(245,197,24,0.2)' : '1px solid rgba(255,255,255,0.1)',
                 }}
               >
@@ -93,7 +93,7 @@ export default function NewsTicker() {
                 {item.title}
               </span>
               {/* Ayırıcı */}
-              <span className="mx-3" style={{ color: 'rgba(245,197,24,0.3)' }}>✦</span>
+              <span className="mx-3" style={{ color: 'rgba(46,166,217,0.30)' }}>✦</span>
             </a>
           ))}
         </div>

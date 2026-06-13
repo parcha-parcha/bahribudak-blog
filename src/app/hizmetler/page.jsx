@@ -78,19 +78,19 @@ export default function HizmetlerPage() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", background: "#f8fafc", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Poppins', sans-serif", background: "#F3F6FA", minHeight: "100vh" }}>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
       {/* Hero */}
-      <div style={{ background: "#0f1a3a", padding: "80px 24px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ background: "#0B2343", padding: "80px 24px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -60, right: -60, width: 300, height: 300, borderRadius: "50%", background: "rgba(245,197,24,0.06)" }} />
         <div style={{ position: "absolute", bottom: -40, left: -40, width: 200, height: 200, borderRadius: "50%", background: "rgba(245,197,24,0.04)" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ display: "inline-block", background: "rgba(245,197,24,0.15)", border: "1px solid rgba(245,197,24,0.3)", borderRadius: 100, padding: "6px 20px", marginBottom: 24 }}>
-            <span style={{ color: "#f5c518", fontSize: 13, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase" }}>Hizmetler</span>
+          <div style={{ display: "inline-block", background: "rgba(46,166,217,0.18)", border: "1px solid rgba(46,166,217,0.30)", borderRadius: 100, padding: "6px 20px", marginBottom: 24 }}>
+            <span style={{ color: "#2EA6D9", fontSize: 13, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase" }}>Hizmetler</span>
           </div>
           <h1 style={{ color: "#ffffff", fontSize: 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
-            Birlikte <span style={{ color: "#f5c518" }}>büyüyelim</span>
+            Birlikte <span style={{ color: "#2EA6D9" }}>büyüyelim</span>
           </h1>
           <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, margin: 0 }}>
             Tekstil, tasarım, içerik ve danışmanlık alanlarında profesyonel destek sunuyorum.
@@ -109,27 +109,27 @@ export default function HizmetlerPage() {
               style={{
                 background: "#ffffff",
                 borderRadius: 16,
-                border: `2px solid ${hovered === s.id ? "#f5c518" : s.highlight ? "#1a3a5c" : "#e2e8f0"}`,
+                border: `2px solid ${hovered === s.id ? "#2EA6D9" : s.highlight ? "#12365E" : "#e2e8f0"}`,
                 overflow: "hidden",
                 transition: "border-color 0.2s, box-shadow 0.2s",
                 boxShadow: hovered === s.id ? "0 8px 32px rgba(26,58,92,0.12)" : "0 2px 8px rgba(0,0,0,0.05)",
               }}
             >
               <div style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "28px 28px 20px" }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: s.highlight ? "#0f1a3a" : "#f0f4f8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: s.highlight ? "#0B2343" : "#E8EDF3", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>
                   {s.icon}
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
                     <div>
-                      <h2 style={{ margin: "0 0 4px", fontSize: 20, fontWeight: 700, color: "#1a3a5c" }}>{s.title}</h2>
-                      <p style={{ margin: 0, fontSize: 13, color: "#64748b", fontWeight: 500 }}>{s.subtitle}</p>
+                      <h2 style={{ margin: "0 0 4px", fontSize: 20, fontWeight: 700, color: "#12365E" }}>{s.title}</h2>
+                      <p style={{ margin: 0, fontSize: 13, color: "#5D5F63", fontWeight: 500 }}>{s.subtitle}</p>
                     </div>
                     {s.price && (
                       <div style={{ textAlign: "right" }}>
-                        <div style={{ fontSize: 22, fontWeight: 800, color: "#1a3a5c" }}>{s.price}</div>
+                        <div style={{ fontSize: 22, fontWeight: 800, color: "#12365E" }}>{s.price}</div>
                         {s.note && (
-                          <div style={{ display: "inline-block", background: "#fef9e7", border: "1px solid #f5c518", borderRadius: 100, padding: "3px 12px", marginTop: 6 }}>
+                          <div style={{ display: "inline-block", background: "#fef9e7", border: "1px solid #2EA6D9", borderRadius: 100, padding: "3px 12px", marginTop: 6 }}>
                             <span style={{ fontSize: 11, color: "#92660a", fontWeight: 600 }}>✨ {s.note}</span>
                           </div>
                         )}
@@ -147,9 +147,9 @@ export default function HizmetlerPage() {
                 {s.details && (
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                     {s.details.map((d, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, background: "#f0f4f8", borderRadius: 8, padding: "6px 14px" }}>
-                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#f5c518" }} />
-                        <span style={{ fontSize: 13, color: "#1a3a5c", fontWeight: 500 }}>{d}</span>
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, background: "#E8EDF3", borderRadius: 8, padding: "6px 14px" }}>
+                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#2EA6D9" }} />
+                        <span style={{ fontSize: 13, color: "#12365E", fontWeight: 500 }}>{d}</span>
                       </div>
                     ))}
                   </div>
@@ -158,9 +158,9 @@ export default function HizmetlerPage() {
                 {s.subServices && (
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
                     {s.subServices.map((sub, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#f8fafc", borderRadius: 10, padding: "12px 16px", border: "1px solid #e2e8f0" }}>
+                      <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#F3F6FA", borderRadius: 10, padding: "12px 16px", border: "1px solid #e2e8f0" }}>
                         <span style={{ fontSize: 14, color: "#374151", fontWeight: 500 }}>{sub.name}</span>
-                        <span style={{ fontSize: 14, color: "#1a3a5c", fontWeight: 700, whiteSpace: "nowrap", marginLeft: 12 }}>{sub.price}</span>
+                        <span style={{ fontSize: 14, color: "#12365E", fontWeight: 700, whiteSpace: "nowrap", marginLeft: 12 }}>{sub.price}</span>
                       </div>
                     ))}
                   </div>
@@ -171,10 +171,10 @@ export default function HizmetlerPage() {
         </div>
 
         {/* Neden Bahri Budak */}
-        <div style={{ marginTop: 60, background: "#0f1a3a", borderRadius: 20, padding: "48px 40px", position: "relative", overflow: "hidden" }}>
+        <div style={{ marginTop: 60, background: "#0B2343", borderRadius: 20, padding: "48px 40px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -30, right: -30, width: 180, height: 180, borderRadius: "50%", background: "rgba(245,197,24,0.08)" }} />
           <h2 style={{ color: "#ffffff", fontSize: 28, fontWeight: 800, margin: "0 0 8px", position: "relative" }}>
-            Neden <span style={{ color: "#f5c518" }}>Bahri Budak?</span>
+            Neden <span style={{ color: "#2EA6D9" }}>Bahri Budak?</span>
           </h2>
           <p style={{ color: "#94a3b8", fontSize: 15, margin: "0 0 32px", position: "relative" }}>Deneyim, birikim ve güven.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16, position: "relative" }}>
@@ -189,15 +189,15 @@ export default function HizmetlerPage() {
 
         {/* CTA */}
         <div style={{ marginTop: 48, textAlign: "center" }}>
-          <p style={{ fontSize: 16, color: "#64748b", marginBottom: 24 }}>
+          <p style={{ fontSize: 16, color: "#5D5F63", marginBottom: 24 }}>
             Projenizi konuşmak için hemen iletişime geçin.
           </p>
           <a
             href="mailto:bahribudak@gmail.com?subject=Hizmet Talebi"
             style={{
               display: "inline-block",
-              background: "#f5c518",
-              color: "#0f1a3a",
+              background: "#2EA6D9",
+              color: "#0B2343",
               fontFamily: "'Poppins', sans-serif",
               fontSize: 16,
               fontWeight: 700,

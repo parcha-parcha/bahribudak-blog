@@ -30,7 +30,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={dark ? "Açık temaya geç" : "Koyu temaya geç"}
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#1a3a5c]/15 text-[#0f1a3a] transition-colors hover:bg-[#f5c518]/20 dark:border-white/15 dark:text-[#f5c518] dark:hover:bg-white/10"
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#12365E]/15 text-[#0B2343] transition-colors hover:bg-[#2EA6D9]/20 dark:border-white/15 dark:text-[#2EA6D9] dark:hover:bg-white/10"
     >
       {dark ? (
         // Güneş

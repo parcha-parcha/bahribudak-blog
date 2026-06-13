@@ -10,48 +10,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // BB Design System
-        navy: {
-          DEFAULT: '#0f1a3a',
-          light: '#1a2d5a',
-          dark: '#080f22',
-        },
-        yellow: {
-          bb: '#f5c518',
-          light: '#fdd835',
-          pale: '#fffbea',
-        },
-        gray: {
-          soft: '#f8fafc',
-          mid: '#f0f4f8',
-          text: '#64748b',
-          border: '#e8edf3',
-        },
-        // Dark mode yüzeyleri
-        surface: {
-          dark: '#0b1530',      // ana koyu zemin
-          'dark-2': '#14264a',  // kart / yükseltilmiş yüzey
-        },
+        navy: { DEFAULT: '#0B2343', light: '#12365E', dark: '#061A33' },
+        accent: { blue: '#2EA6D9', pale: '#EAF6FC' },
+        yellow: { bb: '#2EA6D9', light: '#5BBBE6', pale: '#EAF6FC' },
+        gray: { soft: '#F3F6FA', mid: '#E8EDF3', text: '#5D5F63', border: '#D8DDE5', silver: '#A9ABAE' },
+        surface: { dark: '#061A33', 'dark-2': '#0B2343' },
       },
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
+      fontFamily: { poppins: ['Poppins', 'sans-serif'] },
       fontSize: {
         'display': ['3.5rem', { lineHeight: '1.1', fontWeight: '700' }],
         'headline': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }],
         'subhead': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }],
       },
-      spacing: {
-        '18': '4.5rem',
-        '22': '5.5rem',
-      },
-      boxShadow: {
-        'card': '0 2px 20px rgba(15, 26, 58, 0.08)',
-        'card-hover': '0 8px 40px rgba(15, 26, 58, 0.16)',
-      },
-      borderRadius: {
-        'xl2': '1rem',
-      },
+      spacing: { '18': '4.5rem', '22': '5.5rem' },
+      boxShadow: { 'card': '0 2px 20px rgba(11, 35, 67, 0.08)', 'card-hover': '0 8px 40px rgba(11, 35, 67, 0.16)' },
+      borderRadius: { 'xl2': '1rem' },
     },
   },
   plugins: [],

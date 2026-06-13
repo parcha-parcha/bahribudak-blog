@@ -104,9 +104,9 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
       </div>
 
       {/* ── NEDEN BAHRİ BUDAK ── */}
-      <div className="rounded-2xl p-8 mb-14" style={{ background: '#08080c' }}>
+      <div className="rounded-2xl p-8 mb-14" style={{ background: '#061A33' }}>
         <h2 className="text-white text-2xl font-bold mb-1">
-          Neden <span style={{ color: '#f5c518' }}>Bahri Budak?</span>
+          Neden <span style={{ color: '#2EA6D9' }}>Bahri Budak?</span>
         </h2>
         <p className="text-white/40 text-sm mb-8">Deneyim, birikim ve güven.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

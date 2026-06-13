@@ -76,7 +76,7 @@ git push -u origin main
 
 ## Tasarım Sistemi
 
-- **Ana renk:** Navy `#0f1a3a`
-- **Vurgu rengi:** Sarı `#f5c518`
+- **Ana renk:** Navy `#0B2343`
+- **Vurgu rengi:** Sarı `#2EA6D9`
 - **Font:** Poppins (700 başlık, 400 gövde)
 - **İmza fontu:** Great Vibes

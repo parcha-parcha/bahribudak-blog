@@ -53,7 +53,7 @@ export default async function ContactPage({ params }: ContactProps) {
           className="flex items-center gap-5 p-5 bg-white border border-gray-border rounded-xl hover:border-navy hover:shadow-card transition-all group"
         >
           <div className="w-12 h-12 bg-yellow-bb rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f1a3a" strokeWidth="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2343" strokeWidth="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
@@ -69,7 +69,7 @@ export default async function ContactPage({ params }: ContactProps) {
         {/* Location */}
         <div className="flex items-center gap-5 p-5 bg-white border border-gray-border rounded-xl">
           <div className="w-12 h-12 bg-gray-soft border border-gray-border rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f1a3a" strokeWidth="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2343" strokeWidth="2">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>

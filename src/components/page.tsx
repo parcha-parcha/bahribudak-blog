@@ -75,7 +75,7 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           1. HERO  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden text-white" style={{background: '#08080c', minHeight: '380px'}}>
+      <section className="relative overflow-hidden text-white" style={{background: '#061A33', minHeight: '380px'}}>
         <div className="absolute inset-0 pointer-events-none">
           {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(i => (
             <div
@@ -168,7 +168,7 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           3. KATEGORİLER  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg, #08080c 0%, #0f1a3a 100%)", borderBottom: "1px solid rgba(245,197,24,0.1)" }}>
+      <section style={{ background: "linear-gradient(135deg, #061A33 0%, #0B2343 100%)", borderBottom: "1px solid rgba(46,166,217,0.12)" }}>
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="section-label text-center mb-10">{lang === 'tr' ? 'İçerik Kategorileri' : 'Content Categories'}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -241,16 +241,16 @@ export default async function HomePage({ params }: HomeProps) {
       {/* ═══════════════════════════════════════════
           5. HAKKIMDA  (her zaman koyu — dokunulmadı)
       ═══════════════════════════════════════════ */}
-      <section style={{ background: '#08080c' }} className="border-y border-white/5">
+      <section style={{ background: '#061A33' }} className="border-y border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-16">
 
           <div className="flex flex-col md:flex-row items-center gap-10 mb-14">
             <div className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: '#1a3a5c', border: '2px solid rgba(245,197,24,0.3)' }}>
+              style={{ background: '#12365E', border: '2px solid rgba(46,166,217,0.30)' }}>
               <span className="text-white text-xl font-bold tracking-wide">BB</span>
             </div>
             <div>
-              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#f5c518' }}>
+              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#2EA6D9' }}>
                 {lang === 'tr' ? 'Hakkımda' : 'About Me'}
               </p>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
@@ -265,7 +265,7 @@ export default async function HomePage({ params }: HomeProps) {
               </p>
               <Link href={`/${lang}/about`}
                 className="inline-flex items-center gap-1.5 text-sm font-bold mt-4 hover:underline underline-offset-4"
-                style={{ color: '#f5c518' }}>
+                style={{ color: '#2EA6D9' }}>
                 {lang === 'tr' ? 'Daha fazlası →' : 'Learn more →'}
               </Link>
             </div>
@@ -282,7 +282,7 @@ export default async function HomePage({ params }: HomeProps) {
                 className="rounded-xl p-6 text-center"
                 style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div className="flex items-end justify-center gap-1 mb-2">
-                  <span className="text-4xl font-bold" style={{ color: '#f5c518' }}>{stat.number}</span>
+                  <span className="text-4xl font-bold" style={{ color: '#2EA6D9' }}>{stat.number}</span>
                   {stat.unit && <span className="text-lg font-semibold text-white/60 mb-1">{stat.unit}</span>}
                 </div>
                 <p className="text-xs text-white/40 leading-snug">{stat.label}</p>

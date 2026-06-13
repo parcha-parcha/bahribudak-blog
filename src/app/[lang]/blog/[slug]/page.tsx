@@ -92,7 +92,7 @@ export default async function PostPage({ params }: PostPageProps) {
         </nav>
 
         <div className="mb-6">
-          <span className="cat-badge text-white text-xs" style={{ backgroundColor: cat?.color || '#0f1a3a' }}>
+          <span className="cat-badge text-white text-xs" style={{ backgroundColor: cat?.color || '#0B2343' }}>
             {cat?.emoji} {t(`cat.${post.category}` as any)}
           </span>
         </div>

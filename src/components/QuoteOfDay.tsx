@@ -49,14 +49,14 @@ export default function QuoteOfDay() {
     <div
       className="relative h-full flex flex-col justify-center px-8 py-8 overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #0f1a3a 0%, #1a3a5c 100%)',
+        background: 'linear-gradient(135deg, #0B2343 0%, #12365E 100%)',
         minHeight: '200px',
       }}
     >
       {/* Sağ üst dekoratif daire */}
       <div
         className="absolute -top-8 -right-8 w-36 h-36 rounded-full pointer-events-none"
-        style={{ background: 'rgba(245,197,24,0.06)', border: '1px solid rgba(245,197,24,0.1)' }}
+        style={{ background: 'rgba(245,197,24,0.06)', border: '1px solid rgba(46,166,217,0.12)' }}
       />
       <div
         className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full pointer-events-none"
@@ -65,8 +65,8 @@ export default function QuoteOfDay() {
 
       {/* Etiket */}
       <div className="flex items-center gap-2 mb-5 relative z-10">
-        <div className="w-6 h-px" style={{ background: '#f5c518' }} />
-        <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#f5c518' }}>
+        <div className="w-6 h-px" style={{ background: '#2EA6D9' }} />
+        <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#2EA6D9' }}>
           Günün Sözü
         </span>
       </div>
@@ -86,7 +86,7 @@ export default function QuoteOfDay() {
 
       {/* Yazar */}
       <div className="flex items-center gap-3 relative z-10">
-        <div className="w-10 h-0.5 rounded-full" style={{ background: '#f5c518' }} />
+        <div className="w-10 h-0.5 rounded-full" style={{ background: '#2EA6D9' }} />
         <cite className="not-italic font-semibold text-sm" style={{ color: 'rgba(245,197,24,0.85)' }}>
           {quote.author}
         </cite>

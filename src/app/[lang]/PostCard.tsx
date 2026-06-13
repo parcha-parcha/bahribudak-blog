@@ -22,7 +22,7 @@ export default function PostCard({ post, lang }: PostCardProps) {
         <div className="flex items-center justify-between mb-4">
           <span
             className="cat-badge text-white relative z-10"
-            style={{ backgroundColor: cat?.color || '#0f1a3a' }}
+            style={{ backgroundColor: cat?.color || '#0B2343' }}
           >
             {cat?.emoji} {t(`cat.${post.category}` as any)}
           </span>
