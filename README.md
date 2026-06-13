@@ -1,16 +1,13 @@
-# Revizyon 27 - Su Damlası Hero Header Uyarlaması
+# Revizyon 28 - Hero Logo ve Okunabilirlik Düzeltmesi
 
-Bu paket ana sayfada su damlası görselini sadece sağ kart içinde değil, hero/header alanının tamamında arka plan olarak kullanır.
+Bu paket ana sayfa hero alanındaki iki sorunu düzeltmek için hazırlanmıştır:
 
-Yapılanlar:
-
-- Ana sayfa hero alanı tam genişlik su damlası görseliyle yeniden düzenlendi.
-- Üzerine lacivert kurumsal overlay eklendi.
-- Başlık ve açıklama beyaz/okunur hale getirildi.
-- Sağ tarafta cam efektli logo ve sade metrik kartları kullanıldı.
-- Mobilde sıkışma yapmaması için yapı tek kolon uyumlu hale getirildi.
-- Emoji kullanılmadı.
+- Üst etiket yazısı koyu görsel üzerinde daha okunur hale getirildi.
+- Sağdaki cam kart içinde karışan 35 / 3 / 01 metrik kartları kaldırıldı.
+- Sağ alanda sade kurumsal logo kullanıldı.
+- Su damlası hero arka planı korundu.
+- Emoji veya renkli ikon eklenmedi.
 
 Commit mesajı:
 
-Su damlası hero header uyarlaması
+Hero logo ve okunabilirlik düzeltmesi

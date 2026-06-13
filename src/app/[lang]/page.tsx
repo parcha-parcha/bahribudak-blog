@@ -82,7 +82,7 @@ export default async function HomePage({ params }: HomeProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
           <div>
-            <p className="section-label mb-5 text-white/68">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
+            <p className="section-label mb-5 text-white/90 drop-shadow-sm">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
@@ -95,18 +95,17 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-md">
-            <div className="rounded-[34px] border border-white/22 bg-white/12 backdrop-blur-xl shadow-2xl p-6 md:p-8">
-              <div className="rounded-[26px] bg-white/92 p-5 md:p-6 shadow-xl mb-6">
-                <BrandLogo className="h-11 md:h-14 w-full text-navy" />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {metricCards.map((card) => (
-                  <div key={card.label} className="rounded-[20px] border border-white/20 bg-white/12 p-4 text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-white">{card.value}</div>
-                    <div className="mt-2 text-[11px] md:text-xs font-bold uppercase tracking-[0.12em] text-white/72">{card.label}</div>
-                  </div>
-                ))}
+          <div className="lg:justify-self-end w-full max-w-sm mx-auto lg:mx-0">
+            <div className="rounded-[34px] border border-white/28 bg-white/14 backdrop-blur-xl shadow-2xl p-5 md:p-7">
+              <div className="rounded-[28px] bg-white/94 p-7 md:p-9 shadow-xl flex flex-col items-center text-center">
+                <BrandLogo className="h-16 md:h-20 w-full max-w-[260px] text-navy" />
+                <div className="mt-6 h-px w-20 bg-navy/18" />
+                <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-navy/70">
+                  Tekstil Proses
+                </p>
+                <p className="mt-2 text-sm font-semibold text-navy/82">
+                  Danışmanlık • Eğitim • Teknik Doküman
+                </p>
               </div>
             </div>
           </div>
