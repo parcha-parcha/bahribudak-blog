@@ -64,12 +64,7 @@ export default function Header({ lang }: HeaderProps) {
             {otherLang.toUpperCase()}
           </Link>
 
-          
-            href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-1.5 bg-navy text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-navy-light transition-colors dark:bg-[#f5c518] dark:text-[#0f1a3a] dark:hover:bg-[#fdd835]"
-          >
+          <a href="https://www.linkedin.com/in/bahri-budak-052ab5b8" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1.5 bg-navy text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-navy-light transition-colors dark:bg-[#f5c518] dark:text-[#0f1a3a] dark:hover:bg-[#fdd835]">
             LinkedIn
           </a>
 
