@@ -47,7 +47,7 @@ export default async function AboutPage({ params }: AboutProps) {
   const { lang } = await params
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="bb-readable-page max-w-3xl mx-auto px-6 py-16">
 
       {/* ── HEADER ── */}
       <div className="mb-14">
@@ -74,14 +74,14 @@ export default async function AboutPage({ params }: AboutProps) {
           <p className="text-yellow-bb font-semibold text-sm mb-3">
             Üst Düzey Tekstil Yöneticisi · İşletme & Fabrika Müdürü
           </p>
-          <p className="text-navy/60 text-sm leading-relaxed mb-4">
+          <p className="text-navy/90 text-sm leading-relaxed mb-4">
             Ergene / Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika operasyonlarında
             35 yıllık üretim ve yönetim deneyimine sahip üst düzey yönetici.
             Operasyonel birikimini dijital içerik üretimiyle harmanlıyor.
           </p>
           <div className="flex flex-wrap gap-2">
             {['Ergene / Tekirdağ', 'bahribudak@gmail.com'].map((tag) => (
-              <span key={tag} className="text-xs bg-gray-soft border border-gray-border text-navy/60 px-3 py-1 rounded-full">
+              <span key={tag} className="text-xs bg-gray-soft border border-gray-border text-navy/90 px-3 py-1 rounded-full">
                 {tag}
               </span>
             ))}
@@ -96,9 +96,9 @@ export default async function AboutPage({ params }: AboutProps) {
             className="rounded-xl p-5 text-center border border-gray-border">
             <div className="flex items-end justify-center gap-1 mb-1">
               <span className="text-3xl font-bold text-navy">{s.number}</span>
-              {s.unit && <span className="text-sm font-semibold text-navy/50 mb-0.5">{s.unit}</span>}
+              {s.unit && <span className="text-sm font-semibold text-navy/75 mb-0.5">{s.unit}</span>}
             </div>
-            <p className="text-xs text-navy/40 leading-snug">{s.label}</p>
+            <p className="text-xs text-navy/85 leading-snug">{s.label}</p>
           </div>
         ))}
       </div>
@@ -109,7 +109,7 @@ export default async function AboutPage({ params }: AboutProps) {
           <div className="w-1 h-6 bg-yellow-bb rounded-full" />
           Profesyonel Profil
         </h2>
-        <div className="space-y-4 text-navy/70 leading-relaxed text-sm">
+        <div className="space-y-4 text-navy/85 leading-relaxed text-sm">
           <p>
             Tekstil sektöründe 35 yıllık üretim ve yönetim deneyimine sahip; boyahane,
             terbiye ve fabrika operasyonlarında uzman üst düzey yöneticiyim.
@@ -136,19 +136,19 @@ export default async function AboutPage({ params }: AboutProps) {
           <div className="w-1 h-6 bg-yellow-bb rounded-full" />
           Profesyonel Deneyim
         </h2>
-        <p className="text-xs text-navy/40 mb-4 italic">
+        <p className="text-xs text-navy/85 mb-4 italic">
           Çalışma tarihleri ve referanslar talep doğrultusunda sunulur.
         </p>
         <div className="flex flex-col gap-3">
           {experience.map((e, i) => (
             <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-gray-border hover:border-navy/30 transition-all">
               <div className="w-8 h-8 rounded-lg bg-navy/5 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs font-bold text-navy/40">{i + 1}</span>
+                <span className="text-xs font-bold text-navy/85">{i + 1}</span>
               </div>
               <div>
                 <p className="font-bold text-navy text-sm">{e.company}</p>
                 <p className="text-yellow-bb text-xs font-semibold mt-0.5">{e.role}</p>
-                {e.note && <p className="text-navy/40 text-xs mt-0.5 italic">{e.note}</p>}
+                {e.note && <p className="text-navy/85 text-xs mt-0.5 italic">{e.note}</p>}
               </div>
             </div>
           ))}
@@ -177,7 +177,7 @@ export default async function AboutPage({ params }: AboutProps) {
           <div className="w-1 h-6 bg-yellow-bb rounded-full" />
           Blog & İçerik
         </h2>
-        <p className="text-navy/50 text-sm mb-6">
+        <p className="text-navy/75 text-sm mb-6">
           Dört ana sütun etrafında düzenli içerik üretiyorum.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -186,7 +186,7 @@ export default async function AboutPage({ params }: AboutProps) {
               className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border hover:border-navy hover:shadow-card transition-all group">
               <span className="text-3xl mb-3">{p.emoji}</span>
               <span className="font-bold text-navy text-sm group-hover:text-yellow-bb transition-colors">{p.label}</span>
-              <span className="text-xs text-navy/40 mt-1 leading-snug">{p.desc}</span>
+              <span className="text-xs text-navy/85 mt-1 leading-snug">{p.desc}</span>
             </Link>
           ))}
         </div>
@@ -201,7 +201,7 @@ export default async function AboutPage({ params }: AboutProps) {
 
       {/* ── CTA ── */}
       <div className="text-center">
-        <p className="text-navy/60 mb-6 text-sm">İletişime geçmek veya hizmetleri incelemek için:</p>
+        <p className="text-navy/90 mb-6 text-sm">İletişime geçmek veya hizmetleri incelemek için:</p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link href={`/${lang}/contact`} className="btn-primary">
             İletişime Geç →
@@ -210,7 +210,7 @@ export default async function AboutPage({ params }: AboutProps) {
             Hizmetler
           </Link>
         </div>
-        <p className="text-navy/40 text-xs mt-6">bahribudak@gmail.com · Ergene / Tekirdağ</p>
+        <p className="text-navy/85 text-xs mt-6">bahribudak@gmail.com · Ergene / Tekirdağ</p>
       </div>
 
     </div>

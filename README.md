@@ -84,3 +84,7 @@ git push -u origin main
 - **Vurgu rengi:** Sarı `#2EA6D9`
 - **Font:** Poppins (700 başlık, 400 gövde)
 - **İmza fontu:** Great Vibes
+
+
+## Revizyon 3
+Hizmetler ve Hakkımda sayfalarındaki silik metinler koyulaştırıldı ve okunabilirlik artırıldı.

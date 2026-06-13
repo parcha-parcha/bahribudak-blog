@@ -198,3 +198,14 @@
   background-size: 42px 42px, 84px 84px;
 }
 .bb-soft-panel { background: linear-gradient(180deg, #ffffff 0%, #F3F6FA 100%); border: 1px solid #D8DDE5; }
+
+
+/* Revizyon 3: okunabilirlik düzeltmeleri */
+.bb-readable-page p,
+.bb-readable-page li,
+.bb-readable-page span {
+  text-rendering: optimizeLegibility;
+}
+.bb-readable-muted { color: #263B57 !important; }
+.bb-readable-soft { color: #3E4F66 !important; }
+.bb-readable-dark-panel { color: rgba(255,255,255,.86) !important; }

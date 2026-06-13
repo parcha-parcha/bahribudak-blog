@@ -57,7 +57,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
   const { lang } = await params
 
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-16 pb-8">
+    <div className="bb-readable-page max-w-3xl mx-auto px-6 pt-16 pb-8">
 
       {/* ── HEADER ── */}
       <div className="mb-14">
@@ -66,7 +66,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
           Birlikte <span className="text-yellow-bb">büyüyelim</span>
         </h1>
         <div className="w-12 h-1 bg-yellow-bb mb-6" />
-        <p className="text-navy/70 text-lg leading-relaxed">
+        <p className="text-navy/85 text-lg leading-relaxed">
           35 yıllık tekstil deneyimini dijital yetkinlikle harmanlayan profesyonel destek.
         </p>
       </div>
@@ -80,7 +80,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
               <div className="text-3xl flex-shrink-0">{s.emoji}</div>
               <div>
                 <h2 className="text-xl font-bold text-navy">{s.title}</h2>
-                <p className="text-xs text-navy/40 font-medium mt-0.5 tracking-wide">{s.subtitle}</p>
+                <p className="text-xs text-navy/85 font-medium mt-0.5 tracking-wide">{s.subtitle}</p>
               </div>
             </div>
 
@@ -88,12 +88,12 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
             <div className="w-8 h-1 bg-yellow-bb mb-4 group-hover:w-14 transition-all" />
 
             {/* Açıklama */}
-            <p className="text-navy/70 leading-relaxed mb-5 text-sm">{s.description}</p>
+            <p className="text-navy/85 leading-relaxed mb-5 text-sm">{s.description}</p>
 
             {/* Hizmet maddeleri */}
             <ul className="space-y-2.5">
               {s.items.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-navy/80">
+                <li key={item} className="flex items-start gap-2.5 text-sm text-navy/90">
                   <span className="text-yellow-bb mt-0.5 flex-shrink-0">✦</span>
                   {item}
                 </li>
@@ -108,17 +108,17 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
         <h2 className="text-white text-2xl font-bold mb-1">
           Neden <span style={{ color: '#2EA6D9' }}>Bahri Budak?</span>
         </h2>
-        <p className="text-white/40 text-sm mb-8">Deneyim, birikim ve güven.</p>
+        <p className="text-white/75 text-sm mb-8">Deneyim, birikim ve güven.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {reasons.map((r) => (
             <div key={r.title}
               className="rounded-xl px-5 py-4"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.18)' }}>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-xl">{r.emoji}</span>
                 <span className="text-white font-bold text-sm">{r.title}</span>
               </div>
-              <p className="text-white/40 text-xs leading-relaxed">{r.desc}</p>
+              <p className="text-white/75 text-xs leading-relaxed">{r.desc}</p>
             </div>
           ))}
         </div>
@@ -133,14 +133,14 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
 
       {/* ── CTA ── */}
       <div className="text-center pb-4">
-        <p className="text-navy/60 mb-6 text-sm">Projenizi konuşmak için hemen iletişime geçin.</p>
+        <p className="text-navy/90 mb-6 text-sm">Projenizi konuşmak için hemen iletişime geçin.</p>
         <a
           href="mailto:bahribudak@gmail.com?subject=Hizmet Talebi"
           className="btn-primary inline-flex"
         >
           İletişime Geç →
         </a>
-        <p className="text-navy/40 text-xs mt-4">bahribudak@gmail.com</p>
+        <p className="text-navy/85 text-xs mt-4">bahribudak@gmail.com</p>
       </div>
 
     </div>
