@@ -329,3 +329,36 @@
 .bb-dark-readable-panel [style*="#2EA6D9"] {
   color: #2EA6D9 !important;
 }
+
+
+/* REV11: Kamuya açık metin düzeltmesi + blog kartı kesin okunabilirlik */
+.post-card,
+.post-card * {
+  text-shadow: none !important;
+}
+.post-card {
+  background: #FFFFFF !important;
+  color: #0B2343 !important;
+  border-color: #D8DDE5 !important;
+}
+.post-card h2,
+.post-card h2 a {
+  color: #0B2343 !important;
+}
+.post-card h2:hover,
+.post-card h2 a:hover {
+  color: #2EA6D9 !important;
+}
+.post-card p {
+  color: #3E4F66 !important;
+}
+.post-card time,
+.post-card .text-gray-text {
+  color: #5D5F63 !important;
+}
+.bb-dark-readable-panel .section-label {
+  color: rgba(255,255,255,.72) !important;
+}
+.bb-dark-readable-panel p {
+  color: rgba(255,255,255,.88) !important;
+}

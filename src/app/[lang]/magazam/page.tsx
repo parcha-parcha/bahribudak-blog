@@ -84,8 +84,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
             Kurumsal kimlikten teknik dokümana uzanan dosya sistemi
           </h1>
           <p className="text-white/76 leading-relaxed max-w-3xl text-lg">
-            Bu bölüm, verdiğiniz 49 dosyanın mantığına göre yeniden düzenlendi. Amaç; logoyu, rengi,
-            şablonu, eğitim notunu ve teknik dosyayı tek bir kaynak yapısı altında toplamak.
+            Bu bölüm; kurumsal kimlik, kırtasiye, dijital yayın, tanıtım materyali, saha uygulaması ve teknik doküman şablonlarını tek bir kaynak yapısı altında toplar.
           </p>
         </div>
       </section>
@@ -122,7 +121,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
             <p className="section-label">SONRAKİ ADIM</p>
             <h2 className="text-3xl font-bold text-navy mb-4">Bu şablonlar ürün, indirme dosyası veya hizmet paketi haline getirilebilir.</h2>
             <p className="text-navy/82 leading-relaxed max-w-2xl">
-              İsterseniz bir sonraki revizyonda bu bölümün içine örnek görseller, indirme kartları, fiyatlandırma ve ürün açıklamaları ekleyebiliriz.
+              Bu bölüm ileride örnek görseller, indirme kartları, ürün açıklamaları ve hazır doküman paketleriyle genişletilebilir.
             </p>
           </div>
           <Link href={withLang('/contact')} className="btn-primary">İletişime Geç →</Link>

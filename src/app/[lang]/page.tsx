@@ -137,7 +137,7 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="mb-10">
             <p className="section-label">ŞABLON VE DOKÜMAN SETLERİ</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">49 dosyalık yapıya göre düzenlenen içerik omurgası</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Kurumsal şablon ve doküman sistemi</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {templateBlocks.map((block) => (

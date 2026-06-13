@@ -38,7 +38,7 @@ const services = [
     number: '05',
     title: 'İçerik ve Yayın Sistemi',
     subtitle: 'Blog · LinkedIn · teknik yayın · haber yorumu',
-    desc: 'Tekstil bilgisi, sektör gündemi ve kişisel gelişim içerikleri daha düzenli bir yayın yapısına alınır. Felsefe görünür akıştan çıkarılmıştır.',
+    desc: 'Tekstil bilgisi, sektör gündemi ve kişisel gelişim içerikleri daha düzenli bir yayın yapısına alınır. Yayın akışı teknik bilgi, saha deneyimi ve uygulanabilir içerik üzerine kurulur.',
     items: ['Teknik blog yazısı planı', 'LinkedIn gönderi serileri', 'Sektör haberi çeviri ve yorumlama', 'Kısa not, görsel ve eğitim içerik paketleri'],
   },
   {
@@ -78,7 +78,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
             Tekstil bilgisi, kurumsal dosya ve şablon sistemi
           </h1>
           <p className="text-lg leading-relaxed text-navy/82 max-w-3xl">
-            Bu sayfa artık sadece genel hizmet listesi değil; verdiğiniz 49 dosyalık kurumsal kimlik ve şablon yapısına bağlı çalışan bir hizmet mimarisi olarak düzenlendi.
+            Bu sayfa; tekstil danışmanlığı, teknik eğitim içerikleri, kurumsal dokümantasyon ve şablon üretimini aynı sistem altında toplayan profesyonel hizmet yapısı olarak düzenlendi.
           </p>
         </div>
       </section>
@@ -108,14 +108,14 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
         </div>
       </section>
 
-      <section className="bg-[#061A33] text-white">
+      <section className="bg-[#061A33] text-white bb-dark-readable-panel">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10">
             <div>
-              <p className="section-label text-white/55">DOSYA MİMARİSİ</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">49 dosyadan çıkan gerçek sistem</h2>
+              <p className="section-label text-white/70">KURUMSAL DOKÜMAN SİSTEMİ</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">Tekstil, eğitim ve kurumsal şablonları aynı düzende toplar</h2>
               <p className="text-white/75 leading-relaxed">
-                Bundan sonraki revizyonlarda site, verdiğiniz kurumsal kimlik ve şablon dosyalarının içeriğine göre ilerleyecek. Böylece site sadece renk değiştirmiş bir blog değil, hizmet ve kaynak merkezi olacak.
+                Bu yapı; teknik eğitim notları, proses formları, kurumsal kimlik öğeleri ve şablon dosyalarını sahada kullanılabilir, okunabilir ve sürdürülebilir bir doküman düzenine bağlar.
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
