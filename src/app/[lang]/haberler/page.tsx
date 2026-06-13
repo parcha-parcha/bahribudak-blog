@@ -72,17 +72,17 @@ export default function HaberlerPage() {
   ]
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
+    <div className="bb-news-readable max-w-6xl mx-auto px-6 py-12">
 
       {/* Header */}
       <div className="mb-10">
         <p className="section-label mb-2">Dünya & Türkiye & Tekstil</p>
-        <h1 className="text-4xl font-bold text-navy mb-3">
+        <h1 className="text-4xl font-bold text-navy mb-3 bb-news-title">
           Günün <span className="text-yellow-bb">Haberleri</span>
         </h1>
         <div className="w-12 h-1 bg-yellow-bb mb-4" />
         {updatedAt && (
-          <p className="text-xs text-navy/40">
+          <p className="text-xs bb-news-muted">
             Son güncelleme: {formatTime(updatedAt)} — Her saatte otomatik yenilenir
           </p>
         )}
@@ -109,7 +109,7 @@ export default function HaberlerPage() {
             )}
           </button>
         ))}
-        <span className="ml-auto text-xs text-navy/40 self-center">
+        <span className="ml-auto text-xs bb-news-muted self-center">
           {filtered.length} haber
         </span>
       </div>
@@ -133,11 +133,11 @@ export default function HaberlerPage() {
               href={item.link || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-xl border p-5 hover:shadow-card transition-all block"
+              className="bb-news-card group rounded-xl border p-5 hover:shadow-card transition-all block"
               style={{
                 textDecoration: 'none',
                 borderColor: item.category === 'textile' ? 'rgba(245,197,24,0.35)' : '#e5e7eb',
-                background: item.category === 'textile' ? 'rgba(245,197,24,0.03)' : 'white',
+                background: '#ffffff',
               }}
             >
               {/* Kaynak + Kategori */}
@@ -165,13 +165,13 @@ export default function HaberlerPage() {
               </div>
 
               {/* Başlık */}
-              <p className="text-sm font-semibold text-navy leading-snug group-hover:text-yellow-bb transition-colors mb-2">
+              <p className="bb-news-card-title text-sm font-semibold leading-snug transition-colors mb-2">
                 {item.title}
               </p>
 
               {/* Açıklama (sadece tekstil haberlerinde) */}
               {item.category === 'textile' && item.description && (
-                <p className="text-xs text-navy/50 leading-relaxed line-clamp-2 mb-2">
+                <p className="bb-news-card-desc text-xs leading-relaxed line-clamp-2 mb-2">
                   {item.description}
                 </p>
               )}
@@ -179,7 +179,7 @@ export default function HaberlerPage() {
               {/* Tarih + Ok */}
               <div className="flex items-center justify-between mt-3">
                 {item.publishedAt ? (
-                  <span className="text-[10px] text-navy/30">{formatDate(item.publishedAt)}</span>
+                  <span className="bb-news-date text-[10px]">{formatDate(item.publishedAt)}</span>
                 ) : <span />}
                 <span className="text-yellow-bb text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </div>
@@ -189,7 +189,7 @@ export default function HaberlerPage() {
       )}
 
       {!loading && filtered.length === 0 && (
-        <div className="text-center py-20 text-navy/40">
+        <div className="text-center py-20 bb-news-muted">
           <div className="text-4xl mb-4">📭</div>
           <p>Haber yüklenemedi. Lütfen daha sonra tekrar deneyin.</p>
         </div>
