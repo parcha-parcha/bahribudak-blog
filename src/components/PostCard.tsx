@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { PostMeta } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
-import { useTranslations, categories } from '@/lib/i18n'
+import { useTranslations } from '@/lib/i18n'
 
 interface PostCardProps {
   post: PostMeta
@@ -10,8 +10,6 @@ interface PostCardProps {
 
 export default function PostCard({ post, lang }: PostCardProps) {
   const t = useTranslations(lang)
-  const cat = categories.find(c => c.slug === post.category)
-
   return (
     <article className="post-card group relative bg-white text-navy">
       {/* Kurumsal mavi üst çizgi */}
@@ -20,11 +18,8 @@ export default function PostCard({ post, lang }: PostCardProps) {
       <div className="p-6">
         {/* Category + Reading time */}
         <div className="flex items-center justify-between mb-4">
-          <span
-            className="cat-badge relative z-10"
-            style={{ backgroundColor: cat?.color || '#0B2343' }}
-          >
-            {cat?.emoji} {t(`cat.${post.category}` as any)}
+          <span className="cat-badge post-card-category relative z-10">
+            {t(`cat.${post.category}` as any)}
           </span>
           <span className="post-card-readtime text-xs font-medium">
             {post.readingTime} {t('blog.readingTime')}

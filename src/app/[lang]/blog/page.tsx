@@ -33,9 +33,8 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         </Link>
         {categories.map(cat => (
           <Link key={cat.slug} href={`/${lang}/blog?category=${cat.slug}`}
-            className={`cat-badge border transition-all ${activeCategory === cat.slug ? 'text-white border-transparent' : 'bg-white text-gray-text border-gray-border hover:border-navy'}`}
-            style={activeCategory === cat.slug ? { backgroundColor: cat.color, borderColor: cat.color } : {}}>
-            {cat.emoji} {t(`cat.${cat.slug}` as any)}
+            className={`cat-badge border transition-all ${activeCategory === cat.slug ? 'bg-navy text-white border-navy' : 'bg-white text-gray-text border-gray-border hover:border-navy'}`}>
+            {t(`cat.${cat.slug}` as any)}
           </Link>
         ))}
       </div>

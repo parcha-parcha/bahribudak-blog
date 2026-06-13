@@ -11,24 +11,53 @@ interface HomeProps {
 
 const mainAreas = [
   {
-    icon: '🧵',
-    title: 'Tekstil Danışmanlığı',
-    text: 'Boyahane, terbiye, proses kontrol, maliyet ve verimlilik için saha temelli destek.',
+    icon: 'process',
+    title: 'Tekstil Proses Danışmanlığı',
+    text: 'Boyahane, kasar, enzim, yıkama, reaktif boyama, proses kontrol ve maliyet/verimlilik alanlarında saha temelli destek.',
     href: '/hizmetler',
   },
   {
-    icon: '📘',
-    title: 'Eğitim Notları',
-    text: 'Kasar, enzim, reaktif boyama, yıkama, laboratuvar ve reçete hesapları için teknik kaynaklar.',
+    icon: 'education',
+    title: 'Tekstil Eğitim Notları',
+    text: 'Kasar, boyama, yıkama, laboratuvar, reçete hesapları ve işletme kontrolleri için uygulanabilir teknik kaynaklar.',
     href: '/blog?category=tekstil',
   },
   {
-    icon: '📂',
-    title: 'Kurumsal Şablonlar',
-    text: 'Teklif, sunum, eğitim dosyası, sosyal medya ve kurumsal doküman şablonları.',
+    icon: 'document',
+    title: 'Teknik Doküman ve Şablonlar',
+    text: 'Teklif, sunum, kontrol listesi, eğitim dosyası ve kurumsal evrakları aynı standartta hazırlayan doküman sistemi.',
     href: '/magazam',
   },
 ]
+
+type SimpleIconName = 'process' | 'education' | 'document'
+
+function SimpleIcon({ name }: { name: SimpleIconName }) {
+  if (name === 'process') {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 22c5-10 15 0 20-10" />
+        <path d="M6 12c5 10 15 0 20 10" />
+        <path d="M8 6v20M24 6v20" />
+      </svg>
+    )
+  }
+  if (name === 'education') {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M7 7h12a4 4 0 0 1 4 4v14H11a4 4 0 0 0-4 4V7Z" />
+        <path d="M11 12h8M11 17h8M11 22h5" />
+      </svg>
+    )
+  }
+  return (
+    <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 5h10l5 5v17H9V5Z" />
+      <path d="M19 5v6h5M13 16h8M13 21h8" />
+    </svg>
+  )
+}
+
 
 const templateBlocks = [
   { title: 'Kırtasiye Seti', desc: 'Kartvizit, antetli kağıt, devam kağıdı, zarf, cepli dosya ve bloknot.' },
@@ -42,7 +71,10 @@ const templateBlocks = [
 export default async function HomePage({ params }: HomeProps) {
   const { lang } = await params
   const t = useTranslations(lang)
-  const recentPosts = getAllPosts(lang).slice(0, 4)
+  const allPosts = getAllPosts(lang)
+  const textilePosts = allPosts.filter(post => post.category === 'tekstil')
+  const otherPosts = allPosts.filter(post => post.category !== 'tekstil')
+  const recentPosts = [...textilePosts, ...otherPosts].slice(0, 4)
   const withLang = (path: string) => `/${lang}${path}`
 
   return (
@@ -54,11 +86,11 @@ export default async function HomePage({ params }: HomeProps) {
           <div>
             <p className="section-label text-white/70 mb-4">BAHRİ BUDAK · TEKSTİL · EĞİTİM · DANIŞMANLIK</p>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.06] text-white max-w-3xl">
-              Tekstil danışmanlığı ve teknik eğitim dokümanları
+              Tekstil proses danışmanlığı ve teknik eğitim sistemi
             </h1>
             <p className="text-lg md:text-xl text-white/86 leading-relaxed mb-8 max-w-2xl">
-              35 yıllık boyahane, terbiye ve fabrika yönetimi deneyimini; uygulanabilir eğitim notları,
-              kurumsal şablonlar ve teknik danışmanlık dosyalarıyla paylaşıyorum.
+              Boyahane, terbiye, kasar, reaktif boyama, yıkama, laboratuvar ve proses kontrol deneyimini;
+              uygulanabilir teknik eğitim, danışmanlık ve doküman sistemine dönüştürüyorum.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href={withLang('/hizmetler')} className="btn-primary">Hizmetleri İncele →</Link>
@@ -73,7 +105,7 @@ export default async function HomePage({ params }: HomeProps) {
               <BrandLogo className="h-24 w-full text-navy" />
             </div>
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {['35 yıl saha deneyimi', 'Teknik eğitim', 'Kurumsal dosya sistemi'].map((item) => (
+              {['Boyahane', 'Proses kontrol', 'Teknik eğitim'].map((item) => (
                 <div key={item} className="rounded-2xl bg-white/12 border border-white/18 p-4 text-sm font-bold text-white text-center">
                   {item}
                 </div>
@@ -87,12 +119,12 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="mb-10">
             <p className="section-label">ANA YAPI</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">İlk bakışta üç net alan</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç net alan</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mainAreas.map((area) => (
               <Link key={area.title} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
-                <div className="text-3xl mb-5">{area.icon}</div>
+                <div className="mb-5"><SimpleIcon name={area.icon as SimpleIconName} /></div>
                 <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
                 <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
               </Link>
@@ -106,11 +138,11 @@ export default async function HomePage({ params }: HomeProps) {
           <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
             <div>
               <p className="section-label">KURUMSAL SİSTEM</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">Logo, renk ve şablonlar tek sistemde</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">Teknik bilgi ve dokümanlar tek sistemde</h2>
               <p className="text-navy/82 leading-relaxed mb-6">
-                Kurumsal kimlik, kırtasiye, dijital yayın, tanıtım materyali, saha uygulaması ve teknik dokümanlar aynı görsel dil altında toplandı.
+                Tekstil danışmanlığı, eğitim notları, proses formları, kontrol listeleri ve kurumsal dokümanlar aynı sade kimlik dili altında toplandı.
               </p>
-              <Link href={withLang('/magazam')} className="btn-primary inline-flex">Şablon sistemini incele →</Link>
+              <Link href={withLang('/magazam')} className="btn-primary inline-flex">Doküman sistemini incele →</Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {templateBlocks.slice(0, 4).map((block) => (
@@ -127,8 +159,8 @@ export default async function HomePage({ params }: HomeProps) {
       <section className="bg-[#F3F6FA] text-navy">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="mb-10">
-            <p className="section-label">ŞABLON VE DOKÜMAN SETLERİ</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Kullanılabilir doküman omurgası</h2>
+            <p className="section-label">TEKSTİL VE DOKÜMAN SETLERİ</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Teknik bilgiye dayalı kaynak omurgası</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {templateBlocks.map((block) => (
@@ -145,7 +177,7 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="flex items-center justify-between mb-10">
           <div>
             <p className="section-label">{t('blog.latestPosts')}</p>
-            <h2 className="text-3xl font-bold text-navy">Teknik yayınlar ve notlar</h2>
+            <h2 className="text-3xl font-bold text-navy">Öne çıkan tekstil teknik notları</h2>
           </div>
           <Link href={withLang('/blog')} className="btn-outline text-sm">
             {lang === 'tr' ? 'Tümünü Gör' : 'View All'}

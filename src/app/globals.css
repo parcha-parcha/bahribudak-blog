@@ -405,3 +405,22 @@ body, p, li, a, span, button, input, textarea {
 .post-card .post-card-readmore {
   color: #0B2343 !important;
 }
+
+/* REV14: Tekstil önceliği + sade ikon ve renk standardı */
+.bb-simple-icon,
+.bb-simple-icon svg {
+  color: #0B2343 !important;
+}
+.post-card .post-card-category,
+.cat-badge.post-card-category {
+  background: #0B2343 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(46,166,217,.35) !important;
+}
+.post-card .cat-badge {
+  background: #0B2343 !important;
+  color: #FFFFFF !important;
+}
+.post-card .post-card-accent {
+  background: #2EA6D9 !important;
+}

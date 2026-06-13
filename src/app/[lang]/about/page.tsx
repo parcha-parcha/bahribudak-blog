@@ -30,9 +30,9 @@ const skills = [
 ]
 
 const pillars = [
-  { emoji: '🧵', label: 'Tekstil', desc: '35 yıllık saha deneyimi' },
-  { emoji: '🇹🇷', label: 'Türkiye', desc: 'Gündem ve sektör analizi' },
-  { emoji: '📘', label: 'Eğitim', desc: 'Teknik not ve doküman' },
+  { mark: '01', label: 'Tekstil', desc: 'Boyahane ve proses deneyimi' },
+  { mark: '02', label: 'Eğitim', desc: 'Teknik not ve doküman' },
+  { mark: '03', label: 'Sektör', desc: 'Gündem ve uygulama bakışı' },
 ]
 
 const stats = [
@@ -178,13 +178,13 @@ export default async function AboutPage({ params }: AboutProps) {
           Blog & İçerik
         </h2>
         <p className="text-navy/75 text-sm mb-6">
-          Üç ana sütun etrafında düzenli içerik üretiyorum.
+          İçerik omurgası tekstil merkezli ilerliyor.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {pillars.map((p) => (
             <Link key={p.label} href={`/${lang}/blog`}
               className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border bg-white hover:border-navy hover:shadow-card transition-all group">
-              <span className="text-3xl mb-3">{p.emoji}</span>
+              <span className="w-10 h-10 mb-3 rounded-full border border-navy/20 text-navy flex items-center justify-center text-xs font-bold">{p.mark}</span>
               <span className="font-bold text-navy text-sm group-hover:text-yellow-bb transition-colors">{p.label}</span>
               <span className="text-xs text-navy/85 mt-1 leading-snug">{p.desc}</span>
             </Link>

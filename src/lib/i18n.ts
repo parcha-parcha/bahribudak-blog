@@ -19,7 +19,7 @@ export const ui = {
 
     // Category descriptions
     'cat.kisisel-gelisim.desc': 'Büyüme, alışkanlıklar ve zihinsel güç üzerine düşünceler.',
-    'cat.tekstil.desc': 'Sektör analizi, üretim ve sürdürülebilirlik.',
+    'cat.tekstil.desc': 'Boyahane, proses, kalite, eğitim notu ve saha uygulamaları.',
     'cat.turkiye-gundemi.desc': 'Ekonomi, politika ve toplumsal meseleler.',
 
     // Blog
@@ -92,9 +92,9 @@ export function useTranslations(lang: Lang) {
 }
 
 export const categories = [
-  { slug: 'kisisel-gelisim', color: '#3b82f6', emoji: '🧠' },
-  { slug: 'tekstil',         color: '#10b981', emoji: '🧵' },
-  { slug: 'turkiye-gundemi', color: '#f59e0b', emoji: '🇹🇷' },
+  { slug: 'tekstil',         color: '#0B2343' },
+  { slug: 'kisisel-gelisim', color: '#5D5F63' },
+  { slug: 'turkiye-gundemi', color: '#5D5F63' },
 ] as const
 
 export type Category = typeof categories[number]['slug']

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { marked } from 'marked'
 import { getPost, getAllSlugs } from '@/lib/posts'
-import { useTranslations, categories } from '@/lib/i18n'
+import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -67,7 +67,6 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) notFound()
 
   const t = useTranslations(lang as Lang)
-  const cat = categories.find(c => c.slug === post.category)
   const htmlContent = await marked(post.content)
 
   return (
@@ -92,8 +91,8 @@ export default async function PostPage({ params }: PostPageProps) {
         </nav>
 
         <div className="mb-6">
-          <span className="cat-badge text-white text-xs" style={{ backgroundColor: cat?.color || '#0B2343' }}>
-            {cat?.emoji} {t(`cat.${post.category}` as any)}
+          <span className="cat-badge post-card-category text-xs">
+            {t(`cat.${post.category}` as any)}
           </span>
         </div>
 
