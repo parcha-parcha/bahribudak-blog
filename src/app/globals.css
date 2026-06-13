@@ -19,13 +19,13 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     color: var(--navy);
     background: var(--white);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
     color: var(--navy);
     line-height: 1.2;
@@ -40,7 +40,7 @@
 @layer components {
   /* ── BB Signature ── */
   .bb-signature {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Montserrat', Arial, sans-serif;
     color: var(--navy);
   }
 
@@ -361,4 +361,47 @@
 }
 .bb-dark-readable-panel p {
   color: rgba(255,255,255,.88) !important;
+}
+
+
+/* REV13: Kurumsal font ve renk standardı düzeltmesi
+   Başlık: Montserrat / Gövde: Inter
+   Renkler: Navy #0B2343, Deep #061A33, Accent #2EA6D9, Gray #5D5F63 */
+.font-heading, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+body, p, li, a, span, button, input, textarea {
+  font-family: 'Inter', Arial, sans-serif;
+}
+.post-card .cat-badge,
+.bb-readable-page .post-card .cat-badge {
+  background: #0B2343 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(46,166,217,.28) !important;
+  letter-spacing: .14em !important;
+}
+.post-card .post-card-accent {
+  background: #2EA6D9 !important;
+}
+.post-card .post-card-readtime {
+  color: #5D5F63 !important;
+  font-weight: 600 !important;
+}
+.post-card .post-card-title,
+.post-card .post-card-title a {
+  color: #0B2343 !important;
+  font-family: 'Montserrat', Arial, sans-serif !important;
+  font-weight: 800 !important;
+}
+.post-card .post-card-title a:hover {
+  color: #2EA6D9 !important;
+}
+.post-card .post-card-excerpt {
+  color: #3E4F66 !important;
+}
+.post-card .post-card-date {
+  color: #5D5F63 !important;
+}
+.post-card .post-card-readmore {
+  color: #0B2343 !important;
 }

@@ -114,3 +114,7 @@ Ana sayfa Hakkımda logosu ve Hizmetler sayfası koyu panel okunabilirliği düz
 ## Revizyon 11
 
 Kamuya açık olmayan çalışma ifadeleri kaldırıldı, hizmet/şablon metinleri profesyonelleştirildi ve blog kartı okunabilirliği düzeltildi.
+
+
+## Revizyon 13
+Blog kartları, kurumsal font ve renk standardına göre düzeltildi.
