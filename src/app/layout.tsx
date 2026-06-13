@@ -1,44 +1,46 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import type { Lang } from '@/lib/i18n'
-import { langs } from '@/lib/i18n'
+import './globals.css'
 
-interface LangLayoutProps {
-  children: React.ReactNode
-  params: Promise<{ lang: string }>
+export const metadata: Metadata = {
+  title: {
+    default: 'Bahri Budak',
+    template: '%s | Bahri Budak',
+  },
+  description: 'Tekstil yöneticisi, düşünür ve içerik üreticisi Bahri Budak\'ın kişisel blogu.',
+  metadataBase: new URL('https://bahribudak.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'tr_TR',
+    alternateLocale: 'en_US',
+    url: 'https://bahribudak.com',
+    siteName: 'Bahri Budak',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  verification: {
+    google: '8lEut5GT1mdu1_nJg92Bg69sD0OKhcz0od-WN8nB_RM',
+  },
 }
 
-export async function generateStaticParams() {
-  return langs.map(lang => ({ lang }))
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params
-  if (!langs.includes(lang as Lang)) return {}
-  return {
-    alternates: {
-      canonical: `https://bahribudak.com/${lang}`,
-      languages: {
-        'tr': 'https://bahribudak.com/tr',
-        'en': 'https://bahribudak.com/en',
-      }
-    }
-  }
-}
-
-export default async function LangLayout({ children, params }: LangLayoutProps) {
-  const { lang } = await params
-  if (!langs.includes(lang as Lang)) notFound()
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div lang={lang} className="min-h-screen flex flex-col">
-      <Header lang={lang as Lang} />
-      <main className="flex-1">
+    <html suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-poppins bg-white text-navy antialiased dark:bg-[#0b1530] dark:text-slate-100">
         {children}
-      </main>
-      <Footer lang={lang as Lang} />
-    </div>
+      </body>
+    </html>
   )
 }
