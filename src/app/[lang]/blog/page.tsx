@@ -45,7 +45,6 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         </div>
       ) : (
         <div className="text-center py-24 text-gray-text">
-          <div className="text-5xl mb-4">📭</div>
           <p className="font-medium text-lg">
             {lang === 'tr' ? 'Bu kategoride henüz yazı yok.' : 'No posts in this category yet.'}
           </p>

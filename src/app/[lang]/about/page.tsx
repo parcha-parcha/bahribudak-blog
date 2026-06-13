@@ -39,7 +39,6 @@ const stats = [
   { number: '35', unit: 'Yıl', label: 'Tekstil Deneyimi' },
   { number: '10+', unit: 'Şirket', label: 'Yönetici Rolü' },
   { number: 'GMY', unit: '', label: 'Genel Müdür Yrd.' },
-  { number: '49', unit: 'Dosya', label: 'Kurumsal Şablon Omurgası' },
 ]
 
 export default async function AboutPage({ params }: AboutProps) {

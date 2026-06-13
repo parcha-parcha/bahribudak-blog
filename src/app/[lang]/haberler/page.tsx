@@ -14,18 +14,18 @@ interface NewsItem {
 }
 
 const SOURCE_COLORS: Record<string, string> = {
-  'Hürriyet':     '#d32f2f',
-  'NTV':          '#1565c0',
-  'TRT Haber':    '#2e7d32',
-  'BBC Türkçe':   '#c62828',
-  'DW Türkçe':    '#0d47a1',
-  'Al Jazeera TR':'#004d40',
-  'BBC World':    '#b71c1c',
-  'Guardian':     '#1b5e20',
-  'DW English':   '#0a3069',
-  'Al Jazeera':   '#00695c',
-  'Reuters':      '#e65100',
-  'Euronews':     '#4a148c',
+  'Hürriyet': '#0B2343',
+  'NTV': '#0B2343',
+  'TRT Haber': '#0B2343',
+  'BBC Türkçe': '#0B2343',
+  'DW Türkçe': '#0B2343',
+  'Al Jazeera TR': '#0B2343',
+  'BBC World': '#0B2343',
+  'Guardian': '#0B2343',
+  'DW English': '#0B2343',
+  'Al Jazeera': '#0B2343',
+  'Reuters': '#0B2343',
+  'Euronews': '#0B2343',
 }
 
 type FilterType = 'all' | 'tr' | 'en' | 'textile'
@@ -66,9 +66,9 @@ export default function HaberlerPage() {
 
   const filters: { key: FilterType; label: string }[] = [
     { key: 'all',     label: 'Tümü' },
-    { key: 'textile', label: '🧵 Tekstil' },
+    { key: 'textile', label: 'Tekstil' },
     { key: 'tr',      label: '🇹🇷 Türkçe' },
-    { key: 'en',      label: '🌍 Dünya' },
+    { key: 'en',      label: 'Dünya' },
   ]
 
   return (
@@ -160,7 +160,7 @@ export default function HaberlerPage() {
                         ? { background: 'rgba(46,166,217,0.12)', color: '#b8860b' }
                         : { background: 'rgba(26,58,92,0.08)', color: '#6b7280' }
                   }>
-                  {item.category === 'textile' ? '🧵 TEKSTİL' : item.lang === 'tr' ? 'TR' : 'EN'}
+                  {item.category === 'textile' ? 'TEKSTİL' : item.lang === 'tr' ? 'TR' : 'EN'}
                 </span>
               </div>
 
@@ -190,7 +190,6 @@ export default function HaberlerPage() {
 
       {!loading && filtered.length === 0 && (
         <div className="text-center py-20 bb-news-muted">
-          <div className="text-4xl mb-4">📭</div>
           <p>Haber yüklenemedi. Lütfen daha sonra tekrar deneyin.</p>
         </div>
       )}

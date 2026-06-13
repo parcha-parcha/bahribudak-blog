@@ -60,12 +60,12 @@ function SimpleIcon({ name }: { name: SimpleIconName }) {
 
 
 const templateBlocks = [
+  { title: 'Tekstil Teknik Dokümanları', desc: 'Boyahane eğitim notları, proses formları, kontrol listeleri ve sunum dosyaları.' },
   { title: 'Kırtasiye Seti', desc: 'Kartvizit, antetli kağıt, devam kağıdı, zarf, cepli dosya ve bloknot.' },
   { title: 'Dijital Kimlik', desc: 'E-posta imzası, LinkedIn banner, sosyal medya post/story ve sunum kapakları.' },
   { title: 'Tanıtım & Pazarlama', desc: 'Katalog, broşür, sertifika, teşekkür belgesi, roll-up, poster ve promosyon yüzeyleri.' },
   { title: 'Kurumsal Çevre', desc: 'Tabela, yönlendirme, kapı isimliği, yaka kartı, araç giydirme ve iç mekân uygulamaları.' },
   { title: 'İş Kıyafetleri', desc: 'T-shirt, polo yaka, iş önlüğü, polar mont, yelek, şapka ve kask logo yerleşimi.' },
-  { title: 'Teknik Dokümanlar', desc: 'Boyahane eğitim notları, proses formları, kontrol listeleri ve sunum dosyaları.' },
 ]
 
 export default async function HomePage({ params }: HomeProps) {
@@ -156,23 +156,6 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-[#F3F6FA] text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="mb-10">
-            <p className="section-label">TEKSTİL VE DOKÜMAN SETLERİ</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Teknik bilgiye dayalı kaynak omurgası</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {templateBlocks.map((block) => (
-              <div key={block.title} className="rounded-2xl bg-white border border-gray-border p-6 shadow-sm">
-                <h3 className="font-bold text-navy mb-2">{block.title}</h3>
-                <p className="text-sm text-navy/82 leading-relaxed">{block.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="max-w-6xl mx-auto px-6 py-16 bg-white">
         <div className="flex items-center justify-between mb-10">
           <div>
@@ -189,10 +172,28 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
         ) : (
           <div className="text-center py-20 text-gray-text">
-            <div className="text-5xl mb-4">✍️</div>
             <p className="font-medium">Yakında ilk yazı gelecek.</p>
           </div>
         )}
+      </section>
+
+
+
+      <section className="bg-[#F3F6FA] text-navy">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="mb-10">
+            <p className="section-label">KULLANILABİLİR DOKÜMAN OMURGASI</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil teknik dokümanları ve kurumsal şablonlar</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {templateBlocks.map((block) => (
+              <div key={block.title} className="rounded-2xl bg-white border border-gray-border p-6 shadow-sm">
+                <h3 className="font-bold text-navy mb-2">{block.title}</h3>
+                <p className="text-sm text-navy/82 leading-relaxed">{block.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section style={{ background: 'linear-gradient(135deg, #061A33 0%, #0B2343 100%)' }} className="text-white">

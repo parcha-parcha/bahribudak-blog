@@ -21,10 +21,10 @@ type Collection = {
 const collections: Collection[] = [
   {
     no: '01',
-    title: 'Kurumsal Kimlik Seti',
-    desc: 'Logo, renk, tipografi, desen, ikon ve kullanım kurallarını tek standarda bağlayan temel kimlik dosyası.',
-    files: ['Logo sistemi', 'Renk paleti', 'Tipografi', 'Desen / doku', 'İkon seti'],
-    status: 'Sistem temeli',
+    title: 'Tekstil Teknik Dokümanları',
+    desc: 'Boyahane, kasar, enzim, yıkama, laboratuvar, proses reçetesi ve maliyet hesabı için teknik dosya yapısı.',
+    files: ['Eğitim notları', 'Proses formları', 'Kontrol listeleri', 'Teklif dosyaları', 'Hesap tabloları'],
+    status: 'Teknik kaynak',
   },
   {
     no: '02',
@@ -63,10 +63,10 @@ const collections: Collection[] = [
   },
   {
     no: '07',
-    title: 'Tekstil Teknik Dokümanları',
-    desc: 'Boyahane, kasar, enzim, yıkama, laboratuvar, proses reçetesi ve maliyet hesabı için teknik dosya yapısı.',
-    files: ['Eğitim notları', 'Proses formları', 'Kontrol listeleri', 'Teklif dosyaları', 'Hesap tabloları'],
-    status: 'Teknik kaynak',
+    title: 'Kurumsal Kimlik Seti',
+    desc: 'Logo, renk, tipografi, desen, ikon ve kullanım kurallarını tek standarda bağlayan temel kimlik dosyası.',
+    files: ['Logo sistemi', 'Renk paleti', 'Tipografi', 'Desen / doku', 'İkon seti'],
+    status: 'Sistem temeli',
   },
 ]
 
