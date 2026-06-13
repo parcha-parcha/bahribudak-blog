@@ -1,13 +1,15 @@
-# Revizyon 25 - Mobil Hero Kart Düzeltmesi
+# Revizyon 26 - Mobil Hero Sadeleştirme
 
-Bu paket ana sayfadaki mobil hero alanında görülen sıkışma ve kart taşması problemini düzeltir.
+Bu paket ana sayfadaki mobil hero alanında görülen 01 / 02 / 03 kart sıkışmasını tamamen kaldırmak için hazırlanmıştır.
 
 Yapılan düzeltmeler:
 
-- Mobilde 01/02/03 kartları gizlendi; masaüstünde korunur.
-- Mobil hero alanında logo ve “Tekstil Proses” etiketi sade ve okunur hale getirildi.
-- Su damlası görseli korunur.
-- Renkli emoji ikon eklenmedi.
-- Kurumsal renk ve font sistemi korunur.
+- Hero görselinin üzerindeki 01 / 02 / 03 kart grubu tamamen kaldırıldı.
+- Mobil ve masaüstünde daha sade logo + “Tekstil Proses” etiketi bırakıldı.
+- Su damlası görseli korundu.
+- Emoji veya renkli ikon kullanılmadı.
+- Ana sayfa ferah ve daha temiz hale getirildi.
 
-Commit mesajı: Mobil hero kart taşması düzeltildi
+Commit mesajı:
+
+Mobil hero kartları tamamen kaldırıldı
