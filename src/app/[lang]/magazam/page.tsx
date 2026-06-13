@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const tr = params.lang === 'tr'
@@ -73,8 +72,6 @@ const collections: Collection[] = [
 
 export default function MagazamPage({ params }: { params: { lang: string } }) {
   const lang = params.lang === 'en' ? 'en' : 'tr'
-  const withLang = (path: string) => `/${lang}${path}`
-
   return (
     <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
       <section className="bg-[#061A33] text-white bb-pattern">
@@ -112,19 +109,6 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="bg-white border-t border-gray-border">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
-          <div>
-            <p className="section-label">SONRAKİ ADIM</p>
-            <h2 className="text-3xl font-bold text-navy mb-4">Bu şablonlar ürün, indirme dosyası veya hizmet paketi haline getirilebilir.</h2>
-            <p className="text-navy/82 leading-relaxed max-w-2xl">
-              Bu bölüm ileride örnek görseller, indirme kartları, ürün açıklamaları ve hazır doküman paketleriyle genişletilebilir.
-            </p>
-          </div>
-          <Link href={withLang('/contact')} className="btn-primary">İletişime Geç →</Link>
         </div>
       </section>
     </main>
