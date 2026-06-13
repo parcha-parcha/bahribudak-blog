@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { ThemeProvider } from '@/app/providers'
 import type { Lang } from '@/lib/i18n'
 import { langs } from '@/lib/i18n'
 
@@ -34,14 +33,12 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   if (!langs.includes(lang as Lang)) notFound()
 
   return (
-    <ThemeProvider>
-      <div lang={lang} className="min-h-screen flex flex-col">
-        <Header lang={lang as Lang} />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer lang={lang as Lang} />
-      </div>
-    </ThemeProvider>
+    <div lang={lang} className="min-h-screen flex flex-col">
+      <Header lang={lang as Lang} />
+      <main className="flex-1">
+        {children}
+      </main>
+      <Footer lang={lang as Lang} />
+    </div>
   )
 }
