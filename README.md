@@ -1,18 +1,16 @@
-# Revizyon 21 - Ana Sayfa ve Hizmetler İçerik Netleştirme
+# Revizyon 22 - Lucia Esintili Ana Sayfa Uyarlaması
 
-Bu paket siteyi tekstil merkezli yapıya daha net taşımak için hazırlanmıştır.
+Bu paket, gönderilen Lucia Consults örneğinden uygun olan bölümleri Bahri Budak sitesine uyarlamak için hazırlanmıştır.
 
 Yapılanlar:
 
-- Ana sayfada öncelik tekstil teknik yayınlarına verildi.
-- Teknik yayınlar ve notlar bölümü üst sıraya alındı.
-- Hizmet alanları tekstil proses danışmanlığı, teknik eğitim ve doküman sistemi olarak netleştirildi.
-- Kullanılabilir doküman omurgası daha anlaşılır ve profesyonel dile çevrildi.
-- Hizmetler sayfası eski genel danışmanlık/tasarım dili yerine tekstil proses danışmanlığı yapısına göre yeniden düzenlendi.
-- Şablonlar sayfasında 01 numara Tekstil Teknik Dokümanları olarak korundu ve içerik önceliği tekstile verildi.
-- Renkli emoji ikonlar yerine sade numara/çizgi sistemi kullanıldı.
-- Felsefe tekrar eklenmedi.
+- Ana sayfa daha ferah ve açık zeminli hale getirildi.
+- Büyük başlık, geniş boşluk ve güçlü hero düzeni uygulandı.
+- Sağ tarafta fotoğraf yerine kurumsal logo + teknik kart kompozisyonu kullanıldı.
+- Renkler kurumsal sisteme bağlı kaldı: lacivert, açık zemin, gri ve vurgu mavi.
+- Renkli emoji ikonlar kullanılmadı; sade numara sistemi korundu.
+- Tekstil teknik yayınları ana sayfada önde tutuldu.
+- Danışmanlık, eğitim ve doküman sistemi ayrı bölümler halinde anlatıldı.
 
 Commit mesajı:
-
-Ana sayfa ve hizmetler tekstil odaklı netleştirildi
+Lucia tarzı ana sayfa uyarlaması

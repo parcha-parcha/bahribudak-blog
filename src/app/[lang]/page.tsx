@@ -2,163 +2,226 @@ import Link from 'next/link'
 import PostCard from '@/components/PostCard'
 import BrandLogo from '@/components/BrandLogo'
 import { getAllPosts } from '@/lib/posts'
-import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 
 interface HomeProps {
   params: Promise<{ lang: Lang }>
 }
 
-const serviceCards = [
+const focusAreas = [
   {
     no: '01',
-    title: 'Boyahane Proses Danışmanlığı',
-    text: 'Kasar, reaktif boyama, yıkama, reçete standardı, makine verimi ve proses kontrol adımlarının sahaya uygun hale getirilmesi.',
+    title: 'Boyahane proses danışmanlığı',
+    text: 'Kasar, reaktif boyama, yıkama, reçete standardı ve makine verimini sahadaki gerçek akışa göre düzenler.',
     href: '/hizmetler',
   },
   {
     no: '02',
-    title: 'Teknik Eğitim Notları',
-    text: 'Operatör, vardiya amiri, laboratuvar ve yönetim ekipleri için sade, ölçülebilir ve uygulanabilir eğitim içerikleri.',
+    title: 'Teknik eğitim notları',
+    text: 'Operatör, vardiya amiri, laboratuvar ve yönetim ekipleri için uygulanabilir, sade ve ölçülebilir eğitim içerikleri üretir.',
     href: '/blog?category=tekstil',
   },
   {
     no: '03',
-    title: 'Doküman ve Kontrol Sistemi',
-    text: 'Proses formları, kontrol listeleri, teknik raporlar, teklif dosyaları ve müşteri teslim dokümanları için standart yapı.',
+    title: 'Doküman ve kontrol sistemi',
+    text: 'Proses formları, kontrol listeleri, teknik raporlar, teklif dosyaları ve müşteri teslim dokümanlarını tek standarda bağlar.',
     href: '/magazam',
   },
 ]
 
+const processSteps = [
+  {
+    no: '01',
+    title: 'Mevcut süreci okuma',
+    text: 'Kasar, boya, yıkama, laboratuvar, kalite ve maliyet akışı birlikte değerlendirilir.',
+  },
+  {
+    no: '02',
+    title: 'Standart reçete ve kontrol dili',
+    text: 'Saha bilgisi; pH, sıcaklık, süre, kimyasal, tekrar işlem ve kontrol formlarına bağlanır.',
+  },
+  {
+    no: '03',
+    title: 'Eğitim ve uygulanabilir doküman',
+    text: 'Bilgi; operatör, laboratuvar ve yönetim ekiplerinin kullanacağı sade dosyalara dönüştürülür.',
+  },
+]
+
+const metricCards = [
+  { value: '35+', label: 'yıl saha deneyimi', text: 'Boyahane, terbiye ve fabrika yönetimi.' },
+  { value: '3', label: 'ana odak', text: 'Proses, eğitim ve teknik dokümantasyon.' },
+  { value: '01', label: 'öncelik', text: 'Tekstil teknik içerikleri ve uygulanabilir bilgi.' },
+]
+
 const documentBlocks = [
-  { no: '01', title: 'Tekstil Teknik Dokümanları', desc: 'Boyahane eğitim notları, proses formları, reçete kontrolleri, maliyet ve kalite tabloları.' },
-  { no: '02', title: 'Proses Kontrol Formları', desc: 'Kasar, boya, yıkama, laboratuvar, su, tuz, pH, haslık ve tekrar işlem takip formları.' },
-  { no: '03', title: 'Eğitim Dosyaları', desc: 'Operatör, vardiya, laboratuvar, kalite ve yönetim ekipleri için bölüm bazlı eğitim notları.' },
-  { no: '04', title: 'Teklif ve Sunum Dosyaları', desc: 'Makine, proses, proje, yatırım ve müşteri sunumu için okunabilir teknik dosya yapısı.' },
-  { no: '05', title: 'Kurumsal Evrak Şablonları', desc: 'Kartvizit, antetli kağıt, zarf, cepli dosya, bloknot ve müşteri teslim evrakları.' },
-  { no: '06', title: 'Dijital Yayın Şablonları', desc: 'LinkedIn, blog, e-posta imzası, sunum kapağı ve teknik not görsel standartları.' },
+  { no: '01', title: 'Tekstil teknik dokümanları', desc: 'Boyahane eğitim notları, proses formları, reçete kontrolleri, maliyet ve kalite tabloları.' },
+  { no: '02', title: 'Proses kontrol formları', desc: 'Kasar, boya, yıkama, laboratuvar, su, tuz, pH, haslık ve tekrar işlem takip formları.' },
+  { no: '03', title: 'Eğitim dosyaları', desc: 'Operatör, vardiya, laboratuvar, kalite ve yönetim ekipleri için bölüm bazlı eğitim notları.' },
+  { no: '04', title: 'Teklif ve sunum dosyaları', desc: 'Makine, proses, proje, yatırım ve müşteri sunumu için okunabilir teknik dosya yapısı.' },
 ]
 
 export default async function HomePage({ params }: HomeProps) {
   const { lang } = await params
-  const t = useTranslations(lang)
   const allPosts = getAllPosts(lang)
   const textilePosts = allPosts.filter(post => post.category === 'tekstil')
   const otherPosts = allPosts.filter(post => post.category !== 'tekstil')
-  const recentPosts = [...textilePosts, ...otherPosts].slice(0, 4)
+  const recentPosts = [...textilePosts, ...otherPosts].slice(0, 3)
   const withLang = (path: string) => `/${lang}${path}`
 
   return (
     <>
-      <section className="relative overflow-hidden text-white" style={{ background: '#061A33' }}>
-        <div className="absolute inset-0 pointer-events-none bb-pattern opacity-35" />
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-blue" />
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center relative z-10">
-          <div>
-            <p className="section-label text-white/70 mb-4">TEKSTİL PROSES DANIŞMANLIĞI</p>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.06] text-white max-w-3xl">
-              Boyahane deneyimini ölçülebilir teknik sisteme dönüştürüyorum.
+      <section className="relative overflow-hidden bg-[#F4F1EE] text-navy">
+        <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/12 blur-3xl" />
+        <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+          <div className="relative z-10">
+            <p className="section-label mb-5">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.98] tracking-[-0.055em] text-navy max-w-4xl">
+              Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
-            <p className="text-lg md:text-xl text-white/86 leading-relaxed mb-8 max-w-2xl">
-              Kasar, reaktif boyama, yıkama, laboratuvar, kalite kontrol, maliyet ve proses verimliliği için saha deneyimine dayalı danışmanlık, eğitim ve dokümantasyon yapısı.
+            <p className="mt-8 text-lg md:text-xl leading-relaxed text-navy/78 max-w-2xl">
+              Boyahane, terbiye, kalite kontrol ve teknik dokümantasyon alanlarında 35 yıllık saha deneyimine dayalı uygulanabilir çözümler.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-4">
               <Link href={withLang('/hizmetler')} className="btn-primary">Hizmetleri İncele →</Link>
-              <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center gap-2 border-2 border-white/35 text-white font-bold px-6 py-3 rounded-full hover:border-accent-blue hover:text-accent-blue transition-all">
-                Teknik Notları Gör
-              </Link>
+              <Link href={withLang('/blog?category=tekstil')} className="btn-outline">Teknik Notları Gör</Link>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="rounded-[28px] bg-white p-7 shadow-2xl border border-white/20">
-              <BrandLogo className="h-24 w-full text-navy" />
-            </div>
-            <div className="mt-5 grid grid-cols-3 gap-3">
-              {['Proses', 'Eğitim', 'Doküman'].map((item) => (
-                <div key={item} className="rounded-2xl bg-white/10 border border-white/18 p-4 text-sm font-bold text-white text-center">
-                  {item}
+          <div className="relative min-h-[430px] lg:min-h-[520px]">
+            <div className="absolute right-0 top-4 h-[330px] w-[82%] rotate-[-5deg] rounded-[36px] bg-[#DDE9FF]" />
+            <div className="absolute right-8 top-16 h-[360px] w-[78%] rotate-[3deg] rounded-[34px] bg-white shadow-2xl border border-white" />
+            <div className="absolute right-16 top-28 h-[260px] w-[72%] rounded-[30px] bg-[#061A33] overflow-hidden border border-navy/10">
+              <div className="absolute inset-0 bb-pattern opacity-35" />
+              <div className="relative p-7 h-full flex flex-col justify-between">
+                <div className="rounded-3xl bg-white p-5 shadow-xl">
+                  <BrandLogo className="h-20 w-full text-navy" />
                 </div>
-              ))}
+                <div className="grid grid-cols-3 gap-3 text-white">
+                  {['Boyahane', 'Terbiye', 'Kalite'].map((item, index) => (
+                    <div key={item} className="rounded-2xl border border-white/20 bg-white/10 p-3">
+                      <p className="text-xs text-white/55 mb-1">0{index + 1}</p>
+                      <p className="text-sm font-bold">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="absolute left-8 bottom-8 h-24 w-24 rounded-full bg-accent-blue flex items-center justify-center text-white text-5xl font-light">
+              BB
             </div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-16 bg-white">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
-          <div>
-            <p className="section-label">TEKNİK YAYINLAR VE NOTLAR</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Öne çıkan tekstil teknik içerikleri</h2>
-            <p className="mt-4 text-navy/78 max-w-2xl leading-relaxed">
-              Site girişinde öncelik tekstil içeriklerinde. Teknik notlar; sahada uygulanabilir bilgi, proses kontrolü ve işletme deneyimi üzerine kuruludur.
-            </p>
+      <section className="bg-white text-navy">
+        <div className="max-w-7xl mx-auto px-6 py-18 md:py-24 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div className="rounded-[34px] bg-[#061A33] text-white p-8 md:p-10 relative overflow-hidden">
+            <div className="absolute inset-0 bb-pattern opacity-30" />
+            <div className="relative">
+              <p className="section-label text-white/55 mb-5">SAHA DENEYİMİ</p>
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
+                Teori değil, üretim sahasında karşılığı olan bilgi.
+              </h2>
+              <p className="text-white/75 leading-relaxed">
+                Amaç; dağınık saha bilgisini reçete, kontrol formu, eğitim notu ve yönetilebilir teknik dosya sistemine dönüştürmektir.
+              </p>
+            </div>
           </div>
-          <Link href={withLang('/blog?category=tekstil')} className="btn-outline text-sm self-start md:self-auto">
-            Tüm Teknik Notlar →
-          </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {metricCards.map((card) => (
+              <div key={card.label} className="rounded-[28px] border border-gray-border bg-[#F3F6FA] p-6 min-h-[210px] flex flex-col justify-between">
+                <div className="text-5xl font-bold text-accent-blue tracking-[-0.04em]">{card.value}</div>
+                <div>
+                  <h3 className="font-bold text-navy mb-2">{card.label}</h3>
+                  <p className="text-sm text-navy/70 leading-relaxed">{card.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        {recentPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {recentPosts.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
-          </div>
-        ) : (
-          <div className="text-center py-20 text-gray-text">
-            <p className="font-medium">Yakında ilk teknik not yayınlanacak.</p>
-          </div>
-        )}
       </section>
 
-      <section className="bg-[#F3F6FA] text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="mb-10">
-            <p className="section-label">HİZMET ODAĞI</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç ana çalışma alanı</h2>
+      <section className="bg-[#F4F1EE] text-navy">
+        <div className="max-w-7xl mx-auto px-6 py-18 md:py-24">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div>
+              <p className="section-label">TEKNİK YAYINLAR VE NOTLAR</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] text-navy max-w-3xl">
+                Sahadan gelen tekstil teknik içerikleri.
+              </h2>
+            </div>
+            <Link href={withLang('/blog?category=tekstil')} className="btn-outline self-start md:self-auto">
+              Tüm Teknik Notlar →
+            </Link>
+          </div>
+          {recentPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {recentPosts.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
+            </div>
+          ) : (
+            <div className="text-center py-20 text-gray-text bg-white rounded-[28px] border border-gray-border">
+              <p className="font-medium">Yakında ilk teknik not yayınlanacak.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="bg-white text-navy">
+        <div className="max-w-7xl mx-auto px-6 py-18 md:py-24">
+          <div className="mb-12">
+            <p className="section-label">ÇALIŞMA ALANLARI</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] text-navy max-w-3xl">
+              Danışmanlık, eğitim ve teknik doküman aynı sistemde birleşir.
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {serviceCards.map((area) => (
-              <Link key={area.no} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-accent-blue/40 text-accent-blue font-black tracking-wider">
+            {focusAreas.map((area) => (
+              <Link key={area.no} href={withLang(area.href)} className="group rounded-[30px] bg-[#F3F6FA] border border-gray-border p-7 hover:border-accent-blue transition-all">
+                <div className="h-16 w-16 rounded-full bg-navy text-white flex items-center justify-center text-lg font-bold mb-8 group-hover:bg-accent-blue transition-colors">
                   {area.no}
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
-                <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
+                <h3 className="text-2xl font-bold text-navy mb-4 tracking-[-0.03em]">{area.title}</h3>
+                <p className="leading-relaxed text-navy/74">{area.text}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
-            <div>
-              <p className="section-label">KULLANILABİLİR DOKÜMAN OMURGASI</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">Teknik bilgiyi dosya standardına bağlayan yapı</h2>
-              <p className="text-navy/82 leading-relaxed mb-6">
-                Amaç; tekstil bilgisini dağınık notlardan çıkarıp eğitim, kontrol, teklif, rapor ve müşteri teslim dokümanı olarak aynı standartta yönetmektir.
-              </p>
-              <Link href={withLang('/magazam')} className="btn-primary inline-flex">Şablonları İncele →</Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {documentBlocks.slice(0, 4).map((block) => (
-                <div key={block.title} className="rounded-2xl bg-[#F3F6FA] border border-gray-border p-5">
-                  <p className="text-xs font-black text-accent-blue tracking-[0.18em] mb-2">{block.no}</p>
-                  <h3 className="font-bold text-navy mb-2">{block.title}</h3>
-                  <p className="text-sm text-navy/80 leading-relaxed">{block.desc}</p>
-                </div>
-              ))}
-            </div>
+      <section className="bg-[#F4F1EE] text-navy">
+        <div className="max-w-7xl mx-auto px-6 py-18 md:py-24 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+          <div>
+            <p className="section-label">DOKÜMAN SİSTEMİ</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] text-navy mb-6">
+              Kullanılabilir teknik dosya omurgası.
+            </h2>
+            <p className="text-navy/76 leading-relaxed mb-8">
+              Teknik bilgi; eğitim, kontrol, teklif, rapor ve müşteri teslim dokümanı olarak aynı standartta yönetilebilir hale gelir.
+            </p>
+            <Link href={withLang('/magazam')} className="btn-primary inline-flex">Şablonları İncele →</Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {documentBlocks.map((block) => (
+              <div key={block.title} className="rounded-[28px] bg-white border border-gray-border p-6 min-h-[190px]">
+                <p className="text-xs font-black text-accent-blue tracking-[0.24em] mb-4">{block.no}</p>
+                <h3 className="text-xl font-bold text-navy mb-3 tracking-[-0.02em]">{block.title}</h3>
+                <p className="text-sm text-navy/72 leading-relaxed">{block.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section style={{ background: 'linear-gradient(135deg, #061A33 0%, #0B2343 100%)' }} className="text-white">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+      <section className="bg-[#111111] text-white">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
           <div>
-            <p className="section-label text-white/60">İLETİŞİM</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Tekstil prosesleri ve teknik dokümanlar için görüşelim.</h2>
-            <p className="text-white/78 leading-relaxed max-w-2xl">Boyahane, kalite kontrol, eğitim notları veya doküman standardı ihtiyacınızı birlikte netleştirelim.</p>
+            <p className="section-label text-white/45">İLETİŞİM</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] mb-5 text-white">
+              Tekstil prosesleri için uygulanabilir bir sistem kuralım.
+            </h2>
+            <p className="text-white/70 leading-relaxed max-w-2xl">
+              Boyahane, kalite kontrol, eğitim notları veya teknik doküman standardı ihtiyacınızı birlikte netleştirelim.
+            </p>
           </div>
           <Link href={withLang('/contact')} className="btn-primary whitespace-nowrap">İletişime Geç →</Link>
         </div>
