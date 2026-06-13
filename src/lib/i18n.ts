@@ -9,18 +9,23 @@ export const ui = {
     'nav.home': 'Ana Sayfa',
     'nav.blog': 'Blog',
     'nav.about': 'Hakkımda',
+    'nav.services': 'Hizmetler',
+    'nav.news': 'Haberler',
+    'nav.shop': 'Şablonlar',
     'nav.contact': 'İletişim',
 
     // Categories
     'cat.kisisel-gelisim': 'Kişisel Gelişim',
     'cat.tekstil': 'Tekstil',
     'cat.turkiye-gundemi': 'Türkiye Gündemi',
+    'cat.dunya': 'Dünya',
     'cat.all': 'Tümü',
 
     // Category descriptions
-    'cat.kisisel-gelisim.desc': 'Büyüme, alışkanlıklar ve zihinsel güç üzerine düşünceler.',
+    'cat.kisisel-gelisim.desc': 'Kişisel gelişim, alışkanlıklar ve üretkenlik üzerine yazılar.',
     'cat.tekstil.desc': 'Boyahane, proses, kalite, eğitim notu ve saha uygulamaları.',
-    'cat.turkiye-gundemi.desc': 'Ekonomi, politika ve toplumsal meseleler.',
+    'cat.turkiye-gundemi.desc': 'Türkiye gündemi, ekonomi ve sektör etkileri.',
+    'cat.dunya.desc': 'Dünya gündemi ve sektörel gelişmeler.',
 
     // Blog
     'blog.readMore': 'Devamını Oku',
@@ -34,13 +39,13 @@ export const ui = {
     // Hero
     'hero.greeting': 'Merhaba, ben',
     'hero.name': 'Bahri Budak',
-    'hero.tagline': 'Tekstil yöneticisi. Saha deneyimiyle içerik üreticisi.',
-    'hero.description': 'Fabrika yönetimi ve tekstil saha deneyimimi; sektör analizi, kişisel gelişim ve Türkiye gündemiyle birleştiriyorum. Her yazı gerçek bir ihtiyaçtan doğar.',
-    'hero.cta': 'Yazıları Keşfet',
+    'hero.tagline': 'Tekstil proses danışmanlığı, eğitim ve teknik dokümantasyon.',
+    'hero.description': '35 yıllık tekstil saha deneyimini; boyahane, terbiye, proses kontrol, eğitim notları ve teknik doküman sistemiyle paylaşıyorum.',
+    'hero.cta': 'Teknik Yazıları Keşfet',
 
     // About snippet
     'about.title': 'Hakkımda',
-    'about.text': 'Tekstil fabrikası yöneticisiyim. İşimin içinde büyüdüm, her vardiyada hem üretim hem insan yönettim. Bu blog; saha deneyimini, kişisel gelişimi ve sektörel bakışı birleştirdiğim yerdir.',
+    'about.text': 'Tekstil sektöründe 35 yıllık üretim ve yönetim deneyimine sahibim. Boyahane, terbiye, proses kontrol ve fabrika yönetimi alanındaki saha birikimimi teknik eğitim ve uygulanabilir doküman sistemine dönüştürüyorum.',
 
     // Footer
     'footer.rights': 'Tüm hakları saklıdır.',
@@ -51,16 +56,21 @@ export const ui = {
     'nav.home': 'Home',
     'nav.blog': 'Blog',
     'nav.about': 'About',
+    'nav.services': 'Services',
+    'nav.news': 'News',
+    'nav.shop': 'Templates',
     'nav.contact': 'Contact',
 
     'cat.kisisel-gelisim': 'Personal Growth',
     'cat.tekstil': 'Textile',
-    'cat.turkiye-gundemi': 'Turkey Today',
+    'cat.turkiye-gundemi': 'Turkey',
+    'cat.dunya': 'World',
     'cat.all': 'All',
 
-    'cat.kisisel-gelisim.desc': 'Thoughts on growth, habits, and mental strength.',
-    'cat.tekstil.desc': 'Industry analysis, production and sustainability.',
-    'cat.turkiye-gundemi.desc': 'Economy, politics and social issues.',
+    'cat.kisisel-gelisim.desc': 'Personal development, habits and productivity.',
+    'cat.tekstil.desc': 'Dyehouse, process, quality, training notes and field practice.',
+    'cat.turkiye-gundemi.desc': 'Turkey agenda, economy and sector impact.',
+    'cat.dunya.desc': 'World agenda and sector developments.',
 
     'blog.readMore': 'Read More',
     'blog.readingTime': 'min read',
@@ -72,12 +82,12 @@ export const ui = {
 
     'hero.greeting': 'Hello, I am',
     'hero.name': 'Bahri Budak',
-    'hero.tagline': 'Textile manager. Field-experience content creator.',
-    'hero.description': 'I combine factory management and textile field experience with industry analysis, personal growth and Turkey-focused commentary. Every post starts from a real need.',
-    'hero.cta': 'Explore Posts',
+    'hero.tagline': 'Textile process consulting, training and technical documentation.',
+    'hero.description': 'I share 35 years of textile field experience through dyehouse, finishing, process control, training notes and technical documentation systems.',
+    'hero.cta': 'Explore Technical Posts',
 
     'about.title': 'About Me',
-    'about.text': 'I am a textile factory manager. I grew up inside the industry, managing both production and people through every shift. This blog is where field experience meets personal development and sector-level thinking.',
+    'about.text': 'I have 35 years of production and management experience in the textile sector. I turn field experience in dyehouse, finishing, process control and factory management into practical training and documentation systems.',
 
     'footer.rights': 'All rights reserved.',
     'footer.linkedin': 'LinkedIn',
@@ -85,14 +95,26 @@ export const ui = {
   },
 } as const
 
-export function useTranslations(lang: Lang) {
-  return function t(key: keyof typeof ui[typeof defaultLang]): string {
-    return ui[lang][key] || ui[defaultLang][key] || key
+export function isLang(value: unknown): value is Lang {
+  return value === 'tr' || value === 'en'
+}
+
+export function normalizeLang(value: unknown): Lang {
+  return isLang(value) ? value : defaultLang
+}
+
+export function useTranslations(lang: Lang | string | undefined) {
+  const safeLang = normalizeLang(lang)
+
+  return function t(key: keyof typeof ui[typeof defaultLang] | string): string {
+    const dict = ui[safeLang] ?? ui[defaultLang]
+    const fallback = ui[defaultLang]
+    return (dict as Record<string, string>)[key] || (fallback as Record<string, string>)[key] || String(key)
   }
 }
 
 export const categories = [
-  { slug: 'tekstil',         color: '#0B2343' },
+  { slug: 'tekstil', color: '#0B2343' },
   { slug: 'kisisel-gelisim', color: '#5D5F63' },
   { slug: 'turkiye-gundemi', color: '#5D5F63' },
 ] as const
