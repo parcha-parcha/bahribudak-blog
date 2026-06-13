@@ -90,6 +90,24 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
+      <section className="bg-[#F3F6FA] text-navy">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="mb-10">
+            <p className="section-label">ANA YAPI</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç net alan</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {focusAreas.map((area) => (
+              <Link key={area.title} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
+                <div className="mb-5"><NumberIcon value={area.code} /></div>
+                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
+                <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-6xl mx-auto px-6 py-16 bg-white">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
           <div>
@@ -110,24 +128,6 @@ export default async function HomePage({ params }: HomeProps) {
             <p className="font-medium">Yakında ilk yazı gelecek.</p>
           </div>
         )}
-      </section>
-
-      <section className="bg-[#F3F6FA] text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="mb-10">
-            <p className="section-label">ANA YAPI</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç net alan</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {focusAreas.map((area) => (
-              <Link key={area.title} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
-                <div className="mb-5"><NumberIcon value={area.code} /></div>
-                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
-                <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section className="bg-white text-navy">

@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.png',
+  },
   verification: {
     google: '8lEut5GT1mdu1_nJg92Bg69sD0OKhcz0od-WN8nB_RM',
   },

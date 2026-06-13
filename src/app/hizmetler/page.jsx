@@ -5,7 +5,7 @@ import { useState } from "react";
 const services = [
   {
     id: 1,
-    icon: "🏭",
+    icon: "01",
     title: "Danışmanlık",
     subtitle: "Fabrika Yönetimi & Lean Üretim",
     description:
@@ -17,7 +17,7 @@ const services = [
   },
   {
     id: 2,
-    icon: "✍️",
+    icon: "02",
     title: "İçerik Üretimi & Sosyal Medya",
     subtitle: "LinkedIn & Instagram",
     description:
@@ -29,7 +29,7 @@ const services = [
   },
   {
     id: 3,
-    icon: "🎨",
+    icon: "02",
     title: "Adobe Tasarım Hizmetleri",
     subtitle: "Profesyonel Grafik Tasarım",
     description:
@@ -50,7 +50,7 @@ const services = [
   },
   {
     id: 4,
-    icon: "📝",
+    icon: "03",
     title: "Blog Yazarlığı",
     subtitle: "Tekstil · Kişisel Gelişim · Türkiye Gündemi · Kurumsal",
     description:
@@ -68,10 +68,10 @@ const services = [
 ];
 
 const reasons = [
-  { icon: "🏭", text: "Yılların fabrika yönetimi deneyimi" },
-  { icon: "📚", text: "Kişisel gelişim ve saha deneyimi birikimi" },
-  { icon: "🇹🇷", text: "Türkiye tekstil sektörüne hakimiyet" },
-  { icon: "🎯", text: "Sonuç odaklı, pratik çözümler" },
+  { icon: "01", text: "Yılların fabrika yönetimi deneyimi" },
+  { icon: "02", text: "Kişisel gelişim ve saha deneyimi birikimi" },
+  { icon: "03", text: "Türkiye tekstil sektörüne hakimiyet" },
+  { icon: "04", text: "Sonuç odaklı, pratik çözümler" },
 ];
 
 export default function HizmetlerPage() {
