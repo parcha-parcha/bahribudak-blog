@@ -67,7 +67,7 @@ export default function HaberlerPage() {
   const filters: { key: FilterType; label: string }[] = [
     { key: 'all',     label: 'Tümü' },
     { key: 'textile', label: 'Tekstil' },
-    { key: 'tr',      label: '🇹🇷 Türkçe' },
+    { key: 'tr',      label: 'Türkçe' },
     { key: 'en',      label: 'Dünya' },
   ]
 
@@ -78,7 +78,7 @@ export default function HaberlerPage() {
       <div className="mb-10">
         <p className="section-label mb-2">Dünya & Türkiye & Tekstil</p>
         <h1 className="text-4xl font-bold text-navy mb-3 bb-news-title">
-          Günün <span className="text-yellow-bb">Haberleri</span>
+          Günün <span className="text-accent-blue">Haberleri</span>
         </h1>
         <div className="w-12 h-1 bg-yellow-bb mb-4" />
         {updatedAt && (
@@ -96,14 +96,14 @@ export default function HaberlerPage() {
             onClick={() => setFilter(f.key)}
             className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
             style={filter === f.key
-              ? { background: '#12365E', color: '#2EA6D9', border: '1px solid #2EA6D9' }
-              : { background: 'transparent', color: '#6b7280', border: '1px solid #e5e7eb' }
+              ? { background: '#0B2343', color: '#FFFFFF', border: '1px solid #0B2343' }
+              : { background: '#FFFFFF', color: '#5D5F63', border: '1px solid #D8DDE5' }
             }
           >
             {f.label}
             {f.key === 'textile' && textileCount > 0 && (
               <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full"
-                style={{ background: 'rgba(46,166,217,0.18)', color: '#b8860b' }}>
+                style={{ background: '#EAF6FC', color: '#0B2343' }}>
                 {textileCount}
               </span>
             )}
@@ -136,7 +136,7 @@ export default function HaberlerPage() {
               className="bb-news-card group rounded-xl border p-5 hover:shadow-card transition-all block"
               style={{
                 textDecoration: 'none',
-                borderColor: item.category === 'textile' ? 'rgba(245,197,24,0.35)' : '#e5e7eb',
+                borderColor: item.category === 'textile' ? '#2EA6D9' : '#D8DDE5',
                 background: '#ffffff',
               }}
             >
@@ -148,17 +148,17 @@ export default function HaberlerPage() {
                 />
                 <span
                   className="text-[11px] font-bold tracking-wide uppercase"
-                  style={{ color: item.category === 'textile' ? '#b8860b' : (SOURCE_COLORS[item.source] || '#6b7280') }}
+                  style={{ color: item.category === 'textile' ? '#0B2343' : (SOURCE_COLORS[item.source] || '#5D5F63') }}
                 >
                   {item.source}
                 </span>
                 <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded"
                   style={
                     item.category === 'textile'
-                      ? { background: 'rgba(46,166,217,0.18)', color: '#b8860b' }
+                      ? { background: '#EAF6FC', color: '#0B2343' }
                       : item.lang === 'tr'
-                        ? { background: 'rgba(46,166,217,0.12)', color: '#b8860b' }
-                        : { background: 'rgba(26,58,92,0.08)', color: '#6b7280' }
+                        ? { background: '#F3F6FA', color: '#0B2343' }
+                        : { background: '#F3F6FA', color: '#5D5F63' }
                   }>
                   {item.category === 'textile' ? 'TEKSTİL' : item.lang === 'tr' ? 'TR' : 'EN'}
                 </span>
@@ -181,7 +181,7 @@ export default function HaberlerPage() {
                 {item.publishedAt ? (
                   <span className="bb-news-date text-[10px]">{formatDate(item.publishedAt)}</span>
                 ) : <span />}
-                <span className="text-yellow-bb text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span className="text-accent-blue text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </div>
             </a>
           ))}

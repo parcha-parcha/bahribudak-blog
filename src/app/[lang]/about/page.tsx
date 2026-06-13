@@ -163,7 +163,7 @@ export default async function AboutPage({ params }: AboutProps) {
         <div className="flex flex-wrap gap-2">
           {skills.map((s) => (
             <span key={s} className="flex items-center gap-2 bg-white border border-gray-border text-navy text-sm px-4 py-2 rounded-full">
-              <span className="text-yellow-bb text-xs">✦</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue inline-block" />
               {s}
             </span>
           ))}
@@ -177,14 +177,14 @@ export default async function AboutPage({ params }: AboutProps) {
           Blog & İçerik
         </h2>
         <p className="text-navy/75 text-sm mb-6">
-          İçerik omurgası tekstil merkezli ilerliyor.
+          İçerik alanı tekstil teknik bilgi, eğitim notları ve sektör deneyimi üzerine ilerliyor.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {pillars.map((p) => (
             <Link key={p.label} href={`/${lang}/blog`}
               className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border bg-white hover:border-navy hover:shadow-card transition-all group">
               <span className="w-10 h-10 mb-3 rounded-full border border-navy/20 text-navy flex items-center justify-center text-xs font-bold">{p.mark}</span>
-              <span className="font-bold text-navy text-sm group-hover:text-yellow-bb transition-colors">{p.label}</span>
+              <span className="font-bold text-navy text-sm group-hover:text-accent-blue transition-colors">{p.label}</span>
               <span className="text-xs text-navy/85 mt-1 leading-snug">{p.desc}</span>
             </Link>
           ))}

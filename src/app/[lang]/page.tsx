@@ -2,75 +2,50 @@ import Link from 'next/link'
 import PostCard from '@/components/PostCard'
 import BrandLogo from '@/components/BrandLogo'
 import { getAllPosts } from '@/lib/posts'
-import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 
 interface HomeProps {
   params: Promise<{ lang: Lang }>
 }
 
-const mainAreas = [
+const focusAreas = [
   {
-    icon: 'process',
+    code: '01',
     title: 'Tekstil Proses Danışmanlığı',
-    text: 'Boyahane, kasar, enzim, yıkama, reaktif boyama, proses kontrol ve maliyet/verimlilik alanlarında saha temelli destek.',
+    text: 'Boyahane, kasar, enzim, yıkama, reaktif boyama, laboratuvar ve proses kontrol alanlarında saha temelli destek.',
     href: '/hizmetler',
   },
   {
-    icon: 'education',
-    title: 'Tekstil Eğitim Notları',
-    text: 'Kasar, boyama, yıkama, laboratuvar, reçete hesapları ve işletme kontrolleri için uygulanabilir teknik kaynaklar.',
+    code: '02',
+    title: 'Teknik Eğitim Notları',
+    text: 'Üretim ekipleri için uygulanabilir eğitim notları, proses açıklamaları ve kontrol mantığı.',
     href: '/blog?category=tekstil',
   },
   {
-    icon: 'document',
-    title: 'Teknik Doküman ve Şablonlar',
-    text: 'Teklif, sunum, kontrol listesi, eğitim dosyası ve kurumsal evrakları aynı standartta hazırlayan doküman sistemi.',
+    code: '03',
+    title: 'Teknik Doküman Sistemi',
+    text: 'Proses formları, kontrol listeleri, teklif dosyaları, hesap tabloları ve sunum şablonları.',
     href: '/magazam',
   },
 ]
 
-type SimpleIconName = 'process' | 'education' | 'document'
+const documentBlocks = [
+  { title: 'Tekstil Teknik Dokümanları', desc: 'Boyahane eğitim notları, proses formları, kontrol listeleri ve hesap tabloları.' },
+  { title: 'Eğitim Dosyaları', desc: 'Kasar, boyama, yıkama, laboratuvar ve kalite kontrol için uygulanabilir eğitim içerikleri.' },
+  { title: 'Proses Kontrol Formları', desc: 'Saha takibi, reçete kontrolü, analiz ve vardiya yönetimi için standart formlar.' },
+  { title: 'Kurumsal Şablonlar', desc: 'Teklif, rapor, sunum, antetli evrak ve müşteri teslim dosyaları için standart yapı.' },
+]
 
-function SimpleIcon({ name }: { name: SimpleIconName }) {
-  if (name === 'process') {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 22c5-10 15 0 20-10" />
-        <path d="M6 12c5 10 15 0 20 10" />
-        <path d="M8 6v20M24 6v20" />
-      </svg>
-    )
-  }
-  if (name === 'education') {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M7 7h12a4 4 0 0 1 4 4v14H11a4 4 0 0 0-4 4V7Z" />
-        <path d="M11 12h8M11 17h8M11 22h5" />
-      </svg>
-    )
-  }
+function NumberIcon({ value }: { value: string }) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 32 32" className="h-9 w-9 text-navy" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 5h10l5 5v17H9V5Z" />
-      <path d="M19 5v6h5M13 16h8M13 21h8" />
-    </svg>
+    <span className="bb-simple-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gray-border bg-gray-soft text-sm font-black text-navy">
+      {value}
+    </span>
   )
 }
 
-
-const templateBlocks = [
-  { title: 'Tekstil Teknik Dokümanları', desc: 'Boyahane eğitim notları, proses formları, kontrol listeleri ve sunum dosyaları.' },
-  { title: 'Kırtasiye Seti', desc: 'Kartvizit, antetli kağıt, devam kağıdı, zarf, cepli dosya ve bloknot.' },
-  { title: 'Dijital Kimlik', desc: 'E-posta imzası, LinkedIn banner, sosyal medya post/story ve sunum kapakları.' },
-  { title: 'Tanıtım & Pazarlama', desc: 'Katalog, broşür, sertifika, teşekkür belgesi, roll-up, poster ve promosyon yüzeyleri.' },
-  { title: 'Kurumsal Çevre', desc: 'Tabela, yönlendirme, kapı isimliği, yaka kartı, araç giydirme ve iç mekân uygulamaları.' },
-  { title: 'İş Kıyafetleri', desc: 'T-shirt, polo yaka, iş önlüğü, polar mont, yelek, şapka ve kask logo yerleşimi.' },
-]
-
 export default async function HomePage({ params }: HomeProps) {
   const { lang } = await params
-  const t = useTranslations(lang)
   const allPosts = getAllPosts(lang)
   const textilePosts = allPosts.filter(post => post.category === 'tekstil')
   const otherPosts = allPosts.filter(post => post.category !== 'tekstil')
@@ -80,22 +55,22 @@ export default async function HomePage({ params }: HomeProps) {
   return (
     <>
       <section className="relative overflow-hidden text-white" style={{ background: '#061A33' }}>
-        <div className="absolute inset-0 pointer-events-none bb-pattern opacity-45" />
+        <div className="absolute inset-0 pointer-events-none bb-pattern opacity-35" />
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-blue" />
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center relative z-10">
           <div>
-            <p className="section-label text-white/70 mb-4">BAHRİ BUDAK · TEKSTİL · EĞİTİM · DANIŞMANLIK</p>
+            <p className="section-label text-white/72 mb-4">BAHRİ BUDAK · TEKSTİL PROSES · EĞİTİM · DANIŞMANLIK</p>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.06] text-white max-w-3xl">
-              Tekstil proses danışmanlığı ve teknik eğitim sistemi
+              Tekstil bilgisini uygulanabilir sisteme dönüştüren yapı
             </h1>
             <p className="text-lg md:text-xl text-white/86 leading-relaxed mb-8 max-w-2xl">
-              Boyahane, terbiye, kasar, reaktif boyama, yıkama, laboratuvar ve proses kontrol deneyimini;
-              uygulanabilir teknik eğitim, danışmanlık ve doküman sistemine dönüştürüyorum.
+              35 yıllık boyahane, terbiye ve fabrika yönetimi deneyimini; proses danışmanlığı,
+              teknik eğitim notları ve standart doküman sistemiyle paylaşıyorum.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href={withLang('/hizmetler')} className="btn-primary">Hizmetleri İncele →</Link>
-              <Link href={withLang('/magazam')} className="inline-flex items-center gap-2 border-2 border-white/35 text-white font-bold px-6 py-3 rounded-full hover:border-accent-blue hover:text-accent-blue transition-all">
-                Şablonları Gör
+              <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center gap-2 border-2 border-white/35 text-white font-bold px-6 py-3 rounded-full hover:border-accent-blue hover:text-accent-blue transition-all">
+                Teknik Yazıları Gör
               </Link>
             </div>
           </div>
@@ -115,55 +90,15 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-[#F3F6FA] text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="mb-10">
-            <p className="section-label">ANA YAPI</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç net alan</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {mainAreas.map((area) => (
-              <Link key={area.title} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
-                <div className="mb-5"><SimpleIcon name={area.icon as SimpleIconName} /></div>
-                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
-                <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white text-navy">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
-            <div>
-              <p className="section-label">KURUMSAL SİSTEM</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">Teknik bilgi ve dokümanlar tek sistemde</h2>
-              <p className="text-navy/82 leading-relaxed mb-6">
-                Tekstil danışmanlığı, eğitim notları, proses formları, kontrol listeleri ve kurumsal dokümanlar aynı sade kimlik dili altında toplandı.
-              </p>
-              <Link href={withLang('/magazam')} className="btn-primary inline-flex">Doküman sistemini incele →</Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {templateBlocks.slice(0, 4).map((block) => (
-                <div key={block.title} className="rounded-2xl bg-[#F3F6FA] border border-gray-border p-5">
-                  <h3 className="font-bold text-navy mb-2">{block.title}</h3>
-                  <p className="text-sm text-navy/80 leading-relaxed">{block.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="max-w-6xl mx-auto px-6 py-16 bg-white">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
           <div>
-            <p className="section-label">{t('blog.latestPosts')}</p>
-            <h2 className="text-3xl font-bold text-navy">Öne çıkan tekstil teknik notları</h2>
+            <p className="section-label">TEKNİK YAYINLAR VE NOTLAR</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Öne çıkan tekstil teknik notları</h2>
+            <p className="text-navy/75 mt-3 max-w-2xl">Boyahane, reaktif boyama, laboratuvar, kalite kontrol ve proses yönetimi üzerine saha temelli yazılar.</p>
           </div>
-          <Link href={withLang('/blog')} className="btn-outline text-sm">
-            {lang === 'tr' ? 'Tümünü Gör' : 'View All'}
+          <Link href={withLang('/blog?category=tekstil')} className="btn-outline text-sm self-start md:self-auto">
+            Tüm Tekstil Yazıları
           </Link>
         </div>
         {recentPosts.length > 0 ? (
@@ -177,21 +112,44 @@ export default async function HomePage({ params }: HomeProps) {
         )}
       </section>
 
-
-
       <section className="bg-[#F3F6FA] text-navy">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="mb-10">
-            <p className="section-label">KULLANILABİLİR DOKÜMAN OMURGASI</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil teknik dokümanları ve kurumsal şablonlar</h2>
+            <p className="section-label">ANA YAPI</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">Tekstil merkezli üç net alan</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {templateBlocks.map((block) => (
-              <div key={block.title} className="rounded-2xl bg-white border border-gray-border p-6 shadow-sm">
-                <h3 className="font-bold text-navy mb-2">{block.title}</h3>
-                <p className="text-sm text-navy/82 leading-relaxed">{block.desc}</p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {focusAreas.map((area) => (
+              <Link key={area.title} href={withLang(area.href)} className="group rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card hover:border-accent-blue transition-all">
+                <div className="mb-5"><NumberIcon value={area.code} /></div>
+                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-accent-blue transition-colors">{area.title}</h3>
+                <p className="text-sm leading-relaxed text-navy/84">{area.text}</p>
+              </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white text-navy">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
+            <div>
+              <p className="section-label">KULLANILABİLİR DOKÜMAN OMURGASI</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">Teknik bilgi aynı standartta toplanır</h2>
+              <p className="text-navy/82 leading-relaxed mb-6">
+                Eğitim notları, proses formları, kontrol listeleri ve kurumsal şablonlar aynı sade kimlik diliyle hazırlanır.
+              </p>
+              <Link href={withLang('/magazam')} className="btn-primary inline-flex">Doküman sistemini incele →</Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {documentBlocks.map((block, index) => (
+                <div key={block.title} className="rounded-2xl bg-[#F3F6FA] border border-gray-border p-5">
+                  <div className="text-xs font-black text-accent-blue tracking-[.16em] mb-3">{String(index + 1).padStart(2, '0')}</div>
+                  <h3 className="font-bold text-navy mb-2">{block.title}</h3>
+                  <p className="text-sm text-navy/80 leading-relaxed">{block.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
