@@ -1,84 +1,73 @@
-import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
 
-interface HizmetlerProps {
-  params: Promise<{ lang: Lang }>
+type HizmetlerProps = {
+  params: { lang: string }
 }
 
 const services = [
   {
-    number: '01',
-    title: 'Tekstil Danışmanlığı',
-    subtitle: 'Boyahane · Terbiye · Apre · Fabrika yönetimi',
-    desc: 'Saha tecrübesine dayalı proses kontrolü, kapasite kullanımı, vardiya düzeni, maliyet analizi ve verimlilik iyileştirme çalışmaları.',
-    items: ['Boyahane proses akışı ve reçete disiplini', 'Kasar, boyama, yıkama ve apre kontrol noktaları', 'Enerji, su, kimyasal ve işçilik verimliliği', 'Hata, tekrar işlem ve fire analizi'],
+    no: '01',
+    title: 'Boyahane Proses Danışmanlığı',
+    subtitle: 'Kasar · Reaktif boyama · Yıkama · Proses kontrol',
+    description: 'Üretimde tekrar işleme, renk farkı, proses süresi, kimyasal kullanım ve kalite sapmalarını azaltmaya yönelik saha temelli danışmanlık yapısı.',
+    details: ['Proses akış kontrolü', 'Reçete ve zaman standardı', 'Hata nedeni analizi', 'Maliyet ve verim takibi'],
   },
   {
-    number: '02',
-    title: 'Eğitim Notları ve Teknik İçerik',
-    subtitle: 'Uygulamalı, okunabilir, sahaya indirgenmiş bilgi',
-    desc: 'Tekstil personeli, vardiya amiri, proses sorumlusu ve yönetici adayları için teknik eğitim notları ve prosedür içerikleri hazırlanır.',
-    items: ['Pamuk, polyester, karışım kumaş prosesleri', 'Kasar, enzim, reaktif boya, dispers boya ve yıkama notları', 'Laboratuvar analizleri ve kabul kriterleri', 'Şemalı proses, dozaj ve zaman-sıcaklık anlatımları'],
+    no: '02',
+    title: 'Tekstil Teknik Eğitimleri',
+    subtitle: 'Operatör · Vardiya · Laboratuvar · Yönetim',
+    description: 'Boyahane ve terbiye işletmelerinde çalışan ekipler için sade, ölçülebilir ve uygulanabilir eğitim notları hazırlanır.',
+    details: ['Kasar ve ön terbiye', 'Reaktif boyama', 'Yıkama ve haslık', 'Laboratuvar kontrolleri'],
   },
   {
-    number: '03',
-    title: 'Kurumsal Dokümantasyon',
-    subtitle: 'Form, talimat, prosedür ve yönetim dosyası',
-    desc: 'Sizin verdiğiniz şablon mantığına bağlı kalarak kurumsal doküman yapısı oluşturulur. Dosyalar sadece görsel değil, işletmede kullanılabilir formatta düşünülür.',
-    items: ['Teknik rapor ve eğitim dosyası düzeni', 'Kontrol listesi, form ve takip çizelgesi', 'Makine teklif / şartname / kıyaslama dosyaları', 'Yönetim sunumu ve müşteri teslim dokümanı'],
+    no: '03',
+    title: 'Laboratuvar ve Kalite Kontrol Sistemi',
+    subtitle: 'pH · Sertlik · Tuz · Renk · Haslık',
+    description: 'Parti kabul, proses kontrol, son kontrol ve tekrar işlem kararlarının ölçülebilir hale getirilmesi için kontrol sistemi kurulur.',
+    details: ['Test planı', 'Kabul kriterleri', 'Kontrol formları', 'Raporlama standardı'],
   },
   {
-    number: '04',
-    title: 'Kurumsal Kimlik ve Şablon Sistemi',
-    subtitle: 'Logo · renk · tipografi · kırtasiye · dijital kimlik',
-    desc: 'Kurumsal kimlik dosyalarındaki logo, renk, tipografi, desen, ikon, kırtasiye, dijital kimlik ve tanıtım materyalleri bütünlüklü bir sisteme bağlanır.',
-    items: ['Logo kullanım sistemi ve kurumsal renk standardı', 'Antetli kağıt, kartvizit, zarf ve dosya şablonları', 'LinkedIn, e-posta imzası, sunum ve sosyal medya şablonları', 'Katalog, broşür, sertifika, roll-up ve promosyon yüzeyleri'],
+    no: '04',
+    title: 'Teknik Dokümantasyon Hazırlama',
+    subtitle: 'Form · Liste · Rapor · Eğitim dosyası',
+    description: 'Sahada kullanılan teknik bilgi, okunabilir ve sürdürülebilir doküman sistemine dönüştürülür.',
+    details: ['Proses formu', 'Kontrol listesi', 'Teknik rapor', 'Müşteri teslim dosyası'],
   },
   {
-    number: '05',
-    title: 'İçerik ve Yayın Sistemi',
-    subtitle: 'Blog · LinkedIn · teknik yayın · haber yorumu',
-    desc: 'Tekstil bilgisi, sektör gündemi ve kişisel gelişim içerikleri daha düzenli bir yayın yapısına alınır. Yayın akışı teknik bilgi, saha deneyimi ve uygulanabilir içerik üzerine kurulur.',
-    items: ['Teknik blog yazısı planı', 'LinkedIn gönderi serileri', 'Sektör haberi çeviri ve yorumlama', 'Kısa not, görsel ve eğitim içerik paketleri'],
+    no: '05',
+    title: 'Üretim Verimliliği ve Maliyet Analizi',
+    subtitle: 'Enerji · Su · Kimyasal · Süre · Fire',
+    description: 'İşletme verileri üzerinden fire, tekrar işlem, enerji, su, kimyasal ve zaman kayıpları görünür hale getirilir.',
+    details: ['Fire analizi', 'Tekrar işlem maliyeti', 'Makine verimi', 'Kapasite değerlendirme'],
   },
   {
-    number: '06',
-    title: 'Dijital Yetenek ve Dosya Tasarımı',
-    subtitle: 'InDesign · Illustrator · Photoshop · Excel',
-    desc: 'Teknik bilgiyi okunabilir belge, sunum, tablo ve görsel dosyaya dönüştüren pratik tasarım ve dosya üretim desteği.',
-    items: ['InDesign eğitim notu ve katalog düzeni', 'Illustrator tabanlı SVG şablonlar', 'Photoshop görsel düzenleme ve kapak sistemi', 'Excel hesap, takip ve analiz tabloları'],
+    no: '06',
+    title: 'Kurumsal Teknik Dosya Tasarımı',
+    subtitle: 'Teklif · Sunum · Şablon · Eğitim notu',
+    description: 'Teknik içeriğin müşteriye, yönetime veya ekibe profesyonel görünümle sunulması için kurumsal dosya yapısı hazırlanır.',
+    details: ['Teklif dosyası', 'Sunum kapağı', 'Eğitim notu', 'Şablon standardı'],
   },
 ]
 
-const systemBlocks = [
-  'Logo sistemi',
-  'Renk paleti',
-  'Tipografi sistemi',
-  'Desen ve doku',
-  'İkon seti',
-  'Kırtasiye şablonları',
-  'Dijital kimlik',
-  'Tanıtım materyalleri',
-  'Kurumsal çevre',
-  'İş kıyafetleri',
-  'Teknik dokümanlar',
-  'Eğitim dosyaları',
+const reasons = [
+  '35 yıllık tekstil üretim ve yönetim deneyimi',
+  'Boyahane, terbiye ve fabrika yönetimi saha bilgisi',
+  'Teoriden çok uygulanabilir proses yaklaşımı',
+  'Teknik bilgiyi doküman ve eğitim sistemine dönüştürme yetkinliği',
 ]
 
-export default async function HizmetlerPage({ params }: HizmetlerProps) {
-  const { lang } = await params
-  const withLang = (path: string) => `/${lang}${path}`
+export default function HizmetlerPage({ params }: HizmetlerProps) {
+  const lang = params.lang === 'en' ? 'en' : 'tr'
+  const contactPath = `/${lang}/contact`
 
   return (
-    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
-      <section className="bg-white border-b border-gray-border">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="section-label">HİZMETLER</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy mb-5">
-            Tekstil bilgisi, kurumsal dosya ve şablon sistemi
-          </h1>
-          <p className="text-lg leading-relaxed text-navy/82 max-w-3xl">
-            Bu sayfa; tekstil danışmanlığı, teknik eğitim içerikleri, kurumsal dokümantasyon ve şablon üretimini aynı sistem altında toplayan profesyonel hizmet yapısı olarak düzenlendi.
+    <main className="min-h-screen bg-[#F3F6FA] text-navy">
+      <section className="bg-[#061A33] text-white bb-pattern">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+          <p className="section-label text-white/60">HİZMETLER</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Tekstil proses danışmanlığı ve teknik eğitim hizmetleri</h1>
+          <p className="text-white/78 leading-relaxed max-w-3xl text-lg">
+            Hizmet yapısı; boyahane prosesleri, kalite kontrol, teknik eğitim, maliyet/verimlilik analizi ve uygulanabilir dokümantasyon üzerine kuruludur.
           </p>
         </div>
       </section>
@@ -86,54 +75,52 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service) => (
-            <article key={service.number} className="rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card transition-all">
-              <div className="flex items-start gap-4 mb-5">
-                <span className="text-sm font-black text-accent-blue tracking-widest">{service.number}</span>
+            <article key={service.no} className="rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card transition-all">
+              <div className="flex items-start gap-5 mb-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent-blue/40 text-accent-blue font-black tracking-wider">
+                  {service.no}
+                </div>
                 <div>
-                  <h2 className="text-xl font-bold text-navy">{service.title}</h2>
-                  <p className="text-xs font-semibold tracking-wide text-navy/62 mt-1">{service.subtitle}</p>
+                  <h2 className="text-2xl font-bold text-navy mb-2">{service.title}</h2>
+                  <p className="text-sm font-semibold text-navy/60">{service.subtitle}</p>
                 </div>
               </div>
-              <p className="text-sm text-navy/84 leading-relaxed mb-5">{service.desc}</p>
-              <ul className="space-y-2">
-                {service.items.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm text-navy/88 leading-relaxed">
-                    <span className="text-accent-blue font-bold">•</span>
-                    <span>{item}</span>
-                  </li>
+              <p className="text-navy/82 leading-relaxed mb-5">{service.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {service.details.map((item) => (
+                  <span key={item} className="rounded-full bg-[#F3F6FA] border border-gray-border px-3 py-1 text-xs font-semibold text-navy/80">
+                    {item}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="bg-[#061A33] text-white bb-dark-readable-panel">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10">
-            <div>
-              <p className="section-label text-white/70">KURUMSAL DOKÜMAN SİSTEMİ</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">Tekstil, eğitim ve kurumsal şablonları aynı düzende toplar</h2>
-              <p className="text-white/75 leading-relaxed">
-                Bu yapı; teknik eğitim notları, proses formları, kurumsal kimlik öğeleri ve şablon dosyalarını sahada kullanılabilir, okunabilir ve sürdürülebilir bir doküman düzenine bağlar.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {systemBlocks.map((item) => (
-                <div key={item} className="rounded-xl bg-white/10 border border-white/15 p-4 text-sm font-semibold text-white/88">
-                  {item}
-                </div>
-              ))}
-            </div>
+      <section className="max-w-6xl mx-auto px-6 pb-16">
+        <div className="rounded-[28px] bg-[#061A33] text-white p-8 md:p-10 bb-pattern">
+          <p className="section-label text-white/55">NEDEN BAHRİ BUDAK?</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">Deneyim, saha bilgisi ve uygulanabilir sistem yaklaşımı</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {reasons.map((reason, index) => (
+              <div key={reason} className="rounded-2xl bg-white/8 border border-white/14 p-5 flex gap-4 items-start">
+                <span className="text-accent-blue font-black tracking-wider">{String(index + 1).padStart(2, '0')}</span>
+                <p className="text-white/86 font-medium leading-relaxed">{reason}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-16 text-center">
-        <p className="text-navy/80 mb-6">Teknik dosya, eğitim notu veya kurumsal şablon yapısı için çalışma başlatabiliriz.</p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link href={withLang('/contact')} className="btn-primary">İletişime Geç →</Link>
-          <Link href={withLang('/magazam')} className="btn-outline">Şablonları İncele</Link>
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
+          <div>
+            <p className="section-label">İLETİŞİM</p>
+            <h2 className="text-3xl font-bold text-navy mb-3">İhtiyacınıza göre teknik çalışma kapsamı çıkaralım.</h2>
+            <p className="text-navy/72 leading-relaxed">Boyahane, eğitim, proses formu, maliyet analizi veya teknik dosya hazırlığı için ilk kapsamı birlikte netleştirebiliriz.</p>
+          </div>
+          <Link href={contactPath} className="btn-primary whitespace-nowrap">İletişime Geç →</Link>
         </div>
       </section>
     </main>

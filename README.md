@@ -1,18 +1,18 @@
-# Revizyon 20 - Eski components/page.tsx TypeScript Hatası Düzeltmesi
+# Revizyon 21 - Ana Sayfa ve Hizmetler İçerik Netleştirme
 
-Bu paket Vercel build logunda görünen şu hatayı düzeltir:
+Bu paket siteyi tekstil merkezli yapıya daha net taşımak için hazırlanmıştır.
 
-`Property 'emoji' does not exist on type ...`
+Yapılanlar:
 
-Hatanın kaynağı eski revizyonlardan kalan `src/components/page.tsx` dosyasında `cat.emoji` çağrısı bulunmasıdır. Bu dosya gerçek ana sayfa değildir ama TypeScript build sırasında tarandığı için Vercel'i durdurur.
-
-Yapılan düzeltme:
-
-- `src/components/page.tsx` güvenli boş yardımcı bileşene çevrildi.
-- `src/app/[lang]/page.tsx` emoji kullanmayan temiz yapıyla eklendi.
-- `src/components/PostCard.tsx` emoji kullanmayan kurumsal kart yapısıyla eklendi.
-- Varsa `src/app/[lang]/PostCard.tsx` dosyası da emoji kullanmayan güvenli yapıya alındı.
+- Ana sayfada öncelik tekstil teknik yayınlarına verildi.
+- Teknik yayınlar ve notlar bölümü üst sıraya alındı.
+- Hizmet alanları tekstil proses danışmanlığı, teknik eğitim ve doküman sistemi olarak netleştirildi.
+- Kullanılabilir doküman omurgası daha anlaşılır ve profesyonel dile çevrildi.
+- Hizmetler sayfası eski genel danışmanlık/tasarım dili yerine tekstil proses danışmanlığı yapısına göre yeniden düzenlendi.
+- Şablonlar sayfasında 01 numara Tekstil Teknik Dokümanları olarak korundu ve içerik önceliği tekstile verildi.
+- Renkli emoji ikonlar yerine sade numara/çizgi sistemi kullanıldı.
+- Felsefe tekrar eklenmedi.
 
 Commit mesajı:
 
-`Eski emoji build hatası düzeltildi`
+Ana sayfa ve hizmetler tekstil odaklı netleştirildi

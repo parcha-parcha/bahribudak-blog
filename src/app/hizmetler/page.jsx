@@ -1,219 +1,123 @@
-"use client";
-
-import { useState } from "react";
+import Link from 'next/link'
 
 const services = [
   {
-    id: 1,
-    icon: "01",
-    title: "Danışmanlık",
-    subtitle: "Fabrika Yönetimi & Lean Üretim",
-    description:
-      "Tekstil fabrikalarında üretim verimliliği, süreç iyileştirme ve lean yönetim konularında birebir danışmanlık hizmeti sunuyorum.",
-    price: "5.000 TL / ay",
-    note: "İlk görüşme ücretsiz",
-    details: ["Ayda 2-4 saha ziyareti", "Online destek dahil", "Haftalık ilerleme raporu"],
-    highlight: true,
+    no: '01',
+    title: 'Boyahane Proses Danışmanlığı',
+    subtitle: 'Kasar · Reaktif boyama · Yıkama · Proses kontrol',
+    description: 'Üretimde tekrar işleme, renk farkı, proses süresi, kimyasal kullanım ve kalite sapmalarını azaltmaya yönelik saha temelli danışmanlık yapısı.',
+    details: ['Proses akış kontrolü', 'Reçete ve zaman standardı', 'Hata nedeni analizi', 'Maliyet ve verim takibi'],
   },
   {
-    id: 2,
-    icon: "02",
-    title: "İçerik Üretimi & Sosyal Medya",
-    subtitle: "LinkedIn & Instagram",
-    description:
-      "Markanızı büyütmek için haftalık içerik takvimi, özgün yazılar ve görsel tasarımlarla sosyal medya yönetimi yapıyorum.",
-    price: "2.000 – 3.500 TL / ay",
-    note: null,
-    details: ["LinkedIn + Instagram", "Haftalık içerik takvimi", "Görsel tasarım dahil"],
-    highlight: false,
+    no: '02',
+    title: 'Tekstil Teknik Eğitimleri',
+    subtitle: 'Operatör · Vardiya · Laboratuvar · Yönetim',
+    description: 'Boyahane ve terbiye işletmelerinde çalışan ekipler için sade, ölçülebilir ve uygulanabilir eğitim notları hazırlanır.',
+    details: ['Kasar ve ön terbiye', 'Reaktif boyama', 'Yıkama ve haslık', 'Laboratuvar kontrolleri'],
   },
   {
-    id: 3,
-    icon: "02",
-    title: "Adobe Tasarım Hizmetleri",
-    subtitle: "Profesyonel Grafik Tasarım",
-    description:
-      "Adobe Creative Suite ile profesyonel tasarım çözümleri. Her proje için özgün ve kurumsal kimliğinize uygun tasarımlar.",
-    price: null,
-    note: null,
-    details: null,
-    highlight: false,
-    subServices: [
-      { name: "Poster", price: "500 – 800 TL" },
-      { name: "Afiş", price: "500 – 800 TL" },
-      { name: "Logo", price: "1.000 – 2.000 TL" },
-      { name: "El İlanı", price: "300 – 500 TL" },
-      { name: "Broşür", price: "600 – 1.000 TL" },
-      { name: "Katalog (8-16 sayfa)", price: "1.500 – 2.500 TL" },
-      { name: "Dergi (12-24 sayfa)", price: "2.500 – 4.000 TL" },
-    ],
+    no: '03',
+    title: 'Laboratuvar ve Kalite Kontrol Sistemi',
+    subtitle: 'pH · Sertlik · Tuz · Renk · Haslık',
+    description: 'Parti kabul, proses kontrol, son kontrol ve tekrar işlem kararlarının ölçülebilir hale getirilmesi için kontrol sistemi kurulur.',
+    details: ['Test planı', 'Kabul kriterleri', 'Kontrol formları', 'Raporlama standardı'],
   },
   {
-    id: 4,
-    icon: "03",
-    title: "Blog Yazarlığı",
-    subtitle: "Tekstil · Kişisel Gelişim · Türkiye Gündemi · Kurumsal",
-    description:
-      "SEO uyumlu, özgün ve derinlikli blog yazıları. Sektörel bilgi ile felsefi derinliği bir araya getiren içerikler.",
-    price: null,
-    note: null,
-    details: null,
-    highlight: false,
-    subServices: [
-      { name: "Kısa makale (500-800 kelime)", price: "300 – 500 TL" },
-      { name: "Orta makale (800-1.500 kelime)", price: "500 – 900 TL" },
-      { name: "Uzun makale (1.500+ kelime)", price: "900 – 1.500 TL" },
-    ],
+    no: '04',
+    title: 'Teknik Dokümantasyon Hazırlama',
+    subtitle: 'Form · Liste · Rapor · Eğitim dosyası',
+    description: 'Sahada kullanılan teknik bilgi, okunabilir ve sürdürülebilir doküman sistemine dönüştürülür.',
+    details: ['Proses formu', 'Kontrol listesi', 'Teknik rapor', 'Müşteri teslim dosyası'],
   },
-];
+  {
+    no: '05',
+    title: 'Üretim Verimliliği ve Maliyet Analizi',
+    subtitle: 'Enerji · Su · Kimyasal · Süre · Fire',
+    description: 'İşletme verileri üzerinden fire, tekrar işlem, enerji, su, kimyasal ve zaman kayıpları görünür hale getirilir.',
+    details: ['Fire analizi', 'Tekrar işlem maliyeti', 'Makine verimi', 'Kapasite değerlendirme'],
+  },
+  {
+    no: '06',
+    title: 'Kurumsal Teknik Dosya Tasarımı',
+    subtitle: 'Teklif · Sunum · Şablon · Eğitim notu',
+    description: 'Teknik içeriğin müşteriye, yönetime veya ekibe profesyonel görünümle sunulması için kurumsal dosya yapısı hazırlanır.',
+    details: ['Teklif dosyası', 'Sunum kapağı', 'Eğitim notu', 'Şablon standardı'],
+  },
+]
 
 const reasons = [
-  { icon: "01", text: "Yılların fabrika yönetimi deneyimi" },
-  { icon: "02", text: "Kişisel gelişim ve saha deneyimi birikimi" },
-  { icon: "03", text: "Türkiye tekstil sektörüne hakimiyet" },
-  { icon: "04", text: "Sonuç odaklı, pratik çözümler" },
-];
+  '35 yıllık tekstil üretim ve yönetim deneyimi',
+  'Boyahane, terbiye ve fabrika yönetimi saha bilgisi',
+  'Teoriden çok uygulanabilir proses yaklaşımı',
+  'Teknik bilgiyi doküman ve eğitim sistemine dönüştürme yetkinliği',
+]
 
 export default function HizmetlerPage() {
-  const [hovered, setHovered] = useState(null);
+  const contactPath = '/tr/contact'
 
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", background: "#F3F6FA", minHeight: "100vh" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-      {/* Hero */}
-      <div style={{ background: "#0B2343", padding: "80px 24px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: -60, right: -60, width: 300, height: 300, borderRadius: "50%", background: "rgba(245,197,24,0.06)" }} />
-        <div style={{ position: "absolute", bottom: -40, left: -40, width: 200, height: 200, borderRadius: "50%", background: "rgba(245,197,24,0.04)" }} />
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ display: "inline-block", background: "rgba(46,166,217,0.18)", border: "1px solid rgba(46,166,217,0.30)", borderRadius: 100, padding: "6px 20px", marginBottom: 24 }}>
-            <span style={{ color: "#2EA6D9", fontSize: 13, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase" }}>Hizmetler</span>
-          </div>
-          <h1 style={{ color: "#ffffff", fontSize: 42, fontWeight: 800, margin: "0 0 16px", lineHeight: 1.2 }}>
-            Birlikte <span style={{ color: "#2EA6D9" }}>büyüyelim</span>
-          </h1>
-          <p style={{ color: "#94a3b8", fontSize: 17, lineHeight: 1.7, margin: 0 }}>
-            Tekstil, tasarım, içerik ve danışmanlık alanlarında profesyonel destek sunuyorum.
+    <main className="min-h-screen bg-[#F3F6FA] text-navy">
+      <section className="bg-[#061A33] text-white bb-pattern">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+          <p className="section-label text-white/60">HİZMETLER</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Tekstil proses danışmanlığı ve teknik eğitim hizmetleri</h1>
+          <p className="text-white/78 leading-relaxed max-w-3xl text-lg">
+            Hizmet yapısı; boyahane prosesleri, kalite kontrol, teknik eğitim, maliyet/verimlilik analizi ve uygulanabilir dokümantasyon üzerine kuruludur.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Services */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 24px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {services.map((s) => (
-            <div
-              key={s.id}
-              onMouseEnter={() => setHovered(s.id)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: "#ffffff",
-                borderRadius: 16,
-                border: `2px solid ${hovered === s.id ? "#2EA6D9" : s.highlight ? "#12365E" : "#e2e8f0"}`,
-                overflow: "hidden",
-                transition: "border-color 0.2s, box-shadow 0.2s",
-                boxShadow: hovered === s.id ? "0 8px 32px rgba(26,58,92,0.12)" : "0 2px 8px rgba(0,0,0,0.05)",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "28px 28px 20px" }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: s.highlight ? "#0B2343" : "#E8EDF3", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>
-                  {s.icon}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {services.map((service) => (
+            <article key={service.no} className="rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card transition-all">
+              <div className="flex items-start gap-5 mb-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent-blue/40 text-accent-blue font-black tracking-wider">
+                  {service.no}
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                    <div>
-                      <h2 style={{ margin: "0 0 4px", fontSize: 20, fontWeight: 700, color: "#12365E" }}>{s.title}</h2>
-                      <p style={{ margin: 0, fontSize: 13, color: "#5D5F63", fontWeight: 500 }}>{s.subtitle}</p>
-                    </div>
-                    {s.price && (
-                      <div style={{ textAlign: "right" }}>
-                        <div style={{ fontSize: 22, fontWeight: 800, color: "#12365E" }}>{s.price}</div>
-                        {s.note && (
-                          <div style={{ display: "inline-block", background: "#fef9e7", border: "1px solid #2EA6D9", borderRadius: 100, padding: "3px 12px", marginTop: 6 }}>
-                            <span style={{ fontSize: 11, color: "#92660a", fontWeight: 600 }}>✨ {s.note}</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-navy mb-2">{service.title}</h2>
+                  <p className="text-sm font-semibold text-navy/60">{service.subtitle}</p>
                 </div>
               </div>
-
-              <div style={{ height: 1, background: "#f1f5f9", margin: "0 28px" }} />
-
-              <div style={{ padding: "20px 28px 28px" }}>
-                <p style={{ margin: "0 0 20px", fontSize: 15, color: "#475569", lineHeight: 1.7 }}>{s.description}</p>
-
-                {s.details && (
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                    {s.details.map((d, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, background: "#E8EDF3", borderRadius: 8, padding: "6px 14px" }}>
-                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#2EA6D9" }} />
-                        <span style={{ fontSize: 13, color: "#12365E", fontWeight: 500 }}>{d}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {s.subServices && (
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
-                    {s.subServices.map((sub, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#F3F6FA", borderRadius: 10, padding: "12px 16px", border: "1px solid #e2e8f0" }}>
-                        <span style={{ fontSize: 14, color: "#374151", fontWeight: 500 }}>{sub.name}</span>
-                        <span style={{ fontSize: 14, color: "#12365E", fontWeight: 700, whiteSpace: "nowrap", marginLeft: 12 }}>{sub.price}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
+              <p className="text-navy/82 leading-relaxed mb-5">{service.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {service.details.map((item) => (
+                  <span key={item} className="rounded-full bg-[#F3F6FA] border border-gray-border px-3 py-1 text-xs font-semibold text-navy/80">
+                    {item}
+                  </span>
+                ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
+      </section>
 
-        {/* Neden Bahri Budak */}
-        <div style={{ marginTop: 60, background: "#0B2343", borderRadius: 20, padding: "48px 40px", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", top: -30, right: -30, width: 180, height: 180, borderRadius: "50%", background: "rgba(245,197,24,0.08)" }} />
-          <h2 style={{ color: "#ffffff", fontSize: 28, fontWeight: 800, margin: "0 0 8px", position: "relative" }}>
-            Neden <span style={{ color: "#2EA6D9" }}>Bahri Budak?</span>
-          </h2>
-          <p style={{ color: "#94a3b8", fontSize: 15, margin: "0 0 32px", position: "relative" }}>Deneyim, birikim ve güven.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16, position: "relative" }}>
-            {reasons.map((r, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.07)", borderRadius: 12, padding: "16px 20px", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <span style={{ fontSize: 24 }}>{r.icon}</span>
-                <span style={{ fontSize: 14, color: "#e2e8f0", fontWeight: 500, lineHeight: 1.4 }}>{r.text}</span>
+      <section className="max-w-6xl mx-auto px-6 pb-16">
+        <div className="rounded-[28px] bg-[#061A33] text-white p-8 md:p-10 bb-pattern">
+          <p className="section-label text-white/55">NEDEN BAHRİ BUDAK?</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">Deneyim, saha bilgisi ve uygulanabilir sistem yaklaşımı</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {reasons.map((reason, index) => (
+              <div key={reason} className="rounded-2xl bg-white/8 border border-white/14 p-5 flex gap-4 items-start">
+                <span className="text-accent-blue font-black tracking-wider">{String(index + 1).padStart(2, '0')}</span>
+                <p className="text-white/86 font-medium leading-relaxed">{reason}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div style={{ marginTop: 48, textAlign: "center" }}>
-          <p style={{ fontSize: 16, color: "#5D5F63", marginBottom: 24 }}>
-            Projenizi konuşmak için hemen iletişime geçin.
-          </p>
-          <a
-            href="mailto:bahribudak@gmail.com?subject=Hizmet Talebi"
-            style={{
-              display: "inline-block",
-              background: "#2EA6D9",
-              color: "#0B2343",
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 16,
-              fontWeight: 700,
-              padding: "16px 48px",
-              borderRadius: 100,
-              textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(245,197,24,0.4)",
-            }}
-          >
-            Teklif Al →
-          </a>
-          <p style={{ fontSize: 13, color: "#94a3b8", marginTop: 16 }}>
-            bahribudak@gmail.com
-          </p>
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
+          <div>
+            <p className="section-label">İLETİŞİM</p>
+            <h2 className="text-3xl font-bold text-navy mb-3">İhtiyacınıza göre teknik çalışma kapsamı çıkaralım.</h2>
+            <p className="text-navy/72 leading-relaxed">Boyahane, eğitim, proses formu, maliyet analizi veya teknik dosya hazırlığı için ilk kapsamı birlikte netleştirebiliriz.</p>
+          </div>
+          <Link href={contactPath} className="btn-primary whitespace-nowrap">İletişime Geç →</Link>
         </div>
-      </div>
-    </div>
-  );
+      </section>
+    </main>
+  )
 }
