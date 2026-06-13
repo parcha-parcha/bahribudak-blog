@@ -92,3 +92,8 @@ Hizmetler ve Hakkımda sayfalarındaki silik metinler koyulaştırıldı ve okun
 
 ## Revizyon 4 Notu
 Hakkımda ve Hizmetler sayfalarındaki düşük kontrast/silik yazı problemi giderildi.
+
+
+## Revizyon 5 – Logo Okunabilirlik Düzeltmesi
+
+Üst menüde koyu lacivert zemin üzerinde okunmayan BAHRİ BUDAK logo yazısı düzeltildi. Logo yazıları açık modda lacivert, koyu modda beyaz okunacak şekilde ayarlandı. Ayrıca `Magazam` menü yazımı `Mağazam` olarak düzeltildi.

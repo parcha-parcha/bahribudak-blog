@@ -21,14 +21,14 @@ export default function Header({ lang }: HeaderProps) {
     { href: `/${lang}/about`, label: t('nav.about') },
     { href: `/${lang}/hizmetler`, label: lang === 'tr' ? 'Hizmetler' : 'Services' },
     { href: `/${lang}/haberler`, label: lang === 'tr' ? 'Haberler' : 'News' },
-    { href: `/${lang}/magazam`, label: lang === 'tr' ? 'Magazam' : 'Store' },
+    { href: `/${lang}/magazam`, label: lang === 'tr' ? 'Mağazam' : 'Store' },
     { href: `/${lang}/contact`, label: t('nav.contact') },
   ]
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-border dark:bg-[#061A33]/95 dark:border-white/10">
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href={`/${lang}`} className="flex items-center gap-3 group" aria-label="Bahri Budak ana sayfa">
-          <BrandLogo className="h-12 w-[198px] hidden sm:block" />
+          <BrandLogo className="h-12 w-[198px] hidden sm:block text-navy dark:text-white" />
           <BrandLogo variant="mark" className="h-10 w-14 sm:hidden" />
         </Link>
         <nav className="hidden md:flex items-center gap-7">

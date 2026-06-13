@@ -8,8 +8,10 @@ export default function BrandLogo({ variant = 'horizontal', negative = false, cl
   const dark = '#5F6368'
   const mid = '#AEB4BC'
   const light = '#DDE3EA'
-  const navy = negative ? '#FFFFFF' : '#0B2343'
-  const sub = negative ? '#DDE3EA' : '#5F6368'
+  // Yazı rengi SVG'nin className içindeki text-* renginden gelsin.
+  // Böylece açık modda lacivert, koyu modda beyaz net okunur.
+  const navy = negative ? '#FFFFFF' : 'currentColor'
+  const sub = negative ? '#DDE3EA' : 'currentColor'
   const Mark = ({ x = 0, y = 0, scale = 1 }: { x?: number; y?: number; scale?: number }) => (
     <g transform={`translate(${x} ${y}) scale(${scale})`}>
       <path d="M36 0H109V65H36C15 65 4 53 4 32.5S15 0 36 0Z" fill={dark}/>
@@ -28,10 +30,10 @@ export default function BrandLogo({ variant = 'horizontal', negative = false, cl
   return (
     <svg viewBox="0 0 610 150" className={className} aria-label="Bahri Budak logo" role="img">
       <Mark x={0} y={15} scale={210 / 226} />
-      <line x1="245" y1="20" x2="245" y2="130" stroke={mid} strokeWidth="2"/>
+      <line x1="245" y1="20" x2="245" y2="130" stroke="currentColor" strokeOpacity="0.28" strokeWidth="2"/>
       <text x="280" y="66" fontFamily="Arial, sans-serif" fontSize="42" fontWeight="700" letterSpacing="1.6" fill={navy}>BAHRİ BUDAK</text>
-      <text x="282" y="102" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="400" letterSpacing="2.2" fill={sub}>DANIŞMANLIK • EĞİTİM • TEKSTİL</text>
-      <text x="282" y="130" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="700" fill={sub}>bahribudak.com</text>
+      <text x="282" y="102" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="400" letterSpacing="2.2" fill={sub} opacity="0.78">DANIŞMANLIK • EĞİTİM • TEKSTİL</text>
+      <text x="282" y="130" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="700" fill={sub} opacity="0.86">bahribudak.com</text>
     </svg>
   )
 }
