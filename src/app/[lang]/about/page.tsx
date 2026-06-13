@@ -47,7 +47,8 @@ export default async function AboutPage({ params }: AboutProps) {
   const { lang } = await params
 
   return (
-    <div className="bb-readable-page max-w-3xl mx-auto px-6 py-16">
+    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
+      <div className="max-w-3xl mx-auto px-6 py-16">
 
       {/* ── HEADER ── */}
       <div className="mb-14">
@@ -60,7 +61,7 @@ export default async function AboutPage({ params }: AboutProps) {
       </div>
 
       {/* ── PROFİL KARTI ── */}
-      <div className="flex flex-col sm:flex-row gap-8 items-start mb-14 p-8 rounded-2xl border border-gray-border">
+      <div className="flex flex-col sm:flex-row gap-8 items-start mb-14 p-8 rounded-2xl border border-gray-border bg-white shadow-sm">
         <div className="relative w-28 h-28 flex-shrink-0">
           <Image
             src="/images/bahri-budak.jpeg"
@@ -93,7 +94,7 @@ export default async function AboutPage({ params }: AboutProps) {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-14">
         {stats.map((s) => (
           <div key={s.label}
-            className="rounded-xl p-5 text-center border border-gray-border">
+            className="rounded-xl p-5 text-center border border-gray-border bg-white shadow-sm">
             <div className="flex items-end justify-center gap-1 mb-1">
               <span className="text-3xl font-bold text-navy">{s.number}</span>
               {s.unit && <span className="text-sm font-semibold text-navy/75 mb-0.5">{s.unit}</span>}
@@ -141,7 +142,7 @@ export default async function AboutPage({ params }: AboutProps) {
         </p>
         <div className="flex flex-col gap-3">
           {experience.map((e, i) => (
-            <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-gray-border hover:border-navy/30 transition-all">
+            <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-gray-border bg-white hover:border-navy/30 transition-all">
               <div className="w-8 h-8 rounded-lg bg-navy/5 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-xs font-bold text-navy/85">{i + 1}</span>
               </div>
@@ -163,7 +164,7 @@ export default async function AboutPage({ params }: AboutProps) {
         </h2>
         <div className="flex flex-wrap gap-2">
           {skills.map((s) => (
-            <span key={s} className="flex items-center gap-2 bg-gray-soft border border-gray-border text-navy text-sm px-4 py-2 rounded-full">
+            <span key={s} className="flex items-center gap-2 bg-white border border-gray-border text-navy text-sm px-4 py-2 rounded-full">
               <span className="text-yellow-bb text-xs">✦</span>
               {s}
             </span>
@@ -183,7 +184,7 @@ export default async function AboutPage({ params }: AboutProps) {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {pillars.map((p) => (
             <Link key={p.label} href={`/${lang}/blog`}
-              className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border hover:border-navy hover:shadow-card transition-all group">
+              className="flex flex-col items-center text-center p-5 rounded-xl border border-gray-border bg-white hover:border-navy hover:shadow-card transition-all group">
               <span className="text-3xl mb-3">{p.emoji}</span>
               <span className="font-bold text-navy text-sm group-hover:text-yellow-bb transition-colors">{p.label}</span>
               <span className="text-xs text-navy/85 mt-1 leading-snug">{p.desc}</span>
@@ -213,6 +214,7 @@ export default async function AboutPage({ params }: AboutProps) {
         <p className="text-navy/85 text-xs mt-6">bahribudak@gmail.com · Ergene / Tekirdağ</p>
       </div>
 
-    </div>
+      </div>
+    </main>
   )
 }

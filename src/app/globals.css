@@ -209,3 +209,22 @@
 .bb-readable-muted { color: #263B57 !important; }
 .bb-readable-soft { color: #3E4F66 !important; }
 .bb-readable-dark-panel { color: rgba(255,255,255,.86) !important; }
+
+
+/* Revizyon 4: Hakkımda ve Hizmetler sayfalarında açık zemin + yüksek kontrast */
+.bb-readable-page {
+  background: #F3F6FA !important;
+  color: #0B2343 !important;
+}
+.bb-readable-page p,
+.bb-readable-page li,
+.bb-readable-page span:not(.text-white):not([style*="color"]),
+.bb-readable-page h1,
+.bb-readable-page h2,
+.bb-readable-page h3 {
+  text-shadow: none !important;
+}
+.bb-readable-page .text-navy\/75 { color: rgba(11,35,67,.82) !important; }
+.bb-readable-page .text-navy\/85 { color: rgba(11,35,67,.92) !important; }
+.bb-readable-page .text-navy\/90 { color: rgba(11,35,67,.96) !important; }
+.bb-readable-page .text-white\/75 { color: rgba(255,255,255,.90) !important; }

@@ -57,7 +57,8 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
   const { lang } = await params
 
   return (
-    <div className="bb-readable-page max-w-3xl mx-auto px-6 pt-16 pb-8">
+    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
+      <div className="max-w-3xl mx-auto px-6 pt-16 pb-8">
 
       {/* ── HEADER ── */}
       <div className="mb-14">
@@ -74,7 +75,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
       {/* ── HİZMET KARTLARI ── */}
       <div className="flex flex-col gap-6 mb-14">
         {services.map((s) => (
-          <div key={s.title} className="border border-gray-border rounded-2xl p-8 hover:border-navy hover:shadow-card transition-all group">
+          <div key={s.title} className="border border-gray-border rounded-2xl p-8 bg-white shadow-sm hover:border-navy hover:shadow-card transition-all group">
             {/* Başlık */}
             <div className="flex items-start gap-4 mb-4">
               <div className="text-3xl flex-shrink-0">{s.emoji}</div>
@@ -143,6 +144,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
         <p className="text-navy/85 text-xs mt-4">bahribudak@gmail.com</p>
       </div>
 
-    </div>
+      </div>
+    </main>
   )
 }

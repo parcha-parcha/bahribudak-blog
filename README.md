@@ -88,3 +88,7 @@ git push -u origin main
 
 ## Revizyon 3
 Hizmetler ve Hakkımda sayfalarındaki silik metinler koyulaştırıldı ve okunabilirlik artırıldı.
+
+
+## Revizyon 4 Notu
+Hakkımda ve Hizmetler sayfalarındaki düşük kontrast/silik yazı problemi giderildi.
