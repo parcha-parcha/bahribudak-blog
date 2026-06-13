@@ -70,39 +70,43 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#F4F1EE] text-navy">
-        <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/12 blur-3xl" />
-        <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <div className="relative z-10">
-            <p className="section-label mb-5">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-navy max-w-4xl">
+      <section className="relative overflow-hidden bg-[#061A33] text-white min-h-[720px] md:min-h-[760px] flex items-center">
+        <img
+          src="/images/hero-su-damlasi.jpg"
+          alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061A33] via-[#061A33]/82 to-[#061A33]/18" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 via-transparent to-[#061A33]/30" />
+        <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/20 blur-3xl" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
+          <div>
+            <p className="section-label mb-5 text-white/68">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
-            <p className="mt-8 text-lg md:text-xl leading-relaxed text-navy/78 max-w-2xl">
+            <p className="mt-8 text-lg md:text-xl leading-relaxed text-white/82 max-w-2xl">
               Boyahane, terbiye, kalite kontrol ve teknik dokümantasyon alanlarında 35 yıllık saha deneyimine dayalı uygulanabilir çözümler.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Link href={withLang('/hizmetler')} className="btn-primary">Hizmetleri İncele →</Link>
-              <Link href={withLang('/blog?category=tekstil')} className="btn-outline">Teknik Notları Gör</Link>
+              <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white hover:bg-white hover:text-navy transition-colors">Teknik Notları Gör</Link>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="rounded-[34px] bg-white border border-gray-border shadow-xl overflow-hidden">
-              <div className="relative h-[300px] sm:h-[380px] lg:h-[520px] bg-[#F8FAFC]">
-                <img
-                  src="/images/hero-su-damlasi.jpg"
-                  alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/15 to-transparent" />
-                <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6">
-                  <div className="inline-flex items-center gap-3 rounded-full bg-white/92 backdrop-blur border border-white shadow-xl px-4 py-3 md:px-5 md:py-4">
-                    <BrandLogo className="h-8 md:h-10 w-32 md:w-40 text-navy" />
-                    <span className="hidden sm:inline-flex h-8 w-px bg-gray-border" />
-                    <span className="rounded-full bg-[#F3F6FA] px-3 py-1.5 text-[10px] md:text-xs font-bold text-navy/70 tracking-[0.18em] uppercase">Tekstil Proses</span>
+          <div className="lg:justify-self-end w-full max-w-md">
+            <div className="rounded-[34px] border border-white/22 bg-white/12 backdrop-blur-xl shadow-2xl p-6 md:p-8">
+              <div className="rounded-[26px] bg-white/92 p-5 md:p-6 shadow-xl mb-6">
+                <BrandLogo className="h-11 md:h-14 w-full text-navy" />
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {metricCards.map((card) => (
+                  <div key={card.label} className="rounded-[20px] border border-white/20 bg-white/12 p-4 text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-white">{card.value}</div>
+                    <div className="mt-2 text-[11px] md:text-xs font-bold uppercase tracking-[0.12em] text-white/72">{card.label}</div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

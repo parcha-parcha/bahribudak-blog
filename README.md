@@ -1,15 +1,16 @@
-# Revizyon 26 - Mobil Hero Sadeleştirme
+# Revizyon 27 - Su Damlası Hero Header Uyarlaması
 
-Bu paket ana sayfadaki mobil hero alanında görülen 01 / 02 / 03 kart sıkışmasını tamamen kaldırmak için hazırlanmıştır.
+Bu paket ana sayfada su damlası görselini sadece sağ kart içinde değil, hero/header alanının tamamında arka plan olarak kullanır.
 
-Yapılan düzeltmeler:
+Yapılanlar:
 
-- Hero görselinin üzerindeki 01 / 02 / 03 kart grubu tamamen kaldırıldı.
-- Mobil ve masaüstünde daha sade logo + “Tekstil Proses” etiketi bırakıldı.
-- Su damlası görseli korundu.
-- Emoji veya renkli ikon kullanılmadı.
-- Ana sayfa ferah ve daha temiz hale getirildi.
+- Ana sayfa hero alanı tam genişlik su damlası görseliyle yeniden düzenlendi.
+- Üzerine lacivert kurumsal overlay eklendi.
+- Başlık ve açıklama beyaz/okunur hale getirildi.
+- Sağ tarafta cam efektli logo ve sade metrik kartları kullanıldı.
+- Mobilde sıkışma yapmaması için yapı tek kolon uyumlu hale getirildi.
+- Emoji kullanılmadı.
 
 Commit mesajı:
 
-Mobil hero kartları tamamen kaldırıldı
+Su damlası hero header uyarlaması
