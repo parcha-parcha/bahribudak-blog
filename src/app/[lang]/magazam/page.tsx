@@ -1,473 +1,132 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string }
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const tr = params.lang === 'tr'
   return {
-    title: tr ? 'Magazam | Bahri Budak' : 'My Store | Bahri Budak',
+    title: tr ? 'Şablonlar ve Kaynaklar | Bahri Budak' : 'Templates and Resources | Bahri Budak',
     description: tr
-      ? 'Boyahane ve tekstil üretimi için profesyonel teknik dökümanlar, eğitim materyalleri ve danışmanlık hizmetleri.'
-      : 'Professional technical documents, training materials and consulting services for dyehouse and textile production.',
+      ? 'Kurumsal kimlik, teknik doküman, eğitim notu, kırtasiye ve dijital yayın şablonları.'
+      : 'Brand identity, technical document, training note, stationery and digital publishing templates.',
   }
 }
 
-type Lang = 'tr' | 'en'
-
-interface Product {
-  id: string
-  badge: string
-  title: { tr: string; en: string }
-  desc: { tr: string; en: string }
-  price: { tr: string; en: string }
-  gumroadUrl?: string
-  highlight?: boolean
+type Collection = {
+  no: string
+  title: string
+  desc: string
+  files: string[]
+  status: string
 }
 
-const products: Product[] = [
+const collections: Collection[] = [
   {
-    id: 'rys-belge-serisi',
-    badge: '🏆',
-    title: {
-      tr: 'Boyahanelerde Renk İlavesi Yönetim Sistemi — RYS Belge Serisi',
-      en: 'Dyehouse Colour Addition Management System — RYS Document Series',
-    },
-    desc: {
-      tr: '35 yıllık saha deneyimiyle hazırlanmış renk ilavesi yönetim sistemi. 28 sayfa PDF + 17 ayrı .docx dosyası. Bölüm 1: İlk 6 bölüm. Bölüm 2: Maliyet hesaplama ve tasarruf analizi.',
-      en: 'Colour addition management system prepared with 35 years of field experience. 28-page PDF + 17 separate .docx files. Part 1: First 6 sections. Part 2: Cost calculation and savings analysis.',
-    },
-    price: { tr: '₺990', en: '$29' },
-    gumroadUrl: 'https://6762449615620.gumroad.com/l/pzpaal',
-    highlight: true,
+    no: '01',
+    title: 'Kurumsal Kimlik Seti',
+    desc: 'Logo, renk, tipografi, desen, ikon ve kullanım kurallarını tek standarda bağlayan temel kimlik dosyası.',
+    files: ['Logo sistemi', 'Renk paleti', 'Tipografi', 'Desen / doku', 'İkon seti'],
+    status: 'Sistem temeli',
   },
   {
-    id: 'tam-arsiv',
-    badge: '📂',
-    title: {
-      tr: 'Tam Arşiv — 88 Teknik Döküman',
-      en: 'Complete Archive — 88 Technical Documents',
-    },
-    desc: {
-      tr: 'Boyahane yönetimi için hazırlanmış 88 adet A4 teknik döküman. Prosedürler, formlar, iş talimatları ve kontrol listeleri tek ZIP dosyasında.',
-      en: '88 A4 technical documents prepared for dyehouse management. Procedures, forms, work instructions and checklists in a single ZIP file.',
-    },
-    price: { tr: '₺990', en: '$29' },
+    no: '02',
+    title: 'Kırtasiye ve Evrak Şablonları',
+    desc: 'Resmi yazışma, teklif, rapor, müşteri teslim dosyası ve kurumsal evraklar için kullanılacak şablon ailesi.',
+    files: ['Kartvizit', 'Antetli kağıt', 'Devam kağıdı', 'Diplomat zarf', 'Cepli dosya', 'Bloknot'],
+    status: 'Kurumsal evrak',
   },
   {
-    id: 'aylik-gonderi',
-    badge: '📬',
-    title: {
-      tr: 'Aylık Özel Gönderi',
-      en: 'Monthly Special Report',
-    },
-    desc: {
-      tr: 'Her ay bir konuda derinlemesine teknik analiz, vaka çalışması veya saha raporu. Boyahane, finishing ve üretim yönetimi.',
-      en: 'An in-depth technical analysis, case study or field report on one topic each month. Dyehouse, finishing and production management.',
-    },
-    price: { tr: '₺199 / ay', en: '$6 / month' },
+    no: '03',
+    title: 'Dijital Kimlik Şablonları',
+    desc: 'Web, LinkedIn, e-posta, sosyal medya ve sunumlarda markanın aynı görünmesi için dijital yüzeyler.',
+    files: ['E-posta imzası', 'LinkedIn banner', 'Sosyal medya postu', 'Story şablonu', 'Sunum kapağı'],
+    status: 'Dijital yayın',
   },
   {
-    id: 'ozel-siparis',
-    badge: '🎯',
-    title: {
-      tr: 'Özel Sipariş & Danışmanlık',
-      en: 'Custom Order & Consulting',
-    },
-    desc: {
-      tr: 'Fabrikanıza özel prosedür, eğitim materyali veya teknik döküman hazırlanması. 35 yıllık boyahane deneyimiyle.',
-      en: 'Custom procedure, training material or technical document preparation for your facility. With 35 years of dyehouse experience.',
-    },
-    price: { tr: 'Fiyat teklifi alın', en: 'Get a quote' },
+    no: '04',
+    title: 'Tanıtım ve Pazarlama Dosyaları',
+    desc: 'Katalog, broşür, sertifika, teşekkür belgesi, roll-up ve promosyon yüzeyleri için kurumsal tasarım mantığı.',
+    files: ['Katalog kapağı', 'Broşür / föy', 'Sertifika', 'Roll-up', 'Poster', 'Promosyon ürünleri'],
+    status: 'Tanıtım seti',
+  },
+  {
+    no: '05',
+    title: 'Kurumsal Çevre ve Uygulama Alanları',
+    desc: 'Tabela, yönlendirme, kapı isimliği, ziyaretçi kartı, personel kartı ve araç giydirme alanları.',
+    files: ['Dış cephe tabela', 'Totem tabela', 'İç yönlendirme', 'Kapı isimliği', 'Yaka kartı', 'Araç giydirme'],
+    status: 'Fiziksel alan',
+  },
+  {
+    no: '06',
+    title: 'İş Kıyafetleri ve Üretim Kimliği',
+    desc: 'Üretim personeli, saha ekibi ve ziyaretçi kullanımı için logo yerleşimi ve kıyafet standartları.',
+    files: ['T-shirt', 'Polo yaka', 'İş önlüğü', 'Polar mont', 'İkaz yeleği', 'Şapka / kask'],
+    status: 'Saha uygulaması',
+  },
+  {
+    no: '07',
+    title: 'Tekstil Teknik Dokümanları',
+    desc: 'Boyahane, kasar, enzim, yıkama, laboratuvar, proses reçetesi ve maliyet hesabı için teknik dosya yapısı.',
+    files: ['Eğitim notları', 'Proses formları', 'Kontrol listeleri', 'Teklif dosyaları', 'Hesap tabloları'],
+    status: 'Teknik kaynak',
   },
 ]
 
-const content = {
-  tr: {
-    hero: 'Magazam',
-    heroSub: 'Boyahane ve tekstil üretimi için teknik dökümanlar',
-    heroDesc:
-      '35 yıllık saha deneyiminden damıtılmış prosedürler, formlar ve analiz araçları. Hazır kullan, zaman kazan.',
-    paymentTitle: 'Nasıl Satın Alınır?',
-    paymentDesc: 'İki farklı ödeme seçeneği sunuyorum. Dilediğinizi seçebilirsiniz.',
-    gumroad: 'Gumroad ile Öde',
-    gumroadDesc: 'Kredi kartı veya PayPal ile anında teslim.',
-    manual: 'IBAN ile Öde',
-    manualDesc: 'Havale/EFT sonrası WhatsApp veya e-posta ile bildirin, dosyayı hemen gönderirim.',
-    whatsapp: 'WhatsApp',
-    email: 'E-posta',
-    contact: 'İletişim',
-    buyBtn: 'Satın Al',
-    quoteBtn: 'Teklif Al',
-    highlight: 'Yeni',
-  },
-  en: {
-    hero: 'My Store',
-    heroSub: 'Technical documents for dyehouse and textile production',
-    heroDesc:
-      'Procedures, forms and analysis tools distilled from 35 years of field experience. Ready to use, save time.',
-    paymentTitle: 'How to Purchase?',
-    paymentDesc: 'Two payment options are available. Choose whichever suits you.',
-    gumroad: 'Pay with Gumroad',
-    gumroadDesc: 'Instant delivery via credit card or PayPal.',
-    manual: 'Pay via Bank Transfer',
-    manualDesc: 'After transfer, notify me via WhatsApp or email and I will send the file immediately.',
-    whatsapp: 'WhatsApp',
-    email: 'Email',
-    contact: 'Contact',
-    buyBtn: 'Buy Now',
-    quoteBtn: 'Get a Quote',
-    highlight: 'New',
-  },
-}
-
-export default function MagazamPage({
-  params,
-}: {
-  params: { lang: string }
-}) {
-  const lang = (params.lang === 'en' ? 'en' : 'tr') as Lang
-  const t = content[lang]
+export default function MagazamPage({ params }: { params: { lang: string } }) {
+  const lang = params.lang === 'en' ? 'en' : 'tr'
+  const withLang = (path: string) => `/${lang}${path}`
 
   return (
-    <main
-      style={{ fontFamily: "'Poppins', sans-serif", background: '#f9fafb', minHeight: '100vh' }}
-    >
-      {/* HERO */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0B2343 0%, #12365E 100%)',
-          padding: '80px 24px 64px',
-          textAlign: 'center',
-        }}
-      >
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'inline-block',
-              background: '#2EA6D9',
-              color: '#0B2343',
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              padding: '4px 14px',
-              borderRadius: 4,
-              marginBottom: 20,
-              textTransform: 'uppercase',
-            }}
-          >
-            bahribudak.com
-          </div>
-          <h1
-            style={{
-              color: '#ffffff',
-              fontSize: 'clamp(36px, 6vw, 56px)',
-              fontWeight: 800,
-              margin: '0 0 12px',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-            }}
-          >
-            {t.hero}
+    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
+      <section className="bg-[#061A33] text-white bb-pattern">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+          <p className="section-label text-white/55">ŞABLONLAR VE KAYNAKLAR</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">
+            Kurumsal kimlikten teknik dokümana uzanan dosya sistemi
           </h1>
-          <p style={{ color: '#2EA6D9', fontSize: 18, fontWeight: 600, margin: '0 0 16px' }}>
-            {t.heroSub}
-          </p>
-          <p style={{ color: '#94a3b8', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
-            {t.heroDesc}
+          <p className="text-white/76 leading-relaxed max-w-3xl text-lg">
+            Bu bölüm, verdiğiniz 49 dosyanın mantığına göre yeniden düzenlendi. Amaç; logoyu, rengi,
+            şablonu, eğitim notunu ve teknik dosyayı tek bir kaynak yapısı altında toplamak.
           </p>
         </div>
       </section>
 
-      {/* ÜRÜNLER */}
-      <section style={{ maxWidth: 960, margin: '0 auto', padding: '64px 24px' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 24,
-          }}
-        >
-          {products.map((p) => (
-            <div
-              key={p.id}
-              style={{
-                background: '#ffffff',
-                borderRadius: 16,
-                padding: '32px 28px',
-                border: p.highlight ? '2px solid #2EA6D9' : '1px solid #e5e7eb',
-                position: 'relative',
-                boxShadow: p.highlight
-                  ? '0 8px 32px rgba(46,166,217,0.18)'
-                  : '0 2px 8px rgba(0,0,0,0.06)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 16,
-              }}
-            >
-              {p.highlight && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: -14,
-                    left: 28,
-                    background: '#2EA6D9',
-                    color: '#0B2343',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.1em',
-                    padding: '3px 12px',
-                    borderRadius: 20,
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {t.highlight}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {collections.map((item) => (
+            <article key={item.no} className="rounded-2xl bg-white border border-gray-border p-7 shadow-sm hover:shadow-card transition-all">
+              <div className="flex items-start justify-between gap-4 mb-5">
+                <div>
+                  <p className="text-xs font-black text-accent-blue tracking-[0.18em] mb-2">{item.no}</p>
+                  <h2 className="text-2xl font-bold text-navy">{item.title}</h2>
                 </div>
-              )}
-
-              <div>
-                <span style={{ fontSize: 28 }}>{p.badge}</span>
-                <h2
-                  style={{
-                    color: '#0B2343',
-                    fontSize: 18,
-                    fontWeight: 700,
-                    margin: '8px 0 0',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {p.title[lang]}
-                </h2>
-              </div>
-
-              <p
-                style={{
-                  color: '#374151',
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  margin: 0,
-                  flexGrow: 1,
-                }}
-              >
-                {p.desc[lang]}
-              </p>
-
-              <div
-                style={{
-                  borderTop: '1px solid #e5e7eb',
-                  paddingTop: 16,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 12,
-                  flexWrap: 'wrap',
-                }}
-              >
-                <span
-                  style={{
-                    color: '#0B2343',
-                    fontSize: 20,
-                    fontWeight: 800,
-                    letterSpacing: '-0.01em',
-                  }}
-                >
-                  {p.price[lang]}
+                <span className="rounded-full bg-[#E8F6FC] text-navy text-xs font-bold px-3 py-1 border border-[#BCE8F7] whitespace-nowrap">
+                  {item.status}
                 </span>
-
-                {p.id === 'ozel-siparis' ? (
-                  <a
-                    href="mailto:bahribudak@gmail.com"
-                    style={{
-                      background: '#0B2343',
-                      color: '#ffffff',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      padding: '10px 20px',
-                      borderRadius: 8,
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {t.quoteBtn}
-                  </a>
-                ) : (
-                  <a
-                    href={p.gumroadUrl || '#iletisim'}
-                    target={p.gumroadUrl ? '_blank' : undefined}
-                    rel={p.gumroadUrl ? 'noopener noreferrer' : undefined}
-                    style={{
-                      background: '#2EA6D9',
-                      color: '#0B2343',
-                      fontSize: 13,
-                      fontWeight: 700,
-                      padding: '10px 20px',
-                      borderRadius: 8,
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {t.buyBtn}
-                  </a>
-                )}
               </div>
-            </div>
+              <p className="text-sm text-navy/82 leading-relaxed mb-5">{item.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {item.files.map((file) => (
+                  <span key={file} className="rounded-full bg-[#F3F6FA] border border-gray-border px-3 py-1 text-xs font-semibold text-navy/82">
+                    {file}
+                  </span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* ÖDEME YÖNTEMLERİ */}
-      <section
-        id="iletisim"
-        style={{
-          background: '#ffffff',
-          borderTop: '1px solid #e5e7eb',
-          borderBottom: '1px solid #e5e7eb',
-          padding: '64px 24px',
-        }}
-      >
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <h2
-            style={{
-              color: '#0B2343',
-              fontSize: 28,
-              fontWeight: 800,
-              margin: '0 0 8px',
-              textAlign: 'center',
-            }}
-          >
-            {t.paymentTitle}
-          </h2>
-          <p
-            style={{
-              color: '#6b7280',
-              fontSize: 15,
-              textAlign: 'center',
-              margin: '0 0 40px',
-            }}
-          >
-            {t.paymentDesc}
-          </p>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 24,
-            }}
-          >
-            {/* Gumroad */}
-            <div
-              style={{
-                background: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: 12,
-                padding: '28px 24px',
-              }}
-            >
-              <div style={{ fontSize: 32, marginBottom: 12 }}>💳</div>
-              <h3 style={{ color: '#0B2343', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
-                {t.gumroad}
-              </h3>
-              <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 20px' }}>
-                {t.gumroadDesc}
-              </p>
-              <a
-                href="https://6762449615620.gumroad.com/l/pzpaal"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-block',
-                  background: '#0B2343',
-                  color: '#ffffff',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  padding: '10px 20px',
-                  borderRadius: 8,
-                  textDecoration: 'none',
-                }}
-              >
-                Gumroad →
-              </a>
-            </div>
-
-            {/* IBAN */}
-            <div
-              style={{
-                background: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: 12,
-                padding: '28px 24px',
-              }}
-            >
-              <div style={{ fontSize: 32, marginBottom: 12 }}>🏦</div>
-              <h3 style={{ color: '#0B2343', fontSize: 16, fontWeight: 700, margin: '0 0 8px' }}>
-                {t.manual}
-              </h3>
-              <p style={{ color: '#6b7280', fontSize: 14, lineHeight: 1.6, margin: '0 0 16px' }}>
-                {t.manualDesc}
-              </p>
-              <p
-                style={{
-                  background: '#e5e7eb',
-                  color: '#374151',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  padding: '8px 12px',
-                  borderRadius: 6,
-                  margin: '0 0 16px',
-                  fontFamily: 'monospace',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                TR26 0013 4000 0179 1847 2000 01
-              </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                <a
-                  href="https://wa.me/905433382690"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    background: '#25d366',
-                    color: '#ffffff',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    padding: '9px 16px',
-                    borderRadius: 8,
-                    textDecoration: 'none',
-                  }}
-                >
-                  WhatsApp
-                </a>
-                <a
-                  href="mailto:bahribudak@gmail.com"
-                  style={{
-                    background: '#2EA6D9',
-                    color: '#0B2343',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    padding: '9px 16px',
-                    borderRadius: 8,
-                    textDecoration: 'none',
-                  }}
-                >
-                  E-posta
-                </a>
-              </div>
-            </div>
+      <section className="bg-white border-t border-gray-border">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div>
+            <p className="section-label">SONRAKİ ADIM</p>
+            <h2 className="text-3xl font-bold text-navy mb-4">Bu şablonlar ürün, indirme dosyası veya hizmet paketi haline getirilebilir.</h2>
+            <p className="text-navy/82 leading-relaxed max-w-2xl">
+              İsterseniz bir sonraki revizyonda bu bölümün içine örnek görseller, indirme kartları, fiyatlandırma ve ürün açıklamaları ekleyebiliriz.
+            </p>
           </div>
+          <Link href={withLang('/contact')} className="btn-primary">İletişime Geç →</Link>
         </div>
-      </section>
-
-      {/* FOOTER */}
-      <section style={{ padding: '40px 24px', textAlign: 'center' }}>
-        <p style={{ color: '#9ca3af', fontSize: 13, margin: 0 }}>
-          © {new Date().getFullYear()} Bahri Budak ·{' '}
-          <Link href={`/${lang}`} style={{ color: '#12365E', textDecoration: 'none' }}>
-            bahribudak.com
-          </Link>
-        </p>
       </section>
     </main>
   )

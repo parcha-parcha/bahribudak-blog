@@ -32,14 +32,14 @@ const skills = [
 const pillars = [
   { emoji: '🧵', label: 'Tekstil', desc: '35 yıllık saha deneyimi' },
   { emoji: '🇹🇷', label: 'Türkiye', desc: 'Gündem ve sektör analizi' },
-  { emoji: '🌱', label: 'Kişisel Gelişim', desc: 'İlham ve motivasyon' },
+  { emoji: '📘', label: 'Eğitim', desc: 'Teknik not ve doküman' },
 ]
 
 const stats = [
   { number: '35', unit: 'Yıl', label: 'Tekstil Deneyimi' },
   { number: '10+', unit: 'Şirket', label: 'Yönetici Rolü' },
   { number: 'GMY', unit: '', label: 'Genel Müdür Yrd.' },
-  { number: '3', unit: 'Sütun', label: 'İçerik Kategorisi' },
+  { number: '49', unit: 'Dosya', label: 'Kurumsal Şablon Omurgası' },
 ]
 
 export default async function AboutPage({ params }: AboutProps) {
@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: AboutProps) {
         <p className="section-label">Hakkımda</p>
         <h1 className="text-4xl font-bold text-navy mb-4">
           Tekstil —{' '}
-          <span className="text-yellow-bb">Türkiye</span> — Kişisel Gelişim
+          <span className="text-yellow-bb">Eğitim</span> — Kurumsal Doküman
         </h1>
         <div className="w-12 h-1 bg-yellow-bb mb-6" />
       </div>
@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: AboutProps) {
           <p className="text-navy/90 text-sm leading-relaxed mb-4">
             Ergene / Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika operasyonlarında
             35 yıllık üretim ve yönetim deneyimine sahip üst düzey yönetici.
-            Operasyonel birikimini dijital içerik üretimiyle harmanlıyor.
+            Operasyonel birikimini teknik eğitim notları, kurumsal dosyalar ve uygulanabilir danışmanlık modeliyle paylaşıyor.
           </p>
           <div className="flex flex-wrap gap-2">
             {['Ergene / Tekirdağ', 'bahribudak@gmail.com'].map((tag) => (
@@ -120,7 +120,7 @@ export default async function AboutPage({ params }: AboutProps) {
           <p>
             Genel Müdür Yardımcılığı deneyimiyle operasyonel birikimimi stratejik yönetim
             perspektifiyle birleştiriyorum. Ergene/Tekirdağ tekstil havzasında büyük ölçekli
-            işletmelerde edindiğim alan bilgisini; tekstil, kişisel gelişim ve Türkiye gündemi
+            işletmelerde edindiğim alan bilgisini; tekstil eğitimi, kurumsal dokümantasyon ve sektör gündemi
             üzerine ürettiğim içeriklerle paylaşıyorum.
           </p>
           <p>

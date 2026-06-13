@@ -21,7 +21,7 @@ export default function Header({ lang }: HeaderProps) {
     { href: `/${lang}/about`, label: t('nav.about') },
     { href: `/${lang}/hizmetler`, label: lang === 'tr' ? 'Hizmetler' : 'Services' },
     { href: `/${lang}/haberler`, label: lang === 'tr' ? 'Haberler' : 'News' },
-    { href: `/${lang}/magazam`, label: lang === 'tr' ? 'Mağazam' : 'Store' },
+    { href: `/${lang}/magazam`, label: lang === 'tr' ? 'Şablonlar' : 'Templates' },
     { href: `/${lang}/contact`, label: t('nav.contact') },
   ]
   return (
