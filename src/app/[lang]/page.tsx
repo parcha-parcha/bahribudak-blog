@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import PostCard from '@/components/PostCard'
+import BrandLogo from '@/components/BrandLogo'
 import { getAllPosts } from '@/lib/posts'
 import { useTranslations, categories } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
@@ -245,9 +246,9 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="max-w-6xl mx-auto px-6 py-16">
 
           <div className="flex flex-col md:flex-row items-center gap-10 mb-14">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: '#12365E', border: '2px solid rgba(46,166,217,0.30)' }}>
-              <span className="text-white text-xl font-bold tracking-wide">BB</span>
+            <div className="bg-white rounded-2xl px-5 py-4 shadow-lg flex-shrink-0"
+              style={{ border: '1px solid rgba(46,166,217,0.30)' }}>
+              <BrandLogo className="w-52 h-auto text-[#0B2343]" />
             </div>
             <div>
               <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#2EA6D9' }}>
@@ -258,7 +259,7 @@ export default async function HomePage({ params }: HomeProps) {
                   ? 'Tekstil yöneticisinden içerik üreticisine'
                   : 'From textile manager to content creator'}
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed max-w-xl">
+              <p className="text-white/82 text-sm leading-relaxed max-w-xl">
                 {lang === 'tr'
                   ? 'Ergene/Tekirdağ tekstil havzasında boyahane, terbiye ve fabrika yönetimi alanlarında edindiğim 35 yıllık birikimi; tekstil, gündem ve kişisel gelişim yazılarıyla paylaşıyorum.'
                   : 'I share 35 years of dyehouse, finishing and factory management experience in the Ergene/Tekirdağ textile region through textile, current affairs and self-development writing.'}

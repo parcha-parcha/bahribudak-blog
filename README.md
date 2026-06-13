@@ -104,3 +104,8 @@ Hakkımda ve Hizmetler sayfalarındaki düşük kontrast/silik yazı problemi gi
 - İletişim ve Blog sayfaları açık zemin / koyu yazı sistemine alındı.
 - Felsefe kategori kalıntıları kaldırıldı.
 - Hakkımda başlığı ve içerik sütun sayısı güncellendi.
+
+
+## Revizyon 9
+
+Ana sayfa Hakkımda logosu ve Hizmetler sayfası koyu panel okunabilirliği düzeltildi. Felsefe görünür kategori olarak eklenmedi.

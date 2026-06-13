@@ -305,3 +305,27 @@
 .bb-news-readable button {
   color: #0B2343;
 }
+
+
+/* REV9: koyu panel okunabilirliği ve ana sayfa logo düzeltmesi */
+.bb-dark-readable-panel,
+.bb-dark-readable-panel h1,
+.bb-dark-readable-panel h2,
+.bb-dark-readable-panel h3,
+.bb-dark-readable-panel h4,
+.bb-dark-readable-panel p,
+.bb-dark-readable-panel span,
+.bb-dark-readable-panel li {
+  color: rgba(255,255,255,.92) !important;
+}
+.bb-dark-readable-panel .text-white,
+.bb-dark-readable-panel .font-bold {
+  color: #FFFFFF !important;
+}
+.bb-dark-readable-panel .text-white\/75,
+.bb-dark-readable-panel .text-white\/85 {
+  color: rgba(255,255,255,.88) !important;
+}
+.bb-dark-readable-panel [style*="#2EA6D9"] {
+  color: #2EA6D9 !important;
+}

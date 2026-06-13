@@ -105,7 +105,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
       </div>
 
       {/* ── NEDEN BAHRİ BUDAK ── */}
-      <div className="rounded-2xl p-8 mb-14" style={{ background: '#061A33' }}>
+      <div className="bb-dark-readable-panel rounded-2xl p-8 mb-14" style={{ background: '#061A33' }}>
         <h2 className="text-white text-2xl font-bold mb-1">
           Neden <span style={{ color: '#2EA6D9' }}>Bahri Budak?</span>
         </h2>
@@ -119,7 +119,7 @@ export default async function HizmetlerPage({ params }: HizmetlerProps) {
                 <span className="text-xl">{r.emoji}</span>
                 <span className="text-white font-bold text-sm">{r.title}</span>
               </div>
-              <p className="text-white/75 text-xs leading-relaxed">{r.desc}</p>
+              <p className="text-white/85 text-xs leading-relaxed">{r.desc}</p>
             </div>
           ))}
         </div>
