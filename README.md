@@ -1,15 +1,13 @@
-# Revizyon 24 - Ana Sayfa Hero Görsel Düzeltmesi
+# Revizyon 25 - Mobil Hero Kart Düzeltmesi
 
-Bu paket, kullanıcı tarafından verilen su damlası görselini ana sayfanın hero alanına ekler.
+Bu paket ana sayfadaki mobil hero alanında görülen sıkışma ve kart taşması problemini düzeltir.
 
-Yapılanlar:
+Yapılan düzeltmeler:
 
-- Mobilde bozulan eski logo/kart kompozisyonu kaldırıldı.
-- Hero sağ alanına sade su damlası görseli eklendi.
-- Görselin üzerine kurumsal logo ve sade 01/02/03 kart sistemi yerleştirildi.
-- Renkli emoji kullanılmadı.
-- Kurumsal renk sistemi korundu.
+- Mobilde 01/02/03 kartları gizlendi; masaüstünde korunur.
+- Mobil hero alanında logo ve “Tekstil Proses” etiketi sade ve okunur hale getirildi.
+- Su damlası görseli korunur.
+- Renkli emoji ikon eklenmedi.
+- Kurumsal renk ve font sistemi korunur.
 
-Commit mesajı:
-
-Ana sayfa hero görsel düzeltmesi
+Commit mesajı: Mobil hero kart taşması düzeltildi

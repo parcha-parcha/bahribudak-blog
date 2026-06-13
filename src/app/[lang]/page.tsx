@@ -96,16 +96,16 @@ export default async function HomePage({ params }: HomeProps) {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/15 to-transparent" />
-                <div className="absolute left-5 right-5 bottom-5 rounded-3xl bg-white/90 backdrop-blur border border-white shadow-xl p-5 md:p-6">
-                  <div className="flex items-center justify-between gap-4 mb-4">
-                    <BrandLogo className="h-12 md:h-14 w-44 text-navy" />
-                    <span className="hidden sm:inline-flex rounded-full bg-[#F3F6FA] px-4 py-2 text-xs font-bold text-navy/70 tracking-[0.18em] uppercase">Tekstil Proses</span>
+                <div className="absolute left-4 right-4 bottom-4 rounded-3xl bg-white/94 backdrop-blur border border-white shadow-xl p-4 md:left-5 md:right-5 md:bottom-5 md:p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
+                    <BrandLogo className="h-10 md:h-14 w-40 md:w-44 text-navy" />
+                    <span className="inline-flex w-fit rounded-full bg-[#F3F6FA] px-4 py-2 text-[11px] md:text-xs font-bold text-navy/70 tracking-[0.18em] uppercase">Tekstil Proses</span>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 md:gap-3">
+                  <div className="hidden md:grid grid-cols-3 gap-3 mt-4">
                     {['Boyahane', 'Terbiye', 'Kalite'].map((item, index) => (
-                      <div key={item} className="rounded-2xl border border-gray-border bg-white p-3 md:p-4">
-                        <p className="text-[10px] md:text-xs text-accent-blue font-black mb-1">0{index + 1}</p>
-                        <p className="text-xs md:text-sm font-bold text-navy leading-tight">{item}</p>
+                      <div key={item} className="rounded-2xl border border-gray-border bg-white p-4">
+                        <p className="text-xs text-accent-blue font-black mb-1">0{index + 1}</p>
+                        <p className="text-sm font-bold text-navy leading-tight">{item}</p>
                       </div>
                     ))}
                   </div>
