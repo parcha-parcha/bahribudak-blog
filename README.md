@@ -1,15 +1,18 @@
-# Revizyon 18 - Dil ve blog.latestPosts Hata Düzeltmesi
+# Revizyon 20 - Eski components/page.tsx TypeScript Hatası Düzeltmesi
 
-Bu paket Vercel hata kaydındaki şu problemi düzeltmek için hazırlanmıştır:
+Bu paket Vercel build logunda görünen şu hatayı düzeltir:
 
-`TypeError: Cannot read properties of undefined (reading 'blog.latestPosts')`
+`Property 'emoji' does not exist on type ...`
+
+Hatanın kaynağı eski revizyonlardan kalan `src/components/page.tsx` dosyasında `cat.emoji` çağrısı bulunmasıdır. Bu dosya gerçek ana sayfa değildir ama TypeScript build sırasında tarandığı için Vercel'i durdurur.
 
 Yapılan düzeltme:
-- `src/lib/i18n.ts` dosyası güvenli hale getirildi.
-- Dil değeri boş, hatalı veya beklenmeyen bir değer geldiğinde sistem otomatik olarak `tr` diline düşer.
-- `blog.latestPosts`, `blog.readMore`, kategori adları ve menü metinleri artık veri eksikliği yüzünden siteyi çökertmez.
-- Felsefe görünür kategori olarak tekrar eklenmedi.
-- Kategori renkleri kurumsal lacivert/gri sisteminde tutuldu.
+
+- `src/components/page.tsx` güvenli boş yardımcı bileşene çevrildi.
+- `src/app/[lang]/page.tsx` emoji kullanmayan temiz yapıyla eklendi.
+- `src/components/PostCard.tsx` emoji kullanmayan kurumsal kart yapısıyla eklendi.
+- Varsa `src/app/[lang]/PostCard.tsx` dosyası da emoji kullanmayan güvenli yapıya alındı.
 
 Commit mesajı:
-`Dil sistemi ve blog.latestPosts hata düzeltmesi`
+
+`Eski emoji build hatası düzeltildi`
