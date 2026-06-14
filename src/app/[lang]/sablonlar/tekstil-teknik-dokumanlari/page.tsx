@@ -86,8 +86,7 @@ export default function Page({ params }: { params: { lang: string } }) {
             Tekstil Teknik Dokümanları
           </h1>
           <p className="max-w-3xl text-lg leading-relaxed text-white/84">
-            Laboratuvar, boyama, apre, ramöz, fikse, kumaş ölçüm ve maliyet başlıklarını dosya adı olarak değil;
-            sahada kullanılabilecek teknik kaynak ailesi olarak bir araya getiren ana gruptur.
+            Boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılabilecek eğitim, kontrol ve uygulama dokümanlarını bir araya getiren ana teknik kaynak grubudur.
           </p>
         </div>
       </section>
@@ -98,9 +97,7 @@ export default function Page({ params }: { params: { lang: string } }) {
             <p className="section-label">KAYNAK YAPISI</p>
             <h2 className="mb-4 text-3xl font-bold text-navy">Teknik eğitim, kontrol ve uygulama kaynakları</h2>
             <p className="leading-relaxed text-navy/76">
-              Bu bölüm; tekstil işletmelerinde eğitim, kontrol, analiz, proses standardizasyonu ve üretim takibi için kullanılabilecek
-              teknik kaynakları kapsar. Dokümanlar kullanım amacı, saha karşılığı, kullanıcı grubu ve çıktı formatına göre
-              düzenlenir. Böylece ziyaretçi yalnızca belge adı değil, belgenin işletmede hangi problemi çözdüğünü de görebilir.
+              Bu bölüm; tekstil işletmelerinde eğitim, kontrol, analiz, proses standardizasyonu ve üretim takibi için kullanılabilecek teknik kaynakları kapsar. Dokümanlar, kullanım amacı, saha karşılığı, kullanıcı grubu ve çıktı formatına göre düzenlenir.
             </p>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {['PDF eğitim notu', 'DOCX düzenlenebilir dosya', 'XLSX kontrol tablosu'].map((item) => (
