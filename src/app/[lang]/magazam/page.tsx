@@ -143,7 +143,7 @@ function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
 
       <div className="mt-7 flex items-center justify-between border-t border-gray-border pt-5">
         <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">404 vermez • Talep yönlendirmesi</span>
-        <Link href={`/${lang}/iletisim`} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
+        <Link href={`/${lang}/contact`} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
           {item.button}
         </Link>
       </div>
