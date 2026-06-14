@@ -1,14 +1,14 @@
-# Revizyon 52 - Tekstil Teknik Dokümanları Detay Linki
+# Revizyon 53 - Detay Sayfası Dış Kullanıcı Dili Temizliği
 
-Bu paket Şablonlar/Kaynaklar sayfasındaki ilk kart olan Tekstil Teknik Dokümanları kartını gerçek detay sayfasına bağlar.
+Bu paket Tekstil Teknik Dokümanları detay sayfasındaki iç çalışma dilini temizler.
 
 Yapılanlar:
 
-- Tekstil Teknik Dokümanları kartındaki durum butonu “Sayfayı İncele” olarak düzenlendi.
-- Bu buton `/tr/sablonlar/tekstil-teknik-dokumanlari` detay sayfasına yönlenir.
-- Diğer kartlar şimdilik link vermez, durum etiketi olarak kalır.
-- Tekstil Teknik Dokümanları detay sayfası pakete dahil edilmiştir.
-- Genel Talep Oluştur butonu iletişim sayfasına yönlenmeye devam eder.
+- "Yüklenen dosyalar", "ham dosya listesi", "yeniden yapılandırılır" gibi iç çalışma ifadeleri kaldırıldı.
+- Sayfa dili ziyaretçiye uygun profesyonel teknik kaynak dili haline getirildi.
+- İçerik mantığı korunarak yayınlanabilir dış kullanıcı dili kullanıldı.
+- Renk, logo, font ve genel tasarım yapısına dokunulmadı.
 
 Commit mesajı:
-Tekstil teknik dokümanları detay sayfası bağlandı
+
+Detay sayfası dış kullanıcı dili temizlendi

@@ -87,7 +87,7 @@ export default function Page({ params }: { params: { lang: string } }) {
           </h1>
           <p className="max-w-3xl text-lg leading-relaxed text-white/84">
             Laboratuvar, boyama, apre, ramöz, fikse, kumaş ölçüm ve maliyet başlıklarını dosya adı olarak değil;
-            sahada kullanılabilecek teknik kaynak ailesi olarak yeniden düzenleyen ana gruptur.
+            sahada kullanılabilecek teknik kaynak ailesi olarak bir araya getiren ana gruptur.
           </p>
         </div>
       </section>
@@ -95,12 +95,12 @@ export default function Page({ params }: { params: { lang: string } }) {
       <section className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-            <p className="section-label">DÜZENLEME MANTIĞI</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy">Ham dosya listesi değil, teknik kaynak sistemi</h2>
+            <p className="section-label">KAYNAK YAPISI</p>
+            <h2 className="mb-4 text-3xl font-bold text-navy">Teknik eğitim, kontrol ve uygulama kaynakları</h2>
             <p className="leading-relaxed text-navy/76">
-              Yüklenen dosyalar doğrudan isim listesi olarak yayınlanmaz. Her içerik; kullanım amacı, saha karşılığı,
-              kullanıcı grubu, çıktı formatı ve eksik tamamlanacak alanlara göre yeniden yapılandırılır. Böylece site,
-              yalnızca dosya arşivi değil, tekstil işletmeleri için düzenli bir teknik kaynak merkezi gibi çalışır.
+              Bu bölüm; tekstil işletmelerinde eğitim, kontrol, analiz, proses standardizasyonu ve üretim takibi için kullanılabilecek
+              teknik kaynakları kapsar. Dokümanlar kullanım amacı, saha karşılığı, kullanıcı grubu ve çıktı formatına göre
+              düzenlenir. Böylece ziyaretçi yalnızca belge adı değil, belgenin işletmede hangi problemi çözdüğünü de görebilir.
             </p>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {['PDF eğitim notu', 'DOCX düzenlenebilir dosya', 'XLSX kontrol tablosu'].map((item) => (
@@ -125,7 +125,7 @@ export default function Page({ params }: { params: { lang: string } }) {
               href={`/${lang}/contact`}
               className="mt-7 inline-flex rounded-full bg-navy px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-blue"
             >
-              Bu kaynak grubu için talep oluştur
+              Teknik kaynak talebi oluştur
             </Link>
           </aside>
         </div>
@@ -139,7 +139,7 @@ export default function Page({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-bold text-navy md:text-3xl">{module.title}</h3>
                 </div>
                 <span className="w-fit rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-navy/70">
-                  Hazırlanacak kaynak
+                  Kaynak grubu
                 </span>
               </div>
 
@@ -169,11 +169,11 @@ export default function Page({ params }: { params: { lang: string } }) {
 
         <div className="mt-10 rounded-[2rem] border border-accent-blue/20 bg-[#061A33] p-7 text-white shadow-sm md:p-9">
           <p className="section-label text-accent-blue">YAYINA UYGUNLUK NOTU</p>
-          <h2 className="mb-4 text-3xl font-bold text-white">İçerikler doğrudan reçete talimatı olarak verilmez</h2>
+          <h2 className="mb-4 text-3xl font-bold text-white">Teknik kaynaklar işletme şartlarına göre uyarlanır</h2>
           <p className="max-w-4xl leading-relaxed text-white/78">
-            Bu dosya grubu, işletme şartlarına göre uyarlanacak teknik kaynak ve eğitim dokümanı olarak konumlandırılır.
-            Reçete, kabul limiti veya proses parametresi içeren alanlarda işletme makinesi, kumaş tipi, renk derinliği,
-            flotte, müşteri şartnamesi ve kalite hedefleri ayrıca değerlendirilmelidir.
+            Bu bölümde yer alan teknik kaynaklar; eğitim, kontrol ve proses standardizasyonu amacıyla hazırlanır. Reçete, kabul limiti
+            veya proses parametresi içeren uygulamalarda işletme makinesi, kumaş tipi, renk derinliği, flotte, müşteri şartnamesi
+            ve kalite hedefleri ayrıca değerlendirilmelidir.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link href={`/${lang}/magazam`} className="rounded-full bg-white px-5 py-3 text-sm font-bold text-navy transition hover:bg-accent-blue hover:text-white">
