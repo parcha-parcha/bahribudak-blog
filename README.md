@@ -1,15 +1,14 @@
-# Revizyon 44 - Şablonlar Sayfası Tekstil İndirilebilir Kaynak Odağı
+# Revizyon 45 - Şablonlar Tekstil İndirilebilir Kaynak Merkezi
 
-Bu paket, Şablonlar sayfasını Bahri Budak'ın önceliğine göre yeniden düzenler.
+Bu paket Şablonlar sayfasını tekstil teknik dosyalarının indirilebilir kaynak merkezi mantığına göre düzenler.
 
-Ana karar:
-- Kurumsal kimlik dosyaları indirilebilir ana ürün gibi sunulmaz.
-- Öncelik tekstil teknik dosyaları, proses formları, kontrol listeleri, eğitim notları ve teknik sunum dosyalarındadır.
-- Dijital / kurumsal şablonlar ikinci planda, isteğe göre hazırlanan destekleyici alan olarak konumlandırılır.
+Yapılanlar:
 
-Değişen dosyalar:
-- src/app/[lang]/magazam/page.tsx
-- README.md
+- Ana vurgu kurumsal kimlik dosyalarından çıkarıldı.
+- Öncelik tekstil teknik dokümanları, proses formları, kontrol listeleri, eğitim notları ve teknik sunum dosyalarına verildi.
+- Her kartta dosya amacı, kim kullanır, içerik örnekleri ve durum alanı eklendi.
+- Kurumsal evrak ve dijital yayın şablonları ikinci planda, isteğe göre destekleyici alan olarak konumlandırıldı.
+- İndirme linkleri gerçek dosyalar hazırlandıkça aktif edilecek mantıkla kurgulandı.
 
 Commit mesajı:
-Şablonlar sayfası tekstil indirilebilir kaynak odağına alındı
+Şablonlar tekstil kaynak merkezi yapısına alındı
