@@ -97,11 +97,13 @@ export default async function HomePage({ params }: HomeProps) {
 
           <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
             <div className="rounded-[44px] border border-white/35 bg-white/12 backdrop-blur-xl shadow-2xl p-5 sm:p-7 flex items-center justify-center">
-              <div className="w-full min-h-[390px] sm:min-h-[460px] rounded-[36px] bg-white/98 px-7 py-8 sm:px-9 sm:py-10 shadow-xl flex flex-col items-center justify-center text-center overflow-hidden">
-                <BrandLogo variant="vertical" className="h-[300px] sm:h-[350px] md:h-[390px] w-auto mx-auto" />
-                <div className="mt-5 w-full rounded-2xl border border-[#D7E0EA] bg-[#F3F6FA] px-4 py-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.24em] text-accent-blue">Tekstil Proses Sistemi</p>
-                  <p className="mt-2 text-sm font-bold text-navy leading-relaxed">Boyahane • Terbiye • Laboratuvar • Teknik Doküman</p>
+              <div className="w-full min-h-[390px] sm:min-h-[460px] rounded-[36px] bg-white/98 px-7 py-8 sm:px-9 sm:py-10 shadow-xl flex items-center justify-center text-center overflow-hidden">
+                <div className="w-full flex flex-col items-center justify-center gap-5">
+                  <BrandLogo variant="vertical" className="h-[270px] sm:h-[320px] md:h-[360px] w-auto mx-auto" />
+                  <div className="w-full max-w-[310px] rounded-2xl border border-[#D7E0EA] bg-[#F3F6FA] px-4 py-4">
+                    <p className="text-[11px] font-black uppercase tracking-[0.24em] text-accent-blue">Tekstil Proses Sistemi</p>
+                    <p className="mt-2 text-sm font-bold text-navy leading-relaxed">Boyahane • Terbiye • Laboratuvar • Teknik Doküman</p>
+                  </div>
                 </div>
               </div>
             </div>

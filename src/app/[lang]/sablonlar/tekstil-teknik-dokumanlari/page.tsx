@@ -97,9 +97,9 @@ export default function Page({ params }: { params: { lang: string } }) {
             <p className="section-label">KAYNAK YAPISI</p>
             <h2 className="mb-4 text-3xl font-bold text-navy">Tekstil işletmeleri için teknik doküman seti</h2>
             <p className="leading-relaxed text-navy/76">
-              Boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılmak üzere hazırlanacak PDF eğitim notları,
-              DOCX teknik dokümanlar ve XLSX kontrol tablolarından oluşan düzenli bir kaynak sistemidir. İçerikler; kullanım amacı,
-              saha karşılığı, kullanıcı grubu ve çıktı formatına göre yapılandırılır.
+              Bu bölüm; boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılacak teknik eğitim notları,
+              uygulama dokümanları ve kontrol tablolarını kapsar. Amaç; işletmede ortak proses dili oluşturmak,
+              ölçüm-kayıt düzenini standartlaştırmak ve saha ekiplerinin aynı teknik referansla çalışmasını sağlamaktır.
             </p>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {[

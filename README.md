@@ -1,13 +1,11 @@
-# Revizyon 56 - Logo Hizalama ve Hero Boşluk Düzeltmesi
+# Revizyon 57 - Teknik metin ve hero logo hizalama düzeltmesi
 
-Yapılanlar:
+Bu paket iki noktayı düzeltir:
 
-- Header ve footer logolarında logo iç boşlukları temizlendi.
-- Yatay ve dikey logo SVG dosyalarında üst kısım çizgiye değmeyecek şekilde yeniden hizalama yapıldı.
-- Footer logo kullanımı büyütüldü ve ortalandı.
-- Ana sayfa hero alanındaki dikey logo kartında logo daha okunur ve merkezli hale getirildi.
-- Logo ile alt metin arasındaki boşluk teknik bilgi bandı ile dolduruldu.
-- Renk paleti, logo formu ve font sistemi korunmuştur.
+1. Tekstil Teknik Dokümanları detay sayfasındaki üst açıklama dış kullanıcı diline göre yeniden yazıldı.
+2. Ana sayfa hero alanındaki dikey logo bloğu, üst boşluk ve alt yazı alt boşluğu daha dengeli olacak şekilde merkezlendi.
+
+İç yazışma dili, revizyon dili veya ham dosya ifadesi eklenmedi.
 
 Commit mesajı:
-Logo hizalama ve hero boşluk düzeltmesi
+Teknik metin ve hero logo hizalama düzeltildi
