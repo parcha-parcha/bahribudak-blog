@@ -1,15 +1,17 @@
-# Revizyon 41 - Logo Dış Kare Temizliği
+# Revizyon 42 - Blog Üst Görsel ve Yazı Okunabilirliği
 
-Bu paket sadece logo dosyalarındaki dış kare/canvas zeminini temizler.
+Bu paket Blog sayfasındaki üst görsel alanını tamamlamak için hazırlanmıştır.
 
 Yapılanlar:
 
-- Logo SVG dosyalarındaki dıştaki büyük kare zemin kaldırıldı.
-- Logonun kendi kenarları yuvarlak beyaz/negatif paneli korundu.
-- Amblem ve yazı yerleşimi değiştirilmedi.
-- Header, hero ve footer kodlarına dokunulmadı.
-- Amaç: logonun arkasında görünen kötü kare görüntüsünü kaldırmak.
+- Blog üst görselinde yazılar açık renge alındı.
+- Başlık ve açıklama koyu lacivert yarı saydam panel üzerine taşındı.
+- Fotoğrafa lacivert overlay eklendi.
+- Alt açıklama yazısı okunur hale getirildi.
+- Blog sayfası teknik yayın ve saha notu diliyle güncellendi.
+- Kurumsal renk sistemi korundu.
+- Emoji / renkli ikon eklenmedi.
 
 Commit mesajı:
 
-Logo dış kare zeminleri temizlendi
+Blog üst görsel yazı okunabilirliği tamamlandı
