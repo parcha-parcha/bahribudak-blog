@@ -41,10 +41,10 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                 alt={lang === 'tr' ? 'Tekstil proses ve endüstriyel altyapı görseli' : 'Textile process and industrial infrastructure visual'}
                 className="h-[260px] md:h-[340px] w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/72 via-[#061A33]/28 to-transparent" />
-              <div className="absolute left-6 bottom-6 rounded-2xl bg-white/92 px-5 py-4 shadow-lg backdrop-blur-sm">
-                <p className="text-xs font-bold tracking-[0.24em] text-[#5D5F63]">BAHRİ BUDAK</p>
-                <p className="mt-1 text-lg font-bold text-[#0B2343]">Tekstil Teknik Yayınları</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/82 via-[#061A33]/45 to-[#061A33]/10" />
+              <div className="absolute left-6 bottom-6 rounded-2xl bg-[#061A33]/82 px-5 py-4 shadow-lg backdrop-blur-sm border border-white/20">
+                <p className="text-xs font-bold tracking-[0.24em] text-white/75">BAHRİ BUDAK</p>
+                <p className="mt-1 text-lg font-bold text-white">Tekstil Teknik Yayınları</p>
               </div>
             </div>
           </div>
