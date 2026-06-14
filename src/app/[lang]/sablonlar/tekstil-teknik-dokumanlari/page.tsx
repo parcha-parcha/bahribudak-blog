@@ -97,9 +97,9 @@ export default function Page({ params }: { params: { lang: string } }) {
             <p className="section-label">KAYNAK YAPISI</p>
             <h2 className="mb-4 text-3xl font-bold text-navy">Tekstil işletmeleri için teknik doküman seti</h2>
             <p className="leading-relaxed text-navy/76">
-              Bu bölüm; boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılacak teknik eğitim notları,
-              uygulama dokümanları ve kontrol tablolarını kapsar. Amaç; işletmede ortak proses dili oluşturmak,
-              ölçüm-kayıt düzenini standartlaştırmak ve saha ekiplerinin aynı teknik referansla çalışmasını sağlamaktır.
+              Bu bölüm; boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılabilecek teknik eğitim notları,
+              uygulama dokümanları ve kontrol tablolarını kapsar. İçerikler; işletme içinde ortak proses dili oluşturmak,
+              ölçüm-kayıt düzenini güçlendirmek ve saha ekiplerinin aynı teknik referansla çalışmasını sağlamak için hazırlanır.
             </p>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {[
