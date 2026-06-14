@@ -30,8 +30,8 @@ const primaryResources: TextileResource[] = [
       'Kasar, boyama, yıkama, ramöz, fikse, laboratuvar ve proses kontrol başlıklarını aynı teknik dil altında toplar.',
     users: 'Boyahane müdürü, proses sorumlusu, kalite ekibi, laboratuvar ve eğitim sorumluları.',
     examples: ['Kasar referans notları', 'Reaktif boyama prosesleri', 'Yıkama adımları', 'Ramöz ve fikse notları'],
-    status: 'Öncelikli kaynak grubu',
-    button: 'Talep Et',
+    status: 'Hazırlanıyor • Talep edilebilir',
+    button: 'İçerik İçin İletişime Geç',
     featured: true,
   },
   {
@@ -41,7 +41,7 @@ const primaryResources: TextileResource[] = [
       'Üretim sırasında reçete, ölçüm, parti, makine ve işlem takibini standart hale getiren uygulanabilir form yapılarıdır.',
     users: 'Vardiya amiri, operatör, proses kontrol, laboratuvar ve üretim planlama ekipleri.',
     examples: ['Parti takip formu', 'Reçete kayıt formu', 'pH-sıcaklık-süre takip', 'Makine proses kaydı'],
-    status: 'Talebe göre hazırlanabilir',
+    status: 'Talep üzerine hazırlanır',
     button: 'Talep Et',
   },
   {
@@ -52,7 +52,7 @@ const primaryResources: TextileResource[] = [
     users: 'Operatör, vardiya amiri, kalite kontrol, laboratuvar ve işletme yönetimi.',
     examples: ['Kasar ön kontrol', 'Boyama başlangıç kontrolü', 'Yıkama final kontrol', 'Laboratuvar haftalık kontrol'],
     status: 'Yakında indirilebilir',
-    button: 'İletişime Geç',
+    button: 'Hazırlanınca Bilgi Al',
   },
   {
     no: '04',
@@ -62,7 +62,7 @@ const primaryResources: TextileResource[] = [
     users: 'Yeni personel, vardiya ekipleri, proses sorumluları, kalite ve laboratuvar ekipleri.',
     examples: ['Kasar eğitimi', 'Reaktif boyama eğitimi', 'Tuz-soda-pH mantığı', 'Hata analizi notları'],
     status: 'Hazırlanıyor',
-    button: 'Talep Et',
+    button: 'İçerik İçin İletişime Geç',
   },
   {
     no: '05',
@@ -71,8 +71,8 @@ const primaryResources: TextileResource[] = [
       'Makine, yatırım, proses iyileştirme ve eğitim çalışmalarını yönetim veya müşteri tarafına düzenli şekilde sunar.',
     users: 'Yönetim, satın alma, teknik ekipler, danışmanlık ve yatırım değerlendirme süreçleri.',
     examples: ['Makine teklif dosyası', 'Yatırım karşılaştırması', 'Teknik sunum kapağı', 'Maliyet özet sayfası'],
-    status: 'Talebe göre düzenlenir',
-    button: 'İletişime Geç',
+    status: 'Talep üzerine düzenlenir',
+    button: 'Talep Et',
   },
 ]
 
@@ -84,7 +84,7 @@ const supportResources: TextileResource[] = [
       'Tekstil teknik içeriklerinin müşteri, yönetim veya eğitim sunumunda daha düzgün görünmesi için kullanılan destekleyici evrak düzenidir.',
     users: 'Teknik rapor, eğitim dosyası ve müşteri teslim dokümanı hazırlayan ekipler.',
     examples: ['Kapak sayfası', 'Devam sayfası', 'İçindekiler düzeni', 'Teslim dosyası düzeni'],
-    status: 'İsteğe göre',
+    status: 'İsteğe göre destek',
     button: 'İsteğe Göre Talep Et',
   },
   {
@@ -94,7 +94,7 @@ const supportResources: TextileResource[] = [
       'Blog, LinkedIn ve sunum içeriklerinde teknik bilginin aynı kurumsal çizgide paylaşılmasını destekler.',
     users: 'Teknik yayın hazırlayanlar, eğitim sunumu yapanlar ve danışmanlık içeriklerini paylaşanlar.',
     examples: ['Blog görsel düzeni', 'LinkedIn teknik not kartı', 'Sunum kapağı', 'E-posta imzası'],
-    status: 'İsteğe göre',
+    status: 'İsteğe göre destek',
     button: 'İsteğe Göre Talep Et',
   },
 ]
@@ -142,7 +142,7 @@ function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
       </div>
 
       <div className="mt-7 flex items-center justify-between border-t border-gray-border pt-5">
-        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">404 vermez • Talep yönlendirmesi</span>
+        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">Dosya talebi ve bilgi formu</span>
         <Link href={`/${lang}/contact`} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
           {item.button}
         </Link>
@@ -183,7 +183,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
             <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Tekstil işletmeleri için hazırlanmış teknik kaynak grupları</h2>
           </div>
           <p className="text-sm leading-relaxed text-navy/66">
-            Gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça bu kartlar indirilebilir kaynaklara çevrilecektir. Şimdilik tüm butonlar 404 vermemesi için iletişim/talep sayfasına yönlendirilmiştir.
+            Gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça bu kartlar indirilebilir kaynaklara çevrilecektir. Şimdilik butonlar, dosya talebi ve içerik bilgilendirmesi için iletişim sayfasına yönlendirilir.
           </p>
         </div>
 

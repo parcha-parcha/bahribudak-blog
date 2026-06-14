@@ -1,11 +1,13 @@
-Revizyon 47 - Şablonlar Buton Link Düzeltmesi
+# Revizyon 48 - Şablonlar Buton Metinleri Düzeltmesi
 
-Revizyon 46'da butonlar iletişim sayfasına yönlendirildi; fakat projedeki gerçek iletişim rotası /contact olduğu için /iletisim 404 veriyordu.
+Bu paket Şablonlar/Kaynaklar sayfasındaki buton davranışını kullanıcıya daha açık hale getirir.
 
-Yapılan düzeltme:
-- Şablonlar/Kaynaklar sayfasındaki buton linkleri /tr/iletisim yerine /tr/contact olacak şekilde düzeltildi.
-- 404 veren geçici talep/iletişim butonları gerçek iletişim sayfasına bağlandı.
-- İçerik yapısına, logo dosyalarına ve tasarıma başka müdahale edilmedi.
+Yapılanlar:
 
-Commit mesajı:
-Şablonlar iletişim buton linki düzeltildi
+- 404 riski olan detay/indir buton dili kaldırıldı.
+- Buton metinleri talep mantığına göre düzenlendi.
+- Kart durumları daha net yazıldı: Hazırlanıyor, Talep üzerine hazırlanır, Yakında indirilebilir.
+- Butonlar iletişim sayfasına yönlendirmeye devam eder.
+- Sayfadaki “404 vermez” gibi teknik iç ifade kaldırıldı.
+
+Commit mesajı: Şablonlar buton metinleri talep mantığına göre düzenlendi
