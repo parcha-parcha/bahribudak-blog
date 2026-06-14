@@ -1,13 +1,11 @@
-# Revizyon 48 - Şablonlar Buton Metinleri Düzeltmesi
+# Revizyon 49 - Şablonlar Kart Buton Davranışı
 
-Bu paket Şablonlar/Kaynaklar sayfasındaki buton davranışını kullanıcıya daha açık hale getirir.
+Bu revizyon Şablonlar/Kaynaklar sayfasındaki kartların tamamının doğrudan iletişim sayfasına gitmesini düzeltir.
 
 Yapılanlar:
+- Her karttaki butonlar artık link değil, durum etiketi olarak görünür.
+- Kartlar tıklanınca iletişim sayfasına gitmez.
+- Sayfanın altına tek bir genel çağrı butonu eklendi: Genel Talep Oluştur.
+- İndirme dosyaları hazırlandığında kartlara gerçek PDF/DOCX/XLSX bağlantıları eklenebilir.
 
-- 404 riski olan detay/indir buton dili kaldırıldı.
-- Buton metinleri talep mantığına göre düzenlendi.
-- Kart durumları daha net yazıldı: Hazırlanıyor, Talep üzerine hazırlanır, Yakında indirilebilir.
-- Butonlar iletişim sayfasına yönlendirmeye devam eder.
-- Sayfadaki “404 vermez” gibi teknik iç ifade kaldırıldı.
-
-Commit mesajı: Şablonlar buton metinleri talep mantığına göre düzenlendi
+Commit mesajı: Şablonlar kart buton davranışı düzeltildi

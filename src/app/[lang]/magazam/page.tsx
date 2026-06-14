@@ -31,7 +31,7 @@ const primaryResources: TextileResource[] = [
     users: 'Boyahane müdürü, proses sorumlusu, kalite ekibi, laboratuvar ve eğitim sorumluları.',
     examples: ['Kasar referans notları', 'Reaktif boyama prosesleri', 'Yıkama adımları', 'Ramöz ve fikse notları'],
     status: 'Hazırlanıyor • Talep edilebilir',
-    button: 'İçerik İçin İletişime Geç',
+    button: 'Hazırlanıyor',
     featured: true,
   },
   {
@@ -42,7 +42,7 @@ const primaryResources: TextileResource[] = [
     users: 'Vardiya amiri, operatör, proses kontrol, laboratuvar ve üretim planlama ekipleri.',
     examples: ['Parti takip formu', 'Reçete kayıt formu', 'pH-sıcaklık-süre takip', 'Makine proses kaydı'],
     status: 'Talep üzerine hazırlanır',
-    button: 'Talep Et',
+    button: 'Talep üzerine hazırlanır',
   },
   {
     no: '03',
@@ -52,7 +52,7 @@ const primaryResources: TextileResource[] = [
     users: 'Operatör, vardiya amiri, kalite kontrol, laboratuvar ve işletme yönetimi.',
     examples: ['Kasar ön kontrol', 'Boyama başlangıç kontrolü', 'Yıkama final kontrol', 'Laboratuvar haftalık kontrol'],
     status: 'Yakında indirilebilir',
-    button: 'Hazırlanınca Bilgi Al',
+    button: 'Yakında indirilebilir',
   },
   {
     no: '04',
@@ -62,7 +62,7 @@ const primaryResources: TextileResource[] = [
     users: 'Yeni personel, vardiya ekipleri, proses sorumluları, kalite ve laboratuvar ekipleri.',
     examples: ['Kasar eğitimi', 'Reaktif boyama eğitimi', 'Tuz-soda-pH mantığı', 'Hata analizi notları'],
     status: 'Hazırlanıyor',
-    button: 'İçerik İçin İletişime Geç',
+    button: 'Hazırlanıyor',
   },
   {
     no: '05',
@@ -72,7 +72,7 @@ const primaryResources: TextileResource[] = [
     users: 'Yönetim, satın alma, teknik ekipler, danışmanlık ve yatırım değerlendirme süreçleri.',
     examples: ['Makine teklif dosyası', 'Yatırım karşılaştırması', 'Teknik sunum kapağı', 'Maliyet özet sayfası'],
     status: 'Talep üzerine düzenlenir',
-    button: 'Talep Et',
+    button: 'Talep üzerine hazırlanır',
   },
 ]
 
@@ -85,7 +85,7 @@ const supportResources: TextileResource[] = [
     users: 'Teknik rapor, eğitim dosyası ve müşteri teslim dokümanı hazırlayan ekipler.',
     examples: ['Kapak sayfası', 'Devam sayfası', 'İçindekiler düzeni', 'Teslim dosyası düzeni'],
     status: 'İsteğe göre destek',
-    button: 'İsteğe Göre Talep Et',
+    button: 'İsteğe göre destek',
   },
   {
     no: '07',
@@ -95,11 +95,11 @@ const supportResources: TextileResource[] = [
     users: 'Teknik yayın hazırlayanlar, eğitim sunumu yapanlar ve danışmanlık içeriklerini paylaşanlar.',
     examples: ['Blog görsel düzeni', 'LinkedIn teknik not kartı', 'Sunum kapağı', 'E-posta imzası'],
     status: 'İsteğe göre destek',
-    button: 'İsteğe Göre Talep Et',
+    button: 'İsteğe göre destek',
   },
 ]
 
-function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
+function ResourceCard({ item }: { item: TextileResource }) {
   return (
     <article
       className={`group rounded-[2rem] border bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card ${
@@ -141,11 +141,11 @@ function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
         </div>
       </div>
 
-      <div className="mt-7 flex items-center justify-between border-t border-gray-border pt-5">
-        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">Dosya talebi ve bilgi formu</span>
-        <Link href={`/${lang}/contact`} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
+      <div className="mt-7 flex items-center justify-between gap-4 border-t border-gray-border pt-5">
+        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">Dosya durumu</span>
+        <span className="rounded-full border border-accent-blue/30 bg-[#F3F6FA] px-5 py-2 text-sm font-bold text-navy">
           {item.button}
-        </Link>
+        </span>
       </div>
     </article>
   )
@@ -183,14 +183,25 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
             <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Tekstil işletmeleri için hazırlanmış teknik kaynak grupları</h2>
           </div>
           <p className="text-sm leading-relaxed text-navy/66">
-            Gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça bu kartlar indirilebilir kaynaklara çevrilecektir. Şimdilik butonlar, dosya talebi ve içerik bilgilendirmesi için iletişim sayfasına yönlendirilir.
+            Gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça bu kartlar indirilebilir kaynaklara çevrilecektir. Şimdilik kartlar sadece hangi dosya gruplarının hazırlanacağını ve durum bilgisini gösterir.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {primaryResources.map((item) => (
-            <ResourceCard key={item.no} item={item} lang={lang} />
+            <ResourceCard key={item.no} item={item} />
           ))}
+        </div>
+
+        <div className="mt-8 rounded-[2rem] border border-accent-blue/25 bg-white p-6 shadow-sm md:flex md:items-center md:justify-between md:gap-6">
+          <div>
+            <p className="section-label">DOSYA TALEBİ</p>
+            <h3 className="text-2xl font-bold text-navy">Belirli bir tekstil dokümanına ihtiyacınız varsa talep oluşturabilirsiniz.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-navy/70">Kartlar tek tek iletişim sayfasına yönlendirmez. Genel talep için aşağıdaki tek buton kullanılır.</p>
+          </div>
+          <Link href={`/${lang}/contact`} className="mt-5 inline-flex rounded-full bg-navy px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-blue md:mt-0">
+            Genel Talep Oluştur
+          </Link>
         </div>
       </section>
 
@@ -205,7 +216,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {supportResources.map((item) => (
-              <ResourceCard key={item.no} item={item} lang={lang} />
+              <ResourceCard key={item.no} item={item} />
             ))}
           </div>
         </div>
