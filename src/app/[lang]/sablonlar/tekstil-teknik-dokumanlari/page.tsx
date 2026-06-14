@@ -95,14 +95,21 @@ export default function Page({ params }: { params: { lang: string } }) {
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
             <p className="section-label">KAYNAK YAPISI</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy">Teknik eğitim, kontrol ve uygulama kaynakları</h2>
+            <h2 className="mb-4 text-3xl font-bold text-navy">Tekstil işletmeleri için teknik doküman seti</h2>
             <p className="leading-relaxed text-navy/76">
-              Bu bölüm; tekstil işletmelerinde eğitim, kontrol, analiz, proses standardizasyonu ve üretim takibi için kullanılabilecek teknik kaynakları kapsar. Dokümanlar, kullanım amacı, saha karşılığı, kullanıcı grubu ve çıktı formatına göre düzenlenir.
+              Boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılmak üzere hazırlanacak PDF eğitim notları,
+              DOCX teknik dokümanlar ve XLSX kontrol tablolarından oluşan düzenli bir kaynak sistemidir. İçerikler; kullanım amacı,
+              saha karşılığı, kullanıcı grubu ve çıktı formatına göre yapılandırılır.
             </p>
             <div className="mt-7 grid gap-4 md:grid-cols-3">
-              {['PDF eğitim notu', 'DOCX düzenlenebilir dosya', 'XLSX kontrol tablosu'].map((item) => (
-                <div key={item} className="rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-4">
-                  <p className="text-sm font-bold text-navy">{item}</p>
+              {[
+                { title: 'PDF Eğitim Notları', desc: 'Operatör, vardiya amiri ve proses ekipleri için teknik anlatım dosyaları.' },
+                { title: 'DOCX Teknik Dokümanlar', desc: 'İşletmeye göre düzenlenebilir proses açıklama ve talimat dosyaları.' },
+                { title: 'XLSX Kontrol Tabloları', desc: 'Ölçüm, takip, analiz ve proses kontrol çizelgeleri.' },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-4">
+                  <p className="mb-2 text-sm font-bold text-navy">{item.title}</p>
+                  <p className="text-xs leading-relaxed text-navy/65">{item.desc}</p>
                 </div>
               ))}
             </div>

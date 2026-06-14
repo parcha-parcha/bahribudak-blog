@@ -1,12 +1,15 @@
-# Revizyon 54 - Tekstil Teknik Dokümanları Sayfa Dili Kesin Temizlik
+# Revizyon 55 - Tekstil Teknik Dokümanları Üst Bölüm Netleştirme
 
-Bu paket, Tekstil Teknik Dokümanları detay sayfasındaki iç çalışma dilini tamamen dış kullanıcı diline çeker.
+Bu paket, Tekstil Teknik Dokümanları detay sayfasındaki üst kaynak yapısı bölümünü dış kullanıcı diline göre netleştirir.
 
 Yapılanlar:
-- "Düzenleme mantığı", "ham dosya listesi", "yüklenen dosyalar" gibi iç çalışma ifadeleri kaldırılır.
-- Sayfa yalnızca ziyaretçiye uygun profesyonel teknik kaynak diliyle kalır.
-- Alt içerik modülleri korunur: laboratuvar, boyama prosesleri, apre/ramöz/fikse, kumaş ölçüm/maliyet/sıfırlama.
-- Renk, logo ve font düzenine dokunulmaz.
+
+- Başlık “Tekstil işletmeleri için teknik doküman seti” olarak güncellendi.
+- Açıklama PDF / DOCX / XLSX kaynak sistemi mantığına göre sadeleştirildi.
+- PDF, DOCX ve XLSX kutularına kısa açıklamalar eklendi.
+- İç yazışma dili kullanılmadı.
+- Renk, logo ve font sistemine dokunulmadı.
 
 Commit mesajı:
-Tekstil teknik detay sayfası dili temizlendi
+
+Tekstil teknik doküman üst bölümü netleştirildi
