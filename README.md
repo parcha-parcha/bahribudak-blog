@@ -1,13 +1,12 @@
-# Revizyon 28 - Hero Logo ve Okunabilirlik Düzeltmesi
+Revizyon 29 - Logo Değişimi
 
-Bu paket ana sayfa hero alanındaki iki sorunu düzeltmek için hazırlanmıştır:
+Bu paket, sitedeki mevcut BB logo kullanımını yeni kurumsal çiçek/amblem logo sistemiyle değiştirir.
 
-- Üst etiket yazısı koyu görsel üzerinde daha okunur hale getirildi.
-- Sağdaki cam kart içinde karışan 35 / 3 / 01 metrik kartları kaldırıldı.
-- Sağ alanda sade kurumsal logo kullanıldı.
-- Su damlası hero arka planı korundu.
-- Emoji veya renkli ikon eklenmedi.
+Yapılanlar:
+- BrandLogo bileşeni yeni logo dosyalarını kullanacak şekilde güncellendi.
+- Yatay, dikey, negatif ve sadece amblem SVG dosyaları public/brand altına eklendi.
+- Favicon yeni amblemden üretildi.
+- Header, hero, footer ve diğer BrandLogo kullanılan alanlar otomatik olarak yeni logoya geçer.
 
 Commit mesajı:
-
-Hero logo ve okunabilirlik düzeltmesi
+Yeni kurumsal logo siteye uygulandı
