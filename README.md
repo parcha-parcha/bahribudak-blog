@@ -1,15 +1,25 @@
-# Revizyon 39 - Header Su Doku Arka Planı
+# Revizyon 40 - Header Build Hatası Düzeltmesi
 
-Bu paket header / menü alanında kullanılan düz beyaz zemini daha kurumsal hale getirmek için hazırlanmıştır.
+Bu paket Vercel build logunda görünen Header.tsx hatasını düzeltir.
 
-Yapılanlar:
+Hata:
 
-- Kullanıcının gönderdiği su yüzeyi görseli header arka planı olarak eklendi.
-- Görselin üzerine açık beyaz/lacivert kontrollü overlay verildi.
-- Logo ve menü okunabilirliği için menü arkasına yarı saydam beyaz panel eklendi.
-- Aktif menü öğesi lacivert zemin / beyaz yazı yapıldı.
-- Header altına ince kurumsal vurgu çizgisi eklendi.
-- Yazıların arka plana karışmaması için renkler lacivert/beyaz dengesiyle ayarlandı.
+```
+./src/components/Header.tsx:1:5
+Expected ';', '}' or <eof>
+use client'
+```
+
+Sebep:
+
+Header dosyasının ilk satırında `use client` ifadesinin başındaki tek tırnak eksikti.
+
+Düzeltme:
+
+```tsx
+'use client'
+```
 
 Commit mesajı:
-Header su doku arka planı eklendi
+
+Header use client build hatası düzeltildi
