@@ -1,17 +1,12 @@
-# Revizyon 42 - Blog Üst Görsel ve Yazı Okunabilirliği
+# Revizyon 43 - Blog üst görsel yazı rengi kesin düzeltme
 
-Bu paket Blog sayfasındaki üst görsel alanını tamamlamak için hazırlanmıştır.
+Bu paket blog üst görselindeki başlık ve açıklama yazılarının koyu görünmesi sorununu düzeltir.
 
 Yapılanlar:
-
-- Blog üst görselinde yazılar açık renge alındı.
-- Başlık ve açıklama koyu lacivert yarı saydam panel üzerine taşındı.
-- Fotoğrafa lacivert overlay eklendi.
-- Alt açıklama yazısı okunur hale getirildi.
-- Blog sayfası teknik yayın ve saha notu diliyle güncellendi.
-- Kurumsal renk sistemi korundu.
-- Emoji / renkli ikon eklenmedi.
+- Görsel üzerindeki yazılar inline style ile kesin açık renge alındı.
+- Yazı paneli tam koyu lacivert zemine alındı.
+- Overlay biraz güçlendirildi.
+- Sadece blog sayfasına dokunuldu.
 
 Commit mesajı:
-
-Blog üst görsel yazı okunabilirliği tamamlandı
+Blog üst görsel yazı rengi kesin düzeltildi

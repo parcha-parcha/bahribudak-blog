@@ -41,17 +41,17 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                 alt={lang === 'tr' ? 'Tekstil proses ve endüstriyel altyapı görseli' : 'Textile process and industrial infrastructure visual'}
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/92 via-[#061A33]/68 to-[#061A33]/35" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/96 via-[#061A33]/78 to-[#061A33]/48" />
               <div className="absolute inset-0 bg-[#061A33]/18" />
               <div className="relative z-10 flex min-h-[310px] items-end p-6 md:p-8">
-                <div className="max-w-[620px] rounded-[26px] border border-white/24 bg-[#061A33]/88 px-6 py-5 shadow-2xl backdrop-blur-md">
-                  <p className="text-xs font-black tracking-[0.28em] text-white/86">
+                <div className="max-w-[620px] rounded-[26px] border border-white/30 bg-[#061A33] px-6 py-5 shadow-2xl">
+                  <p className="text-xs font-black tracking-[0.28em]" style={{ color: '#FFFFFF' }}>
                     BAHRİ BUDAK
                   </p>
-                  <h2 className="mt-2 text-2xl md:text-3xl font-black leading-tight text-white">
+                  <h2 className="mt-2 text-2xl md:text-3xl font-black leading-tight" style={{ color: '#FFFFFF' }}>
                     Tekstil Teknik Yayınları
                   </h2>
-                  <p className="mt-3 max-w-lg text-sm md:text-base leading-relaxed text-white/90">
+                  <p className="mt-3 max-w-lg text-sm md:text-base leading-relaxed" style={{ color: '#EAF3FF' }}>
                     Boyahane prosesleri, kalite kontrol, reçete standardizasyonu ve teknik doküman sistemi üzerine uygulanabilir saha notları.
                   </p>
                 </div>
