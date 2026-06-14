@@ -1,16 +1,17 @@
-# Revizyon 30 - Logo Boyut Okunabilirlik Düzeltmesi
+# Revizyon 31 - Logo Yerleşim ve Hero Dikey Logo Düzeltmesi
 
-Bu paket, yeni kurumsal logo siteye yerleştirildikten sonra görülen küçük boyut/okunabilirlik sorununu düzeltmek için hazırlanmıştır.
+Bu paket, yeni kurumsal çiçek logonun sitedeki kullanım boyutlarını ve yerleşimini düzeltir.
 
-Yapılan düzeltme:
+Yapılanlar:
 
-- `src/components/BrandLogo.tsx` güncellendi.
-- Yatay logo varsayılan olarak büyütüldü.
-- Dikey logo varsayılan olarak büyütüldü.
-- Sadece amblem kullanımlarında minimum görünür boyut artırıldı.
-- Logo sınıflarındaki küçük `h-*` değerlerinin logoyu okunmaz hale getirmemesi için bileşene güvenli genişlik sistemi eklendi.
-- Logo dosyalarının kendisi değiştirilmedi; sadece sitedeki görünür kullanım boyutu büyütüldü.
+- Header logosu küçültüldü; "Ana Sayfa" menüsüyle çakışması engellendi.
+- Header menüsü geniş ekranda gösterilecek şekilde ayarlandı; dar alanda mobil menüye geçer.
+- BrandLogo bileşenindeki zorunlu genişlikler kaldırıldı; verilen alan ölçülerine uyması sağlandı.
+- Hero alanındaki yatay logo yerine dikey logo kullanıldı.
+- Hero sağ kartındaki karışan 35 / 3 / 01 metrikleri temizlendi.
+- Üst hero etiketi daha görünür hale getirildi.
+- Su damlası arka planı korundu.
 
 Commit mesajı:
 
-Logo boyutları okunabilir hale getirildi
+Logo yerleşim ve hero dikey logo düzeltmesi

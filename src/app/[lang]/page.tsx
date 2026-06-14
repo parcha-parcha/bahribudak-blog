@@ -82,7 +82,7 @@ export default async function HomePage({ params }: HomeProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
           <div>
-            <p className="section-label mb-5 text-white/90 drop-shadow-sm">BAHRİ BUDAK • TEKSTİL PROSES DANIŞMANLIĞI</p>
+            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white shadow-sm backdrop-blur-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
@@ -95,16 +95,16 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-sm mx-auto lg:mx-0">
-            <div className="rounded-[34px] border border-white/28 bg-white/14 backdrop-blur-xl shadow-2xl p-5 md:p-7">
-              <div className="rounded-[28px] bg-white/94 p-7 md:p-9 shadow-xl flex flex-col items-center text-center">
-                <BrandLogo className="h-16 md:h-20 w-full max-w-[260px] text-navy" />
-                <div className="mt-6 h-px w-20 bg-navy/18" />
-                <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-navy/70">
-                  Tekstil Proses
+          <div className="lg:justify-self-end w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
+            <div className="rounded-[34px] border border-white/35 bg-white/12 backdrop-blur-xl shadow-2xl p-5 md:p-7">
+              <div className="rounded-[28px] bg-white/96 p-7 md:p-9 shadow-xl flex flex-col items-center text-center overflow-hidden">
+                <BrandLogo variant="vertical" className="h-44 sm:h-52 md:h-60 w-auto mx-auto" />
+                <div className="mt-7 h-px w-24 bg-navy/16" />
+                <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-navy/72">
+                  Tekstil Danışmanlığı
                 </p>
-                <p className="mt-2 text-sm font-semibold text-navy/82">
-                  Danışmanlık • Eğitim • Teknik Doküman
+                <p className="mt-2 text-sm font-semibold text-navy/78 max-w-[240px]">
+                  Boyahane • Terbiye • Eğitim • Teknik Doküman
                 </p>
               </div>
             </div>

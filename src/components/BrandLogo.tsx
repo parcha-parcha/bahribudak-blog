@@ -15,24 +15,18 @@ export default function BrandLogo({ variant = 'horizontal', negative = false, cl
     ? 'Bahri Budak amblem'
     : 'Bahri Budak Tekstil Danışmanlığı logo'
 
-  const width = variant === 'mark'
-    ? 'clamp(72px, 7vw, 112px)'
+  const defaultClass = variant === 'mark'
+    ? 'h-10 w-10'
     : variant === 'vertical'
-      ? 'clamp(190px, 18vw, 300px)'
-      : 'clamp(240px, 22vw, 390px)'
+      ? 'h-40 w-auto'
+      : 'h-12 w-auto'
 
   return (
     <img
       src={src}
       alt={alt}
-      className={className}
-      style={{
-        width,
-        height: 'auto',
-        maxWidth: '100%',
-        display: 'block',
-        objectFit: 'contain',
-      }}
+      className={`${className || defaultClass} object-contain shrink-0`}
+      style={{ display: 'block', maxWidth: '100%' }}
       loading="eager"
       decoding="async"
     />
