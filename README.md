@@ -1,11 +1,15 @@
-# Revizyon 49 - Şablonlar Kart Buton Davranışı
+Revizyon 51 - Tekstil Teknik Dokümanları İçerik Detaylandırma
 
-Bu revizyon Şablonlar/Kaynaklar sayfasındaki kartların tamamının doğrudan iletişim sayfasına gitmesini düzeltir.
+Bu paket, yüklenen gerçek dosya havuzundaki ilk ana grup olan Tekstil Teknik Dokümanları bölümünü ham dosya listesi olarak değil, Bahri Budak kurumsal site şablonuna uygun teknik kaynak sayfası olarak yeniden düzenler.
 
-Yapılanlar:
-- Her karttaki butonlar artık link değil, durum etiketi olarak görünür.
-- Kartlar tıklanınca iletişim sayfasına gitmez.
-- Sayfanın altına tek bir genel çağrı butonu eklendi: Genel Talep Oluştur.
-- İndirme dosyaları hazırlandığında kartlara gerçek PDF/DOCX/XLSX bağlantıları eklenebilir.
+Düzenlenen sayfa:
+- src/app/[lang]/sablonlar/tekstil-teknik-dokumanlari/page.tsx
 
-Commit mesajı: Şablonlar kart buton davranışı düzeltildi
+İçerik temeli:
+- Laboratuvar ve kalite kontrol
+- Boyama prosesleri ve kimya
+- Apre, ramöz, şardon ve fikse
+- Kumaş ölçüm, maliyet ve sıfırlama
+
+Commit mesajı:
+Tekstil teknik dokümanları içerik sayfası düzenlendi
