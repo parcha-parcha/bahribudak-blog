@@ -19,38 +19,64 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
   return (
     <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <div className="mb-12">
-        <p className="section-label">{t('blog.allPosts')}</p>
-        <h1 className="text-4xl font-bold text-navy mb-2">{t('nav.blog')}</h1>
-        <div className="w-12 h-1 bg-yellow-bb mt-4" />
-      </div>
+      <section className="border-b border-[#D8DEE8] bg-[#F3F6FA]">
+        <div className="max-w-6xl mx-auto px-6 py-14 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-10 items-center">
+            <div>
+              <p className="section-label text-[#5D5F63]">{t('blog.allPosts')}</p>
+              <h1 className="text-5xl md:text-6xl font-bold text-[#0B2343] tracking-tight mt-3 mb-5">
+                {t('nav.blog')}
+              </h1>
+              <div className="w-14 h-1 bg-[#2EA6D9] mb-7" />
+              <p className="max-w-xl text-lg leading-relaxed text-[#5D5F63]">
+                {lang === 'tr'
+                  ? 'Tekstil prosesi, boyahane, kalite kontrol ve üretim yönetimi üzerine saha deneyimine dayalı teknik yayınlar ve notlar.'
+                  : 'Technical notes and publications on textile process, dyehouse, quality control and production management.'}
+              </p>
+            </div>
 
-      <div className="flex flex-wrap gap-3 mb-12">
-        <Link href={`/${lang}/blog`}
-          className={`cat-badge border transition-all ${activeCategory === 'all' ? 'bg-navy text-white border-navy' : 'bg-white text-gray-text border-gray-border hover:border-navy'}`}>
-          {t('cat.all')}
-        </Link>
-        {categories.map(cat => (
-          <Link key={cat.slug} href={`/${lang}/blog?category=${cat.slug}`}
-            className={`cat-badge border transition-all ${activeCategory === cat.slug ? 'bg-navy text-white border-navy' : 'bg-white text-gray-text border-gray-border hover:border-navy'}`}>
-            {t(`cat.${cat.slug}` as any)}
-          </Link>
-        ))}
-      </div>
+            <div className="relative overflow-hidden rounded-[34px] border border-[#D8DEE8] bg-white shadow-[0_24px_70px_rgba(11,35,67,0.14)]">
+              <img
+                src="/images/blog-endustriyel-proses.jpg"
+                alt={lang === 'tr' ? 'Tekstil proses ve endüstriyel altyapı görseli' : 'Textile process and industrial infrastructure visual'}
+                className="h-[260px] md:h-[340px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/72 via-[#061A33]/28 to-transparent" />
+              <div className="absolute left-6 bottom-6 rounded-2xl bg-white/92 px-5 py-4 shadow-lg backdrop-blur-sm">
+                <p className="text-xs font-bold tracking-[0.24em] text-[#5D5F63]">BAHRİ BUDAK</p>
+                <p className="mt-1 text-lg font-bold text-[#0B2343]">Tekstil Teknik Yayınları</p>
+              </div>
+            </div>
+          </div>
 
-      {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
+          <div className="mt-11 flex flex-wrap gap-3">
+            <Link href={`/${lang}/blog`}
+              className={`cat-badge border transition-all ${activeCategory === 'all' ? 'bg-[#0B2343] text-white border-[#0B2343]' : 'bg-white text-[#5D5F63] border-[#D8DEE8] hover:border-[#0B2343]'}`}>
+              {t('cat.all')}
+            </Link>
+            {categories.map(cat => (
+              <Link key={cat.slug} href={`/${lang}/blog?category=${cat.slug}`}
+                className={`cat-badge border transition-all ${activeCategory === cat.slug ? 'bg-[#0B2343] text-white border-[#0B2343]' : 'bg-white text-[#5D5F63] border-[#D8DEE8] hover:border-[#0B2343]'}`}>
+                {t(`cat.${cat.slug}` as any)}
+              </Link>
+            ))}
+          </div>
         </div>
-      ) : (
-        <div className="text-center py-24 text-gray-text">
-          <p className="font-medium text-lg">
-            {lang === 'tr' ? 'Bu kategoride henüz yazı yok.' : 'No posts in this category yet.'}
-          </p>
-        </div>
-      )}
-    </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-14">
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map(post => <PostCard key={post.slug} post={post} lang={lang} />)}
+          </div>
+        ) : (
+          <div className="text-center py-24 text-[#5D5F63]">
+            <p className="font-medium text-lg">
+              {lang === 'tr' ? 'Bu kategoride henüz yazı yok.' : 'No posts in this category yet.'}
+            </p>
+          </div>
+        )}
+      </section>
     </main>
   )
 }
