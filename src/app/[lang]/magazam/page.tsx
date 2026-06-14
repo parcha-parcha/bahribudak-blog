@@ -31,7 +31,7 @@ const primaryResources: TextileResource[] = [
     users: 'Boyahane müdürü, proses sorumlusu, kalite ekibi, laboratuvar ve eğitim sorumluları.',
     examples: ['Kasar referans notları', 'Reaktif boyama prosesleri', 'Yıkama adımları', 'Ramöz ve fikse notları'],
     status: 'Öncelikli kaynak grubu',
-    button: 'Detayları Gör',
+    button: 'Talep Et',
     featured: true,
   },
   {
@@ -42,7 +42,7 @@ const primaryResources: TextileResource[] = [
     users: 'Vardiya amiri, operatör, proses kontrol, laboratuvar ve üretim planlama ekipleri.',
     examples: ['Parti takip formu', 'Reçete kayıt formu', 'pH-sıcaklık-süre takip', 'Makine proses kaydı'],
     status: 'Talebe göre hazırlanabilir',
-    button: 'Form Yapısını İncele',
+    button: 'Talep Et',
   },
   {
     no: '03',
@@ -52,7 +52,7 @@ const primaryResources: TextileResource[] = [
     users: 'Operatör, vardiya amiri, kalite kontrol, laboratuvar ve işletme yönetimi.',
     examples: ['Kasar ön kontrol', 'Boyama başlangıç kontrolü', 'Yıkama final kontrol', 'Laboratuvar haftalık kontrol'],
     status: 'Yakında indirilebilir',
-    button: 'Liste İçeriklerini Gör',
+    button: 'İletişime Geç',
   },
   {
     no: '04',
@@ -62,7 +62,7 @@ const primaryResources: TextileResource[] = [
     users: 'Yeni personel, vardiya ekipleri, proses sorumluları, kalite ve laboratuvar ekipleri.',
     examples: ['Kasar eğitimi', 'Reaktif boyama eğitimi', 'Tuz-soda-pH mantığı', 'Hata analizi notları'],
     status: 'Hazırlanıyor',
-    button: 'Eğitim Başlıkları',
+    button: 'Talep Et',
   },
   {
     no: '05',
@@ -72,7 +72,7 @@ const primaryResources: TextileResource[] = [
     users: 'Yönetim, satın alma, teknik ekipler, danışmanlık ve yatırım değerlendirme süreçleri.',
     examples: ['Makine teklif dosyası', 'Yatırım karşılaştırması', 'Teknik sunum kapağı', 'Maliyet özet sayfası'],
     status: 'Talebe göre düzenlenir',
-    button: 'Sunum Yapısını Gör',
+    button: 'İletişime Geç',
   },
 ]
 
@@ -85,7 +85,7 @@ const supportResources: TextileResource[] = [
     users: 'Teknik rapor, eğitim dosyası ve müşteri teslim dokümanı hazırlayan ekipler.',
     examples: ['Kapak sayfası', 'Devam sayfası', 'İçindekiler düzeni', 'Teslim dosyası düzeni'],
     status: 'İsteğe göre',
-    button: 'Destek Alanı',
+    button: 'İsteğe Göre Talep Et',
   },
   {
     no: '07',
@@ -95,7 +95,7 @@ const supportResources: TextileResource[] = [
     users: 'Teknik yayın hazırlayanlar, eğitim sunumu yapanlar ve danışmanlık içeriklerini paylaşanlar.',
     examples: ['Blog görsel düzeni', 'LinkedIn teknik not kartı', 'Sunum kapağı', 'E-posta imzası'],
     status: 'İsteğe göre',
-    button: 'Dijital Destek',
+    button: 'İsteğe Göre Talep Et',
   },
 ]
 
@@ -142,7 +142,7 @@ function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
       </div>
 
       <div className="mt-7 flex items-center justify-between border-t border-gray-border pt-5">
-        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">Kaynak kartı</span>
+        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">404 vermez • Talep yönlendirmesi</span>
         <Link href={`/${lang}/iletisim`} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
           {item.button}
         </Link>
@@ -162,7 +162,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
         <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
           <p className="section-label text-accent-blue">TEKSTİL KAYNAK MERKEZİ</p>
           <h1 className="mb-5 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">
-            İndirilebilir tekstil teknik dosyaları için kaynak sistemi
+            Tekstil teknik dosyaları için kaynak ve talep sistemi
           </h1>
           <p className="max-w-3xl text-lg leading-relaxed text-white/80">
             Bu sayfanın ana değeri kurumsal kimlik dosyaları değil; boyahane, proses, kalite kontrol, eğitim ve teknik dokümantasyon için hazırlanmış tekstil bilgilerinin düzenli ve kullanılabilir hale getirilmesidir.
@@ -183,7 +183,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
             <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">Tekstil işletmeleri için hazırlanmış teknik kaynak grupları</h2>
           </div>
           <p className="text-sm leading-relaxed text-navy/66">
-            İndirme butonları gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça aktif hale getirilebilir. Şimdilik yapı; dosya gruplarını, kullanım amacını ve talep edilebilir içerikleri net göstermek için kurulmuştur.
+            Gerçek PDF, DOCX ve XLSX dosyaları hazırlandıkça bu kartlar indirilebilir kaynaklara çevrilecektir. Şimdilik tüm butonlar 404 vermemesi için iletişim/talep sayfasına yönlendirilmiştir.
           </p>
         </div>
 

@@ -1,14 +1,11 @@
-# Revizyon 45 - Şablonlar Tekstil İndirilebilir Kaynak Merkezi
+Revizyon 46 - Şablonlar Buton 404 Düzeltmesi
 
-Bu paket Şablonlar sayfasını tekstil teknik dosyalarının indirilebilir kaynak merkezi mantığına göre düzenler.
+Bu paket Şablonlar/Kaynaklar sayfasında 404 veren detay bağlantılarını geçici olarak iletişim/talep yönlendirmesine çevirir.
 
 Yapılanlar:
+- Kart butonları Talep Et / İletişime Geç mantığına alındı.
+- Henüz oluşturulmamış detay sayfalarına bağlantı verilmedi.
+- Gerçek PDF/DOCX/XLSX dosyaları hazırlandığında bu butonlar İndir bağlantılarına çevrilebilir.
+- Ana odak yine tekstil teknik dokümanlarıdır.
 
-- Ana vurgu kurumsal kimlik dosyalarından çıkarıldı.
-- Öncelik tekstil teknik dokümanları, proses formları, kontrol listeleri, eğitim notları ve teknik sunum dosyalarına verildi.
-- Her kartta dosya amacı, kim kullanır, içerik örnekleri ve durum alanı eklendi.
-- Kurumsal evrak ve dijital yayın şablonları ikinci planda, isteğe göre destekleyici alan olarak konumlandırıldı.
-- İndirme linkleri gerçek dosyalar hazırlandıkça aktif edilecek mantıkla kurgulandı.
-
-Commit mesajı:
-Şablonlar tekstil kaynak merkezi yapısına alındı
+Commit mesajı: Şablonlar 404 buton yönlendirmesi düzeltildi
