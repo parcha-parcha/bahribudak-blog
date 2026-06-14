@@ -82,7 +82,7 @@ export default async function HomePage({ params }: HomeProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
           <div>
-            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white shadow-sm backdrop-blur-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
+            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm backdrop-blur-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
@@ -95,16 +95,13 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
-            <div className="rounded-[34px] border border-white/35 bg-white/12 backdrop-blur-xl shadow-2xl p-5 md:p-7">
-              <div className="rounded-[28px] bg-white/96 p-7 md:p-9 shadow-xl flex flex-col items-center text-center overflow-hidden">
-                <BrandLogo variant="vertical" className="h-44 sm:h-52 md:h-60 w-auto mx-auto" />
-                <div className="mt-7 h-px w-24 bg-navy/16" />
-                <p className="mt-5 text-xs font-black uppercase tracking-[0.28em] text-navy/72">
+          <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
+            <div className="rounded-[44px] border border-white/45 bg-white/18 backdrop-blur-xl shadow-2xl p-6 sm:p-8 flex items-center justify-center">
+              <div className="w-full min-h-[390px] sm:min-h-[460px] rounded-[36px] bg-white/98 px-8 py-10 sm:px-10 sm:py-12 shadow-xl flex flex-col items-center justify-center text-center overflow-hidden">
+                <BrandLogo variant="vertical" className="h-72 sm:h-80 md:h-[360px] w-auto mx-auto" />
+                <div className="mt-8 h-px w-32 bg-navy/18" />
+                <p className="mt-6 text-sm font-black uppercase tracking-[0.30em] text-navy/85">
                   Tekstil Danışmanlığı
-                </p>
-                <p className="mt-2 text-sm font-semibold text-navy/78 max-w-[240px]">
-                  Boyahane • Terbiye • Eğitim • Teknik Doküman
                 </p>
               </div>
             </div>

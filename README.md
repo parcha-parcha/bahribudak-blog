@@ -1,17 +1,16 @@
-# Revizyon 31 - Logo Yerleşim ve Hero Dikey Logo Düzeltmesi
+# Revizyon 32 - Logo Boyut ve Merkezleme Düzeltmesi
 
-Bu paket, yeni kurumsal çiçek logonun sitedeki kullanım boyutlarını ve yerleşimini düzeltir.
+Bu paket logoların küçük kalması, hero içindeki yuvarlak köşeli kartın logo ile çakışması ve metnin okunmaması sorunlarını düzeltir.
 
 Yapılanlar:
 
-- Header logosu küçültüldü; "Ana Sayfa" menüsüyle çakışması engellendi.
-- Header menüsü geniş ekranda gösterilecek şekilde ayarlandı; dar alanda mobil menüye geçer.
-- BrandLogo bileşenindeki zorunlu genişlikler kaldırıldı; verilen alan ölçülerine uyması sağlandı.
-- Hero alanındaki yatay logo yerine dikey logo kullanıldı.
-- Hero sağ kartındaki karışan 35 / 3 / 01 metrikleri temizlendi.
-- Üst hero etiketi daha görünür hale getirildi.
-- Su damlası arka planı korundu.
+- Header logosu okunabilir olacak şekilde büyütüldü.
+- Menüyle çakışmaması için header boşlukları yeniden ayarlandı.
+- Hero sağ kartındaki dış yuvarlak köşeli panel büyütüldü.
+- Hero içinde dikey logo yatayda ve dikeyde ortalandı.
+- Hero logosu 6 punto altına düşmeyecek şekilde görünür boyuta getirildi.
+- Üstteki küçük yazı daha okunur hale getirildi.
 
 Commit mesajı:
 
-Logo yerleşim ve hero dikey logo düzeltmesi
+Logo boyut ve merkezleme düzeltmesi
