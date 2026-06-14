@@ -1,12 +1,15 @@
-# Revizyon 43 - Blog üst görsel yazı rengi kesin düzeltme
+# Revizyon 44 - Şablonlar Sayfası Tekstil İndirilebilir Kaynak Odağı
 
-Bu paket blog üst görselindeki başlık ve açıklama yazılarının koyu görünmesi sorununu düzeltir.
+Bu paket, Şablonlar sayfasını Bahri Budak'ın önceliğine göre yeniden düzenler.
 
-Yapılanlar:
-- Görsel üzerindeki yazılar inline style ile kesin açık renge alındı.
-- Yazı paneli tam koyu lacivert zemine alındı.
-- Overlay biraz güçlendirildi.
-- Sadece blog sayfasına dokunuldu.
+Ana karar:
+- Kurumsal kimlik dosyaları indirilebilir ana ürün gibi sunulmaz.
+- Öncelik tekstil teknik dosyaları, proses formları, kontrol listeleri, eğitim notları ve teknik sunum dosyalarındadır.
+- Dijital / kurumsal şablonlar ikinci planda, isteğe göre hazırlanan destekleyici alan olarak konumlandırılır.
+
+Değişen dosyalar:
+- src/app/[lang]/magazam/page.tsx
+- README.md
 
 Commit mesajı:
-Blog üst görsel yazı rengi kesin düzeltildi
+Şablonlar sayfası tekstil indirilebilir kaynak odağına alındı
