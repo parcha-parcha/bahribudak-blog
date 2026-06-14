@@ -42,9 +42,12 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                 className="h-[260px] md:h-[340px] w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/82 via-[#061A33]/45 to-[#061A33]/10" />
-              <div className="absolute left-6 bottom-6 rounded-2xl bg-[#061A33]/82 px-5 py-4 shadow-lg backdrop-blur-sm border border-white/20">
-                <p className="text-xs font-bold tracking-[0.24em] text-white/75">BAHRİ BUDAK</p>
-                <p className="mt-1 text-lg font-bold text-white">Tekstil Teknik Yayınları</p>
+              <div className="absolute left-6 bottom-6 max-w-[82%] rounded-2xl bg-[#061A33]/94 px-5 py-4 shadow-2xl backdrop-blur-md border border-white/30">
+                <p className="text-xs font-black tracking-[0.24em] drop-shadow-sm" style={{ color: '#FFFFFF' }}>BAHRİ BUDAK</p>
+                <p className="mt-1 text-xl font-black drop-shadow-sm" style={{ color: '#FFFFFF' }}>Tekstil Teknik Yayınları</p>
+                <p className="mt-2 text-sm leading-relaxed drop-shadow-sm" style={{ color: 'rgba(255,255,255,0.86)' }}>
+                  Boyahane, proses, kalite ve teknik dokümantasyon notları.
+                </p>
               </div>
             </div>
           </div>

@@ -1,14 +1,12 @@
-# Revizyon 37 - Blog Üst Görsel Yazı Okunabilirliği
+# Revizyon 38 - Hero Dış Kart ve Blog Görsel Yazı Düzeltmesi
 
-Bu paket blog üst görselindeki yazıların koyu görsel üzerinde kaybolmasını düzeltir.
+Bu paket iki düzeltme yapar:
 
-Yapılanlar:
-
-- Görsel üzerindeki bilgi kutusu koyu lacivert yarı saydam zemine alındı.
-- “BAHRİ BUDAK” ve “Tekstil Teknik Yayınları” yazıları açık renge çevrildi.
-- Görsel üstündeki lacivert overlay güçlendirildi.
-- Emoji veya renkli ikon eklenmedi.
+- Ana sayfa hero alanındaki dikey logonun dışında kalan ikinci/dış yuvarlak kart kaldırıldı.
+- Hero alanında sadece tek, daha temiz yuvarlak köşeli beyaz logo kartı bırakıldı.
+- Blog üst görselindeki yazı alanı güçlendirildi.
+- “Tekstil Teknik Yayınları” altındaki açıklama da açık renge alındı ve koyu lacivert zemin üzerinde okunur hale getirildi.
 
 Commit mesajı:
 
-Blog üst görsel yazı okunabilirliği düzeltildi
+Hero dış kart ve blog yazı okunabilirliği düzeltildi
