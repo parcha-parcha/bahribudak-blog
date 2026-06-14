@@ -16,10 +16,10 @@ export default function BrandLogo({ variant = 'horizontal', negative = false, cl
     : 'Bahri Budak Tekstil Danışmanlığı logo'
 
   const defaultClass = variant === 'mark'
-    ? 'h-14 w-14'
+    ? 'h-16 w-16'
     : variant === 'vertical'
-      ? 'h-64 w-auto'
-      : 'h-16 w-auto'
+      ? 'h-72 w-auto'
+      : 'w-[9cm] h-[2.5cm] max-w-full'
 
   return (
     <img

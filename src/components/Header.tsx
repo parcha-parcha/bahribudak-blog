@@ -26,11 +26,11 @@ export default function Header({ lang }: HeaderProps) {
   ]
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-border dark:bg-[#061A33]/95 dark:border-white/10">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 flex items-center justify-between gap-5">
-        <Link href={`/${lang}`} className="flex items-center gap-3 group shrink-0" aria-label="Bahri Budak ana sayfa">
-          <BrandLogo className="h-12 sm:h-14 lg:h-16 w-auto max-w-[190px] sm:max-w-[240px] lg:max-w-[280px]" />
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 flex items-center justify-between gap-6">
+        <Link href={`/${lang}`} className="flex items-center justify-center group shrink-0 w-[9cm] h-[2.5cm] max-w-[58vw]" aria-label="Bahri Budak ana sayfa">
+          <BrandLogo className="w-full h-full object-contain" />
         </Link>
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
           {navLinks.map(link => {
             const isActive = pathname === link.href
             return <Link key={link.href} href={link.href} className={`whitespace-nowrap text-[13px] xl:text-sm font-semibold transition-colors ${isActive ? 'text-navy border-b-2 border-accent-blue pb-0.5 dark:text-white' : 'text-gray-text hover:text-navy dark:text-slate-400 dark:hover:text-white'}`}>{link.label}</Link>

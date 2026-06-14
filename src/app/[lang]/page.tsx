@@ -95,16 +95,14 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full flex justify-center lg:justify-end">
-            <div
-              className="relative rounded-[48px] border border-white/60 bg-white/18 backdrop-blur-xl shadow-2xl overflow-hidden"
-              style={{ width: 'min(11cm, calc(100vw - 32px))', aspectRatio: '11 / 14' }}
-            >
-              <div className="absolute inset-0 rounded-[48px] bg-white/10" />
-              <div className="absolute inset-0 flex items-center justify-center p-7 sm:p-9">
-                <div className="w-full h-full rounded-[38px] bg-white/96 shadow-xl border border-white/80 flex items-center justify-center p-8 sm:p-10">
-                  <BrandLogo variant="vertical" className="w-[78%] max-h-[82%] h-auto mx-auto" />
-                </div>
+          <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
+            <div className="rounded-[44px] border border-white/45 bg-white/18 backdrop-blur-xl shadow-2xl p-6 sm:p-8 flex items-center justify-center">
+              <div className="w-full min-h-[390px] sm:min-h-[460px] rounded-[36px] bg-white/98 px-8 py-10 sm:px-10 sm:py-12 shadow-xl flex flex-col items-center justify-center text-center overflow-hidden">
+                <BrandLogo variant="vertical" className="h-72 sm:h-80 md:h-[360px] w-auto mx-auto" />
+                <div className="mt-8 h-px w-32 bg-navy/18" />
+                <p className="mt-6 text-sm font-black uppercase tracking-[0.30em] text-navy/85">
+                  Tekstil Danışmanlığı
+                </p>
               </div>
             </div>
           </div>
