@@ -1,10 +1,15 @@
-# Revizyon 58 - Teknik metin sadeleştirme ve hero dikey logo dengeleme
+# Revizyon 59 - Tekstil Teknik Dokümanları İçerik Düzenleme
 
-Bu paket iki düzeltme yapar:
+Bu paket, Tekstil Teknik Dokümanları detay sayfasındaki içerikleri dış kullanıcıya uygun şekilde yeniden düzenler.
 
-- Tekstil Teknik Dokümanları detay sayfasındaki üst açıklama dış kullanıcıya uygun, daha sade ve profesyonel hale getirildi.
-- Ana sayfadaki hero dikey logo bloğunda üst boşluk ve alt bilgi bandının alt boşluğu dengelendi.
+Yapılanlar:
+
+- İçerik bölümleri daha net bir kurguya alındı: Amaç, Kullanım alanı, İçerik örnekleri, Çıktı formatı.
+- İç yazışma dili kullanılmadı.
+- PDF / DOCX / XLSX açıklamaları profesyonel hale getirildi.
+- Laboratuvar, boyama, apre/ramöz/fikse ve ölçüm/maliyet/sıfırlama başlıkları ayrı kaynak grupları olarak düzenlendi.
+- Renk, logo ve font yapısına dokunulmadı.
 
 Commit mesajı:
 
-Teknik metin ve hero dikey logo dengesi düzeltildi
+Tekstil teknik dokümanları içerikleri düzenlendi
