@@ -18,7 +18,7 @@ export default function BrandLogo({ variant = 'horizontal', negative = false, cl
   const defaultClass = variant === 'mark'
     ? 'h-16 w-16'
     : variant === 'vertical'
-      ? 'h-72 w-auto'
+      ? 'h-80 md:h-[380px] w-auto max-w-full'
       : 'w-[9cm] h-[2.5cm] max-w-full'
 
   return (

@@ -35,7 +35,7 @@ export default function Header({ lang }: HeaderProps) {
     >
       <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-[#2EA6D9] via-[#0B2343] to-transparent opacity-80" />
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 flex items-center justify-between gap-6 relative">
-        <Link href={`/${lang}`} className="flex items-center justify-center group shrink-0 w-[9cm] h-[2.5cm] max-w-[58vw]" aria-label="Bahri Budak ana sayfa">
+        <Link href={`/${lang}`} className="flex items-center justify-center group shrink-0 w-[9cm] h-[2.5cm] max-w-[58vw] rounded-[22px]" aria-label="Bahri Budak ana sayfa">
           <BrandLogo className="w-full h-full object-contain" />
         </Link>
         <nav className="hidden lg:flex items-center gap-2 xl:gap-3 rounded-full bg-white/80 border border-white/80 shadow-sm backdrop-blur-md px-3 py-2">

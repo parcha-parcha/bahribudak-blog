@@ -1,15 +1,13 @@
-# Revizyon 55 - Tekstil Teknik Dokümanları Üst Bölüm Netleştirme
-
-Bu paket, Tekstil Teknik Dokümanları detay sayfasındaki üst kaynak yapısı bölümünü dış kullanıcı diline göre netleştirir.
+# Revizyon 56 - Logo Hizalama ve Hero Boşluk Düzeltmesi
 
 Yapılanlar:
 
-- Başlık “Tekstil işletmeleri için teknik doküman seti” olarak güncellendi.
-- Açıklama PDF / DOCX / XLSX kaynak sistemi mantığına göre sadeleştirildi.
-- PDF, DOCX ve XLSX kutularına kısa açıklamalar eklendi.
-- İç yazışma dili kullanılmadı.
-- Renk, logo ve font sistemine dokunulmadı.
+- Header ve footer logolarında logo iç boşlukları temizlendi.
+- Yatay ve dikey logo SVG dosyalarında üst kısım çizgiye değmeyecek şekilde yeniden hizalama yapıldı.
+- Footer logo kullanımı büyütüldü ve ortalandı.
+- Ana sayfa hero alanındaki dikey logo kartında logo daha okunur ve merkezli hale getirildi.
+- Logo ile alt metin arasındaki boşluk teknik bilgi bandı ile dolduruldu.
+- Renk paleti, logo formu ve font sistemi korunmuştur.
 
 Commit mesajı:
-
-Tekstil teknik doküman üst bölümü netleştirildi
+Logo hizalama ve hero boşluk düzeltmesi
