@@ -1,25 +1,15 @@
-# Revizyon 40 - Header Build Hatası Düzeltmesi
+# Revizyon 41 - Logo Dış Kare Temizliği
 
-Bu paket Vercel build logunda görünen Header.tsx hatasını düzeltir.
+Bu paket sadece logo dosyalarındaki dış kare/canvas zeminini temizler.
 
-Hata:
+Yapılanlar:
 
-```
-./src/components/Header.tsx:1:5
-Expected ';', '}' or <eof>
-use client'
-```
-
-Sebep:
-
-Header dosyasının ilk satırında `use client` ifadesinin başındaki tek tırnak eksikti.
-
-Düzeltme:
-
-```tsx
-'use client'
-```
+- Logo SVG dosyalarındaki dıştaki büyük kare zemin kaldırıldı.
+- Logonun kendi kenarları yuvarlak beyaz/negatif paneli korundu.
+- Amblem ve yazı yerleşimi değiştirilmedi.
+- Header, hero ve footer kodlarına dokunulmadı.
+- Amaç: logonun arkasında görünen kötü kare görüntüsünü kaldırmak.
 
 Commit mesajı:
 
-Header use client build hatası düzeltildi
+Logo dış kare zeminleri temizlendi
