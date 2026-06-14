@@ -20,6 +20,7 @@ type TextileResource = {
   status: string
   button: string
   featured?: boolean
+  href?: string
 }
 
 const primaryResources: TextileResource[] = [
@@ -31,8 +32,9 @@ const primaryResources: TextileResource[] = [
     users: 'Boyahane müdürü, proses sorumlusu, kalite ekibi, laboratuvar ve eğitim sorumluları.',
     examples: ['Kasar referans notları', 'Reaktif boyama prosesleri', 'Yıkama adımları', 'Ramöz ve fikse notları'],
     status: 'Hazırlanıyor • Talep edilebilir',
-    button: 'Hazırlanıyor',
+    button: 'Sayfayı İncele',
     featured: true,
+    href: '/sablonlar/tekstil-teknik-dokumanlari',
   },
   {
     no: '02',
@@ -99,7 +101,9 @@ const supportResources: TextileResource[] = [
   },
 ]
 
-function ResourceCard({ item }: { item: TextileResource }) {
+function ResourceCard({ item, lang }: { item: TextileResource; lang: string }) {
+  const href = item.href ? `/${lang}${item.href}` : null
+
   return (
     <article
       className={`group rounded-[2rem] border bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card ${
@@ -143,9 +147,15 @@ function ResourceCard({ item }: { item: TextileResource }) {
 
       <div className="mt-7 flex items-center justify-between gap-4 border-t border-gray-border pt-5">
         <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">Dosya durumu</span>
-        <span className="rounded-full border border-accent-blue/30 bg-[#F3F6FA] px-5 py-2 text-sm font-bold text-navy">
-          {item.button}
-        </span>
+        {href ? (
+          <Link href={href} className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue">
+            {item.button}
+          </Link>
+        ) : (
+          <span className="rounded-full border border-accent-blue/30 bg-[#F3F6FA] px-5 py-2 text-sm font-bold text-navy">
+            {item.button}
+          </span>
+        )}
       </div>
     </article>
   )
@@ -189,7 +199,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {primaryResources.map((item) => (
-            <ResourceCard key={item.no} item={item} />
+            <ResourceCard key={item.no} item={item} lang={lang} />
           ))}
         </div>
 
@@ -216,7 +226,7 @@ export default function MagazamPage({ params }: { params: { lang: string } }) {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {supportResources.map((item) => (
-              <ResourceCard key={item.no} item={item} />
+              <ResourceCard key={item.no} item={item} lang={lang} />
             ))}
           </div>
         </div>

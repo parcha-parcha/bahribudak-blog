@@ -1,15 +1,14 @@
-Revizyon 51 - Tekstil Teknik Dokümanları İçerik Detaylandırma
+# Revizyon 52 - Tekstil Teknik Dokümanları Detay Linki
 
-Bu paket, yüklenen gerçek dosya havuzundaki ilk ana grup olan Tekstil Teknik Dokümanları bölümünü ham dosya listesi olarak değil, Bahri Budak kurumsal site şablonuna uygun teknik kaynak sayfası olarak yeniden düzenler.
+Bu paket Şablonlar/Kaynaklar sayfasındaki ilk kart olan Tekstil Teknik Dokümanları kartını gerçek detay sayfasına bağlar.
 
-Düzenlenen sayfa:
-- src/app/[lang]/sablonlar/tekstil-teknik-dokumanlari/page.tsx
+Yapılanlar:
 
-İçerik temeli:
-- Laboratuvar ve kalite kontrol
-- Boyama prosesleri ve kimya
-- Apre, ramöz, şardon ve fikse
-- Kumaş ölçüm, maliyet ve sıfırlama
+- Tekstil Teknik Dokümanları kartındaki durum butonu “Sayfayı İncele” olarak düzenlendi.
+- Bu buton `/tr/sablonlar/tekstil-teknik-dokumanlari` detay sayfasına yönlenir.
+- Diğer kartlar şimdilik link vermez, durum etiketi olarak kalır.
+- Tekstil Teknik Dokümanları detay sayfası pakete dahil edilmiştir.
+- Genel Talep Oluştur butonu iletişim sayfasına yönlenmeye devam eder.
 
 Commit mesajı:
-Tekstil teknik dokümanları içerik sayfası düzenlendi
+Tekstil teknik dokümanları detay sayfası bağlandı
