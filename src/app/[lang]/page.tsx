@@ -3,6 +3,7 @@ import PostCard from '@/components/PostCard'
 import BrandLogo from '@/components/BrandLogo'
 import { getAllPosts } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
+import BBHomeLogoCard from '@/components/BBHomeLogoCard'
 
 interface HomeProps {
   params: Promise<{ lang: Lang }>
@@ -82,7 +83,7 @@ export default async function HomePage({ params }: HomeProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
           <div>
-            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm backdrop-blur-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
+            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
               Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
             </h1>
@@ -96,17 +97,7 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
 
           <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
-            <div className="rounded-[44px] border border-white/35 bg-white/12 backdrop-blur-xl shadow-2xl p-5 sm:p-7 flex items-center justify-center">
-              <div className="w-full min-h-[430px] sm:min-h-[500px] rounded-[36px] bg-white/98 px-7 py-10 sm:px-9 sm:py-11 shadow-xl flex flex-col items-center justify-between text-center overflow-hidden">
-                <div className="flex flex-1 w-full items-center justify-center">
-                  <BrandLogo variant="vertical" className="h-[255px] sm:h-[315px] md:h-[340px] w-auto mx-auto" />
-                </div>
-                <div className="w-full max-w-[320px] rounded-2xl border border-[#D7E0EA] bg-[#F3F6FA] px-4 py-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.24em] text-accent-blue">Tekstil Proses Sistemi</p>
-                  <p className="mt-2 text-sm font-bold text-navy leading-relaxed">Boyahane • Terbiye • Laboratuvar • Teknik Doküman</p>
-                </div>
-              </div>
-            </div>
+            <BBHomeLogoCard />
           </div>
         </div>
       </section>
@@ -127,7 +118,7 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {metricCards.map((card) => (
-              <div key={card.label} className="rounded-[28px] border border-gray-border bg-[#F3F6FA] p-6 min-h-[210px] flex flex-col justify-between">
+              <div key={card.label} className="rounded-[28px] border border-gray-border p-6 min-h-[210px] flex flex-col justify-between">
                 <div className="text-5xl font-bold text-accent-blue tracking-[-0.04em]">{card.value}</div>
                 <div>
                   <h3 className="font-bold text-navy mb-2">{card.label}</h3>
@@ -174,7 +165,7 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {focusAreas.map((area) => (
-              <Link key={area.no} href={withLang(area.href)} className="group rounded-[30px] bg-[#F3F6FA] border border-gray-border p-7 hover:border-accent-blue transition-all">
+              <Link key={area.no} href={withLang(area.href)} className="group rounded-[30px] border border-gray-border p-7 hover:border-accent-blue transition-all">
                 <div className="h-16 w-16 rounded-full bg-navy text-white flex items-center justify-center text-lg font-bold mb-8 group-hover:bg-accent-blue transition-colors">
                   {area.no}
                 </div>
