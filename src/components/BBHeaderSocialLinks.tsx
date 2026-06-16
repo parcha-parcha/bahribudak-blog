@@ -5,12 +5,10 @@ const socialLinks = [
   {
     href: LINKEDIN_URL,
     label: 'LinkedIn',
-    shortLabel: 'in',
   },
   {
     href: INSTAGRAM_URL,
     label: 'Instagram',
-    shortLabel: 'ig',
   },
 ]
 
@@ -25,9 +23,9 @@ export default function BBHeaderSocialLinks() {
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className="flex h-8 w-8 items-center justify-center rounded-full border border-[#D7E0EA] bg-white/80 text-[11px] font-black uppercase tracking-tight text-navy shadow-sm transition-colors hover:border-[#2EA6D9] hover:bg-[#2EA6D9] hover:text-white"
+          className="rounded-full border border-[#D7E0EA] bg-white/80 px-3 py-1.5 text-[12px] font-bold text-navy shadow-sm transition-colors hover:border-[#2EA6D9] hover:bg-[#2EA6D9] hover:text-white"
         >
-          {item.shortLabel}
+          {item.label}
         </a>
       ))}
     </div>

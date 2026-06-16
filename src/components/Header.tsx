@@ -79,7 +79,7 @@ export default function Header({ lang }: HeaderProps) {
             href={switchedPath}
             className="rounded-full border border-[#D7E0EA] bg-white/70 px-2.5 py-1.5 text-xs font-bold uppercase tracking-widest text-navy/75 transition-colors hover:border-navy hover:text-navy"
           >
-            {otherLang.toUpperCase()}
+            {otherLang === 'en' ? 'English' : 'Türkçe'}
           </Link>
 
           <div className="hidden md:flex">
