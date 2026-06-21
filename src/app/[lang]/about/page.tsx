@@ -365,9 +365,14 @@ export default async function AboutPage({ params }: AboutProps) {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href={`/${lang}/contact`}
-              className="rounded-xl bg-[#0B2343] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#12365E]"
+              className="rounded-xl bg-[#0B2343] px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-[#12365E] hover:!text-white"
             >
-              İletişime Geç →
+              <span
+                className="relative z-10"
+                style={{ color: '#FFFFFF', WebkitTextFillColor: '#FFFFFF' }}
+              >
+                İletişime Geç →
+              </span>
             </Link>
 
             <Link
