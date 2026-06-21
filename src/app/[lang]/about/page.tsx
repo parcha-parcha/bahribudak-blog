@@ -371,12 +371,16 @@ export default async function AboutPage({ params }: AboutProps) {
             </Link>
 
             <a
-              href="/downloads/bahri-budak-cv-kurumsal.pdf"
+              href={
+                lang === 'en'
+                  ? '/downloads/bahri-budak-cv-english.pdf'
+                  : '/downloads/bahri-budak-cv-kurumsal.pdf'
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-[#2EA6D9] bg-[#EAF6FC] px-6 py-3 text-sm font-semibold text-[#0B2343] transition-colors hover:bg-[#D8F0FA]"
             >
-              CV'yi Görüntüle
+              {lang === 'en' ? 'View CV' : "CV'yi Görüntüle"}
             </a>
           </div>
 
