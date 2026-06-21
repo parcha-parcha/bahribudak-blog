@@ -5,59 +5,6 @@ interface AboutProps {
   params: Promise<{ lang: string }>
 }
 
-const experience = [
-  {
-    company: 'Rota Tekstil San. Tic. A.Ş.',
-    role: 'Genel Müdür Yardımcısı',
-    note: 'Üst düzey operasyon ve üretim yönetimi',
-  },
-  {
-    company: 'Karagözlüler Tekstil San. Tic. Ltd. Şti.',
-    role: 'İşletme Müdürü',
-    note: '',
-  },
-  {
-    company: 'İnternet Tekstil San. Tic. A.Ş.',
-    role: 'İşletme Müdürü',
-    note: '',
-  },
-  {
-    company: 'Halis Tekstil San. Tic. Ltd. Şti.',
-    role: 'İşletme Müdürü',
-    note: '',
-  },
-  {
-    company: 'Botaş Nehir Tekstil',
-    role: 'İşletme Müdürü',
-    note: '',
-  },
-  {
-    company: 'Birlik Örme San. Tic. A.Ş.',
-    role: 'Fabrika Müdürü',
-    note: '',
-  },
-  {
-    company: 'Tübaş Tekstil',
-    role: 'İşletme Müdürü',
-    note: '',
-  },
-  {
-    company: 'Turbo Tekstil San. Tic. A.Ş.',
-    role: 'Boyahane Müdürü',
-    note: '',
-  },
-  {
-    company: 'Senova Tekstil San. Tic. A.Ş.',
-    role: 'Gece Müdürü',
-    note: '',
-  },
-  {
-    company: 'Yupak Boyama San. Tic. A.Ş.',
-    role: 'İşletme Şefi',
-    note: '',
-  },
-]
-
 const skills = [
   'Pamuk, polyester, naylon ve karışım kumaş boyama',
   'Boyahane ve apre proses yönetimi',
@@ -248,49 +195,6 @@ export default async function AboutPage({ params }: AboutProps) {
             nitelikli insan kaynağı ve sürdürülebilir yönetim sistemlerinin
             birlikte çalışmasıyla oluşur.
           </p>
-        </section>
-
-        {/* PROFESYONEL DENEYİM */}
-        <section className="mb-14">
-          <h2 className="mb-6 flex items-center gap-3 text-xl font-bold text-[#0B2343]">
-            <span className="h-6 w-1 rounded-full bg-[#2EA6D9]" />
-            Profesyonel Deneyim
-          </h2>
-
-          <p className="mb-4 text-xs italic text-[#0B2343]/60">
-            Çalışma tarihleri ve referanslar talep doğrultusunda sunulur.
-          </p>
-
-          <div className="flex flex-col gap-3">
-            {experience.map((item, index) => (
-              <div
-                key={`${item.company}-${item.role}`}
-                className="flex items-start gap-4 rounded-xl border border-[#D7E0EA] bg-white p-4 transition-all hover:border-[#2EA6D9]/50 hover:shadow-sm"
-              >
-                <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#EAF6FC]">
-                  <span className="text-xs font-bold text-[#0B2343]/75">
-                    {index + 1}
-                  </span>
-                </div>
-
-                <div>
-                  <p className="text-sm font-bold text-[#0B2343]">
-                    {item.company}
-                  </p>
-
-                  <p className="mt-0.5 text-xs font-semibold text-[#2EA6D9]">
-                    {item.role}
-                  </p>
-
-                  {item.note && (
-                    <p className="mt-0.5 text-xs italic text-[#0B2343]/60">
-                      {item.note}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* YETKİNLİKLER */}
