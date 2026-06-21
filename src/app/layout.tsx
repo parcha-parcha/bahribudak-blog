@@ -6,7 +6,8 @@ export const metadata: Metadata = {
     default: 'Bahri Budak',
     template: '%s | Bahri Budak',
   },
-  description: 'Tekstil yöneticisi, düşünür ve içerik üreticisi Bahri Budak\'ın kişisel blogu.',
+  description:
+    "Tekstil Boyama ve Apre Uzmanı Bahri Budak'ın; tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve Türkiye-sektör gündemi üzerine içerikleri.",
   metadataBase: new URL('https://bahribudak.com'),
   openGraph: {
     type: 'website',
@@ -14,18 +15,27 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://bahribudak.com',
     siteName: 'Bahri Budak',
+    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
+    description:
+      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
+    description:
+      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png', sizes: '512x512' },
+    ],
     shortcut: '/favicon.ico',
-    apple: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
   verification: {
     google: '8lEut5GT1mdu1_nJg92Bg69sD0OKhcz0od-WN8nB_RM',
