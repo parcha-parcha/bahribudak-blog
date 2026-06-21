@@ -41,6 +41,45 @@ const pillars = [
   },
 ]
 
+const selectedWorks = [
+  {
+    metric: '50 Form',
+    title: 'Teknik İzlenebilirlik Sistemi',
+    desc: 'Örgü, boyahane, apre, laboratuvar, kalite ve bakım süreçlerini kayıt altına alan form ve kart yapısı.',
+    status: 'Dokümantasyon sistemi',
+  },
+  {
+    metric: '30 ton/gün',
+    title: 'Entegre Fabrika Sistem Modeli',
+    desc: '19 jet kapasiteli boyahane; örgü, yaş ve kuru apre, laboratuvar, kadro, enerji ve yerleşim planlaması.',
+    status: 'Kapasite ve yatırım modeli',
+  },
+  {
+    metric: '%15 → %2',
+    title: 'Boya İlave Oranı İyileştirme Modeli',
+    desc: 'Dört düzeltme senaryosunun süre, kimyasal, boyarmadde ve maliyet etkisini karşılaştıran hedef yönetim modeli.',
+    status: 'İyileştirme hedefi',
+  },
+  {
+    metric: '3 Seviye',
+    title: 'Boyalı Kumaş Maliyet ve Karlılık Sistemi',
+    desc: 'Başabaş noktası ile kontrolsüz, orta kontrollü ve tam kontrollü yönetim karlılığını karşılaştıran hesap yapısı.',
+    status: 'Maliyet ve karar sistemi',
+  },
+  {
+    metric: 'Enerji + Su',
+    title: 'Kaynak Verimliliği Çalışmaları',
+    desc: 'Ramöz ısı geri kazanımı, su tüketimi, buhar, elektrik ve yardımcı işletmeler için teknik hesaplama yaklaşımı.',
+    status: 'Verimlilik modeli',
+  },
+  {
+    metric: 'Teknik Yayın',
+    title: 'Proses ve Eğitim Kütüphanesi',
+    desc: 'Boyama, kasar, yıkama, apre, laboratuvar, makine, kalite ve fabrika yönetimi konularında uygulamalı içerikler.',
+    status: 'Bilgi ve eğitim sistemi',
+  },
+]
+
 const stats = [
   { number: '35+', unit: 'Yıl', label: 'Tekstil Sektörü Deneyimi' },
   { number: '10+', unit: 'İşletme', label: 'Yönetim ve Saha Tecrübesi' },
@@ -213,6 +252,51 @@ export default async function AboutPage({ params }: AboutProps) {
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#2EA6D9]" />
                 {skill}
               </span>
+            ))}
+          </div>
+        </section>
+
+
+        {/* SEÇİLMİŞ ÇALIŞMALAR */}
+        <section className="mb-14">
+          <div className="mb-6">
+            <h2 className="mb-2 flex items-center gap-3 text-xl font-bold text-[#0B2343]">
+              <span className="h-6 w-1 rounded-full bg-[#2EA6D9]" />
+              Seçilmiş Çalışmalar ve Sistem Modelleri
+            </h2>
+
+            <p className="max-w-2xl text-sm leading-relaxed text-[#0B2343]/70">
+              Saha deneyimimden geliştirilen bu çalışmalar; teknik sistem,
+              hesaplama, dokümantasyon ve iyileştirme modelleridir. Uygulama
+              kapsamı işletmenin kapasitesine ve ihtiyaçlarına göre
+              özelleştirilir.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {selectedWorks.map((work) => (
+              <article
+                key={work.title}
+                className="group rounded-2xl border border-[#D7E0EA] bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#2EA6D9]/60 hover:shadow-md"
+              >
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <span className="rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-extrabold text-[#0B2343]">
+                    {work.metric}
+                  </span>
+
+                  <span className="text-right text-[10px] font-bold uppercase tracking-[0.12em] text-[#2EA6D9]">
+                    {work.status}
+                  </span>
+                </div>
+
+                <h3 className="mb-2 text-base font-bold leading-snug text-[#0B2343]">
+                  {work.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-[#0B2343]/68">
+                  {work.desc}
+                </p>
+              </article>
             ))}
           </div>
         </section>
