@@ -45,7 +45,7 @@ const forms = [
     details: ['XLSX', '3 çalışma sayfası', '12 kamara takibi', 'Otomatik hesaplama'],
     tags: ['Ramöz', 'Apre', 'Fikse', 'Pick-up', 'Kalite'],
     button: 'XLSX dosyasını indir',
-    href: '/downloads/ramoz-apre-proses-takip-formu-kurumsal-r2.xlsx',
+    href: '/downloads/ramoz-apre-proses-takip-formu-kurumsal-r3.xlsx',
   },
   {
     no: '04',
