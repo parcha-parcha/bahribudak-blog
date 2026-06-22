@@ -52,15 +52,15 @@ const checklists = [
   },
   {
     no: '04',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Laboratuvar Haftalık Kontrol Listesi',
-    category: 'Laboratuvar ve cihaz kontrolü',
+    category: 'Laboratuvar, cihaz ve analiz yönetimi',
     description:
-      'Çözeltiler, cihazlar, kalibrasyon, su analizleri, standart numuneler, kimyasal stokları ve haftalık laboratuvar düzeninin kontrolü için hazırlanır.',
-    details: ['XLSX', 'Haftalık takip', 'Kalibrasyon', 'Analiz kontrolü'],
-    tags: ['Laboratuvar', 'Kalibrasyon', 'Su analizi', 'Cihaz'],
-    button: 'Sırada',
-    href: null,
+      'Cihaz doğrulama ve kalibrasyon, çözelti ve reaktif geçerliliği, su ve proses analizleri, numune yönetimi, güvenlik, aksiyon ve haftalık laboratuvar kullanım kararını tek Excel sisteminde yönetir.',
+    details: ['XLSX', '5 çalışma sayfası', '200 analiz kaydı', 'Kalibrasyon uyarısı'],
+    tags: ['Laboratuvar', 'Kalibrasyon', 'Çözelti', 'Su analizi', 'Numune', 'Güvenlik'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/laboratuvar-haftalik-kontrol-listesi-kurumsal-r1.xlsx',
   },
 ]
 
