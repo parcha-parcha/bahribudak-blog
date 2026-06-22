@@ -3,147 +3,84 @@ import type { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   return {
-    title: 'Tekstil Teknik Dokümanları | Bahri Budak',
+    title: 'Proses Formları | Bahri Budak',
     description:
-      'Boyahane, laboratuvar, terbiye ve proses kontrol süreçleri için hazırlanmış teknik eğitim notları, uygulama dokümanları ve kontrol tabloları.',
+      'Boyahane üretiminde parti, reçete, makine, ölçüm, kalite ve proses sapmalarının düzenli takip edilmesini sağlayan uygulanabilir formlar.',
   }
 }
 
-const documents = [
+const forms = [
   {
     no: '01',
     status: 'İNDİRİLEBİLİR',
-    title: 'Tekstil İşletmelerinde Mühendislik Formülleri',
-    category: 'Makine, enerji ve yardımcı işletmeler',
+    title: 'Boyama Parti Takip Formu',
+    category: 'Boyahane üretim ve proses takibi',
     description:
-      'Boyahane, apre, ramöz, sanfor, kazan, kompresör, su hazırlama ve yardımcı işletmelerde kullanılan akışkanlar mekaniği, termodinamik, ısı transferi, elektrik ve motor hesaplarını açıklamalı örneklerle bir araya getiren teknik başvuru kaynağıdır.',
-    details: ['41 sayfa', 'PDF / DOCX', '65 temel hesap', 'Teknik–ileri seviye'],
-    tags: ['Akışkanlar mekaniği', 'Termodinamik', 'Enerji', 'Pompa ve fan'],
-    button: 'PDF’yi indir',
-    href: '/downloads/tekstil-isletmelerinde-muhendislik-formulleri.pdf',
+      'Sipariş, kumaş, makine, yükleme, flotte, reçete, proses parametreleri, kritik kontroller, sapmalar ve final kalite sonuçlarını tek kayıt düzeninde birleştiren kapsamlı Excel formudur.',
+    details: ['XLSX', '3 çalışma sayfası', '200 parti kaydı', 'Otomatik hesaplama'],
+    tags: ['Parti takibi', 'Reçete', 'Makine', 'Kalite', 'Sapma analizi'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/boyama-parti-takip-formu-kurumsal.xlsx',
   },
   {
     no: '02',
-    status: 'İNDİRİLEBİLİR',
-    title: 'HT Jet Boyama Proses Diyagramları',
-    category: 'Boyama ve proses teknolojisi',
+    status: 'HAZIRLANIYOR',
+    title: 'Reçete Hazırlama ve Onay Formu',
+    category: 'Laboratuvar ve işletme reçete yönetimi',
     description:
-      'Pamuk reaktif, turkuaz–mavi, polyester dispers, redüktif temizleme ve naylon/poliamid asit boyama rotalarını; zaman–sıcaklık diyagramları, yıkama adımları ve kritik proses kontrol notlarıyla açıklayan teknik uygulama kaynağıdır.',
-    details: ['13 sayfa', 'PDF', 'A4 yatay', '1:5 flotte'],
-    tags: ['HT Jet', 'Reaktif boyama', 'Dispers boyama', 'Naylon boyama'],
-    button: 'PDF’yi indir',
-    href: '/downloads/ht-jet-boyama-proses-diyagramlari-teknik-revizyon-2026.pdf',
+      'Laboratuvar reçetesinin işletmeye aktarılması, kimyasal ve boyarmadde miktarlarının doğrulanması, revizyonların kaydedilmesi ve yetkili onaylarının izlenmesi için hazırlanır.',
+    details: ['XLSX', 'Reçete kontrolü', 'Revizyon kaydı', 'Onay akışı'],
+    tags: ['Laboratuvar', 'Reçete', 'Dozaj', 'Onay'],
+    button: 'Hazırlanıyor',
+    href: null,
   },
   {
     no: '03',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Boyahane Norm Kadro Çalışması',
-    category: 'Üretim ve yönetim',
+    status: 'SIRADA',
+    title: 'Ramöz ve Apre Proses Takip Formu',
+    category: 'Apre ve terbiye prosesleri',
     description:
-      '30 ton/gün kapasiteli, 19 HT jet makinesi ve üç vardiya esasına göre hazırlanmış; boya, apre, laboratuvar, depo, bakım, enerji ve yönetim birimlerini kapsayan personel ve organizasyon modelidir.',
-    details: ['30 ton/gün', '19 HT jet', '277 kişi', '13 sayfa PDF'],
-    tags: ['Norm kadro', 'Vardiya', 'Organizasyon', 'Kapasite'],
-    button: 'PDF’yi indir',
-    href: '/downloads/boyahane-norm-kadro-30-ton-19-makine.pdf',
-  },
-]
-
-const modules = [
-  {
-    no: '01',
-    title: 'Laboratuvar ve kalite kontrol',
-    summary:
-      'Laboratuvar süreçlerinde analiz, ölçüm, kayıt ve yorumlama düzeninin aynı teknik standartla yürütülmesi için hazırlanır.',
-    purpose:
-      'Çözelti hazırlama, titrasyon, pH kontrolü, su sertliği, tuz/iletkenlik takibi, hidrofilite, renk kontrolü ve üretim-laboratuvar uyumunu kayıt altına alan doküman yapısıdır.',
-    usage:
-      'Laboratuvar sorumluları, kalite kontrol ekipleri, proses sorumluları ve vardiya amirleri tarafından kullanılabilir.',
-    examples: [
-      'Çözelti hazırlama, etiketleme ve kontrol düzeni',
-      'Tuz, sertlik, alkalinite, hidrojen peroksit ve kostik analiz kayıtları',
-      'Hidrofilite, emicilik, numune onayı ve üretim sonrası kontrol formları',
-      'Cihaz kontrolü, kalibrasyon takibi ve haftalık analiz çizelgesi',
-    ],
-    output:
-      'PDF laboratuvar eğitim notu, DOCX analiz talimatı, XLSX analiz kayıt formu ve proses-laboratuvar karşılaştırma tablosu.',
-  },
-  {
-    no: '02',
-    title: 'Boyama prosesleri ve kimya',
-    summary:
-      'HT jet boyama süreçlerinde reçete mantığı, kimyasal besleme, proses akışı ve yıkama adımlarının anlaşılır hale getirilmesi için hazırlanır.',
-    purpose:
-      'Reaktif ve dispers boyama süreçlerinde sıcaklık-zaman akışı, tuz-soda besleme düzeni, renk derinliği, boyarmadde sınıfı, yıkama ve düzeltme adımlarını ortak proses diliyle açıklar.',
-    usage:
-      'Boyahane müdürü, proses sorumlusu, laboratuvar ekibi, reçete hazırlama sorumluları ve vardiya amirleri tarafından kullanılabilir.',
-    examples: [
-      'HT jet reçete ve proses akış dokümanı',
-      'Reaktif boyamada tuz-soda besleme ve fiksaj kontrol notları',
-      'Renk gruplarına göre yıkama, sabunlama ve nötralizasyon açıklamaları',
-      'Renk düzeltme, gezdirme, söküm ve tekrar işlem değerlendirme formları',
-    ],
-    output:
-      'PDF proses eğitim notu, DOCX reçete açıklama dosyası, XLSX reçete kontrol tablosu ve proses sapma değerlendirme formu.',
-  },
-  {
-    no: '03',
-    title: 'Apre, ramöz, şardon ve fikse',
-    summary:
-      'Terbiye işlemlerinde en, gramaj, çekmezlik, tutum, yüzey görünümü ve fikse kontrolünün sistemli takip edilmesi için hazırlanır.',
-    purpose:
-      'Apre, ramöz, şardon ve fikse süreçlerinde kumaşın son kalite özelliklerini etkileyen sıcaklık, hız, nem, hava akışı, fular pick-up ve mekanik işlem parametrelerini düzenler.',
-    usage:
-      'Apre şefi, ramöz operatörü, kalite kontrol ekibi, planlama, proses ve üretim sorumluları tarafından kullanılabilir.',
-    examples: [
-      'Ramöz fikse sıcaklık-süre-hız değerlendirme notları',
-      'Fular pick-up ölçüm ve kontrol formu',
-      'Şardon proses kontrolü ve yüzey riski değerlendirmesi',
-      'Elastanlı kumaşlarda fikse sonrası çekmezlik kontrol çizelgesi',
-    ],
-    output:
-      'PDF terbiye eğitim notu, DOCX proses talimatı, XLSX ramöz/fikse takip tablosu ve kalite onay formu.',
+      'Ramöz hızı, kamara sıcaklıkları, en, gramaj, pick-up, nem, çekmezlik, kimyasal banyo ve final kalite sonuçlarının vardiya bazında kaydedilmesini sağlar.',
+    details: ['XLSX', 'Ramöz ayarları', 'Pick-up', 'Final kalite'],
+    tags: ['Ramöz', 'Apre', 'Fikse', 'Çekmezlik'],
+    button: 'Sırada',
+    href: null,
   },
   {
     no: '04',
-    title: 'Kumaş ölçüm, maliyet ve sıfırlama',
-    summary:
-      'Ham kumaştan mamul kumaşa geçişte ölçüm, fire, maliyet ve proses etkilerinin izlenebilir hale getirilmesi için hazırlanır.',
-    purpose:
-      'Kumaş sınıflandırması, sıfırlama testi, gramaj/en değişimi, çekmezlik, tekrar işlem, enerji, kimyasal ve işçilik etkilerini ölçülebilir bir değerlendirme yapısına bağlar.',
-    usage:
-      'İşletme müdürü, planlama, kalite kontrol, proses, maliyet ve üretim ekipleri tarafından kullanılabilir.',
-    examples: [
-      'Sıfırlama testi uygulama ve sonuç yorumlama dokümanı',
-      'Ham en-bitmiş en ve ham gramaj-bitmiş gramaj karşılaştırma tablosu',
-      'Tekrar işlem, ikinci kalite ve proses fire hesabı',
-      'Üretim sonrası gerçekleşen değerlerle tahmin değerlerini karşılaştırma çizelgesi',
-    ],
-    output:
-      'PDF ölçüm eğitim notu, DOCX değerlendirme talimatı, XLSX maliyet/sıfırlama tablosu ve üretim sonrası karşılaştırma raporu.',
+    status: 'SIRADA',
+    title: 'Hata, Kök Neden ve Düzeltici Faaliyet Formu',
+    category: 'Kalite ve proses iyileştirme',
+    description:
+      'Üretim hatasının tanımlanması, olası nedenlerin değerlendirilmesi, kök nedenin doğrulanması, düzeltici faaliyetlerin atanması ve sonuçların izlenmesi için hazırlanır.',
+    details: ['XLSX / DOCX', 'Kök neden', 'Aksiyon takibi', 'Kapanış kontrolü'],
+    tags: ['Hata analizi', 'Kök neden', 'Düzeltici faaliyet', 'Kalite'],
+    button: 'Sırada',
+    href: null,
   },
 ]
 
 const users = [
   'Boyahane müdürü',
-  'Proses sorumlusu',
-  'Laboratuvar ve kalite ekibi',
-  'Apre / ramöz sorumlusu',
-  'Vardiya amiri',
-  'Eğitim ve dokümantasyon sorumlusu',
+  'Vardiya amiri ve vardiya mühendisi',
+  'Proses kontrol ekibi',
+  'Laboratuvar ve kalite kontrol',
+  'Operatör ve reçete hazırlama sorumlusu',
+  'Planlama ve üretim yönetimi',
 ]
 
-const fileTypes = [
+const benefits = [
   {
-    title: 'PDF Eğitim Notları',
-    desc: 'Operatör, vardiya amiri ve proses ekipleri için hazırlanmış teknik anlatım dosyaları.',
+    title: 'Ortak kayıt düzeni',
+    desc: 'Vardiyalar ve bölümler aynı bilgi alanlarını kullanır; eksik veya farklı kayıt biçimleri azaltılır.',
   },
   {
-    title: 'DOCX Teknik Dokümanlar',
-    desc: 'İşletme koşullarına göre düzenlenebilir proses açıklama, talimat ve uygulama dokümanları.',
+    title: 'İzlenebilir proses',
+    desc: 'Reçete, makine, sıcaklık, süre, pH, kalite ve sapma kayıtları aynı parti numarası altında izlenir.',
   },
   {
-    title: 'XLSX Kontrol Tabloları',
-    desc: 'Ölçüm, takip, analiz, reçete kontrolü ve proses değerlendirme çizelgeleri.',
+    title: 'Ölçülebilir performans',
+    desc: 'Planlanan ve gerçekleşen süre, uygun parti oranı ve tekrar işlem oranı otomatik hesaplanabilir.',
   },
 ]
 
@@ -157,11 +94,11 @@ export default function Page({ params }: { params: { lang: string } }) {
         <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
           <p className="section-label text-accent-blue">Tekstil kaynak merkezi</p>
           <h1 className="mb-5 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">
-            Tekstil Teknik Dokümanları
+            Proses Formları
           </h1>
           <p className="max-w-3xl text-lg leading-relaxed text-white/84">
-            Boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılabilecek teknik eğitim notları,
-            uygulama dokümanları ve kontrol tablolarını kapsayan ana kaynak grubudur.
+            Boyahane, laboratuvar, kalite ve terbiye süreçlerinde reçete, parti, makine, ölçüm ve işlem
+            bilgilerinin aynı kayıt düzeninde izlenmesini sağlayan uygulanabilir form setidir.
           </p>
         </div>
       </section>
@@ -169,15 +106,18 @@ export default function Page({ params }: { params: { lang: string } }) {
       <section className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-            <p className="section-label">KAYNAK YAPISI</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy">Tekstil işletmeleri için teknik doküman seti</h2>
+            <p className="section-label">FORM SİSTEMİ</p>
+            <h2 className="mb-4 text-3xl font-bold text-navy">
+              Kayıttan yönetime uzanan proses takibi
+            </h2>
             <p className="leading-relaxed text-navy/76">
-              Bu bölüm; boyahane, laboratuvar, terbiye ve proses kontrol süreçlerinde kullanılabilecek teknik eğitim notları,
-              uygulama dokümanları ve kontrol tablolarını kapsar. İçerikler; işletme içinde ortak proses dili oluşturmak,
-              ölçüm-kayıt düzenini güçlendirmek ve saha ekiplerinin aynı teknik referansla çalışmasını sağlamak amacıyla hazırlanır.
+              Formlar yalnızca bilgi yazmak için değil; prosesin planlanan şekilde yürütülüp yürütülmediğini
+              görmek, sapmaları kaydetmek, tekrar işlemleri azaltmak ve üretim sonuçlarını karşılaştırmak amacıyla
+              hazırlanır.
             </p>
+
             <div className="mt-7 grid gap-4 md:grid-cols-3">
-              {fileTypes.map((item) => (
+              {benefits.map((item) => (
                 <div key={item.title} className="rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-4">
                   <p className="mb-2 text-sm font-bold text-navy">{item.title}</p>
                   <p className="text-xs leading-relaxed text-navy/65">{item.desc}</p>
@@ -196,50 +136,51 @@ export default function Page({ params }: { params: { lang: string } }) {
                 </div>
               ))}
             </div>
+
             <Link
               href={`/${lang}/contact`}
               className="mt-7 inline-flex rounded-full bg-navy px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-blue"
             >
-              Teknik kaynak talebi oluştur
+              Özel form talebi oluştur
             </Link>
           </aside>
         </div>
 
         <div className="mt-12">
           <div className="mb-7 max-w-3xl">
-            <p className="section-label">TEKNİK DOSYALAR</p>
+            <p className="section-label">İNDİRİLEBİLİR FORMLAR</p>
             <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
-              Yayına hazırlanan dokümanlar
+              Üretimde kullanılabilecek form seti
             </h2>
             <p className="leading-relaxed text-navy/72">
-              Teknik kontrolü ve yayın düzeni tamamlanan dosyalar bu bölümden indirilebilir. Hazırlık aşamasındaki
-              kaynakların güncel durumu kartların üzerinde gösterilir.
+              Tamamlanan dosyalar doğrudan indirilebilir. Hazırlık aşamasındaki formların güncel durumu kartların
+              üzerinde gösterilir.
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            {documents.map((document) => (
+          <div className="grid gap-6 md:grid-cols-2">
+            {forms.map((form) => (
               <article
-                key={document.no}
+                key={form.no}
                 className="flex h-full flex-col rounded-[2rem] border border-gray-border bg-white p-6 shadow-sm md:p-7"
               >
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] text-lg font-black text-accent-blue">
-                    {document.no}
+                    {form.no}
                   </span>
                   <span className="rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-3 py-2 text-[10px] font-black uppercase tracking-[0.13em] text-navy/65">
-                    {document.status}
+                    {form.status}
                   </span>
                 </div>
 
                 <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-accent-blue">
-                  {document.category}
+                  {form.category}
                 </p>
-                <h3 className="text-2xl font-bold leading-tight text-navy">{document.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-navy/72">{document.description}</p>
+                <h3 className="text-2xl font-bold leading-tight text-navy">{form.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-navy/72">{form.description}</p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {document.details.map((detail) => (
+                  {form.details.map((detail) => (
                     <span
                       key={detail}
                       className="rounded-full border border-gray-border bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-navy/68"
@@ -250,9 +191,11 @@ export default function Page({ params }: { params: { lang: string } }) {
                 </div>
 
                 <div className="mt-5 border-t border-gray-border pt-5">
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/50">İçerik etiketleri</p>
-                  <div className="flex flex-wrap gap-2">
-                    {document.tags.map((tag) => (
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/50">
+                    İçerik etiketleri
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {form.tags.map((tag) => (
                       <span key={tag} className="text-xs font-semibold text-navy/65">
                         {tag}
                       </span>
@@ -261,20 +204,20 @@ export default function Page({ params }: { params: { lang: string } }) {
                 </div>
 
                 <div className="mt-auto pt-6">
-                  {document.href ? (
+                  {form.href ? (
                     <a
-                      href={document.href}
+                      href={form.href}
                       download
                       className="inline-flex rounded-full bg-navy px-5 py-3 text-sm font-bold text-white transition hover:bg-accent-blue"
                     >
-                      {document.button}
+                      {form.button}
                     </a>
                   ) : (
                     <span
                       aria-disabled="true"
                       className="inline-flex cursor-not-allowed rounded-full bg-navy/10 px-5 py-3 text-sm font-bold text-navy/55"
                     >
-                      {document.button}
+                      {form.button}
                     </span>
                   )}
                 </div>
@@ -283,68 +226,14 @@ export default function Page({ params }: { params: { lang: string } }) {
           </div>
         </div>
 
-        <div className="mt-14">
-          <div className="mb-7 max-w-3xl">
-            <p className="section-label">KAYNAK GRUPLARI</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
-              Hazırlanabilecek teknik içerikler
-            </h2>
-            <p className="leading-relaxed text-navy/72">
-              Aşağıdaki gruplar, işletmenin ihtiyacına göre ayrı doküman, kontrol tablosu veya eğitim notu olarak düzenlenebilir.
-            </p>
-          </div>
-
-          <div className="grid gap-6">
-            {modules.map((module) => (
-              <article key={module.no} className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-                <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                  <div>
-                    <p className="mb-2 text-sm font-black tracking-[0.18em] text-accent-blue">{module.no}</p>
-                    <h3 className="text-2xl font-bold text-navy md:text-3xl">{module.title}</h3>
-                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-navy/64">{module.summary}</p>
-                  </div>
-                  <span className="w-fit rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-navy/70">
-                    Kaynak grubu
-                  </span>
-                </div>
-
-                <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-                  <div className="rounded-2xl border border-gray-border bg-white p-5">
-                    <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Amaç</p>
-                    <p className="text-sm leading-relaxed text-navy/76">{module.purpose}</p>
-                    <p className="mt-5 mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Kullanım alanı</p>
-                    <p className="text-sm leading-relaxed text-navy/76">{module.usage}</p>
-                  </div>
-
-                  <div className="rounded-2xl bg-[#F3F6FA] p-5">
-                    <p className="mb-4 text-xs font-black uppercase tracking-[0.14em] text-navy/55">İçerik örnekleri</p>
-                    <ul className="grid gap-3">
-                      {module.examples.map((item) => (
-                        <li key={item} className="flex gap-3 text-sm leading-relaxed text-navy/76">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-5">
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Çıktı formatı</p>
-                  <p className="text-sm leading-relaxed text-navy/76">{module.output}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-
         <div className="mt-10 rounded-[2rem] border border-accent-blue/20 bg-[#061A33] p-7 text-white shadow-sm md:p-9">
           <p className="section-label text-accent-blue">KULLANIM NOTU</p>
-          <h2 className="mb-4 text-3xl font-bold text-white">Teknik kaynaklar işletme şartlarına göre uyarlanır</h2>
+          <h2 className="mb-4 text-3xl font-bold text-white">
+            Formlar işletmenin makine ve organizasyon yapısına göre uyarlanır
+          </h2>
           <p className="max-w-4xl leading-relaxed text-white/78">
-            Bu kaynaklar eğitim, kontrol ve proses standardizasyonu amacıyla hazırlanır. Reçete, kabul limiti veya proses
-            parametresi içeren uygulamalarda işletme makinesi, kumaş tipi, renk derinliği, flotte, müşteri şartnamesi ve
-            kalite hedefleri ayrıca değerlendirilmelidir.
+            Makine numaraları, proses adları, onay kademeleri, kalite limitleri ve raporlama alanları işletmenin
+            gerçek çalışma düzenine göre güncellenmelidir. Formlar tek başına proses talimatı yerine geçmez.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
