@@ -5,9 +5,45 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   return {
     title: 'Tekstil Teknik Dokümanları | Bahri Budak',
     description:
-      'Boyahane, laboratuvar, terbiye ve proses kontrol süreçleri için hazırlanacak teknik eğitim notları, uygulama dokümanları ve kontrol tabloları.',
+      'Boyahane, laboratuvar, terbiye ve proses kontrol süreçleri için hazırlanmış teknik eğitim notları, uygulama dokümanları ve kontrol tabloları.',
   }
 }
+
+const documents = [
+  {
+    no: '01',
+    status: 'YAKINDA İNDİRİLEBİLİR',
+    title: 'Tekstil İşletmelerinde Mühendislik Formülleri',
+    category: 'Makine, enerji ve yardımcı işletmeler',
+    description:
+      'Boyahane, apre, ramöz, sanfor, kazan, kompresör, su hazırlama ve yardımcı işletmelerde kullanılan akışkanlar mekaniği, termodinamik, ısı transferi, elektrik ve motor hesaplarını açıklamalı örneklerle bir araya getiren teknik başvuru kaynağıdır.',
+    details: ['41 sayfa', 'PDF / DOCX', '65 temel hesap', 'Teknik–ileri seviye'],
+    tags: ['Akışkanlar mekaniği', 'Termodinamik', 'Enerji', 'Pompa ve fan'],
+    button: 'PDF hazırlanıyor',
+  },
+  {
+    no: '02',
+    status: 'GÜNCELLENİYOR',
+    title: 'HT Jet Reçete ve Proses Kaynağı',
+    category: 'Boyama ve proses teknolojisi',
+    description:
+      '%100 pamuk, polyester, pamuk–polyester ve naylon kumaşların HT jet makinelerinde kasar, boyama, yıkama ve fikse proseslerini; reçete tabloları ve zaman–sıcaklık diyagramlarıyla açıklayan teknik uygulama kaynağıdır.',
+    details: ['37 sayfa', 'PDF', 'A4 yatay', '1:5 flotte'],
+    tags: ['HT Jet', 'Reaktif boyama', 'Dispers boyama', 'Proses diyagramı'],
+    button: 'Dosya güncelleniyor',
+  },
+  {
+    no: '03',
+    status: 'SON DÜZENLEMEDE',
+    title: 'Boyahane Norm Kadro Çalışması',
+    category: 'Üretim ve yönetim',
+    description:
+      '30 ton/gün kapasiteli ve üç vardiya çalışan bir örme kumaş boyahanesinin boya, apre, laboratuvar, depo, bakım, enerji ve yönetim birimleri için hazırlanmış personel ve organizasyon modelidir.',
+    details: ['30 ton/gün', '3 vardiya', 'PDF', 'Yönetici seviyesi'],
+    tags: ['Norm kadro', 'Vardiya', 'Organizasyon', 'Kapasite'],
+    button: 'Yakında',
+  },
+]
 
 const modules = [
   {
@@ -166,61 +202,148 @@ export default function Page({ params }: { params: { lang: string } }) {
           </aside>
         </div>
 
-        <div className="mt-10 grid gap-6">
-          {modules.map((module) => (
-            <article key={module.no} className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-              <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <p className="mb-2 text-sm font-black tracking-[0.18em] text-accent-blue">{module.no}</p>
-                  <h3 className="text-2xl font-bold text-navy md:text-3xl">{module.title}</h3>
-                  <p className="mt-3 max-w-3xl text-sm leading-relaxed text-navy/64">{module.summary}</p>
-                </div>
-                <span className="w-fit rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-navy/70">
-                  Kaynak grubu
-                </span>
-              </div>
+        <div className="mt-12">
+          <div className="mb-7 max-w-3xl">
+            <p className="section-label">TEKNİK DOSYALAR</p>
+            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+              Yayına hazırlanan dokümanlar
+            </h2>
+            <p className="leading-relaxed text-navy/72">
+              Teknik kontrolü ve yayın düzeni tamamlanan dosyalar bu bölümden indirilebilir. Hazırlık aşamasındaki
+              kaynakların güncel durumu kartların üzerinde gösterilir.
+            </p>
+          </div>
 
-              <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-                <div className="rounded-2xl border border-gray-border bg-white p-5">
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Amaç</p>
-                  <p className="text-sm leading-relaxed text-navy/76">{module.purpose}</p>
-                  <p className="mt-5 mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Kullanım alanı</p>
-                  <p className="text-sm leading-relaxed text-navy/76">{module.usage}</p>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {documents.map((document) => (
+              <article
+                key={document.no}
+                className="flex h-full flex-col rounded-[2rem] border border-gray-border bg-white p-6 shadow-sm md:p-7"
+              >
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] text-lg font-black text-accent-blue">
+                    {document.no}
+                  </span>
+                  <span className="rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-3 py-2 text-[10px] font-black uppercase tracking-[0.13em] text-navy/65">
+                    {document.status}
+                  </span>
                 </div>
 
-                <div className="rounded-2xl bg-[#F3F6FA] p-5">
-                  <p className="mb-4 text-xs font-black uppercase tracking-[0.14em] text-navy/55">İçerik örnekleri</p>
-                  <ul className="grid gap-3">
-                    {module.examples.map((item) => (
-                      <li key={item} className="flex gap-3 text-sm leading-relaxed text-navy/76">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
-                        <span>{item}</span>
-                      </li>
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-accent-blue">
+                  {document.category}
+                </p>
+                <h3 className="text-2xl font-bold leading-tight text-navy">{document.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-navy/72">{document.description}</p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {document.details.map((detail) => (
+                    <span
+                      key={detail}
+                      className="rounded-full border border-gray-border bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-navy/68"
+                    >
+                      {detail}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 border-t border-gray-border pt-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/50">İçerik etiketleri</p>
+                  <div className="flex flex-wrap gap-2">
+                    {document.tags.map((tag) => (
+                      <span key={tag} className="text-xs font-semibold text-navy/65">
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-5 rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-5">
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Çıktı formatı</p>
-                <p className="text-sm leading-relaxed text-navy/76">{module.output}</p>
-              </div>
-            </article>
-          ))}
+                <div className="mt-auto pt-6">
+                  <span
+                    aria-disabled="true"
+                    className="inline-flex cursor-not-allowed rounded-full bg-navy/10 px-5 py-3 text-sm font-bold text-navy/55"
+                  >
+                    {document.button}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <div className="mb-7 max-w-3xl">
+            <p className="section-label">KAYNAK GRUPLARI</p>
+            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+              Hazırlanabilecek teknik içerikler
+            </h2>
+            <p className="leading-relaxed text-navy/72">
+              Aşağıdaki gruplar, işletmenin ihtiyacına göre ayrı doküman, kontrol tablosu veya eğitim notu olarak düzenlenebilir.
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            {modules.map((module) => (
+              <article key={module.no} className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
+                <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <p className="mb-2 text-sm font-black tracking-[0.18em] text-accent-blue">{module.no}</p>
+                    <h3 className="text-2xl font-bold text-navy md:text-3xl">{module.title}</h3>
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-navy/64">{module.summary}</p>
+                  </div>
+                  <span className="w-fit rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-navy/70">
+                    Kaynak grubu
+                  </span>
+                </div>
+
+                <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+                  <div className="rounded-2xl border border-gray-border bg-white p-5">
+                    <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Amaç</p>
+                    <p className="text-sm leading-relaxed text-navy/76">{module.purpose}</p>
+                    <p className="mt-5 mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Kullanım alanı</p>
+                    <p className="text-sm leading-relaxed text-navy/76">{module.usage}</p>
+                  </div>
+
+                  <div className="rounded-2xl bg-[#F3F6FA] p-5">
+                    <p className="mb-4 text-xs font-black uppercase tracking-[0.14em] text-navy/55">İçerik örnekleri</p>
+                    <ul className="grid gap-3">
+                      {module.examples.map((item) => (
+                        <li key={item} className="flex gap-3 text-sm leading-relaxed text-navy/76">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] p-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/55">Çıktı formatı</p>
+                  <p className="text-sm leading-relaxed text-navy/76">{module.output}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="mt-10 rounded-[2rem] border border-accent-blue/20 bg-[#061A33] p-7 text-white shadow-sm md:p-9">
           <p className="section-label text-accent-blue">KULLANIM NOTU</p>
           <h2 className="mb-4 text-3xl font-bold text-white">Teknik kaynaklar işletme şartlarına göre uyarlanır</h2>
           <p className="max-w-4xl leading-relaxed text-white/78">
-            Bu kaynaklar eğitim, kontrol ve proses standardizasyonu amacıyla hazırlanır. Reçete, kabul limiti veya proses parametresi
-            içeren uygulamalarda işletme makinesi, kumaş tipi, renk derinliği, flotte, müşteri şartnamesi ve kalite hedefleri ayrıca değerlendirilmelidir.
+            Bu kaynaklar eğitim, kontrol ve proses standardizasyonu amacıyla hazırlanır. Reçete, kabul limiti veya proses
+            parametresi içeren uygulamalarda işletme makinesi, kumaş tipi, renk derinliği, flotte, müşteri şartnamesi ve
+            kalite hedefleri ayrıca değerlendirilmelidir.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link href={`/${lang}/magazam`} className="rounded-full bg-white px-5 py-3 text-sm font-bold text-navy transition hover:bg-accent-blue hover:text-white">
+            <Link
+              href={`/${lang}/magazam`}
+              className="rounded-full bg-white px-5 py-3 text-sm font-bold text-navy transition hover:bg-accent-blue hover:text-white"
+            >
               Kaynak merkezine dön
             </Link>
-            <Link href={`/${lang}/contact`} className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-navy">
+            <Link
+              href={`/${lang}/contact`}
+              className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-navy"
+            >
               Talep oluştur
             </Link>
           </div>
