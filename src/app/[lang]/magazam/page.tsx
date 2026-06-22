@@ -79,8 +79,9 @@ const primaryResources: TextileResource[] = [
       'Yıkama final kontrolü',
       'Laboratuvar haftalık kontrolü',
     ],
-    status: 'Yakında indirilebilir',
-    button: 'Yakında indirilebilir',
+    status: 'İndirilebilir • İlk kontrol listesi eklendi',
+    button: 'Sayfayı İncele',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri',
   },
   {
     no: '04',
