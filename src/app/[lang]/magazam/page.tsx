@@ -93,11 +93,12 @@ const primaryResources: TextileResource[] = [
     examples: [
       'Kasar eğitimi',
       'Reaktif boyama eğitimi',
-      'Tuz-soda-pH mantığı',
+      'Tuz-alkali-pH mantığı',
       'Hata analizi notları',
     ],
-    status: 'Hazırlanıyor',
-    button: 'Hazırlanıyor',
+    status: 'İndirilebilir • İlk eğitim notu eklendi',
+    button: 'Sayfayı İncele',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari',
   },
   {
     no: '05',
