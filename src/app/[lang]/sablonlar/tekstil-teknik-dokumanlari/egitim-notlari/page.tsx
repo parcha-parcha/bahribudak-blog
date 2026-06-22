@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif boyama, dispers boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif, dispers, poliamid asit boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -64,13 +64,25 @@ const notes: TrainingNote[] = [
   },
   {
     no: '04',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Naylon / Poliamid Kumaşlarda Asit Boyama Eğitimi',
-    category: 'Poliamid boyama ve pH yönetimi',
+    category: 'Poliamid ve poliamid-elastan boyama',
     description:
-      'Asit boyarmadde-poliamid ilişkisini, pH kontrollü boya çekimini, sıcaklık ve dozaj yönetimini, düzgünlük, haslık, elastan riski ve final kalite kontrollerini açıklayacak.',
-    details: ['PDF / DOCX', 'Asit boyama', 'pH profili', 'Düzgünlük ve haslık'],
-    tags: ['Naylon', 'Poliamid', 'Asit boyarmadde', 'pH', 'Haslık'],
+      'Asit boyarmadde-poliamid ilişkisini; boya çekim oranı, ilk boya alımı, lif içine ilerleme, bağlama kapasitesi, pH profili, asit dozajı, sıcaklık, düzgünlük, art işlem, haslık ve poliamid-elastan riskleriyle birlikte sade Türkçe terminolojiyle açıklar.',
+    details: ['9 sayfa', 'PDF / DOCX', '16 bölüm', 'Proses ve hata analiz tabloları'],
+    tags: ['Naylon', 'Poliamid', 'Asit boyama', 'pH', 'Düzgünlük', 'Haslık'],
+    pdf: '/downloads/naylon-poliamid-kumaslarda-asit-boyama-egitimi-r3.pdf',
+    docx: '/downloads/naylon-poliamid-kumaslarda-asit-boyama-egitimi-r3.docx',
+  },
+  {
+    no: '05',
+    status: 'SIRADA',
+    title: 'Pamuk-Polyester Karışımlarda Boyama Eğitimi',
+    category: 'Karışım kumaşlarda tek ve çift banyo yönetimi',
+    description:
+      'Pamuk-polyester ve elastanlı karışımlarda lif sıralamasını, dispers ve reaktif adımları, tek banyo ve çift banyo seçeneklerini, redüktif temizleme, pH geçişi, haslık ve tekrar üretilebilirlik konularını açıklayacak.',
+    details: ['PDF / DOCX', 'Tek banyo', 'Çift banyo', 'Dispers + reaktif'],
+    tags: ['Pamuk-polyester', 'Karışım kumaş', 'Çift banyo', 'Redüktif temizleme'],
     pdf: null,
     docx: null,
   },
