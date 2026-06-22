@@ -88,15 +88,15 @@ const notes: TrainingNote[] = [
   },
   {
     no: '06',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Boyama Sonrası Yıkama ve İndirgen Temizleme Eğitimi',
-    category: 'Yaş haslık ve yüzey boyasının uzaklaştırılması',
+    category: 'Yaş haslık, yüzey boyası ve final kalite yönetimi',
     description:
-      'Reaktif boyamada bağlanmamış boyanın sıcak yıkamayla uzaklaştırılmasını, polyesterde indirgen temizlemeyi, yıkama maddesi seçimini, pH ve iletkenlik takibini, koyu renk ve karışım kumaşlarda haslık yönetimini açıklayacak.',
-    details: ['PDF / DOCX', 'Reaktif yıkama', 'İndirgen temizleme', 'Final pH'],
-    tags: ['Yıkama', 'Yaş haslık', 'İndirgen temizleme', 'Final kontrol'],
-    pdf: null,
-    docx: null,
+      'Reaktif boyamada bağlanmamış boyanın sıcak yıkamayla uzaklaştırılmasını, polyesterde indirgen temizlemeyi, açık-koyu renk yıkama farklarını, final pH ve iletkenlik kontrolünü, elastan risklerini, makine temizliğini ve haslık yönetimini saha terminolojisiyle açıklar.',
+    details: ['10 sayfa', 'PDF / DOCX', '19 bölüm', 'Örnek proses ve hata tabloları'],
+    tags: ['Art yıkama', 'Reaktif sıcak yıkama', 'İndirgen temizleme', 'Final pH', 'Yaş haslık', 'Makine temizliği'],
+    pdf: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.pdf',
+    docx: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.docx',
   },
 ]
 
