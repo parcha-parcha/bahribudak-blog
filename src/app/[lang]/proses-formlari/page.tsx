@@ -1,3 +1,4 @@
+// SON SÜRÜM: İKİ FORM AKTİF — 22.06.2026
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
