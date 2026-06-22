@@ -28,15 +28,15 @@ const checklists = [
   },
   {
     no: '02',
-    status: 'HAZIRLANIYOR',
+    status: 'İNDİRİLEBİLİR',
     title: 'Boyama Başlangıç Kontrol Listesi',
     category: 'HT jet boyama hazırlığı',
     description:
-      'Parti, reçete, makine, flotte, su kalitesi, boyarmadde, kimyasal, dozaj sırası ve proses hedeflerinin boyama öncesinde doğrulanması için hazırlanır.',
-    details: ['XLSX', 'Parti kontrolü', 'Reçete kontrolü', 'Makine hazırlığı'],
-    tags: ['HT jet', 'Boyama', 'Reçete', 'Dozaj'],
-    button: 'Hazırlanıyor',
-    href: null,
+      'Parti, onaylı reçete, makine, flotte, su kalitesi, boyarmadde, kimyasal, dozaj sırası, kumaş çevrimi ve proses hedeflerini boyama başlamadan önce doğrulayan kapsamlı Excel kontrol sistemidir.',
+    details: ['XLSX', '4 çalışma sayfası', '40 kontrol maddesi', 'Otomatik başlatma kararı'],
+    tags: ['HT jet', 'Boyama', 'Reçete', 'Dozaj', 'Makine', 'Su kalitesi'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/boyama-baslangic-kontrol-listesi-kurumsal-r1.xlsx',
   },
   {
     no: '03',
