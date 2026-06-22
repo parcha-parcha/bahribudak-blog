@@ -40,15 +40,15 @@ const checklists = [
   },
   {
     no: '03',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Yıkama ve Final Kontrol Listesi',
     category: 'Boyama sonrası kalite doğrulaması',
     description:
-      'Nötralizasyon, sabunlama, durulama, final pH, renk, haslık, peroksit veya kimyasal kalıntı ve numune onayı kontrollerini tek listede toplar.',
-    details: ['XLSX', 'Final pH', 'Yıkama', 'Numune onayı'],
-    tags: ['Yıkama', 'Final kontrol', 'Haslık', 'Kalite'],
-    button: 'Sırada',
-    href: null,
+      'Yıkama rotası, nötralizasyon, sabunlama, durulama, kalıntı kontrolleri, final pH, renk, haslık, en, gramaj, çekmezlik ve serbest bırakma kararını aynı Excel sisteminde yönetir.',
+    details: ['XLSX', '4 çalışma sayfası', '34 kontrol alanı', 'Otomatik final kararı'],
+    tags: ['Yıkama', 'Final pH', 'Haslık', 'Numune onayı', 'Serbest bırakma'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/yikama-ve-final-kontrol-listesi-kurumsal-r1.xlsx',
   },
   {
     no: '04',
