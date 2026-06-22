@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama ve HT jet boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -44,9 +44,9 @@ const notes: TrainingNote[] = [
     title: 'Reaktif Boyama Eğitimi',
     category: 'Pamuk boyama ve proses yönetimi',
     description:
-      'Reaktif boyarmadde-lif ilişkisini; adsorpsiyon, difüzyon, migrasyon, elektrolit, alkali, pH, fiksaj, hidroliz, HT jet proses seçenekleri, yıkama ve kalite kontrolüyle birlikte açıklar.',
+      'Reaktif boyarmadde-lif ilişkisini; lif yüzeyine alınma, lif içine ilerleme, kumaş üzerinde renk dengelenmesi, elektrolit, alkali, pH, kimyasal bağlanma, suyla bozulma, HT jet proses seçenekleri, yıkama ve kalite kontrolüyle birlikte açıklar.',
     details: ['9 sayfa', 'PDF / DOCX', '14 bölüm', 'Proses ve hesaplama tabloları'],
-    tags: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Fiksaj', 'Hidroliz', 'Wash-off'],
+    tags: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Kimyasal bağlanma', 'Suyla bozulma', 'Art yıkama'],
     pdf: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.pdf',
     docx: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.docx',
   },
@@ -56,9 +56,9 @@ const notes: TrainingNote[] = [
     title: 'Polyester Örme Kumaşlarda Dispers Boyama Eğitimi',
     category: 'Polyester ve polyester-elastan boyama',
     description:
-      'Dispers boyarmaddenin banyoda homojen dağılımını, boya çekimini, lif içine ilerlemesini, boyarmadde enerji sınıflarını, HT jet prosesini, pH ve yardımcı kimyasal yönetimini, indirgen temizlemeyi, oligomer ve termomigrasyon risklerini sade Türkçe terminolojiyle açıklar.',
+      'Dispers boyarmaddenin banyoda homojen dağılımını, boya çekimini, lif içine ilerlemesini, boyarmadde enerji sınıflarını, HT jet prosesini, pH ve yardımcı kimyasal yönetimini, indirgen temizlemeyi, oligomer ve ısı etkisiyle boya göçü risklerini sade Türkçe terminolojiyle açıklar.',
     details: ['11 sayfa', 'PDF / DOCX', '16 bölüm', 'Proses ve hata analiz tabloları'],
-    tags: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Termomigrasyon'],
+    tags: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Isıl boya göçü'],
     pdf: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.pdf',
     docx: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.docx',
   },
@@ -97,6 +97,18 @@ const notes: TrainingNote[] = [
     tags: ['Art yıkama', 'Reaktif sıcak yıkama', 'İndirgen temizleme', 'Final pH', 'Yaş haslık', 'Makine temizliği'],
     pdf: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.pdf',
     docx: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.docx',
+  },
+  {
+    no: '07',
+    status: 'İNDİRİLEBİLİR',
+    title: 'HT Jet Boyahanede Proses Yönetimi ve Kritik Kontrol Noktaları Eğitimi',
+    category: 'Boyahane proses yönetimi ve tekrar üretilebilirlik',
+    description:
+      'Sipariş gözden geçirmeden laboratuvardan üretime aktarıma; kumaş, makine, su, boya ve kimyasal ön koşullarından pH, sıcaklık, dozaj ve dolaşım kontrolüne; sapma, ilave, vardiya teslimi, kök neden ve performans göstergelerine kadar bütün proses zincirini ölçülebilir bir yönetim sistemi içinde açıklar.',
+    details: ['8 sayfa', 'PDF / DOCX', '20 bölüm', 'Kontrol planı ve KPI tabloları'],
+    tags: ['Proses yönetimi', 'Kritik kontrol', 'İlk seferde doğru üretim', 'Sapma yönetimi', 'KPI', 'İzlenebilirlik'],
+    pdf: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.pdf',
+    docx: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.docx',
   },
 ]
 
