@@ -37,15 +37,15 @@ const forms = [
   },
   {
     no: '03',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Ramöz ve Apre Proses Takip Formu',
     category: 'Apre ve terbiye prosesleri',
     description:
-      'Ramöz hızı, kamara sıcaklıkları, en, gramaj, pick-up, nem, çekmezlik, kimyasal banyo ve final kalite sonuçlarının vardiya bazında kaydedilmesini sağlar.',
-    details: ['XLSX', 'Ramöz ayarları', 'Pick-up', 'Final kalite'],
-    tags: ['Ramöz', 'Apre', 'Fikse', 'Çekmezlik'],
-    button: 'Sırada',
-    href: null,
+      'Kumaş ve sipariş bilgileri, apre banyosu, 12 kamara sıcaklığı, makine hızı, kalış süresi, overfeed, zincir eni, fular basıncı, pick-up, giriş-çıkış ölçümleri, sapmalar ve final kalite sonuçlarını tek Excel düzeninde izler.',
+    details: ['XLSX', '3 çalışma sayfası', '12 kamara takibi', 'Otomatik hesaplama'],
+    tags: ['Ramöz', 'Apre', 'Fikse', 'Pick-up', 'Kalite'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/ramoz-apre-proses-takip-formu-kurumsal-r1.xlsx',
   },
   {
     no: '04',
