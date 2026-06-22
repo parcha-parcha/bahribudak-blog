@@ -64,7 +64,7 @@ const primaryResources: TextileResource[] = [
     ],
     status: 'İndirilebilir • Yeni form eklendi',
     button: 'Sayfayı İncele',
-    href: '/sablonlar/proses-formlari',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/proses-formlari',
   },
   {
     no: '03',
