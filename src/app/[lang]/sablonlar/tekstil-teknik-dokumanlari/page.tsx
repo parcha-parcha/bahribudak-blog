@@ -24,15 +24,15 @@ const documents = [
   },
   {
     no: '02',
-    status: 'GÜNCELLENİYOR',
-    title: 'HT Jet Reçete ve Proses Kaynağı',
+    status: 'İNDİRİLEBİLİR',
+    title: 'HT Jet Boyama Proses Diyagramları',
     category: 'Boyama ve proses teknolojisi',
     description:
-      '%100 pamuk, polyester, pamuk–polyester ve naylon kumaşların HT jet makinelerinde kasar, boyama, yıkama ve fikse proseslerini; reçete tabloları ve zaman–sıcaklık diyagramlarıyla açıklayan teknik uygulama kaynağıdır.',
-    details: ['37 sayfa', 'PDF', 'A4 yatay', '1:5 flotte'],
-    tags: ['HT Jet', 'Reaktif boyama', 'Dispers boyama', 'Proses diyagramı'],
-    button: 'Dosya güncelleniyor',
-    href: null,
+      'Pamuk reaktif, turkuaz–mavi, polyester dispers, redüktif temizleme ve naylon/poliamid asit boyama rotalarını; zaman–sıcaklık diyagramları, yıkama adımları ve kritik proses kontrol notlarıyla açıklayan teknik uygulama kaynağıdır.',
+    details: ['13 sayfa', 'PDF', 'A4 yatay', '1:5 flotte'],
+    tags: ['HT Jet', 'Reaktif boyama', 'Dispers boyama', 'Naylon boyama'],
+    button: 'PDF’yi indir',
+    href: '/downloads/ht-jet-boyama-proses-diyagramlari-teknik-revizyon-2026.pdf',
   },
   {
     no: '03',
@@ -41,7 +41,7 @@ const documents = [
     category: 'Üretim ve yönetim',
     description:
       '30 ton/gün kapasiteli, 19 HT jet makinesi ve üç vardiya esasına göre hazırlanmış; boya, apre, laboratuvar, depo, bakım, enerji ve yönetim birimlerini kapsayan personel ve organizasyon modelidir.',
-    details: ['30 ton/gün', '19 HT jet', '277 kişi', '12 sayfa PDF'],
+    details: ['30 ton/gün', '19 HT jet', '277 kişi', '13 sayfa PDF'],
     tags: ['Norm kadro', 'Vardiya', 'Organizasyon', 'Kapasite'],
     button: 'PDF’yi indir',
     href: '/downloads/boyahane-norm-kadro-30-ton-19-makine.pdf',
