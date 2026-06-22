@@ -49,15 +49,15 @@ const forms = [
   },
   {
     no: '04',
-    status: 'SIRADA',
+    status: 'İNDİRİLEBİLİR',
     title: 'Hata, Kök Neden ve Düzeltici Faaliyet Formu',
     category: 'Kalite ve proses iyileştirme',
     description:
-      'Üretim hatasının tanımlanması, olası nedenlerin değerlendirilmesi, kök nedenin doğrulanması, düzeltici faaliyetlerin atanması ve sonuçların izlenmesi için hazırlanır.',
-    details: ['XLSX / DOCX', 'Kök neden', 'Aksiyon takibi', 'Kapanış kontrolü'],
-    tags: ['Hata analizi', 'Kök neden', 'Düzeltici faaliyet', 'Kalite'],
-    button: 'Sırada',
-    href: null,
+      'Hata kaydı, geçici önlem, risk puanı, beş neden analizi, neden grupları, doğrulanmış kök neden, düzeltici ve önleyici faaliyetler, etkinlik kontrolü ve kapanış sürecini tek Excel sisteminde yönetir.',
+    details: ['XLSX', '4 çalışma sayfası', '200 kayıt', 'Risk ve aksiyon takibi'],
+    tags: ['Hata analizi', 'Kök neden', 'DÖF', 'Aksiyon', 'Etkinlik'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/hata-kok-neden-duzeltici-faaliyet-formu-kurumsal-r1.xlsx',
   },
 ]
 
