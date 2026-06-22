@@ -40,15 +40,15 @@ const notes: TrainingNote[] = [
   },
   {
     no: '02',
-    status: 'HAZIRLANIYOR',
+    status: 'İNDİRİLEBİLİR',
     title: 'Reaktif Boyama Eğitimi',
     category: 'Pamuk boyama ve proses yönetimi',
     description:
-      'Reaktif boyarmadde-fiber ilişkisi, adsorpsiyon, elektrolit, alkali, fiksaj, hidroliz, sıcaklık, süre ve yıkama mantığını operatör ve proses sorumluları için açıklar.',
-    details: ['PDF / DOCX', 'Proses mantığı', 'Fiksaj', 'Yıkama'],
-    tags: ['Reaktif boyama', 'Pamuk', 'Fiksaj', 'Hidroliz'],
-    pdf: null,
-    docx: null,
+      'Reaktif boyarmadde-lif ilişkisini; adsorpsiyon, difüzyon, migrasyon, elektrolit, alkali, pH, fiksaj, hidroliz, HT jet proses seçenekleri, yıkama ve kalite kontrolüyle birlikte açıklar.',
+    details: ['9 sayfa', 'PDF / DOCX', '14 bölüm', 'Proses ve hesaplama tabloları'],
+    tags: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Fiksaj', 'Hidroliz', 'Wash-off'],
+    pdf: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.pdf',
+    docx: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.docx',
   },
   {
     no: '03',
