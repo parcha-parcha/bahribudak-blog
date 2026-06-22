@@ -21,7 +21,7 @@ const forms = [
     details: ['XLSX', '3 çalışma sayfası', '200 parti kaydı', 'Otomatik hesaplama'],
     tags: ['Parti takibi', 'Reçete', 'Makine', 'Kalite', 'Sapma analizi'],
     button: 'XLSX dosyasını indir',
-    href: '/downloads/boyama-parti-takip-formu-kurumsal.xlsx',
+    href: '/downloads/boyama-parti-takip-formu-kurumsal-r3.xlsx',
   },
   {
     no: '02',
@@ -33,7 +33,7 @@ const forms = [
     details: ['XLSX', '3 çalışma sayfası', '20 malzeme satırı', 'Otomatik doz hesabı'],
     tags: ['Laboratuvar', 'Reçete', 'Dozaj', 'Revizyon', 'Onay'],
     button: 'XLSX dosyasını indir',
-    href: '/downloads/recete-hazirlama-ve-onay-formu-kurumsal.xlsx',
+    href: '/downloads/recete-hazirlama-ve-onay-formu-kurumsal-r2.xlsx',
   },
   {
     no: '03',
