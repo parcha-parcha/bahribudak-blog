@@ -24,7 +24,7 @@ const checklists = [
     details: ['XLSX', '4 çalışma sayfası', '200 kayıt', 'Otomatik başlatma kararı'],
     tags: ['Kasar', 'Su kalitesi', 'Makine kontrolü', 'Kimyasal hazırlık', 'Başlatma onayı'],
     button: 'XLSX dosyasını indir',
-    href: '/downloads/kasar-on-kontrol-ve-baslatma-listesi-kurumsal-r1.xlsx',
+    href: '/downloads/kasar-on-kontrol-ve-baslatma-listesi-kurumsal-r2.xlsx',
   },
   {
     no: '02',
