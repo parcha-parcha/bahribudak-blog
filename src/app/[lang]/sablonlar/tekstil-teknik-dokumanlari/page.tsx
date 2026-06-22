@@ -24,15 +24,15 @@ const forms = [
   },
   {
     no: '02',
-    status: 'HAZIRLANIYOR',
+    status: 'İNDİRİLEBİLİR',
     title: 'Reçete Hazırlama ve Onay Formu',
     category: 'Laboratuvar ve işletme reçete yönetimi',
     description:
-      'Laboratuvar reçetesinin işletmeye aktarılması, kimyasal ve boyarmadde miktarlarının doğrulanması, revizyonların kaydedilmesi ve yetkili onaylarının izlenmesi için hazırlanır.',
-    details: ['XLSX', 'Reçete kontrolü', 'Revizyon kaydı', 'Onay akışı'],
-    tags: ['Laboratuvar', 'Reçete', 'Dozaj', 'Onay'],
-    button: 'Hazırlanıyor',
-    href: null,
+      'Laboratuvar reçetesinin işletmeye aktarılması, boyarmadde ve kimyasal miktarlarının otomatik hesaplanması, tartım farklarının kontrolü, revizyonların kaydedilmesi ve yetkili onaylarının izlenmesi için hazırlanmış Excel formudur.',
+    details: ['XLSX', '3 çalışma sayfası', '20 malzeme satırı', 'Otomatik doz hesabı'],
+    tags: ['Laboratuvar', 'Reçete', 'Dozaj', 'Revizyon', 'Onay'],
+    button: 'XLSX dosyasını indir',
+    href: '/downloads/recete-hazirlama-ve-onay-formu-kurumsal.xlsx',
   },
   {
     no: '03',
