@@ -36,7 +36,7 @@ const checklists = [
     details: ['XLSX', '4 çalışma sayfası', '40 kontrol maddesi', 'Otomatik başlatma kararı'],
     tags: ['HT jet', 'Boyama', 'Reçete', 'Dozaj', 'Makine', 'Su kalitesi'],
     button: 'XLSX dosyasını indir',
-    href: '/downloads/boyama-baslangic-kontrol-listesi-kurumsal-r1.xlsx',
+    href: '/downloads/boyama-baslangic-kontrol-listesi-kurumsal-r2.xlsx',
   },
   {
     no: '03',
