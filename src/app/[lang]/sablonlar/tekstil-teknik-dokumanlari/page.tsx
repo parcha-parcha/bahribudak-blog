@@ -36,15 +36,15 @@ const documents = [
   },
   {
     no: '03',
-    status: 'SON DÜZENLEMEDE',
+    status: 'İNDİRİLEBİLİR',
     title: 'Boyahane Norm Kadro Çalışması',
     category: 'Üretim ve yönetim',
     description:
-      '30 ton/gün kapasiteli ve üç vardiya çalışan bir örme kumaş boyahanesinin boya, apre, laboratuvar, depo, bakım, enerji ve yönetim birimleri için hazırlanmış personel ve organizasyon modelidir.',
-    details: ['30 ton/gün', '3 vardiya', 'PDF', 'Yönetici seviyesi'],
+      '30 ton/gün kapasiteli, 19 HT jet makinesi ve üç vardiya esasına göre hazırlanmış; boya, apre, laboratuvar, depo, bakım, enerji ve yönetim birimlerini kapsayan personel ve organizasyon modelidir.',
+    details: ['30 ton/gün', '19 HT jet', '277 kişi', '12 sayfa PDF'],
     tags: ['Norm kadro', 'Vardiya', 'Organizasyon', 'Kapasite'],
-    button: 'Yakında',
-    href: null,
+    button: 'PDF’yi indir',
+    href: '/downloads/boyahane-norm-kadro-30-ton-19-makine.pdf',
   },
 ]
 
