@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif boyama, tuz-soda-pH yönetimi ve hata analizi konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif boyama, dispers boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -52,25 +52,25 @@ const notes: TrainingNote[] = [
   },
   {
     no: '03',
-    status: 'SIRADA',
-    title: 'Tuz, Alkali ve pH Yönetimi Eğitimi',
-    category: 'Reaktif boyamada kimyasal besleme',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Polyester Örme Kumaşlarda Dispers Boyama Eğitimi',
+    category: 'Polyester ve polyester-elastan boyama',
     description:
-      'Elektrolit ve alkalinin görevi, renk derinliği, flotte, dozaj sırası, iletkenlik, pH yükselişi ve proses kontrolünü uygulama örnekleriyle açıklar.',
-    details: ['PDF / DOCX', 'Tuz', 'Alkali', 'pH ve iletkenlik'],
-    tags: ['Elektrolit', 'Alkali', 'pH', 'İletkenlik', 'Dozaj'],
-    pdf: null,
-    docx: null,
+      'Dispers boyarmaddenin banyoda homojen dağılımını, boya çekimini, lif içine ilerlemesini, boyarmadde enerji sınıflarını, HT jet prosesini, pH ve yardımcı kimyasal yönetimini, indirgen temizlemeyi, oligomer ve termomigrasyon risklerini sade Türkçe terminolojiyle açıklar.',
+    details: ['11 sayfa', 'PDF / DOCX', '16 bölüm', 'Proses ve hata analiz tabloları'],
+    tags: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Termomigrasyon'],
+    pdf: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.pdf',
+    docx: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.docx',
   },
   {
     no: '04',
     status: 'SIRADA',
-    title: 'Boyahane Hata Analizi Eğitim Notları',
-    category: 'Kök neden ve düzeltici yaklaşım',
+    title: 'Naylon / Poliamid Kumaşlarda Asit Boyama Eğitimi',
+    category: 'Poliamid boyama ve pH yönetimi',
     description:
-      'Abraj, ton farkı, leke, kırık, yetersiz haslık, tekrar işlem ve kalite kayıplarının proses verileriyle analiz edilmesi için hazırlanır.',
-    details: ['PDF / DOCX', 'Hata sınıfları', 'Kök neden', 'Düzeltici faaliyet'],
-    tags: ['Hata analizi', 'Abraj', 'Kök neden', 'Kalite'],
+      'Asit boyarmadde-poliamid ilişkisini, pH kontrollü boya çekimini, sıcaklık ve dozaj yönetimini, düzgünlük, haslık, elastan riski ve final kalite kontrollerini açıklayacak.',
+    details: ['PDF / DOCX', 'Asit boyama', 'pH profili', 'Düzgünlük ve haslık'],
+    tags: ['Naylon', 'Poliamid', 'Asit boyarmadde', 'pH', 'Haslık'],
     pdf: null,
     docx: null,
   },
