@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif, dispers, poliamid asit boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama ve boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -76,13 +76,25 @@ const notes: TrainingNote[] = [
   },
   {
     no: '05',
-    status: 'SIRADA',
-    title: 'Pamuk-Polyester Karışımlarda Boyama Eğitimi',
-    category: 'Karışım kumaşlarda tek ve çift banyo yönetimi',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Polyester / Pamuk Karışımlarda Boyama Eğitimi',
+    category: 'Karışım kumaşlarda dispers ve reaktif proses yönetimi',
     description:
-      'Pamuk-polyester ve elastanlı karışımlarda lif sıralamasını, dispers ve reaktif adımları, tek banyo ve çift banyo seçeneklerini, redüktif temizleme, pH geçişi, haslık ve tekrar üretilebilirlik konularını açıklayacak.',
-    details: ['PDF / DOCX', 'Tek banyo', 'Çift banyo', 'Dispers + reaktif'],
-    tags: ['Pamuk-polyester', 'Karışım kumaş', 'Çift banyo', 'Redüktif temizleme'],
+      'Polyester/pamuk ve polyester/pamuk/elastan örme kumaşlarda boya sınıfı seçimini, lif oranı hesabını, çift banyo-iki aşama ve tek banyo-iki aşama proseslerini, pH-sıcaklık geçişini, indirgen temizlemeyi, reaktif yıkamayı, ton eşleştirmeyi ve kalite kontrolünü saha terminolojisiyle açıklar.',
+    details: ['10 sayfa', 'PDF / DOCX', '18 bölüm', 'Tek ve çift banyo karşılaştırması'],
+    tags: ['PES/CO', 'Karışım kumaş', 'Dispers boyama', 'Reaktif boyama', 'İndirgen temizleme', 'Ton eşleştirme'],
+    pdf: '/downloads/pamuk-polyester-karisimlarda-boyama-egitimi-r1.pdf',
+    docx: '/downloads/pamuk-polyester-karisimlarda-boyama-egitimi-r1.docx',
+  },
+  {
+    no: '06',
+    status: 'SIRADA',
+    title: 'Boyama Sonrası Yıkama ve İndirgen Temizleme Eğitimi',
+    category: 'Yaş haslık ve yüzey boyasının uzaklaştırılması',
+    description:
+      'Reaktif boyamada bağlanmamış boyanın sıcak yıkamayla uzaklaştırılmasını, polyesterde indirgen temizlemeyi, yıkama maddesi seçimini, pH ve iletkenlik takibini, koyu renk ve karışım kumaşlarda haslık yönetimini açıklayacak.',
+    details: ['PDF / DOCX', 'Reaktif yıkama', 'İndirgen temizleme', 'Final pH'],
+    tags: ['Yıkama', 'Yaş haslık', 'İndirgen temizleme', 'Final kontrol'],
     pdf: null,
     docx: null,
   },
