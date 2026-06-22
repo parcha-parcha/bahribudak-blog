@@ -12,14 +12,15 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 const documents = [
   {
     no: '01',
-    status: 'YAKINDA İNDİRİLEBİLİR',
+    status: 'İNDİRİLEBİLİR',
     title: 'Tekstil İşletmelerinde Mühendislik Formülleri',
     category: 'Makine, enerji ve yardımcı işletmeler',
     description:
       'Boyahane, apre, ramöz, sanfor, kazan, kompresör, su hazırlama ve yardımcı işletmelerde kullanılan akışkanlar mekaniği, termodinamik, ısı transferi, elektrik ve motor hesaplarını açıklamalı örneklerle bir araya getiren teknik başvuru kaynağıdır.',
     details: ['41 sayfa', 'PDF / DOCX', '65 temel hesap', 'Teknik–ileri seviye'],
     tags: ['Akışkanlar mekaniği', 'Termodinamik', 'Enerji', 'Pompa ve fan'],
-    button: 'PDF hazırlanıyor',
+    button: 'PDF’yi indir',
+    href: '/downloads/tekstil-isletmelerinde-muhendislik-formulleri.pdf',
   },
   {
     no: '02',
@@ -31,6 +32,7 @@ const documents = [
     details: ['37 sayfa', 'PDF', 'A4 yatay', '1:5 flotte'],
     tags: ['HT Jet', 'Reaktif boyama', 'Dispers boyama', 'Proses diyagramı'],
     button: 'Dosya güncelleniyor',
+    href: null,
   },
   {
     no: '03',
@@ -42,6 +44,7 @@ const documents = [
     details: ['30 ton/gün', '3 vardiya', 'PDF', 'Yönetici seviyesi'],
     tags: ['Norm kadro', 'Vardiya', 'Organizasyon', 'Kapasite'],
     button: 'Yakında',
+    href: null,
   },
 ]
 
@@ -258,12 +261,22 @@ export default function Page({ params }: { params: { lang: string } }) {
                 </div>
 
                 <div className="mt-auto pt-6">
-                  <span
-                    aria-disabled="true"
-                    className="inline-flex cursor-not-allowed rounded-full bg-navy/10 px-5 py-3 text-sm font-bold text-navy/55"
-                  >
-                    {document.button}
-                  </span>
+                  {document.href ? (
+                    <a
+                      href={document.href}
+                      download
+                      className="inline-flex rounded-full bg-navy px-5 py-3 text-sm font-bold text-white transition hover:bg-accent-blue"
+                    >
+                      {document.button}
+                    </a>
+                  ) : (
+                    <span
+                      aria-disabled="true"
+                      className="inline-flex cursor-not-allowed rounded-full bg-navy/10 px-5 py-3 text-sm font-bold text-navy/55"
+                    >
+                      {document.button}
+                    </span>
+                  )}
                 </div>
               </article>
             ))}
