@@ -159,6 +159,18 @@ const notes: TrainingNote[] = [
     pdf: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.pdf',
     docx: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.docx',
   },
+  {
+    no: '12',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Ramöz ve Apre Proses Kontrolü Eğitimi',
+    category: 'Kurutma, ısı ile fikse, boyut ve apre yönetimi',
+    description:
+      'Örme kumaşlarda apre banyosu ve kimyasal uyumundan alınan flotte oranına; en, pozitif besleme, kumaş gerginliği, zincir, iğne-mandal, kurutma, ısı ile fikse, kürleme, gerçek kumaş sıcaklığı, etkin kalış süresi, en-gramaj-çekmezlik dengesi, kalite, sapma ve enerji yönetimine kadar ramöz prosesini sistematik biçimde açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Formül, kontrol ve KPI tabloları'],
+    tags: ['Ramöz', 'Apre', 'Alınan flotte', 'Pozitif besleme', 'Isı ile fikse', 'Enerji yönetimi'],
+    pdf: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.pdf',
+    docx: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.docx',
+  },
 ]
 
 export default function Page({
