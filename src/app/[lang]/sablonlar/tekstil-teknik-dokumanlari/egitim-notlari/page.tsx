@@ -186,14 +186,26 @@ const notes: TrainingNote[] = [
   {
     no: '14',
     status: 'İNDİRİLEBİLİR',
-    title: 'Şardon, Traş ve Fırça Proses Kontrolü Eğitimi',
-    category: 'Mekanik yüzey terbiye ve final görünüm yönetimi',
+    title: 'Şardon, Traş ve Süet Fırça Makinelerinde Proses Kontrolü Eğitimi',
+    category: 'Şardon, traş ve süet yüzey işlemleri',
     description:
-      'Örme kumaşlarda kumaş hazırlığı, nem ve tansiyondan tek/çift tamburlu şardona; tüy ve karşı tüy silindirleri, tel-garnitür seçimi, çevresel hız dengesi, pasaj planı, traş yüksekliği, fırçalama, aspirasyon, boncuklanma, tüy dökme, yüzey kusurları, kalite, bakım ve enerji yönetimine kadar bütün prosesi sistematik biçimde açıklar.',
-    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve risk tabloları'],
-    tags: ['Şardon', 'Traş', 'Fırça', 'Tüy yüksekliği', 'Boncuklanma', 'Aspirasyon'],
+      'Şardon, traş ve süet fırçayı üç ayrı makine ve üç ayrı yüzey hedefi olarak ele alır. Şardonda kumaşa göre 1-4 pasajı; düzgün ve stabil hav için traşı; kadife ham ve bitim traşını; ayrı süet fırça makinesinde süet/şeftali tüyü etkisini, kalite, bakım, kütle kaybı ve enerji yönetimiyle birlikte açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Makine seçimi ve karar tabloları'],
+    tags: ['Şardon', 'Traş', 'Kadife traşı', 'Süet fırça', '1-4 pasaj', 'Yüzey kalitesi'],
     pdf: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.pdf',
     docx: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.docx',
+  },
+  {
+    no: '15',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Boyahane Suyu, Boya-Kimyasal Mutfağı ve Dozaj Yönetimi Eğitimi',
+    category: 'Su kalitesi, hazırlama, dozaj ve izlenebilirlik',
+    description:
+      'Ham sudan yumuşatılmış, ters ozmoz ve geri kazanılmış su hatlarına; sertlik, pH, iletkenlik, demir, mangan ve klor kontrollerinden boyarmadde çözündürme, sıvı kimyasal seyreltme, stok çözelti, otomatik dozaj, hat temizliği, kalibrasyon, reçete hesabı ve kaynak verimliliğine kadar bütün sistemi açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Su kabul, hesap ve KPI tabloları'],
+    tags: ['Boyahane suyu', 'Su sertliği', 'Boya mutfağı', 'Kimyasal mutfak', 'Otomatik dozaj', 'Kalibrasyon'],
+    pdf: '/downloads/boyahane-suyu-boya-kimyasal-mutfagi-ve-dozaj-yonetimi-egitimi-r1.pdf',
+    docx: '/downloads/boyahane-suyu-boya-kimyasal-mutfagi-ve-dozaj-yonetimi-egitimi-r1.docx',
   },
 ]
 
