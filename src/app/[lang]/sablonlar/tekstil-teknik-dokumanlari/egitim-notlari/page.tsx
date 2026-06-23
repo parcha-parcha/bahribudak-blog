@@ -146,6 +146,19 @@ const notes: TrainingNote[] = [
     pdf: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.pdf',
     docx: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.docx',
   },
+
+  {
+    no: '11',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Renk, Haslık ve Final Kalite Kontrolleri Eğitimi',
+    category: 'Renk ölçümü, haslık ve sevk onay yönetimi',
+    description:
+      'Boyalı ve apreli örme kumaşlarda numune alma, kondisyonlama, ışık kabini ve spektrofotometre ile renk kontrolü, renk farkı ve metamerizm, yıkama-su-sürtme-ter-ışık haslıkları, çekmezlik, dönme, gramaj, fiziksel performans, top kontrolü, karantina ve serbest bırakma kararlarını sistematik biçimde açıklar.',
+    details: ['13 sayfa', 'PDF / DOCX', '18 bölüm', 'Test, karar ve KPI tabloları'],
+    tags: ['Renk kontrolü', 'Spektrofotometre', 'Haslık', 'Çekmezlik', 'Final kalite', 'Serbest bırakma'],
+    pdf: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.pdf',
+    docx: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.docx',
+  },
 ]
 
 export default function Page({
