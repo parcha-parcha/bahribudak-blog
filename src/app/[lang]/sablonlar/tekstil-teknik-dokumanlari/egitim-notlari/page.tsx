@@ -134,6 +134,18 @@ const notes: TrainingNote[] = [
     pdf: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.pdf',
     docx: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.docx',
   },
+  {
+    no: '10',
+    status: 'İNDİRİLEBİLİR',
+    title: 'HT Jet Makinesinde Proses Kontrolü Eğitimi',
+    category: 'Makine ayarları, çevrim kontrolü ve proses güvenliği',
+    description:
+      'HT jet makinesinde üretim öncesi uygunluk, parti ve yükleme hazırlığı, dikiş-halat kontrolü, gerçek flotte, kumaş hızı, tur süresi, düze, pompa, sıcaklık, basınç, dozaj, pH, iletkenlik, numune, alarm, sapma, boşaltma, temizlik ve vardiya kayıtlarını saha uygulamalarıyla açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
+    tags: ['HT jet', 'Kumaş tur süresi', 'Gerçek flotte', 'Düze ve pompa', 'Dozaj kontrolü', 'Proses güvenliği'],
+    pdf: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.pdf',
+    docx: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.docx',
+  },
 ]
 
 export default function Page({
