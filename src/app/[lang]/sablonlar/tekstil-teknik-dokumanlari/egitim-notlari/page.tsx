@@ -183,6 +183,18 @@ const notes: TrainingNote[] = [
     pdf: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.pdf',
     docx: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.docx',
   },
+  {
+    no: '14',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Şardon, Traş ve Fırça Proses Kontrolü Eğitimi',
+    category: 'Mekanik yüzey terbiye ve final görünüm yönetimi',
+    description:
+      'Örme kumaşlarda kumaş hazırlığı, nem ve tansiyondan tek/çift tamburlu şardona; tüy ve karşı tüy silindirleri, tel-garnitür seçimi, çevresel hız dengesi, pasaj planı, traş yüksekliği, fırçalama, aspirasyon, boncuklanma, tüy dökme, yüzey kusurları, kalite, bakım ve enerji yönetimine kadar bütün prosesi sistematik biçimde açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve risk tabloları'],
+    tags: ['Şardon', 'Traş', 'Fırça', 'Tüy yüksekliği', 'Boncuklanma', 'Aspirasyon'],
+    pdf: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.pdf',
+    docx: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.docx',
+  },
 ]
 
 export default function Page({
