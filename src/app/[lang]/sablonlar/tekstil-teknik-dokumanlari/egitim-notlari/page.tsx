@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama, HT jet proses yönetimi ve renk düzeltme konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama, HT jet proses yönetimi, renk düzeltme ve laboratuvar reçetesinin işletmeye aktarılması konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -117,10 +117,22 @@ const notes: TrainingNote[] = [
     category: 'Renk düzeltme, yeniden işlem ve maliyet yönetimi',
     description:
       'Renk farkının değerlendirilmesinden ilave kararına; tek ve iki yarım banyo, yeni banyoda ilave, apreden dönen mal, söküm ve yeniden boyama senaryolarından kök neden, kayıt, performans göstergeleri, maliyet ve iyileştirme sistemine kadar bütün süreci saha verileriyle açıklar.',
-    details: ['28 sayfa', 'PDF / DOCX', '18 bölüm', 'Maliyet ve KPI tabloları'],
+    details: ['13 sayfa', 'PDF / DOCX', '18 bölüm', 'Maliyet ve KPI tabloları'],
     tags: ['Renk ilavesi', 'Renk düzeltme', 'Yarım banyo', 'Kök neden', 'İlk seferde doğru üretim', 'Maliyet yönetimi'],
     pdf: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.pdf',
     docx: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.docx',
+  },
+  {
+    no: '09',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Laboratuvar Reçetesinden İşletme Reçetesine Geçiş Eğitimi',
+    category: 'Ölçek büyütme, reçete aktarımı ve ilk parti yönetimi',
+    description:
+      'Laboratuvar numunesinden işletme partisine geçişte kumaş, ön terbiye, su, boya, kimyasal, makine, gerçek flotte, sıcaklık, pH, süre ve dozaj değişkenlerinin nasıl eşleştirileceğini; % HT, g/L ve stok çözelti hesaplarını; reaktif, dispers ve asit boyamada aktarım kurallarını ve ilk parti onay sistemini açıklar.',
+    details: ['12 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, aktarım ve KPI tabloları'],
+    tags: ['Laboratuvar reçetesi', 'İşletme reçetesi', 'Ölçek büyütme', 'Gerçek flotte', 'İlk parti', 'İlk seferde doğru üretim'],
+    pdf: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.pdf',
+    docx: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.docx',
   },
 ]
 
