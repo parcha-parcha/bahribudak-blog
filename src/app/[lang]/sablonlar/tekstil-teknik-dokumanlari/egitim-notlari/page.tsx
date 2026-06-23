@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama, HT jet proses yönetimi, renk düzeltme ve laboratuvar reçetesinin işletmeye aktarılması konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, boyama, yıkama, HT jet, renk düzeltme, laboratuvar reçete aktarımı, final kalite, ramöz-apre ve sanfor/kompaktör prosesleri için hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -170,6 +170,18 @@ const notes: TrainingNote[] = [
     tags: ['Ramöz', 'Apre', 'Alınan flotte', 'Pozitif besleme', 'Isı ile fikse', 'Enerji yönetimi'],
     pdf: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.pdf',
     docx: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.docx',
+  },
+  {
+    no: '13',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Örme Kumaşlarda Sanfor / Kompaktör ve Boyutsal Stabilite Eğitimi',
+    category: 'Kompaktlama, çekmezlik ve boyutsal stabilite yönetimi',
+    description:
+      'Açık en ve tüp örme kumaşlarda giriş relaksasyonu, buharlama, nem, kumaş tansiyonu, besleme, keçe ve kauçuk bant sistemleri, sıcaklık, basınç, hız, gerçek kompaktlama, boy-en çekmesi, spirallik, en-gramaj dengesi, final kalite, sapma ve enerji yönetimini sistematik biçimde açıklar.',
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
+    tags: ['Sanfor', 'Kompaktör', 'Boyutsal stabilite', 'Çekmezlik', 'Spirallik', 'En-gramaj dengesi'],
+    pdf: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.pdf',
+    docx: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.docx',
   },
 ]
 
