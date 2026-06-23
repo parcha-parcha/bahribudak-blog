@@ -9,7 +9,7 @@ export async function generateMetadata({
   return {
     title: 'Eğitim Notları | Bahri Budak',
     description:
-      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama ve HT jet boyahane proses yönetimi konularında hazırlanmış tekstil eğitim notları.',
+      'Kasar, reaktif, dispers, poliamid asit boyama, polyester/pamuk karışım boyama, boyama sonrası yıkama, HT jet proses yönetimi ve renk düzeltme konularında hazırlanmış tekstil eğitim notları.',
   }
 }
 
@@ -109,6 +109,18 @@ const notes: TrainingNote[] = [
     tags: ['Proses yönetimi', 'Kritik kontrol', 'İlk seferde doğru üretim', 'Sapma yönetimi', 'KPI', 'İzlenebilirlik'],
     pdf: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.pdf',
     docx: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.docx',
+  },
+  {
+    no: '08',
+    status: 'İNDİRİLEBİLİR',
+    title: 'Boyahanelerde Renk İlavesi ve Renk Düzeltme Yönetimi Eğitimi',
+    category: 'Renk düzeltme, yeniden işlem ve maliyet yönetimi',
+    description:
+      'Renk farkının değerlendirilmesinden ilave kararına; tek ve iki yarım banyo, yeni banyoda ilave, apreden dönen mal, söküm ve yeniden boyama senaryolarından kök neden, kayıt, performans göstergeleri, maliyet ve iyileştirme sistemine kadar bütün süreci saha verileriyle açıklar.',
+    details: ['28 sayfa', 'PDF / DOCX', '18 bölüm', 'Maliyet ve KPI tabloları'],
+    tags: ['Renk ilavesi', 'Renk düzeltme', 'Yarım banyo', 'Kök neden', 'İlk seferde doğru üretim', 'Maliyet yönetimi'],
+    pdf: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.pdf',
+    docx: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.docx',
   },
 ]
 
