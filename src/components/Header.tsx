@@ -4,6 +4,7 @@ import BBHeaderSocialLinks from '@/components/BBHeaderSocialLinks'
 import BrandLogo from '@/components/BrandLogo'
 import type { Lang } from '@/lib/i18n'
 import { useTranslations } from '@/lib/i18n'
+import { getTranslatedPath } from '@/lib/translatedRoutes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -17,7 +18,7 @@ export default function Header({ lang }: HeaderProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const otherLang = lang === 'tr' ? 'en' : 'tr'
-  const switchedPath = pathname.replace(`/${lang}`, `/${otherLang}`)
+  const switchedPath = getTranslatedPath(pathname, lang, otherLang)
 
   const navLinks = [
     { href: `/${lang}`, label: t('nav.home') },
