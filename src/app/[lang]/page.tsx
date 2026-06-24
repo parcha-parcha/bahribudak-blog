@@ -70,7 +70,7 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#061A33] text-white min-h-[720px] md:min-h-[760px] flex items-center">
+      <section className="relative overflow-hidden bg-[#061A33] text-white min-h-[620px] md:min-h-[660px] flex items-center">
         <img
           src="/images/hero-su-damlasi.jpg"
           alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
@@ -80,22 +80,22 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 via-transparent to-[#061A33]/30" />
         <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/20 blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-14 md:py-16 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.55fr)] lg:py-20">
           <div>
             <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm mb-5">BAHRİ BUDAK • ÖRGÜ / BOYA / APRE</p>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
+            <h1 className="max-w-[850px] text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[74px]">
               Örgü, boya ve apre bilgisini ölçülebilir üretim sistemine dönüştürüyorum.
             </h1>
-            <p className="mt-8 text-lg md:text-xl leading-relaxed text-white/82 max-w-2xl">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
               Örgü / Knitting, Boya / Dyeing ve Apre / Finishing süreçlerinde 35 yılı aşkın saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses çözümleri.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-wrap gap-4">
               <Link href={`/${lang}#uzmanlik`} className="btn-primary">Uzmanlık Alanlarını İncele →</Link>
               <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white hover:bg-white hover:text-navy transition-colors">Teknik Notları Gör</Link>
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
+          <div className="mx-auto w-full max-w-[300px] sm:max-w-[320px] lg:mx-0 lg:justify-self-end">
             <BBHomeLogoCard />
           </div>
         </div>
