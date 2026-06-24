@@ -8,10 +8,9 @@ export default function Footer({ lang }: { lang: Lang }) {
   const year = new Date().getFullYear()
 
   const categories = [
-    { slug: 'tekstil', label: lang === 'tr' ? 'Tekstil ve Teknik Yayınlar' : 'Textile and Technical Publications' },
-    { slug: 'uretim-yonetim', label: lang === 'tr' ? 'Üretim ve Yönetim Sistemleri' : 'Production and Management Systems' },
-    { slug: 'kisisel-gelisim', label: lang === 'tr' ? 'Kişisel Gelişim' : 'Personal Development' },
-    { slug: 'sektorel-analiz', label: lang === 'tr' ? 'Sektörel ve Güncel Analizler' : 'Industry and Current Analysis' },
+    { slug: 'orgu', label: lang === 'tr' ? 'Örgü / Knitting' : 'Knitting / Örgü' },
+    { slug: 'boya', label: lang === 'tr' ? 'Boya / Dyeing' : 'Dyeing / Boya' },
+    { slug: 'apre', label: lang === 'tr' ? 'Apre / Finishing' : 'Finishing / Apre' },
   ]
 
   return (
@@ -38,13 +37,13 @@ export default function Footer({ lang }: { lang: Lang }) {
 
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-white/55">
-              {lang === 'tr' ? 'Yayın Alanları' : 'Publication Areas'}
+              {lang === 'tr' ? 'Proses Alanları' : 'Process Areas'}
             </p>
             <ul className="space-y-3">
               {categories.map((category) => (
                 <li key={category.slug}>
                   <Link
-                    href={`/${lang}/blog?category=${category.slug}`}
+                    href={`/${lang}/blog?area=${category.slug}`}
                     className="flex items-start gap-3 text-sm text-white/74 transition-colors hover:text-[#5BBBE6]"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2EA6D9]" />

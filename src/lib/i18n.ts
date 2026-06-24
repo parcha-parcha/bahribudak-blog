@@ -7,7 +7,7 @@ export const ui = {
   tr: {
     // Navigation
     'nav.home': 'Ana Sayfa',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Teknik Yayınlar',
     'nav.about': 'Hakkımda',
     'nav.services': 'Hizmetler',
     'nav.news': 'Haberler',
@@ -56,7 +56,7 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Technical Publications',
     'nav.about': 'About',
     'nav.services': 'Services',
     'nav.news': 'News',

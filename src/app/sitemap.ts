@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postPages: MetadataRoute.Sitemap = langs.flatMap(lang =>
     getAllPosts(lang).map(post => ({
       url: `${siteUrl}/${lang}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
+      lastModified: new Date(post.revisionDate || post.date),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     }))

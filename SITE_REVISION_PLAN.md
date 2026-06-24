@@ -89,35 +89,38 @@ Ek uygulamalar:
 
 ---
 
-### Faz 3 - İçerik Envanteri ve Teknik Taksonomi
+### Faz 3 - Teknik Yayın Sistemi ve İçerik Taksonomisi
 
-**Öncelik: Yüksek**
+**Durum: KISMEN TAMAMLANDI — Revizyon 03**
 
-Mevcut MDX içerikleri tek tek incelenecek ve aşağıdaki teknik alanlarla etiketlenecektir:
+Tamamlanan altyapı:
 
-- Örgü / Knitting
+- Blog alanı Teknik Yayınlar / Technical Publications olarak yeniden yapılandırıldı.
+- Örgü / Knitting, Boya / Dyeing ve Apre / Finishing proses filtreleri eklendi.
+- Belge kodu, revizyon, revizyon tarihi, yayın durumu ve referans standart alanları veri modeline eklendi.
+- Teknik yayın detay sayfasına Doküman Kontrolü / Document Control paneli eklendi.
+- Teknik tablolar, formüller ve mobil görünüm için ortak yayın stili oluşturuldu.
+- İlk Türkçe ve İngilizce Örgü / Knitting teknik yayını hazırlandı:
+  - İlmek Boyu / Stitch Length, Gramaj / GSM ve Kumaş Eni Arasındaki Proses İlişkisi
+  - Belge kodu: `BB-ORG-TP-001`
+- TechArticle yapılandırılmış verisi ve revizyon tarihine bağlı sitemap güncellemesi uygulandı.
+
+Devam edecek envanter ve taksonomi çalışması:
+
+- Mevcut MDX içeriklerinin tek tek incelenmesi
 - Ön Terbiye / Pretreatment
-- Boyama / Dyeing
 - Yıkama / Washing-off
-- Apre / Finishing
 - Ramöz / Stenter
 - Kompaktör / Compactor
 - Laboratuvar / Laboratory
 - Kalite Kontrol / Quality Control
 - Enerji ve Maliyet / Energy and Cost
 - Üretim Yönetimi / Production Management
+- İçerik türü ve hedef kullanıcı etiketleri
+- Görsel, kaynak, revizyon ve indirme bağlantısı kontrolü
+- Mükerrer içerik ve eski revizyon temizliği
 
-Yapılacak kontroller:
-
-- Başlık ve özet tutarlılığı
-- Türkçe-İngilizce terminoloji standardı
-- Formül, birim ve sembol doğruluğu
-- Görsel ve alt metin kontrolü
-- Kaynak ve revizyon tarihi
-- İndirilebilir dosya bağlantısı
-- Aynı içeriğin mükerrer sürümleri
-
-**Kabul ölçütü:** Her yayın en az bir proses alanı, bir içerik türü ve bir hedef kullanıcı etiketi taşımalıdır.
+**Kabul ölçütü:** Yeni teknik yayınlar ortak şablonu kullanmalı; mevcut yayınların tamamı en az bir proses alanı, bir içerik türü ve bir hedef kullanıcı etiketi taşımalıdır.
 
 ---
 
@@ -193,7 +196,7 @@ Dosya adları kurumsal standarda göre düzenlenecektir:
 
 1. Faz 1 - Kurumsal temel ve teknik temizlik
 2. Faz 2 - Örgü, Boya ve Apre uzmanlık sayfaları
-3. Faz 3 - Mevcut içeriklerin sınıflandırılması
+3. Faz 3 - Teknik yayın sistemi ve mevcut içeriklerin sınıflandırılması
 4. Faz 4 - Kaynak merkezi veri yapısı
 5. Faz 5 - Teknik görsel ve yayın şablonları
 6. Faz 6 - SEO, performans ve son kalite kontrol
@@ -202,12 +205,14 @@ Dosya adları kurumsal standarda göre düzenlenecektir:
 
 ## 4. İlk Sonraki Uygulama
 
-Bir sonraki revizyonda **Faz 3 - İçerik Envanteri ve Teknik Taksonomi** uygulanacaktır.
+Bir sonraki revizyonda Revizyon 03 altyapısı genişletilecektir.
 
 Öncelik sırası:
 
-1. Mevcut MDX içeriklerinin proses alanına göre sınıflandırılması
-2. Türkçe-İngilizce teknik terim sözlüğünün sabitlenmesi
-3. Her yayına içerik türü ve hedef kullanıcı etiketi eklenmesi
-4. Mükerrer dosya, eski revizyon ve kırık bağlantı kontrolü
-5. Kaynak merkezi ile uzmanlık sayfaları arasındaki ilişkilerin veri modeline bağlanması
+1. Boya / Dyeing için ilk kontrollü teknik yayın
+2. Apre / Finishing için ilk kontrollü teknik yayın
+3. Mevcut MDX içeriklerinin proses alanına göre sınıflandırılması
+4. Türkçe-İngilizce teknik terim sözlüğünün sabitlenmesi
+5. Her yayına içerik türü ve hedef kullanıcı etiketi eklenmesi
+6. Mükerrer dosya, eski revizyon ve kırık bağlantı kontrolü
+7. Kaynak merkezi ile uzmanlık sayfaları arasındaki ilişkilerin veri modeline bağlanması

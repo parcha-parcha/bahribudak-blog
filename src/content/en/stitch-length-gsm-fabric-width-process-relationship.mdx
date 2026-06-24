@@ -1,0 +1,254 @@
+---
+title: "Process Relationship Between Stitch Length, Fabric Weight / GSM and Fabric Width"
+excerpt: "A field-oriented method for evaluating stitch length, stitch density, GSM, linear-metre mass and finished width in weft-knitted fabrics."
+date: "2026-06-25"
+revisionDate: "2026-06-25"
+category: "tekstil"
+technicalPublication: true
+processArea: "orgu"
+documentCode: "BB-ORG-TP-001"
+revision: "R00"
+documentStatus: "Published"
+coverImage: "/images/makine-inceligi-doku-sertlesir.jpg"
+tags:
+  - "Knitting"
+  - "Örgü"
+  - "Stitch Length"
+  - "İlmek Boyu"
+  - "GSM"
+  - "Fabric Width"
+standards:
+  - "ASTM D3776/D3776M-20(2025) — Fabric Mass per Unit Area"
+  - "ISO 139:2005 + Amd 1:2011 — Standard Atmospheres for Conditioning and Testing"
+  - "ISO 22198:2006 — Determination of Fabric Width and Length"
+  - "ISO 3759:2011 — Preparation, Marking and Measuring for Dimensional Change"
+  - "ISO 6330:2021 — Domestic Washing and Drying Procedures"
+  - "AATCC TM135-2025 — Dimensional Changes of Fabrics after Home Laundering"
+---
+
+## 1. Purpose / Amaç
+
+This technical publication explains how **Stitch Length / İlmek Boyu**, **Mass per Unit Area / Gramaj (GSM)** and **Fabric Width / Kumaş Eni** should be assessed without reducing the result to a single machine setting.
+
+The principal field rule is:
+
+> Finished GSM is not determined by stitch length alone. Yarn count, knit structure, active needles, stitch density, take-down, relaxation, wet processing, drying, stentering and compaction must be evaluated together.
+
+The equations below are therefore **diagnostic and control tools, not universal recipes**.
+
+## 2. Scope and Assumptions / Kapsam ve Varsayımlar
+
+The discussion is based mainly on weft circular knitting. The same fundamental variables apply to single jersey, rib, interlock, lacoste, fleece, elastane-plated and tuck/miss structures, but structural coefficients and processing behaviour differ.
+
+Valid comparisons require the following to be held constant:
+
+- Fibre composition and yarn count
+- Spinning system and twist
+- Knit structure
+- Machine diameter and gauge
+- Active needle count
+- Feeder and positive-feed settings
+- Take-down
+- Elastane draft
+- Wet-processing and finishing route
+
+## 3. Key Definitions / Temel Tanımlar
+
+| Symbol | Definition | Unit |
+|---|---|---:|
+| `l` | Stitch Length / İlmek Boyu | mm/stitch |
+| `Lc` | Course Length / Sıra Boyu | mm/course |
+| `Na` | Active Needle Count / Aktif İğne Sayısı | count |
+| `T` | Yarn Linear Density / İplik Lineer Yoğunluğu | tex |
+| `C` | Courses per cm / Sıra Sıklığı | courses/cm |
+| `W` | Wales per cm / Çubuk Sıklığı | wales/cm |
+| `S` | Stitch Density = `C x W` | stitches/cm² |
+| `G` | Mass per Unit Area / Gramaj | g/m² |
+| `Mf` | Mass per Linear Metre / Lineer Metre Ağırlığı | g/m |
+| `B` | Fabric Width / Kumaş Eni | m |
+
+## 4. Process Effect of Stitch Length / İlmek Boyunun Proses Etkisi
+
+With yarn, structure, machine and finishing route held constant, increasing stitch length generally produces a more open geometry:
+
+- Stitch density tends to decrease.
+- GSM tends to decrease.
+- Air permeability and openness may increase.
+- Relaxed width may increase.
+- Handle may become softer and looser.
+
+Shortening stitch length generally produces the opposite tendency, while yarn tension, needle load and feeding balance become more critical.
+
+**Technical warning:** Statements such as “longer stitch length always increases width” are incomplete. Finished width is the combined result of knitting width, relaxation, wet-process shrinkage, stenter width, overfeed and compaction.
+
+## 5. Course Length / Sıra Boyu
+
+For the basic case in which one yarn path forms one loop on every active needle in the relevant course:
+
+```text
+Lc = l x Na
+```
+
+- `Lc`: course length, mm/course
+- `l`: stitch length, mm/stitch
+- `Na`: active needles knitting that course
+
+Course length is a strong field-control parameter for yarn delivery and stitch length. The equation must be applied **per feeder and per yarn path**. Patterned structures, inactive needles, tuck/miss, plating, elastane or multiple yarn paths in one course require separate verification of active loops and yarn consumption.
+
+## 6. Theoretical GSM Relationship / Teorik Gramaj İlişkisi
+
+```text
+G_theoretical = (T x l x C x W) / 100
+```
+
+- `T`: tex
+- `l`: mm
+- `C`: courses/cm
+- `W`: wales/cm
+- `G_theoretical`: g/m²
+
+For yarn count in English cotton count:
+
+```text
+tex = 590.5 / Ne
+```
+
+The equation may require structural corrections for tuck/miss, multiple yarns, plating, elastane, pile yarns, chemical add-on, fibre loss and relaxation. It does not replace measured GSM.
+
+## 7. Worked Example / Hesaplama Örneği
+
+Data:
+
+- Yarn: 30 Ne cotton
+- Stitch length: 2.80 mm
+- Courses: 20 courses/cm
+- Wales: 14 wales/cm
+- Relaxed open width: 1.68 m
+
+```text
+T = 590.5 / 30 = 19.68 tex
+S = 20 x 14 = 280 stitches/cm²
+G_theoretical = (19.68 x 2.80 x 20 x 14) / 100
+G_theoretical = 154.3 g/m²
+```
+
+Mass per linear metre:
+
+```text
+Mf = G x B
+Mf = 154.3 x 1.68
+Mf = 259.2 g/m
+```
+
+If the same linear mass is spread to a width of 1.74 m:
+
+```text
+G = Mf / B
+G = 259.2 / 1.74
+G = 149.0 g/m²
+```
+
+This demonstrates that GSM changes not only through knitting settings but also through the finished area over which the same mass is distributed.
+
+## 8. Width–GSM–Linear Mass Relationship / En–Gramaj–Lineer Metre İlişkisi
+
+```text
+Mf = G x B
+G = Mf / B
+B = Mf / G
+```
+
+Units:
+
+- `Mf`: g/m
+- `G`: g/m²
+- `B`: open-width fabric width, m
+
+**Tubular-fabric warning:** If `B` is the laid-flat tubular width, one linear metre has two fabric faces. The effective area is therefore approximately based on `2 x B`:
+
+```text
+Mf_tube = G x 2 x B_flat
+G = Mf_tube / (2 x B_flat)
+```
+
+This relationship is especially useful after stentering and compaction. Linear mass must not be assumed constant if edge trimming, process loss, moisture variation or chemical add-on occurs. The record must always state whether width is open width or laid-flat tubular width.
+
+## 9. Stage-to-Stage Mass–Area Balance / Prosesler Arası Kütle–Alan Dengesi
+
+```text
+G2 = G1 x Rm / (Rw x Rl)
+```
+
+- `Rm = M2 / M1`: mass-retention ratio
+- `Rw = B2 / B1`: width ratio
+- `Rl = L2 / L1`: length ratio
+
+Example:
+
+```text
+G2 = 180 x 0.98 / (1.04 x 0.96)
+G2 = 176.7 g/m²
+```
+
+This approach allows width, length and mass changes to be assessed together across pretreatment, dyeing, drying, stentering and compaction.
+
+## 10. Measurement and Sampling Plan / Ölçüm ve Numune Alma Planı
+
+| Process stage | Mandatory measurements |
+|---|---|
+| Machine delivery | Course length, stitch length, tube width, take-down, feed setting |
+| Relaxed greige | Width, GSM, courses/cm, wales/cm, spirality |
+| After pretreatment | Width, GSM, length change, pH, process loss |
+| After dyeing | Width, GSM, shrinkage tendency, within-lot variation |
+| After stenter | Finished width, overfeed, exit moisture, GSM |
+| After compactor | Width, GSM, length shrinkage, compaction setting |
+| After laundering | Lengthwise and widthwise dimensional change, spirality |
+
+Samples should be measured without tension after a defined relaxation period. GSM comparisons must use consistent conditioning and moisture conditions.
+
+## 11. Defect–Root Cause–Corrective Action / Hata–Kök Neden–Düzeltici Faaliyet
+
+| Observation | Possible root causes | Verification | Corrective action |
+|---|---|---|---|
+| High GSM | Short stitch length; narrow width; high overfeed/compaction; coarser yarn; excessive wet-process shrinkage | Measure stitch length, linear mass, width and density together | Conduct a controlled one-variable trial while protecting width and shrinkage targets |
+| Low GSM | Long stitch length; excessive width; insufficient compaction; finer yarn; low stitch density | Verify tex/Ne, course length, C, W and finished width | Correct feeding/take-down and finishing stepwise after confirming yarn and structure |
+| Low width | Short stitch length; high take-down; wet-process shrinkage; narrow stenter width; excessive compaction | Trend greige, relaxed, dyed and finished widths | Correct the process stage where the deviation begins; do not hide it only by opening the stenter |
+| High width and low GSM | Long stitch length; excessive stenter width; low overfeed; insufficient compaction | Check linear mass and width at the same stage | Optimise width, GSM and dimensional stability together |
+| Within-lot GSM variation | Feeder variation, yarn count/moisture variation, unstable take-down, stenter width/moisture variation | Feeder-based course-length checks and roll-based control charts | Feeder calibration, yarn-lot control and process SPC |
+
+## 12. Shop-Floor Control Sequence / Saha Kontrol Sırası
+
+1. Verify fibre, yarn count, twist, lot and moisture.
+2. Verify machine diameter, gauge, active needles, feeders, cams, positive feed and take-down.
+3. Measure course length; do not rely only on machine-display settings.
+4. Measure relaxed greige fabric; machine-delivery width is not the acceptance width.
+5. Monitor linear-metre mass together with GSM.
+6. Separate process stages; do not hide a knitting deviation at the stenter.
+7. Change one variable at a time.
+8. Confirm the result after laundering and dimensional-stability testing.
+
+## 13. Technical Warning on Tolerances / Toleranslar Hakkında Teknik İkaz
+
+No universal stitch-length, GSM or width tolerance is specified here. Tolerances must be defined for each product using:
+
+- structure,
+- yarn and elastane system,
+- customer specification,
+- machine repeatability,
+- process capability,
+- sampling method.
+
+## 14. References / Kaynaklar
+
+1. [CottonWorks — Stitch Length](https://cottonworks.com/encyclopedia-item/stitch-length/)
+2. [CottonWorks — Course Length](https://cottonworks.com/encyclopedia-item/course-length/)
+3. [CottonWorks — Knit Machinery](https://cottonworks.com/learning-hub/knitting/knit-machinery/)
+4. [CottonWorks — Shrinkage & Skewing](https://cottonworks.com/learning-hub/quality-assurance/shrinking-and-skewing/)
+5. [CottonWorks — Proper Processing of 100% Cotton Knit Fabrics](https://www.cottonworks.com/wp-content/uploads/2017/11/TRI_3011_Wet_Processing_of_100_Cotton_Knitted_Fabrics.pdf)
+6. [ASTM D3776/D3776M — Mass Per Unit Area of Fabric](https://www.astm.org/d3776_d3776m-20.html)
+7. [ISO 139:2005 — Standard Atmospheres for Conditioning and Testing](https://www.iso.org/standard/35179.html)
+8. [ISO 22198:2006 — Determination of Fabric Width and Length](https://www.iso.org/standard/40768.html)
+9. [ISO 3759:2011 — Preparation, Marking and Measuring for Dimensional Change](https://www.iso.org/standard/57309.html)
+10. [ISO 6330:2021 — Domestic Washing and Drying Procedures](https://www.iso.org/standard/75934.html)
+11. [AATCC TM135-2025 — Dimensional Changes after Home Laundering](https://members.aatcc.org/store/tm135/543/)
+12. [Flexible Theoretical Calculation of Loop Length and Area Density of Weft-Knitted Structures](https://www.mdpi.com/1996-1944/14/11/3059)

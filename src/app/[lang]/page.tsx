@@ -94,7 +94,7 @@ export default async function HomePage({ params }: HomeProps) {
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href={`/${lang}#uzmanlik`} className="btn-primary">Uzmanlık Alanlarını İncele →</Link>
-              <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white hover:bg-white hover:text-navy transition-colors">Teknik Notları Gör</Link>
+              <Link href={withLang('/blog')} className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white hover:bg-white hover:text-navy transition-colors">Teknik Notları Gör</Link>
             </div>
           </div>
 
@@ -141,7 +141,7 @@ export default async function HomePage({ params }: HomeProps) {
                 Sahadan gelen tekstil teknik içerikleri.
               </h2>
             </div>
-            <Link href={withLang('/blog?category=tekstil')} className="btn-outline self-start md:self-auto">
+            <Link href={withLang('/blog')} className="btn-outline self-start md:self-auto">
               Tüm Teknik Notlar →
             </Link>
           </div>
