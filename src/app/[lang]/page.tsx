@@ -70,7 +70,7 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#061A33] text-white min-h-[500px] md:min-h-[520px] flex items-start">
+      <section className="relative min-h-[500px] overflow-hidden bg-[#061A33] text-white md:min-h-[520px]">
         <img
           src="/images/hero-su-damlasi.jpg"
           alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
@@ -80,14 +80,14 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 via-transparent to-[#061A33]/30" />
         <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/20 blur-3xl" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:py-10 lg:grid-cols-[minmax(0,1.42fr)_minmax(250px,0.48fr)] lg:py-9">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:py-9 lg:grid-cols-[minmax(0,1.4fr)_minmax(240px,0.5fr)] lg:py-8">
           <div>
-            <p className="mb-4 inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm">BAHRİ BUDAK • ÖRGÜ / BOYA / APRE</p>
-            <h1 className="max-w-[820px] text-4xl font-bold leading-[1.01] tracking-[-0.045em] text-white sm:text-5xl md:text-[52px] lg:text-[54px] xl:text-[56px] 2xl:text-[64px]">
-              Örgü, boya ve apre bilgisini ölçülebilir üretim sistemine dönüştürüyorum.
+            <p className="mb-3 inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm">BAHRİ BUDAK • ÖRGÜ / BOYA / APRE</p>
+            <h1 className="max-w-[780px] text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-[52px] lg:text-[54px] xl:text-[54px] 2xl:text-[62px]">
+              Örgü, boya ve apre bilgisini üretim performansına dönüştürüyorum.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-[16px]">
-              Örgü / Knitting, Boya / Dyeing ve Apre / Finishing süreçlerinde 35 yılı aşkın saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses çözümleri.
+              Örgü / Knitting, Boya / Dyeing ve Apre / Finishing süreçlerinde 35 yılı aşkın saha deneyimine dayalı; ölçülebilir, uygulanabilir ve sürdürülebilir proses çözümleri.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href={`/${lang}#uzmanlik`} className="btn-primary">Uzmanlık Alanlarını İncele →</Link>
@@ -95,7 +95,7 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[250px] sm:max-w-[270px] lg:mx-0 lg:justify-self-end">
+          <div className="mx-auto w-full max-w-[235px] sm:max-w-[255px] lg:mx-0 lg:justify-self-end">
             <BBHomeLogoCard />
           </div>
         </div>
