@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { expertiseSlugs } from '@/lib/expertise'
 import { getAllPosts } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
 
@@ -6,32 +7,32 @@ const siteUrl = 'https://bahribudak.com'
 const langs: Lang[] = ['tr', 'en']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
+  const staticPages: MetadataRoute.Sitemap = langs.flatMap(lang => [
     {
-      url: `${siteUrl}/tr`,
+      url: `${siteUrl}/${lang}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
-      url: `${siteUrl}/en`,
+      url: `${siteUrl}/${lang}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/tr/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/en/blog`,
+      url: `${siteUrl}/${lang}/uzmanlik`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      changeFrequency: 'monthly' as const,
+      priority: 0.95,
     },
-  ]
+    ...expertiseSlugs.map(slug => ({
+      url: `${siteUrl}/${lang}/uzmanlik/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
+  ])
 
   const postPages: MetadataRoute.Sitemap = langs.flatMap(lang =>
     getAllPosts(lang).map(post => ({

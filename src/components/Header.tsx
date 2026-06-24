@@ -22,7 +22,7 @@ export default function Header({ lang }: HeaderProps) {
   const navLinks = [
     { href: `/${lang}`, label: t('nav.home') },
     {
-      href: `/${lang}#uzmanlik`,
+      href: `/${lang}/uzmanlik`,
       label: lang === 'tr' ? 'Örgü · Boya · Apre' : 'Knitting · Dyeing · Finishing',
     },
     { href: `/${lang}/blog`, label: lang === 'tr' ? 'Teknik Yayınlar' : 'Technical Publications' },

@@ -90,7 +90,7 @@ export default function Footer({ lang }: { lang: Lang }) {
             © {year} Bahri Budak. {t('footer.rights')}
           </p>
           <p className="text-xs text-white/50">
-            {lang === 'tr' ? 'Tekstil Boyama ve Apre Uzmanı' : 'Textile Dyeing and Finishing Specialist'}
+            {lang === 'tr' ? 'Örgü, Boya ve Apre Uzmanı' : 'Knitting, Dyeing and Finishing Specialist'}
           </p>
         </div>
       </div>

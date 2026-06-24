@@ -12,18 +12,21 @@ const focusAreas = [
   {
     no: '01',
     id: 'orgu',
+    href: '/uzmanlik/orgu',
     title: 'Örgü / Knitting',
     text: 'İplik-kumaş ilişkisi, makine inceliği / gauge, gramaj, ilmek boyu, elastan besleme ve örme kaynaklı kalite risklerini birlikte değerlendirir.',
   },
   {
     no: '02',
     id: 'boya',
+    href: '/uzmanlik/boya',
     title: 'Boya / Dyeing',
     text: 'Ön terbiye / pretreatment, boyama / dyeing, yıkama / washing, reçete standardı ve HT jet proses kontrolünü ölçülebilir hâle getirir.',
   },
   {
     no: '03',
     id: 'apre',
+    href: '/uzmanlik/apre',
     title: 'Apre / Finishing',
     text: 'Ramöz / stenter, kompaktör / compactor, fikse / heat setting ve kimyasal apre adımlarında en-boy, gramaj, tuşe ve stabiliteyi yönetir.',
   },
@@ -164,17 +167,21 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {focusAreas.map((area) => (
-              <article
+              <Link
                 id={area.id}
                 key={area.no}
-                className="scroll-mt-28 rounded-[30px] border border-gray-border p-7 transition-all hover:border-accent-blue"
+                href={withLang(area.href)}
+                className="group scroll-mt-28 rounded-[30px] border border-gray-border p-7 transition-all hover:-translate-y-1 hover:border-accent-blue hover:shadow-[0_18px_45px_rgba(11,35,67,0.08)]"
               >
-                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-navy text-lg font-bold text-white">
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-navy text-lg font-bold text-white transition-colors group-hover:bg-accent-blue group-hover:text-navy">
                   {area.no}
                 </div>
                 <h3 className="mb-4 text-2xl font-bold tracking-[-0.03em] text-navy">{area.title}</h3>
                 <p className="leading-relaxed text-navy/74">{area.text}</p>
-              </article>
+                <span className="mt-6 inline-flex font-bold text-navy transition-colors group-hover:text-accent-blue">
+                  Uzmanlık Sayfasını Aç →
+                </span>
+              </Link>
             ))}
           </div>
         </div>

@@ -51,16 +51,18 @@ Ana navigasyon ve ana sayfa üç teknik odağı öne çıkaracak; yayın kategor
 
 ### Faz 2 - Bilgi Mimarisi ve Sayfa Omurgası
 
-**Öncelik: Yüksek**
+**Durum: TAMAMLANDI**
 
-Üç uzmanlık alanı için ayrı, kalıcı ve SEO uyumlu sayfalar hazırlanacaktır:
+Hazırlanan kalıcı ve SEO uyumlu sayfalar:
 
+- `/tr/uzmanlik`
 - `/tr/uzmanlik/orgu`
 - `/tr/uzmanlik/boya`
 - `/tr/uzmanlik/apre`
-- İngilizce karşılıkları
+- `/en/uzmanlik`
+- İngilizce uzmanlık detay sayfaları
 
-Her sayfa aynı teknik şablonu kullanacaktır:
+Her sayfada ortak teknik şablon uygulanmıştır:
 
 1. Prosesin amacı
 2. Makine ve ekipmanlar
@@ -71,8 +73,19 @@ Her sayfa aynı teknik şablonu kullanacaktır:
 7. Düzeltici faaliyet / Corrective Action
 8. İlgili yayınlar
 9. İndirilebilir teknik kaynaklar
+10. Teknik referans çerçevesi
+11. Saha görseli çekim standardı
 
-**Kabul ölçütü:** Her teknik sayfa aynı terminoloji, tipografi, görsel hiyerarşi ve URL yapısını kullanmalıdır.
+Ek uygulamalar:
+
+- Ana sayfadaki üç uzmanlık kartı detay sayfalarına bağlandı.
+- Header navigasyonu kalıcı uzmanlık merkezine yönlendirildi.
+- Canonical, hreflang, Open Graph ve TechArticle yapılandırılmış verisi eklendi.
+- Sitemap uzmanlık rotalarını kapsayacak şekilde genişletildi.
+- Türkçe ve İngilizce içerik yapısı aynı veri modeline bağlandı.
+- Sabit reçete veya evrensel makine set değeri verilmedi; ürün ve makine bazlı doğrulama notu eklendi.
+
+**Kabul ölçütü:** Üretim derlemesi, TypeScript kontrolü ve Türkçe-İngilizce uzmanlık rotaları HTTP 200 sonucuyla tamamlandı.
 
 ---
 
@@ -189,10 +202,12 @@ Dosya adları kurumsal standarda göre düzenlenecektir:
 
 ## 4. İlk Sonraki Uygulama
 
-Bir sonraki revizyonda **Faz 2** uygulanacaktır. Önce ortak uzmanlık sayfası şablonu hazırlanacak; ardından sırasıyla:
+Bir sonraki revizyonda **Faz 3 - İçerik Envanteri ve Teknik Taksonomi** uygulanacaktır.
 
-1. Örgü / Knitting
-2. Boya / Dyeing
-3. Apre / Finishing
+Öncelik sırası:
 
-sayfaları teknik içerikle doldurulacaktır.
+1. Mevcut MDX içeriklerinin proses alanına göre sınıflandırılması
+2. Türkçe-İngilizce teknik terim sözlüğünün sabitlenmesi
+3. Her yayına içerik türü ve hedef kullanıcı etiketi eklenmesi
+4. Mükerrer dosya, eski revizyon ve kırık bağlantı kontrolü
+5. Kaynak merkezi ile uzmanlık sayfaları arasındaki ilişkilerin veri modeline bağlanması
