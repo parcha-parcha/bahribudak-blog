@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import PostCard from '@/components/PostCard'
-import BrandLogo from '@/components/BrandLogo'
 import { getAllPosts } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
 import BBHomeLogoCard from '@/components/BBHomeLogoCard'
@@ -12,52 +11,52 @@ interface HomeProps {
 const focusAreas = [
   {
     no: '01',
-    title: 'Boyahane proses danışmanlığı',
-    text: 'Kasar, reaktif boyama, yıkama, reçete standardı ve makine verimini sahadaki gerçek akışa göre düzenler.',
-    href: '/hizmetler',
+    id: 'orgu',
+    title: 'Örgü / Knitting',
+    text: 'İplik-kumaş ilişkisi, makine inceliği / gauge, gramaj, ilmek boyu, elastan besleme ve örme kaynaklı kalite risklerini birlikte değerlendirir.',
   },
   {
     no: '02',
-    title: 'Teknik eğitim notları',
-    text: 'Operatör, vardiya amiri, laboratuvar ve yönetim ekipleri için uygulanabilir, sade ve ölçülebilir eğitim içerikleri üretir.',
-    href: '/blog?category=tekstil',
+    id: 'boya',
+    title: 'Boya / Dyeing',
+    text: 'Ön terbiye / pretreatment, boyama / dyeing, yıkama / washing, reçete standardı ve HT jet proses kontrolünü ölçülebilir hâle getirir.',
   },
   {
     no: '03',
-    title: 'Doküman ve kontrol sistemi',
-    text: 'Proses formları, kontrol listeleri, teknik raporlar, teklif dosyaları ve müşteri teslim dokümanlarını tek standarda bağlar.',
-    href: '/magazam',
+    id: 'apre',
+    title: 'Apre / Finishing',
+    text: 'Ramöz / stenter, kompaktör / compactor, fikse / heat setting ve kimyasal apre adımlarında en-boy, gramaj, tuşe ve stabiliteyi yönetir.',
   },
 ]
 
 const processSteps = [
   {
     no: '01',
-    title: 'Mevcut süreci okuma',
-    text: 'Kasar, boya, yıkama, laboratuvar, kalite ve maliyet akışı birlikte değerlendirilir.',
+    title: 'Üretim zincirini okuma',
+    text: 'Örgü, ön terbiye, boya, yıkama, apre, laboratuvar ve kalite akışı birlikte değerlendirilir.',
   },
   {
     no: '02',
-    title: 'Standart reçete ve kontrol dili',
-    text: 'Saha bilgisi; pH, sıcaklık, süre, kimyasal, tekrar işlem ve kontrol formlarına bağlanır.',
+    title: 'Standart proses ve kontrol dili',
+    text: 'Saha bilgisi; ilmek boyu, gramaj, pH, sıcaklık, süre, kimyasal, en-boy ve kontrol formlarına bağlanır.',
   },
   {
     no: '03',
     title: 'Eğitim ve uygulanabilir doküman',
-    text: 'Bilgi; operatör, laboratuvar ve yönetim ekiplerinin kullanacağı sade dosyalara dönüştürülür.',
+    text: 'Bilgi; örme, boyahane, apre, laboratuvar ve yönetim ekiplerinin kullanacağı sade dosyalara dönüştürülür.',
   },
 ]
 
 const metricCards = [
-  { value: '35+', label: 'yıl saha deneyimi', text: 'Boyahane, terbiye ve fabrika yönetimi.' },
-  { value: '3', label: 'ana odak', text: 'Proses, eğitim ve teknik dokümantasyon.' },
-  { value: '01', label: 'öncelik', text: 'Tekstil teknik içerikleri ve uygulanabilir bilgi.' },
+  { value: '35+', label: 'yıl saha deneyimi', text: 'Örgü, boya, apre ve fabrika yönetimi.' },
+  { value: '3', label: 'ana odak', text: 'Örgü / Knitting, Boya / Dyeing, Apre / Finishing.' },
+  { value: '01', label: 'öncelik', text: 'Kanıtlanabilir, ölçülebilir ve uygulanabilir teknik bilgi.' },
 ]
 
 const documentBlocks = [
-  { no: '01', title: 'Tekstil teknik dokümanları', desc: 'Boyahane eğitim notları, proses formları, reçete kontrolleri, maliyet ve kalite tabloları.' },
-  { no: '02', title: 'Proses kontrol formları', desc: 'Kasar, boya, yıkama, laboratuvar, su, tuz, pH, haslık ve tekrar işlem takip formları.' },
-  { no: '03', title: 'Eğitim dosyaları', desc: 'Operatör, vardiya, laboratuvar, kalite ve yönetim ekipleri için bölüm bazlı eğitim notları.' },
+  { no: '01', title: 'Tekstil teknik dokümanları', desc: 'Örgü, boya ve apre eğitim notları; proses formları, reçete kontrolleri, maliyet ve kalite tabloları.' },
+  { no: '02', title: 'Proses kontrol formları', desc: 'Örgü ayarları, boya-yıkama, laboratuvar, ramöz, kompaktör, pH, haslık ve ölçü stabilitesi takip formları.' },
+  { no: '03', title: 'Eğitim dosyaları', desc: 'Örme, boyahane, apre, laboratuvar, kalite ve yönetim ekipleri için bölüm bazlı eğitim notları.' },
   { no: '04', title: 'Teklif ve sunum dosyaları', desc: 'Makine, proses, proje, yatırım ve müşteri sunumu için okunabilir teknik dosya yapısı.' },
 ]
 
@@ -71,7 +70,7 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#061A33] text-white min-h-[720px] md:min-h-[760px] flex items-center">
+      <section className="relative min-h-[500px] overflow-hidden bg-[#061A33] text-white md:min-h-[520px]">
         <img
           src="/images/hero-su-damlasi.jpg"
           alt="Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi"
@@ -81,22 +80,22 @@ export default async function HomePage({ params }: HomeProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 via-transparent to-[#061A33]/30" />
         <div className="absolute right-[-120px] top-24 h-72 w-72 rounded-full bg-accent-blue/20 blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-[1.05fr_0.8fr] gap-12 items-center w-full">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:py-9 lg:grid-cols-[minmax(0,1.4fr)_minmax(240px,0.5fr)] lg:py-8">
           <div>
-            <p className="inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm mb-5">BAHRİ BUDAK • TEKSTİL DANIŞMANLIĞI</p>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] md:leading-[0.98] tracking-[-0.05em] md:tracking-[-0.055em] text-white max-w-4xl">
-              Tekstil proses bilgisini ölçülebilir sisteme dönüştürüyorum.
+            <p className="mb-3 inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm">BAHRİ BUDAK • ÖRGÜ / BOYA / APRE</p>
+            <h1 className="max-w-[780px] text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-[52px] lg:text-[54px] xl:text-[54px] 2xl:text-[62px]">
+              Örgü, boya ve apre bilgisini üretim performansına dönüştürüyorum.
             </h1>
-            <p className="mt-8 text-lg md:text-xl leading-relaxed text-white/82 max-w-2xl">
-              Boyahane, terbiye, kalite kontrol ve teknik dokümantasyon alanlarında 35 yıllık saha deneyimine dayalı uygulanabilir çözümler.
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-[16px]">
+              Örgü / Knitting, Boya / Dyeing ve Apre / Finishing süreçlerinde 35 yılı aşkın saha deneyimine dayalı; ölçülebilir, uygulanabilir ve sürdürülebilir proses çözümleri.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link href={withLang('/hizmetler')} className="btn-primary">Hizmetleri İncele →</Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href={`/${lang}#uzmanlik`} className="btn-primary">Uzmanlık Alanlarını İncele →</Link>
               <Link href={withLang('/blog?category=tekstil')} className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white hover:bg-white hover:text-navy transition-colors">Teknik Notları Gör</Link>
             </div>
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-[360px] sm:max-w-[430px] mx-auto lg:mx-0">
+          <div className="mx-auto w-full max-w-[235px] sm:max-w-[255px] lg:mx-0 lg:justify-self-end">
             <BBHomeLogoCard />
           </div>
         </div>
@@ -109,10 +108,10 @@ export default async function HomePage({ params }: HomeProps) {
             <div className="relative">
               <p className="section-label text-white/55 mb-5">SAHA DENEYİMİ</p>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
-                Teori değil, üretim sahasında karşılığı olan bilgi.
+                Üretim zincirinin tamamında karşılığı olan teknik bilgi.
               </h2>
               <p className="text-white/75 leading-relaxed">
-                Amaç; dağınık saha bilgisini reçete, kontrol formu, eğitim notu ve yönetilebilir teknik dosya sistemine dönüştürmektir.
+                Amaç; örgüden başlayıp boya ve apre ile tamamlanan saha bilgisini ölçüm, reçete, kontrol formu, eğitim notu ve yönetilebilir teknik dosya sistemine dönüştürmektir.
               </p>
             </div>
           </div>
@@ -155,23 +154,27 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-white text-navy">
+      <section id="uzmanlik" className="scroll-mt-24 bg-white text-navy">
         <div className="max-w-7xl mx-auto px-6 py-18 md:py-24">
           <div className="mb-12">
-            <p className="section-label">ÇALIŞMA ALANLARI</p>
+            <p className="section-label">UZMANLIK OMURGASI</p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] text-navy max-w-3xl">
-              Danışmanlık, eğitim ve teknik doküman aynı sistemde birleşir.
+              Örgü, boya ve apre aynı üretim zincirinde yönetilir.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {focusAreas.map((area) => (
-              <Link key={area.no} href={withLang(area.href)} className="group rounded-[30px] border border-gray-border p-7 hover:border-accent-blue transition-all">
-                <div className="h-16 w-16 rounded-full bg-navy text-white flex items-center justify-center text-lg font-bold mb-8 group-hover:bg-accent-blue transition-colors">
+              <article
+                id={area.id}
+                key={area.no}
+                className="scroll-mt-28 rounded-[30px] border border-gray-border p-7 transition-all hover:border-accent-blue"
+              >
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-navy text-lg font-bold text-white">
                   {area.no}
                 </div>
-                <h3 className="text-2xl font-bold text-navy mb-4 tracking-[-0.03em]">{area.title}</h3>
+                <h3 className="mb-4 text-2xl font-bold tracking-[-0.03em] text-navy">{area.title}</h3>
                 <p className="leading-relaxed text-navy/74">{area.text}</p>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -182,10 +185,10 @@ export default async function HomePage({ params }: HomeProps) {
           <div>
             <p className="section-label">DOKÜMAN SİSTEMİ</p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] text-navy mb-6">
-              Kullanılabilir teknik dosya omurgası.
+              Örgü, boya ve apre için teknik dosya omurgası.
             </h2>
             <p className="text-navy/76 leading-relaxed mb-8">
-              Teknik bilgi; eğitim, kontrol, teklif, rapor ve müşteri teslim dokümanı olarak aynı standartta yönetilebilir hale gelir.
+              Teknik bilgi; örgü, boya ve apre süreçlerinde eğitim, kontrol, rapor ve müşteri teslim dokümanı olarak aynı standartta yönetilebilir hâle gelir.
             </p>
             <Link href={withLang('/magazam')} className="btn-primary inline-flex">Şablonları İncele →</Link>
           </div>
@@ -206,10 +209,10 @@ export default async function HomePage({ params }: HomeProps) {
           <div>
             <p className="section-label text-white/45">İLETİŞİM</p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] mb-5 text-white">
-              Tekstil prosesleri için uygulanabilir bir sistem kuralım.
+              Örgü, boya ve apre prosesleri için uygulanabilir bir sistem kuralım.
             </h2>
             <p className="text-white/70 leading-relaxed max-w-2xl">
-              Boyahane, kalite kontrol, eğitim notları veya teknik doküman standardı ihtiyacınızı birlikte netleştirelim.
+              Örgü, boyahane, apre, kalite kontrol, eğitim veya teknik doküman ihtiyacınızı ölçülebilir kapsamla netleştirelim.
             </p>
           </div>
           <Link href={withLang('/contact')} className="btn-primary whitespace-nowrap">İletişime Geç →</Link>

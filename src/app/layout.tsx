@@ -3,11 +3,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Bahri Budak',
+    default: 'Bahri Budak | Örgü, Boya ve Apre',
     template: '%s | Bahri Budak',
   },
   description:
-    "Tekstil Boyama ve Apre Uzmanı Bahri Budak'ın; tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve Türkiye-sektör gündemi üzerine içerikleri.",
+    "Bahri Budak'ın 35 yılı aşkın saha deneyimine dayalı Örgü / Knitting, Boya / Dyeing ve Apre / Finishing teknik yayınları, eğitimleri ve proses danışmanlığı.",
   metadataBase: new URL('https://bahribudak.com'),
   openGraph: {
     type: 'website',
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://bahribudak.com',
     siteName: 'Bahri Budak',
-    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
+    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
     description:
-      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
+      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
+    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
     description:
-      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
+      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayınlar ve proses sistemleri.',
   },
   robots: {
     index: true,
@@ -49,11 +49,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-white text-navy antialiased dark:bg-[#0b1530] dark:text-slate-100">
+      <body className="font-body bg-white text-navy antialiased">
         {children}
       </body>
     </html>

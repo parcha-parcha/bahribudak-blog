@@ -2,7 +2,12 @@
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
-    domains: ['bahribudak.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bahribudak.com',
+      },
+    ],
   },
   async redirects() {
     return [
