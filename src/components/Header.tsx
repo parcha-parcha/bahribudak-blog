@@ -7,7 +7,7 @@ import { useTranslations } from '@/lib/i18n'
 import { getTranslatedPath } from '@/lib/translatedRoutes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface HeaderProps {
   lang: Lang
@@ -19,6 +19,22 @@ export default function Header({ lang }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const otherLang = lang === 'tr' ? 'en' : 'tr'
   const switchedPath = getTranslatedPath(pathname, lang, otherLang)
+  const mobileMenuId = 'primary-mobile-navigation'
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [menuOpen])
 
   const navLinks = [
     { href: `/${lang}`, label: t('nav.home') },
@@ -58,6 +74,7 @@ export default function Header({ lang }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? 'page' : undefined}
                 className={`whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-semibold transition-colors ${
                   isActive
                     ? 'bg-[#0B2343] text-white shadow-sm'
@@ -89,6 +106,7 @@ export default function Header({ lang }: HeaderProps) {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={lang === 'tr' ? 'Menüyü aç veya kapat' : 'Open or close menu'}
             aria-expanded={menuOpen}
+            aria-controls={mobileMenuId}
           >
             <span className="mb-1 block h-0.5 w-5 bg-[#0B2343]" />
             <span className="mb-1 block h-0.5 w-5 bg-[#0B2343]" />
@@ -98,18 +116,33 @@ export default function Header({ lang }: HeaderProps) {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-[#D8DDE5] bg-white px-6 py-4 xl:hidden">
+        <div
+          id={mobileMenuId}
+          className="border-t border-[#D8DDE5] bg-white px-6 py-4 xl:hidden"
+        >
           <div className="space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-[#0B2343] transition-colors hover:bg-[#EAF6FC]"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === `/${lang}`
+                  ? pathname === link.href
+                  : pathname.startsWith(link.href)
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`block rounded-xl px-3 py-2.5 text-sm font-semibold transition-colors ${
+                    isActive
+                      ? 'bg-[#0B2343] text-white'
+                      : 'text-[#0B2343] hover:bg-[#EAF6FC]'
+                  }`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           <div className="mt-3 border-t border-[#D8DDE5] pt-3 md:hidden">

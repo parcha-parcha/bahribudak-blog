@@ -544,3 +544,76 @@ body, p, li, a, span, button, input, textarea {
     padding: 0.75rem;
   }
 }
+
+
+/* REV07: Site geneli kalite, erişilebilirlik ve mobil tablo kontrolü */
+html {
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  outline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #2EA6D9;
+  outline-offset: 3px;
+}
+
+.technical-prose {
+  overflow-wrap: anywhere;
+}
+
+.technical-prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.technical-prose img,
+.prose-bb img {
+  height: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .technical-prose table {
+    font-size: 0.82rem;
+  }
+
+  .technical-prose th,
+  .technical-prose td {
+    min-width: 10rem;
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

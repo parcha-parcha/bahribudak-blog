@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: ExpertiseOverviewProps): Prom
 
   const lang = rawLang as Lang
   const title = lang === 'tr'
-    ? 'Örgü, Boya ve Apre Uzmanlık Alanları | Bahri Budak'
-    : 'Knitting, Dyeing and Finishing Expertise | Bahri Budak'
+    ? 'Örgü, Boya ve Apre Uzmanlık Alanları'
+    : 'Knitting, Dyeing and Finishing Expertise'
   const description = lang === 'tr'
     ? 'Örgü, boya ve apre proseslerinde amaç, makine, kritik parametre, kontrol noktası, kök neden ve düzeltici faaliyet yaklaşımı.'
     : 'Process objectives, machinery, critical parameters, controls, root cause and corrective action across knitting, dyeing and finishing.'

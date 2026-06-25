@@ -25,7 +25,7 @@ export default function ArticleSchema({
   const postUrl = `${siteUrl}/${lang}/blog/${slug}`
   const imageUrl = coverImage
     ? `${siteUrl}${coverImage}`
-    : `${siteUrl}/images/og-default.jpg`
+    : `${siteUrl}/images/hero-su-damlasi.jpg`
 
   const schema = {
     '@context': 'https://schema.org',

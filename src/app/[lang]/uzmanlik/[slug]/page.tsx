@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ExpertisePageProps): Promise<
 
   const lang = rawLang as Lang
   const data = expertiseData[slug]
-  const title = `${localized(data.label, lang)} | Bahri Budak`
+  const title = localized(data.label, lang)
   const description = localized(data.summary, lang)
 
   return {

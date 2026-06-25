@@ -7,62 +7,89 @@ const siteUrl = 'https://bahribudak.com'
 const langs: Lang[] = ['tr', 'en']
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = langs.flatMap(lang => [
-    {
-      url: `${siteUrl}/${lang}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/${lang}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/${lang}/uzmanlik`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.95,
-    },
-    {
-      url: `${siteUrl}/${lang}/magazam`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.78,
-    },
-    {
-      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.76,
-    },
-    {
-      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.76,
-    },
-    {
-      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.76,
-    },
-    ...expertiseSlugs.map(slug => ({
-      url: `${siteUrl}/${lang}/uzmanlik/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    })),
-  ])
+  const staticPages: MetadataRoute.Sitemap = langs.flatMap(lang => {
+    const localizedPages: MetadataRoute.Sitemap = [
+      {
+        url: `${siteUrl}/${lang}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 1,
+      },
+      {
+        url: `${siteUrl}/${lang}/blog`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.9,
+      },
+      {
+        url: `${siteUrl}/${lang}/about`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.72,
+      },
+      {
+        url: `${siteUrl}/${lang}/hizmetler`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.78,
+      },
+      {
+        url: `${siteUrl}/${lang}/contact`,
+        lastModified: new Date(),
+        changeFrequency: 'yearly',
+        priority: 0.6,
+      },
+      {
+        url: `${siteUrl}/${lang}/uzmanlik`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.95,
+      },
+      {
+        url: `${siteUrl}/${lang}/magazam`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.9,
+      },
+      ...expertiseSlugs.map(slug => ({
+        url: `${siteUrl}/${lang}/uzmanlik/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+      })),
+    ]
+
+    if (lang === 'tr') {
+      localizedPages.push(
+        {
+          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly',
+          priority: 0.72,
+        },
+        {
+          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly',
+          priority: 0.7,
+        },
+        {
+          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly',
+          priority: 0.7,
+        },
+        {
+          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly',
+          priority: 0.7,
+        }
+      )
+    }
+
+    return localizedPages
+  })
 
   const postPages: MetadataRoute.Sitemap = langs.flatMap(lang =>
     getAllPosts(lang).map(post => ({

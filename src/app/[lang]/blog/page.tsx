@@ -1,7 +1,37 @@
+import type { Metadata } from 'next'
 import PostCard from '@/components/PostCard'
 import { getAllPosts, normalizeProcessArea, type ProcessArea } from '@/lib/posts'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
+
+
+const siteUrl = 'https://bahribudak.com'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang: rawLang } = await params
+  const lang: Lang = rawLang === 'en' ? 'en' : 'tr'
+  const title = lang === 'tr' ? 'Teknik Yayınlar' : 'Technical Publications'
+  const description =
+    lang === 'tr'
+      ? 'Örgü, boya ve apre proseslerini parametre, ölçüm, formül, kök neden ve düzeltici faaliyet yapısıyla ele alan teknik yayınlar.'
+      : 'Technical publications covering knitting, dyeing and finishing through parameters, measurements, calculations, root causes and corrective actions.'
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${siteUrl}/${lang}/blog`,
+      languages: {
+        tr: `${siteUrl}/tr/blog`,
+        en: `${siteUrl}/en/blog`,
+      },
+    },
+  }
+}
 
 interface BlogPageProps {
   params: Promise<{ lang: Lang }>
