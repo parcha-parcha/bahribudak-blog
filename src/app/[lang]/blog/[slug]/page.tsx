@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import { marked } from 'marked'
 import { getPost, getAllSlugs, processAreaLabel } from '@/lib/posts'
 import { useTranslations } from '@/lib/i18n'
@@ -6,6 +6,7 @@ import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ArticleSchema from '@/components/ArticleSchema'
+import { resolveBlogSlugForLang } from '@/lib/translatedRoutes'
 
 interface PostPageProps {
   params: Promise<{ lang: string; slug: string }>
@@ -62,6 +63,15 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 export default async function PostPage({ params }: PostPageProps) {
   const { lang, slug } = await params
   const safeLang = lang as Lang
+  const canonicalSlug = resolveBlogSlugForLang(slug, safeLang)
+
+  // Accept the counterpart-language slug as an alias and redirect it to the
+  // canonical URL. This prevents a 404 even when an old preview or cached
+  // language link still points to the Turkish slug under /en (or vice versa).
+  if (canonicalSlug && canonicalSlug !== slug) {
+    permanentRedirect(`/${safeLang}/blog/${canonicalSlug}`)
+  }
+
   const post = getPost(safeLang, slug)
   if (!post) notFound()
 
