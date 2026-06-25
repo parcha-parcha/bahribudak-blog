@@ -26,6 +26,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.95,
     },
+    {
+      url: `${siteUrl}/${lang}/magazam`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.78,
+    },
+    {
+      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.76,
+    },
+    {
+      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.76,
+    },
+    {
+      url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.76,
+    },
     ...expertiseSlugs.map(slug => ({
       url: `${siteUrl}/${lang}/uzmanlik/${slug}`,
       lastModified: new Date(),
