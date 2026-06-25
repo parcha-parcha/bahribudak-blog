@@ -91,7 +91,7 @@ Ek uygulamalar:
 
 ### Faz 3 - Teknik Yayın Sistemi ve İçerik Taksonomisi
 
-**Durum: KISMEN TAMAMLANDI — Revizyon 03**
+**Durum: KISMEN TAMAMLANDI — Revizyon 03 ve Revizyon 04**
 
 Tamamlanan altyapı:
 
@@ -103,6 +103,9 @@ Tamamlanan altyapı:
 - İlk Türkçe ve İngilizce Örgü / Knitting teknik yayını hazırlandı:
   - İlmek Boyu / Stitch Length, Gramaj / GSM ve Kumaş Eni Arasındaki Proses İlişkisi
   - Belge kodu: `BB-ORG-TP-001`
+- İlk Türkçe ve İngilizce Boya / Dyeing teknik yayını hazırlandı:
+  - Reaktif Boyamada / Reactive Dyeing pH, Sıcaklık, Tuz ve Alkali Yönetimi
+  - Belge kodu: `BB-BOY-TP-001`
 - TechArticle yapılandırılmış verisi ve revizyon tarihine bağlı sitemap güncellemesi uygulandı.
 
 Devam edecek envanter ve taksonomi çalışması:

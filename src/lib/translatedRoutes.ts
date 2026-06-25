@@ -5,6 +5,10 @@ const blogSlugPairs = [
     tr: 'ilmek-boyu-gramaj-kumas-eni-proses-iliskisi',
     en: 'stitch-length-gsm-fabric-width-process-relationship',
   },
+  {
+    tr: 'reaktif-boyamada-ph-sicaklik-tuz-alkali-yonetimi',
+    en: 'reactive-dyeing-ph-temperature-salt-alkali-management',
+  },
 ] as const
 
 /**
