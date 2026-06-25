@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { permanentRedirect } from 'next/navigation'
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }): Promise<Metadata> {
   return {
-    title: 'Eğitim Notları | Bahri Budak',
+    title: 'Eğitim Notları',
     description:
       'Kasar, boyama, yıkama, HT jet, renk düzeltme, laboratuvar reçete aktarımı, final kalite, ramöz-apre ve sanfor/kompaktör prosesleri için hazırlanmış tekstil eğitim notları.',
   }
@@ -209,12 +210,13 @@ const notes: TrainingNote[] = [
   },
 ]
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
-  const lang = params.lang || 'tr'
+  const { lang = 'tr' } = await params
+  if (lang === 'en') permanentRedirect('/en/magazam')
 
   return (
     <main className="min-h-screen bg-[#F3F6FA] text-navy">

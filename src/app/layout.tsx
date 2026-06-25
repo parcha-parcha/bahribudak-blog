@@ -18,12 +18,21 @@ export const metadata: Metadata = {
     title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
     description:
       'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
+    images: [
+      {
+        url: '/images/hero-su-damlasi.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bahri Budak — Örgü, Boya ve Apre',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
     description:
       'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayınlar ve proses sistemleri.',
+    images: ['/images/hero-su-damlasi.jpg'],
   },
   robots: {
     index: true,
@@ -44,8 +53,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="tr" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var p=location.pathname.split('/')[1];document.documentElement.lang=p==='en'?'en':'tr';})();",
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

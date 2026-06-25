@@ -15,8 +15,8 @@ export async function generateMetadata({
   return {
     title:
       lang === 'tr'
-        ? 'Tekstil Kaynak Merkezi | Bahri Budak'
-        : 'Textile Resource Center | Bahri Budak',
+        ? 'Tekstil Kaynak Merkezi'
+        : 'Textile Resource Center',
     description:
       lang === 'tr'
         ? 'Örgü, boya ve apre alanlarında doğrulanmış PDF, XLSX ve DOCX teknik dokümanları; eğitim notları, proses formları ve kontrol listeleri.'

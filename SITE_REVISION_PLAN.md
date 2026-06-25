@@ -234,3 +234,39 @@ Bir sonraki revizyonda Revizyon 03 altyapısı genişletilecektir.
 5. Her yayına içerik türü ve hedef kullanıcı etiketi eklenmesi
 6. Mükerrer dosya, eski revizyon ve kırık bağlantı kontrolü
 7. Kaynak merkezi ile uzmanlık sayfaları arasındaki ilişkilerin veri modeline bağlanması
+
+
+---
+
+## 5. Revizyon 07 — Site Geneli Kalite Kontrolü
+
+**Durum:** Uygulandı
+
+- Ana Sayfa, Hakkımda, Hizmetler ve İletişim sayfaları Türkçe–İngilizce olarak eşlendi.
+- Sayfa bazlı metadata, canonical ve hreflang yapısı genişletildi.
+- Teknik yayın karşı dil bağlantıları metadata düzeyinde doğrulandı.
+- Mobil menü ve klavye erişilebilirliği geliştirildi.
+- Teknik yayın tablolarına mobil yatay kaydırma eklendi.
+- Eski rota ve İngilizce karşılığı olmayan doküman sayfaları kontrollü yönlendirmeye alındı.
+- 404, sitemap ve robots yapısı güncellendi.
+- Mükerrer sayfa başlıkları temizlendi.
+- İndirme bağlantıları fiziksel dosyalarla karşılaştırıldı; eksik bağlantı bulunmadı.
+
+**Kabul ölçütü:** Üretim derlemesi, çekirdek rotalar, TR/EN içerik eşleşmeleri, indirme bağlantıları ve temel erişilebilirlik kontrolleri birlikte geçmelidir.
+
+---
+
+## 6. Sonraki Aşama — Revizyon 08
+
+Revizyon 08 ile yapısal geliştirme dönemi kapatılacaktır.
+
+Planlanan kapsam:
+
+1. Nihai kaynak kodu ve tam ZIP yedeği
+2. GitHub sürüm etiketi / release
+3. Yayın öncesi kontrol listesi
+4. Teknik yayın numaralandırma sistemi
+5. Dosya ve revizyon adlandırma standardı
+6. Geri dönüş / rollback prosedürü
+7. Aylık, üç aylık ve yıllık bakım planı
+8. Site sahibi için kısa kullanım kılavuzu

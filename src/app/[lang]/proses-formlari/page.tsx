@@ -1,10 +1,11 @@
 // SON SÜRÜM: İKİ FORM AKTİF — 22.06.2026
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { permanentRedirect } from 'next/navigation'
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   return {
-    title: 'Proses Formları | Bahri Budak',
+    title: 'Proses Formları',
     description:
       'Boyahane üretiminde parti, reçete, makine, ölçüm, kalite ve proses sapmalarının düzenli takip edilmesini sağlayan uygulanabilir formlar.',
   }
@@ -85,8 +86,9 @@ const benefits = [
   },
 ]
 
-export default function Page({ params }: { params: { lang: string } }) {
-  const lang = params.lang || 'tr'
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang = 'tr' } = await params
+  if (lang === 'en') permanentRedirect('/en/magazam')
 
   return (
     <main className="min-h-screen bg-[#F3F6FA] text-navy">

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const postUrl = `${siteUrl}/${lang}/blog/${slug}`
   const imageUrl = post.coverImage
     ? `${siteUrl}${post.coverImage}`
-    : `${siteUrl}/images/og-default.jpg`
+    : `${siteUrl}/images/hero-su-damlasi.jpg`
 
   return {
     title: post.title,
@@ -56,6 +56,18 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     },
     alternates: {
       canonical: postUrl,
+      languages: {
+        ...(resolveBlogSlugForLang(slug, 'tr')
+          ? { tr: `${siteUrl}/tr/blog/${resolveBlogSlugForLang(slug, 'tr')}` }
+          : lang === 'tr'
+            ? { tr: postUrl }
+            : {}),
+        ...(resolveBlogSlugForLang(slug, 'en')
+          ? { en: `${siteUrl}/en/blog/${resolveBlogSlugForLang(slug, 'en')}` }
+          : lang === 'en'
+            ? { en: postUrl }
+            : {}),
+      },
     },
   }
 }
