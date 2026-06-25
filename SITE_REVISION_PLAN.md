@@ -91,7 +91,7 @@ Ek uygulamalar:
 
 ### Faz 3 - Teknik Yayın Sistemi ve İçerik Taksonomisi
 
-**Durum: KISMEN TAMAMLANDI — Revizyon 03 ve Revizyon 04**
+**Durum: KISMEN TAMAMLANDI — Revizyon 03, Revizyon 04 ve Revizyon 05**
 
 Tamamlanan altyapı:
 
@@ -106,6 +106,9 @@ Tamamlanan altyapı:
 - İlk Türkçe ve İngilizce Boya / Dyeing teknik yayını hazırlandı:
   - Reaktif Boyamada / Reactive Dyeing pH, Sıcaklık, Tuz ve Alkali Yönetimi
   - Belge kodu: `BB-BOY-TP-001`
+- İlk Türkçe ve İngilizce Apre / Finishing teknik yayını hazırlandı:
+  - Ramöz / Stenter ve Kompaktör / Compactor Sonrası Boyutsal Stabilite Yönetimi
+  - Belge kodu: `BB-APR-TP-001`
 - TechArticle yapılandırılmış verisi ve revizyon tarihine bağlı sitemap güncellemesi uygulandı.
 
 Devam edecek envanter ve taksonomi çalışması:

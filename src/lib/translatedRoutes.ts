@@ -9,6 +9,10 @@ const blogSlugPairs = [
     tr: 'reaktif-boyamada-ph-sicaklik-tuz-alkali-yonetimi',
     en: 'reactive-dyeing-ph-temperature-salt-alkali-management',
   },
+  {
+    tr: 'ramoz-kompaktor-sonrasi-boyutsal-stabilite-yonetimi',
+    en: 'dimensional-stability-management-after-stenter-and-compactor',
+  },
 ] as const
 
 /**
