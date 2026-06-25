@@ -132,9 +132,9 @@ Devam edecek envanter ve taksonomi çalışması:
 
 ### Faz 4 - Teknik Kaynak Merkezi
 
-**Öncelik: Orta-Yüksek**
+**Durum: TAMAMLANDI — Revizyon 06**
 
-Mevcut PDF, DOCX ve XLSX dosyaları düzenli bir kaynak veri yapısına aktarılacaktır.
+Mevcut PDF, DOCX ve XLSX dosyaları doğrulanmış merkezi kaynak veri yapısına aktarılmıştır.
 
 Her kaynak kartında:
 
@@ -153,7 +153,19 @@ Dosya adları kurumsal standarda göre düzenlenecektir:
 
 `XX_YY_Konu_Adi_Bahri_Budak.ext`
 
-**Kabul ölçütü:** Kırık bağlantı, mükerrer dosya ve açıklamasız indirme kalmamalıdır.
+Uygulanan sonuç:
+
+- 34 güncel kaynak tek katalogda listelenmektedir.
+- Örgü / Knitting, Boya / Dyeing, Apre / Finishing ve Ortak Teknik Yönetim filtreleri kurulmuştur.
+- Eğitim notu, teknik doküman, proses formu, kontrol listesi, hesaplama aracı ve yönetim dokümanı sınıfları eklenmiştir.
+- PDF, XLSX ve DOCX biçim filtreleri eklenmiştir.
+- Sürüm, katalog tarihi, dosya boyutu ve dosya dili gösterilmektedir.
+- 15 var olmayan DOCX indirme bağlantısı kaldırılmıştır.
+- Eski ve mükerrer fiziksel dosyalar bağlantı güvenliği için silinmemiş; katalogda yalnız güncel sürümler gösterilmiştir.
+- Türkçe ve İngilizce Kaynak Merkezi aynı veri modeline bağlanmıştır.
+- Kaynak Merkezi ve alt koleksiyon rotaları sitemap kapsamına alınmıştır.
+
+**Kabul ölçütü:** Kaynak kodunda var olmayan indirme bağlantısı bulunmamalı; katalogda her dosya açıklama, sürüm, tarih, boyut ve proses sınıfı taşımalıdır.
 
 ---
 
