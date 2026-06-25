@@ -1,0 +1,28 @@
+{
+  "siteVersion": "1.0.0",
+  "structuralRevision": "08",
+  "releaseStatus": "release-candidate",
+  "releaseDate": "2026-06-25",
+  "brandStandard": "Bahri Budak Kurumsal Kimlik v1.1",
+  "expertiseArchitecture": [
+    {
+      "tr": "Örgü",
+      "en": "Knitting"
+    },
+    {
+      "tr": "Boya",
+      "en": "Dyeing"
+    },
+    {
+      "tr": "Apre",
+      "en": "Finishing"
+    }
+  ],
+  "technicalPublicationPairs": 3,
+  "resourceCatalogItems": 34,
+  "qualityCommands": [
+    "npm run verify:site",
+    "npm run typecheck",
+    "npm run build"
+  ]
+}

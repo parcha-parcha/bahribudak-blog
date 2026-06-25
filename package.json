@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "verify:site": "node scripts/verify-site.mjs",
+    "quality": "npm run verify:site && npm run typecheck && npm run build"
   },
   "dependencies": {
     "@upstash/redis": "^1.38.0",
