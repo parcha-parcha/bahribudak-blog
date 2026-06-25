@@ -432,3 +432,115 @@ body, p, li, a, span, button, input, textarea {
 .post-card .post-card-accent {
   background: #2EA6D9 !important;
 }
+
+
+/* REV03: Teknik yayın sistemi */
+.technical-document-control > div > div {
+  display: flex;
+  min-height: 74px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-left: 3px solid #2EA6D9;
+  padding-left: 0.85rem;
+}
+.technical-document-control span {
+  color: #4C5561;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.technical-document-control strong {
+  color: #0B2343;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+.technical-prose {
+  max-width: none;
+}
+.technical-prose h2 {
+  scroll-margin-top: 7rem;
+}
+.technical-prose table {
+  width: 100%;
+  margin: 1.75rem 0 2rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #D8DDE5;
+  border-radius: 16px;
+  font-size: 0.92rem;
+}
+.technical-prose thead {
+  background: #0B2343;
+  color: #FFFFFF;
+}
+.technical-prose th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  vertical-align: top;
+}
+.technical-prose td {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid #D8DDE5;
+  color: #263B57;
+  vertical-align: top;
+  line-height: 1.65;
+}
+.technical-prose tbody tr:nth-child(even) {
+  background: #F5F7FA;
+}
+.technical-prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.4rem;
+  list-style: decimal;
+}
+.technical-prose ol li,
+.technical-prose ul li {
+  margin-bottom: 0.55rem;
+  line-height: 1.75;
+}
+.technical-prose code {
+  border: 1px solid #D8DDE5;
+  border-radius: 6px;
+  background: #EAF6FC;
+  padding: 0.08rem 0.35rem;
+  color: #0B2343;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+}
+.technical-prose pre {
+  margin: 1.5rem 0 2rem;
+  overflow-x: auto;
+  border-left: 4px solid #2EA6D9;
+  border-radius: 0 14px 14px 0;
+  background: #061A33;
+  padding: 1.1rem 1.25rem;
+  color: #FFFFFF;
+}
+.technical-prose pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.technical-prose hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid #D8DDE5;
+}
+@media (max-width: 767px) {
+  .technical-prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+  }
+  .technical-prose th,
+  .technical-prose td {
+    min-width: 150px;
+    padding: 0.75rem;
+  }
+}

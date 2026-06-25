@@ -6,6 +6,8 @@ import type { Lang } from './i18n'
 
 const contentDir = path.join(process.cwd(), 'src/content')
 
+export type ProcessArea = 'orgu' | 'boya' | 'apre'
+
 export interface PostMeta {
   slug: string
   title: string
@@ -16,6 +18,13 @@ export interface PostMeta {
   readingTime: string
   lang: Lang
   coverImage?: string
+  technicalPublication?: boolean
+  processArea?: ProcessArea
+  documentCode?: string
+  revision?: string
+  revisionDate?: string
+  documentStatus?: string
+  standards?: string[]
 }
 
 export interface Post extends PostMeta {
@@ -56,6 +65,29 @@ export function normalizeCategory(value: unknown): string {
   return aliases[key] || 'tekstil'
 }
 
+export function normalizeProcessArea(value: unknown): ProcessArea | undefined {
+  const key = categoryKey(value)
+  const aliases: Record<string, ProcessArea> = {
+    orgu: 'orgu',
+    knitting: 'orgu',
+    boya: 'boya',
+    dyeing: 'boya',
+    apre: 'apre',
+    finishing: 'apre',
+  }
+  return aliases[key]
+}
+
+export function processAreaLabel(area: ProcessArea | undefined, lang: Lang): string {
+  if (!area) return ''
+  const labels: Record<ProcessArea, Record<Lang, string>> = {
+    orgu: { tr: 'Örgü / Knitting', en: 'Knitting / Örgü' },
+    boya: { tr: 'Boya / Dyeing', en: 'Dyeing / Boya' },
+    apre: { tr: 'Apre / Finishing', en: 'Finishing / Apre' },
+  }
+  return labels[area][lang]
+}
+
 function parsePostFile(lang: Lang, filename: string): Post {
   const slug = filename.replace(/\.(mdx|md)$/, '')
   const filePath = path.join(contentDir, lang, filename)
@@ -73,6 +105,13 @@ function parsePostFile(lang: Lang, filename: string): Post {
     readingTime: Math.ceil(rt.minutes).toString(),
     lang,
     coverImage: data.coverImage || undefined,
+    technicalPublication: Boolean(data.technicalPublication),
+    processArea: normalizeProcessArea(data.processArea),
+    documentCode: data.documentCode || undefined,
+    revision: data.revision || undefined,
+    revisionDate: data.revisionDate || undefined,
+    documentStatus: data.documentStatus || undefined,
+    standards: Array.isArray(data.standards) ? data.standards : [],
     content,
   }
 }
@@ -93,6 +132,12 @@ export function getAllPosts(lang: Lang): PostMeta[] {
 
 export function getPostsByCategory(lang: Lang, category: string): PostMeta[] {
   return getAllPosts(lang).filter(post => post.category === normalizeCategory(category))
+}
+
+export function getPostsByProcessArea(lang: Lang, processArea: string): PostMeta[] {
+  const normalized = normalizeProcessArea(processArea)
+  if (!normalized) return []
+  return getAllPosts(lang).filter(post => post.processArea === normalized)
 }
 
 export function getPost(lang: Lang, slug: string): Post | null {

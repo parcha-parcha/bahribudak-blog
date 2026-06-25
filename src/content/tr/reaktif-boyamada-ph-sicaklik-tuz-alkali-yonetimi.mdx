@@ -1,0 +1,510 @@
+---
+title: "Reaktif Boyamada / Reactive Dyeing pH, Sıcaklık, Tuz ve Alkali Yönetimi"
+excerpt: "Pamuk ve diğer selülozik materyallerin çektirme yöntemiyle reaktif boyanmasında pH, sıcaklık, elektrolit, alkali, flotte oranı ve dozaj profilinin birlikte nasıl yönetileceğini açıklar."
+date: "2026-06-25"
+revisionDate: "2026-06-25"
+category: "tekstil"
+technicalPublication: true
+processArea: "boya"
+documentCode: "BB-BOY-TP-001"
+revision: "R00"
+documentStatus: "Yayında"
+coverImage: "/images/reaktif-boya-cover.jpg"
+tags:
+  - "Boya"
+  - "Dyeing"
+  - "Reaktif Boyama"
+  - "Reactive Dyeing"
+  - "pH"
+  - "Sıcaklık"
+  - "Tuz"
+  - "Alkali"
+  - "Hidroliz"
+  - "Hydrolysis"
+standards:
+  - "ISO 3071:2020 — Determination of pH of aqueous extract"
+  - "ISO 105-C06:2010 — Colour fastness to domestic and commercial laundering"
+  - "ISO 105-X12:2016 — Colour fastness to rubbing"
+  - "ISO 105-E04:2013 — Colour fastness to perspiration"
+  - "ISO 105-J03:2009 — Calculation of colour differences"
+---
+
+## 1. Amaç / Purpose
+
+Bu teknik yayın; pamuk ve diğer selülozik materyallerin **Çektirme Yöntemi / Exhaust Method** ile reaktif boyanmasında **pH, Sıcaklık / Temperature, Tuz–Elektrolit / Salt–Electrolyte ve Alkali / Alkali** değişkenlerinin birbirinden bağımsız değil, aynı reaksiyon sisteminin parçaları olarak yönetilmesini amaçlar.
+
+Temel saha kuralı şudur:
+
+> Tuz boyayı life bağlamaz; boyanın lif yüzeyine yaklaşmasını ve banyodan çekilmesini destekler. Kovalent bağlanmayı alkali ortamda aktive edilen selüloz sağlar. Aynı alkali ve sıcaklık, boya–lif reaksiyonunu hızlandırırken boyanın su ile hidrolizini de hızlandırabilir.
+
+Bu nedenle hedef yalnızca koyu renk elde etmek değildir. Hedef; **Düzgünlük / Levelness, Tekrarlanabilirlik / Reproducibility, Fiksaj / Fixation, Yıkama Haslığı / Wash Fastness, Yaş Sürtme Haslığı / Wet Rubbing Fastness ve düşük yeniden işlem oranını** birlikte sağlamaktır.
+
+![Reaktif boyama proses görseli](/images/reaktif-boya-cover.jpg)
+
+*Görsel notu: Bu yayın için kullanılan mevcut proses görseli temsili niteliktedir. İdeal saha fotoğrafı; boya makinesi numune alma noktası, pH probu veya dozaj hattını birlikte gösterecek şekilde, yaklaşık 45° açıyla ve firma bilgisi görünmeden çekilmelidir.*
+
+## 2. Kapsam ve Teknik Sınır / Scope and Technical Boundary
+
+Yayın aşağıdaki sistemlere odaklanır:
+
+- Pamuk, viskon ve benzeri selülozik lifler
+- Örme veya dokuma kumaş
+- Çektirme yöntemiyle reaktif boyama
+- Tek banyolu veya kontrollü çok aşamalı prosesler
+- Konvansiyonel tuz–alkali sistemi kullanan prosesler
+
+Aşağıdaki uygulamalar aynı kontrol mantığından yararlansa da ayrı doğrulama gerektirir:
+
+- Katyonize pamuk / Cationized Cotton
+- Tuzsuz veya düşük tuzlu özel sistemler
+- Soğuk bekletme / Cold Pad-Batch
+- Pad–Steam ve sürekli boyama
+- Reaktif baskı
+- Protein lifleri veya poliamid üzerinde reaktif boya
+- Özel tamponlu veya nötr fiksaj sistemleri
+
+**Teknik ikaz:** Bu yayındaki pH ve sıcaklık aralıkları genel proses pencereleridir; boya üreticisinin **Teknik Veri Föyü / Technical Data Sheet (TDS)** ve işletme doğrulaması her zaman önceliklidir. Reaktif grup tipi değiştiğinde uygun sıcaklık, alkali tipi, dozaj süresi ve fiksaj süresi de değişebilir.
+
+## 3. Reaksiyon Mantığı / Reaction Logic
+
+Reaktif boyamada üç olay eş zamanlı yürür:
+
+1. **Banyodan çekim / Exhaustion:** Anyonik boya molekülünün selüloz yüzeyine taşınması.
+2. **Lif içine difüzyon / Diffusion:** Boyanın lifin erişilebilir bölgelerine ilerlemesi.
+3. **Kovalent bağlanma / Covalent Fixation:** Reaktif grubun aktive edilmiş selüloz ile reaksiyona girmesi.
+
+Basitleştirilmiş aktivasyon:
+
+```text
+Cell-OH + OH- <=> Cell-O- + H2O
+```
+
+Basitleştirilmiş fiksaj:
+
+```text
+Dye-X + Cell-O- -> Dye-O-Cell + X-
+```
+
+İstenmeyen yan reaksiyon olan hidroliz:
+
+```text
+Dye-X + OH- / H2O -> Dye-OH
+```
+
+Burada:
+
+- `Cell-OH`: selüloz hidroksil grubu
+- `Cell-O-`: alkali ortamda aktive edilmiş selüloz
+- `Dye-X`: reaktif grubu aktif boya
+- `Dye-OH`: hidrolize olmuş ve lifle artık kovalent bağ kuramayan boya
+
+Bu denklemler reaksiyon mekanizmasını sadeleştirmek için verilmiştir. Gerçek mekanizma; monoklortriazin, vinil sülfon, bifonksiyonel veya polifonksiyonel reaktif gruba göre değişir.
+
+## 4. Dört Ana Proses Değişkeni / Four Main Process Variables
+
+### 4.1 pH Yönetimi / pH Management
+
+pH; selülozun aktivasyonunu ve boya reaktivitesini belirler.
+
+- Nötr veya nötre yakın aşama, boyanın kontrollü çekimi ve düzgün dağılması için kullanılır.
+- Alkali ilavesiyle selülozun nükleofilik karakteri artar ve kovalent bağlanma başlar.
+- pH gereğinden düşük kalırsa fiksaj yetersiz olabilir.
+- pH gereğinden hızlı veya yüksek yükselirse lokal fiksaj, düzgünsüzlük ve hidroliz riski artar.
+
+Birçok konvansiyonel sistemde fiksaj banyosu yaklaşık **pH 10.5–11.5** aralığında çalışabilir. Bu değer evrensel reçete değildir; boya sınıfı, alkali kombinasyonu, flotte oranı ve sıcaklıkla birlikte doğrulanmalıdır.
+
+**Ölçüm disiplini:**
+
+- pH metre günlük veya vardiya başlangıcında uygun tamponlarla kalibre edilmelidir.
+- Numune sıcaklığı sabitlenmeden alınan pH değerleri karşılaştırılmamalıdır.
+- Otomatik sıcaklık kompanzasyonu olsa dahi işletme kayıt yöntemi sabit olmalıdır.
+- Alkali dozajı sırasında yalnız başlangıç ve bitiş değil, dozaj eğrisi boyunca pH kaydedilmelidir.
+
+### 4.2 Sıcaklık Yönetimi / Temperature Management
+
+Sıcaklık; difüzyon, reaksiyon hızı ve hidroliz hızını aynı anda etkiler.
+
+Genel sınıflandırma:
+
+| Reaktif sistem | Genel sıcaklık yaklaşımı | Teknik not |
+|---|---:|---|
+| Soğuk tip / Cold-reactive | yaklaşık 30–40 °C | Yüksek reaktivite; alkali ve bekleme süresi kritik |
+| Ilık tip / Warm-reactive | yaklaşık 50–60 °C | Birçok bifonksiyonel sistem bu bölgede çalışır |
+| Sıcak tip / Hot-reactive | yaklaşık 70–80 °C | Daha düşük reaktivite; daha yüksek sıcaklık gerekebilir |
+
+Bu tablo yalnızca sınıflandırma içindir. Aynı ticari seri içinde dahi önerilen sıcaklık farklı olabilir.
+
+Kritik saha noktaları:
+
+- Kumaşın tamamı hedef sıcaklığa ulaşmadan fiksaj süresi başlatılmamalıdır.
+- Isıtma hızı / Heating Rate, makine yükü ve sirkülasyonla birlikte tanımlanmalıdır.
+- Eşanjör performansı ve gerçek banyo sıcaklığı, yalnız kontrol paneli set değeriyle doğrulanmamalıdır.
+- Sıcaklık dalgalanması, özellikle alkali dozajıyla çakıştığında ton farkını büyütebilir.
+
+### 4.3 Tuz–Elektrolit Yönetimi / Salt–Electrolyte Management
+
+Selüloz ve reaktif boya banyoda çoğunlukla negatif yüklüdür. **Sodyum Klorür / Sodium Chloride** veya **Sodyum Sülfat / Sodium Sulfate**, elektrostatik itmenin etkisini azaltarak boyanın life yaklaşmasını ve banyodan çekilmesini destekler.
+
+Tuzun işlevi:
+
+- Çekimi artırır.
+- Çekim hızını değiştirir.
+- Düzgünlük ve migrasyon dengesini etkiler.
+- Banyodaki iyonik kuvveti ve iletkenliği yükseltir.
+
+Tuzun işlevi olmayan konu:
+
+- Tuz tek başına kovalent fiksaj oluşturmaz.
+
+Aşırı veya çok hızlı tuz ilavesi:
+
+- Boyanın yüzeye ani çekimine,
+- Baş–son, iç–dış veya kenar–orta farkına,
+- Düşük migrasyona,
+- Düzgünsüzlük riskine
+
+neden olabilir.
+
+Eksik tuz veya düşük efektif iyonik kuvvet:
+
+- Düşük çekim,
+- Açık ton,
+- Fazla boyanın banyoda kalması,
+- Düşük toplam renk verimi
+
+sonucunu doğurabilir.
+
+![Tuz ve iletkenlik kontrolü](/images/tuz-iletkenligi.jpg)
+
+**İletkenlik / Conductivity ikazı:** İletkenlik, tuz konsantrasyonunu izlemek için yararlı bir proses sinyalidir; fakat farklı tuz türleri, alkali, sıcaklık, su sertliği ve diğer iyonlar aynı iletkenliği farklı şekilde etkiler. Evrensel “mS/cm = g/L tuz” dönüşümü kullanılmamalı; işletmeye özel sıcaklık kontrollü kalibrasyon eğrisi oluşturulmalıdır.
+
+### 4.4 Alkali Yönetimi / Alkali Management
+
+Yaygın alkali kaynakları:
+
+- Soda / Soda Ash / Sodium Carbonate
+- Kostik Soda / Caustic Soda / Sodium Hydroxide
+- Sodyum Bikarbonat / Sodium Bicarbonate
+- Hazır tamponlu alkali sistemleri / Buffered Alkali Systems
+
+Alkali seçimi ve kombinasyonu şu değişkenlere bağlıdır:
+
+- Reaktif grup tipi
+- Renk derinliği
+- Boya kombinasyonu
+- Flotte oranı
+- Sıcaklık
+- Dozaj süresi
+- Makine sirkülasyonu
+- İstenen fiksaj profili
+
+Alkali tek noktadan, yüksek konsantrasyonda ve kısa sürede verildiğinde lokal pH yükselmesi oluşabilir. Sonuç; lokal hızlı fiksaj, lekelenme, ton farkı veya tekrarlanabilirlik kaybıdır.
+
+Güvenli proses yaklaşımı:
+
+- Alkali çözeltisini doğrulanmış konsantrasyonda hazırlamak,
+- Yeterli çözünme ve filtrasyon sağlamak,
+- Kademeli veya lineer dozaj kullanmak,
+- Dozaj süresini makine devri ve banyo çevrim süresiyle ilişkilendirmek,
+- Dozaj hattı geri kaçaklarını ve ölü hacmi kontrol etmek,
+- pH profilini gerçek numunelerle doğrulamak.
+
+![Laboratuvar çözelti hazırlama kontrolü](/images/laboratuvar-cozemli-hazirlama.jpg)
+
+## 5. Flotte Oranı ve Makine Hidrodinamiği / Liquor Ratio and Machine Hydrodynamics
+
+Aynı reçete yüzdesi, farklı **Flotte Oranı / Liquor Ratio (LR)** veya farklı efektif banyo hacminde aynı g/L değerini oluşturmaz.
+
+Tanım:
+
+```text
+LR = Banyo hacmi (L) / Kumaş kütlesi (kg)
+```
+
+Yaklaşık banyo hacmi:
+
+```text
+V = M x LR
+```
+
+Burada:
+
+- `V`: efektif banyo hacmi, L
+- `M`: kumaş kütlesi, kg
+- `LR`: L/kg
+
+Ancak gerçek makine hacmi; tesisat ölü hacmi, filtre, eşanjör, dozaj tankı ve kumaşın tuttuğu çözelti nedeniyle teorik değerden farklı olabilir. Reçete hesaplarında makinenin doğrulanmış efektif hacmi kullanılmalıdır.
+
+Hidrodinamik açıdan kontrol edilmesi gerekenler:
+
+- Nozul basıncı ve çapı
+- Kumaş hızı ve tur süresi
+- Pompa debisi
+- Yükleme oranı
+- Halat açılması
+- Filtre temizliği
+- Köpük ve hava kilidi
+- Dozajın banyo içinde homojenleşme süresi
+
+## 6. Önerilen Proses Kontrol Sırası / Recommended Process Control Sequence
+
+### Aşama 1 — Ön kontrol / Pre-check
+
+- Kumaş lotu, gramajı ve yükleme miktarı doğrulanır.
+- Ön terbiye düzgünlüğü, emicilik ve artık peroksit kontrol edilir.
+- Su pH’ı, sertliği ve iletkenliği kaydedilir.
+- Boya ve kimyasal lotları doğrulanır.
+- Makine temizliği, filtre ve dozaj hatları kontrol edilir.
+
+### Aşama 2 — Boya alımı ve homojenizasyon / Dye Admission and Homogenization
+
+- Boya uygun su kalitesinde tamamen çözülür veya disperse edilir.
+- Üretici talimatına göre filtrasyon yapılır.
+- Boya banyoya kontrollü alınır.
+- Kumaş en az bir veya daha fazla doğrulanmış banyo çevrimi boyunca homojenleştirilir.
+
+### Aşama 3 — Tuzla çekim / Salt-assisted Exhaustion
+
+- Tuz, reçeteye göre kademeli veya lineer dozlanır.
+- Her dozaj basamağında yeterli sirkülasyon süresi verilir.
+- İletkenlik ve numune tonu birlikte izlenir.
+- Ani çekim veya yüzey boyanması belirtisi varsa sonraki dozaj geciktirilir.
+
+### Aşama 4 — Sıcaklık stabilizasyonu / Temperature Stabilization
+
+- Hedef sıcaklığa kontrollü hızla çıkılır.
+- Gerçek banyo sıcaklığı stabil olmadan alkali fiksaj başlatılmaz.
+- Makine içi sıcaklık farkı şüpheliyse bağımsız ölçüm yapılır.
+
+### Aşama 5 — Alkaliyle fiksaj / Alkali Fixation
+
+- Alkali çözeltisi kademeli veya lineer verilir.
+- Dozaj başlangıcı, ara noktaları ve bitişinde pH kaydedilir.
+- Fiksaj süresi, son alkali dozajının tamamlanması ve banyo homojenleşmesi dikkate alınarak başlatılır.
+- Gerekirse çevrim bazlı ara numune alınır.
+
+### Aşama 6 — Durulama, nötralizasyon ve yıkama / Rinsing, Neutralization and Washing-off
+
+- Serbest elektrolit ve alkali kontrollü durulamayla uzaklaştırılır.
+- Uygun aşamada nötralizasyon yapılır.
+- Hidrolize ve fikse olmamış boya, yeterli sıcaklık–zaman–kimyasal kombinasyonuyla uzaklaştırılır.
+- Son banyo pH’ı ve kumaş ekstrakt pH’ı müşteri şartnamesine göre doğrulanır.
+
+## 7. Gösterge Proses Penceresi / Indicative Process Window
+
+Aşağıdaki tablo bir reçete değil, kontrol mantığıdır:
+
+| Proses aşaması | İzlenecek ana değişken | Genel hedef |
+|---|---|---|
+| Boya alımı | pH, çözünme, filtre, sıcaklık | Reaksiyon başlamadan homojen dağılım |
+| Tuz dozajı | İletkenlik, dozaj süresi, çevrim sayısı | Kontrollü ve düzgün çekim |
+| Isıtma | Gerçek sıcaklık, ısıtma hızı | Tüm yükte dengeli sıcaklık |
+| Alkali dozajı | pH profili, dozaj eğrisi, tur süresi | Lokal pH sıçraması olmadan fiksaj |
+| Fiksaj | pH, sıcaklık, süre, ara ton | Hedef renk verimi ve tekrarlanabilirlik |
+| Yıkama-off | pH, sıcaklık, süre, su berraklığı | Hidrolize boyanın uzaklaştırılması |
+| Son kontrol | ΔE, K/S, yıkama ve sürtme haslığı | Şartnameye uygun bitmiş performans |
+
+## 8. Dozaj Hesapları / Dosing Calculations
+
+### 8.1 Tuz miktarı / Salt Quantity
+
+```text
+Tuz (kg) = Hedef konsantrasyon (g/L) x Efektif banyo hacmi (L) / 1000
+```
+
+### 8.2 Ticari alkali miktarı / Commercial Alkali Quantity
+
+```text
+Ticari alkali (kg)
+= Saf aktif hedefi (g/L) x Banyo hacmi (L)
+  / [1000 x Ürün aktiflik oranı]
+```
+
+Aktiflik oranı yüzde olarak değil ondalık yazılır. Örneğin %99 saflık için `0.99`.
+
+### 8.3 Hesaplama örneği / Worked Example
+
+Veriler:
+
+- Kumaş: 400 kg
+- Flotte oranı: 1:6
+- Efektif banyo hacmi: 2,400 L
+- Tuz hedefi: 50 g/L
+- Saf soda hedefi: 12 g/L
+- Ticari soda saflığı: %99
+
+Banyo hacmi:
+
+```text
+V = 400 x 6 = 2,400 L
+```
+
+Tuz:
+
+```text
+Tuz = 50 x 2,400 / 1000
+Tuz = 120.0 kg
+```
+
+Ticari soda:
+
+```text
+Ticari soda = 12 x 2,400 / (1000 x 0.99)
+Ticari soda = 29.1 kg
+```
+
+**Teknik ikaz:** Bu örnekteki `50 g/L` ve `12 g/L` yalnız matematik örneğidir; boya reçetesi önerisi değildir. Gerçek hedefler boya kombinasyonu, renk derinliği, reaktif grup, LR ve TDS’ye göre belirlenmelidir.
+
+## 9. Çekim, Renk Verimi ve Fiksaj Göstergeleri / Exhaustion, Colour Yield and Fixation Indicators
+
+Banyo absorbansı ile yaklaşık çekim:
+
+```text
+E (%) = [(A0 - At) / A0] x 100
+```
+
+Burada:
+
+- `A0`: başlangıç boya banyosu absorbansı
+- `At`: t anındaki banyo absorbansı
+- `E`: yaklaşık çekim yüzdesi
+
+Bu hesap için numune seyreltme oranı, dalga boyu, küvet, sıcaklık ve bulanıklık yöntemi sabit tutulmalıdır.
+
+Yıkama öncesi ve sonrası renk kuvveti oranı:
+
+```text
+Renk kuvveti korunumu (%)
+= (K/S_yıkama sonrası / K/S_yıkama öncesi) x 100
+```
+
+Bu oran **mutlak kimyasal fiksaj yüzdesi değildir**; aynı kumaş, boya kombinasyonu ve ölçüm koşulunda proses karşılaştırması için kullanılan operasyonel bir göstergedir.
+
+Renk farkı:
+
+```text
+ΔE_CMC(l:c)
+```
+
+aynı ölçüm geometrisi ve koşullarda ISO 105-J03 yaklaşımıyla değerlendirilmelidir. Kabul limiti müşteri şartnamesine göre tanımlanmalıdır.
+
+## 10. Ölçüm ve Numune Alma Planı / Measurement and Sampling Plan
+
+| Numune noktası | Ölçüm |
+|---|---|
+| Taze su | pH, sertlik, iletkenlik, sıcaklık |
+| Boya alımı sonrası | pH, sıcaklık, görsel homojenlik |
+| Tuz öncesi | Başlangıç absorbansı veya referans numune |
+| Her tuz basamağı sonrası | İletkenlik, çevrim sayısı, ara ton |
+| Alkali başlangıcı | pH, sıcaklık, tur süresi |
+| Alkali ara noktaları | pH, iletkenlik, dozaj yüzdesi |
+| Alkali bitişi | Nihai pH, sıcaklık, homojenleşme süresi |
+| Fiksaj ortası ve sonu | Ara ton, banyo absorbansı, proses süresi |
+| Yıkama-off sonu | Banyo berraklığı, pH, iletkenlik |
+| Bitmiş kumaş | ΔE, K/S, ekstrakt pH, yıkama ve sürtme haslığı |
+
+## 11. Hata–Kök Neden–Düzeltici Faaliyet / Defect–Root Cause–Corrective Action
+
+| Gözlenen hata | Olası kök neden | Doğrulama | Düzeltici faaliyet |
+|---|---|---|---|
+| Düzgünsüz boya | Tuz veya alkali çok hızlı; düşük sirkülasyon; lokal pH; sıcaklık farkı | Dozaj grafiği, tur süresi, pH trendi, makine debisi | Dozajı uzat; kademeleri yeniden tanımla; sirkülasyonu ve homojenleşmeyi doğrula |
+| Ton açık / düşük K/S | Düşük çekim; yetersiz alkali; düşük fiksaj sıcaklığı/süresi; hidroliz | Banyo absorbansı, pH, sıcaklık ve zaman trendi | TDS’ye göre tuz–alkali–sıcaklık profilini tek değişkenli denemeyle düzelt |
+| Ton koyu | Fazla çekim; efektif hacim hatası; boya tartım/aktiflik farkı | Banyo hacmi, tartım, boya lotu ve iletkenlik | Makine hacmini kalibre et; tartım ve reçete aktarımını doğrula |
+| Lotlar arası ton farkı | Su kalitesi, LR, dozaj süresi, pH veya boya lotu değişken | Lot karşılaştırma grafiği | Kritik değişkenlere SPC limiti koy; su ve kimyasal lotlarını kaydet |
+| Yaş sürtme düşük | Yetersiz yıkama-off; hidrolize boya yeniden çökmesi; yüzey boyanması | Yıkama banyosu, yüzey K/S, ıslak sürtme testi | Durulama–nötralizasyon–sabunlama sırasını ve dispergatör sistemini optimize et |
+| Yıkama haslığı düşük | Fikse olmamış boya; yetersiz fiksaj veya yıkama | ISO 105-C06 ve proses numunesi | Fiksaj profilini doğrula; yıkama-off sıcaklık, süre ve banyo sayısını iyileştir |
+| Boya lekesi / nokta | Yetersiz çözünme; filtrasyon eksik; sert su; lokal alkali | Filtre kalıntısı, çözeltide partikül, sertlik | Çözme prosedürü, filtre, sekestran ve dozaj hattını düzelt |
+| Baş–son farkı | Yüksek ani çekim; uzun dozaj hattı ölü hacmi; numune zamanlaması | İlk/son çevrim numunesi, dozaj hattı kontrolü | Dozaj girişini ve karışma süresini yeniden tasarla |
+| Kumaş pH’ı yüksek | Yetersiz nötralizasyon veya durulama | ISO 3071 ekstrakt pH | Nötralizasyon miktarı ve durulama sırasını doğrula |
+
+## 12. Proses Kayıt Formunda Zorunlu Alanlar / Mandatory Process Record Fields
+
+- Sipariş, renk, kumaş ve lot kodu
+- Makine numarası ve nominal yük
+- Gerçek kumaş ağırlığı
+- Efektif banyo hacmi ve LR
+- Su pH’ı, sertliği ve iletkenliği
+- Boya adı, parti numarası ve tartım miktarı
+- Tuz tipi, parti numarası, miktarı ve dozaj süresi
+- Alkali tipi, aktifliği, miktarı ve dozaj süresi
+- Isıtma hızı ve gerçek sıcaklık trendi
+- pH trendi
+- İletkenlik trendi
+- Kumaş tur süresi
+- Ara numune saatleri ve ΔE/K/S sonuçları
+- Yıkama-off adımları
+- Son haslık ve ekstrakt pH sonuçları
+- Sapma, müdahale ve yeniden işlem kaydı
+
+## 13. Güvenlik ve Kimyasal Hazırlama / Safety and Chemical Preparation
+
+- Alkali çözeltileri uygun kişisel koruyucu donanımla hazırlanmalıdır.
+- Konsantre kostik soda suya kontrollü ve yavaş eklenmelidir; sıçrama ve ekzotermik ısınma riski dikkate alınmalıdır.
+- Boya ve kimyasal çözeltileri doğrulanmış sıcaklıkta hazırlanmalıdır.
+- Uyuşmayan kimyasallar aynı hazırlama tankında karıştırılmamalıdır.
+- Dozaj tankı, hat ve vanalar ürün değişiminde temizlenmelidir.
+- Güvenlik Bilgi Formu / Safety Data Sheet (SDS) ve işletme prosedürü önceliklidir.
+
+## 14. Kabul Kriteri Hakkında Teknik İkaz
+
+Bu yayında evrensel bir;
+
+- Tuz g/L,
+- Alkali g/L,
+- pH toleransı,
+- Fiksaj süresi,
+- Isıtma hızı,
+- ΔE limiti,
+- Haslık sınıfı
+
+verilmemiştir.
+
+Kabul kriterleri; boya serisi, müşteri şartnamesi, renk derinliği, lif karışımı, makine tipi, LR, su kalitesi ve işletmenin proses kabiliyeti esas alınarak tanımlanmalıdır.
+
+**Özellikle önemli:** Aynı pH ve sıcaklıkta çalışan iki boya kombinasyonu, reaktif grup uyumu ve çekim kinetiği farklı olduğu için aynı dozaj profilini kabul etmeyebilir.
+
+## 15. Sürdürülebilirlik ve İlk Seferde Doğru Üretim / Sustainability and Right-First-Time Production
+
+Reaktif boyamada çevresel kazanım yalnız tuz veya suyu azaltmakla sınırlı değildir. En büyük kazanımlardan biri **İlk Seferde Doğru / Right First Time (RFT)** üretimdir.
+
+İzlenecek göstergeler:
+
+- kg tuz / kg kumaş
+- kg alkali / kg kumaş
+- L su / kg kumaş
+- kWh / kg kumaş
+- Buhar / kg kumaş
+- İlk seferde doğru oranı
+- Düzeltme ve yeniden boya oranı
+- Yıkama-off banyo sayısı
+- Çıkış KOİ, renk ve iletkenlik yükü
+
+Düşük tuzlu veya yüksek fiksajlı yeni boya sistemleri uygulanırken konvansiyonel reçete doğrudan aktarılmamalı; laboratuvar, pilot ve üretim doğrulaması birlikte yapılmalıdır.
+
+## 16. Saha Kontrol Özeti / Shop-Floor Control Summary
+
+1. Ön terbiye ve artık peroksiti doğrula.
+2. Efektif banyo hacmini ve LR’yi doğrula.
+3. Boyayı tamamen çöz, filtre et ve homojen al.
+4. Tuzu kontrollü dozla; iletkenlik trendini işletme kalibrasyonuyla izle.
+5. Hedef sıcaklığı tüm yükte stabilize et.
+6. Alkaliyi çevrim süresine uygun kademeli veya lineer dozla.
+7. pH’ı yalnız bitişte değil, dozaj boyunca kaydet.
+8. Fiksaj süresini gerçek homojenleşme noktasından başlat.
+9. Hidrolize boyayı doğru durulama–nötralizasyon–yıkama-off sırasıyla uzaklaştır.
+10. Renk, haslık ve kumaş ekstrakt pH’ını aynı lot kaydında kapat.
+
+## 17. Kaynaklar / References
+
+1. [CottonWorks — Dyeing Basics](https://cottonworks.com/learning-hub/dyeing/dyeing-basics/)
+2. [CottonWorks — Textile Dyeing Booklet](https://www.cottonworks.com/wp-content/uploads/2018/01/Dyeing_Booklet.pdf)
+3. [DyStar — Cadira Reactive Brochure](https://www.dystar.com/wp-content/uploads/2024/10/Cadira-Reactive-Brochure_Web.pdf)
+4. [DyStar — Sera ECO WASH](https://www.dystar.com/wp-content/uploads/2014/12/SeraEcoWash_240913.pdf)
+5. [ISO 3071:2020 — Determination of pH of Aqueous Extract](https://www.iso.org/standard/74203.html)
+6. [ISO 105-C06:2010 — Colour Fastness to Domestic and Commercial Laundering](https://www.iso.org/standard/51276.html)
+7. [ISO 105-X12:2016 — Colour Fastness to Rubbing](https://www.iso.org/standard/65207.html)
+8. [ISO 105-E04:2013 — Colour Fastness to Perspiration](https://www.iso.org/standard/57973.html)
+9. [ISO 105-J03:2009 — Calculation of Colour Differences](https://www.iso.org/standard/51385.html)
+10. [AATCC TM61 — Colorfastness to Laundering: Accelerated](https://members.aatcc.org/store/tm61/495/)
+11. [AATCC TM8 — Colorfastness to Crocking: Crockmeter](https://members.aatcc.org/store/tm8/481/)
+12. [Eco-friendly Salt/Alkali-free Exhaustion Dyeing of Cotton Fabric with Reactive Dyes](https://www.nature.com/articles/s41598-022-26875-8)
