@@ -1,0 +1,36 @@
+/* =========================================================
+   Teknik Yayınlar — koyu kart ve aktif filtre okunabilirlik düzeltmesi
+   Bu bloğu globals.css dosyasının EN SONUNA ekleyin.
+   ========================================================= */
+
+@layer components {
+  .bb-readable-page .bb-publication-card {
+    background-color: #061A33 !important;
+  }
+
+  .bb-readable-page .bb-publication-kicker,
+  .bb-readable-page .bb-publication-title {
+    color: #FFFFFF !important;
+  }
+
+  .bb-readable-page .bb-publication-copy {
+    color: #EAF3FF !important;
+  }
+
+  .bb-readable-page .bb-filter-active {
+    color: #FFFFFF !important;
+    background-color: #0B2343 !important;
+    border-color: #0B2343 !important;
+  }
+
+  .bb-readable-page .bb-filter-inactive {
+    color: #4C5561 !important;
+    background-color: #FFFFFF !important;
+    border-color: #D8DEE8 !important;
+  }
+
+  .bb-readable-page .bb-filter-inactive:hover {
+    color: #0B2343 !important;
+    border-color: #0B2343 !important;
+  }
+}
