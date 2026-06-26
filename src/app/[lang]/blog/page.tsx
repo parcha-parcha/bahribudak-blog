@@ -75,7 +75,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
               </p>
             </div>
 
-            <div className="relative min-h-[310px] overflow-hidden rounded-[34px] border border-[#D8DEE8] bg-[#061A33] shadow-[0_24px_70px_rgba(11,35,67,0.18)]">
+            <div className="bb-publication-panel relative min-h-[310px] overflow-hidden rounded-[34px] border border-[#D8DEE8] bg-[#061A33] shadow-[0_24px_70px_rgba(11,35,67,0.18)]">
               <img
                 src="/images/blog-endustriyel-proses.jpg"
                 alt={lang === 'tr' ? 'Tekstil proses ve endüstriyel altyapı' : 'Textile process and industrial infrastructure'}
@@ -83,12 +83,12 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/96 via-[#061A33]/78 to-[#061A33]/48" />
               <div className="relative z-10 flex min-h-[310px] items-end p-6 md:p-8">
-                <div className="max-w-[620px] rounded-[26px] border border-white/30 bg-[#061A33] px-6 py-5 shadow-2xl">
-                  <p className="text-xs font-black tracking-[0.28em] text-white">BAHRİ BUDAK</p>
-                  <h2 className="mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
+                <div className="bb-publication-card max-w-[620px] rounded-[26px] border border-white/30 bg-[#061A33] px-6 py-5 shadow-2xl">
+                  <p className="bb-publication-kicker text-xs font-black tracking-[0.28em] text-white">BAHRİ BUDAK</p>
+                  <h2 className="bb-publication-title mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
                     {lang === 'tr' ? 'Teknik Yayın Sistemi' : 'Technical Publication System'}
                   </h2>
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#EAF3FF] md:text-base">
+                  <p className="bb-publication-copy mt-3 max-w-lg text-sm leading-relaxed text-[#EAF3FF] md:text-base">
                     {lang === 'tr'
                       ? 'Her yayın; amaç, kapsam, proses ilişkisi, kontrol planı, kök neden, düzeltici faaliyet ve kaynak yapısıyla sunulur.'
                       : 'Each publication follows a controlled structure: purpose, scope, process relationship, control plan, root cause, corrective action and references.'}
@@ -105,10 +105,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
             <div className="flex flex-wrap gap-3">
               <Link
                 href={`/${lang}/blog`}
+                aria-current={!activeArea ? 'page' : undefined}
                 className={`cat-badge border transition-all ${
                   !activeArea
-                    ? 'border-[#0B2343] bg-[#0B2343] text-white'
-                    : 'border-[#D8DEE8] bg-white text-[#4C5561] hover:border-[#0B2343]'
+                    ? 'bb-filter-active border-[#0B2343] bg-[#0B2343] text-white'
+                    : 'bb-filter-inactive border-[#D8DEE8] bg-white text-[#4C5561] hover:border-[#0B2343]'
                 }`}
               >
                 {lang === 'tr' ? 'Tüm Teknik Yayınlar' : 'All Technical Publications'}
@@ -117,10 +118,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                 <Link
                   key={item.slug}
                   href={`/${lang}/blog?area=${item.slug}`}
+                  aria-current={activeArea === item.slug ? 'page' : undefined}
                   className={`cat-badge border transition-all ${
                     activeArea === item.slug
-                      ? 'border-[#0B2343] bg-[#0B2343] text-white'
-                      : 'border-[#D8DEE8] bg-white text-[#4C5561] hover:border-[#0B2343]'
+                      ? 'bb-filter-active border-[#0B2343] bg-[#0B2343] text-white'
+                      : 'bb-filter-inactive border-[#D8DEE8] bg-white text-[#4C5561] hover:border-[#0B2343]'
                   }`}
                 >
                   {lang === 'tr' ? item.tr : item.en}
