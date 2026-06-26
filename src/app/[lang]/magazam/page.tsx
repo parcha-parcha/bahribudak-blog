@@ -1,175 +1,360 @@
-import ResourceCenter from '@/components/ResourceCenter'
-import type { Lang } from '@/lib/i18n'
-import { resourceCatalogDate, resources } from '@/lib/resources'
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: string }>
+  params: { lang: string }
 }): Promise<Metadata> {
-  const { lang: rawLang } = await params
-  const lang: Lang = rawLang === 'en' ? 'en' : 'tr'
+  const tr = params.lang === 'tr'
 
   return {
-    title:
-      lang === 'tr'
-        ? 'Tekstil Kaynak Merkezi'
-        : 'Textile Resource Center',
-    description:
-      lang === 'tr'
-        ? 'Örgü, boya ve apre alanlarında doğrulanmış PDF, XLSX ve DOCX teknik dokümanları; eğitim notları, proses formları ve kontrol listeleri.'
-        : 'Verified PDF, XLSX and DOCX resources for knitting, dyeing and finishing: technical documents, training notes, process forms and checklists.',
-    alternates: {
-      canonical: `https://bahribudak.com/${lang}/magazam`,
-      languages: {
-        tr: 'https://bahribudak.com/tr/magazam',
-        en: 'https://bahribudak.com/en/magazam',
-      },
-    },
+    title: tr
+      ? 'Tekstil Kaynak Merkezi | Bahri Budak'
+      : 'Textile Resource Center | Bahri Budak',
+    description: tr
+      ? 'Boyahane, proses, kalite kontrol, eğitim ve teknik dokümantasyon için hazırlanmış tekstil kaynak merkezi.'
+      : 'Textile resource center for dyehouse, process, quality control, training and technical documentation.',
   }
 }
 
-export default async function ResourceCenterPage({
-  params,
+type TextileResource = {
+  no: string
+  title: string
+  purpose: string
+  users: string
+  examples: string[]
+  status: string
+  button: string
+  featured?: boolean
+  href?: string
+}
+
+const primaryResources: TextileResource[] = [
+  {
+    no: '01',
+    title: 'Tekstil Teknik Dokümanları',
+    purpose:
+      'Kasar, boyama, yıkama, ramöz, fikse, laboratuvar ve proses kontrol başlıklarını aynı teknik dil altında toplar.',
+    users:
+      'Boyahane müdürü, proses sorumlusu, kalite ekibi, laboratuvar ve eğitim sorumluları.',
+    examples: [
+      'Mühendislik formülleri',
+      'HT jet proses diyagramları',
+      'Boyahane norm kadro',
+      'Teknik yayın dosyaları',
+    ],
+    status: '3 dosya indirilebilir',
+    button: 'Sayfayı İncele',
+    featured: true,
+    href: '/sablonlar/tekstil-teknik-dokumanlari',
+  },
+  {
+    no: '02',
+    title: 'Proses Formları',
+    purpose:
+      'Üretim sırasında reçete, ölçüm, parti, makine ve işlem takibini standart hale getiren uygulanabilir form yapılarıdır.',
+    users:
+      'Vardiya amiri, operatör, proses kontrol, laboratuvar ve üretim planlama ekipleri.',
+    examples: [
+      'Boyama parti takip formu',
+      'Reçete kayıt formu',
+      'pH-sıcaklık-süre takibi',
+      'Makine proses kaydı',
+    ],
+    status: 'İndirilebilir • Yeni form eklendi',
+    button: 'Sayfayı İncele',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/proses-formlari',
+  },
+  {
+    no: '03',
+    title: 'Kontrol Listeleri',
+    purpose:
+      'Hatanın oluşmasını beklemeden, kritik üretim noktalarını vardiya içinde kısa ve net şekilde kontrol etmeye yarar.',
+    users:
+      'Operatör, vardiya amiri, kalite kontrol, laboratuvar ve işletme yönetimi.',
+    examples: [
+      'Kasar ön kontrol',
+      'Boyama başlangıç kontrolü',
+      'Yıkama final kontrolü',
+      'Laboratuvar haftalık kontrolü',
+    ],
+    status: 'İndirilebilir • İlk kontrol listesi eklendi',
+    button: 'Sayfayı İncele',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri',
+  },
+  {
+    no: '04',
+    title: 'Eğitim Notları',
+    purpose:
+      'Saha bilgisini operatör, vardiya amiri, laboratuvar ve yönetim ekiplerinin anlayacağı sade bir eğitim sistemine dönüştürür.',
+    users:
+      'Yeni personel, vardiya ekipleri, proses sorumluları, kalite ve laboratuvar ekipleri.',
+    examples: [
+      'Kasar eğitimi',
+      'Reaktif boyama eğitimi',
+      'Tuz-alkali-pH mantığı',
+      'Hata analizi notları',
+    ],
+    status: 'İndirilebilir • İlk eğitim notu eklendi',
+    button: 'Sayfayı İncele',
+    href: '/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari',
+  },
+  {
+    no: '05',
+    title: 'Teklif ve Teknik Sunum Dosyaları',
+    purpose:
+      'Makine, yatırım, proses iyileştirme ve eğitim çalışmalarını yönetim veya müşteri tarafına düzenli şekilde sunar.',
+    users:
+      'Yönetim, satın alma, teknik ekipler, danışmanlık ve yatırım değerlendirme süreçleri.',
+    examples: [
+      'Makine teklif dosyası',
+      'Yatırım karşılaştırması',
+      'Teknik sunum kapağı',
+      'Maliyet özet sayfası',
+    ],
+    status: 'Talep üzerine düzenlenir',
+    button: 'Talep üzerine hazırlanır',
+  },
+]
+
+const supportResources: TextileResource[] = [
+  {
+    no: '06',
+    title: 'Kurumsal Evrak Desteği',
+    purpose:
+      'Tekstil teknik içeriklerinin müşteri, yönetim veya eğitim sunumunda daha düzgün görünmesi için kullanılan destekleyici evrak düzenidir.',
+    users:
+      'Teknik rapor, eğitim dosyası ve müşteri teslim dokümanı hazırlayan ekipler.',
+    examples: [
+      'Kapak sayfası',
+      'Devam sayfası',
+      'İçindekiler düzeni',
+      'Teslim dosyası düzeni',
+    ],
+    status: 'İsteğe göre destek',
+    button: 'İsteğe göre destek',
+  },
+  {
+    no: '07',
+    title: 'Dijital Yayın Desteği',
+    purpose:
+      'Blog, LinkedIn ve sunum içeriklerinde teknik bilginin aynı kurumsal çizgide paylaşılmasını destekler.',
+    users:
+      'Teknik yayın hazırlayanlar, eğitim sunumu yapanlar ve danışmanlık içeriklerini paylaşanlar.',
+    examples: [
+      'Blog görsel düzeni',
+      'LinkedIn teknik not kartı',
+      'Sunum kapağı',
+      'E-posta imzası',
+    ],
+    status: 'İsteğe göre destek',
+    button: 'İsteğe göre destek',
+  },
+]
+
+function ResourceCard({
+  item,
+  lang,
 }: {
-  params: Promise<{ lang: string }>
+  item: TextileResource
+  lang: string
 }) {
-  const { lang: rawLang } = await params
-  const lang: Lang = rawLang === 'en' ? 'en' : 'tr'
-
-  const stats = [
-    {
-      value: resources.length.toString().padStart(2, '0'),
-      label: lang === 'tr' ? 'doğrulanmış kaynak' : 'verified resources',
-    },
-    {
-      value: new Set(resources.map((item) => item.format)).size.toString().padStart(2, '0'),
-      label: lang === 'tr' ? 'dosya biçimi' : 'file formats',
-    },
-    {
-      value: new Set(resources.flatMap((item) => item.areas)).size.toString().padStart(2, '0'),
-      label: lang === 'tr' ? 'teknik alan' : 'technical areas',
-    },
-  ]
-
-  const collections = [
-    {
-      href: `/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
-      title: lang === 'tr' ? 'Eğitim Notları' : 'Training Notes',
-      description:
-        lang === 'tr'
-          ? 'Kasar, boyama, yıkama, ramöz, kompaktör ve final kalite eğitim dosyaları.'
-          : 'Training files for pretreatment, dyeing, washing, stenter, compactor and final quality.',
-    },
-    {
-      href: `/${lang}/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
-      title: lang === 'tr' ? 'Proses Formları' : 'Process Forms',
-      description:
-        lang === 'tr'
-          ? 'Parti, reçete, ramöz, kök neden ve düzeltici faaliyet kayıt sistemleri.'
-          : 'Batch, recipe, stenter, root-cause and corrective-action recording systems.',
-    },
-    {
-      href: `/${lang}/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
-      title: lang === 'tr' ? 'Kontrol Listeleri' : 'Checklists',
-      description:
-        lang === 'tr'
-          ? 'Kasar, boyama başlangıcı, laboratuvar ve final kalite doğrulama listeleri.'
-          : 'Pretreatment, dyeing start-up, laboratory and final-quality verification lists.',
-    },
-  ]
+  const href = item.href ? `/${lang}${item.href}` : null
 
   return (
-    <main className="min-h-screen bg-[#F5F7FA] text-[#0B2343]">
-      <section className="relative overflow-hidden bg-[#061A33] text-white">
-        <div className="absolute inset-0 bb-pattern opacity-35" />
-        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#2EA6D9]/15 blur-3xl" />
+    <article
+      className={`group rounded-[2rem] border bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card ${
+        item.featured
+          ? 'border-accent-blue/55 ring-1 ring-accent-blue/20'
+          : 'border-gray-border'
+      }`}
+    >
+      <div className="mb-6 flex items-start justify-between gap-5">
+        <div className="flex min-w-0 items-start gap-4">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-gray-border bg-[#F3F6FA] text-lg font-black tracking-wider text-accent-blue">
+            {item.no}
+          </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
-              {lang === 'tr' ? 'ÖRGÜ · BOYA · APRE' : 'KNITTING · DYEING · FINISHING'}
+            <p className="mb-2 text-xs font-black uppercase tracking-[0.16em] text-navy/55">
+              {item.status}
             </p>
-            <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white md:text-6xl">
-              {lang === 'tr' ? 'Tekstil Kaynak Merkezi' : 'Textile Resource Center'}
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-7 text-white/78 md:text-lg">
-              {lang === 'tr'
-                ? 'Saha kullanımına göre sınıflandırılmış teknik doküman, eğitim notu, proses formu, kontrol listesi ve hesaplama araçları. Her kartta dosya biçimi, sürüm, boyut ve katalog tarihi açıkça gösterilir.'
-                : 'Technical documents, training notes, process forms, checklists and calculation tools classified for field use. Each card clearly shows file format, version, size and catalog date.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
-            {stats.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-3xl border border-white/12 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
-              >
-                <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">{item.value}</p>
-                <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.10em] text-white/60">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-14">
-        {lang === 'tr' && (
-          <div className="mb-8 grid gap-4 md:grid-cols-3">
-            {collections.map((collection) => (
-            <Link
-              key={collection.href}
-              href={collection.href}
-              className="rounded-[1.75rem] border border-[#D8DDE5] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#2EA6D9]/50"
-            >
-              <p className="text-lg font-bold text-[#0B2343]">{collection.title}</p>
-              <p className="mt-2 text-sm leading-6 text-[#0B2343]/65">{collection.description}</p>
-              <span className="mt-4 inline-flex text-sm font-bold text-[#2EA6D9]">
-                {lang === 'tr' ? 'Koleksiyonu aç →' : 'Open collection →'}
-              </span>
-            </Link>
-            ))}
-          </div>
-        )}
-
-        <div id="resource-catalog" className="mb-7 flex flex-col justify-between gap-3 border-b border-[#D8DDE5] pb-7 md:flex-row md:items-end">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
-              {lang === 'tr' ? 'DOĞRULANMIŞ DOSYA KATALOĞU' : 'VERIFIED FILE CATALOG'}
-            </p>
-            <h2 className="mt-2 text-3xl font-bold text-[#0B2343] md:text-4xl">
-              {lang === 'tr' ? 'Kaynağı proses ve dosya türüne göre bulun' : 'Find resources by process and file type'}
+            <h2 className="text-2xl font-bold leading-tight text-navy">
+              {item.title}
             </h2>
           </div>
-          <p className="text-xs font-semibold text-[#0B2343]/50">
-            {lang === 'tr' ? 'Katalog tarihi' : 'Catalog date'}: {resourceCatalogDate}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <div>
+          <p className="mb-1 text-xs font-black uppercase tracking-[0.16em] text-accent-blue">
+            Dosya amacı
+          </p>
+          <p className="text-[15px] leading-relaxed text-navy/78">
+            {item.purpose}
           </p>
         </div>
 
-        <ResourceCenter lang={lang} resources={resources} />
+        <div className="rounded-2xl border border-gray-border bg-[#F3F6FA] px-4 py-3">
+          <p className="mb-1 text-xs font-black uppercase tracking-[0.16em] text-navy/55">
+            Kim kullanır?
+          </p>
+          <p className="text-sm leading-relaxed text-navy/76">
+            {item.users}
+          </p>
+        </div>
+
+        <div>
+          <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-accent-blue">
+            İçerik örnekleri
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {item.examples.map((example) => (
+              <span
+                key={example}
+                className="rounded-full border border-gray-border bg-white px-3 py-1 text-xs font-semibold text-navy/76"
+              >
+                {example}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-7 flex items-center justify-between gap-4 border-t border-gray-border pt-5">
+        <span className="text-xs font-black uppercase tracking-[0.16em] text-navy/45">
+          Dosya durumu
+        </span>
+
+        {href ? (
+          <Link
+            href={href}
+            className="rounded-full bg-navy px-5 py-2 text-sm font-bold text-white transition hover:bg-accent-blue"
+          >
+            {item.button}
+          </Link>
+        ) : (
+          <span className="rounded-full border border-accent-blue/30 bg-[#F3F6FA] px-5 py-2 text-sm font-bold text-navy">
+            {item.button}
+          </span>
+        )}
+      </div>
+    </article>
+  )
+}
+
+export default function MagazamPage({
+  params,
+}: {
+  params: { lang: string }
+}) {
+  const lang = params.lang || 'tr'
+
+  return (
+    <main className="min-h-screen bg-[#F3F6FA] text-navy">
+      <section className="relative overflow-hidden bg-[#061A33] text-white">
+        <div className="absolute inset-0 bb-pattern opacity-50" />
+        <div className="absolute -right-28 -top-28 h-80 w-80 rounded-full bg-accent-blue/20 blur-3xl" />
+
+        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <p className="section-label text-accent-blue">
+            TEKSTİL KAYNAK MERKEZİ
+          </p>
+
+          <h1 className="mb-5 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">
+            Tekstil teknik dosyaları için kaynak ve talep sistemi
+          </h1>
+
+          <p className="max-w-3xl text-lg leading-relaxed text-white/80">
+            Bu sayfanın ana değeri kurumsal kimlik dosyaları değil;
+            boyahane, proses, kalite kontrol, eğitim ve teknik
+            dokümantasyon için hazırlanmış tekstil bilgilerinin düzenli ve
+            kullanılabilir hale getirilmesidir.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+              Tekstil dokümanları
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+              Proses formları
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+              Kontrol listeleri
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+              Eğitim notları
+            </span>
+          </div>
+        </div>
       </section>
 
-      <section className="border-t border-[#D8DDE5] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-[2rem] bg-[#0B2343] px-6 py-8 text-white md:px-10">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
-              {lang === 'tr' ? 'KULLANIM VE REVİZYON NOTU' : 'USE AND REVISION NOTE'}
-            </p>
-            <h2 className="mt-3 text-2xl font-bold md:text-3xl">
-              {lang === 'tr'
-                ? 'Dosyalar işletme şartlarına göre teknik onaydan geçirilmelidir'
-                : 'Files must be technically approved for actual plant conditions'}
+      <section className="mx-auto max-w-6xl px-6 py-14">
+        <div className="mb-9 grid gap-5 md:grid-cols-[1.1fr_0.9fr] md:items-end">
+          <div>
+            <p className="section-label">ÖNCELİKLİ İNDİRİLEBİLİR ALAN</p>
+            <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">
+              Tekstil işletmeleri için hazırlanmış teknik kaynak grupları
             </h2>
-            <p className="mt-4 max-w-4xl text-sm leading-7 text-white/72">
-              {lang === 'tr'
-                ? 'Reçete, doz, sıcaklık, süre, makine ayarı ve kabul limitleri; elyaf, kumaş konstrüksiyonu, makine, flotte, ürün konsantrasyonu ve müşteri şartnamesi dikkate alınarak doğrulanmalıdır. İndirilebilir form ve eğitim dosyaları tek başına proses talimatı yerine geçmez.'
-                : 'Recipes, dosage, temperature, time, machine settings and acceptance limits must be verified against fiber, fabric construction, machine, liquor ratio, product concentration and customer specification. Downloadable forms and training files do not replace approved process instructions.'}
+          </div>
+
+          <p className="text-sm leading-relaxed text-navy/66">
+            Hazır PDF, DOCX ve XLSX dosyaları ilgili kartların ayrıntı
+            sayfalarından indirilebilir. Hazırlık aşamasındaki kaynakların
+            güncel durumu kartların üzerinde gösterilir.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {primaryResources.map((item) => (
+            <ResourceCard key={item.no} item={item} lang={lang} />
+          ))}
+        </div>
+
+        <div className="mt-8 rounded-[2rem] border border-accent-blue/25 bg-white p-6 shadow-sm md:flex md:items-center md:justify-between md:gap-6">
+          <div>
+            <p className="section-label">DOSYA TALEBİ</p>
+            <h3 className="text-2xl font-bold text-navy">
+              Belirli bir tekstil dokümanına ihtiyacınız varsa talep
+              oluşturabilirsiniz.
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-navy/70">
+              Kartlar tek tek iletişim sayfasına yönlendirilmez. Genel talep
+              için aşağıdaki tek buton kullanılır.
             </p>
+          </div>
+
+          <Link
+            href={`/${lang}/contact`}
+            className="mt-5 inline-flex rounded-full bg-navy px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-blue md:mt-0"
+          >
+            Genel Talep Oluştur
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
+          <div className="mb-7 max-w-3xl">
+            <p className="section-label">İSTEĞE GÖRE DESTEKLEYİCİ ALAN</p>
+            <h2 className="text-3xl font-bold text-navy">
+              Kurumsal ve dijital şablonlar ana ürün değildir
+            </h2>
+            <p className="mt-3 leading-relaxed text-navy/72">
+              Kurumsal evrak ve dijital yayın şablonları, tekstil teknik
+              dosyalarının daha profesyonel sunulması için isteğe göre
+              hazırlanır. Bu bölümün ana önceliği tekstil teknik bilgi
+              dosyalarının indirilebilir hale getirilmesidir.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {supportResources.map((item) => (
+              <ResourceCard key={item.no} item={item} lang={lang} />
+            ))}
           </div>
         </div>
       </section>

@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { permanentRedirect } from 'next/navigation'
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: string }>
+  params: { lang: string }
 }): Promise<Metadata> {
   return {
-    title: 'Eğitim Notları',
+    title: 'Eğitim Notları | Bahri Budak',
     description:
       'Kasar, boyama, yıkama, HT jet, renk düzeltme, laboratuvar reçete aktarımı, final kalite, ramöz-apre ve sanfor/kompaktör prosesleri için hazırlanmış tekstil eğitim notları.',
   }
@@ -34,10 +33,10 @@ const notes: TrainingNote[] = [
     category: 'Ön terbiye ve boyamaya hazırlık',
     description:
       'İyi kasarın ölçülebilir tanımını; pamuk safsızlıklarını, alkali ve peroksit mantığını, yardımcı kimyasalların görevlerini, HT jet proses akışını, elastan risklerini, test yöntemlerini ve saha hatalarını aynı eğitim düzeninde açıklar.',
-    details: ['8 sayfa', 'PDF', '13 bölüm', 'Örnek proses şablonu'],
+    details: ['8 sayfa', 'PDF / DOCX', '13 bölüm', 'Örnek proses şablonu'],
     tags: ['Kasar', 'Pamuk', 'Elastan', 'Hidrofilite', 'Peroksit', 'HT jet'],
     pdf: '/downloads/pamuk-pamuk-elastan-kasar-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/pamuk-pamuk-elastan-kasar-egitimi-r1.docx',
   },
   {
     no: '02',
@@ -46,10 +45,10 @@ const notes: TrainingNote[] = [
     category: 'Pamuk boyama ve proses yönetimi',
     description:
       'Reaktif boyarmadde-lif ilişkisini; lif yüzeyine alınma, lif içine ilerleme, kumaş üzerinde renk dengelenmesi, elektrolit, alkali, pH, kimyasal bağlanma, suyla bozulma, HT jet proses seçenekleri, yıkama ve kalite kontrolüyle birlikte açıklar.',
-    details: ['9 sayfa', 'PDF', '14 bölüm', 'Proses ve hesaplama tabloları'],
+    details: ['9 sayfa', 'PDF / DOCX', '14 bölüm', 'Proses ve hesaplama tabloları'],
     tags: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Kimyasal bağlanma', 'Suyla bozulma', 'Art yıkama'],
     pdf: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.pdf',
-    docx: null,
+    docx: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.docx',
   },
   {
     no: '03',
@@ -58,10 +57,10 @@ const notes: TrainingNote[] = [
     category: 'Polyester ve polyester-elastan boyama',
     description:
       'Dispers boyarmaddenin banyoda homojen dağılımını, boya çekimini, lif içine ilerlemesini, boyarmadde enerji sınıflarını, HT jet prosesini, pH ve yardımcı kimyasal yönetimini, indirgen temizlemeyi, oligomer ve ısı etkisiyle boya göçü risklerini sade Türkçe terminolojiyle açıklar.',
-    details: ['11 sayfa', 'PDF', '16 bölüm', 'Proses ve hata analiz tabloları'],
+    details: ['11 sayfa', 'PDF / DOCX', '16 bölüm', 'Proses ve hata analiz tabloları'],
     tags: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Isıl boya göçü'],
     pdf: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.docx',
   },
   {
     no: '04',
@@ -70,10 +69,10 @@ const notes: TrainingNote[] = [
     category: 'Poliamid ve poliamid-elastan boyama',
     description:
       'Asit boyarmadde-poliamid ilişkisini; boya çekim oranı, ilk boya alımı, lif içine ilerleme, bağlama kapasitesi, pH profili, asit dozajı, sıcaklık, düzgünlük, art işlem, haslık ve poliamid-elastan riskleriyle birlikte sade Türkçe terminolojiyle açıklar.',
-    details: ['9 sayfa', 'PDF', '16 bölüm', 'Proses ve hata analiz tabloları'],
+    details: ['9 sayfa', 'PDF / DOCX', '16 bölüm', 'Proses ve hata analiz tabloları'],
     tags: ['Naylon', 'Poliamid', 'Asit boyama', 'pH', 'Düzgünlük', 'Haslık'],
     pdf: '/downloads/naylon-poliamid-kumaslarda-asit-boyama-egitimi-r3.pdf',
-    docx: null,
+    docx: '/downloads/naylon-poliamid-kumaslarda-asit-boyama-egitimi-r3.docx',
   },
   {
     no: '05',
@@ -82,10 +81,10 @@ const notes: TrainingNote[] = [
     category: 'Karışım kumaşlarda dispers ve reaktif proses yönetimi',
     description:
       'Polyester/pamuk ve polyester/pamuk/elastan örme kumaşlarda boya sınıfı seçimini, lif oranı hesabını, çift banyo-iki aşama ve tek banyo-iki aşama proseslerini, pH-sıcaklık geçişini, indirgen temizlemeyi, reaktif yıkamayı, ton eşleştirmeyi ve kalite kontrolünü saha terminolojisiyle açıklar.',
-    details: ['10 sayfa', 'PDF', '18 bölüm', 'Tek ve çift banyo karşılaştırması'],
+    details: ['10 sayfa', 'PDF / DOCX', '18 bölüm', 'Tek ve çift banyo karşılaştırması'],
     tags: ['PES/CO', 'Karışım kumaş', 'Dispers boyama', 'Reaktif boyama', 'İndirgen temizleme', 'Ton eşleştirme'],
     pdf: '/downloads/pamuk-polyester-karisimlarda-boyama-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/pamuk-polyester-karisimlarda-boyama-egitimi-r1.docx',
   },
   {
     no: '06',
@@ -94,10 +93,10 @@ const notes: TrainingNote[] = [
     category: 'Yaş haslık, yüzey boyası ve final kalite yönetimi',
     description:
       'Reaktif boyamada bağlanmamış boyanın sıcak yıkamayla uzaklaştırılmasını, polyesterde indirgen temizlemeyi, açık-koyu renk yıkama farklarını, final pH ve iletkenlik kontrolünü, elastan risklerini, makine temizliğini ve haslık yönetimini saha terminolojisiyle açıklar.',
-    details: ['10 sayfa', 'PDF', '19 bölüm', 'Örnek proses ve hata tabloları'],
+    details: ['10 sayfa', 'PDF / DOCX', '19 bölüm', 'Örnek proses ve hata tabloları'],
     tags: ['Art yıkama', 'Reaktif sıcak yıkama', 'İndirgen temizleme', 'Final pH', 'Yaş haslık', 'Makine temizliği'],
     pdf: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.docx',
   },
   {
     no: '07',
@@ -106,10 +105,10 @@ const notes: TrainingNote[] = [
     category: 'Boyahane proses yönetimi ve tekrar üretilebilirlik',
     description:
       'Sipariş gözden geçirmeden laboratuvardan üretime aktarıma; kumaş, makine, su, boya ve kimyasal ön koşullarından pH, sıcaklık, dozaj ve dolaşım kontrolüne; sapma, ilave, vardiya teslimi, kök neden ve performans göstergelerine kadar bütün proses zincirini ölçülebilir bir yönetim sistemi içinde açıklar.',
-    details: ['8 sayfa', 'PDF', '20 bölüm', 'Kontrol planı ve KPI tabloları'],
+    details: ['8 sayfa', 'PDF / DOCX', '20 bölüm', 'Kontrol planı ve KPI tabloları'],
     tags: ['Proses yönetimi', 'Kritik kontrol', 'İlk seferde doğru üretim', 'Sapma yönetimi', 'KPI', 'İzlenebilirlik'],
     pdf: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.docx',
   },
   {
     no: '08',
@@ -118,10 +117,10 @@ const notes: TrainingNote[] = [
     category: 'Renk düzeltme, yeniden işlem ve maliyet yönetimi',
     description:
       'Renk farkının değerlendirilmesinden ilave kararına; tek ve iki yarım banyo, yeni banyoda ilave, apreden dönen mal, söküm ve yeniden boyama senaryolarından kök neden, kayıt, performans göstergeleri, maliyet ve iyileştirme sistemine kadar bütün süreci saha verileriyle açıklar.',
-    details: ['13 sayfa', 'PDF', '18 bölüm', 'Maliyet ve KPI tabloları'],
+    details: ['13 sayfa', 'PDF / DOCX', '18 bölüm', 'Maliyet ve KPI tabloları'],
     tags: ['Renk ilavesi', 'Renk düzeltme', 'Yarım banyo', 'Kök neden', 'İlk seferde doğru üretim', 'Maliyet yönetimi'],
     pdf: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.docx',
   },
   {
     no: '09',
@@ -130,10 +129,10 @@ const notes: TrainingNote[] = [
     category: 'Ölçek büyütme, reçete aktarımı ve ilk parti yönetimi',
     description:
       'Laboratuvar numunesinden işletme partisine geçişte kumaş, ön terbiye, su, boya, kimyasal, makine, gerçek flotte, sıcaklık, pH, süre ve dozaj değişkenlerinin nasıl eşleştirileceğini; % HT, g/L ve stok çözelti hesaplarını; reaktif, dispers ve asit boyamada aktarım kurallarını ve ilk parti onay sistemini açıklar.',
-    details: ['12 sayfa', 'PDF', '18 bölüm', 'Hesap, aktarım ve KPI tabloları'],
+    details: ['12 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, aktarım ve KPI tabloları'],
     tags: ['Laboratuvar reçetesi', 'İşletme reçetesi', 'Ölçek büyütme', 'Gerçek flotte', 'İlk parti', 'İlk seferde doğru üretim'],
     pdf: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.docx',
   },
   {
     no: '10',
@@ -142,10 +141,10 @@ const notes: TrainingNote[] = [
     category: 'Makine ayarları, çevrim kontrolü ve proses güvenliği',
     description:
       'HT jet makinesinde üretim öncesi uygunluk, parti ve yükleme hazırlığı, dikiş-halat kontrolü, gerçek flotte, kumaş hızı, tur süresi, düze, pompa, sıcaklık, basınç, dozaj, pH, iletkenlik, numune, alarm, sapma, boşaltma, temizlik ve vardiya kayıtlarını saha uygulamalarıyla açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
     tags: ['HT jet', 'Kumaş tur süresi', 'Gerçek flotte', 'Düze ve pompa', 'Dozaj kontrolü', 'Proses güvenliği'],
     pdf: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.docx',
   },
 
   {
@@ -155,10 +154,10 @@ const notes: TrainingNote[] = [
     category: 'Renk ölçümü, haslık ve sevk onay yönetimi',
     description:
       'Boyalı ve apreli örme kumaşlarda numune alma, kondisyonlama, ışık kabini ve spektrofotometre ile renk kontrolü, renk farkı ve metamerizm, yıkama-su-sürtme-ter-ışık haslıkları, çekmezlik, dönme, gramaj, fiziksel performans, top kontrolü, karantina ve serbest bırakma kararlarını sistematik biçimde açıklar.',
-    details: ['13 sayfa', 'PDF', '18 bölüm', 'Test, karar ve KPI tabloları'],
+    details: ['13 sayfa', 'PDF / DOCX', '18 bölüm', 'Test, karar ve KPI tabloları'],
     tags: ['Renk kontrolü', 'Spektrofotometre', 'Haslık', 'Çekmezlik', 'Final kalite', 'Serbest bırakma'],
     pdf: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.docx',
   },
   {
     no: '12',
@@ -167,10 +166,10 @@ const notes: TrainingNote[] = [
     category: 'Kurutma, ısı ile fikse, boyut ve apre yönetimi',
     description:
       'Örme kumaşlarda apre banyosu ve kimyasal uyumundan alınan flotte oranına; en, pozitif besleme, kumaş gerginliği, zincir, iğne-mandal, kurutma, ısı ile fikse, kürleme, gerçek kumaş sıcaklığı, etkin kalış süresi, en-gramaj-çekmezlik dengesi, kalite, sapma ve enerji yönetimine kadar ramöz prosesini sistematik biçimde açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Formül, kontrol ve KPI tabloları'],
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Formül, kontrol ve KPI tabloları'],
     tags: ['Ramöz', 'Apre', 'Alınan flotte', 'Pozitif besleme', 'Isı ile fikse', 'Enerji yönetimi'],
     pdf: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.docx',
   },
   {
     no: '13',
@@ -179,10 +178,10 @@ const notes: TrainingNote[] = [
     category: 'Kompaktlama, çekmezlik ve boyutsal stabilite yönetimi',
     description:
       'Açık en ve tüp örme kumaşlarda giriş relaksasyonu, buharlama, nem, kumaş tansiyonu, besleme, keçe ve kauçuk bant sistemleri, sıcaklık, basınç, hız, gerçek kompaktlama, boy-en çekmesi, spirallik, en-gramaj dengesi, final kalite, sapma ve enerji yönetimini sistematik biçimde açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
     tags: ['Sanfor', 'Kompaktör', 'Boyutsal stabilite', 'Çekmezlik', 'Spirallik', 'En-gramaj dengesi'],
     pdf: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.docx',
   },
   {
     no: '14',
@@ -191,10 +190,10 @@ const notes: TrainingNote[] = [
     category: 'Şardon, traş ve süet yüzey işlemleri',
     description:
       'Şardon, traş ve süet fırçayı üç ayrı makine ve üç ayrı yüzey hedefi olarak ele alır. Şardonda kumaşa göre 1-4 pasajı; düzgün ve stabil hav için traşı; kadife ham ve bitim traşını; ayrı süet fırça makinesinde süet/şeftali tüyü etkisini, kalite, bakım, kütle kaybı ve enerji yönetimiyle birlikte açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Makine seçimi ve karar tabloları'],
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Makine seçimi ve karar tabloları'],
     tags: ['Şardon', 'Traş', 'Kadife traşı', 'Süet fırça', '1-4 pasaj', 'Yüzey kalitesi'],
     pdf: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.docx',
   },
   {
     no: '15',
@@ -203,20 +202,19 @@ const notes: TrainingNote[] = [
     category: 'Su kalitesi, hazırlama, dozaj ve izlenebilirlik',
     description:
       'Ham sudan yumuşatılmış, ters ozmoz ve geri kazanılmış su hatlarına; sertlik, pH, iletkenlik, demir, mangan ve klor kontrollerinden boyarmadde çözündürme, sıvı kimyasal seyreltme, stok çözelti, otomatik dozaj, hat temizliği, kalibrasyon, reçete hesabı ve kaynak verimliliğine kadar bütün sistemi açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Su kabul, hesap ve KPI tabloları'],
+    details: ['14 sayfa', 'PDF / DOCX', '18 bölüm', 'Su kabul, hesap ve KPI tabloları'],
     tags: ['Boyahane suyu', 'Su sertliği', 'Boya mutfağı', 'Kimyasal mutfak', 'Otomatik dozaj', 'Kalibrasyon'],
     pdf: '/downloads/boyahane-suyu-boya-kimyasal-mutfagi-ve-dozaj-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    docx: '/downloads/boyahane-suyu-boya-kimyasal-mutfagi-ve-dozaj-yonetimi-egitimi-r1.docx',
   },
 ]
 
-export default async function Page({
+export default function Page({
   params,
 }: {
-  params: Promise<{ lang: string }>
+  params: { lang: string }
 }) {
-  const { lang = 'tr' } = await params
-  if (lang === 'en') permanentRedirect('/en/magazam')
+  const lang = params.lang || 'tr'
 
   return (
     <main className="min-h-screen bg-[#F3F6FA] text-navy">

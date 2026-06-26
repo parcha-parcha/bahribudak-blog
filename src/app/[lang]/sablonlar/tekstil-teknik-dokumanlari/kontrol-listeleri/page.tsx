@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { permanentRedirect } from 'next/navigation'
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: string }>
+  params: { lang: string }
 }): Promise<Metadata> {
   return {
-    title: 'Kontrol Listeleri',
+    title: 'Kontrol Listeleri | Bahri Budak',
     description:
       'Boyahane, laboratuvar, kalite ve terbiye süreçlerinde kritik noktaların vardiya ve parti bazında kontrol edilmesini sağlayan tekstil kontrol listeleri.',
   }
@@ -80,13 +79,12 @@ const benefits = [
   },
 ]
 
-export default async function Page({
+export default function Page({
   params,
 }: {
-  params: Promise<{ lang: string }>
+  params: { lang: string }
 }) {
-  const { lang = 'tr' } = await params
-  if (lang === 'en') permanentRedirect('/en/magazam')
+  const lang = params.lang || 'tr'
 
   return (
     <main className="min-h-screen bg-[#F3F6FA] text-navy">

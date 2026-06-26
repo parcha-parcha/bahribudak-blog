@@ -3,11 +3,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Bahri Budak | Örgü, Boya ve Apre',
+    default: 'Bahri Budak',
     template: '%s | Bahri Budak',
   },
   description:
-    "Bahri Budak'ın 35 yılı aşkın saha deneyimine dayalı Örgü / Knitting, Boya / Dyeing ve Apre / Finishing teknik yayınları, eğitimleri ve proses danışmanlığı.",
+    "Tekstil Boyama ve Apre Uzmanı Bahri Budak'ın; tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve Türkiye-sektör gündemi üzerine içerikleri.",
   metadataBase: new URL('https://bahribudak.com'),
   openGraph: {
     type: 'website',
@@ -15,24 +15,15 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://bahribudak.com',
     siteName: 'Bahri Budak',
-    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
+    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
     description:
-      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
-    images: [
-      {
-        url: '/images/hero-su-damlasi.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Bahri Budak — Örgü, Boya ve Apre',
-      },
-    ],
+      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
+    title: 'Bahri Budak | Tekstil Boyama ve Apre Uzmanı',
     description:
-      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayınlar ve proses sistemleri.',
-    images: ['/images/hero-su-damlasi.jpg'],
+      'Tekstil teknolojileri, proses yönetimi, teknik yayınlar, kişisel gelişim ve sektörel analizler.',
   },
   robots: {
     index: true,
@@ -53,22 +44,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){var p=location.pathname.split('/')[1];document.documentElement.lang=p==='en'?'en':'tr';})();",
-          }}
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-white text-navy antialiased">
+      <body className="font-body bg-white text-navy antialiased dark:bg-[#0b1530] dark:text-slate-100">
         {children}
       </body>
     </html>
