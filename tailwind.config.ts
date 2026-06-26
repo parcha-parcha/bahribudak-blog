@@ -14,10 +14,10 @@ const config: Config = {
         navy: { DEFAULT: '#0B2343', light: '#12365E', dark: '#061A33' },
         accent: { blue: '#2EA6D9', pale: '#EAF6FC' },
         yellow: { bb: '#2EA6D9', light: '#5BBBE6', pale: '#EAF6FC' },
-        gray: { soft: '#F3F6FA', mid: '#E8EDF3', text: '#5D5F63', border: '#D8DDE5', silver: '#A9ABAE' },
+        gray: { soft: '#F5F7FA', mid: '#EAF6FC', text: '#4C5561', border: '#D8DDE5', silver: '#A9ABAE' },
         surface: { dark: '#061A33', 'dark-2': '#0B2343' },
       },
-      fontFamily: { heading: ['Montserrat', 'Arial', 'sans-serif'], body: ['Inter', 'Arial', 'sans-serif'], poppins: ['Montserrat', 'Arial', 'sans-serif'] },
+      fontFamily: { heading: ['Poppins', 'Arial', 'sans-serif'], body: ['Poppins', 'Arial', 'sans-serif'], poppins: ['Poppins', 'Arial', 'sans-serif'] },
       fontSize: {
         'display': ['3.5rem', { lineHeight: '1.1', fontWeight: '700' }],
         'headline': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }],

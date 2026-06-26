@@ -34,8 +34,14 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
 
   return (
     <div lang={lang} className="min-h-screen flex flex-col">
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-[#0B2343] px-4 py-2 text-sm font-bold text-white shadow-lg transition-transform focus:translate-y-0"
+      >
+        {lang === 'tr' ? 'Ana içeriğe geç' : 'Skip to main content'}
+      </a>
       <Header lang={lang as Lang} />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1" tabIndex={-1}>
         {children}
       </main>
       <Footer lang={lang as Lang} />

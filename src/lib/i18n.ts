@@ -7,7 +7,7 @@ export const ui = {
   tr: {
     // Navigation
     'nav.home': 'Ana Sayfa',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Teknik Yayınlar',
     'nav.about': 'Hakkımda',
     'nav.services': 'Hizmetler',
     'nav.news': 'Haberler',
@@ -16,16 +16,18 @@ export const ui = {
 
     // Categories
     'cat.kisisel-gelisim': 'Kişisel Gelişim',
-    'cat.tekstil': 'Tekstil',
-    'cat.turkiye-gundemi': 'Türkiye Gündemi',
-    'cat.dunya': 'Dünya',
+    'cat.tekstil': 'Tekstil ve Teknik Yayınlar',
+    'cat.uretim-yonetim': 'Üretim ve Yönetim Sistemleri',
+    'cat.sektorel-analiz': 'Sektörel ve Güncel Analizler',
+    
     'cat.all': 'Tümü',
 
     // Category descriptions
     'cat.kisisel-gelisim.desc': 'Kişisel gelişim, alışkanlıklar ve üretkenlik üzerine yazılar.',
-    'cat.tekstil.desc': 'Boyahane, proses, kalite, eğitim notu ve saha uygulamaları.',
-    'cat.turkiye-gundemi.desc': 'Türkiye gündemi, ekonomi ve sektör etkileri.',
-    'cat.dunya.desc': 'Dünya gündemi ve sektörel gelişmeler.',
+    'cat.tekstil.desc': 'Örgü, boya, apre, laboratuvar, reçete, proses, kalite, enerji ve formüller.',
+    'cat.uretim-yonetim.desc': 'Organizasyon, norm kadro, planlama, maliyet, verimlilik ve insan odaklı yönetim.',
+    'cat.sektorel-analiz.desc': 'Tekstil ekonomisi, ihracat, mevzuat, pazar ve güncel gelişmeler.',
+    
 
     // Blog
     'blog.readMore': 'Devamını Oku',
@@ -54,7 +56,7 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
-    'nav.blog': 'Blog',
+    'nav.blog': 'Technical Publications',
     'nav.about': 'About',
     'nav.services': 'Services',
     'nav.news': 'News',
@@ -62,15 +64,17 @@ export const ui = {
     'nav.contact': 'Contact',
 
     'cat.kisisel-gelisim': 'Personal Growth',
-    'cat.tekstil': 'Textile',
-    'cat.turkiye-gundemi': 'Turkey',
-    'cat.dunya': 'World',
+    'cat.tekstil': 'Textile and Technical Publications',
+    'cat.uretim-yonetim': 'Production and Management Systems',
+    'cat.sektorel-analiz': 'Industry and Current Analysis',
+    
     'cat.all': 'All',
 
     'cat.kisisel-gelisim.desc': 'Personal development, habits and productivity.',
-    'cat.tekstil.desc': 'Dyehouse, process, quality, training notes and field practice.',
-    'cat.turkiye-gundemi.desc': 'Turkey agenda, economy and sector impact.',
-    'cat.dunya.desc': 'World agenda and sector developments.',
+    'cat.tekstil.desc': 'Knitting, dyeing, finishing, laboratory, recipes, process, quality, energy and formulas.',
+    'cat.uretim-yonetim.desc': 'Organization, staffing, planning, cost, efficiency and people-oriented management.',
+    'cat.sektorel-analiz.desc': 'Textile economics, exports, regulation, markets and current developments.',
+    
 
     'blog.readMore': 'Read More',
     'blog.readingTime': 'min read',
@@ -114,9 +118,10 @@ export function useTranslations(lang: Lang | string | undefined) {
 }
 
 export const categories = [
-  { slug: 'tekstil', color: '#0B2343' },
-  { slug: 'kisisel-gelisim', color: '#5D5F63' },
-  { slug: 'turkiye-gundemi', color: '#5D5F63' },
+  { slug: 'tekstil', color: '#2EA6D9' },
+  { slug: 'uretim-yonetim', color: '#12365E' },
+  { slug: 'kisisel-gelisim', color: '#3B9C8C' },
+  { slug: 'sektorel-analiz', color: '#B7832F' },
 ] as const
 
 export type Category = typeof categories[number]['slug']
