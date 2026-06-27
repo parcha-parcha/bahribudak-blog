@@ -1,6 +1,6 @@
 import { notFound, permanentRedirect } from 'next/navigation'
 import { marked } from 'marked'
-import { getPost, getAllSlugs, processAreaLabel } from '@/lib/posts'
+import { getPost, getAllSlugs, getRelatedPosts, processAreaLabel } from '@/lib/posts'
 import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
@@ -90,6 +90,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const t = useTranslations(safeLang)
   const htmlContent = await marked(post.content)
   const processLabel = processAreaLabel(post.processArea, safeLang)
+  const relatedPosts = getRelatedPosts(safeLang, post.slug, 3)
 
   const dateLabel = new Date(post.date).toLocaleDateString(
     safeLang === 'tr' ? 'tr-TR' : 'en-US',
@@ -225,6 +226,60 @@ export default async function PostPage({ params }: PostPageProps) {
               </span>
             ))}
           </div>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <section className="mt-14 border-t border-gray-border pt-10">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#2EA6D9]">
+                  {safeLang === 'tr' ? 'Okumaya devam edin' : 'Continue reading'}
+                </p>
+                <h2 className="text-2xl font-bold text-navy md:text-3xl">
+                  {safeLang === 'tr' ? 'İlgili Yazılar' : 'Related Articles'}
+                </h2>
+              </div>
+              <Link
+                href={`/${lang}/blog`}
+                className="hidden text-sm font-bold text-navy hover:text-[#2EA6D9] md:inline"
+              >
+                {safeLang === 'tr' ? 'Tüm yayınlar →' : 'All publications →'}
+              </Link>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {relatedPosts.map(related => (
+                <article
+                  key={related.slug}
+                  className="overflow-hidden rounded-[20px] border border-[#D8DDE5] bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  {related.coverImage && (
+                    <Link href={`/${lang}/blog/${related.slug}`} className="block">
+                      <img
+                        src={related.coverImage}
+                        alt={related.title}
+                        className="h-44 w-full object-cover"
+                      />
+                    </Link>
+                  )}
+                  <div className="p-5">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2EA6D9]">
+                      {processAreaLabel(related.processArea, safeLang) ||
+                        (safeLang === 'tr' ? 'Teknik Yayın' : 'Technical Publication')}
+                    </p>
+                    <h3 className="mb-3 text-lg font-bold leading-snug text-navy">
+                      <Link href={`/${lang}/blog/${related.slug}`} className="hover:text-[#2EA6D9]">
+                        {related.title}
+                      </Link>
+                    </h3>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-[#4C5561]">
+                      {related.excerpt}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
         )}
 
         <div className="bb-dark-readable-panel mt-14 flex items-start gap-6 rounded-[24px] bg-navy p-7 text-white md:p-8">

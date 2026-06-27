@@ -161,3 +161,50 @@ export function getAllSlugs(lang: Lang): string[] {
     .filter(filename => parsePostFile(lang, filename).category !== 'felsefe')
     .map(f => f.replace(/\.(mdx|md)$/, ''))
 }
+
+function normalizeTag(value: string): string {
+  return categoryKey(value)
+}
+
+export function getRelatedPosts(
+  lang: Lang,
+  currentSlug: string,
+  limit = 3
+): PostMeta[] {
+  const currentPost = getPost(lang, currentSlug)
+  if (!currentPost || limit <= 0) return []
+
+  const currentTags = new Set(currentPost.tags.map(normalizeTag).filter(Boolean))
+
+  return getAllPosts(lang)
+    .filter(candidate => candidate.slug !== currentSlug)
+    .map(candidate => {
+      let score = 0
+
+      if (candidate.processArea && candidate.processArea === currentPost.processArea) {
+        score += 6
+      }
+
+      if (candidate.category === currentPost.category) {
+        score += 4
+      }
+
+      const sharedTagCount = candidate.tags
+        .map(normalizeTag)
+        .filter(tag => tag && currentTags.has(tag)).length
+
+      score += sharedTagCount * 3
+
+      if (candidate.technicalPublication === currentPost.technicalPublication) {
+        score += 1
+      }
+
+      return { candidate, score }
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score
+      return new Date(b.candidate.date).getTime() - new Date(a.candidate.date).getTime()
+    })
+    .slice(0, limit)
+    .map(({ candidate }) => candidate)
+}
