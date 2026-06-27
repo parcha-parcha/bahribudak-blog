@@ -1,0 +1,27 @@
+TURKUAZ–YEŞİL REAKTİF BOYAMA YAZISI — GÜVENLİ YAMA
+
+Bu paketi açın ve içindeki src ile public klasörlerini GitHub deposunun ANA DİZİNİNE,
+mevcut klasörlerle birleştirerek yükleyin.
+
+Kesin dosya yolları:
+
+src/content/tr/turkuaz-yesil-reaktif-boyamada-anyonik-noniyonik-islatici-secimi.mdx
+public/downloads/anyonik-noniyonik-islatici-teknik-not.docx
+public/images/turkuaz-yesil-anyonik-noniyonik-islatici.png
+
+Eski ve hatalı dosyaları silin:
+
+public/downloads/anyonik-noniyonik-islatici-teknik-not.docx.docx
+public/images/turkuaz-yesil-anyonik-noniyonik-islatici.png.png
+
+Yazı adresi:
+/tr/blog/turkuaz-yesil-reaktif-boyamada-anyonik-noniyonik-islatici-secimi
+
+İndirme adresi:
+/downloads/anyonik-noniyonik-islatici-teknik-not.docx
+
+Kontrol:
+1. GitHub commit tamamlanmalı.
+2. Vercel aynı repository ve aynı branch'i kullanmalı.
+3. Yeni deployment durumu Ready olmalı.
+4. Eski deployment yeniden açılmamalı.
