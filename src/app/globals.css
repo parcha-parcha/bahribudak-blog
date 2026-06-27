@@ -617,3 +617,20 @@ select:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+/* Teknik Yayınlar koyu kart okunabilirlik düzeltmesi */
+
+.bb-readable-page .bb-publication-card {
+  background-color: #061A33 !important;
+}
+
+.bb-readable-page .bb-publication-kicker {
+  color: #FFFFFF !important;
+}
+
+.bb-readable-page .bb-publication-title {
+  color: #FFFFFF !important;
+}
+
+.bb-readable-page .bb-publication-copy {
+  color: #EAF3FF !important;
+}
