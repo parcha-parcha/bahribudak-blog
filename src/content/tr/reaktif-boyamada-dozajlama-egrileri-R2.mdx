@@ -1,0 +1,193 @@
+---
+title: "Reaktif Boyamada Dozajlama Eğrileri"
+date: "2026-06-26"
+excerpt: "Lineer, progresif ve regresif dozajlama eğrilerini; kümülatif hacim, anlık pompa debisi, pH-zaman profili, kumaş tur süresi ve pompa kapasitesi üzerinden açıklayan teknik inceleme."
+category: "tekstil"
+coverImage: "/images/reaktif-boyamada-dozajlama-egrileri.jpg"
+tags: ["reaktif boyama", "dozajlama eğrileri", "progresif dozajlama", "alkali", "elektrolit", "fiksaj", "pompa debisi", "pH-zaman profili", "HT jet"]
+author: "Bahri Budak"
+slug: "reaktif-boyamada-dozajlama-egrileri"
+---
+
+Reaktif boyamada dozajlama eğrisi yalnızca kimyasalın kaç dakikada verileceğini gösteren bir zaman programı değildir. Boyarmadde, elektrolit ve alkalinin banyoya giriş hızını; makine hidrodinamiği, kumaş tur süresi, pH değişimi ve fiksaj kinetiğiyle uyumlu hâle getiren temel bir proses kontrol aracıdır.
+
+<figure className="my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+  <img
+    src="/images/reaktif-boyamada-dozajlama-egrileri.jpg"
+    alt="Reaktif boyamada dozajlama eğrileri teknik yayın görseli"
+    width="1080"
+    height="1080"
+    loading="eager"
+    className="block h-auto w-full"
+  />
+</figure>
+
+
+<div className="my-8 rounded-2xl border border-accent-blue/25 bg-[#EAF6FC] p-6">
+  <p className="mb-2 text-sm font-bold uppercase tracking-[0.12em] text-accent-blue">
+    Temel denklem
+  </p>
+  <p className="mb-2 text-xl font-bold text-navy">
+    Q(t) = dV(t) / dt
+  </p>
+  <p className="m-0 text-navy/75">
+    Anlık debi, kümülatif verilen hacmin zamana göre türevidir. Bu nedenle kümülatif hacim eğrisi ile pompa debisi eğrisi aynı grafik değildir.
+  </p>
+</div>
+
+## Dozajlama eğrisi nasıl okunmalıdır?
+
+Dozajlama programı iki ayrı değişken üzerinden değerlendirilmelidir:
+
+- **Kümülatif hacim V(t):** Dozaj başlangıcından belirli bir ana kadar banyoya verilen toplam çözelti hacmi.
+- **Anlık pompa debisi Q(t):** Belirli bir andaki gerçek besleme hızı, L/dak.
+
+Bu iki değer birbirine karıştırıldığında düz çizgi, eğri altında kalan alan ve tepe debi yorumları hatalı yapılır. Toplam dozajlanan hacim, kümülatif eğrinin son değeri olan **V(T)** ile belirlenir. Anlık debi grafiğinin altında kalan alan ise toplam hacmi verir.
+
+## Lineer, progresif ve regresif dozajlama
+
+### Lineer dozajlama
+
+Anlık debi sabittir. Eşit zaman aralıklarında eşit hacim verilir. Bu nedenle **Q(t)** grafiği yatay, **V(t)** grafiği doğrusal artan bir çizgidir.
+
+### Progresif dozajlama
+
+Anlık debi zamanla artar. Başlangıçta düşük tutulan kimyasal giriş hızı, proses ilerledikçe yükseltilir. Özellikle alkali ilavesinde amaç, pH yükselişini ve fiksaj hızını ani bir sıçrama yerine kontrollü bir profile dönüştürmektir.
+
+Progresif eğrinin güvenli olması yalnızca grafik şekline bağlı değildir. Son debi, pompanın kalibre edilmiş azami kapasitesini aşmamalı; dozaj noktası, ana flotte debisi ve banyo karışım kapasitesiyle birlikte doğrulanmalıdır.
+
+### Regresif dozajlama
+
+Anlık debi zamanla azalır. Başlangıçta yüksek, sonlara doğru düşük besleme yapılır. Ana reaktif boyama reçetelerinde evrensel bir tercih değildir; ancak belirli kimyasal besleme veya yıkama senaryolarında üretici tarafından tanımlanabilir.
+
+## Boyarmadde, elektrolit ve alkali için seçim
+
+Tek bir “doğru eğri” bütün reaktif boyarmaddeler, renk derinlikleri ve makineler için geçerli değildir. Seçim aşağıdaki değişkenlerle birlikte yapılmalıdır:
+
+- Boyarmaddenin reaktif grubu ve çözünürlüğü
+- Renk derinliği ve toplam boyarmadde miktarı
+- Flotte oranı ve gerçek banyo hacmi
+- Makine hidrodinamiği ve kumaş tur süresi
+- Alkali sistemi ve hedef pH-zaman profili
+- Dozaj pompasının kalibrasyon eğrisi
+- Boyarmadde ve makine tedarikçisinin proses önerileri
+
+### Boyarmadde
+
+Çoğu çektirme prosesinde boyarmadde çözeltisi elektrolit ve alkali öncesinde banyoya alınır. Kontrollü besleme uygulanacaksa çözünürlük, karışım süresi, kumaş turu ve dozaj noktasının konumu birlikte doğrulanmalıdır.
+
+### Elektrolit
+
+Tuz, boyarmaddenin life afinitesini ve çektirme hızını artırır. Koyu tonlarda başlangıç ilavesi, porsiyonlu besleme, progresif dozajlama veya alkaliyle eş zamanlı besleme gibi farklı yaklaşımlar kullanılabilir. Yüksek elektrolit derişimi özellikle ftalosiyanin esaslı turkuazlarda çözünürlük, aglomerasyon ve nokta riskini artırabilir.
+
+### Alkali
+
+Alkali, selüloz ile reaktif boyarmadde arasındaki kovalent bağ oluşumunu başlatır. Kontrollü alkali ilavesinin temel amacı pH yükselişini ve fiksaj hızını yönetmektir. Ani pH yükselişi; abraj, yüzeysel fiksaj ve yetersiz penetrasyon riskini artırabilir.
+
+## Koyu tonlarda proses tasarımı
+
+Koyu tonlarda dozaj süresi yalnızca sabit bir dakika değeri üzerinden belirlenmemelidir. Sıcaklık, migrasyon, elektrolit yükü, alkali besleme şekli, gerçek pompa debisi ve kumaş tur sayısı birlikte değerlendirilmelidir.
+
+- Reaktif boyama sıcaklığı boyarmadde sistemine göre belirlenir. Bazı bifonksiyonel seriler 60 °C, ftalosiyanin esaslı turkuaz ve parlak yeşiller ise farklı sıcaklık programları gerektirebilir.
+- Alkali öncesi sirkülasyon veya migrasyon süresi yalnızca dakika olarak değil, kumaşın yaptığı gerçek tur sayısıyla birlikte tanımlanmalıdır.
+- Dozajlama boyunca pH, sıcaklık, pompa çıkışı ve banyo sirkülasyonu izlenmelidir.
+- Son pH tek başına yeterli değildir; **pH-zaman eğrisi** prosesin gerçek davranışını gösterir.
+
+## Kumaş tur süresi ve hidrodinamik kontrol
+
+Tur süresi, kumaşın aynı referans noktasından iki ardışık geçişi arasındaki gerçek süredir. En güvenilir yöntem, dikiş veya işaretli bir nokta üzerinden sahada ölçüm yapmaktır.
+
+```text
+t_tur = L_kumas / v_kumas
+n_tur = T_doz / t_tur
+```
+
+Örneğin tur süresi 2,5 dakika ve alkali dozajı 45 dakika ise kumaş yaklaşık 18 tur; 60 dakika ise yaklaşık 24 tur yapar. Ancak dozaj süresi yalnızca tur süresinin sabit bir katı olarak belirlenmemelidir. Hedef tur sayısı, gerçek debi, pH-zaman profili ve renk derinliği birlikte değerlendirilmelidir.
+
+<div className="my-8 rounded-2xl border-l-4 border-accent-blue bg-[#F3F6FA] p-6">
+  <p className="mb-2 font-bold text-navy">Makine hidrodinamiği</p>
+  <p className="m-0 text-navy/75">
+    Dozajlama pompası debisi ile ana sirkülasyon pompası debisi aynı büyüklük değildir. Dozaj noktası, ana flotte debisi, by-pass ve ölü hacimler, kumaş hızı, nozül basıncı, banyo oranı ve dozaj pompası kalibrasyonu birlikte incelenmelidir.
+  </p>
+</div>
+
+## Matematiksel model
+
+Normalize edilmiş genel model, eğrilerin proses mantığını açıklamak için kullanılabilir. Gerçek PLC algoritması üreticiye göre polinom, parabolik, üstel, logaritmik, parçalı doğrusal veya tablo tabanlı olabilir.
+
+### Lineer model
+
+```text
+V(t) = V_toplam × t / T
+Q(t) = V_toplam / T
+```
+
+### Progresif güç modeli
+
+```text
+V(t) = V_toplam × (t / T)^k       k > 1
+Q(t) = k × V_toplam / T × (t / T)^(k - 1)
+Q_maks = k × V_toplam / T
+```
+
+Bu modelde **k** büyüdükçe dozajın daha büyük bölümü sürenin sonuna yığılır ve teorik son debi artar. Bu nedenle **k**, pompanın azami debisi ve banyo karışım kapasitesi dikkate alınmadan seçilemez.
+
+### Regresif güç modeli
+
+```text
+V(t) = V_toplam × [1 - (1 - t / T)^k]       k > 1
+Q(t) = k × V_toplam / T × (1 - t / T)^(k - 1)
+```
+
+### Kütle dengesi
+
+```text
+V(0) = 0
+V(T) = V_toplam
+Integral[0,T] Q(t) dt = V_toplam
+```
+
+## Pompa kapasitesi kontrolü
+
+Ortalama debi ve progresif model için gerekli asgari süre şu şekilde kontrol edilebilir:
+
+```text
+Q_ortalama = V_toplam / T
+T ≥ k × V_toplam / Q_pompa,maks
+```
+
+Örnek olarak toplam çözelti hacmi 600 L, süre 60 dakika ve **k = 2** ise ortalama debi 10 L/dak, teorik son debi 20 L/dak olur. Pompanın kalibre edilmiş azami debisi 15 L/dak ise bu eğri uygulanabilir değildir. Süre uzatılmalı, **k** azaltılmalı veya çözelti hacmi yeniden düzenlenmelidir.
+
+## Sonuç
+
+Reaktif boyamada dozajlama eğrisi; boyarmadde çektirmesini, elektrolit etkisini ve alkaliyle başlayan fiksajı banyo hidrodinamiğiyle uyumlu hâle getiren bir proses kontrol aracıdır.
+
+Uygun eğri yalnızca “lineer, progresif veya regresif” adıyla seçilemez. Gerçek L/dak değerleri, toplam çözelti hacmi, dozaj süresi, pH-zaman profili, kumaş tur süresi, pompa kapasitesi ve tedarikçi reçetesi birlikte değerlendirilmelidir.
+
+<div className="my-10 flex flex-col items-center gap-3">
+  <a
+    href="/downloads/reaktif-boyamada-dozajlama-egrileri.docx"
+    download
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center rounded-xl bg-[#0B2343] px-8 py-4 text-base font-bold text-white transition hover:bg-[#2EA6D9]"
+  >
+    DOCX İndir — Reaktif Boyamada Dozajlama Eğrileri
+  </a>
+  <a
+    href="/downloads/reaktif-boyamada-dozajlama-egrileri.docx"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-sm font-semibold text-[#0B2343] underline underline-offset-4"
+  >
+    İndirme başlamazsa dosyayı yeni sekmede aç
+  </a>
+</div>
+
+## Kaynakça
+
+1. CHT Germany GmbH. *Process Recommendations for BEZAKTIV Dyes.* Exhaust process, isothermal process ve COMBI DOS bölümleri.
+2. CHT Germany GmbH. *BEZAKTIV FX - Reactive Garment.* COMBI DOS ve turkuaz/parlak yeşil proses tabloları.
+3. US Patent 5,166,768 A (1992). *Process for level exhaust of cellulose fibers with reactive dyes: addition of fixing alkali according to a parabolic time function.*
+
+> **Uygulama notu:** Bu çalışma belirli bir makine için kesin üretim reçetesi değildir. Uygulamadan önce boyarmadde tedarikçisi teknik föyü, makine üreticisi dozaj algoritması ve işletmenin laboratuvar/parti doğrulaması esas alınmalıdır.
