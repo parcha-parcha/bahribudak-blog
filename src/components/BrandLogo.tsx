@@ -1,36 +1,28 @@
 type BrandLogoProps = {
-  variant?: 'horizontal' | 'mark' | 'vertical'
-  negative?: boolean
+  variant?: 'short' | 'labeled'
   className?: string
+  priority?: boolean
 }
 
 export default function BrandLogo({
-  variant = 'horizontal',
-  negative = false,
+  variant = 'short',
   className = '',
+  priority = false,
 }: BrandLogoProps) {
   const src =
-    variant === 'mark'
-      ? '/brand/bb-logo-amblem.svg'
-      : variant === 'vertical'
-        ? negative
-          ? '/brand/bb-logo-dikey-negatif.svg'
-          : '/brand/bb-logo-dikey.svg'
-        : negative
-          ? '/brand/bb-logo-yatay-negatif.svg'
-          : '/brand/bb-logo-yatay.svg'
+    variant === 'labeled'
+      ? '/brand/bb-logo-tanimli-kurumsal.svg'
+      : '/brand/bb-logo-kisa-kurumsal.svg'
 
   const alt =
-    variant === 'mark'
-      ? 'Bahri Budak amblem'
-      : 'Bahri Budak Tekstil Boyama ve Apre Uzmanı logosu'
+    variant === 'labeled'
+      ? 'Bahri Budak - Tekstil Proses Danışmanlığı resmî logosu'
+      : 'Bahri Budak resmî logosu'
 
   const defaultClass =
-    variant === 'mark'
-      ? 'h-12 w-12'
-      : variant === 'vertical'
-        ? 'h-64 w-auto max-w-full'
-        : 'h-20 w-auto max-w-full'
+    variant === 'labeled'
+      ? 'h-64 w-64 max-w-full'
+      : 'h-20 w-20'
 
   return (
     <img
@@ -38,7 +30,7 @@ export default function BrandLogo({
       alt={alt}
       className={`${className || defaultClass} shrink-0 object-contain`}
       style={{ display: 'block', maxWidth: '100%' }}
-      loading="eager"
+      loading={priority ? 'eager' : 'lazy'}
       decoding="async"
     />
   )
