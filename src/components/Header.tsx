@@ -3,6 +3,7 @@
 import BBHeaderSocialLinks from '@/components/BBHeaderSocialLinks'
 import BrandLogo from '@/components/BrandLogo'
 import ThemeToggle from '@/components/ThemeToggle'
+import SearchButton from '@/components/SearchButton'
 import type { Lang } from '@/lib/i18n'
 import { useTranslations } from '@/lib/i18n'
 import Link from 'next/link'
@@ -76,6 +77,7 @@ export default function Header({ lang }: HeaderProps) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <SearchButton lang={lang} />
           <ThemeToggle />
 
           <Link
