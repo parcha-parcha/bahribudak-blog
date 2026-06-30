@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { marked } from 'marked'
-import { getPost, getAllSlugs } from '@/lib/posts'
+import { getPost, getAllSlugs, getRelatedPosts } from '@/lib/posts'
 import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
@@ -68,6 +68,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const t = useTranslations(lang as Lang)
   const htmlContent = await marked(post.content)
+  const relatedPosts = getRelatedPosts(lang as Lang, slug, 3)
 
   return (
     <>
@@ -129,6 +130,47 @@ export default async function PostPage({ params }: PostPageProps) {
               </span>
             ))}
           </div>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <section className="mt-14 border-t border-gray-border pt-10" aria-labelledby="related-posts-title">
+            <div className="flex items-end justify-between gap-4 mb-6">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-text">
+                  {lang === 'tr' ? 'Okumaya devam edin' : 'Keep reading'}
+                </p>
+                <h2 id="related-posts-title" className="mt-2 text-2xl font-bold text-navy">
+                  {lang === 'tr' ? 'İlgili Yazılar' : 'Related Posts'}
+                </h2>
+              </div>
+              <Link href={`/${lang}/blog`} className="hidden sm:inline text-sm font-bold text-navy hover:underline">
+                {lang === 'tr' ? 'Tüm yazılar' : 'All posts'} →
+              </Link>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {relatedPosts.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/${lang}/blog/${item.slug}`}
+                  className="group rounded-xl border border-gray-border bg-white p-5 transition hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+                >
+                  <span className="text-xs font-bold uppercase tracking-wide text-gray-text">
+                    {t(`cat.${item.category.toLowerCase()}` as any)}
+                  </span>
+                  <h3 className="mt-3 font-bold leading-snug text-navy group-hover:underline">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-text line-clamp-3">
+                    {item.excerpt}
+                  </p>
+                  <span className="mt-4 inline-block text-sm font-bold text-navy">
+                    {lang === 'tr' ? 'Yazıyı oku' : 'Read article'} →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
         )}
 
         <div className="mt-16 bg-navy text-white rounded-xl p-8 flex items-start gap-6">
