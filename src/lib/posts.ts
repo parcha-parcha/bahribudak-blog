@@ -93,3 +93,42 @@ export function getAllSlugs(lang: Lang): string[] {
     .filter(f => f.endsWith('.mdx') || f.endsWith('.md'))
     .map(f => f.replace(/\.(mdx|md)$/, ''))
 }
+
+function normalizeValue(value: string): string {
+  return value
+    .toLocaleLowerCase('tr-TR')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+}
+
+export function getRelatedPosts(lang: Lang, slug: string, limit = 3): PostMeta[] {
+  const current = getPost(lang, slug)
+  if (!current) return []
+
+  const currentCategory = normalizeValue(current.category)
+  const currentTags = new Set(current.tags.map(tag => normalizeValue(tag)))
+
+  return getAllPosts(lang)
+    .filter(post => post.slug !== slug)
+    .map(post => {
+      const sameCategory = normalizeValue(post.category) === currentCategory
+      const sharedTags = post.tags.reduce(
+        (count, tag) => count + (currentTags.has(normalizeValue(tag)) ? 1 : 0),
+        0
+      )
+
+      return {
+        post,
+        score: sharedTags * 3 + (sameCategory ? 2 : 0),
+      }
+    })
+    .filter(item => item.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
+    })
+    .slice(0, limit)
+    .map(item => item.post)
+}
+
