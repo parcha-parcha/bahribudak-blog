@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { permanentRedirect } from 'next/navigation'
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   return {
-    title: 'Tekstil Teknik Dokümanları',
+    title: 'Tekstil Teknik Dokümanları | Bahri Budak',
     description:
       'Boyahane, laboratuvar, terbiye ve proses kontrol süreçleri için hazırlanmış teknik eğitim notları, uygulama dokümanları ve kontrol tabloları.',
   }
@@ -148,9 +147,8 @@ const fileTypes = [
   },
 ]
 
-export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang = 'tr' } = await params
-  if (lang === 'en') permanentRedirect('/en/magazam')
+export default function Page({ params }: { params: { lang: string } }) {
+  const lang = params.lang || 'tr'
 
   return (
     <main className="min-h-screen bg-[#F3F6FA] text-navy">

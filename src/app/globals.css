@@ -3,23 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bb-navy: #0B2343;
-  --bb-navy-2: #12365E;
-  --bb-process-blue: #2EA6D9;
-  --bb-sky: #5BBBE6;
-  --bb-ice: #EAF6FC;
-  --bb-paper: #F5F7FA;
-  --bb-graphite: #4C5561;
-  --bb-white: #FFFFFF;
   --navy:       #0B2343;
   --navy-light: #12365E;
   --navy-dark:  #061A33;
   --yellow:     #2EA6D9;
   --yellow-pale:#EAF6FC;
   --white:      #ffffff;
-  --gray-soft:  #F5F7FA;
+  --gray-soft:  #F3F6FA;
   --gray-mid:   #E8EDF3;
-  --gray-text:  #4C5561;
+  --gray-text:  #5D5F63;
   --gray-border:#D8DDE5;
 }
 
@@ -27,13 +19,13 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     color: var(--navy);
     background: var(--white);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
     color: var(--navy);
     line-height: 1.2;
@@ -48,11 +40,11 @@
 @layer components {
   /* ── BB Signature ── */
   .bb-signature {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     color: var(--navy);
   }
 
-  /* ── Process-blue accent strip ── */
+  /* ── Yellow accent strip ── */
   .yellow-strip {
     border-left: 8px solid var(--yellow);
     padding-left: 1.25rem;
@@ -142,7 +134,7 @@
    GÜNÜN SÖZÜ
    ===================== */
 .quote-of-day {
-  background: #F5F7FA;
+  background: #F3F6FA;
   border-left: 4px solid #2EA6D9;
   border-radius: 8px;
   padding: 1.5rem 2rem;
@@ -205,7 +197,7 @@
     linear-gradient(90deg, rgba(46,166,217,.05) 1px, transparent 1px);
   background-size: 42px 42px, 84px 84px;
 }
-.bb-soft-panel { background: linear-gradient(180deg, #ffffff 0%, #F5F7FA 100%); border: 1px solid #D8DDE5; }
+.bb-soft-panel { background: linear-gradient(180deg, #ffffff 0%, #F3F6FA 100%); border: 1px solid #D8DDE5; }
 
 
 /* Revizyon 3: okunabilirlik düzeltmeleri */
@@ -215,13 +207,13 @@
   text-rendering: optimizeLegibility;
 }
 .bb-readable-muted { color: #263B57 !important; }
-.bb-readable-soft { color: #4C5561 !important; }
+.bb-readable-soft { color: #3E4F66 !important; }
 .bb-readable-dark-panel { color: rgba(255,255,255,.86) !important; }
 
 
 /* Revizyon 4: Hakkımda ve Hizmetler sayfalarında açık zemin + yüksek kontrast */
 .bb-readable-page {
-  background: #F5F7FA !important;
+  background: #F3F6FA !important;
   color: #0B2343 !important;
 }
 .bb-readable-page p,
@@ -240,7 +232,7 @@
 
 /* REV7: Okunabilirlik ve felsefe sonrası kontrast düzeltmeleri */
 .bb-readable-page {
-  background: #F5F7FA !important;
+  background: #F3F6FA !important;
   color: #0B2343 !important;
 }
 .bb-readable-page h1,
@@ -253,13 +245,13 @@
   color: inherit;
 }
 .bb-readable-page .section-label {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-readable-page .text-navy {
   color: #0B2343 !important;
 }
 .bb-readable-page .text-gray-text {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-readable-page .text-navy\/80 {
   color: rgba(11,35,67,.86) !important;
@@ -277,12 +269,12 @@
 
 /* REV8: Haberler sayfası okunabilirlik düzeltmesi */
 .bb-news-readable {
-  background: #F5F7FA !important;
+  background: #F3F6FA !important;
   color: #0B2343 !important;
   border-radius: 24px;
 }
 .bb-news-readable .section-label {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-news-title,
 .bb-news-readable h1,
@@ -291,7 +283,7 @@
   color: #0B2343 !important;
 }
 .bb-news-muted {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-news-card {
   background: #FFFFFF !important;
@@ -305,10 +297,10 @@
   color: #2EA6D9 !important;
 }
 .bb-news-card-desc {
-  color: #4C5561 !important;
+  color: #3E4F66 !important;
 }
 .bb-news-date {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-news-readable button {
   color: #0B2343;
@@ -358,11 +350,11 @@
   color: #2EA6D9 !important;
 }
 .post-card p {
-  color: #4C5561 !important;
+  color: #3E4F66 !important;
 }
 .post-card time,
 .post-card .text-gray-text {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .bb-dark-readable-panel .section-label {
   color: rgba(255,255,255,.72) !important;
@@ -373,13 +365,13 @@
 
 
 /* REV13: Kurumsal font ve renk standardı düzeltmesi
-   Ana yazı ailesi: Poppins
-   Renkler: Navy #0B2343, Deep #061A33, Accent #2EA6D9, Gray #4C5561 */
+   Başlık: Montserrat / Gövde: Inter
+   Renkler: Navy #0B2343, Deep #061A33, Accent #2EA6D9, Gray #5D5F63 */
 .font-heading, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', Arial, sans-serif !important;
+  font-family: 'Montserrat', Arial, sans-serif !important;
 }
 body, p, li, a, span, button, input, textarea {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
 }
 .post-card .cat-badge,
 .bb-readable-page .post-card .cat-badge {
@@ -392,23 +384,23 @@ body, p, li, a, span, button, input, textarea {
   background: #2EA6D9 !important;
 }
 .post-card .post-card-readtime {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
   font-weight: 600 !important;
 }
 .post-card .post-card-title,
 .post-card .post-card-title a {
   color: #0B2343 !important;
-  font-family: 'Poppins', Arial, sans-serif !important;
+  font-family: 'Montserrat', Arial, sans-serif !important;
   font-weight: 800 !important;
 }
 .post-card .post-card-title a:hover {
   color: #2EA6D9 !important;
 }
 .post-card .post-card-excerpt {
-  color: #4C5561 !important;
+  color: #3E4F66 !important;
 }
 .post-card .post-card-date {
-  color: #4C5561 !important;
+  color: #5D5F63 !important;
 }
 .post-card .post-card-readmore {
   color: #0B2343 !important;
@@ -431,206 +423,4 @@ body, p, li, a, span, button, input, textarea {
 }
 .post-card .post-card-accent {
   background: #2EA6D9 !important;
-}
-
-
-/* REV03: Teknik yayın sistemi */
-.technical-document-control > div > div {
-  display: flex;
-  min-height: 74px;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
-  border-left: 3px solid #2EA6D9;
-  padding-left: 0.85rem;
-}
-.technical-document-control span {
-  color: #4C5561;
-  font-size: 0.72rem;
-  font-weight: 600;
-  line-height: 1.35;
-}
-.technical-document-control strong {
-  color: #0B2343;
-  font-size: 0.86rem;
-  line-height: 1.4;
-}
-.technical-prose {
-  max-width: none;
-}
-.technical-prose h2 {
-  scroll-margin-top: 7rem;
-}
-.technical-prose table {
-  width: 100%;
-  margin: 1.75rem 0 2rem;
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  border: 1px solid #D8DDE5;
-  border-radius: 16px;
-  font-size: 0.92rem;
-}
-.technical-prose thead {
-  background: #0B2343;
-  color: #FFFFFF;
-}
-.technical-prose th {
-  padding: 0.9rem 1rem;
-  text-align: left;
-  font-weight: 700;
-  vertical-align: top;
-}
-.technical-prose td {
-  padding: 0.85rem 1rem;
-  border-top: 1px solid #D8DDE5;
-  color: #263B57;
-  vertical-align: top;
-  line-height: 1.65;
-}
-.technical-prose tbody tr:nth-child(even) {
-  background: #F5F7FA;
-}
-.technical-prose ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.4rem;
-  list-style: decimal;
-}
-.technical-prose ol li,
-.technical-prose ul li {
-  margin-bottom: 0.55rem;
-  line-height: 1.75;
-}
-.technical-prose code {
-  border: 1px solid #D8DDE5;
-  border-radius: 6px;
-  background: #EAF6FC;
-  padding: 0.08rem 0.35rem;
-  color: #0B2343;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9em;
-}
-.technical-prose pre {
-  margin: 1.5rem 0 2rem;
-  overflow-x: auto;
-  border-left: 4px solid #2EA6D9;
-  border-radius: 0 14px 14px 0;
-  background: #061A33;
-  padding: 1.1rem 1.25rem;
-  color: #FFFFFF;
-}
-.technical-prose pre code {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: inherit;
-  font-size: 0.9rem;
-  line-height: 1.75;
-}
-.technical-prose hr {
-  margin: 2.5rem 0;
-  border: 0;
-  border-top: 1px solid #D8DDE5;
-}
-@media (max-width: 767px) {
-  .technical-prose table {
-    display: block;
-    overflow-x: auto;
-    white-space: normal;
-  }
-  .technical-prose th,
-  .technical-prose td {
-    min-width: 150px;
-    padding: 0.75rem;
-  }
-}
-
-
-/* REV07: Site geneli kalite, erişilebilirlik ve mobil tablo kontrolü */
-html {
-  scroll-padding-top: 6.5rem;
-}
-
-body {
-  min-width: 320px;
-  overflow-x: clip;
-}
-
-a,
-button,
-input,
-textarea,
-select {
-  outline-offset: 3px;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 3px solid #2EA6D9;
-  outline-offset: 3px;
-}
-
-.technical-prose {
-  overflow-wrap: anywhere;
-}
-
-.technical-prose table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  -webkit-overflow-scrolling: touch;
-}
-
-.technical-prose img,
-.prose-bb img {
-  height: auto;
-  max-width: 100%;
-}
-
-@media (max-width: 640px) {
-  .technical-prose table {
-    font-size: 0.82rem;
-  }
-
-  .technical-prose th,
-  .technical-prose td {
-    min-width: 10rem;
-    padding: 0.7rem 0.8rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* Teknik Yayınlar koyu kart okunabilirlik düzeltmesi */
-
-.bb-readable-page .bb-publication-card {
-  background-color: #061A33 !important;
-}
-
-.bb-readable-page .bb-publication-kicker {
-  color: #FFFFFF !important;
-}
-
-.bb-readable-page .bb-publication-title {
-  color: #FFFFFF !important;
-}
-
-.bb-readable-page .bb-publication-copy {
-  color: #EAF3FF !important;
 }
