@@ -2,6 +2,7 @@
 
 import BBHeaderSocialLinks from '@/components/BBHeaderSocialLinks'
 import BrandLogo from '@/components/BrandLogo'
+import SearchButton from '@/components/SearchButton'
 import type { Lang } from '@/lib/i18n'
 import { useTranslations } from '@/lib/i18n'
 import { getTranslatedPath } from '@/lib/translatedRoutes'
@@ -88,6 +89,8 @@ export default function Header({ lang }: HeaderProps) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <SearchButton lang={lang} />
+
           <Link
             href={switchedPath}
             className="rounded-full border border-[#D8DDE5] bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-[#0B2343] transition-colors hover:border-[#2EA6D9]"
