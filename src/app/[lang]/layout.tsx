@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -14,19 +13,6 @@ export async function generateStaticParams() {
   return langs.map(lang => ({ lang }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params
-  if (!langs.includes(lang as Lang)) return {}
-  return {
-    alternates: {
-      canonical: `https://bahribudak.com/${lang}`,
-      languages: {
-        'tr': 'https://bahribudak.com/tr',
-        'en': 'https://bahribudak.com/en',
-      }
-    }
-  }
-}
 
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params
