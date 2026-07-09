@@ -116,11 +116,11 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Bilgi; üretim ekiplerinin kullanacağı eğitim notu, kontrol listesi, form ve teknik yayına dönüştürülür.',
             },
           ],
-          resourcesLabel: 'KAYNAK MERKEZİ',
-          resourcesTitle: 'Teknik dokümanlar, formlar ve kontrol listeleri tek merkezde.',
-          resourcesText:
-            'Örgü, boya ve apre süreçleri için doğrulanmış PDF, XLSX ve DOCX kaynaklarına proses alanı ve dosya türüne göre erişin.',
-          resourcesCta: 'Kaynak Merkezini Aç',
+          resourcesLabel: 'TEKNİK DOKÜMANLAR',
+resourcesTitle: 'PDF, DOCX, XLSX, SOP ve kontrol formlarından oluşan profesyonel yayın paketleri.',
+resourcesText:
+  'Boyama, apre, laboratuvar, kalite ve üretim yönetimi alanlarında hazırlanmış indirilebilir teknik dokümanlara ve uzman paketlerine erişin.',
+resourcesCta: 'Teknik Dokümanları İncele',
           contactLabel: 'TEKNİK İLETİŞİM',
           contactTitle: 'Proses sorununu ölçülebilir bir çalışma kapsamına dönüştürelim.',
           contactText:
@@ -192,11 +192,11 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Knowledge is converted into training notes, checklists, forms and publications that production teams can use.',
             },
           ],
-          resourcesLabel: 'RESOURCE CENTER',
-          resourcesTitle: 'Technical documents, forms and checklists in one controlled library.',
-          resourcesText:
-            'Access verified PDF, XLSX and DOCX resources for knitting, dyeing and finishing by process area and file format.',
-          resourcesCta: 'Open Resource Center',
+          resourcesLabel: 'TECHNICAL DOCUMENTS',
+resourcesTitle: 'Professional publication packages including PDF, DOCX, XLSX, SOP and control forms.',
+resourcesText:
+  'Access downloadable technical documents and expert packages for dyeing, finishing, laboratory, quality and production management.',
+resourcesCta: 'Explore Technical Documents',
           contactLabel: 'TECHNICAL CONTACT',
           contactTitle: 'Let us turn your process problem into a measurable work scope.',
           contactText:
