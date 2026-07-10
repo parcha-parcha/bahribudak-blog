@@ -549,7 +549,7 @@ export default async function ChecklistsPage({
           <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
             {t.usageLabel}
           </p>
-          <h2 className="mt-3 max-w-4xl text-2xl font-bold md:text-3xl">
+          <h2 className="mt-3 max-w-4xl text-2xl font-bold text-white md:text-3xl">
             {t.usageTitle}
           </h2>
           <p className="mt-4 max-w-4xl text-sm leading-7 text-white/75">
