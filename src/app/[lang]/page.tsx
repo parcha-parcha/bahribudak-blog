@@ -149,6 +149,11 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Bilgi; eğitim notu, kontrol listesi, form, SOP ve teknik yayına dönüştürülür.',
             },
           ],
+          resourcesLabel: 'TEKNİK DOKÜMANLAR',
+resourcesTitle: 'PDF, DOCX, XLSX, SOP ve kontrol formlarından oluşan profesyonel yayın paketleri.',
+resourcesText:
+  'Boyama, apre, laboratuvar, kalite ve üretim yönetimi alanlarında hazırlanmış indirilebilir teknik dokümanlara ve uzman paketlerine erişin.',
+resourcesCta: 'Teknik Dokümanları İncele',
           contactLabel: 'TEKNİK İLETİŞİM',
           contactTitle: 'Proses sorununu ölçülebilir bir çalışma kapsamına dönüştürelim.',
           contactText:
@@ -252,6 +257,11 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Knowledge is converted into training notes, checklists, forms, SOPs and publications.',
             },
           ],
+          resourcesLabel: 'TECHNICAL DOCUMENTS',
+resourcesTitle: 'Professional publication packages including PDF, DOCX, XLSX, SOP and control forms.',
+resourcesText:
+  'Access downloadable technical documents and expert packages for dyeing, finishing, laboratory, quality and production management.',
+resourcesCta: 'Explore Technical Documents',
           contactLabel: 'TECHNICAL CONTACT',
           contactTitle: 'Let us turn your process problem into a measurable work scope.',
           contactText:
