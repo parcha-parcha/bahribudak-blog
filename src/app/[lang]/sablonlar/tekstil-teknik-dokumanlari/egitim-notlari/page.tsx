@@ -1,380 +1,706 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
-import { permanentRedirect } from 'next/navigation'
+import Link from 'next/link'
+import type { Lang } from '@/lib/i18n'
+import type { ResourceItem } from '@/lib/resources'
+import { resources } from '@/lib/resources'
 
-export async function generateMetadata({
-  params,
-}: {
+interface TrainingNotesPageProps {
   params: Promise<{ lang: string }>
-}): Promise<Metadata> {
-  return {
-    title: 'Eğitim Notları',
-    description:
-      'Kasar, boyama, yıkama, HT jet, renk düzeltme, laboratuvar reçete aktarımı, final kalite, ramöz-apre ve sanfor/kompaktör prosesleri için hazırlanmış tekstil eğitim notları.',
-  }
 }
 
-type TrainingNote = {
+type LocalizedText = Record<Lang, string>
+
+type TrainingNoteMeta = {
+  id: string
   no: string
-  status: string
-  title: string
-  category: string
-  description: string
-  details: string[]
-  tags: string[]
-  pdf?: string | null
-  docx?: string | null
+  pages: number
+  sections: number
+  category: LocalizedText
+  extra: LocalizedText
+  tags: Record<Lang, string[]>
 }
 
-const notes: TrainingNote[] = [
+const noteMeta: TrainingNoteMeta[] = [
   {
+    id: 'kasar-egitim',
     no: '01',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Pamuk ve Pamuk-Elastan Örme Kumaşlarda Kasar Eğitimi',
-    category: 'Ön terbiye ve boyamaya hazırlık',
-    description:
-      'İyi kasarın ölçülebilir tanımını; pamuk safsızlıklarını, alkali ve peroksit mantığını, yardımcı kimyasalların görevlerini, HT jet proses akışını, elastan risklerini, test yöntemlerini ve saha hatalarını aynı eğitim düzeninde açıklar.',
-    details: ['8 sayfa', 'PDF', '13 bölüm', 'Örnek proses şablonu'],
-    tags: ['Kasar', 'Pamuk', 'Elastan', 'Hidrofilite', 'Peroksit', 'HT jet'],
-    pdf: '/downloads/pamuk-pamuk-elastan-kasar-egitimi-r1.pdf',
-    docx: null,
+    pages: 8,
+    sections: 13,
+    category: {
+      tr: 'Ön terbiye ve boyamaya hazırlık',
+      en: 'Pretreatment and preparation for dyeing',
+    },
+    extra: {
+      tr: 'Örnek proses şablonu',
+      en: 'Sample process template',
+    },
+    tags: {
+      tr: ['Kasar', 'Pamuk', 'Elastan', 'Hidrofilite', 'Peroksit', 'HT jet'],
+      en: ['Pretreatment', 'Cotton', 'Elastane', 'Absorbency', 'Peroxide', 'HT jet'],
+    },
   },
   {
+    id: 'reaktif-egitim',
     no: '02',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Reaktif Boyama Eğitimi',
-    category: 'Pamuk boyama ve proses yönetimi',
-    description:
-      'Reaktif boyarmadde-lif ilişkisini; lif yüzeyine alınma, lif içine ilerleme, kumaş üzerinde renk dengelenmesi, elektrolit, alkali, pH, kimyasal bağlanma, suyla bozulma, HT jet proses seçenekleri, yıkama ve kalite kontrolüyle birlikte açıklar.',
-    details: ['9 sayfa', 'PDF', '14 bölüm', 'Proses ve hesaplama tabloları'],
-    tags: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Kimyasal bağlanma', 'Suyla bozulma', 'Art yıkama'],
-    pdf: '/downloads/pamuk-orme-kumaslarda-reaktif-boyama-egitimi-r2.pdf',
-    docx: null,
+    pages: 9,
+    sections: 14,
+    category: {
+      tr: 'Pamuk boyama ve proses yönetimi',
+      en: 'Cotton dyeing and process management',
+    },
+    extra: {
+      tr: 'Proses ve hesaplama tabloları',
+      en: 'Process and calculation tables',
+    },
+    tags: {
+      tr: ['Reaktif boyama', 'Pamuk', 'HT jet', 'Fiksaj', 'Hidroliz', 'Art yıkama'],
+      en: ['Reactive dyeing', 'Cotton', 'HT jet', 'Fixation', 'Hydrolysis', 'After-washing'],
+    },
   },
   {
+    id: 'dispers',
     no: '03',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Polyester Örme Kumaşlarda Dispers Boyama Eğitimi',
-    category: 'Polyester ve polyester-elastan boyama',
-    description:
-      'Dispers boyarmaddenin banyoda homojen dağılımını, boya çekimini, lif içine ilerlemesini, boyarmadde enerji sınıflarını, HT jet prosesini, pH ve yardımcı kimyasal yönetimini, indirgen temizlemeyi, oligomer ve ısı etkisiyle boya göçü risklerini sade Türkçe terminolojiyle açıklar.',
-    details: ['11 sayfa', 'PDF', '16 bölüm', 'Proses ve hata analiz tabloları'],
-    tags: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Isıl boya göçü'],
-    pdf: '/downloads/polyester-orme-kumaslarda-dispers-boyama-egitimi-r1.pdf',
-    docx: null,
+    pages: 11,
+    sections: 16,
+    category: {
+      tr: 'Polyester ve polyester-elastan boyama',
+      en: 'Polyester and polyester-elastane dyeing',
+    },
+    extra: {
+      tr: 'Proses ve hata analiz tabloları',
+      en: 'Process and defect-analysis tables',
+    },
+    tags: {
+      tr: ['Dispers boyama', 'Polyester', 'Elastan', 'İndirgen temizleme', 'Oligomer', 'Isıl boya göçü'],
+      en: ['Disperse dyeing', 'Polyester', 'Elastane', 'Reduction clearing', 'Oligomer', 'Thermomigration'],
+    },
   },
   {
+    id: 'poliamid-asit',
     no: '04',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Naylon / Poliamid Kumaşlarda Asit Boyama Eğitimi',
-    category: 'Poliamid ve poliamid-elastan boyama',
-    description:
-      'Asit boyarmadde-poliamid ilişkisini; boya çekim oranı, ilk boya alımı, lif içine ilerleme, bağlama kapasitesi, pH profili, asit dozajı, sıcaklık, düzgünlük, art işlem, haslık ve poliamid-elastan riskleriyle birlikte sade Türkçe terminolojiyle açıklar.',
-    details: ['9 sayfa', 'PDF', '16 bölüm', 'Proses ve hata analiz tabloları'],
-    tags: ['Naylon', 'Poliamid', 'Asit boyama', 'pH', 'Düzgünlük', 'Haslık'],
-    pdf: '/downloads/naylon-poliamid-kumaslarda-asit-boyama-egitimi-r3.pdf',
-    docx: null,
+    pages: 9,
+    sections: 16,
+    category: {
+      tr: 'Poliamid ve poliamid-elastan boyama',
+      en: 'Polyamide and polyamide-elastane dyeing',
+    },
+    extra: {
+      tr: 'Proses ve hata analiz tabloları',
+      en: 'Process and defect-analysis tables',
+    },
+    tags: {
+      tr: ['Naylon', 'Poliamid', 'Asit boyama', 'pH', 'Düzgünlük', 'Haslık'],
+      en: ['Nylon', 'Polyamide', 'Acid dyeing', 'pH', 'Levelness', 'Fastness'],
+    },
   },
   {
+    id: 'pes-co',
     no: '05',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Polyester / Pamuk Karışımlarda Boyama Eğitimi',
-    category: 'Karışım kumaşlarda dispers ve reaktif proses yönetimi',
-    description:
-      'Polyester/pamuk ve polyester/pamuk/elastan örme kumaşlarda boya sınıfı seçimini, lif oranı hesabını, çift banyo-iki aşama ve tek banyo-iki aşama proseslerini, pH-sıcaklık geçişini, indirgen temizlemeyi, reaktif yıkamayı, ton eşleştirmeyi ve kalite kontrolünü saha terminolojisiyle açıklar.',
-    details: ['10 sayfa', 'PDF', '18 bölüm', 'Tek ve çift banyo karşılaştırması'],
-    tags: ['PES/CO', 'Karışım kumaş', 'Dispers boyama', 'Reaktif boyama', 'İndirgen temizleme', 'Ton eşleştirme'],
-    pdf: '/downloads/pamuk-polyester-karisimlarda-boyama-egitimi-r1.pdf',
-    docx: null,
+    pages: 10,
+    sections: 18,
+    category: {
+      tr: 'Karışım kumaşlarda dispers ve reaktif proses yönetimi',
+      en: 'Disperse and reactive process management for blends',
+    },
+    extra: {
+      tr: 'Tek ve çift banyo karşılaştırması',
+      en: 'One-bath and two-bath comparison',
+    },
+    tags: {
+      tr: ['PES/CO', 'Karışım kumaş', 'Dispers boyama', 'Reaktif boyama', 'İndirgen temizleme', 'Ton eşleştirme'],
+      en: ['PES/CO', 'Blended fabric', 'Disperse dyeing', 'Reactive dyeing', 'Reduction clearing', 'Shade matching'],
+    },
   },
   {
+    id: 'yikama-indirgen',
     no: '06',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Boyama Sonrası Yıkama ve İndirgen Temizleme Eğitimi',
-    category: 'Yaş haslık, yüzey boyası ve final kalite yönetimi',
-    description:
-      'Reaktif boyamada bağlanmamış boyanın sıcak yıkamayla uzaklaştırılmasını, polyesterde indirgen temizlemeyi, açık-koyu renk yıkama farklarını, final pH ve iletkenlik kontrolünü, elastan risklerini, makine temizliğini ve haslık yönetimini saha terminolojisiyle açıklar.',
-    details: ['10 sayfa', 'PDF', '19 bölüm', 'Örnek proses ve hata tabloları'],
-    tags: ['Art yıkama', 'Reaktif sıcak yıkama', 'İndirgen temizleme', 'Final pH', 'Yaş haslık', 'Makine temizliği'],
-    pdf: '/downloads/boyama-sonrasi-yikama-ve-indirgen-temizleme-egitimi-r1.pdf',
-    docx: null,
+    pages: 10,
+    sections: 19,
+    category: {
+      tr: 'Yaş haslık, yüzey boyası ve final kalite yönetimi',
+      en: 'Wet fastness, surface dye and final-quality management',
+    },
+    extra: {
+      tr: 'Örnek proses ve hata tabloları',
+      en: 'Sample process and defect tables',
+    },
+    tags: {
+      tr: ['Art yıkama', 'Sıcak yıkama', 'İndirgen temizleme', 'Final pH', 'Yaş haslık', 'Makine temizliği'],
+      en: ['After-washing', 'Hot washing', 'Reduction clearing', 'Final pH', 'Wet fastness', 'Machine cleaning'],
+    },
   },
   {
+    id: 'ht-jet-yonetim',
     no: '07',
-    status: 'İNDİRİLEBİLİR',
-    title: 'HT Jet Boyahanede Proses Yönetimi ve Kritik Kontrol Noktaları Eğitimi',
-    category: 'Boyahane proses yönetimi ve tekrar üretilebilirlik',
-    description:
-      'Sipariş gözden geçirmeden laboratuvardan üretime aktarıma; kumaş, makine, su, boya ve kimyasal ön koşullarından pH, sıcaklık, dozaj ve dolaşım kontrolüne; sapma, ilave, vardiya teslimi, kök neden ve performans göstergelerine kadar bütün proses zincirini ölçülebilir bir yönetim sistemi içinde açıklar.',
-    details: ['8 sayfa', 'PDF', '20 bölüm', 'Kontrol planı ve KPI tabloları'],
-    tags: ['Proses yönetimi', 'Kritik kontrol', 'İlk seferde doğru üretim', 'Sapma yönetimi', 'KPI', 'İzlenebilirlik'],
-    pdf: '/downloads/ht-jet-boyahanede-proses-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    pages: 8,
+    sections: 20,
+    category: {
+      tr: 'Boyahane proses yönetimi ve tekrar üretilebilirlik',
+      en: 'Dyehouse process management and repeatability',
+    },
+    extra: {
+      tr: 'Kontrol planı ve KPI tabloları',
+      en: 'Control-plan and KPI tables',
+    },
+    tags: {
+      tr: ['Proses yönetimi', 'Kritik kontrol', 'İlk seferde doğru üretim', 'Sapma yönetimi', 'KPI', 'İzlenebilirlik'],
+      en: ['Process management', 'Critical control', 'Right first time', 'Deviation management', 'KPI', 'Traceability'],
+    },
   },
   {
+    id: 'renk-duzeltme',
     no: '08',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Boyahanelerde Renk İlavesi ve Renk Düzeltme Yönetimi Eğitimi',
-    category: 'Renk düzeltme, yeniden işlem ve maliyet yönetimi',
-    description:
-      'Renk farkının değerlendirilmesinden ilave kararına; tek ve iki yarım banyo, yeni banyoda ilave, apreden dönen mal, söküm ve yeniden boyama senaryolarından kök neden, kayıt, performans göstergeleri, maliyet ve iyileştirme sistemine kadar bütün süreci saha verileriyle açıklar.',
-    details: ['13 sayfa', 'PDF', '18 bölüm', 'Maliyet ve KPI tabloları'],
-    tags: ['Renk ilavesi', 'Renk düzeltme', 'Yarım banyo', 'Kök neden', 'İlk seferde doğru üretim', 'Maliyet yönetimi'],
-    pdf: '/downloads/boyahanelerde-renk-ilavesi-ve-renk-duzeltme-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    pages: 13,
+    sections: 18,
+    category: {
+      tr: 'Renk düzeltme, yeniden işlem ve maliyet yönetimi',
+      en: 'Shade correction, reprocessing and cost management',
+    },
+    extra: {
+      tr: 'Maliyet ve KPI tabloları',
+      en: 'Cost and KPI tables',
+    },
+    tags: {
+      tr: ['Renk ilavesi', 'Renk düzeltme', 'Yarım banyo', 'Kök neden', 'İlk seferde doğru üretim', 'Maliyet'],
+      en: ['Shade addition', 'Color correction', 'Half bath', 'Root cause', 'Right first time', 'Cost'],
+    },
   },
   {
+    id: 'lab-isletme',
     no: '09',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Laboratuvar Reçetesinden İşletme Reçetesine Geçiş Eğitimi',
-    category: 'Ölçek büyütme, reçete aktarımı ve ilk parti yönetimi',
-    description:
-      'Laboratuvar numunesinden işletme partisine geçişte kumaş, ön terbiye, su, boya, kimyasal, makine, gerçek flotte, sıcaklık, pH, süre ve dozaj değişkenlerinin nasıl eşleştirileceğini; % HT, g/L ve stok çözelti hesaplarını; reaktif, dispers ve asit boyamada aktarım kurallarını ve ilk parti onay sistemini açıklar.',
-    details: ['12 sayfa', 'PDF', '18 bölüm', 'Hesap, aktarım ve KPI tabloları'],
-    tags: ['Laboratuvar reçetesi', 'İşletme reçetesi', 'Ölçek büyütme', 'Gerçek flotte', 'İlk parti', 'İlk seferde doğru üretim'],
-    pdf: '/downloads/laboratuvar-recetesinden-isletme-recetesine-gecis-egitimi-r1.pdf',
-    docx: null,
+    pages: 12,
+    sections: 18,
+    category: {
+      tr: 'Ölçek büyütme, reçete aktarımı ve ilk parti yönetimi',
+      en: 'Scale-up, recipe transfer and first-batch management',
+    },
+    extra: {
+      tr: 'Hesap, aktarım ve KPI tabloları',
+      en: 'Calculation, transfer and KPI tables',
+    },
+    tags: {
+      tr: ['Laboratuvar reçetesi', 'İşletme reçetesi', 'Ölçek büyütme', 'Gerçek flotte', 'İlk parti', 'RFT'],
+      en: ['Laboratory recipe', 'Bulk recipe', 'Scale-up', 'Actual liquor ratio', 'First batch', 'RFT'],
+    },
   },
   {
+    id: 'ht-jet-kontrol',
     no: '10',
-    status: 'İNDİRİLEBİLİR',
-    title: 'HT Jet Makinesinde Proses Kontrolü Eğitimi',
-    category: 'Makine ayarları, çevrim kontrolü ve proses güvenliği',
-    description:
-      'HT jet makinesinde üretim öncesi uygunluk, parti ve yükleme hazırlığı, dikiş-halat kontrolü, gerçek flotte, kumaş hızı, tur süresi, düze, pompa, sıcaklık, basınç, dozaj, pH, iletkenlik, numune, alarm, sapma, boşaltma, temizlik ve vardiya kayıtlarını saha uygulamalarıyla açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
-    tags: ['HT jet', 'Kumaş tur süresi', 'Gerçek flotte', 'Düze ve pompa', 'Dozaj kontrolü', 'Proses güvenliği'],
-    pdf: '/downloads/ht-jet-makinesinde-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    pages: 14,
+    sections: 18,
+    category: {
+      tr: 'Makine ayarları, çevrim kontrolü ve proses güvenliği',
+      en: 'Machine settings, circulation control and process safety',
+    },
+    extra: {
+      tr: 'Hesap, kontrol ve KPI tabloları',
+      en: 'Calculation, control and KPI tables',
+    },
+    tags: {
+      tr: ['HT jet', 'Kumaş tur süresi', 'Gerçek flotte', 'Nozul ve pompa', 'Dozaj kontrolü', 'Proses güvenliği'],
+      en: ['HT jet', 'Fabric cycle time', 'Actual liquor ratio', 'Nozzle and pump', 'Dosing control', 'Process safety'],
+    },
   },
-
   {
+    id: 'haslik-final',
     no: '11',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Renk, Haslık ve Final Kalite Kontrolleri Eğitimi',
-    category: 'Renk ölçümü, haslık ve sevk onay yönetimi',
-    description:
-      'Boyalı ve apreli örme kumaşlarda numune alma, kondisyonlama, ışık kabini ve spektrofotometre ile renk kontrolü, renk farkı ve metamerizm, yıkama-su-sürtme-ter-ışık haslıkları, çekmezlik, dönme, gramaj, fiziksel performans, top kontrolü, karantina ve serbest bırakma kararlarını sistematik biçimde açıklar.',
-    details: ['13 sayfa', 'PDF', '18 bölüm', 'Test, karar ve KPI tabloları'],
-    tags: ['Renk kontrolü', 'Spektrofotometre', 'Haslık', 'Çekmezlik', 'Final kalite', 'Serbest bırakma'],
-    pdf: '/downloads/renk-haslik-ve-final-kalite-kontrolleri-egitimi-r1.pdf',
-    docx: null,
+    pages: 13,
+    sections: 18,
+    category: {
+      tr: 'Renk ölçümü, haslık ve sevk onay yönetimi',
+      en: 'Color measurement, fastness and release management',
+    },
+    extra: {
+      tr: 'Test, karar ve KPI tabloları',
+      en: 'Test, decision and KPI tables',
+    },
+    tags: {
+      tr: ['Renk kontrolü', 'Spektrofotometre', 'Haslık', 'Çekmezlik', 'Final kalite', 'Serbest bırakma'],
+      en: ['Color control', 'Spectrophotometer', 'Fastness', 'Shrinkage', 'Final quality', 'Release'],
+    },
   },
   {
+    id: 'ramoz-egitim',
     no: '12',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Ramöz ve Apre Proses Kontrolü Eğitimi',
-    category: 'Kurutma, ısı ile fikse, boyut ve apre yönetimi',
-    description:
-      'Örme kumaşlarda apre banyosu ve kimyasal uyumundan alınan flotte oranına; en, pozitif besleme, kumaş gerginliği, zincir, iğne-mandal, kurutma, ısı ile fikse, kürleme, gerçek kumaş sıcaklığı, etkin kalış süresi, en-gramaj-çekmezlik dengesi, kalite, sapma ve enerji yönetimine kadar ramöz prosesini sistematik biçimde açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Formül, kontrol ve KPI tabloları'],
-    tags: ['Ramöz', 'Apre', 'Alınan flotte', 'Pozitif besleme', 'Isı ile fikse', 'Enerji yönetimi'],
-    pdf: '/downloads/ramoz-ve-apre-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    pages: 14,
+    sections: 18,
+    category: {
+      tr: 'Kurutma, fikse, boyut ve apre yönetimi',
+      en: 'Drying, heat-setting, dimensional and finishing management',
+    },
+    extra: {
+      tr: 'Formül, kontrol ve KPI tabloları',
+      en: 'Formula, control and KPI tables',
+    },
+    tags: {
+      tr: ['Ramöz', 'Apre', 'Flotte alımı', 'Pozitif besleme', 'Fikse', 'Enerji yönetimi'],
+      en: ['Stenter', 'Finishing', 'Pick-up', 'Overfeed', 'Heat-setting', 'Energy management'],
+    },
   },
   {
+    id: 'sanfor-kompaktor',
     no: '13',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Örme Kumaşlarda Sanfor / Kompaktör ve Boyutsal Stabilite Eğitimi',
-    category: 'Kompaktlama, çekmezlik ve boyutsal stabilite yönetimi',
-    description:
-      'Açık en ve tüp örme kumaşlarda giriş relaksasyonu, buharlama, nem, kumaş tansiyonu, besleme, keçe ve kauçuk bant sistemleri, sıcaklık, basınç, hız, gerçek kompaktlama, boy-en çekmesi, spirallik, en-gramaj dengesi, final kalite, sapma ve enerji yönetimini sistematik biçimde açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Hesap, kontrol ve KPI tabloları'],
-    tags: ['Sanfor', 'Kompaktör', 'Boyutsal stabilite', 'Çekmezlik', 'Spirallik', 'En-gramaj dengesi'],
-    pdf: '/downloads/orme-kumaslarda-sanfor-kompaktor-ve-boyutsal-stabilite-egitimi-r1.pdf',
-    docx: null,
+    pages: 14,
+    sections: 18,
+    category: {
+      tr: 'Kompaktlama, çekmezlik ve boyutsal stabilite yönetimi',
+      en: 'Compaction, shrinkage and dimensional-stability management',
+    },
+    extra: {
+      tr: 'Hesap, kontrol ve KPI tabloları',
+      en: 'Calculation, control and KPI tables',
+    },
+    tags: {
+      tr: ['Sanfor', 'Kompaktör', 'Boyutsal stabilite', 'Çekmezlik', 'Spiralite', 'En-gramaj dengesi'],
+      en: ['Sanforizing', 'Compactor', 'Dimensional stability', 'Shrinkage', 'Spirality', 'Width-GSM balance'],
+    },
   },
   {
+    id: 'sardon-tras',
     no: '14',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Şardon, Traş ve Süet Fırça Makinelerinde Proses Kontrolü Eğitimi',
-    category: 'Şardon, traş ve süet yüzey işlemleri',
-    description:
-      'Şardon, traş ve süet fırçayı üç ayrı makine ve üç ayrı yüzey hedefi olarak ele alır. Şardonda kumaşa göre 1-4 pasajı; düzgün ve stabil hav için traşı; kadife ham ve bitim traşını; ayrı süet fırça makinesinde süet/şeftali tüyü etkisini, kalite, bakım, kütle kaybı ve enerji yönetimiyle birlikte açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Makine seçimi ve karar tabloları'],
-    tags: ['Şardon', 'Traş', 'Kadife traşı', 'Süet fırça', '1-4 pasaj', 'Yüzey kalitesi'],
-    pdf: '/downloads/sardon-tras-ve-firca-proses-kontrolu-egitimi-r1.pdf',
-    docx: null,
+    pages: 14,
+    sections: 18,
+    category: {
+      tr: 'Şardon, tıraş ve fırça yüzey işlemleri',
+      en: 'Raising, shearing and brushing surface processes',
+    },
+    extra: {
+      tr: 'Makine seçimi ve karar tabloları',
+      en: 'Machine-selection and decision tables',
+    },
+    tags: {
+      tr: ['Şardon', 'Tıraş', 'Kadife tıraşı', 'Fırça', 'Pasaj yönetimi', 'Yüzey kalitesi'],
+      en: ['Raising', 'Shearing', 'Velvet shearing', 'Brushing', 'Pass management', 'Surface quality'],
+    },
   },
   {
+    id: 'kimyasal-mutfak',
     no: '15',
-    status: 'İNDİRİLEBİLİR',
-    title: 'Boyahane Suyu, Boya-Kimyasal Mutfağı ve Dozaj Yönetimi Eğitimi',
-    category: 'Su kalitesi, hazırlama, dozaj ve izlenebilirlik',
-    description:
-      'Ham sudan yumuşatılmış, ters ozmoz ve geri kazanılmış su hatlarına; sertlik, pH, iletkenlik, demir, mangan ve klor kontrollerinden boyarmadde çözündürme, sıvı kimyasal seyreltme, stok çözelti, otomatik dozaj, hat temizliği, kalibrasyon, reçete hesabı ve kaynak verimliliğine kadar bütün sistemi açıklar.',
-    details: ['14 sayfa', 'PDF', '18 bölüm', 'Su kabul, hesap ve KPI tabloları'],
-    tags: ['Boyahane suyu', 'Su sertliği', 'Boya mutfağı', 'Kimyasal mutfak', 'Otomatik dozaj', 'Kalibrasyon'],
-    pdf: '/downloads/boyahane-suyu-boya-kimyasal-mutfagi-ve-dozaj-yonetimi-egitimi-r1.pdf',
-    docx: null,
+    pages: 14,
+    sections: 18,
+    category: {
+      tr: 'Su kalitesi, hazırlama, dozaj ve izlenebilirlik',
+      en: 'Water quality, preparation, dosing and traceability',
+    },
+    extra: {
+      tr: 'Su kabul, hesap ve KPI tabloları',
+      en: 'Water-acceptance, calculation and KPI tables',
+    },
+    tags: {
+      tr: ['Boyahane suyu', 'Su sertliği', 'Boya mutfağı', 'Kimyasal mutfak', 'Otomatik dozaj', 'Kalibrasyon'],
+      en: ['Dyehouse water', 'Water hardness', 'Color kitchen', 'Chemical kitchen', 'Automatic dosing', 'Calibration'],
+    },
   },
 ]
 
-export default async function Page({
+const copy = {
+  tr: {
+    metadataTitle: 'Tekstil Eğitim Notları',
+    metadataDescription:
+      'Kasar, reaktif, dispers ve asit boyama, HT jet, laboratuvar, kalite, ramöz, kompaktör ve mekanik apre prosesleri için doğrulanmış teknik eğitim notları.',
+    eyebrow: 'BB-DMS • TEKSTİL KAYNAK MERKEZİ',
+    title: 'Tekstil Eğitim Notları',
+    intro:
+      'Saha bilgisini; operatör, vardiya mühendisi, laboratuvar, proses ve kalite ekiplerinin aynı teknik dilde kullanabileceği sistematik eğitim dosyalarına dönüştüren profesyonel kaynak koleksiyonu.',
+    notes: 'eğitim notu',
+    pages: 'toplam sayfa',
+    sections: 'teknik bölüm',
+    approachLabel: 'EĞİTİM YAKLAŞIMI',
+    approachTitle: 'Bilgiyi anlatmanın ötesinde, sahada uygulanabilir hale getirmek',
+    approachText:
+      'Her eğitim notu; proses mantığını, kritik kontrol noktalarını, ölçüm yöntemlerini, hesaplamaları, örnek uygulamaları ve sık görülen hata risklerini aynı yapı içinde toplar. Reçete ve proses değerleri sabit kural olarak değil, işletme şartlarına göre doğrulanması gereken teknik başlangıç noktaları olarak sunulur.',
+    audienceLabel: 'KİM KULLANIR?',
+    audience: [
+      'Operatör ve yardımcı personel',
+      'Vardiya amiri ve vardiya mühendisi',
+      'Laboratuvar ve reçete hazırlama ekibi',
+      'Proses kontrol ve kalite ekipleri',
+      'Boyahane ve işletme yönetimi',
+      'Teknik eğitim ve danışmanlık çalışmaları',
+    ],
+    catalogLabel: 'DOĞRULANMIŞ EĞİTİM KATALOĞU',
+    catalogTitle: 'Proses zincirini adım adım açıklayan teknik eğitim dosyaları',
+    catalogText:
+      'Dosya başlıkları, sürüm bilgileri, boyutlar ve indirme bağlantıları ana kaynak kataloğuyla eş zamanlı tutulur.',
+    downloadable: 'İndirilebilir',
+    pageWord: 'sayfa',
+    sectionWord: 'bölüm',
+    contentTags: 'İçerik etiketleri',
+    version: 'Sürüm',
+    fileSize: 'Dosya boyutu',
+    fileLanguage: 'Dosya dili',
+    turkish: 'Türkçe',
+    english: 'İngilizce',
+    bilingual: 'Türkçe / İngilizce',
+    download: 'PDF dosyasını indir',
+    usageLabel: 'KULLANIM VE TEKNİK ONAY NOTU',
+    usageTitle: 'Eğitim notları işletme şartlarıyla birlikte değerlendirilmelidir',
+    usageText:
+      'Örnek reçete, doz, sıcaklık, süre, makine ayarı ve kabul kriterleri; kumaş tipi, konstrüksiyon, makine, gerçek flotte, renk grubu, ürün konsantrasyonu, müşteri şartnamesi ve laboratuvar denemesi dikkate alınarak teknik onaydan geçirilmelidir.',
+    back: 'Kaynak merkezine dön',
+    contact: 'Teknik talep oluştur',
+  },
+  en: {
+    metadataTitle: 'Textile Training Notes',
+    metadataDescription:
+      'Verified technical training notes for pretreatment, reactive, disperse and acid dyeing, HT jet, laboratory, quality, stenter, compactor and mechanical-finishing processes.',
+    eyebrow: 'BB-DMS • TEXTILE RESOURCE CENTER',
+    title: 'Textile Training Notes',
+    intro:
+      'A professional resource collection that converts field knowledge into structured training files used through a common technical language by operators, shift engineers, laboratory, process and quality teams.',
+    notes: 'training notes',
+    pages: 'total pages',
+    sections: 'technical sections',
+    approachLabel: 'TRAINING APPROACH',
+    approachTitle: 'Moving beyond explanation to practical application on the production floor',
+    approachText:
+      'Each training note combines process logic, critical control points, measurement methods, calculations, sample applications and common defect risks in one structure. Recipe and process values are presented as technical starting points that must be verified against actual plant conditions, not as fixed rules.',
+    audienceLabel: 'WHO USES THEM?',
+    audience: [
+      'Operators and production assistants',
+      'Shift supervisors and shift engineers',
+      'Laboratory and recipe-preparation teams',
+      'Process-control and quality teams',
+      'Dyehouse and plant management',
+      'Technical training and consulting projects',
+    ],
+    catalogLabel: 'VERIFIED TRAINING CATALOG',
+    catalogTitle: 'Technical training files explaining the process chain step by step',
+    catalogText:
+      'File titles, versions, sizes and download links are synchronized with the main resource catalog.',
+    downloadable: 'Downloadable',
+    pageWord: 'pages',
+    sectionWord: 'sections',
+    contentTags: 'Content tags',
+    version: 'Version',
+    fileSize: 'File size',
+    fileLanguage: 'File language',
+    turkish: 'Turkish',
+    english: 'English',
+    bilingual: 'Turkish / English',
+    download: 'Download PDF',
+    usageLabel: 'USE AND TECHNICAL-APPROVAL NOTE',
+    usageTitle: 'Training notes must be evaluated against actual plant conditions',
+    usageText:
+      'Sample recipes, dosages, temperatures, times, machine settings and acceptance criteria must be technically approved with reference to fabric type, construction, machine, actual liquor ratio, shade group, product concentration, customer specification and laboratory trials.',
+    back: 'Return to resource center',
+    contact: 'Create a technical request',
+  },
+} as const
+
+function resolveFileLanguage(item: ResourceItem, lang: Lang) {
+  const t = copy[lang]
+
+  if (item.fileLanguage === 'tr-en') return t.bilingual
+  if (item.fileLanguage === 'en') return t.english
+  return t.turkish
+}
+
+export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ lang: string }>
-}) {
-  const { lang = 'tr' } = await params
-  if (lang === 'en') permanentRedirect('/en/magazam')
+}: TrainingNotesPageProps): Promise<Metadata> {
+  const { lang: rawLang } = await params
+  const lang: Lang = rawLang === 'en' ? 'en' : 'tr'
+  const t = copy[lang]
+  const canonical = `https://bahribudak.com/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`
+
+  return {
+    title: t.metadataTitle,
+    description: t.metadataDescription,
+    keywords:
+      lang === 'tr'
+        ? [
+            'tekstil eğitim notları',
+            'boyahane eğitimi',
+            'HT jet',
+            'reaktif boyama',
+            'dispers boyama',
+            'ramöz',
+            'apre',
+          ]
+        : [
+            'textile training notes',
+            'dyehouse training',
+            'HT jet',
+            'reactive dyeing',
+            'disperse dyeing',
+            'stenter',
+            'finishing',
+          ],
+    alternates: {
+      canonical,
+      languages: {
+        tr: 'https://bahribudak.com/tr/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari',
+        en: 'https://bahribudak.com/en/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari',
+      },
+    },
+    openGraph: {
+      type: 'website',
+      url: canonical,
+      title: t.metadataTitle,
+      description: t.metadataDescription,
+      siteName: 'Bahri Budak',
+      locale: lang === 'tr' ? 'tr_TR' : 'en_US',
+    },
+  }
+}
+
+export default async function TrainingNotesPage({
+  params,
+}: TrainingNotesPageProps) {
+  const { lang: rawLang } = await params
+  const lang: Lang = rawLang === 'en' ? 'en' : 'tr'
+  const t = copy[lang]
+
+  const trainingNotes = noteMeta.flatMap((meta) => {
+    const resource = resources.find((item) => item.id === meta.id)
+    return resource ? [{ meta, resource }] : []
+  })
+
+  const totalPages = noteMeta.reduce((sum, item) => sum + item.pages, 0)
+  const totalSections = noteMeta.reduce((sum, item) => sum + item.sections, 0)
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: t.metadataTitle,
+    description: t.metadataDescription,
+    url: `https://bahribudak.com/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
+    inLanguage: lang === 'tr' ? 'tr-TR' : 'en-US',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: trainingNotes.length,
+      itemListElement: trainingNotes.map(({ resource }, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'DigitalDocument',
+          name: resource.title[lang],
+          description: resource.description[lang],
+          encodingFormat: 'application/pdf',
+          contentUrl: `https://bahribudak.com${resource.href}`,
+        },
+      })),
+    },
+  }
 
   return (
-    <main className="min-h-screen bg-[#F3F6FA] text-navy">
+    <main className="min-h-screen bg-[#F5F7FA] text-[#0B2343]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <section className="relative overflow-hidden bg-[#061A33] text-white">
-        <div className="absolute inset-0 bb-pattern opacity-40" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <p className="section-label text-accent-blue">TEKSTİL KAYNAK MERKEZİ</p>
-          <h1 className="mb-5 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">
-            Eğitim Notları
-          </h1>
-          <p className="max-w-3xl text-lg leading-relaxed text-white/84">
-            Saha bilgisini operatör, vardiya amiri, laboratuvar, proses ve kalite ekiplerinin aynı teknik dilde kullanabileceği eğitim dosyalarına dönüştürür.
-          </p>
+        <div className="absolute inset-0 bb-pattern opacity-35" />
+        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#2EA6D9]/15 blur-3xl" />
+        <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+          <div>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
+              {t.eyebrow}
+            </p>
+            <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white md:text-6xl">
+              {t.title}
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
+              {t.intro}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { value: trainingNotes.length.toString().padStart(2, '0'), label: t.notes },
+              { value: totalPages.toString(), label: t.pages },
+              { value: totalSections.toString(), label: t.sections },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-3xl border border-white/10 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
+              >
+                <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">
+                  {item.value}
+                </p>
+                <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.10em] text-white/60">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-            <p className="section-label">EĞİTİM YAKLAŞIMI</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy">
-              Bilgiyi yalnızca anlatmak değil, sahada uygulanabilir hale getirmek
+      <section className="mx-auto max-w-7xl px-6 py-14">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <article className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+              {t.approachLabel}
+            </p>
+            <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+              {t.approachTitle}
             </h2>
-            <p className="leading-relaxed text-navy/76">
-              Eğitim notları; proses mantığını, kritik kontrol noktalarını, ölçüm yöntemlerini, örnek uygulamaları ve sık yapılan hataları aynı dosyada birleştirir. Reçete değerleri sabit kural olarak değil, işletme şartlarına göre doğrulanması gereken teknik başlangıç noktaları olarak sunulur.
+            <p className="mt-5 max-w-4xl text-sm leading-7 text-[#0B2343]/72 md:text-base">
+              {t.approachText}
             </p>
           </article>
 
-          <aside className="rounded-[2rem] border border-gray-border bg-white p-7 shadow-sm md:p-9">
-            <p className="section-label">KİM KULLANIR?</p>
-            <div className="grid gap-3">
-              {[
-                'Yeni operatör ve yardımcı personel',
-                'Vardiya amiri ve vardiya mühendisi',
-                'Laboratuvar ve reçete hazırlama ekibi',
-                'Proses kontrol ve kalite ekipleri',
-                'Boyahane ve işletme yönetimi',
-                'Teknik eğitim ve danışmanlık çalışmaları',
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl bg-[#F3F6FA] px-4 py-3">
-                  <span className="h-2 w-2 rounded-full bg-accent-blue" />
-                  <span className="text-sm font-semibold text-navy/82">{item}</span>
+          <aside className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+              {t.audienceLabel}
+            </p>
+            <div className="mt-5 grid gap-3">
+              {t.audience.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl bg-[#F5F7FA] px-4 py-3"
+                >
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-[#2EA6D9]" />
+                  <span className="text-sm font-semibold text-[#0B2343]/80">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
           </aside>
         </div>
 
-        <div className="mt-12">
-          <div className="mb-7 max-w-3xl">
-            <p className="section-label">İNDİRİLEBİLİR EĞİTİMLER</p>
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
-              Teknik konuları adım adım açıklayan eğitim dosyaları
-            </h2>
-            <p className="leading-relaxed text-navy/72">
-              Tamamlanan eğitim notları PDF ve DOCX biçiminde indirilebilir. Hazırlık aşamasındaki dosyaların durumu kartların üzerinde gösterilir.
-            </p>
-          </div>
+        <div className="mt-14 border-b border-[#D8DDE5] pb-7">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+            {t.catalogLabel}
+          </p>
+          <h2 className="mt-2 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            {t.catalogTitle}
+          </h2>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[#0B2343]/65">
+            {t.catalogText}
+          </p>
+        </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {notes.map((item) => (
+        <section className="mt-7 grid gap-6 md:grid-cols-2">
+          {trainingNotes.map(({ meta, resource }) => {
+            const detailItems = [
+              `${meta.pages} ${t.pageWord}`,
+              'PDF',
+              `${meta.sections} ${t.sectionWord}`,
+              meta.extra[lang],
+            ]
+
+            return (
               <article
-                key={item.no}
-                className="flex h-full flex-col rounded-[2rem] border border-gray-border bg-white p-6 shadow-sm md:p-7"
+                key={resource.id}
+                className="group flex h-full flex-col rounded-[2rem] border border-[#D8DDE5] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#2EA6D9]/50 hover:shadow-[0_16px_45px_rgba(11,35,67,0.10)] md:p-7"
               >
                 <div className="mb-5 flex items-start justify-between gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-blue/20 bg-[#F3F6FA] text-lg font-black text-accent-blue">
-                    {item.no}
+                  <span className="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-2xl bg-[#061A33] px-3 text-base font-black text-white">
+                    {meta.no}
                   </span>
-                  <span className="rounded-full border border-accent-blue/25 bg-[#F3F6FA] px-3 py-2 text-[10px] font-black uppercase tracking-[0.13em] text-navy/65">
-                    {item.status}
-                  </span>
+
+                  <div className="flex flex-wrap justify-end gap-2">
+                    <span className="rounded-full bg-[#EAF6FC] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.11em] text-[#0B2343]">
+                      {t.downloadable}
+                    </span>
+                    <span className="rounded-full border border-[#2EA6D9]/30 px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#2EA6D9]">
+                      {resource.version}
+                    </span>
+                  </div>
                 </div>
 
-                <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-accent-blue">
-                  {item.category}
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2EA6D9]">
+                  {meta.category[lang]}
                 </p>
-                <h3 className="text-2xl font-bold leading-tight text-navy">{item.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-navy/72">{item.description}</p>
+                <h3 className="mt-2 text-2xl font-bold leading-tight text-[#0B2343]">
+                  {resource.title[lang]}
+                </h3>
+                <p className="mt-4 text-sm leading-6 text-[#0B2343]/70">
+                  {resource.description[lang]}
+                </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {item.details.map((detail) => (
+                  {detailItems.map((detail) => (
                     <span
                       key={detail}
-                      className="rounded-full border border-gray-border bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-navy/68"
+                      className="rounded-full border border-[#D8DDE5] bg-[#F5F7FA] px-3 py-1.5 text-xs font-semibold text-[#0B2343]/68"
                     >
                       {detail}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-5 border-t border-gray-border pt-5">
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-navy/50">
-                    İçerik etiketleri
+                <div className="mt-5 border-t border-[#D8DDE5] pt-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/45">
+                    {t.contentTags}
                   </p>
-                  <div className="flex flex-wrap gap-3">
-                    {item.tags.map((tag) => (
-                      <span key={tag} className="text-xs font-semibold text-navy/65">
+                  <div className="flex flex-wrap gap-x-4 gap-y-2">
+                    {meta.tags[lang].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-semibold text-[#0B2343]/62"
+                      >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-auto flex flex-wrap gap-3 pt-6">
-                  {item.pdf ? (
-                    <a
-                      href={item.pdf}
-                      download
-                      className="inline-flex rounded-full bg-navy px-5 py-3 text-sm font-bold text-white transition hover:bg-accent-blue"
-                    >
-                      PDF dosyasını indir
-                    </a>
-                  ) : (
-                    <span className="inline-flex cursor-not-allowed rounded-full bg-navy/10 px-5 py-3 text-sm font-bold text-navy/55">
-                      {item.status === 'SIRADA' ? 'Sırada' : 'Hazırlanıyor'}
-                    </span>
-                  )}
+                <dl className="mt-5 grid grid-cols-3 gap-3 rounded-2xl bg-[#F5F7FA] p-4 text-xs">
+                  <div>
+                    <dt className="font-semibold text-[#0B2343]/45">{t.version}</dt>
+                    <dd className="mt-1 font-bold text-[#0B2343]">{resource.version}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#0B2343]/45">{t.fileSize}</dt>
+                    <dd className="mt-1 font-bold text-[#0B2343]">{resource.size}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#0B2343]/45">{t.fileLanguage}</dt>
+                    <dd className="mt-1 font-bold text-[#0B2343]">
+                      {resolveFileLanguage(resource, lang)}
+                    </dd>
+                  </div>
+                </dl>
 
-                  {item.docx && (
-                    <a
-                      href={item.docx}
-                      download
-                      className="inline-flex rounded-full border border-navy/25 bg-white px-5 py-3 text-sm font-bold text-navy transition hover:border-accent-blue hover:text-accent-blue"
-                    >
-                      DOCX dosyasını indir
-                    </a>
-                  )}
+                <div className="mt-auto pt-6">
+                  <a
+                    href={resource.href}
+                    download
+                    aria-label={`${t.download}: ${resource.title[lang]}`}
+                    className="inline-flex w-full items-center justify-center rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2EA6D9] focus:outline-none focus:ring-2 focus:ring-[#2EA6D9] focus:ring-offset-2"
+                  >
+                    {t.download} · PDF
+                  </a>
                 </div>
               </article>
-            ))}
-          </div>
-        </div>
+            )
+          })}
+        </section>
 
-        <div className="mt-10 rounded-[2rem] border border-accent-blue/20 bg-[#061A33] p-7 text-white shadow-sm md:p-9">
-          <p className="section-label text-accent-blue">KULLANIM NOTU</p>
-          <h2 className="mb-4 text-3xl font-bold text-white">
-            Eğitim notları işletme şartlarıyla birlikte değerlendirilmelidir
+        <section className="mt-12 rounded-[2rem] bg-[#0B2343] px-6 py-8 text-white md:px-10 md:py-10">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
+            {t.usageLabel}
+          </p>
+          <h2 className="mt-3 max-w-4xl text-2xl font-bold md:text-3xl">
+            {t.usageTitle}
           </h2>
-          <p className="max-w-4xl leading-relaxed text-white/78">
-            Örnek reçete, doz, sıcaklık, süre ve kabul kriterleri; kumaş tipi, makine, flotte, renk grubu, kimyasal ürün konsantrasyonu, müşteri şartnamesi ve laboratuvar denemesi dikkate alınarak onaylanmalıdır.
+          <p className="mt-4 max-w-4xl text-sm leading-7 text-white/75">
+            {t.usageText}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href={`/${lang}/magazam`}
-              className="rounded-full bg-white px-5 py-3 text-sm font-bold text-navy transition hover:bg-accent-blue hover:text-white"
+              className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#0B2343] transition hover:bg-[#5BBBE6] hover:text-white"
             >
-              Kaynak merkezine dön
+              {t.back}
             </Link>
             <Link
               href={`/${lang}/contact`}
-              className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-navy"
+              className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#0B2343]"
             >
-              Talep oluştur
+              {t.contact}
             </Link>
           </div>
-        </div>
+        </section>
       </section>
     </main>
   )
