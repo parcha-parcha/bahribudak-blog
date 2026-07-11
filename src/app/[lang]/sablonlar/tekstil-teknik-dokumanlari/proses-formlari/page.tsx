@@ -140,7 +140,7 @@ const pageCopy = {
     version: 'Sürüm',
     size: 'Dosya boyutu',
     language: 'Dosya dili',
-    download: 'XLSX dosyasını indir',
+    download: 'Dosyayı indir',
     usageLabel: 'KULLANIM VE TEKNİK ONAY NOTU',
     usageTitle: 'Formlar işletmenin makine ve organizasyon yapısına göre uyarlanmalıdır',
     usageText:
@@ -199,7 +199,7 @@ const pageCopy = {
     version: 'Version',
     size: 'File size',
     language: 'File language',
-    download: 'Download XLSX file',
+    download: 'Download file',
     usageLabel: 'USE AND TECHNICAL APPROVAL NOTE',
     usageTitle: 'Forms must be adapted to the plant’s machine and organizational structure',
     usageText:
