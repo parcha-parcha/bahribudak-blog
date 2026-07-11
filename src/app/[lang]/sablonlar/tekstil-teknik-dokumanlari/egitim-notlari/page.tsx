@@ -332,7 +332,7 @@ const copy = {
     turkish: 'Türkçe',
     english: 'İngilizce',
     bilingual: 'Türkçe / İngilizce',
-    download: 'PDF dosyasını indir',
+    download: 'Dosyayı indir',
     usageLabel: 'KULLANIM VE TEKNİK ONAY NOTU',
     usageTitle: 'Eğitim notları işletme şartlarıyla birlikte değerlendirilmelidir',
     usageText:
@@ -378,7 +378,7 @@ const copy = {
     turkish: 'Turkish',
     english: 'English',
     bilingual: 'Turkish / English',
-    download: 'Download PDF',
+    download: 'Download file',
     usageLabel: 'USE AND TECHNICAL-APPROVAL NOTE',
     usageTitle: 'Training notes must be evaluated against actual plant conditions',
     usageText:
@@ -581,7 +581,7 @@ export default async function TrainingNotesPage({
           {trainingNotes.map(({ meta, resource }) => {
             const detailItems = [
               `${meta.pages} ${t.pageWord}`,
-              'PDF',
+              resource.format,
               `${meta.sections} ${t.sectionWord}`,
               meta.extra[lang],
             ]
@@ -667,7 +667,7 @@ export default async function TrainingNotesPage({
                     aria-label={`${t.download}: ${resource.title[lang]}`}
                     className="inline-flex w-full items-center justify-center rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2EA6D9] focus:outline-none focus:ring-2 focus:ring-[#2EA6D9] focus:ring-offset-2"
                   >
-                    {t.download} · PDF
+                    {t.download}
                   </a>
                 </div>
               </article>
