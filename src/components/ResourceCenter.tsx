@@ -532,7 +532,7 @@ export default function ResourceCenter({
                         {t.version}
                       </dt>
                       <dd className="mt-1 font-bold text-[#0B2343]">
-                        {item.version}
+                        {archived ? t.archive : item.version}
                       </dd>
                     </div>
                     <div>
