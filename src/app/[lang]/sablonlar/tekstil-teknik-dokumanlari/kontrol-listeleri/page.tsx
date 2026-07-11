@@ -159,7 +159,7 @@ const copy = {
     turkish: 'Türkçe',
     english: 'İngilizce',
     bilingual: 'Türkçe / İngilizce',
-    download: 'XLSX dosyasını indir',
+    download: 'Dosyayı indir',
     usageLabel: 'KULLANIM VE TEKNİK ONAY NOTU',
     usageTitle: 'Kontrol limitleri işletmenin gerçek şartlarına göre tanımlanmalıdır',
     usageText:
@@ -218,7 +218,7 @@ const copy = {
     turkish: 'Turkish',
     english: 'English',
     bilingual: 'Turkish / English',
-    download: 'Download XLSX',
+    download: 'Download file',
     usageLabel: 'USE AND TECHNICAL-APPROVAL NOTE',
     usageTitle: 'Control limits must be defined for actual plant conditions',
     usageText:
@@ -440,7 +440,7 @@ export default async function ChecklistsPage({
         <section className="mt-7 grid gap-6 md:grid-cols-2">
           {checklists.map(({ meta, resource }) => {
             const detailItems = [
-              'XLSX',
+              resource.format,
               `${meta.sheets} ${t.sheetWord}`,
               meta.fieldInfo[lang],
               meta.decision[lang],
