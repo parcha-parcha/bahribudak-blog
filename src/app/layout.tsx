@@ -41,7 +41,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' },
-      { url: '/favicon.png', type: 'image/png', sizes: '512x512' },
+      {
+        url: '/favicon.png',
+        type: 'image/png',
+        sizes: '512x512',
+      },
     ],
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -51,23 +55,29 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){var p=location.pathname.split('/')[1];document.documentElement.lang=p==='en'?'en':'tr';})();",
-          }}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
+
       <body className="font-body bg-white text-navy antialiased">
         {children}
       </body>
