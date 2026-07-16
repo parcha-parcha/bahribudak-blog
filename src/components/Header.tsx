@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 
 interface HeaderProps {
   lang: Lang
+  isAuthenticated: boolean
 }
 
 type NavItem = {
@@ -25,7 +26,7 @@ function isPathActive(pathname: string, href: string, homePath: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-export default function Header({ lang }: HeaderProps) {
+export default function Header({ lang, isAuthenticated }: HeaderProps) {
   const t = useTranslations(lang)
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -70,6 +71,14 @@ export default function Header({ lang }: HeaderProps) {
       label: t('nav.contact'),
     },
   ]
+  const authLink: NavItem = {
+    href: isAuthenticated
+      ? `/${lang}/${lang === 'tr' ? 'hesabim' : 'account'}`
+      : `/${lang}/${lang === 'tr' ? 'giris' : 'login'}`,
+    label: isAuthenticated
+      ? lang === 'tr' ? 'Hesabım' : 'Account'
+      : lang === 'tr' ? 'Giriş Yap' : 'Login',
+  }
 
   useEffect(() => {
     setMenuOpen(false)
@@ -149,6 +158,13 @@ export default function Header({ lang }: HeaderProps) {
 
         <div className="flex shrink-0 items-center gap-2">
           <SearchButton lang={lang} />
+
+          <Link
+            href={authLink.href}
+            className="hidden min-h-10 items-center rounded-full bg-[#0B2343] px-4 text-xs font-bold text-white transition-colors hover:bg-[#12365E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2 sm:inline-flex"
+          >
+            {authLink.label}
+          </Link>
 
           <Link
             href={switchedPath}
@@ -234,7 +250,7 @@ export default function Header({ lang }: HeaderProps) {
               }
             >
               <div className="grid gap-1 md:grid-cols-2">
-                {navLinks.map((link) => {
+                {[...navLinks, authLink].map((link) => {
                   const active = isPathActive(
                     pathname,
                     link.href,
