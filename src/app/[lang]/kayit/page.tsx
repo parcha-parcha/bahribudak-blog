@@ -1,2 +1,8 @@
 import AuthForm from '@/components/auth/AuthForm'
-export default function Page() { return <AuthForm lang="tr" mode="register" /> }
+import { redirect } from 'next/navigation'
+
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'tr') redirect('/en/register')
+  return <AuthForm lang="tr" mode="register" />
+}

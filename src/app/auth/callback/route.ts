@@ -10,5 +10,6 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) return NextResponse.redirect(new URL(next, request.url))
   }
-  return NextResponse.redirect(new URL('/tr/giris?error=callback', request.url))
+  const loginPath = next.startsWith('/en/') ? '/en/login' : '/tr/giris'
+  return NextResponse.redirect(new URL(`${loginPath}?error=callback`, request.url))
 }

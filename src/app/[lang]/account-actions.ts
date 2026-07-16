@@ -16,7 +16,6 @@ export async function updateProfile(formData: FormData) {
   const { error } = await supabase.from('profiles').update({
     full_name: fullName,
     company_name: companyName || null,
-    updated_at: new Date().toISOString(),
   }).eq('id', user.id)
   if (error) return { ok: false }
   revalidatePath(`/${lang}/${lang === 'tr' ? 'hesabim' : 'account'}`)

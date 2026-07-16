@@ -1,2 +1,8 @@
 import AccountPage from '@/components/auth/AccountPage'
-export default function Page() { return <AccountPage lang="tr" /> }
+import { redirect } from 'next/navigation'
+
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'tr') redirect('/en/account')
+  return <AccountPage lang="tr" />
+}

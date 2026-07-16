@@ -1,2 +1,8 @@
 import AccountPage from '@/components/auth/AccountPage'
-export default function Page() { return <AccountPage lang="en" /> }
+import { redirect } from 'next/navigation'
+
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'en') redirect('/tr/hesabim')
+  return <AccountPage lang="en" />
+}

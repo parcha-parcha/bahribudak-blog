@@ -3,7 +3,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import type { Lang } from '@/lib/i18n'
 import { langs } from '@/lib/i18n'
-import { getAuthenticatedUser } from '@/utils/supabase/session'
 
 interface LangLayoutProps {
   children: React.ReactNode
@@ -18,7 +17,6 @@ export async function generateStaticParams() {
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params
   if (!langs.includes(lang as Lang)) notFound()
-  const user = await getAuthenticatedUser()
 
   return (
     <div lang={lang} className="min-h-screen flex flex-col">
@@ -28,7 +26,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       >
         {lang === 'tr' ? 'Ana içeriğe geç' : 'Skip to main content'}
       </a>
-      <Header lang={lang as Lang} isAuthenticated={Boolean(user)} />
+      <Header lang={lang as Lang} />
       <main id="main-content" className="flex-1" tabIndex={-1}>
         {children}
       </main>
