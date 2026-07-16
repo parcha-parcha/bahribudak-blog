@@ -44,12 +44,11 @@ export default function AuthForm({ lang, mode }: { lang: Lang; mode: 'login' | '
     const supabase = createClient()
 
     if (isRegister) {
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${siteUrl.replace(/\/$/, '')}/auth/callback?next=${encodeURIComponent(authPath(lang, 'account'))}`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(authPath(lang, 'account'))}`,
           data: {
             full_name: String(form.get('full_name') ?? '').trim(),
             company_name: String(form.get('company_name') ?? '').trim(),

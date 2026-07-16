@@ -73,6 +73,7 @@ create trigger profiles_set_updated_at
 alter table public.profiles enable row level security;
 
 drop policy if exists "Users can read their own profile" on public.profiles;
+drop policy if exists "Users can view their own profile" on public.profiles;
 drop policy if exists "Users can update their own profile" on public.profiles;
 drop policy if exists "profiles_select_own" on public.profiles;
 drop policy if exists "profiles_update_own" on public.profiles;
