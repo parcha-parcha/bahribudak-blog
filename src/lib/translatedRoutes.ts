@@ -28,6 +28,14 @@ export function getTranslatedPath(pathname: string, fromLang: Lang, toLang: Lang
   const cleanPathname = pathname.split('?')[0].replace(/\/+$/, '') || `/${fromLang}`
   const blogPrefix = `/${fromLang}/blog/`
 
+  const localizedAuthRoutes: Record<Lang, Record<string, string>> = {
+    tr: { giris: 'login', kayit: 'register', hesabim: 'account' },
+    en: { login: 'giris', register: 'kayit', account: 'hesabim' },
+  }
+  const firstSegment = cleanPathname.slice(`/${fromLang}/`.length).split('/')[0]
+  const translatedAuthSegment = localizedAuthRoutes[fromLang][firstSegment]
+  if (translatedAuthSegment) return `/${toLang}/${translatedAuthSegment}`
+
   if (cleanPathname.startsWith(blogPrefix)) {
     const slug = cleanPathname.slice(blogPrefix.length).split('/')[0]
     const translatedSlug = resolveBlogSlugForLang(slug, toLang)

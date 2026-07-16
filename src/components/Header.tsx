@@ -3,6 +3,7 @@
 import BBHeaderSocialLinks from '@/components/BBHeaderSocialLinks'
 import BrandLogo from '@/components/BrandLogo'
 import SearchButton from '@/components/SearchButton'
+import AuthStatusLink from '@/components/auth/AuthStatusLink'
 import type { Lang } from '@/lib/i18n'
 import { useTranslations } from '@/lib/i18n'
 import { getTranslatedPath } from '@/lib/translatedRoutes'
@@ -150,6 +151,11 @@ export default function Header({ lang }: HeaderProps) {
         <div className="flex shrink-0 items-center gap-2">
           <SearchButton lang={lang} />
 
+          <AuthStatusLink
+            lang={lang}
+            className="hidden min-h-10 items-center rounded-full bg-[#0B2343] px-4 text-xs font-bold text-white transition-colors hover:bg-[#12365E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2 sm:inline-flex"
+          />
+
           <Link
             href={switchedPath}
             className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-[#D8DDE5] bg-white px-3 text-[11px] font-bold uppercase tracking-wider text-[#0B2343] transition-colors hover:border-[#2EA6D9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
@@ -267,6 +273,12 @@ export default function Header({ lang }: HeaderProps) {
                     </Link>
                   )
                 })}
+                <AuthStatusLink
+                  lang={lang}
+                  className="flex min-h-12 items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-[#0B2343] transition-colors hover:bg-[#EAF6FC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-inset"
+                  onClick={() => setMenuOpen(false)}
+                  showArrow
+                />
               </div>
 
               <div className="mt-4 flex items-center justify-between gap-4 border-t border-[#D8DDE5] pt-4 md:hidden">
