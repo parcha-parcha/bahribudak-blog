@@ -26,14 +26,9 @@ export async function GET(
   }
 
   const supabase = await createClient()
-  const { data: { user }, error: authError } = await supabase.auth.getUser()
-
-  if (authError) {
-    return NextResponse.json(
-      { error: 'Unauthorized.' },
-      { status: 401, headers: noStoreHeaders },
-    )
-  }
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
   const { data: accessRow, error: accessError } = await supabase.rpc('get_resource_access_for_download', {
     p_resource_id: resourceId,

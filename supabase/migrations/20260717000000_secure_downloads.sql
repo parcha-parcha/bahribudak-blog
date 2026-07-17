@@ -77,10 +77,6 @@ begin
     raise exception 'Resource inactive.' using errcode = 'P0002';
   end if;
 
-  if v_access_type = 'member' then
-    raise exception 'Member resource cannot be recorded anonymously.' using errcode = '42501';
-  end if;
-
   insert into public.download_events (user_id, resource_id, downloaded_at, user_agent)
   values (v_user_id, p_resource_id, now(), p_user_agent);
 end;
