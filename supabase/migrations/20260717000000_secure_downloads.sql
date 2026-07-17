@@ -43,64 +43,84 @@ alter table public.download_events
   alter column downloaded_at set default now();
 
 DO $$
-declare
-  v_has_resource_fk boolean;
-  v_has_user_fk boolean;
 begin
-  select exists (
+  if exists (
     select 1
-    from information_schema.table_constraints tc
-    join information_schema.key_column_usage kcu_src
-      on kcu_src.constraint_name = tc.constraint_name
-     and kcu_src.table_schema = tc.table_schema
-     and kcu_src.table_name = tc.table_name
-    join information_schema.referential_constraints rc
-      on rc.constraint_name = tc.constraint_name
-     and rc.constraint_schema = tc.table_schema
-    join information_schema.key_column_usage kcu_ref
-      on kcu_ref.constraint_name = rc.unique_constraint_name
-     and kcu_ref.table_schema = tc.table_schema
-    where tc.table_schema = 'public'
-      and tc.table_name = 'download_events'
-      and tc.constraint_type = 'FOREIGN KEY'
-      and kcu_src.column_name = 'resource_id'
-      and kcu_ref.table_name = 'resources'
-      and kcu_ref.column_name = 'id'
-  ) into v_has_resource_fk;
-
-  select exists (
-    select 1
-    from information_schema.table_constraints tc
-    join information_schema.key_column_usage kcu_src
-      on kcu_src.constraint_name = tc.constraint_name
-     and kcu_src.table_schema = tc.table_schema
-     and kcu_src.table_name = tc.table_name
-    join information_schema.referential_constraints rc
-      on rc.constraint_name = tc.constraint_name
-     and rc.constraint_schema = tc.table_schema
-    join information_schema.key_column_usage kcu_ref
-      on kcu_ref.constraint_name = rc.unique_constraint_name
-     and kcu_ref.table_schema = tc.table_schema
-    where tc.table_schema = 'public'
-      and tc.table_name = 'download_events'
-      and tc.constraint_type = 'FOREIGN KEY'
-      and kcu_src.column_name = 'user_id'
-      and kcu_ref.table_schema = 'auth'
-      and kcu_ref.table_name = 'users'
-      and kcu_ref.column_name = 'id'
-  ) into v_has_user_fk;
-
-  if not v_has_resource_fk then
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'download_events'
+      and column_name = 'product_file_id'
+      and is_nullable = 'NO'
+  ) then
     alter table public.download_events
-      add constraint download_events_resource_fk
+      alter column product_file_id drop not null;
+  end if;
+end $$;
+
+DO $$
+declare
+  v_resource_source_attnum smallint;
+  v_resource_target_attnum smallint;
+  v_user_source_attnum smallint;
+  v_user_target_attnum smallint;
+begin
+  select attnum::smallint
+  into v_resource_source_attnum
+  from pg_attribute
+  where attrelid = 'public.download_events'::regclass
+    and attname = 'resource_id'
+    and not attisdropped;
+
+  select attnum::smallint
+  into v_resource_target_attnum
+  from pg_attribute
+  where attrelid = 'public.resources'::regclass
+    and attname = 'id'
+    and not attisdropped;
+
+  select attnum::smallint
+  into v_user_source_attnum
+  from pg_attribute
+  where attrelid = 'public.download_events'::regclass
+    and attname = 'user_id'
+    and not attisdropped;
+
+  select attnum::smallint
+  into v_user_target_attnum
+  from pg_attribute
+  where attrelid = 'auth.users'::regclass
+    and attname = 'id'
+    and not attisdropped;
+
+  if not exists (
+    select 1
+    from pg_constraint c
+    where c.contype = 'f'
+      and c.conrelid = 'public.download_events'::regclass
+      and c.confrelid = 'public.resources'::regclass
+      and c.conkey = array[v_resource_source_attnum]::smallint[]
+      and c.confkey = array[v_resource_target_attnum]::smallint[]
+      and c.confdeltype = 'c'
+  ) then
+    alter table public.download_events
+      add constraint download_events_resource_id_resources_fkey
       foreign key (resource_id)
       references public.resources(id)
       on delete cascade;
   end if;
 
-  if not v_has_user_fk then
+  if not exists (
+    select 1
+    from pg_constraint c
+    where c.contype = 'f'
+      and c.conrelid = 'public.download_events'::regclass
+      and c.confrelid = 'auth.users'::regclass
+      and c.conkey = array[v_user_source_attnum]::smallint[]
+      and c.confkey = array[v_user_target_attnum]::smallint[]
+      and c.confdeltype = 'n'
+  ) then
     alter table public.download_events
-      add constraint download_events_user_fk
+      add constraint download_events_user_id_auth_users_fkey
       foreign key (user_id)
       references auth.users(id)
       on delete set null;
