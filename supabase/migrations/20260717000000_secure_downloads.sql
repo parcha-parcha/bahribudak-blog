@@ -17,7 +17,7 @@ create table if not exists public.resources (
 create table if not exists public.download_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid null,
-  resource_id uuid not null references public.resources(id) on delete cascade,
+  resource_id uuid null,
   downloaded_at timestamptz not null default now(),
   user_agent text,
   constraint download_events_user_fk
@@ -39,36 +39,8 @@ alter table public.download_events
 alter table public.download_events
   add column if not exists user_id uuid;
 
-update public.download_events
-set downloaded_at = coalesce(downloaded_at, now())
-where downloaded_at is null;
-
 alter table public.download_events
   alter column downloaded_at set default now();
-
-alter table public.download_events
-  alter column downloaded_at set not null;
-
--- Ensure the foreign key exists only when missing
-DO $$
-begin
-  if not exists (
-    select 1
-    from pg_constraint c
-    join pg_class t on t.oid = c.conrelid
-    join pg_namespace n on n.oid = t.relnamespace
-    where n.nspname = 'public'
-      and t.relname = 'download_events'
-      and c.conname = (
-        select conname
-        from pg_constraint
-        where conrelid = 'public.download_events'::regclass
-          and contype = 'f'
-      )
-  ) then
-    -- noop: legacy schema compatibility handled in the normal table definition path
-  end if;
-end $$;
 
 DO $$
 declare
@@ -77,34 +49,45 @@ declare
 begin
   select exists (
     select 1
-    from pg_constraint c
-    join pg_class t on t.oid = c.conrelid
-    join pg_namespace n on n.oid = t.relnamespace
-    where n.nspname = 'public'
-      and t.relname = 'download_events'
-      and c.contype = 'f'
-      and c.conkey[1] = (
-        select attnum
-        from pg_attribute
-        where attrelid = 'public.download_events'::regclass
-          and attname = 'resource_id'
-      )
+    from information_schema.table_constraints tc
+    join information_schema.key_column_usage kcu_src
+      on kcu_src.constraint_name = tc.constraint_name
+     and kcu_src.table_schema = tc.table_schema
+     and kcu_src.table_name = tc.table_name
+    join information_schema.referential_constraints rc
+      on rc.constraint_name = tc.constraint_name
+     and rc.constraint_schema = tc.table_schema
+    join information_schema.key_column_usage kcu_ref
+      on kcu_ref.constraint_name = rc.unique_constraint_name
+     and kcu_ref.table_schema = tc.table_schema
+    where tc.table_schema = 'public'
+      and tc.table_name = 'download_events'
+      and tc.constraint_type = 'FOREIGN KEY'
+      and kcu_src.column_name = 'resource_id'
+      and kcu_ref.table_name = 'resources'
+      and kcu_ref.column_name = 'id'
   ) into v_has_resource_fk;
 
   select exists (
     select 1
-    from pg_constraint c
-    join pg_class t on t.oid = c.conrelid
-    join pg_namespace n on n.oid = t.relnamespace
-    where n.nspname = 'public'
-      and t.relname = 'download_events'
-      and c.contype = 'f'
-      and c.conkey[1] = (
-        select attnum
-        from pg_attribute
-        where attrelid = 'public.download_events'::regclass
-          and attname = 'user_id'
-      )
+    from information_schema.table_constraints tc
+    join information_schema.key_column_usage kcu_src
+      on kcu_src.constraint_name = tc.constraint_name
+     and kcu_src.table_schema = tc.table_schema
+     and kcu_src.table_name = tc.table_name
+    join information_schema.referential_constraints rc
+      on rc.constraint_name = tc.constraint_name
+     and rc.constraint_schema = tc.table_schema
+    join information_schema.key_column_usage kcu_ref
+      on kcu_ref.constraint_name = rc.unique_constraint_name
+     and kcu_ref.table_schema = tc.table_schema
+    where tc.table_schema = 'public'
+      and tc.table_name = 'download_events'
+      and tc.constraint_type = 'FOREIGN KEY'
+      and kcu_src.column_name = 'user_id'
+      and kcu_ref.table_schema = 'auth'
+      and kcu_ref.table_name = 'users'
+      and kcu_ref.column_name = 'id'
   ) into v_has_user_fk;
 
   if not v_has_resource_fk then
@@ -124,8 +107,19 @@ begin
   end if;
 end $$;
 
-alter table public.download_events
-  drop column if exists product_file_id;
+DO $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'download_events'
+      and column_name = 'product_file_id'
+  ) then
+    alter table public.download_events
+      alter column product_file_id drop not null;
+  end if;
+end $$;
 
 -- Existing rows must remain untouched; only legacy schema compatibility is added.
 
