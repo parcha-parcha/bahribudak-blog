@@ -107,20 +107,6 @@ begin
   end if;
 end $$;
 
-DO $$
-begin
-  if exists (
-    select 1
-    from information_schema.columns
-    where table_schema = 'public'
-      and table_name = 'download_events'
-      and column_name = 'product_file_id'
-  ) then
-    alter table public.download_events
-      alter column product_file_id drop not null;
-  end if;
-end $$;
-
 -- Existing rows must remain untouched; only legacy schema compatibility is added.
 
 create or replace function public.get_resource_access_for_download(p_resource_id uuid)
