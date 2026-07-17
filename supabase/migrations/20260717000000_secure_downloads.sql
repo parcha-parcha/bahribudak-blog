@@ -85,41 +85,35 @@ $$;
 revoke execute on function public.record_download_event(uuid, text) from public, anon;
 grant execute on function public.record_download_event(uuid, text) to authenticated;
 
-create or replace function public.set_updated_at()
+create or replace function public.set_resources_updated_at()
 returns trigger
 language plpgsql
+set search_path = ''
 as $$
 begin
-  new.updated_at = now();
+  new.updated_at = timezone('utc', now());
   return new;
 end;
 $$;
+
+revoke execute on function public.set_resources_updated_at() from public, anon, authenticated;
 
 drop trigger if exists resources_set_updated_at on public.resources;
 create trigger resources_set_updated_at
 before update on public.resources
 for each row
-execute function public.set_updated_at();
+execute function public.set_resources_updated_at();
 
 alter table public.resources enable row level security;
 alter table public.download_events enable row level security;
 
 -- Idempotent bucket creation
-DO $$
-begin
-  if not exists (
-    select 1
-    from storage.buckets
-    where id = 'technical-resources'
-  ) then
-    perform storage.create_bucket('technical-resources', false);
-  end if;
-end $$;
-
--- Ensure bucket metadata remains private
-update storage.buckets
-set public = false
-where id = 'technical-resources';
+insert into storage.buckets (id, name, public)
+values ('technical-resources', 'technical-resources', false)
+on conflict (id) do update
+set
+  name = excluded.name,
+  public = false;
 
 -- Data API permissions
 revoke all on table public.resources from public, anon, authenticated;
