@@ -16,6 +16,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
       .from('download_events')
       .select('downloaded_at, resource_id, resources(title, file_type, slug)')
       .eq('user_id', user.id)
+      .not('resource_id', 'is', null)
       .order('downloaded_at', { ascending: false })
       .limit(10),
   ])

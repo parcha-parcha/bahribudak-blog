@@ -26,6 +26,109 @@ create table if not exists public.download_events (
     on delete set null
 );
 
+-- Legacy compatibility for older download_events schema
+alter table public.download_events
+  add column if not exists resource_id uuid;
+
+alter table public.download_events
+  add column if not exists user_agent text;
+
+alter table public.download_events
+  add column if not exists downloaded_at timestamptz;
+
+alter table public.download_events
+  add column if not exists user_id uuid;
+
+update public.download_events
+set downloaded_at = coalesce(downloaded_at, now())
+where downloaded_at is null;
+
+alter table public.download_events
+  alter column downloaded_at set default now();
+
+alter table public.download_events
+  alter column downloaded_at set not null;
+
+-- Ensure the foreign key exists only when missing
+DO $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint c
+    join pg_class t on t.oid = c.conrelid
+    join pg_namespace n on n.oid = t.relnamespace
+    where n.nspname = 'public'
+      and t.relname = 'download_events'
+      and c.conname = (
+        select conname
+        from pg_constraint
+        where conrelid = 'public.download_events'::regclass
+          and contype = 'f'
+      )
+  ) then
+    -- noop: legacy schema compatibility handled in the normal table definition path
+  end if;
+end $$;
+
+DO $$
+declare
+  v_has_resource_fk boolean;
+  v_has_user_fk boolean;
+begin
+  select exists (
+    select 1
+    from pg_constraint c
+    join pg_class t on t.oid = c.conrelid
+    join pg_namespace n on n.oid = t.relnamespace
+    where n.nspname = 'public'
+      and t.relname = 'download_events'
+      and c.contype = 'f'
+      and c.conkey[1] = (
+        select attnum
+        from pg_attribute
+        where attrelid = 'public.download_events'::regclass
+          and attname = 'resource_id'
+      )
+  ) into v_has_resource_fk;
+
+  select exists (
+    select 1
+    from pg_constraint c
+    join pg_class t on t.oid = c.conrelid
+    join pg_namespace n on n.oid = t.relnamespace
+    where n.nspname = 'public'
+      and t.relname = 'download_events'
+      and c.contype = 'f'
+      and c.conkey[1] = (
+        select attnum
+        from pg_attribute
+        where attrelid = 'public.download_events'::regclass
+          and attname = 'user_id'
+      )
+  ) into v_has_user_fk;
+
+  if not v_has_resource_fk then
+    alter table public.download_events
+      add constraint download_events_resource_fk
+      foreign key (resource_id)
+      references public.resources(id)
+      on delete cascade;
+  end if;
+
+  if not v_has_user_fk then
+    alter table public.download_events
+      add constraint download_events_user_fk
+      foreign key (user_id)
+      references auth.users(id)
+      on delete set null;
+  end if;
+end $$;
+
+alter table public.download_events
+  drop column if exists product_file_id;
+
+-- Existing rows must remain untouched; only legacy schema compatibility is added.
+
 create or replace function public.get_resource_access_for_download(p_resource_id uuid)
 returns table (id uuid, access_type text, is_active boolean)
 language sql
