@@ -1,15 +1,5 @@
 create extension if not exists pgcrypto;
 
-create or replace function public.set_updated_at()
-returns trigger
-language plpgsql
-as $$
-begin
-  new.updated_at = now();
-  return new;
-end;
-$$;
-
 create table if not exists public.resources (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
@@ -36,20 +26,70 @@ create table if not exists public.download_events (
     on delete set null
 );
 
-create or replace function public.get_resource_for_download(p_resource_id uuid)
-returns public.resources
+create or replace function public.get_resource_access_for_download(p_resource_id uuid)
+returns table (id uuid, access_type text, is_active boolean)
 language sql
 security definer
-set search_path = public
+set search_path = ''
 stable
 as $$
-  select *
-  from public.resources
-  where id = p_resource_id
+  select
+    r.id,
+    r.access_type,
+    r.is_active
+  from public.resources as r
+  where r.id = p_resource_id
   limit 1;
 $$;
 
-create or replace function public.ensure_resources_updated_at()
+revoke execute on function public.get_resource_access_for_download(uuid) from public;
+grant execute on function public.get_resource_access_for_download(uuid) to anon, authenticated;
+
+create or replace function public.record_download_event(
+  p_resource_id uuid,
+  p_user_agent text
+)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_access_type text;
+  v_is_active boolean;
+begin
+  if v_user_id is null then
+    raise exception 'Authentication required.' using errcode = '42501';
+  end if;
+
+  select r.access_type, r.is_active
+  into v_access_type, v_is_active
+  from public.resources as r
+  where r.id = p_resource_id
+  limit 1;
+
+  if v_access_type is null then
+    raise exception 'Resource not found.' using errcode = 'P0002';
+  end if;
+
+  if v_is_active = false then
+    raise exception 'Resource inactive.' using errcode = 'P0002';
+  end if;
+
+  if v_access_type = 'member' then
+    raise exception 'Member resource cannot be recorded anonymously.' using errcode = '42501';
+  end if;
+
+  insert into public.download_events (user_id, resource_id, downloaded_at, user_agent)
+  values (v_user_id, p_resource_id, now(), p_user_agent);
+end;
+$$;
+
+revoke execute on function public.record_download_event(uuid, text) from public, anon;
+grant execute on function public.record_download_event(uuid, text) to authenticated;
+
+create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
 as $$
@@ -85,7 +125,15 @@ update storage.buckets
 set public = false
 where id = 'technical-resources';
 
--- resources
+-- Data API permissions
+revoke all on table public.resources from public, anon, authenticated;
+revoke all on table public.download_events from public, anon, authenticated;
+
+grant select on table public.resources to anon, authenticated;
+grant select on table public.download_events to authenticated;
+
+-- resources policies
+
 drop policy if exists "resources_select_public" on public.resources;
 drop policy if exists "resources_select_member" on public.resources;
 drop policy if exists "resources_block_write" on public.resources;
@@ -113,24 +161,17 @@ for all
 using (false)
 with check (false);
 
--- download_events
+-- download_events policies
 
 drop policy if exists "download_events_select_own" on public.download_events;
 drop policy if exists "download_events_insert_own" on public.download_events;
 drop policy if exists "download_events_block_update_delete" on public.download_events;
+drop policy if exists "download_events_block_delete" on public.download_events;
 
 create policy "download_events_select_own"
 on public.download_events
 for select
 using (user_id = auth.uid());
-
-create policy "download_events_insert_own"
-on public.download_events
-for insert
-with check (
-  auth.role() = 'authenticated'
-  and user_id = auth.uid()
-);
 
 create policy "download_events_block_update_delete"
 on public.download_events
@@ -141,12 +182,9 @@ on public.download_events
 for delete using (false);
 
 -- Storage policies (bucket restricted to technical-resources)
-alter table storage.objects enable row level security;
-
 drop policy if exists "technical_resources_public_select" on storage.objects;
 drop policy if exists "technical_resources_member_select" on storage.objects;
 drop policy if exists "technical_resources_no_write" on storage.objects;
-
 drop policy if exists "technical_resources_select_public" on storage.objects;
 drop policy if exists "technical_resources_select_member" on storage.objects;
 drop policy if exists "technical_resources_write_blocked" on storage.objects;
@@ -158,7 +196,7 @@ using (
   bucket_id = 'technical-resources'
   and exists (
     select 1
-    from public.resources r
+    from public.resources as r
     where r.storage_bucket = 'technical-resources'
       and r.file_path = storage.objects.name
       and r.is_active = true
@@ -174,7 +212,7 @@ using (
   and auth.role() = 'authenticated'
   and exists (
     select 1
-    from public.resources r
+    from public.resources as r
     where r.storage_bucket = 'technical-resources'
       and r.file_path = storage.objects.name
       and r.is_active = true

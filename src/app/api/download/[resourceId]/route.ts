@@ -35,26 +35,25 @@ export async function GET(
     )
   }
 
-  const { data: resource, error: resourceError } = await supabase.rpc('get_resource_for_download', {
+  const { data: accessRow, error: accessError } = await supabase.rpc('get_resource_access_for_download', {
     p_resource_id: resourceId,
-  }) as { data: {
-    id: string
-    slug: string
-    title: string
-    storage_bucket: string
-    file_path: string
-    access_type: 'public' | 'member'
-    is_active: boolean
-  } | null, error: { message?: string } | null }
+  }) as {
+    data: {
+      id: string
+      access_type: 'public' | 'member'
+      is_active: boolean
+    }[] | null
+    error: { message?: string } | null
+  }
 
-  if (resourceError || !resource) {
+  if (accessError || !accessRow?.[0]) {
     return NextResponse.json(
       { error: 'Resource unavailable.' },
       { status: 404, headers: noStoreHeaders },
     )
   }
 
-  const accessDecision = evaluateResourceAccess(resource, user)
+  const accessDecision = evaluateResourceAccess(accessRow[0], user)
 
   if (!accessDecision.allowed) {
     return NextResponse.json(
@@ -68,11 +67,24 @@ export async function GET(
     )
   }
 
+  const { data: resourceRecord, error: resourceError } = await supabase
+    .from('resources')
+    .select('id, storage_bucket, file_path, access_type, is_active')
+    .eq('id', resourceId)
+    .maybeSingle()
+
+  if (resourceError || !resourceRecord) {
+    return NextResponse.json(
+      { error: 'Resource unavailable.' },
+      { status: 404, headers: noStoreHeaders },
+    )
+  }
+
   try {
     const { data: signedData, error: signedError } = await supabase
       .storage
-      .from(resource.storage_bucket)
-      .createSignedUrl(resource.file_path, 60)
+      .from(resourceRecord.storage_bucket)
+      .createSignedUrl(resourceRecord.file_path, 60)
 
     if (signedError || !signedData?.signedUrl) {
       return NextResponse.json(
@@ -82,14 +94,17 @@ export async function GET(
     }
 
     if (user) {
-      await supabase
-        .from('download_events')
-        .insert({
-          user_id: user.id,
-          resource_id: resource.id,
-          downloaded_at: new Date().toISOString(),
-          user_agent: request.headers.get('user-agent') ?? null,
-        })
+      const { error: recordError } = await supabase.rpc('record_download_event', {
+        p_resource_id: resourceRecord.id,
+        p_user_agent: request.headers.get('user-agent') ?? null,
+      })
+
+      if (recordError) {
+        return NextResponse.json(
+          { error: 'Download unavailable.' },
+          { status: 500, headers: noStoreHeaders },
+        )
+      }
     }
 
     return NextResponse.json(
