@@ -10,10 +10,31 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect(`${authPath(lang, 'login')}?next=${encodeURIComponent(authPath(lang, 'account'))}`)
 
-  const { data: profile } = await supabase.from('profiles')
-    .select('full_name, company_name').eq('id', user.id).maybeSingle()
+  const [{ data: profile }, { data: downloadRows, error: downloadHistoryError }] = await Promise.all([
+    supabase.from('profiles').select('full_name, company_name').eq('id', user.id).maybeSingle(),
+    supabase
+      .from('download_events')
+      .select('downloaded_at, resource_id, resources(title, file_type, slug)')
+      .eq('user_id', user.id)
+      .order('downloaded_at', { ascending: false })
+      .limit(10),
+  ])
+
   const tr = lang === 'tr'
   const createdAt = new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', { dateStyle: 'long' }).format(new Date(user.created_at))
+  const downloadHistory = (downloadRows ?? []).map((item) => {
+    const resourceMeta = Array.isArray(item.resources) ? item.resources[0] ?? null : item.resources ?? null
+
+    return {
+      resourceId: item.resource_id,
+      downloadedAt: new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      }).format(new Date(item.downloaded_at)),
+      title: resourceMeta?.title ?? item.resource_id,
+      fileType: resourceMeta?.file_type ?? '—',
+    }
+  })
 
   return <section className="bg-[#F5F7FA] px-4 py-12 md:py-18">
     <div className="mx-auto max-w-5xl">
@@ -32,9 +53,28 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
             <h2 className="text-xl font-bold">{tr ? 'Hesap özeti' : 'Account summary'}</h2>
             <dl className="mt-5 space-y-4 text-sm"><div><dt className="font-bold text-[#4C5561]">{tr ? 'E-posta' : 'Email'}</dt><dd className="mt-1 break-all text-[#0B2343]">{user.email}</dd></div><div><dt className="font-bold text-[#4C5561]">{tr ? 'Hesap oluşturma tarihi' : 'Account created'}</dt><dd className="mt-1 text-[#0B2343]">{createdAt}</dd></div></dl>
           </article>
-          <article className="rounded-[2rem] border border-[#B7DFF0] bg-[#EAF6FC] p-6">
-            <h2 className="text-xl font-bold">{tr ? 'Satın alınan ürünler' : 'Purchased products'}</h2>
-            <p className="mt-3 text-sm leading-6 text-[#4C5561]">{tr ? 'Satın aldığınız teknik dokümanlar ilerleyen aşamada burada güvenli biçimde listelenecek.' : 'Your purchased technical documents will be listed securely here in a later phase.'}</p>
+          <article className="rounded-[2rem] border border-[#D8DDE5] bg-white p-6">
+            <h2 className="text-xl font-bold">{tr ? 'İndirme Geçmişim' : 'My Download History'}</h2>
+            <p className="mt-2 text-sm text-[#4C5561]">{tr ? 'Son 10 indirme kaydınız burada görünür.' : 'Your latest 10 download records appear here.'}</p>
+            {downloadHistoryError ? (
+              <p className="mt-4 text-sm text-[#8B1E3F]">{tr ? 'İndirme geçmişi alınamadı.' : 'Download history could not be loaded.'}</p>
+            ) : downloadHistory.length === 0 ? (
+              <div className="mt-5 rounded-2xl bg-[#F5F7FA] p-4 text-sm text-[#4C5561]">{tr ? 'Henüz indirme kaydınız bulunmuyor.' : 'You do not have any download records yet.'}</div>
+            ) : (
+              <ul className="mt-5 space-y-3 text-sm">
+                {downloadHistory.map((item) => (
+                  <li key={`${item.resourceId}-${item.downloadedAt}`} className="rounded-2xl border border-[#D8DDE5] bg-[#F8FBFD] p-4">
+                    <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+                      <div>
+                        <div className="font-bold text-[#0B2343]">{item.title}</div>
+                        <div className="text-[#4C5561]">{item.fileType}</div>
+                      </div>
+                      <div className="text-[#4C5561]">{item.downloadedAt}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </article>
         </div>
       </div>
