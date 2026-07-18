@@ -1,6 +1,6 @@
 import { notFound, permanentRedirect } from 'next/navigation'
 import { marked } from 'marked'
-import { getPost, getAllSlugs, getRelatedPosts, processAreaLabel } from '@/lib/posts'
+import { documentStatusLabel, getPost, getAllSlugs, getRelatedPosts, processAreaLabel } from '@/lib/posts'
 import { useTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
