@@ -22,9 +22,47 @@ export type ResourceItem = {
   description: { tr: string; en: string }
 }
 
-export const resourceCatalogDate = '2026-06-25'
+export const resourceCatalogDate = '2026-07-18'
 
 export const resources: ResourceItem[] = [
+  {
+    id: 'hidrofil-silikon-pamuk-polyester-pdf',
+    href: '/downloads/BB-KSS_Hidrofil_Silikon_Pamuk_Polyester_v1.0.pdf',
+    areas: ['apre'],
+    group: 'technical',
+    format: 'PDF',
+    version: 'V1.0',
+    catalogDate: resourceCatalogDate,
+    size: '302 KB',
+    fileLanguage: 'tr',
+    title: {
+      tr: 'Pamuk ve Polyesterde Hidrofil Silikon Kullanımı',
+      en: 'Hydrophilic Silicone Use on Cotton and Polyester',
+    },
+    description: {
+      tr: 'Pamuk, polyester ve PES/CO karışımlarında ürün seçimi, proses koşulları, başlangıç reçeteleri, riskler ve kalite kontrol yöntemlerini kapsayan teknik rehber.',
+      en: 'Technical guide covering product selection, process conditions, starting recipes, risks and quality-control methods for cotton, polyester and PES/CO blends.',
+    },
+  },
+  {
+    id: 'hidrofil-silikon-pamuk-polyester-docx',
+    href: '/downloads/BB-KSS_Hidrofil_Silikon_Pamuk_Polyester_v1.0.docx',
+    areas: ['apre'],
+    group: 'technical',
+    format: 'DOCX',
+    version: 'V1.0',
+    catalogDate: resourceCatalogDate,
+    size: '56 KB',
+    fileLanguage: 'tr',
+    title: {
+      tr: 'Hidrofil Silikon Teknik Rehberi — Düzenlenebilir Dosya',
+      en: 'Hydrophilic Silicone Technical Guide — Editable File',
+    },
+    description: {
+      tr: 'Teknik rehberin işletme şartlarına göre uyarlanabilen düzenlenebilir DOCX sürümü.',
+      en: 'Editable DOCX version of the technical guide for adaptation to plant conditions.',
+    },
+  },
 
   {
     id: "buildup-haslik",
