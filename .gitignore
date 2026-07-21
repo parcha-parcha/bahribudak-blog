@@ -11,3 +11,7 @@ BB_KURUMSAL_TASARIM_REVIZYON_*_NOTU.md
 BB_KURUMSAL_TASARIM_DEGISIKLIK_NOTU.md
 .vercel
 .env*
+
+# Local release archives
+release-backups/
+.npm-cache/

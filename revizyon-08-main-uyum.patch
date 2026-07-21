@@ -1,0 +1,977 @@
+From 58526b747b01caf0381145f0e746ebd9c8202c69 Mon Sep 17 00:00:00 2001
+From: Codex <codex@openai.com>
+Date: Tue, 21 Jul 2026 15:38:44 -0500
+Subject: [PATCH] fix: align revision 08 quality workflow with main
+
+---
+ .github/PULL_REQUEST_TEMPLATE.md     |  35 +++++
+ .github/workflows/site-quality.yml   |  34 ++++
+ .gitignore                           |   4 +
+ CHANGELOG.md                         |  22 +++
+ README.md                            | 100 ++++++++++--
+ REVISION_08_NOTES.md                 |  52 ++++++
+ VERSION                              |   1 +
+ docs/ARSIV_VE_SURUMLEME_PLANI.md     |  53 +++++++
+ docs/BAKIM_PLANI.md                  |  36 +++++
+ docs/DOSYA_ADLANDIRMA_STANDARDI.md   |  74 +++++++++
+ docs/GERI_DONUS_PLANI.md             |  55 +++++++
+ docs/YAYIN_ONCESI_KONTROL_LISTESI.md |  41 +++++
+ docs/YAYIN_PROSEDURU.md              |  68 ++++++++
+ package.json                         |   5 +-
+ public/release-manifest.json         |  28 ++++
+ scripts/verify-site.mjs              | 227 +++++++++++++++++++++++++++
+ 16 files changed, 817 insertions(+), 18 deletions(-)
+ create mode 100644 .github/PULL_REQUEST_TEMPLATE.md
+ create mode 100644 .github/workflows/site-quality.yml
+ create mode 100644 CHANGELOG.md
+ create mode 100644 REVISION_08_NOTES.md
+ create mode 100644 VERSION
+ create mode 100644 docs/ARSIV_VE_SURUMLEME_PLANI.md
+ create mode 100644 docs/BAKIM_PLANI.md
+ create mode 100644 docs/DOSYA_ADLANDIRMA_STANDARDI.md
+ create mode 100644 docs/GERI_DONUS_PLANI.md
+ create mode 100644 docs/YAYIN_ONCESI_KONTROL_LISTESI.md
+ create mode 100644 docs/YAYIN_PROSEDURU.md
+ create mode 100644 public/release-manifest.json
+ create mode 100644 scripts/verify-site.mjs
+
+diff --git a/.github/PULL_REQUEST_TEMPLATE.md b/.github/PULL_REQUEST_TEMPLATE.md
+new file mode 100644
+index 0000000..ac898c5
+--- /dev/null
++++ b/.github/PULL_REQUEST_TEMPLATE.md
+@@ -0,0 +1,35 @@
++## Değişiklik kapsamı
++
++Bu Pull Request aşağıdaki çalışma türlerinden hangisini içeriyor?
++
++- [ ] Teknik Yayın / Technical Publication
++- [ ] Kaynak Merkezi / Resource Center
++- [ ] Tasarım veya Kurumsal Kimlik
++- [ ] Teknik altyapı, SEO veya erişilebilirlik
++- [ ] Hata düzeltmesi / Bug Fix
++
++## Zorunlu kalite kontrolü
++
++- [ ] `npm run verify:site` başarılı
++- [ ] `npm run typecheck` başarılı
++- [ ] `npm run build` başarılı
++- [ ] Vercel Preview durumu **Ready**
++- [ ] Türkçe sayfa kontrol edildi
++- [ ] İngilizce sayfa kontrol edildi
++- [ ] TR / EN geçişleri kontrol edildi
++- [ ] 390 × 844 mobil görünüm kontrol edildi
++- [ ] İndirme bağlantıları ve teknik kaynaklar kontrol edildi
++- [ ] Sabit ve evrensel reçete/makine ayarı verilmedi
++- [ ] Teknik terimler Türkçe ve İngilizce birlikte, tutarlı kullanıldı
++- [ ] Ana dala birleştirmeden önce ekran görüntüsü veya ön izleme kontrolü tamamlandı
++
++## Doküman kontrolü
++
++Teknik yayın ekleniyorsa:
++
++- Belge kodu:
++- Revizyon:
++- Proses alanı:
++- Türkçe slug:
++- İngilizce slug:
++- Referans standartlar:
+diff --git a/.github/workflows/site-quality.yml b/.github/workflows/site-quality.yml
+new file mode 100644
+index 0000000..379ba73
+--- /dev/null
++++ b/.github/workflows/site-quality.yml
+@@ -0,0 +1,34 @@
++name: Site Quality Check
++
++on:
++  pull_request:
++    branches:
++      - main
++  push:
++    branches:
++      - main
++
++permissions:
++  contents: read
++
++jobs:
++  quality:
++    name: Doğrulama, TypeScript ve Üretim Derlemesi
++    runs-on: ubuntu-latest
++    timeout-minutes: 15
++
++    steps:
++      - name: Kaynak kodu al
++        uses: actions/checkout@v4
++
++      - name: Node.js kur
++        uses: actions/setup-node@v4
++        with:
++          node-version: '20'
++          cache: npm
++
++      - name: Bağımlılıkları kur
++        run: npm ci
++
++      - name: Site kalite kontrolünü çalıştır
++        run: npm run quality
+diff --git a/.gitignore b/.gitignore
+index f7c847e..438526f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,3 +11,7 @@ BB_KURUMSAL_TASARIM_REVIZYON_*_NOTU.md
+ BB_KURUMSAL_TASARIM_DEGISIKLIK_NOTU.md
+ .vercel
+ .env*
++
++# Local release archives
++release-backups/
++.npm-cache/
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..e896372
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,22 @@
++# CHANGELOG
++
++## v1.0.0 — 25 Haziran 2026
++
++### Tamamlanan yapısal çalışmalar
++
++- Kurumsal kimlik ve Poppins tipografi sistemi
++- Örgü / Knitting, Boya / Dyeing ve Apre / Finishing bilgi mimarisi
++- Türkçe ve İngilizce uzmanlık sayfaları
++- Teknik Yayın / Technical Publication sistemi
++- İlk Örgü, Boya ve Apre teknik yayınları
++- Kaynak Merkezi ve doğrulanmış indirme kataloğu
++- SEO, canonical, hreflang, sitemap ve robots kontrolü
++- Mobil menü, erişilebilirlik ve 404 düzenlemeleri
++- GitHub Actions kalite kontrolü
++- Yayın, bakım, arşiv ve geri dönüş prosedürleri
++
++### Teknik yayınlar
++
++- BB-ORG-TP-001 — İlmek Boyu, Gramaj ve Kumaş Eni Proses İlişkisi
++- BB-BOY-TP-001 — Reaktif Boyamada pH, Sıcaklık, Tuz ve Alkali Yönetimi
++- BB-APR-TP-001 — Ramöz ve Kompaktör Sonrası Boyutsal Stabilite Yönetimi
+diff --git a/README.md b/README.md
+index b1c54bc..7b48dd0 100644
+--- a/README.md
++++ b/README.md
+@@ -1,17 +1,83 @@
+-# BB-KSS + BB-CVS BİKARBONAT YAYIN PAKETİ
+-
+-Dosyalar:
+-1. Site için MDX ana yayın
+-2. LinkedIn, Instagram/Facebook ve kısa teaser metinleri
+-3. SEO ve Open Graph metadata
+-4. Son yayın kontrol listesi
+-5. BB-KSS teknik master DOCX
+-6. BB-CVS carousel PPTX
+-
+-Yayın sırası:
+-- Önce site MDX
+-- Ardından carousel + LinkedIn ana paylaşım
+-- Son olarak kısa teaser ve iç bağlantılar
+-
+-Ana karar:
+-Bikarbonat yüksek, değişken veya bilinmiyorsa 30-60 standart proses güvenli varsayılandır.
++# Bahri Budak — Örgü, Boya ve Apre Teknik Yayın Platformu
++
++**Canlı site:** bahribudak.com  
++**Yapısal sürüm:** v1.0.0  
++**Kurumsal kimlik:** Bahri Budak Kurumsal Kimlik v1.1  
++**Ana uzmanlık omurgası:** Örgü / Knitting, Boya / Dyeing, Apre / Finishing
++
++## Kurulum
++
++```bash
++npm ci
++npm run dev
++```
++
++## Zorunlu kalite kontrolü
++
++```bash
++npm run quality
++```
++
++Bu komut sırasıyla:
++
++1. Site içi kaynak ve yayın tutarlılığını doğrular.
++2. TypeScript kontrolünü çalıştırır.
++3. Next.js üretim derlemesini tamamlar.
++
++Ayrı komutlar:
++
++```bash
++npm run verify:site
++npm run typecheck
++npm run build
++```
++
++## Yayın yöntemi
++
++Canlı `main` dalında doğrudan değişiklik yapılmaz. Her çalışma ayrı dal, Pull Request, GitHub Actions ve Vercel Preview üzerinden doğrulanır.
++
++Ayrıntılı dokümanlar:
++
++- `docs/YAYIN_PROSEDURU.md`
++- `docs/YAYIN_ONCESI_KONTROL_LISTESI.md`
++- `docs/DOSYA_ADLANDIRMA_STANDARDI.md`
++- `docs/GERI_DONUS_PLANI.md`
++- `docs/BAKIM_PLANI.md`
++- `docs/ARSIV_VE_SURUMLEME_PLANI.md`
++
++## Kurumsal kurallar
++
++- Resmî logo dosyaları yalnızca `public/brand` içindeki onaylı kurumsal varyantlardan seçilir.
++- Ana yazı ailesi Poppins’tir.
++- Ana renk paleti kurumsal kimlik v1.1 ile sınırlıdır.
++- Teknik terminoloji Türkçe ve İngilizce birlikte ve tutarlı kullanılır.
++- Evrensel reçete veya sabit makine ayarı yayımlanmaz.
++- Formül, standart ve hesaplamalar yayın öncesinde iki kez doğrulanır.
++
++## İçerik sistemi
++
++Teknik yayınlar:
++
++```text
++src/content/tr
++src/content/en
++```
++
++Kaynak Merkezi kataloğu:
++
++```text
++src/lib/resources.ts
++```
++
++TR / EN yayın eşleştirmeleri:
++
++```text
++src/lib/translatedRoutes.ts
++```
++
++Sürüm bilgisi:
++
++```text
++VERSION
++public/release-manifest.json
++```
+diff --git a/REVISION_08_NOTES.md b/REVISION_08_NOTES.md
+new file mode 100644
+index 0000000..8275d35
+--- /dev/null
++++ b/REVISION_08_NOTES.md
+@@ -0,0 +1,52 @@
++# REVİZYON 08 — NİHAİ YAYIN SİSTEMİ VE ARŞİV
++
++**Dal:** `revizyon-08-nihai-yayin-ve-arsiv`  
++**Belge tarihi:** 25 Haziran 2026  
++**Yapısal sürüm:** `v1.0.0`
++
++## 1. Amaç
++
++Revizyon 08 ile sitenin yapısal geliştirme dönemi kapatılmış; yayın, kalite kontrol, bakım, sürümleme, arşivleme ve geri dönüş süreçleri kalıcı bir sisteme bağlanmıştır.
++
++## 2. Eklenen sistemler
++
++- `VERSION` ve `public/release-manifest.json`
++- Otomatik site doğrulama komutu: `npm run verify:site`
++- Birleşik kalite komutu: `npm run quality`
++- GitHub Actions üretim kontrolü
++- Pull Request zorunlu kontrol şablonu
++- Yayın prosedürü
++- Yayın öncesi kontrol listesi
++- Dosya ve belge adlandırma standardı
++- Bakım planı
++- Geri dönüş / Rollback planı
++- Arşiv ve sürümleme planı
++- v1.0.0 değişiklik günlüğü
++
++## 3. Otomatik doğrulama kapsamı
++
++Doğrulama betiği aşağıdaki alanları kontrol eder:
++
++- Zorunlu kurumsal ve teknik dosyalar
++- `VERSION` ile release manifest sürüm eşleşmesi
++- Üretim dışı özel NPM paket kaynakları
++- Kaynak kodundaki `/downloads/` bağlantıları
++- Türkçe–İngilizce teknik yayın eşleştirmeleri
++- Teknik yayın zorunlu frontmatter alanları
++- Mükerrer belge kodları
++- Temel uzmanlık, yayın ve Kaynak Merkezi rota dosyaları
++
++## 4. Revizyon sonrası çalışma şekli
++
++Revizyon 08 son yapısal revizyondur. Bundan sonra çalışmalar:
++
++- Teknik Yayın 004, 005, ...
++- Kaynak güncellemesi
++- Bakım düzeltmesi
++- Küçük altyapı geliştirmesi
++
++olarak adlandırılır; “Revizyon 09” şeklinde devam edilmez.
++
++## 5. Yayın sonrası işlem
++
++Revizyon 08 `main` dalına alınıp Vercel Production doğrulandıktan sonra GitHub üzerinde `v1.0.0` etiketi ve Release oluşturulacaktır.
+diff --git a/VERSION b/VERSION
+new file mode 100644
+index 0000000..3eefcb9
+--- /dev/null
++++ b/VERSION
+@@ -0,0 +1 @@
++1.0.0
+diff --git a/docs/ARSIV_VE_SURUMLEME_PLANI.md b/docs/ARSIV_VE_SURUMLEME_PLANI.md
+new file mode 100644
+index 0000000..cfabc3b
+--- /dev/null
++++ b/docs/ARSIV_VE_SURUMLEME_PLANI.md
+@@ -0,0 +1,53 @@
++# ARŞİV VE SÜRÜMLEME PLANI
++
++**Belge kodu:** BB-SYS-PLN-002  
++**Revizyon:** R00
++
++## 1. Ana sürüm
++
++Revizyon 08 tamamlandığında yapısal site sürümü:
++
++```text
++v1.0.0
++```
++
++olarak etiketlenir.
++
++## 2. Sürüm artırma
++
++- `v1.0.x`: hata düzeltmesi, küçük SEO veya erişilebilirlik düzeltmesi
++- `v1.x.0`: yeni teknik yayın sistemi özelliği, yeni kaynak modülü veya önemli işlev
++- `v2.0.0`: bilgi mimarisi veya teknik altyapıda geriye uyumsuz büyük değişiklik
++
++Teknik yayınların içerik revizyonu ayrıca belge üzerindeki `R00`, `R01` sistemiyle yönetilir.
++
++## 3. Saklanacak arşiv
++
++Her ana sürümde:
++
++- GitHub tag
++- GitHub Release açıklaması
++- GitHub tarafından oluşturulan Source code ZIP
++- `VERSION`
++- `public/release-manifest.json`
++- Revizyon notları
++- Canlı Production kontrol kaydı
++
++saklanır.
++
++## 4. Haricî yedek
++
++GitHub tek yedek olarak kullanılmaz. Ana sürüm ZIP dosyası en az iki ayrı ortamda saklanır:
++
++1. Kurumsal bulut depolama
++2. Yerel veya haricî disk
++
++Dosya adı:
++
++```text
++bahribudak-site-v1.0.0_2026-06-25.zip
++```
++
++## 5. Sohbet bağlantıları
++
++Sohbet içinde oluşturulan indirme bağlantıları kalıcı arşiv olarak kabul edilmez. Nihai kaynak GitHub Release ve haricî yedektir.
+diff --git a/docs/BAKIM_PLANI.md b/docs/BAKIM_PLANI.md
+new file mode 100644
+index 0000000..70beaff
+--- /dev/null
++++ b/docs/BAKIM_PLANI.md
+@@ -0,0 +1,36 @@
++# BAKIM PLANI / MAINTENANCE PLAN
++
++**Belge kodu:** BB-SYS-PLN-001  
++**Revizyon:** R00
++
++## Aylık kontrol
++
++- Yeni yayın ve indirme bağlantıları
++- Kırık rota ve 404 kayıtları
++- Vercel Production durumu
++- GitHub güvenlik ve bağımlılık uyarıları
++- Türkçe–İngilizce eşleşmeler
++- İletişim bilgileri ve sosyal bağlantılar
++
++## Üç aylık kontrol
++
++- Mobil menü ve 390 × 844 görünüm
++- Tablet ve masaüstü görünüm
++- Sitemap, robots ve canonical alanları
++- Teknik yayın belge kodları ve revizyonları
++- Kaynak Merkezi mükerrer ve eski dosyalar
++- Sayfa yükleme performansı ve görsel boyutları
++- Formül, tablo ve teknik terminoloji tutarlılığı
++
++## Yıllık kontrol
++
++- ISO, ASTM ve AATCC standart sürümleri
++- Üretici teknik föyleri ve proses önerileri
++- Kurumsal kimlik uygulama tutarlılığı
++- Tam GitHub ve kaynak dosya yedeği
++- Yetki, hesap ve iki aşamalı doğrulama kontrolü
++- Kullanılmayan rota, paket ve dosya temizliği
++
++## Kayıt yöntemi
++
++Her bakım işlemi GitHub Issue veya Pull Request kaydıyla izlenir. “Kontrol edildi” ifadesi tek başına yeterli değildir; incelenen rota, tarih ve sonuç yazılır.
+diff --git a/docs/DOSYA_ADLANDIRMA_STANDARDI.md b/docs/DOSYA_ADLANDIRMA_STANDARDI.md
+new file mode 100644
+index 0000000..301271f
+--- /dev/null
++++ b/docs/DOSYA_ADLANDIRMA_STANDARDI.md
+@@ -0,0 +1,74 @@
++# DOSYA VE BELGE ADLANDIRMA STANDARDI
++
++**Belge kodu:** BB-SYS-STD-001  
++**Revizyon:** R00  
++**Yürürlük tarihi:** 25 Haziran 2026
++
++## 1. Teknik yayın belge kodları
++
++```text
++BB-ORG-TP-NNN   Örgü / Knitting
++BB-BOY-TP-NNN   Boya / Dyeing
++BB-APR-TP-NNN   Apre / Finishing
++BB-ORT-TP-NNN   Ortak Teknik Yönetim
++```
++
++İngilizce yayınlarda proses kısaltmaları uluslararası karşılıkla kullanılabilir:
++
++```text
++BB-KNT-TP-NNN
++BB-DYE-TP-NNN
++BB-FIN-TP-NNN
++```
++
++Her dildeki karşılık aynı yayın numarasını temsil etmelidir.
++
++## 2. Revizyon kodu
++
++- İlk yayın: `R00`
++- Teknik düzeltme: `R01`, `R02`, ...
++- Yalnızca yazım düzeltmesi yapılmışsa revizyon notunda belirtilir.
++- Formül, standart, proses önerisi veya ölçüm yöntemi değişmişse mutlaka revizyon artırılır.
++
++## 3. Web dosya adı
++
++Web sayfası ve görsellerde küçük harf, ASCII karakter ve tire kullanılır:
++
++```text
++ramoz-kompaktor-boyutsal-stabilite.mdx
++reaktif-boyama-ph-yonetimi.jpg
++```
++
++Boşluk, Türkçe karakter, parantez ve sürüm ifadesi web slug içinde kullanılmaz.
++
++## 4. İndirilebilir teknik dosya
++
++```text
++BB_<ALAN>_<TUR>_<NUMARA>_<KONU>_R<REVIZYON>_<YYYY-MM-DD>.<uzanti>
++```
++
++Örnek:
++
++```text
++BB_APR_FRM_012_Ramoz_Proses_Kontrol_R01_2026-06-25.xlsx
++BB_BOY_TN_004_Reaktif_Boyama_pH_Yonetimi_R00_2026-06-25.pdf
++```
++
++## 5. Dosya türü kısaltmaları
++
++- `TP`: Teknik Yayın / Technical Publication
++- `TN`: Teknik Not / Technical Note
++- `FRM`: Form
++- `CHK`: Kontrol Listesi / Checklist
++- `CAL`: Hesaplama Aracı / Calculation
++- `TRN`: Eğitim Notu / Training Note
++- `PRO`: Prosedür / Procedure
++- `STD`: Standart / Standard
++
++## 6. Görsel standardı
++
++- Teknik yayın kapağı: 1600 × 900 px
++- Sosyal medya seri görseli: kullanılan platformun güvenli alanına göre hazırlanır
++- Resmî logo dışında amblem yeniden çizilmez
++- Poppins dışında ikinci bir yazı ailesi kullanılmaz
++- Ana renkler kurumsal kimlik v1.1 paletinden seçilir
+diff --git a/docs/GERI_DONUS_PLANI.md b/docs/GERI_DONUS_PLANI.md
+new file mode 100644
+index 0000000..8c816d9
+--- /dev/null
++++ b/docs/GERI_DONUS_PLANI.md
+@@ -0,0 +1,55 @@
++# GERİ DÖNÜŞ / ROLLBACK PLANI
++
++**Belge kodu:** BB-SYS-PRO-002  
++**Revizyon:** R00
++
++## 1. Yayın öncesi koruma
++
++- Canlı `main` dalı doğrudan değiştirilmez.
++- Her çalışma ayrı dal ve Pull Request üzerinden yürütülür.
++- Merge öncesinde Vercel Preview `Ready` olmalıdır.
++- Ana sürüm etiketleri silinmez veya yeniden yazılmaz.
++
++## 2. Hata canlıya çıktıysa
++
++### Seçenek A — Vercel geri dönüşü
++
++1. Vercel projesinde **Deployments** açılır.
++2. Son sağlıklı Production dağıtımı bulunur.
++3. Dağıtım ayrıntısında **Promote to Production** veya eşdeğer geri yükleme işlemi uygulanır.
++4. Canlı rota ve kritik indirmeler kontrol edilir.
++
++### Seçenek B — GitHub revert
++
++1. Hatalı Pull Request veya merge commit açılır.
++2. GitHub üzerindeki **Revert** işlemi kullanılır.
++3. Oluşan geri dönüş Pull Request’i kalite kontrollerinden geçirilir.
++4. Pull Request `main` dalına alınır.
++5. Vercel Production `Ready` olduktan sonra doğrulama yapılır.
++
++## 3. Kritik kontrol rotaları
++
++```text
++/tr
++/en
++/tr/uzmanlik
++/en/uzmanlik
++/tr/blog
++/en/blog
++/tr/magazam
++/en/magazam
++/robots.txt
++/sitemap.xml
++```
++
++## 4. Olay kaydı
++
++Her geri dönüşte şu bilgiler kaydedilir:
++
++- Tarih ve saat
++- Hatalı commit veya Pull Request
++- Etkilenen sayfalar
++- Kullanıcı etkisi
++- Uygulanan geri dönüş yöntemi
++- Kök neden
++- Tekrarı önleyici faaliyet
+diff --git a/docs/YAYIN_ONCESI_KONTROL_LISTESI.md b/docs/YAYIN_ONCESI_KONTROL_LISTESI.md
+new file mode 100644
+index 0000000..a79d88b
+--- /dev/null
++++ b/docs/YAYIN_ONCESI_KONTROL_LISTESI.md
+@@ -0,0 +1,41 @@
++# YAYIN ÖNCESİ KONTROL LİSTESİ
++
++## Kod ve derleme
++
++- [ ] Çalışma dalı güncel `main` üzerinden oluşturuldu
++- [ ] `npm ci` başarılı
++- [ ] `npm run verify:site` başarılı
++- [ ] `npm run typecheck` başarılı
++- [ ] `npm run build` başarılı
++- [ ] GitHub Actions kontrolü yeşil
++
++## Teknik içerik
++
++- [ ] Başlık yalnızca verilen teknik konuya bağlı
++- [ ] Türkçe ve İngilizce saha terminolojisi tutarlı
++- [ ] Belge kodu ve revizyon doğru
++- [ ] Formüller ve birimler iki kez kontrol edildi
++- [ ] Sabit evrensel reçete veya makine ayarı verilmedi
++- [ ] Referanslar birincil ve güncel
++- [ ] Teknik fotoğraf veya fotoğraf çekim gereksinimi tanımlandı
++
++## Sayfa kontrolü
++
++- [ ] Türkçe rota HTTP 200
++- [ ] İngilizce rota HTTP 200
++- [ ] TR → EN geçişi doğru
++- [ ] EN → TR geçişi doğru
++- [ ] 390 × 844 mobil görünüm
++- [ ] Masaüstü görünüm
++- [ ] Yatay taşma yok
++- [ ] Tablo ve formüller okunabilir
++- [ ] İndirme bağlantıları çalışıyor
++- [ ] Vercel Preview `Ready`
++
++## Canlı yayın
++
++- [ ] Pull Request kontrol edildi
++- [ ] Merge tamamlandı
++- [ ] Vercel Production `Ready`
++- [ ] Canlı Türkçe ve İngilizce sayfa kontrol edildi
++- [ ] Gerekliyse sürüm etiketi ve Release oluşturuldu
+diff --git a/docs/YAYIN_PROSEDURU.md b/docs/YAYIN_PROSEDURU.md
+new file mode 100644
+index 0000000..61a6efe
+--- /dev/null
++++ b/docs/YAYIN_PROSEDURU.md
+@@ -0,0 +1,68 @@
++# YAYIN PROSEDÜRÜ / PUBLICATION WORKFLOW
++
++**Belge kodu:** BB-SYS-PRO-001  
++**Revizyon:** R00  
++**Yürürlük tarihi:** 25 Haziran 2026  
++**Kapsam:** bahribudak.com teknik yayın ve site değişiklikleri
++
++## 1. Temel ilke
++
++Canlı siteyi taşıyan `main` dalında doğrudan çalışma yapılmaz. Her teknik yayın, kaynak güncellemesi veya altyapı düzeltmesi ayrı bir dalda hazırlanır; Vercel Preview ve GitHub kalite kontrolleri başarıyla tamamlandıktan sonra Pull Request üzerinden `main` dalına alınır.
++
++## 2. Çalışma sırası
++
++1. GitHub Desktop’ta `main` dalına geçilir.
++2. `Fetch origin` ve gerekiyorsa `Pull origin` uygulanır.
++3. Sol panelde `0 changed files` doğrulanır.
++4. Yeni çalışma dalı oluşturulur.
++5. Dosyalar çalışma dalına kopyalanır veya düzenlenir.
++6. `npm run quality` çalıştırılır.
++7. Commit ve `Push origin` uygulanır.
++8. Pull Request açılır.
++9. GitHub Actions ve Vercel Preview sonucu beklenir.
++10. Türkçe, İngilizce ve mobil görünüm kontrol edilir.
++11. Kontrol tamamlanınca `Merge pull request` uygulanır.
++12. Vercel Production durumu `Ready` olduktan sonra canlı sayfa yeniden doğrulanır.
++
++## 3. Dal adlandırma standardı
++
++Yapısal çalışmalar tamamlandığı için yeni işler aşağıdaki biçimde ilerler:
++
++- Teknik yayın: `teknik-yayin-<no>-<kisa-konu>`
++- Hata düzeltmesi: `duzeltme-<kisa-konu>`
++- Kaynak güncellemesi: `kaynak-<no>-<kisa-konu>`
++- Teknik altyapı: `altyapi-<kisa-konu>`
++
++Örnek:
++
++```text
++teknik-yayin-004-kasar-proses-kontrolu
++duzeltme-ingilizce-yayin-yonlendirmesi
++kaynak-035-ramoz-kontrol-formu
++```
++
++## 4. Teknik yayın minimum içeriği
++
++Her Teknik Yayın / Technical Publication aşağıdaki alanları taşımalıdır:
++
++- Amaç ve teknik sınır
++- Proses akışı
++- Kritik Proses Parametreleri / Critical Process Parameters
++- Ölçüm ve Kontrol Noktaları / Measurement and Control Points
++- Hata–Kök Neden–Düzeltici Faaliyet / Defect–Root Cause–Corrective Action
++- Formül ve hesaplama açıklamaları
++- Referans standartlar
++- Belge kodu, revizyon ve revizyon tarihi
++- Türkçe ve İngilizce karşılık
++- Makine/ürün bazlı doğrulama uyarısı
++
++## 5. Yayın onayı
++
++Bir yayın yalnızca aşağıdaki koşullarda canlıya alınır:
++
++- Teknik içerik saha terminolojisine uygundur.
++- Evrensel reçete veya sabit makine set değeri verilmemiştir.
++- Kaynaklar resmî standart kuruluşu, üretici teknik föyü veya güvenilir birincil teknik kaynaktır.
++- Türkçe ve İngilizce sayfalar karşılıklı yönlendirilmiştir.
++- Formüller ve birimler iki kez kontrol edilmiştir.
++- Preview ve Production doğrulaması tamamlanmıştır.
+diff --git a/package.json b/package.json
+index 1b4f0b5..1ade2d5 100644
+--- a/package.json
++++ b/package.json
+@@ -6,7 +6,10 @@
+     "dev": "next dev",
+     "build": "next build",
+     "start": "next start",
+-    "lint": "next lint"
++    "lint": "next lint",
++    "typecheck": "tsc --noEmit",
++    "verify:site": "node scripts/verify-site.mjs",
++    "quality": "npm run verify:site && npm run typecheck && npm run build"
+   },
+   "dependencies": {
+     "@supabase/ssr": "^0.12.3",
+diff --git a/public/release-manifest.json b/public/release-manifest.json
+new file mode 100644
+index 0000000..8aa914f
+--- /dev/null
++++ b/public/release-manifest.json
+@@ -0,0 +1,28 @@
++{
++  "siteVersion": "1.0.0",
++  "structuralRevision": "08",
++  "releaseStatus": "release-candidate",
++  "releaseDate": "2026-06-25",
++  "brandStandard": "Bahri Budak Kurumsal Kimlik v1.1",
++  "expertiseArchitecture": [
++    {
++      "tr": "Örgü",
++      "en": "Knitting"
++    },
++    {
++      "tr": "Boya",
++      "en": "Dyeing"
++    },
++    {
++      "tr": "Apre",
++      "en": "Finishing"
++    }
++  ],
++  "technicalPublicationPairs": 3,
++  "resourceCatalogItems": 34,
++  "qualityCommands": [
++    "npm run verify:site",
++    "npm run typecheck",
++    "npm run build"
++  ]
++}
+diff --git a/scripts/verify-site.mjs b/scripts/verify-site.mjs
+new file mode 100644
+index 0000000..66daa90
+--- /dev/null
++++ b/scripts/verify-site.mjs
+@@ -0,0 +1,227 @@
++import fs from 'node:fs'
++import path from 'node:path'
++import process from 'node:process'
++import matter from 'gray-matter'
++
++const root = process.cwd()
++const errors = []
++const warnings = []
++
++const requiredFiles = [
++  'VERSION',
++  'public/release-manifest.json',
++  'public/brand/bb-logo-kisa-kurumsal.svg',
++  'public/brand/bb-logo-tanimli-kurumsal.svg',
++  'src/app/robots.ts',
++  'src/app/sitemap.ts',
++  'src/lib/translatedRoutes.ts',
++  'src/lib/resources.ts',
++]
++
++function fail(message) {
++  errors.push(message)
++}
++
++function warn(message) {
++  warnings.push(message)
++}
++
++function walk(directory, extensions = null) {
++  const output = []
++  if (!fs.existsSync(directory)) return output
++
++  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
++    if (entry.name === 'node_modules' || entry.name === '.next' || entry.name === '.git') continue
++    const fullPath = path.join(directory, entry.name)
++
++    if (entry.isDirectory()) {
++      output.push(...walk(fullPath, extensions))
++      continue
++    }
++
++    if (!extensions || extensions.some(extension => entry.name.endsWith(extension))) {
++      output.push(fullPath)
++    }
++  }
++
++  return output
++}
++
++for (const relativePath of requiredFiles) {
++  if (!fs.existsSync(path.join(root, relativePath))) {
++    fail(`Zorunlu dosya bulunamadı: ${relativePath}`)
++  }
++}
++
++const version = fs.existsSync(path.join(root, 'VERSION'))
++  ? fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim()
++  : ''
++
++if (!/^\d+\.\d+\.\d+$/.test(version)) {
++  fail(`VERSION semantik sürüm biçiminde değil: "${version}"`)
++}
++
++const manifestPath = path.join(root, 'public/release-manifest.json')
++if (fs.existsSync(manifestPath)) {
++  try {
++    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
++    if (manifest.siteVersion !== version) {
++      fail(`VERSION (${version}) ile release-manifest siteVersion (${manifest.siteVersion}) eşleşmiyor.`)
++    }
++  } catch (error) {
++    fail(`release-manifest.json okunamadı: ${error.message}`)
++  }
++}
++
++for (const fileName of ['package-lock.json', 'package.json']) {
++  const filePath = path.join(root, fileName)
++  if (!fs.existsSync(filePath)) continue
++  const content = fs.readFileSync(filePath, 'utf8')
++  if (/applied-caas|internal\.api\.openai\.org|packages\.[^/]*internal/i.test(content)) {
++    fail(`${fileName} içinde üretim dışı özel paket kaynağı bulundu.`)
++  }
++}
++
++const sourceFiles = walk(path.join(root, 'src'), ['.ts', '.tsx', '.js', '.jsx', '.md', '.mdx'])
++const downloadReferences = new Set()
++
++for (const filePath of sourceFiles) {
++  const content = fs.readFileSync(filePath, 'utf8')
++  for (const match of content.matchAll(/\/downloads\/([^"'`)\s?#]+)/g)) {
++    downloadReferences.add(decodeURIComponent(match[1]))
++  }
++}
++
++for (const relativeDownload of [...downloadReferences].sort()) {
++  const publicFile = path.join(root, 'public', 'downloads', relativeDownload)
++  if (!fs.existsSync(publicFile)) {
++    fail(`Kırık indirme bağlantısı: /downloads/${relativeDownload}`)
++  }
++}
++
++const translatedRoutesPath = path.join(root, 'src/lib/translatedRoutes.ts')
++const translatedRoutesSource = fs.existsSync(translatedRoutesPath)
++  ? fs.readFileSync(translatedRoutesPath, 'utf8')
++  : ''
++
++const routePairs = [...translatedRoutesSource.matchAll(
++  /tr:\s*['"]([^'"]+)['"]\s*,\s*en:\s*['"]([^'"]+)['"]/g
++)].map(match => ({ tr: match[1], en: match[2] }))
++
++if (routePairs.length === 0) {
++  fail('translatedRoutes.ts içinde teknik yayın eşleştirmesi bulunamadı.')
++}
++
++const technicalByLang = new Map()
++
++for (const lang of ['tr', 'en']) {
++  const contentDirectory = path.join(root, 'src/content', lang)
++  const publications = []
++
++  for (const filePath of walk(contentDirectory, ['.mdx'])) {
++    const raw = fs.readFileSync(filePath, 'utf8')
++    const parsed = matter(raw)
++
++    if (parsed.data.technicalPublication !== true) continue
++
++    const slug = path.basename(filePath, '.mdx')
++    const requiredFields = [
++      'title',
++      'date',
++    ]
++
++    const recommendedFields = [
++      ['excerpt', 'description'],
++      ['revisionDate', 'updated'],
++      ['processArea'],
++      ['documentCode'],
++      ['revision'],
++      ['documentStatus'],
++    ]
++
++    for (const field of requiredFields) {
++      if (!parsed.data[field]) {
++        fail(`${lang}/${slug}.mdx içinde zorunlu alan eksik: ${field}`)
++      }
++    }
++
++    for (const alternatives of recommendedFields) {
++      const hasField = alternatives.some(field => parsed.data[field])
++      if (!hasField) {
++        warn(`${lang}/${slug}.mdx içinde önerilen alan eksik: ${alternatives.join(' veya ')}`)
++      }
++    }
++
++    publications.push({
++      slug,
++      documentCode: String(parsed.data.documentCode || ''),
++      processArea: String(parsed.data.processArea || ''),
++      revision: String(parsed.data.revision || ''),
++    })
++  }
++
++  const duplicateCodes = publications
++    .map(item => item.documentCode)
++    .filter((code, index, all) => code && all.indexOf(code) !== index)
++
++  if (duplicateCodes.length > 0) {
++    fail(`${lang} teknik yayınlarında mükerrer belge kodu: ${[...new Set(duplicateCodes)].join(', ')}`)
++  }
++
++  technicalByLang.set(lang, publications)
++}
++
++for (const pair of routePairs) {
++  const trExists = technicalByLang.get('tr')?.some(item => item.slug === pair.tr)
++  const enExists = technicalByLang.get('en')?.some(item => item.slug === pair.en)
++
++  if (!trExists) fail(`Türkçe teknik yayın dosyası bulunamadı: ${pair.tr}.mdx`)
++  if (!enExists) fail(`İngilizce teknik yayın dosyası bulunamadı: ${pair.en}.mdx`)
++}
++
++for (const lang of ['tr', 'en']) {
++  for (const publication of technicalByLang.get(lang) || []) {
++    const paired = routePairs.some(pair => pair[lang] === publication.slug)
++    if (!paired) {
++      warn(`${lang}/${publication.slug}.mdx translatedRoutes.ts içinde eşleştirilmemiş.`)
++    }
++  }
++}
++
++const requiredExpertiseRoutes = [
++  'src/app/[lang]/uzmanlik/page.tsx',
++  'src/app/[lang]/uzmanlik/[slug]/page.tsx',
++  'src/app/[lang]/blog/page.tsx',
++  'src/app/[lang]/blog/[slug]/page.tsx',
++  'src/app/[lang]/magazam/page.tsx',
++]
++
++for (const relativePath of requiredExpertiseRoutes) {
++  if (!fs.existsSync(path.join(root, relativePath))) {
++    fail(`Temel rota dosyası bulunamadı: ${relativePath}`)
++  }
++}
++
++if (downloadReferences.size === 0) {
++  warn('Kaynak kodunda /downloads/ bağlantısı bulunamadı.')
++}
++
++console.log('Bahri Budak site doğrulama özeti')
++console.log(`- Sürüm: ${version || 'tanımsız'}`)
++console.log(`- Teknik yayın eşleşmesi: ${routePairs.length}`)
++console.log(`- Doğrulanan indirme bağlantısı: ${downloadReferences.size}`)
++console.log(`- Taranan kaynak dosyası: ${sourceFiles.length}`)
++
++for (const warning of warnings) {
++  console.warn(`UYARI: ${warning}`)
++}
++
++if (errors.length > 0) {
++  console.error('\nDoğrulama başarısız:')
++  for (const error of errors) {
++    console.error(`- ${error}`)
++  }
++  process.exit(1)
++}
++
++console.log('\nDoğrulama başarılı.')
+-- 
+2.51.1
+
