@@ -23,23 +23,23 @@ const staticPages: Record<Lang, StaticPageEntry[]> = {
   tr: [
     {
       title: 'Ana Sayfa',
-      excerpt: 'Örgü, boya ve apre proseslerinde teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
+      excerpt: 'Endüstriyel örgü kumaş, boya ve apre proseslerinde teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
       href: '',
       keywords:
-        'örgü knitting boya dyeing boyahane apre finishing terbiye danışmanlık tekstil proses kalite',
+        'örgü kumaş örme kumaş endüstriyel örgü knitted fabric circular knitting boya dyeing boyahane apre finishing terbiye danışmanlık tekstil proses kalite',
     },
     {
-      title: 'Örgü, Boya ve Apre Uzmanlık Alanları',
-      excerpt: 'Örgü, boya ve apre proseslerinde uzmanlık kapsamı ve saha uygulamaları.',
+      title: 'Örgü Kumaş, Boya ve Apre Uzmanlık Alanları',
+      excerpt: 'Endüstriyel örgü kumaş, boya ve apre proseslerinde uzmanlık kapsamı ve saha uygulamaları.',
       href: '/uzmanlik',
       keywords:
-        'örgü knitting boya dyeing apre finishing uzmanlık proses ramöz stenter kompaktör laboratuvar',
+        'örgü kumaş örme kumaş knitted fabric circular knitting boya dyeing apre finishing uzmanlık proses ramöz stenter kompaktör laboratuvar',
     },
     {
       title: 'Teknik Yayınlar',
-      excerpt: 'Örgü, boyama, apre, kalite kontrol ve proses yönetimi üzerine teknik yayınlar.',
+      excerpt: 'Örgü kumaş, boyama, apre, kalite kontrol ve proses yönetimi üzerine teknik yayınlar.',
       href: '/blog',
-      keywords: 'blog makale teknik yazı yayın örgü boyama apre tekstil',
+      keywords: 'blog makale teknik yazı yayın örgü kumaş knitted fabric boyama apre tekstil',
     },
     {
       title: 'Kaynak Merkezi',
@@ -82,22 +82,22 @@ const staticPages: Record<Lang, StaticPageEntry[]> = {
   en: [
     {
       title: 'Home',
-      excerpt: 'Technical publications, training and practical process systems for knitting, dyeing and finishing.',
+      excerpt: 'Technical publications, training and practical process systems for knitted fabric, dyeing and finishing.',
       href: '',
-      keywords: 'knitting dyeing finishing dyehouse consulting textile process quality',
+      keywords: 'knitted fabric circular knitting knitting dyeing finishing dyehouse consulting textile process quality',
     },
     {
-      title: 'Knitting, Dyeing and Finishing Expertise',
-      excerpt: 'Expertise scope and field applications in knitting, dyeing and finishing processes.',
+      title: 'Knitted Fabric, Dyeing and Finishing Expertise',
+      excerpt: 'Expertise scope and field applications in knitted fabric, dyeing and finishing processes.',
       href: '/uzmanlik',
       keywords:
-        'knitting dyeing finishing expertise process stenter compactor laboratory',
+        'knitted fabric circular knitting dyeing finishing expertise process stenter compactor laboratory',
     },
     {
       title: 'Technical Publications',
-      excerpt: 'Technical publications on knitting, dyeing, finishing, quality control and process management.',
+      excerpt: 'Technical publications on knitted fabric, dyeing, finishing, quality control and process management.',
       href: '/blog',
-      keywords: 'blog article technical publication knitting dyeing finishing textile',
+      keywords: 'blog article technical publication knitted fabric knitting dyeing finishing textile',
     },
     {
       title: 'Resource Center',

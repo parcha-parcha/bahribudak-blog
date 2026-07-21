@@ -41,8 +41,8 @@ const processAreas: {
 }[] = [
   {
     slug: 'orgu',
-    tr: 'Örgü / Knitting',
-    en: 'Knitting / Örgü',
+    tr: 'Örgü Kumaş / Knitted Fabric',
+    en: 'Knitted Fabric / Örgü Kumaş',
   },
   {
     slug: 'boya',
@@ -121,8 +121,8 @@ export async function generateMetadata({
 
   const description =
     lang === 'tr'
-      ? 'Örgü, boya ve apre proseslerini parametre, ölçüm, formül, kök neden ve düzeltici faaliyet yapısıyla ele alan teknik yayınlar.'
-      : 'Technical publications covering knitting, dyeing and finishing through parameters, measurements, calculations, root causes and corrective actions.'
+      ? 'Endüstriyel örgü kumaş, boya ve apre proseslerini parametre, ölçüm, formül, kök neden ve düzeltici faaliyet yapısıyla ele alan teknik yayınlar.'
+      : 'Technical publications covering knitted fabric, dyeing and finishing through parameters, measurements, calculations, root causes and corrective actions.'
 
   return {
     title,
@@ -160,10 +160,10 @@ export default async function BlogPage({
   const copy =
     lang === 'tr'
       ? {
-          eyebrow: 'ÖRGÜ · BOYA · APRE',
+          eyebrow: 'ÖRGÜ KUMAŞ · BOYA · APRE',
           title: 'Teknik Yayınlar',
           summary:
-            'Örgü, boya ve apre süreçlerini; proses parametreleri, ölçüm noktaları, formüller, kök nedenler ve düzeltici faaliyetlerle birlikte ele alan saha yayınları.',
+            'Endüstriyel örgü kumaş, boya ve apre süreçlerini; proses parametreleri, ölçüm noktaları, formüller, kök nedenler ve düzeltici faaliyetlerle birlikte ele alan saha yayınları.',
           imageAlt:
             'Tekstil proses ve endüstriyel üretim altyapısı',
           systemKicker: 'BAHRİ BUDAK',
@@ -198,10 +198,10 @@ export default async function BlogPage({
           noResultsButton: 'Tüm yayınları göster',
         }
       : {
-          eyebrow: 'KNITTING · DYEING · FINISHING',
+          eyebrow: 'KNITTED FABRIC · DYEING · FINISHING',
           title: 'Technical Publications',
           summary:
-            'Field publications covering knitting, dyeing and finishing through process parameters, measurement points, calculations, root causes and corrective actions.',
+            'Field publications covering knitted fabric, dyeing and finishing through process parameters, measurement points, calculations, root causes and corrective actions.',
           imageAlt:
             'Textile processing and industrial production infrastructure',
           systemKicker: 'BAHRİ BUDAK',

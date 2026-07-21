@@ -62,8 +62,8 @@ export async function generateMetadata({
 
   const description =
     lang === 'tr'
-      ? 'Örgü, boya, apre, laboratuvar, kalite ve üretim yönetimi alanlarında saha deneyimine dayalı teknik yayınlar ve profesyonel dokümanlar.'
-      : 'Technical publications and professional documents based on field experience in knitting, dyeing, finishing, laboratory, quality and production management.'
+      ? 'Endüstriyel örgü kumaş üretimi, boya, apre, laboratuvar, kalite ve üretim yönetimi alanlarında saha deneyimine dayalı teknik yayınlar ve profesyonel dokümanlar.'
+      : 'Technical publications and professional documents based on field experience in knitted fabric production, dyeing, finishing, laboratory, quality and production management.'
 
   return {
     title,
@@ -95,9 +95,9 @@ export default async function HomePage({ params }: HomeProps) {
       ? {
           heroEyebrow: 'BAHRİ BUDAK • TEKSTİL TEKNİK BİLGİ MERKEZİ',
           heroTitle:
-            'Örgü, boya ve apre bilgisini üretim performansına dönüştürüyorum.',
+            'Örgü kumaş, boya ve apre bilgisini üretim performansına dönüştürüyorum.',
           heroSummary:
-            'Örgü, boya, apre, laboratuvar, kalite ve üretim yönetimi alanlarında 35 yılı aşkın saha deneyimine dayalı teknik yayınlar, profesyonel dokümanlar ve uygulanabilir proses sistemleri.',
+            'Endüstriyel örgü kumaş üretimi, boya, apre, laboratuvar, kalite ve üretim yönetimi alanlarında 35 yılı aşkın saha deneyimine dayalı teknik yayınlar, profesyonel dokümanlar ve uygulanabilir proses sistemleri.',
           heroAlt:
             'Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi',
           expertiseCta: 'Uzmanlık Alanlarını İncele',
@@ -107,17 +107,17 @@ export default async function HomePage({ params }: HomeProps) {
           experienceTitle:
             'Üretim zincirinin tamamında karşılığı olan teknik bilgi.',
           experienceText:
-            'Amaç; örgüden başlayıp boya ve apre ile tamamlanan saha bilgisini ölçüm, reçete, kontrol formu, eğitim notu ve yönetilebilir teknik dosya sistemine dönüştürmektir.',
+            'Amaç; örgü kumaş üretiminden başlayıp boya ve apre ile tamamlanan saha bilgisini ölçüm, reçete, kontrol formu, eğitim notu ve yönetilebilir teknik dosya sistemine dönüştürmektir.',
           metrics: [
             {
               value: '35+',
               label: 'yıl saha deneyimi',
-              text: 'Örgü, boya, apre ve fabrika yönetimi.',
+              text: 'Örgü kumaş, boya, apre ve fabrika yönetimi.',
             },
             {
               value: '3',
               label: 'ana proses alanı',
-              text: 'Örgü, boya ve apre süreçleri.',
+              text: 'Örgü kumaş, boya ve apre süreçleri.',
             },
             {
               value: '01',
@@ -161,7 +161,7 @@ export default async function HomePage({ params }: HomeProps) {
           noPublications: 'Yakında ilk teknik yayın eklenecek.',
           expertiseLabel: 'UZMANLIK OMURGASI',
           expertiseTitle:
-            'Örgü, boya ve apreyi tek üretim zinciri olarak ele almak.',
+            'Örgü kumaş, boya ve apreyi tek üretim zinciri olarak ele almak.',
           expertiseSummary:
             'Her proses alanı; amaç, makine, kritik parametre, ölçüm noktası, kök neden ve düzeltici faaliyet yapısıyla değerlendirilir.',
           openExpertise: 'Uzmanlık Sayfasını Aç',
@@ -169,8 +169,8 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               id: 'orgu',
-              title: 'Örgü / Knitting',
-              text: 'İplik-kumaş ilişkisi, makine inceliği, gramaj, ilmek boyu, elastan besleme ve örme kaynaklı kalite riskleri.',
+              title: 'Örgü Kumaş / Knitted Fabric',
+              text: 'İplik-kumaş ilişkisi, yuvarlak örme, makine inceliği, gramaj, ilmek boyu, elastan besleme ve örme kaynaklı kalite riskleri.',
             },
             {
               no: '02',
@@ -192,7 +192,7 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               title: 'Üretim zincirini okuma',
-              text: 'Örgü, ön terbiye, boya, yıkama, apre, laboratuvar ve kalite akışı birlikte değerlendirilir.',
+              text: 'Örgü kumaş, ön terbiye, boya, yıkama, apre, laboratuvar ve kalite akışı birlikte değerlendirilir.',
             },
             {
               no: '02',
@@ -215,15 +215,15 @@ export default async function HomePage({ params }: HomeProps) {
           contactTitle:
             'Proses sorununu ölçülebilir bir çalışma kapsamına dönüştürelim.',
           contactText:
-            'Örgü, boyahane, apre, laboratuvar, kalite veya teknik dokümantasyon ihtiyacınızı net bir kapsamla değerlendirebiliriz.',
+            'Örgü kumaş, boyahane, apre, laboratuvar, kalite veya teknik dokümantasyon ihtiyacınızı net bir kapsamla değerlendirebiliriz.',
           contactCta: 'İletişime Geç',
         }
       : {
           heroEyebrow: 'BAHRİ BUDAK • TEXTILE TECHNICAL KNOWLEDGE CENTER',
           heroTitle:
-            'I turn knitting, dyeing and finishing knowledge into production performance.',
+            'I turn knitted fabric, dyeing and finishing knowledge into production performance.',
           heroSummary:
-            'Technical publications, professional documents and applicable process systems based on more than 35 years of field experience in knitting, dyeing, finishing, laboratory, quality and production management.',
+            'Technical publications, professional documents and applicable process systems based on more than 35 years of field experience in knitted fabric production, dyeing, finishing, laboratory, quality and production management.',
           heroAlt:
             'Balance of water, chemistry and controlled production in textile processing',
           expertiseCta: 'Explore Expertise Areas',
@@ -233,17 +233,17 @@ export default async function HomePage({ params }: HomeProps) {
           experienceTitle:
             'Technical knowledge with a direct counterpart across the production chain.',
           experienceText:
-            'The objective is to convert field knowledge from knitting through dyeing and finishing into measurements, recipes, control forms, training notes and manageable technical documentation.',
+            'The objective is to convert field knowledge from knitted fabric production through dyeing and finishing into measurements, recipes, control forms, training notes and manageable technical documentation.',
           metrics: [
             {
               value: '35+',
               label: 'years of field experience',
-              text: 'Knitting, dyeing, finishing and factory management.',
+              text: 'Knitted fabric, dyeing, finishing and factory management.',
             },
             {
               value: '3',
               label: 'core process areas',
-              text: 'Knitting, dyeing and finishing processes.',
+              text: 'Knitted fabric, dyeing and finishing processes.',
             },
             {
               value: '01',
@@ -287,7 +287,7 @@ export default async function HomePage({ params }: HomeProps) {
           noPublications: 'The first technical publication will be added soon.',
           expertiseLabel: 'EXPERTISE FRAMEWORK',
           expertiseTitle:
-            'Managing knitting, dyeing and finishing as one production chain.',
+            'Managing knitted fabric, dyeing and finishing as one production chain.',
           expertiseSummary:
             'Each process area is evaluated through its purpose, machinery, critical parameters, measurement points, root causes and corrective actions.',
           openExpertise: 'Open Expertise Page',
@@ -295,8 +295,8 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               id: 'orgu',
-              title: 'Knitting / Örgü',
-              text: 'Yarn–fabric relationship, machine gauge, GSM, stitch length, elastane feeding and knitting-related quality risks.',
+              title: 'Knitted Fabric / Örgü Kumaş',
+              text: 'Yarn–fabric relationship, circular knitting, machine gauge, GSM, stitch length, elastane feeding and knitting-related quality risks.',
             },
             {
               no: '02',
@@ -318,7 +318,7 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               title: 'Read the production chain',
-              text: 'Knitting, pretreatment, dyeing, washing, finishing, laboratory and quality flows are evaluated together.',
+              text: 'Knitted fabric, pretreatment, dyeing, washing, finishing, laboratory and quality flows are evaluated together.',
             },
             {
               no: '02',

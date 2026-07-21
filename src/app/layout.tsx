@@ -3,11 +3,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Bahri Budak | Örgü, Boya ve Apre',
+    default: 'Bahri Budak | Örgü Kumaş, Boya ve Apre',
     template: '%s | Bahri Budak',
   },
   description:
-    "Bahri Budak'ın 35 yılı aşkın saha deneyimine dayalı Örgü / Knitting, Boya / Dyeing ve Apre / Finishing teknik yayınları, eğitimleri ve proses danışmanlığı.",
+    "Bahri Budak'ın 35 yılı aşkın saha deneyimine dayalı endüstriyel örgü kumaş üretimi / Knitted Fabric, Boya / Dyeing ve Apre / Finishing teknik yayınları, eğitimleri ve proses danışmanlığı.",
   metadataBase: new URL('https://bahribudak.com'),
   openGraph: {
     type: 'website',
@@ -15,23 +15,23 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://bahribudak.com',
     siteName: 'Bahri Budak',
-    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
+    title: 'Bahri Budak | Örgü Kumaş, Boya ve Apre Uzmanı',
     description:
-      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
+      'Endüstriyel örgü kumaş, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim ve uygulanabilir proses sistemleri.',
     images: [
       {
         url: '/images/hero-su-damlasi.jpg',
         width: 1200,
         height: 630,
-        alt: 'Bahri Budak — Örgü, Boya ve Apre',
+        alt: 'Bahri Budak — Örgü Kumaş, Boya ve Apre',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bahri Budak | Örgü, Boya ve Apre Uzmanı',
+    title: 'Bahri Budak | Örgü Kumaş, Boya ve Apre Uzmanı',
     description:
-      'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayınlar ve proses sistemleri.',
+      'Endüstriyel örgü kumaş, boya ve apre proseslerinde saha deneyimine dayalı teknik yayınlar ve proses sistemleri.',
     images: ['/images/hero-su-damlasi.jpg'],
   },
   robots: {
