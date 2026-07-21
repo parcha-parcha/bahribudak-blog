@@ -45,8 +45,8 @@ export default function Header({ lang }: HeaderProps) {
       href: `/${lang}/uzmanlik`,
       label:
         lang === 'tr'
-          ? 'Örgü · Boya · Apre'
-          : 'Knitting · Dyeing · Finishing',
+          ? 'Örgü Kumaş · Boya · Apre'
+          : 'Knitted Fabric · Dyeing · Finishing',
     },
     {
       href: `/${lang}/blog`,

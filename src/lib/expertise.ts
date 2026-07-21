@@ -49,19 +49,19 @@ export const expertiseData: Record<ExpertiseSlug, ExpertiseData> = {
   orgu: {
     slug: 'orgu',
     no: '01',
-    label: { tr: 'Örgü / Knitting', en: 'Knitting / Örgü' },
+    label: { tr: 'Örgü Kumaş / Knitted Fabric', en: 'Knitted Fabric / Örgü Kumaş' },
     eyebrow: { tr: 'KUMAŞ OLUŞUMU', en: 'FABRIC FORMATION' },
     title: {
-      tr: 'Örgü prosesini iplikten kumaş performansına kadar yönetmek.',
-      en: 'Managing knitting from yarn input to fabric performance.',
+      tr: 'Örgü kumaş prosesini iplikten kumaş performansına kadar yönetmek.',
+      en: 'Managing knitted fabric production from yarn input to fabric performance.',
     },
     summary: {
       tr: 'İplik özellikleri, makine inceliği / gauge, ilmek boyu / stitch length, besleme gerilimi, çekim ve elastan oranı birlikte değerlendirilmeden kararlı gramaj, en ve yüzey kalitesi elde edilemez.',
       en: 'Stable fabric weight, width and surface quality require the joint control of yarn properties, machine gauge, stitch length, feed tension, take-down and elastane delivery.',
     },
     purpose: {
-      tr: 'Örgünün amacı yalnızca kumaş üretmek değil; sonraki Ön Terbiye / Pretreatment, Boyama / Dyeing ve Apre / Finishing adımlarında öngörülebilir davranan, izlenebilir ve tekrarlanabilir bir yarı mamul oluşturmaktır.',
-      en: 'The objective of knitting is not only to form fabric, but to produce a traceable and repeatable substrate that behaves predictably during pretreatment, dyeing and finishing.',
+      tr: 'Örgü kumaş üretiminin amacı yalnızca kumaş oluşturmak değil; sonraki Ön Terbiye / Pretreatment, Boyama / Dyeing ve Apre / Finishing adımlarında öngörülebilir davranan, izlenebilir ve tekrarlanabilir bir yarı mamul oluşturmaktır.',
+      en: 'The objective of knitted fabric production is not only to form fabric, but to produce a traceable and repeatable substrate that behaves predictably during pretreatment, dyeing and finishing.',
     },
     heroImage: '/images/iplik-kalitesi-kimya.jpeg',
     heroImageAlt: {
@@ -118,7 +118,7 @@ export const expertiseData: Record<ExpertiseSlug, ExpertiseData> = {
         correctiveAction: { tr: 'İplik ve konstrüksiyon uygunluğunu doğrulama; gerilimleri azaltma; relaksasyon, ramöz ve kompaktör ayarlarını birlikte değerlendirme.', en: 'Verify yarn and construction suitability; reduce tension; assess relaxation, stenter and compactor settings together.' },
       },
     ],
-    relatedKeywords: ['iplik', 'örgü', 'örme', 'makine inceliği', 'ilmek', 'kumaş'],
+    relatedKeywords: ['iplik', 'örgü kumaş', 'örme kumaş', 'yuvarlak örme', 'makine inceliği', 'ilmek', 'kumaş'],
     resources: [
       {
         title: { tr: 'Makine inceliği arttıkça doku sertleşir mi?', en: 'Does fabric become firmer as machine gauge increases?' },

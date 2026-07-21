@@ -17,11 +17,11 @@ export async function generateMetadata({ params }: ExpertiseOverviewProps): Prom
 
   const lang = rawLang as Lang
   const title = lang === 'tr'
-    ? 'Örgü, Boya ve Apre Uzmanlık Alanları'
-    : 'Knitting, Dyeing and Finishing Expertise'
+    ? 'Örgü Kumaş, Boya ve Apre Uzmanlık Alanları'
+    : 'Knitted Fabric, Dyeing and Finishing Expertise'
   const description = lang === 'tr'
-    ? 'Örgü, boya ve apre proseslerinde amaç, makine, kritik parametre, kontrol noktası, kök neden ve düzeltici faaliyet yaklaşımı.'
-    : 'Process objectives, machinery, critical parameters, controls, root cause and corrective action across knitting, dyeing and finishing.'
+    ? 'Endüstriyel örgü kumaş, boya ve apre proseslerinde amaç, makine, kritik parametre, kontrol noktası, kök neden ve düzeltici faaliyet yaklaşımı.'
+    : 'Process objectives, machinery, critical parameters, controls, root cause and corrective action across knitted fabric, dyeing and finishing.'
 
   return {
     title,
@@ -44,7 +44,7 @@ export default async function ExpertiseOverviewPage({ params }: ExpertiseOvervie
   const copy = lang === 'tr'
     ? {
         eyebrow: 'UZMANLIK OMURGASI',
-        title: 'Örgü, boya ve apreyi tek üretim zinciri olarak yönetmek.',
+        title: 'Örgü kumaş, boya ve apreyi tek üretim zinciri olarak yönetmek.',
         summary: 'Her uzmanlık sayfası; proses amacı, makine ve ekipmanlar, kritik parametreler, ölçüm noktaları, yaygın hatalar, kök neden ve düzeltici faaliyet yapısını aynı teknik standartta sunar.',
         open: 'Uzmanlık Sayfasını Aç',
         chain: 'Üretim Zinciri Yaklaşımı',
@@ -52,7 +52,7 @@ export default async function ExpertiseOverviewPage({ params }: ExpertiseOvervie
       }
     : {
         eyebrow: 'EXPERTISE FRAMEWORK',
-        title: 'Managing knitting, dyeing and finishing as one production chain.',
+        title: 'Managing knitted fabric, dyeing and finishing as one production chain.',
         summary: 'Each expertise page follows one technical structure: process objective, machinery, critical parameters, control points, common defects, root cause and corrective action.',
         open: 'Open Expertise Page',
         chain: 'Production Chain Approach',
