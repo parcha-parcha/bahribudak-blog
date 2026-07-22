@@ -26,6 +26,20 @@ export type ResourceItem = {
 
 export const resourceCatalogDate = '2026-07-18'
 
+export function resolveResourceAccessLevel(item: ResourceItem): ResourceAccessLevel {
+  if (item.accessLevel) return item.accessLevel
+  if (item.format === 'DOCX' || item.format === 'PPTX') return 'member'
+  return 'free'
+}
+
+export function getDownloadPathAccessLevel(pathname: string): ResourceAccessLevel | null {
+  const resource = resources.find(
+    (item) => item.href === pathname && resolveResourceAccessLevel(item) !== 'free',
+  )
+
+  return resource ? resolveResourceAccessLevel(resource) : null
+}
+
 export const resources: ResourceItem[] = [
   {
     id: 'hidrofil-silikon-pamuk-polyester-pdf',

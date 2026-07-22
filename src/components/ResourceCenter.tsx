@@ -1,6 +1,7 @@
 "use client";
 
 import { authPath } from "@/lib/auth";
+import { resolveResourceAccessLevel } from "@/lib/resources";
 import type {
   ResourceAccessLevel,
   ResourceArea,
@@ -231,12 +232,6 @@ function isArchiveResource(item: ResourceItem) {
   return item.version.toLocaleLowerCase("tr-TR") === "arşiv";
 }
 
-function resolveAccessLevel(item: ResourceItem): ResourceAccessLevel {
-  if (item.accessLevel) return item.accessLevel;
-  if (item.format === "DOCX" || item.format === "PPTX") return "member";
-  return "free";
-}
-
 export default function ResourceCenter({
   lang,
   resources,
@@ -298,7 +293,7 @@ export default function ResourceCenter({
     const accessCounts = Object.fromEntries(
       accessOrder.map((item) => [
         item,
-        resources.filter((resource) => resolveAccessLevel(resource) === item)
+        resources.filter((resource) => resolveResourceAccessLevel(resource) === item)
           .length,
       ]),
     ) as Record<ResourceAccessLevel, number>;
@@ -313,7 +308,7 @@ export default function ResourceCenter({
       const matchesArea = area === "all" || item.areas.includes(area);
       const matchesGroup = group === "all" || item.group === group;
       const matchesFormat = format === "all" || item.format === format;
-      const itemAccess = resolveAccessLevel(item);
+      const itemAccess = resolveResourceAccessLevel(item);
       const matchesAccess = access === "all" || itemAccess === access;
       const haystack = [
         item.title.tr,
@@ -587,7 +582,7 @@ export default function ResourceCenter({
         <section className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((item, index) => {
             const archived = isArchiveResource(item);
-            const accessLevel = resolveAccessLevel(item);
+            const accessLevel = resolveResourceAccessLevel(item);
 
             return (
               <article
