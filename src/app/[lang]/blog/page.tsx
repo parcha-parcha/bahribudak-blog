@@ -175,6 +175,13 @@ export default async function BlogPage({
           currentTechnicalPublications: 'Güncel teknik yayın',
           archiveTechnicalPublications: 'Arşiv teknik yayın',
           downloadablePublications: 'İndirilebilir dosyalı yayın',
+          controlPanelLabel: 'KATALOG KONTROL PANELİ',
+          controlPanelTitle:
+            'Yayınları proses, durum ve belge yapısına göre süzün.',
+          controlPanelText:
+            'Örgü, boya ve apre yayınlarını arama, yayın durumu ve sıralama kriterleriyle birlikte yönetin.',
+          activeViewLabel: 'Aktif görünüm',
+          catalogView: 'Katalog görünümü',
           searchLabel: 'Yayınlarda ara',
           searchPlaceholder:
             'Başlık, konu, etiket, doküman kodu veya standart ara',
@@ -217,6 +224,13 @@ export default async function BlogPage({
             'Archived technical publications',
           downloadablePublications:
             'Publications with downloads',
+          controlPanelLabel: 'CATALOG CONTROL PANEL',
+          controlPanelTitle:
+            'Filter publications by process, status and document structure.',
+          controlPanelText:
+            'Manage knitting, dyeing and finishing publications with search, status and sort controls.',
+          activeViewLabel: 'Active view',
+          catalogView: 'Catalog view',
           searchLabel: 'Search publications',
           searchPlaceholder:
             'Search title, topic, tag, document code or standard',
@@ -414,6 +428,26 @@ export default async function BlogPage({
     },
   ]
 
+  const activeViewItems = [
+    activeArea
+      ? processAreaLabel(activeArea, lang)
+      : copy.allProcesses,
+    activeStatus === 'current'
+      ? copy.currentStatus
+      : activeStatus === 'archive'
+        ? copy.archiveStatus
+        : copy.allStatuses,
+    activeSort === 'oldest'
+      ? copy.oldest
+      : activeSort === 'title'
+        ? copy.alphabetical
+        : copy.newest,
+  ]
+
+  if (searchQuery) {
+    activeViewItems.push(`"${searchQuery}"`)
+  }
+
   return (
     <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
       <section className="border-b border-[#D8DEE8] bg-[#F3F6FA]">
@@ -487,6 +521,39 @@ export default async function BlogPage({
       <section className="border-b border-[#D8DEE8] bg-white">
         <div className="mx-auto max-w-7xl px-6 py-8">
           <div className="rounded-[28px] border border-[#D8DEE8] bg-[#F7F9FC] p-5 md:p-7">
+            <div className="mb-6 grid grid-cols-1 gap-5 border-b border-[#D8DEE8] pb-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2A8EB8]">
+                  {copy.controlPanelLabel}
+                </p>
+
+                <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-0.03em] text-[#0B2343] md:text-3xl">
+                  {copy.controlPanelTitle}
+                </h2>
+
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#66717E]">
+                  {copy.controlPanelText}
+                </p>
+              </div>
+
+              <div className="rounded-[22px] border border-[#D8DEE8] bg-white p-4 shadow-sm">
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#66717E]">
+                  {copy.activeViewLabel}
+                </p>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {activeViewItems.map(item => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-[#D8DEE8] bg-[#F3F6FA] px-3 py-1 text-[11px] font-bold text-[#0B2343]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <form
               action={`/${lang}/blog`}
               method="get"
@@ -733,7 +800,8 @@ export default async function BlogPage({
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-14">
-        <div className="mb-7 flex flex-col gap-3 border-b border-[#D8DEE8] pb-5 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-7 rounded-[28px] border border-[#D8DEE8] bg-white p-5 shadow-sm md:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.15em] text-[#2A8EB8]">
               {copy.resultsLabel}
@@ -750,11 +818,17 @@ export default async function BlogPage({
             </h2>
           </div>
 
-          {searchQuery && (
-            <p className="max-w-lg truncate text-sm font-medium text-[#66717E]">
-              “{searchQuery}”
-            </p>
-          )}
+            <div className="flex flex-wrap gap-2 sm:justify-end">
+              {activeViewItems.map(item => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[#D8DEE8] bg-[#F7F9FC] px-3 py-1.5 text-xs font-bold text-[#4C5561]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {filteredPosts.length > 0 ? (
