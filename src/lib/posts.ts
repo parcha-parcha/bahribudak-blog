@@ -163,12 +163,13 @@ export function documentStatusLabel(
   return lang === 'tr' ? 'Güncel' : 'Current'
 }
 
-function downloadLabelFromKey(key: string): string {
+function downloadLabelFromKey(key: string, href: string): string {
+  const fileType = fileTypeFromHref(href)
   const labels: Record<string, string> = {
     pdf: 'Master PDF',
     docx: 'Düzenlenebilir DOCX',
     pptx: 'Carousel PPTX',
-    carousel: 'Carousel PPTX',
+    carousel: `Carousel ${fileType}`,
     excel: 'Excel Dosyası',
     xlsx: 'Excel Dosyası',
   }
@@ -245,7 +246,7 @@ function extractDownloadLinks(
     for (const [key, value] of Object.entries(downloads)) {
       if (typeof value === 'string' && value.startsWith('/downloads/')) {
         links.push({
-          label: downloadLabelFromKey(key),
+          label: downloadLabelFromKey(key, value),
           href: value,
           fileType: fileTypeFromHref(value),
         })
