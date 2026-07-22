@@ -57,6 +57,25 @@ export default function PostCard({
         aria-hidden="true"
       />
 
+      {post.coverImage && (
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#EAF0F6]">
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+
+          {post.technicalPublication && (
+            <div
+              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#061A33]/45 to-transparent"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      )}
+
       <div className="flex h-full flex-col p-6">
         <div className="mb-5 flex items-start justify-between gap-4">
           <div className="flex flex-wrap gap-2">
