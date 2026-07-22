@@ -27,6 +27,7 @@ export interface PostMeta {
   revisionDate?: string
   documentStatus?: DocumentStatus
   standards?: string[]
+  hasDownloads?: boolean
 }
 
 export interface Post extends PostMeta {
@@ -160,6 +161,8 @@ function parsePostFile(lang: Lang, filename: string): Post {
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(raw)
   const rt = readingTime(content)
+  const hasDownloads =
+    Boolean(data.downloads) || /\/downloads\//.test(content)
 
   return {
     slug,
@@ -178,6 +181,7 @@ function parsePostFile(lang: Lang, filename: string): Post {
     revisionDate: data.revisionDate || undefined,
     documentStatus: normalizeDocumentStatus(data.documentStatus),
     standards: Array.isArray(data.standards) ? data.standards : [],
+    hasDownloads,
     content,
   }
 }

@@ -43,6 +43,9 @@ export default function PostCard({
   const revisionDateLabel =
     lang === 'tr' ? 'Revizyon tarihi' : 'Revision date'
 
+  const downloadableLabel =
+    lang === 'tr' ? 'İndirilebilir dosya' : 'Downloadable file'
+
   return (
     <article className="post-card group relative flex h-full flex-col overflow-hidden bg-white text-navy">
       <div
@@ -82,6 +85,12 @@ export default function PostCard({
                 }`}
               >
                 {statusLabel}
+              </span>
+            )}
+
+            {post.hasDownloads && (
+              <span className="rounded-full border border-[#D9B85F]/40 bg-[#FFF8DF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#6B5415]">
+                {downloadableLabel}
               </span>
             )}
           </div>

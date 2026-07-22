@@ -174,6 +174,7 @@ export default async function BlogPage({
           technicalPublications: 'Teknik yayın',
           currentTechnicalPublications: 'Güncel teknik yayın',
           archiveTechnicalPublications: 'Arşiv teknik yayın',
+          downloadablePublications: 'İndirilebilir dosyalı yayın',
           searchLabel: 'Yayınlarda ara',
           searchPlaceholder:
             'Başlık, konu, etiket, doküman kodu veya standart ara',
@@ -214,6 +215,8 @@ export default async function BlogPage({
             'Current technical publications',
           archiveTechnicalPublications:
             'Archived technical publications',
+          downloadablePublications:
+            'Publications with downloads',
           searchLabel: 'Search publications',
           searchPlaceholder:
             'Search title, topic, tag, document code or standard',
@@ -281,6 +284,10 @@ export default async function BlogPage({
       'archive',
   ).length
 
+  const downloadableCount = controlledTechnicalPosts.filter(
+    post => post.hasDownloads,
+  ).length
+
   const processCounts = technicalPosts.reduce<
     Record<ProcessArea, number>
   >(
@@ -341,6 +348,7 @@ export default async function BlogPage({
           post.revision || '',
           post.standards?.join(' ') || '',
           processAreaLabel(post.processArea, lang),
+          post.hasDownloads ? copy.downloadablePublications : '',
         ].join(' '),
       )
 
@@ -400,6 +408,10 @@ export default async function BlogPage({
       value: archiveCount,
       label: copy.archiveTechnicalPublications,
     },
+    {
+      value: downloadableCount,
+      label: copy.downloadablePublications,
+    },
   ]
 
   return (
@@ -453,7 +465,7 @@ export default async function BlogPage({
             </div>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-5">
             {metrics.map(metric => (
               <div
                 key={metric.label}
