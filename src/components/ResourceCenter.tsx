@@ -1,5 +1,6 @@
 "use client";
 
+import { authPath } from "@/lib/auth";
 import type {
   ResourceAccessLevel,
   ResourceArea,
@@ -7,8 +8,9 @@ import type {
   ResourceGroup,
   ResourceItem,
 } from "@/lib/resources";
+import { createClient } from "@/utils/supabase/client";
 import type { ReactNode } from "react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 type Lang = "tr" | "en";
 type FilterValue<T extends string> = "all" | T;
@@ -63,13 +65,16 @@ const copy = {
     },
     accessHelp: {
       free: "Doğrudan indirilebilir kaynak.",
-      member: "Üyelikli indirme altyapısına hazırlanmış kaynak.",
+      member: "Giriş yapan üyeler için ayrılmış kaynak.",
       premiumSoon: "İleride ücretli paket olarak ayrılabilecek kaynak.",
     },
     resultSingle: "kaynak gösteriliyor",
     resultPlural: "kaynak gösteriliyor",
     activeFilters: "aktif filtre",
     download: "Dosyayı indir",
+    memberDownload: "Üyelikle indir",
+    signInToDownload: "Giriş yap / üyelikle indir",
+    requestAccess: "Talep oluştur",
     version: "Sürüm",
     catalogDate: "Katalog kaydı",
     size: "Dosya boyutu",
@@ -126,13 +131,16 @@ const copy = {
     },
     accessHelp: {
       free: "Directly downloadable resource.",
-      member: "Resource prepared for member-based download access.",
+      member: "Resource reserved for signed-in members.",
       premiumSoon: "Resource that can later become a paid package.",
     },
     resultSingle: "resource shown",
     resultPlural: "resources shown",
     activeFilters: "active filters",
     download: "Download file",
+    memberDownload: "Member download",
+    signInToDownload: "Sign in / member download",
+    requestAccess: "Request access",
     version: "Version",
     catalogDate: "Cataloged",
     size: "File size",
@@ -245,6 +253,25 @@ export default function ResourceCenter({
   const [format, setFormat] = useState<FilterValue<ResourceFormat>>("all");
   const [access, setAccess] = useState<FilterValue<ResourceAccessLevel>>("all");
   const [sort, setSort] = useState<SortValue>("catalog");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    let active = true;
+
+    void supabase.auth.getSession().then(({ data }) => {
+      if (active) setIsAuthenticated(Boolean(data.session));
+    });
+
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAuthenticated(Boolean(session));
+    });
+
+    return () => {
+      active = false;
+      data.subscription.unsubscribe();
+    };
+  }, []);
 
   const counts = useMemo(() => {
     const areaCounts = Object.fromEntries(
@@ -673,15 +700,33 @@ export default function ResourceCenter({
                   </dl>
 
                   <div className="mt-auto pt-6">
-                    <a
-                      href={item.href}
-                      download
-                      aria-label={`${t.download}: ${item.title[lang]} (${item.format})`}
-                      className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
-                    >
-                      <DownloadIcon />
-                      {t.download} · {item.format}
-                    </a>
+                    {accessLevel === "premiumSoon" ? (
+                      <a
+                        href={`/${lang}/contact`}
+                        aria-label={`${t.requestAccess}: ${item.title[lang]} (${item.format})`}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#8A6400] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#A47700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C94C] focus-visible:ring-offset-2"
+                      >
+                        {t.requestAccess} · {item.format}
+                      </a>
+                    ) : accessLevel === "member" && !isAuthenticated ? (
+                      <a
+                        href={`${authPath(lang, "login")}?next=${encodeURIComponent(item.href)}`}
+                        aria-label={`${t.signInToDownload}: ${item.title[lang]} (${item.format})`}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                      >
+                        {t.signInToDownload} · {item.format}
+                      </a>
+                    ) : (
+                      <a
+                        href={item.href}
+                        download
+                        aria-label={`${t.download}: ${item.title[lang]} (${item.format})`}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                      >
+                        <DownloadIcon />
+                        {accessLevel === "member" ? t.memberDownload : t.download} · {item.format}
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
