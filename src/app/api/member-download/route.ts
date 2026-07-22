@@ -1,5 +1,7 @@
 import { findResourceByDownloadPath, getDownloadPathAccessLevel, type ResourceItem } from '@/lib/resources'
+import { authPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/server'
+import { isSupabaseConfigured } from '@/utils/supabase/env'
 import { readFile } from 'fs/promises'
 import { basename, join, normalize } from 'path'
 import { NextResponse, type NextRequest } from 'next/server'
@@ -32,6 +34,31 @@ function resolveDownloadPath(value: string | null) {
   if (!normalized.startsWith('/downloads/')) return null
 
   return normalized
+}
+
+function resolveLang(request: NextRequest) {
+  const referer = request.headers.get('referer')
+
+  if (referer) {
+    try {
+      const refererPath = new URL(referer).pathname
+      if (refererPath.startsWith('/en')) return 'en'
+    } catch {
+      return 'tr'
+    }
+  }
+
+  return 'tr'
+}
+
+function redirectToLogin(request: NextRequest, nextPath: string) {
+  const url = request.nextUrl.clone()
+
+  url.pathname = authPath(resolveLang(request), 'login')
+  url.search = ''
+  url.searchParams.set('next', nextPath)
+
+  return NextResponse.redirect(url)
 }
 
 type CookieHistoryItem = {
@@ -120,13 +147,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Resource unavailable.' }, { status: 404 })
   }
 
+  if (!isSupabaseConfigured()) {
+    return redirectToLogin(request, downloadPath)
+  }
+
   const supabase = await createClient()
   const {
     data: { user },
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 })
+    return redirectToLogin(request, downloadPath)
   }
 
   const resource = findResourceByDownloadPath(downloadPath)
