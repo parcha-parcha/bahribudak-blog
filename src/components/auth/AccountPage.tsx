@@ -1,12 +1,53 @@
 import type { Lang } from '@/lib/i18n'
 import { authPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/server'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import ProfileForm from './ProfileForm'
 import SignOutButton from './SignOutButton'
 
+const historyCookieName = 'bb_member_download_history'
+
+type CatalogDownloadSnapshot = {
+  source?: string
+  title?: string
+  fileType?: string
+  filePath?: string
+}
+
+type CookieHistoryItem = {
+  title?: string
+  fileType?: string
+  filePath?: string
+  downloadedAt?: string
+}
+
+function parseCatalogDownloadSnapshot(value: string | null) {
+  const prefix = 'catalog-download:'
+  if (!value?.startsWith(prefix)) return null
+
+  try {
+    const parsed = JSON.parse(value.slice(prefix.length)) as CatalogDownloadSnapshot
+    return parsed.source === 'catalog' ? parsed : null
+  } catch {
+    return null
+  }
+}
+
+function parseCookieHistory(value: string | undefined) {
+  if (!value) return []
+
+  try {
+    const parsed = JSON.parse(decodeURIComponent(value)) as CookieHistoryItem[]
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
 export default async function AccountPage({ lang }: { lang: Lang }) {
   const supabase = await createClient()
+  const cookieStore = await cookies()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect(`${authPath(lang, 'login')}?next=${encodeURIComponent(authPath(lang, 'account'))}`)
 
@@ -14,17 +55,29 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
     supabase.from('profiles').select('full_name, company_name').eq('id', user.id).maybeSingle(),
     supabase
       .from('download_events')
-      .select('downloaded_at, resource_id, resources(title, file_type, slug)')
+      .select('downloaded_at, resource_id, user_agent, resources(title, file_type, slug)')
       .eq('user_id', user.id)
-      .not('resource_id', 'is', null)
       .order('downloaded_at', { ascending: false })
-      .limit(10),
+      .limit(20),
   ])
 
   const tr = lang === 'tr'
   const createdAt = new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', { dateStyle: 'long' }).format(new Date(user.created_at))
-  const downloadHistory = (downloadRows ?? []).map((item) => {
+  const cookieHistory = parseCookieHistory(cookieStore.get(historyCookieName)?.value).map((item) => ({
+    resourceId: item.filePath ?? item.title ?? 'cookie-download',
+    downloadedAt: item.downloadedAt
+      ? new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }).format(new Date(item.downloadedAt))
+      : '—',
+    title: item.title,
+    fileType: item.fileType ?? '—',
+  })).filter((item) => item.title)
+
+  const databaseHistory = (downloadRows ?? []).map((item) => {
     const resourceMeta = Array.isArray(item.resources) ? item.resources[0] ?? null : item.resources ?? null
+    const catalogSnapshot = parseCatalogDownloadSnapshot(item.user_agent)
 
     return {
       resourceId: item.resource_id,
@@ -32,10 +85,12 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
         dateStyle: 'medium',
         timeStyle: 'short',
       }).format(new Date(item.downloaded_at)),
-      title: resourceMeta?.title ?? item.resource_id,
-      fileType: resourceMeta?.file_type ?? '—',
+      title: resourceMeta?.title ?? catalogSnapshot?.title ?? item.resource_id,
+      fileType: resourceMeta?.file_type ?? catalogSnapshot?.fileType ?? '—',
     }
-  })
+  }).filter((item) => item.title)
+
+  const downloadHistory = [...cookieHistory, ...databaseHistory].slice(0, 10)
 
   return <section className="bg-[#F5F7FA] px-4 py-12 md:py-18">
     <div className="mx-auto max-w-5xl">

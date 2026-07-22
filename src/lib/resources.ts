@@ -40,6 +40,10 @@ export function getDownloadPathAccessLevel(pathname: string): ResourceAccessLeve
   return resource ? resolveResourceAccessLevel(resource) : null
 }
 
+export function findResourceByDownloadPath(pathname: string) {
+  return resources.find((item) => item.href === pathname) ?? null
+}
+
 export const resources: ResourceItem[] = [
   {
     id: 'hidrofil-silikon-pamuk-polyester-pdf',
