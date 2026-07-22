@@ -45,6 +45,12 @@ function parseCookieHistory(value: string | undefined) {
   }
 }
 
+function isDisplayableDownload(item: { title?: string | null; fileType?: string | null }) {
+  const value = `${item.title ?? ''} ${item.fileType ?? ''}`.toLocaleLowerCase('en-US')
+
+  return Boolean(item.title) && !/\b(test|demo|sample)\b/.test(value)
+}
+
 export default async function AccountPage({ lang }: { lang: Lang }) {
   const supabase = await createClient()
   const cookieStore = await cookies()
@@ -73,7 +79,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
       : '—',
     title: item.title,
     fileType: item.fileType ?? '—',
-  })).filter((item) => item.title)
+  })).filter(isDisplayableDownload)
 
   const databaseHistory = (downloadRows ?? []).map((item) => {
     const resourceMeta = Array.isArray(item.resources) ? item.resources[0] ?? null : item.resources ?? null
@@ -88,7 +94,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
       title: resourceMeta?.title ?? catalogSnapshot?.title ?? item.resource_id,
       fileType: resourceMeta?.file_type ?? catalogSnapshot?.fileType ?? '—',
     }
-  }).filter((item) => item.title)
+  }).filter(isDisplayableDownload)
 
   const downloadHistory = [...cookieHistory, ...databaseHistory].slice(0, 10)
 
