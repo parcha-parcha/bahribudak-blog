@@ -58,13 +58,16 @@ export default function PostCard({
       />
 
       {post.coverImage && (
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#EAF0F6]">
+        <div
+          className="relative w-full overflow-hidden bg-[#061A33]"
+          style={{ aspectRatio: '16 / 9' }}
+        >
           <img
             src={post.coverImage}
             alt={post.title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="h-full w-full object-contain transition-opacity duration-300 group-hover:opacity-95"
           />
 
           {post.technicalPublication && (
