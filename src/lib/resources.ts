@@ -7,6 +7,7 @@ export type ResourceGroup =
   | 'calculation'
   | 'management'
 export type ResourceFormat = 'PDF' | 'XLSX' | 'DOCX' | 'PPTX'
+export type ResourceAccessLevel = 'free' | 'member' | 'premiumSoon'
 
 export type ResourceItem = {
   id: string
@@ -18,6 +19,7 @@ export type ResourceItem = {
   catalogDate: string
   size: string
   fileLanguage: 'tr' | 'en' | 'tr-en'
+  accessLevel?: ResourceAccessLevel
   title: { tr: string; en: string }
   description: { tr: string; en: string }
 }
@@ -378,6 +380,7 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-20",
     size: "14 MB",
     fileLanguage: 'tr',
+    accessLevel: 'premiumSoon',
     title: {
       tr: "RO Maliyet ve Geri Ödeme Carousel Sunumu",
       en: "RO Cost and Payback Carousel Deck",
@@ -435,6 +438,7 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-20",
     size: "18 MB",
     fileLanguage: 'tr',
+    accessLevel: 'premiumSoon',
     title: {
       tr: "Bikarbonat ve Reaktif Boyama Carousel Sunumu",
       en: "Bicarbonate and Reactive Dyeing Carousel Deck",
@@ -853,6 +857,7 @@ export const resources: ResourceItem[] = [
     catalogDate: resourceCatalogDate,
     size: "6.8 MB",
     fileLanguage: 'tr',
+    accessLevel: 'premiumSoon',
     title: {
       tr: "Tekstil Fabrikası Teknik Yönetim ve Proses Sistemi",
       en: "Textile Mill Technical Management and Process System",
@@ -872,6 +877,7 @@ export const resources: ResourceItem[] = [
     catalogDate: resourceCatalogDate,
     size: "513 KB",
     fileLanguage: 'tr',
+    accessLevel: 'premiumSoon',
     title: {
       tr: "Tekstil İşletmelerinde Mühendislik Formülleri",
       en: "Engineering Formulas for Textile Operations",

@@ -1,6 +1,7 @@
 "use client";
 
 import type {
+  ResourceAccessLevel,
   ResourceArea,
   ResourceFormat,
   ResourceGroup,
@@ -13,6 +14,7 @@ type Lang = "tr" | "en";
 type FilterValue<T extends string> = "all" | T;
 type SortValue = "catalog" | "title" | "format";
 
+const accessOrder: ResourceAccessLevel[] = ["free", "member", "premiumSoon"];
 const areaOrder: ResourceArea[] = ["orgu", "boya", "apre", "ortak"];
 const groupOrder: ResourceGroup[] = [
   "training",
@@ -32,6 +34,7 @@ const copy = {
     processFilter: "Proses alanı",
     resourceFilter: "Kaynak türü",
     formatFilter: "Dosya biçimi",
+    accessFilter: "Erişim",
     sortLabel: "Sıralama",
     sort: {
       catalog: "Katalog sırası",
@@ -53,6 +56,16 @@ const copy = {
       calculation: "Hesaplama Aracı",
       management: "Yönetim Dokümanı",
     },
+    access: {
+      free: "Ücretsiz",
+      member: "Üyelikle",
+      premiumSoon: "Ücretli aday",
+    },
+    accessHelp: {
+      free: "Doğrudan indirilebilir kaynak.",
+      member: "Üyelikli indirme altyapısına hazırlanmış kaynak.",
+      premiumSoon: "İleride ücretli paket olarak ayrılabilecek kaynak.",
+    },
     resultSingle: "kaynak gösteriliyor",
     resultPlural: "kaynak gösteriliyor",
     activeFilters: "aktif filtre",
@@ -67,6 +80,7 @@ const copy = {
       "tr-en": "Türkçe / İngilizce",
     },
     status: "Durum",
+    accessStatus: "Erişim",
     current: "Güncel",
     archive: "Arşiv",
     noResultTitle: "Seçilen filtrelerle eşleşen kaynak bulunamadı.",
@@ -74,7 +88,7 @@ const copy = {
       "Arama metnini temizleyin veya filtrelerden birini “Tümü” konumuna alın.",
     clear: "Tüm filtreleri temizle",
     archiveNote:
-      "“Arşiv” etiketi taşıyan dosyalar referans amaçlıdır; güncel işletme talimatı olarak kullanılmamalıdır.",
+      "“Arşiv” etiketi taşıyan dosyalar referans amaçlıdır; erişim etiketleri ise ücretli/üyelikli indirme altyapısı için katalog hazırlığıdır.",
   },
   en: {
     search: "Search resources",
@@ -83,6 +97,7 @@ const copy = {
     processFilter: "Process area",
     resourceFilter: "Resource type",
     formatFilter: "File format",
+    accessFilter: "Access",
     sortLabel: "Sort",
     sort: {
       catalog: "Catalog order",
@@ -104,6 +119,16 @@ const copy = {
       calculation: "Calculation Tool",
       management: "Management Document",
     },
+    access: {
+      free: "Free",
+      member: "Member",
+      premiumSoon: "Paid candidate",
+    },
+    accessHelp: {
+      free: "Directly downloadable resource.",
+      member: "Resource prepared for member-based download access.",
+      premiumSoon: "Resource that can later become a paid package.",
+    },
     resultSingle: "resource shown",
     resultPlural: "resources shown",
     activeFilters: "active filters",
@@ -118,13 +143,14 @@ const copy = {
       "tr-en": "Turkish / English",
     },
     status: "Status",
+    accessStatus: "Access",
     current: "Current",
     archive: "Archive",
     noResultTitle: "No resources match the selected filters.",
     noResultText: "Clear the search text or set one of the filters to “All”.",
     clear: "Clear all filters",
     archiveNote:
-      "Files marked “Archive” are for reference and must not be used as current operating instructions.",
+      "Files marked “Archive” are for reference; access labels prepare the catalog for member and paid download infrastructure.",
   },
 } as const;
 
@@ -197,6 +223,12 @@ function isArchiveResource(item: ResourceItem) {
   return item.version.toLocaleLowerCase("tr-TR") === "arşiv";
 }
 
+function resolveAccessLevel(item: ResourceItem): ResourceAccessLevel {
+  if (item.accessLevel) return item.accessLevel;
+  if (item.format === "DOCX" || item.format === "PPTX") return "member";
+  return "free";
+}
+
 export default function ResourceCenter({
   lang,
   resources,
@@ -211,6 +243,7 @@ export default function ResourceCenter({
   const [area, setArea] = useState<FilterValue<ResourceArea>>("all");
   const [group, setGroup] = useState<FilterValue<ResourceGroup>>("all");
   const [format, setFormat] = useState<FilterValue<ResourceFormat>>("all");
+  const [access, setAccess] = useState<FilterValue<ResourceAccessLevel>>("all");
   const [sort, setSort] = useState<SortValue>("catalog");
 
   const counts = useMemo(() => {
@@ -235,7 +268,15 @@ export default function ResourceCenter({
       ]),
     ) as Record<ResourceFormat, number>;
 
-    return { areaCounts, groupCounts, formatCounts };
+    const accessCounts = Object.fromEntries(
+      accessOrder.map((item) => [
+        item,
+        resources.filter((resource) => resolveAccessLevel(resource) === item)
+          .length,
+      ]),
+    ) as Record<ResourceAccessLevel, number>;
+
+    return { areaCounts, groupCounts, formatCounts, accessCounts };
   }, [resources]);
 
   const filtered = useMemo(() => {
@@ -245,6 +286,8 @@ export default function ResourceCenter({
       const matchesArea = area === "all" || item.areas.includes(area);
       const matchesGroup = group === "all" || item.group === group;
       const matchesFormat = format === "all" || item.format === format;
+      const itemAccess = resolveAccessLevel(item);
+      const matchesAccess = access === "all" || itemAccess === access;
       const haystack = [
         item.title.tr,
         item.title.en,
@@ -255,13 +298,14 @@ export default function ResourceCenter({
         item.size,
         ...item.areas.map((entry) => t.area[entry]),
         t.group[item.group],
+        t.access[itemAccess],
       ]
         .join(" ")
         .toLocaleLowerCase(locale);
       const matchesQuery =
         !normalizedQuery || haystack.includes(normalizedQuery);
 
-      return matchesArea && matchesGroup && matchesFormat && matchesQuery;
+      return matchesArea && matchesGroup && matchesFormat && matchesAccess && matchesQuery;
     });
 
     if (sort === "title") {
@@ -288,6 +332,7 @@ export default function ResourceCenter({
     return result;
   }, [
     area,
+    access,
     deferredQuery,
     format,
     group,
@@ -296,6 +341,7 @@ export default function ResourceCenter({
     resources,
     sort,
     t.area,
+    t.access,
     t.group,
   ]);
 
@@ -304,6 +350,7 @@ export default function ResourceCenter({
     area !== "all",
     group !== "all",
     format !== "all",
+    access !== "all",
     sort !== "catalog",
   ].filter(Boolean).length;
 
@@ -312,6 +359,7 @@ export default function ResourceCenter({
     setArea("all");
     setGroup("all");
     setFormat("all");
+    setAccess("all");
     setSort("catalog");
   };
 
@@ -402,7 +450,7 @@ export default function ResourceCenter({
               </div>
             </div>
 
-            <div className="grid gap-6 xl:grid-cols-[1.45fr_0.55fr]">
+            <div className="grid gap-6 xl:grid-cols-[1.25fr_0.45fr_0.55fr]">
               <div>
                 <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
                   {t.resourceFilter}
@@ -452,6 +500,31 @@ export default function ResourceCenter({
                   ))}
                 </div>
               </div>
+
+              <div>
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
+                  {t.accessFilter}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <FilterButton
+                    active={access === "all"}
+                    onClick={() => setAccess("all")}
+                    count={resources.length}
+                  >
+                    {t.all}
+                  </FilterButton>
+                  {accessOrder.map((item) => (
+                    <FilterButton
+                      key={item}
+                      active={access === item}
+                      onClick={() => setAccess(item)}
+                      count={counts.accessCounts[item]}
+                    >
+                      {t.access[item]}
+                    </FilterButton>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -487,6 +560,7 @@ export default function ResourceCenter({
         <section className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((item, index) => {
             const archived = isArchiveResource(item);
+            const accessLevel = resolveAccessLevel(item);
 
             return (
               <article
@@ -572,6 +646,27 @@ export default function ResourceCenter({
                           }`}
                         >
                           {archived ? t.archive : t.current}
+                        </span>
+                      </dd>
+                    </div>
+                    <div className="col-span-2">
+                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                        {t.accessStatus}
+                      </dt>
+                      <dd className="mt-1 flex flex-wrap items-center gap-2">
+                        <span
+                          className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.08em] ${
+                            accessLevel === "free"
+                              ? "bg-[#EAF7EF] text-[#247342]"
+                              : accessLevel === "member"
+                                ? "bg-[#EAF6FC] text-[#177DA8]"
+                                : "bg-[#FFF8E1] text-[#8A6400]"
+                          }`}
+                        >
+                          {t.access[accessLevel]}
+                        </span>
+                        <span className="text-[11px] leading-5 text-[#0B2343]/[0.55]">
+                          {t.accessHelp[accessLevel]}
                         </span>
                       </dd>
                     </div>
