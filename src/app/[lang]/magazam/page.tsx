@@ -122,7 +122,7 @@ export default async function ResourceCenterPage({
             catalog: {
               title: 'Teknik Doküman Kataloğu',
               description:
-                'PDF, DOCX ve XLSX biçimindeki tüm doğrulanmış teknik kaynakları proses ve dosya türüne göre inceleyin.',
+                'PDF, DOCX, XLSX ve PPTX biçimindeki tüm doğrulanmış teknik kaynakları proses ve dosya türüne göre inceleyin.',
               linkLabel: 'Ana kataloğa git',
             },
           },
@@ -195,7 +195,7 @@ export default async function ResourceCenterPage({
             catalog: {
               title: 'Technical Document Catalog',
               description:
-                'Browse all verified PDF, DOCX and XLSX technical resources by process area and file type.',
+                'Browse all verified PDF, DOCX, XLSX and PPTX technical resources by process area and file type.',
               linkLabel: 'Go to main catalog',
             },
           },

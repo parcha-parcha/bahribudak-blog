@@ -6,7 +6,7 @@ export type ResourceGroup =
   | 'checklist'
   | 'calculation'
   | 'management'
-export type ResourceFormat = 'PDF' | 'XLSX' | 'DOCX'
+export type ResourceFormat = 'PDF' | 'XLSX' | 'DOCX' | 'PPTX'
 
 export type ResourceItem = {
   id: string
@@ -271,6 +271,215 @@ export const resources: ResourceItem[] = [
     description: {
       tr: "Reaktif art yıkama, polyester indirgen temizleme, final pH, iletkenlik ve haslık kontrolünü açıklar.",
       en: "Explains reactive after-washing, polyester reduction clearing, final pH, conductivity and fastness control.",
+    },
+  },
+  {
+    id: "ro-kapasite-master-pdf",
+    href: "/downloads/20-000-kg-boyahane-ro-kapasite-secimi-v1.0.pdf",
+    areas: ["boya"],
+    group: "technical",
+    format: "PDF",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "539 KB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "20.000 kg/gün Boyahane RO Kapasite Seçimi",
+      en: "RO Capacity Selection for a 20,000 kg/day Dyehouse",
+    },
+    description: {
+      tr: "Ana boyama banyosu için RO permeat ihtiyacı, tank kapasitesi ve teknik seçim kararını özetleyen master doküman.",
+      en: "Master document summarizing RO permeate demand, tank capacity and technical selection for main dye baths.",
+    },
+  },
+  {
+    id: "ro-kapasite-master-docx",
+    href: "/downloads/20-000-kg-boyahane-ro-kapasite-secimi-v1.0.docx",
+    areas: ["boya"],
+    group: "technical",
+    format: "DOCX",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "2.5 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "RO Kapasite Seçimi — Düzenlenebilir Master",
+      en: "RO Capacity Selection — Editable Master",
+    },
+    description: {
+      tr: "RO kapasite hesabı ve teknik seçim notunun işletmeye uyarlanabilen düzenlenebilir DOCX sürümü.",
+      en: "Editable DOCX version of the RO capacity calculation and technical selection note.",
+    },
+  },
+  {
+    id: "ro-kapasite-carousel-pptx",
+    href: "/downloads/20-000-kg-boyahane-ro-kapasite-secimi-carousel-v1.0.pptx",
+    areas: ["boya"],
+    group: "technical",
+    format: "PPTX",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "2.7 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "RO Kapasite Seçimi Carousel Sunumu",
+      en: "RO Capacity Selection Carousel Deck",
+    },
+    description: {
+      tr: "RO kapasite seçimi kararını sosyal medya ve sunum kullanımı için özetleyen düzenlenebilir PPTX dosyası.",
+      en: "Editable PPTX deck summarizing the RO capacity selection decision for presentation and social media use.",
+    },
+  },
+  {
+    id: "ro-geri-odeme-master-pdf",
+    href: "/downloads/200m3-gun-ro-sistemi-maliyet-geri-odeme-v1.0.pdf",
+    areas: ["boya"],
+    group: "calculation",
+    format: "PDF",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "736 KB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "200 m3/gün RO Sistemi Maliyet ve Geri Ödeme",
+      en: "200 m3/day RO System Cost and Payback",
+    },
+    description: {
+      tr: "RO sistemi yatırım, işletme maliyeti, su kullanım etkisi ve geri ödeme hesabını teknik özet halinde sunar.",
+      en: "Technical summary of RO investment, operating cost, water-use impact and payback calculation.",
+    },
+  },
+  {
+    id: "ro-geri-odeme-master-docx",
+    href: "/downloads/200m3-gun-ro-sistemi-maliyet-geri-odeme-v1.0.docx",
+    areas: ["boya"],
+    group: "calculation",
+    format: "DOCX",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "3.7 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "RO Maliyet ve Geri Ödeme — Düzenlenebilir Master",
+      en: "RO Cost and Payback — Editable Master",
+    },
+    description: {
+      tr: "200 m3/gün RO geri ödeme çalışmasının işletme verileriyle uyarlanabilen DOCX sürümü.",
+      en: "Editable DOCX version of the 200 m3/day RO payback study for plant-specific adaptation.",
+    },
+  },
+  {
+    id: "ro-geri-odeme-carousel-pptx",
+    href: "/downloads/200m3-gun-ro-sistemi-maliyet-geri-odeme-carousel-v1.0.pptx",
+    areas: ["boya"],
+    group: "calculation",
+    format: "PPTX",
+    version: "V1.0",
+    catalogDate: "2026-07-20",
+    size: "14 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "RO Maliyet ve Geri Ödeme Carousel Sunumu",
+      en: "RO Cost and Payback Carousel Deck",
+    },
+    description: {
+      tr: "RO yatırım geri ödeme mantığını karar vericilere kısa ve görsel akışla anlatan PPTX sunumu.",
+      en: "PPTX deck explaining RO investment payback for decision makers in a concise visual flow.",
+    },
+  },
+  {
+    id: "ram-bacasi-master-pdf",
+    href: "/downloads/BB-KSS-Tekstilde-Ram-Bacalarinin-Temizligi-Master-v1.0.pdf",
+    areas: ["apre"],
+    group: "technical",
+    format: "PDF",
+    version: "V1.0",
+    catalogDate: "2026-07-22",
+    size: "6.2 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "Tekstilde Ram Bacalarının Temizliği Master",
+      en: "Textile Stenter Exhaust Cleaning Master",
+    },
+    description: {
+      tr: "Ram bacalarında yangın riskini azaltmak için temizlik, kontrol ve kayıt sistemini açıklayan teknik master dosya.",
+      en: "Technical master file on cleaning, inspection and recording to reduce stenter exhaust fire risk.",
+    },
+  },
+  {
+    id: "ram-bacasi-master-docx",
+    href: "/downloads/BB-KSS-Tekstilde-Ram-Bacalarinin-Temizligi-Master-v1.0.docx",
+    areas: ["apre"],
+    group: "technical",
+    format: "DOCX",
+    version: "V1.0",
+    catalogDate: "2026-07-22",
+    size: "41 KB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "Ram Bacası Temizliği — Düzenlenebilir Master",
+      en: "Stenter Exhaust Cleaning — Editable Master",
+    },
+    description: {
+      tr: "Ram bacası temizlik ve kontrol sisteminin işletmeye uyarlanabilen düzenlenebilir DOCX sürümü.",
+      en: "Editable DOCX version of the stenter exhaust cleaning and inspection system.",
+    },
+  },
+  {
+    id: "bikarbonat-carousel-pptx",
+    href: "/downloads/bb-cvs-tsu-bik-001-bikarbonat-carousel.pptx",
+    areas: ["boya"],
+    group: "technical",
+    format: "PPTX",
+    version: "R00",
+    catalogDate: "2026-07-20",
+    size: "18 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "Bikarbonat ve Reaktif Boyama Carousel Sunumu",
+      en: "Bicarbonate and Reactive Dyeing Carousel Deck",
+    },
+    description: {
+      tr: "Bikarbonat, alkalinite ve proses seçimi kararını görsel akışla özetleyen düzenlenebilir PPTX sunumu.",
+      en: "Editable PPTX deck summarizing bicarbonate, alkalinity and process selection in a visual flow.",
+    },
+  },
+  {
+    id: "boyahane-suyu-carousel-pptx",
+    href: "/downloads/bb-cvs-boyahane-suyu-statik-karusel-r02.pptx",
+    areas: ["boya"],
+    group: "technical",
+    format: "PPTX",
+    version: "R02",
+    catalogDate: resourceCatalogDate,
+    size: "1.2 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "Boyahane Suyu Statik Carousel Sunumu",
+      en: "Dyehouse Water Static Carousel Deck",
+    },
+    description: {
+      tr: "İşletme suyu, iletkenlik, TDS ve ısı geri kazanımı konularını kısa görsel akışla özetleyen PPTX dosyası.",
+      en: "PPTX file summarizing plant water, conductivity, TDS and heat recovery in a concise visual flow.",
+    },
+  },
+  {
+    id: "makineye-mal-giris-carousel-pptx",
+    href: "/downloads/makineye-mal-giris-carousel-v1.1.pptx",
+    areas: ["orgu", "boya"],
+    group: "technical",
+    format: "PPTX",
+    version: "V1.1",
+    catalogDate: "2026-07-21",
+    size: "8 MB",
+    fileLanguage: 'tr',
+    title: {
+      tr: "Makineye Mal Giriş Carousel Sunumu",
+      en: "Fabric Loading into Dyeing Machine Carousel Deck",
+    },
+    description: {
+      tr: "Makineye mal girişte parti kimliği, burulma, yükleme ve proses risklerini görsel sunum formatında özetler.",
+      en: "Visual deck summarizing batch identity, twisting, loading and process risks during machine loading.",
     },
   },
   {

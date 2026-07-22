@@ -22,7 +22,7 @@ const groupOrder: ResourceGroup[] = [
   "calculation",
   "management",
 ];
-const formatOrder: ResourceFormat[] = ["PDF", "XLSX", "DOCX"];
+const formatOrder: ResourceFormat[] = ["PDF", "DOCX", "XLSX", "PPTX"];
 
 const copy = {
   tr: {
