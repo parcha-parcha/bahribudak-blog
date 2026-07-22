@@ -43,6 +43,21 @@ function redirectToContact(request: NextRequest) {
   return NextResponse.redirect(url)
 }
 
+function redirectToMemberDownload(
+  request: NextRequest,
+  cookiesToSet: Parameters<NextResponse['cookies']['set']>[],
+) {
+  const url = request.nextUrl.clone()
+
+  url.pathname = '/api/member-download'
+  url.search = ''
+  url.searchParams.set('path', request.nextUrl.pathname)
+
+  const response = NextResponse.redirect(url)
+  cookiesToSet.forEach((cookie) => response.cookies.set(...cookie))
+  return response
+}
+
 export async function proxy(request: NextRequest) {
   const accessLevel = getDownloadPathAccessLevel(request.nextUrl.pathname)
 
@@ -79,7 +94,7 @@ export async function proxy(request: NextRequest) {
 
   if (!user) return redirectToLogin(request, cookiesToSet)
 
-  return response
+  return redirectToMemberDownload(request, cookiesToSet)
 }
 
 export const config = {

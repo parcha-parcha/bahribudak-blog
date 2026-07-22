@@ -232,6 +232,10 @@ function isArchiveResource(item: ResourceItem) {
   return item.version.toLocaleLowerCase("tr-TR") === "arşiv";
 }
 
+function memberDownloadPath(href: string) {
+  return `/api/member-download?path=${encodeURIComponent(href)}`;
+}
+
 export default function ResourceCenter({
   lang,
   resources,
@@ -713,7 +717,7 @@ export default function ResourceCenter({
                       </a>
                     ) : (
                       <a
-                        href={item.href}
+                        href={accessLevel === "member" ? memberDownloadPath(item.href) : item.href}
                         download
                         aria-label={`${t.download}: ${item.title[lang]} (${item.format})`}
                         className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
