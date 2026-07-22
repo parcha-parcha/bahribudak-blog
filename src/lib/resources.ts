@@ -32,12 +32,24 @@ export function resolveResourceAccessLevel(item: ResourceItem): ResourceAccessLe
   return 'free'
 }
 
+export function isMemberDownloadPath(pathname: string) {
+  const normalized = pathname.toLocaleLowerCase('en-US')
+
+  return (
+    normalized.startsWith('/downloads/') &&
+    (normalized.endsWith('.docx') || normalized.endsWith('.pptx'))
+  )
+}
+
 export function getDownloadPathAccessLevel(pathname: string): ResourceAccessLevel | null {
   const resource = resources.find(
     (item) => item.href === pathname && resolveResourceAccessLevel(item) !== 'free',
   )
 
-  return resource ? resolveResourceAccessLevel(resource) : null
+  if (resource) return resolveResourceAccessLevel(resource)
+  if (isMemberDownloadPath(pathname)) return 'member'
+
+  return null
 }
 
 export function findResourceByDownloadPath(pathname: string) {

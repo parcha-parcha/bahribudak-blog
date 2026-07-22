@@ -99,6 +99,25 @@ for (const relativeDownload of [...downloadReferences].sort()) {
   }
 }
 
+const editableDownloadReferences = [...downloadReferences].filter(reference =>
+  /\.(docx|pptx)$/i.test(reference),
+)
+
+const resourcesSourcePath = path.join(root, 'src/lib/resources.ts')
+const resourcesSource = fs.existsSync(resourcesSourcePath)
+  ? fs.readFileSync(resourcesSourcePath, 'utf8')
+  : ''
+
+const resourceBlocks = [...resourcesSource.matchAll(/\{\s*id:[\s\S]*?\n\s*\},/g)].map(match => match[0])
+const freeEditableResources = resourceBlocks
+  .filter(block => /format:\s*['"](DOCX|PPTX)['"]/.test(block))
+  .filter(block => /accessLevel:\s*['"]free['"]/.test(block))
+  .map(block => block.match(/id:\s*['"]([^'"]+)['"]/)?.[1] || 'tanımsız-kaynak')
+
+if (freeEditableResources.length > 0) {
+  fail(`DOCX/PPTX kaynakları ücretsiz işaretlenemez: ${freeEditableResources.join(', ')}`)
+}
+
 const translatedRoutesPath = path.join(root, 'src/lib/translatedRoutes.ts')
 const translatedRoutesSource = fs.existsSync(translatedRoutesPath)
   ? fs.readFileSync(translatedRoutesPath, 'utf8')

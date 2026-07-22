@@ -21,6 +21,10 @@ function getContentType(filename: string) {
   return extension ? contentTypes[extension] ?? 'application/octet-stream' : 'application/octet-stream'
 }
 
+function getFileType(filename: string) {
+  return filename.split('.').pop()?.toLocaleUpperCase('en-US') ?? 'FILE'
+}
+
 function resolveDownloadPath(value: string | null) {
   if (!value || !value.startsWith('/downloads/') || value.includes('..')) return null
 
@@ -53,12 +57,10 @@ function buildCookieHistory(
   resource: ResourceItem | null,
   filename: string,
 ) {
-  if (!resource) return []
-
   const previous = parseCookieHistory(request.cookies.get(historyCookieName)?.value)
   const nextItem: CookieHistoryItem = {
-    title: resource.title.tr,
-    fileType: resource.format,
+    title: resource?.title.tr ?? filename,
+    fileType: resource?.format ?? getFileType(filename),
     filePath: filename,
     downloadedAt: new Date().toISOString(),
   }
@@ -76,27 +78,27 @@ async function recordMemberDownload(
   userId: string,
   userAgent: string | null,
 ) {
-  if (!resource) return
+  if (resource) {
+    const { data: resourceRecord } = await supabase
+      .from('resources')
+      .select('id')
+      .eq('file_path', filename)
+      .maybeSingle()
 
-  const { data: resourceRecord } = await supabase
-    .from('resources')
-    .select('id')
-    .eq('file_path', filename)
-    .maybeSingle()
+    if (resourceRecord?.id) {
+      const { error } = await supabase.rpc('record_download_event', {
+        p_resource_id: resourceRecord.id,
+        p_user_agent: userAgent,
+      })
 
-  if (resourceRecord?.id) {
-    const { error } = await supabase.rpc('record_download_event', {
-      p_resource_id: resourceRecord.id,
-      p_user_agent: userAgent,
-    })
-
-    if (!error) return
+      if (!error) return
+    }
   }
 
   const catalogSnapshot = {
     source: 'catalog',
-    title: resource.title.tr,
-    fileType: resource.format,
+    title: resource?.title.tr ?? filename,
+    fileType: resource?.format ?? getFileType(filename),
     filePath: filename,
     userAgent,
   }
