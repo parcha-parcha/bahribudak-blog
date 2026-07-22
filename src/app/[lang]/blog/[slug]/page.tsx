@@ -102,6 +102,10 @@ export default async function PostPage({ params }: PostPageProps) {
         { day: 'numeric', month: 'long', year: 'numeric' }
       )
     : dateLabel
+  const statusLabel = documentStatusLabel(post.documentStatus, safeLang)
+  const publicationTypeLabel = post.technicalPublication
+    ? safeLang === 'tr' ? 'Teknik Yayın' : 'Technical Publication'
+    : t(`cat.${post.category}` as any)
 
   return (
     <>
@@ -132,16 +136,37 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
         </nav>
 
-        <header className="max-w-4xl">
+        <header
+          className={
+            post.technicalPublication
+              ? 'mb-10 overflow-hidden rounded-[28px] border border-[#D8DDE5] bg-white shadow-sm'
+              : 'max-w-4xl'
+          }
+        >
+          {post.technicalPublication && post.coverImage && (
+            <div className="relative bg-[#061A33]">
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="mx-auto max-h-[520px] w-full object-contain"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#061A33]/55 to-transparent" aria-hidden="true" />
+            </div>
+          )}
+
+          <div className={post.technicalPublication ? 'p-6 md:p-8' : ''}>
           <div className="mb-5 flex flex-wrap gap-2">
             <span className="cat-badge post-card-category text-xs">
-              {post.technicalPublication
-                ? safeLang === 'tr' ? 'Teknik Yayın' : 'Technical Publication'
-                : t(`cat.${post.category}` as any)}
+              {publicationTypeLabel}
             </span>
             {processLabel && (
               <span className="rounded-full border border-[#2EA6D9]/40 bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
                 {processLabel}
+              </span>
+            )}
+            {post.hasDownloads && (
+              <span className="rounded-full border border-[#F2C94C]/60 bg-[#FFF8E1] px-3 py-1 text-xs font-bold text-[#0B2343]">
+                {safeLang === 'tr' ? 'İndirilebilir Dosya' : 'Downloadable File'}
               </span>
             )}
           </div>
@@ -154,6 +179,7 @@ export default async function PostPage({ params }: PostPageProps) {
           <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#4C5561]">
             {post.excerpt}
           </p>
+          </div>
         </header>
 
         {post.technicalPublication && (
@@ -176,13 +202,13 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
               <div>
                 <span>{safeLang === 'tr' ? 'Durum' : 'Status'}</span>
-                <strong>{post.documentStatus || (safeLang === 'tr' ? 'Yayında' : 'Published')}</strong>
+                <strong>{statusLabel}</strong>
               </div>
             </div>
           </section>
         )}
 
-        {post.coverImage && (
+        {post.coverImage && !post.technicalPublication && (
           <figure className="mb-10 overflow-hidden rounded-[24px] border border-[#D8DDE5] bg-white">
             <img
               src={post.coverImage}
@@ -199,6 +225,42 @@ export default async function PostPage({ params }: PostPageProps) {
           <span aria-hidden="true">·</span>
           <span>{post.readingTime} {t('blog.readingTime')}</span>
         </div>
+
+        {post.downloadLinks.length > 0 && (
+          <section className="mb-10 rounded-[24px] border border-[#D8DDE5] bg-[#F8FBFD] p-5 md:p-6">
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#2EA6D9]">
+                  {safeLang === 'tr' ? 'Yayın dosyaları' : 'Publication files'}
+                </p>
+                <h2 className="text-2xl font-bold text-navy">
+                  {post.technicalPublication
+                    ? safeLang === 'tr' ? 'İndirilebilir Teknik Dosyalar' : 'Downloadable Technical Files'
+                    : safeLang === 'tr' ? 'İndirilebilir Dosyalar' : 'Downloadable Files'}
+                </h2>
+              </div>
+              <span className="rounded-full border border-[#F2C94C]/60 bg-[#FFF8E1] px-3 py-1 text-xs font-bold text-[#0B2343]">
+                {post.downloadLinks.length} {safeLang === 'tr' ? 'dosya' : 'files'}
+              </span>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-3">
+              {post.downloadLinks.map(download => (
+                <a
+                  key={download.href}
+                  href={download.href}
+                  download
+                  className="flex min-h-24 flex-col justify-between rounded-[18px] border border-[#D8DDE5] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#2EA6D9] hover:shadow-md"
+                >
+                  <span className="text-sm font-bold leading-snug">{download.label}</span>
+                  <span className="mt-4 inline-flex w-fit rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
+                    {download.fileType} {safeLang === 'tr' ? 'indir' : 'download'} →
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="prose-bb technical-prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
 

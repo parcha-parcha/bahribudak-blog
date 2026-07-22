@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 import readingTime from 'reading-time'
 
 import type { Lang } from './i18n'
@@ -9,6 +10,12 @@ const contentDir = path.join(process.cwd(), 'src/content')
 
 export type ProcessArea = 'orgu' | 'boya' | 'apre'
 export type DocumentStatus = 'current' | 'archive'
+
+export interface PostDownloadLink {
+  label: string
+  href: string
+  fileType: string
+}
 
 export interface PostMeta {
   slug: string
@@ -28,6 +35,7 @@ export interface PostMeta {
   documentStatus?: DocumentStatus
   standards?: string[]
   hasDownloads?: boolean
+  downloadLinks: PostDownloadLink[]
 }
 
 export interface Post extends PostMeta {
@@ -155,14 +163,115 @@ export function documentStatusLabel(
   return lang === 'tr' ? 'Güncel' : 'Current'
 }
 
+function downloadLabelFromKey(key: string): string {
+  const labels: Record<string, string> = {
+    pdf: 'Master PDF',
+    docx: 'Düzenlenebilir DOCX',
+    pptx: 'Carousel PPTX',
+    carousel: 'Carousel PPTX',
+    excel: 'Excel Dosyası',
+    xlsx: 'Excel Dosyası',
+  }
+
+  return labels[categoryKey(key)] || key.toUpperCase()
+}
+
+function fileTypeFromHref(href: string): string {
+  const cleanHref = href.split('?')[0].split('#')[0]
+  const extension = cleanHref.split('.').pop()
+
+  return extension ? extension.toUpperCase() : 'DOSYA'
+}
+
+function collectMarkdownDownloadLinks(content: string): PostDownloadLink[] {
+  const links: PostDownloadLink[] = []
+  const tokens = marked.lexer(content) as any[]
+  const visit = (token: any) => {
+    if (!token || typeof token !== 'object') return
+
+    if (
+      token.type === 'link' &&
+      typeof token.href === 'string' &&
+      token.href.startsWith('/downloads/')
+    ) {
+      links.push({
+        label: String(token.text || fileTypeFromHref(token.href)),
+        href: token.href,
+        fileType: fileTypeFromHref(token.href),
+      })
+    }
+
+    for (const key of ['tokens', 'items']) {
+      if (Array.isArray(token[key])) {
+        token[key].forEach(visit)
+      }
+    }
+  }
+
+  tokens.forEach(visit)
+
+  return links
+}
+
+function collectHtmlDownloadLinks(content: string): PostDownloadLink[] {
+  const links: PostDownloadLink[] = []
+  const anchorPattern =
+    /<a\b[^>]*href=["'](\/downloads\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi
+
+  for (const match of content.matchAll(anchorPattern)) {
+    const href = match[1]
+    const label = match[2]
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+
+    links.push({
+      label: label || fileTypeFromHref(href),
+      href,
+      fileType: fileTypeFromHref(href),
+    })
+  }
+
+  return links
+}
+
+function extractDownloadLinks(
+  downloads: unknown,
+  content: string,
+): PostDownloadLink[] {
+  const links: PostDownloadLink[] = []
+
+  if (downloads && typeof downloads === 'object' && !Array.isArray(downloads)) {
+    for (const [key, value] of Object.entries(downloads)) {
+      if (typeof value === 'string' && value.startsWith('/downloads/')) {
+        links.push({
+          label: downloadLabelFromKey(key),
+          href: value,
+          fileType: fileTypeFromHref(value),
+        })
+      }
+    }
+  }
+
+  links.push(...collectMarkdownDownloadLinks(content))
+  links.push(...collectHtmlDownloadLinks(content))
+
+  const seen = new Set<string>()
+  return links.filter(link => {
+    if (seen.has(link.href)) return false
+    seen.add(link.href)
+    return true
+  })
+}
+
 function parsePostFile(lang: Lang, filename: string): Post {
   const slug = filename.replace(/\.(mdx|md)$/, '')
   const filePath = path.join(contentDir, lang, filename)
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(raw)
   const rt = readingTime(content)
-  const hasDownloads =
-    Boolean(data.downloads) || /\/downloads\//.test(content)
+  const downloadLinks = extractDownloadLinks(data.downloads, content)
+  const hasDownloads = downloadLinks.length > 0
 
   return {
     slug,
@@ -182,6 +291,7 @@ function parsePostFile(lang: Lang, filename: string): Post {
     documentStatus: normalizeDocumentStatus(data.documentStatus),
     standards: Array.isArray(data.standards) ? data.standards : [],
     hasDownloads,
+    downloadLinks,
     content,
   }
 }
