@@ -183,7 +183,9 @@ for (const lang of ['tr', 'en']) {
   for (const publication of technicalByLang.get(lang) || []) {
     const paired = routePairs.some(pair => pair[lang] === publication.slug)
     if (!paired) {
-      warn(`${lang}/${publication.slug}.mdx translatedRoutes.ts içinde eşleştirilmemiş.`)
+      if (lang === 'en') {
+        warn(`${lang}/${publication.slug}.mdx translatedRoutes.ts içinde eşleştirilmemiş.`)
+      }
     }
   }
 }
