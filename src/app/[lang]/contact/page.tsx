@@ -4,6 +4,7 @@ import { isLang, type Lang } from '@/lib/i18n'
 
 interface ContactProps {
   params: Promise<{ lang: string }>
+  searchParams?: Promise<Record<string, string | string[] | undefined>>
 }
 
 const siteUrl = 'https://bahribudak.com'
@@ -46,9 +47,48 @@ export async function generateMetadata({
 
 export default async function ContactPage({
   params,
+  searchParams,
 }: ContactProps) {
   const { lang: rawLang } = await params
   const lang: Lang = isLang(rawLang) ? rawLang : 'tr'
+  const query = searchParams ? await searchParams : {}
+
+  const getQueryValue = (key: string) => {
+    const value = query[key]
+    return Array.isArray(value) ? value[0] : value
+  }
+
+  const premiumResourceTitle = getQueryValue('resourceTitle')
+  const premiumResourceFormat = getQueryValue('resourceFormat')
+  const premiumResourceId = getQueryValue('resourceId')
+  const premiumPrefill =
+    getQueryValue('request') === 'premium-resource' && premiumResourceTitle
+      ? {
+          requestType:
+            lang === 'tr' ? 'Teknik doküman talebi' : 'Technical document request',
+          processArea:
+            lang === 'tr' ? 'Teknik dokümantasyon' : 'Technical documentation',
+          subject:
+            lang === 'tr'
+              ? `${premiumResourceTitle} talebi`
+              : `${premiumResourceTitle} request`,
+          message:
+            lang === 'tr'
+              ? [
+                  `${premiumResourceTitle}${premiumResourceFormat ? ` (${premiumResourceFormat})` : ''} dosyası için erişim talebi oluşturmak istiyorum.`,
+                  '',
+                  'Talep amacı / kullanım alanı:',
+                ].join('\n')
+              : [
+                  `I would like to request access to ${premiumResourceTitle}${premiumResourceFormat ? ` (${premiumResourceFormat})` : ''}.`,
+                  '',
+                  'Request purpose / intended use:',
+                ].join('\n'),
+          referenceUrl: premiumResourceId
+            ? `${siteUrl}/${lang}/magazam?resource=${encodeURIComponent(premiumResourceId)}`
+            : `${siteUrl}/${lang}/magazam`,
+        }
+      : undefined
 
   const copy =
     lang === 'tr'
@@ -298,7 +338,7 @@ export default async function ContactPage({
           </section>
         </aside>
 
-        <ContactForm lang={lang} />
+        <ContactForm lang={lang} initialValues={premiumPrefill} />
       </section>
 
       <section className="border-y border-[#D8DDE5] bg-white">

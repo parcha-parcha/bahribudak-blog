@@ -236,6 +236,17 @@ function memberDownloadPath(href: string) {
   return `/api/member-download?path=${encodeURIComponent(href)}`;
 }
 
+function premiumRequestPath(lang: Lang, item: ResourceItem) {
+  const params = new URLSearchParams({
+    request: "premium-resource",
+    resourceId: item.id,
+    resourceTitle: item.title[lang],
+    resourceFormat: item.format,
+  });
+
+  return `/${lang}/contact?${params.toString()}`;
+}
+
 export default function ResourceCenter({
   lang,
   resources,
@@ -701,7 +712,7 @@ export default function ResourceCenter({
                   <div className="mt-auto pt-6">
                     {accessLevel === "premiumSoon" ? (
                       <a
-                        href={`/${lang}/contact`}
+                        href={premiumRequestPath(lang, item)}
                         aria-label={`${t.requestAccess}: ${item.title[lang]} (${item.format})`}
                         className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#8A6400] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#A47700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C94C] focus-visible:ring-offset-2"
                       >

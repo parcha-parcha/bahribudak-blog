@@ -5,6 +5,13 @@ import { useState } from 'react'
 
 interface ContactFormProps {
   lang: Lang
+  initialValues?: {
+    requestType?: string
+    processArea?: string
+    subject?: string
+    message?: string
+    referenceUrl?: string
+  }
 }
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -15,7 +22,7 @@ const fieldClassName =
 const labelClassName =
   'mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/55'
 
-export default function ContactForm({ lang }: ContactFormProps) {
+export default function ContactForm({ lang, initialValues }: ContactFormProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
   const tr = lang === 'tr'
 
@@ -152,7 +159,9 @@ export default function ContactForm({ lang }: ContactFormProps) {
             type="hidden"
             name="_subject"
             value={
-              tr
+              initialValues?.subject
+                ? initialValues.subject
+                : tr
                 ? 'bahribudak.com yeni teknik talep'
                 : 'bahribudak.com new technical request'
             }
@@ -256,7 +265,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                 id="contact-request-type"
                 name="requestType"
                 required
-                defaultValue=""
+                defaultValue={initialValues?.requestType ?? ''}
                 className={fieldClassName}
               >
                 <option value="" disabled>
@@ -281,7 +290,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                 id="contact-process-area"
                 name="processArea"
                 required
-                defaultValue=""
+                defaultValue={initialValues?.processArea ?? ''}
                 className={fieldClassName}
               >
                 <option value="" disabled>
@@ -310,6 +319,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                   ? 'Talebinizi kısa bir başlıkla özetleyin'
                   : 'Summarize your request in a short title'
               }
+              defaultValue={initialValues?.subject}
               className={fieldClassName}
             />
           </div>
@@ -329,6 +339,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
                   ? 'Kumaş türü, makine, proses, mevcut sorun, hedef, ölçüm sonuçları ve beklenen çıktıyı açıklayın.'
                   : 'Describe the fabric type, machinery, process, current issue, target, measurements and expected output.'
               }
+              defaultValue={initialValues?.message}
               className={`${fieldClassName} resize-y`}
             />
             <p className="mt-2 text-xs leading-5 text-[#0B2343]/45">
@@ -351,6 +362,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
               name="referenceUrl"
               inputMode="url"
               placeholder="https://"
+              defaultValue={initialValues?.referenceUrl}
               className={fieldClassName}
             />
             <p className="mt-2 text-xs leading-5 text-[#0B2343]/45">
