@@ -7,9 +7,55 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import ArticleSchema from '@/components/ArticleSchema'
 import { resolveBlogSlugForLang } from '@/lib/translatedRoutes'
+import { isMemberDownloadPath } from '@/lib/resources'
 
 interface PostPageProps {
   params: Promise<{ lang: string; slug: string }>
+}
+
+function memberDownloadHref(href: string) {
+  return `/api/member-download?path=${encodeURIComponent(href)}`
+}
+
+function stripHtml(value: string) {
+  return value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+function fileTypeFromHref(href: string) {
+  const cleanHref = href.split('?')[0].split('#')[0]
+  return cleanHref.split('.').pop()?.toLocaleUpperCase('en-US') || 'DOSYA'
+}
+
+function enhanceMemberDownloadLinks(html: string, lang: Lang) {
+  const memberFileLabel = lang === 'tr' ? 'Üyelikli dosya' : 'Member file'
+  const actionLabel = lang === 'tr' ? 'Üyelikle indir' : 'Member download'
+
+  return html.replace(
+    /<a\b([^>]*?)href=(["'])(\/downloads\/[^"']+)\2([^>]*)>([\s\S]*?)<\/a>/gi,
+    (match, _beforeHref: string, _quote: string, href: string, _afterHref: string, innerHtml: string) => {
+      const cleanHref = href.split('?')[0].split('#')[0]
+
+      if (!isMemberDownloadPath(cleanHref)) return match
+
+      const fileType = fileTypeFromHref(cleanHref)
+      const title = stripHtml(innerHtml) || `${fileType} ${actionLabel}`
+      const safeTitle = escapeHtml(title)
+      const safeFileType = escapeHtml(fileType)
+      const safeMemberHref = escapeHtml(memberDownloadHref(cleanHref))
+      const safeAriaLabel = escapeHtml(`${actionLabel}: ${title}`)
+
+      return `<a href="${safeMemberHref}" class="bb-member-download-card" aria-label="${safeAriaLabel}"><span class="bb-member-download-card__meta"><span class="bb-member-download-card__badge">${memberFileLabel}</span><span class="bb-member-download-card__format">${safeFileType}</span></span><strong class="bb-member-download-card__title">${safeTitle}</strong><span class="bb-member-download-card__action">${actionLabel}</span></a>`
+    },
+  )
 }
 
 export async function generateStaticParams() {
@@ -88,7 +134,8 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) notFound()
 
   const t = useTranslations(safeLang)
-  const htmlContent = await marked(post.content)
+  const rawHtmlContent = await marked(post.content)
+  const htmlContent = enhanceMemberDownloadLinks(String(rawHtmlContent), safeLang)
   const processLabel = processAreaLabel(post.processArea, safeLang)
   const relatedPosts = getRelatedPosts(safeLang, post.slug, 3)
 
@@ -245,19 +292,30 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
 
             <div className="grid gap-3 md:grid-cols-3">
-              {post.downloadLinks.map(download => (
+              {post.downloadLinks.map(download => {
+                const isMemberDownload = isMemberDownloadPath(download.href)
+                const href = isMemberDownload ? memberDownloadHref(download.href) : download.href
+                const actionLabel = isMemberDownload
+                  ? safeLang === 'tr' ? 'Üyelikle indir' : 'Member download'
+                  : safeLang === 'tr' ? 'indir' : 'download'
+                const accessLabel = isMemberDownload
+                  ? safeLang === 'tr' ? 'Üyelikli dosya' : 'Member file'
+                  : download.fileType
+
+                return (
                 <a
                   key={download.href}
-                  href={download.href}
-                  download
+                  href={href}
+                  download={isMemberDownload ? undefined : true}
                   className="flex min-h-24 flex-col justify-between rounded-[18px] border border-[#D8DDE5] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#2EA6D9] hover:shadow-md"
                 >
                   <span className="text-sm font-bold leading-snug">{download.label}</span>
                   <span className="mt-4 inline-flex w-fit rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
-                    {download.fileType} {safeLang === 'tr' ? 'indir' : 'download'} →
+                    {accessLabel} {actionLabel} →
                   </span>
                 </a>
-              ))}
+                )
+              })}
             </div>
           </section>
         )}

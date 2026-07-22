@@ -532,6 +532,78 @@ body, p, li, a, span, button, input, textarea {
   border: 0;
   border-top: 1px solid #D8DDE5;
 }
+.technical-prose .bb-member-download-card,
+.prose-bb .bb-member-download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1.1rem 0 1.35rem;
+  border: 1px solid #D8DDE5;
+  border-left: 5px solid #2EA6D9;
+  border-radius: 18px;
+  background: #FFFFFF;
+  padding: 1rem 1.1rem;
+  color: #0B2343;
+  text-decoration: none;
+  box-shadow: 0 12px 34px rgba(11, 35, 67, 0.07);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.technical-prose .bb-member-download-card:hover,
+.prose-bb .bb-member-download-card:hover {
+  border-color: #2EA6D9;
+  box-shadow: 0 18px 45px rgba(11, 35, 67, 0.11);
+  transform: translateY(-1px);
+}
+.bb-member-download-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.bb-member-download-card__badge,
+.bb-member-download-card__format {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.bb-member-download-card__badge {
+  border: 1px solid rgba(242, 201, 76, 0.65);
+  background: #FFF8E1;
+  color: #0B2343;
+}
+.bb-member-download-card__format {
+  border: 1px solid rgba(46, 166, 217, 0.28);
+  background: #EAF6FC;
+  color: #177DA8;
+}
+.bb-member-download-card__title {
+  display: block;
+  color: #0B2343;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.bb-member-download-card__action {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  background: #0B2343;
+  padding: 0.58rem 0.9rem;
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+}
 @media (max-width: 767px) {
   .technical-prose table {
     display: block;
