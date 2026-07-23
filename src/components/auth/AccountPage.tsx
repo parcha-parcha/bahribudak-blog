@@ -22,6 +22,15 @@ type CookieHistoryItem = {
   downloadedAt?: string
 }
 
+type DownloadHistoryItem = {
+  resourceId: string
+  downloadedAt: string
+  downloadedAtValue: string
+  title?: string | null
+  fileType?: string | null
+  downloadPath?: string | null
+}
+
 function parseCatalogDownloadSnapshot(value: string | null) {
   const prefix = 'catalog-download:'
   if (!value?.startsWith(prefix)) return null
@@ -51,6 +60,17 @@ function isDisplayableDownload(item: { title?: string | null; fileType?: string 
   return Boolean(item.title) && !/\b(test|demo|sample)\b/.test(value)
 }
 
+function normalizeDownloadPath(value?: string | null) {
+  if (!value || value.includes('..')) return null
+
+  const cleanValue = value.replace(/^[/\\]+/, '')
+  const path = value.startsWith('/downloads/')
+    ? value
+    : ['', 'downloads', cleanValue].join('/')
+
+  return path.startsWith('/downloads/') ? path : null
+}
+
 export default async function AccountPage({ lang }: { lang: Lang }) {
   const supabase = await createClient()
   const cookieStore = await cookies()
@@ -61,7 +81,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
     supabase.from('profiles').select('full_name, company_name').eq('id', user.id).maybeSingle(),
     supabase
       .from('download_events')
-      .select('downloaded_at, resource_id, user_agent, resources(title, file_type, slug)')
+      .select('downloaded_at, resource_id, user_agent, resources(title, file_type, slug, file_path)')
       .eq('user_id', user.id)
       .order('downloaded_at', { ascending: false })
       .limit(20),
@@ -71,6 +91,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
   const createdAt = new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', { dateStyle: 'long' }).format(new Date(user.created_at))
   const cookieHistory = parseCookieHistory(cookieStore.get(historyCookieName)?.value).map((item) => ({
     resourceId: item.filePath ?? item.title ?? 'cookie-download',
+    downloadedAtValue: item.downloadedAt ?? '',
     downloadedAt: item.downloadedAt
       ? new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', {
           dateStyle: 'medium',
@@ -79,6 +100,7 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
       : '—',
     title: item.title,
     fileType: item.fileType ?? '—',
+    downloadPath: normalizeDownloadPath(item.filePath),
   })).filter(isDisplayableDownload)
 
   const databaseHistory = (downloadRows ?? []).map((item) => {
@@ -87,16 +109,28 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
 
     return {
       resourceId: item.resource_id,
+      downloadedAtValue: item.downloaded_at,
       downloadedAt: new Intl.DateTimeFormat(tr ? 'tr-TR' : 'en-US', {
         dateStyle: 'medium',
         timeStyle: 'short',
       }).format(new Date(item.downloaded_at)),
       title: resourceMeta?.title ?? catalogSnapshot?.title ?? item.resource_id,
       fileType: resourceMeta?.file_type ?? catalogSnapshot?.fileType ?? '—',
+      downloadPath: normalizeDownloadPath(resourceMeta?.file_path ?? catalogSnapshot?.filePath),
     }
   }).filter(isDisplayableDownload)
 
-  const downloadHistory = [...cookieHistory, ...databaseHistory].slice(0, 10)
+  const downloadHistory = [...cookieHistory, ...databaseHistory]
+    .sort((a, b) => b.downloadedAtValue.localeCompare(a.downloadedAtValue))
+    .reduce<DownloadHistoryItem[]>((items, item) => {
+      const identity = item.downloadPath ?? `${item.title}-${item.fileType}`
+      const alreadyAdded = items.some((existing) =>
+        (existing.downloadPath ?? `${existing.title}-${existing.fileType}`) === identity)
+
+      if (!alreadyAdded) items.push(item)
+      return items
+    }, [])
+    .slice(0, 10)
 
   return <section className="bg-[#F5F7FA] px-4 py-12 md:py-18">
     <div className="mx-auto max-w-5xl">
@@ -126,12 +160,19 @@ export default async function AccountPage({ lang }: { lang: Lang }) {
               <ul className="mt-5 space-y-3 text-sm">
                 {downloadHistory.map((item) => (
                   <li key={`${item.resourceId}-${item.downloadedAt}`} className="rounded-2xl border border-[#D8DDE5] bg-[#F8FBFD] p-4">
-                    <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+                    <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                       <div>
                         <div className="font-bold text-[#0B2343]">{item.title}</div>
-                        <div className="text-[#4C5561]">{item.fileType}</div>
+                        <div className="mt-1 text-[#4C5561]">{item.fileType} · {item.downloadedAt}</div>
                       </div>
-                      <div className="text-[#4C5561]">{item.downloadedAt}</div>
+                      {item.downloadPath && (
+                        <a
+                          className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#0B2343] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#163B68] focus:outline-none focus:ring-2 focus:ring-[#5BBBE6] focus:ring-offset-2"
+                          href={`/api/member-download?path=${encodeURIComponent(item.downloadPath)}`}
+                        >
+                          {tr ? 'Tekrar indir' : 'Download again'}
+                        </a>
+                      )}
                     </div>
                   </li>
                 ))}
