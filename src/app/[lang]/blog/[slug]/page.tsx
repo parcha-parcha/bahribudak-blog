@@ -6,6 +6,7 @@ import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ArticleSchema from '@/components/ArticleSchema'
+
 import { resolveBlogSlugForLang } from '@/lib/translatedRoutes'
 import { isMemberDownloadPath } from '@/lib/resources'
 
@@ -53,7 +54,8 @@ function enhanceMemberDownloadLinks(html: string, lang: Lang) {
       const safeMemberHref = escapeHtml(memberDownloadHref(cleanHref))
       const safeAriaLabel = escapeHtml(`${actionLabel}: ${title}`)
 
-      return `<a href="${safeMemberHref}" class="bb-member-download-card" aria-label="${safeAriaLabel}"><span class="bb-member-download-card__meta"><span class="bb-member-download-card__badge">${memberFileLabel}</span><span class="bb-member-download-card__format">${safeFileType}</span></span><strong class="bb-member-download-card__title">${safeTitle}</strong><span class="bb-member-download-card__action">${actionLabel}</span></a>`
+    
+  return `<a href="${safeMemberHref}" class="bb-member-download-card" aria-label="${safeAriaLabel}"><span class="bb-member-download-card__meta"><span>${escapeHtml(memberFileLabel)}</span><span class="bb-member-download-card__type">${safeFileType}</span></span><span class="bb-member-download-card__title">${safeTitle}</span><span class="bb-member-download-card__action">${escapeHtml(actionLabel)} →</span></a>`
     },
   )
 }
@@ -310,9 +312,21 @@ export default async function PostPage({ params }: PostPageProps) {
                   className="flex min-h-24 flex-col justify-between rounded-[18px] border border-[#D8DDE5] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#2EA6D9] hover:shadow-md"
                 >
                   <span className="text-sm font-bold leading-snug">{download.label}</span>
-                  <span className="mt-4 inline-flex w-fit rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
-                    {accessLabel} {actionLabel} →
-                  </span>
+                 {isMemberDownload ? (
+  <span className="mt-4 flex flex-col items-start gap-2">
+    <span className="inline-flex w-fit rounded-full border border-[#B9DFEE] bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#177DA8]">
+      {accessLabel} · {download.fileType}
+    </span>
+
+    <span className="inline-flex w-fit rounded-full bg-[#0B2343] px-3 py-2 text-xs font-bold text-white">
+      {actionLabel} →
+    </span>
+  </span>
+) : (
+  <span className="mt-4 inline-flex w-fit rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
+    {download.fileType} {actionLabel} →
+  </span>
+)}
                 </a>
                 )
               })}
