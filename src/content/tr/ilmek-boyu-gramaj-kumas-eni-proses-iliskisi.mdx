@@ -2,13 +2,13 @@
 title: "İlmek Boyu / Stitch Length, Gramaj / GSM ve Kumaş Eni Arasındaki Proses İlişkisi"
 excerpt: "Atkılı örme kumaşlarda ilmek boyu, ilmek sıklığı, gramaj, lineer metre ağırlığı ve bitmiş en arasındaki ilişkiyi hesaplama, ölçüm ve saha kontrolü açısından açıklar."
 date: "2026-06-25"
-revisionDate: "2026-06-25"
+revisionDate: "2026-07-24"
 category: "tekstil"
 technicalPublication: true
 processArea: "orgu"
 documentCode: "BB-ORG-TP-001"
 revision: "R00"
-documentStatus: "Yayında"
+documentStatus: "yayinda"
 coverImage: "/images/makine-inceligi-doku-sertlesir.jpg"
 tags:
   - "Örgü"
@@ -26,7 +26,17 @@ standards:
   - "ISO 3759:2011 — Preparation, Marking and Measuring for Dimensional Change"
   - "ISO 6330:2021 — Domestic Washing and Drying Procedures"
   - "AATCC TM135-2025 — Dimensional Changes of Fabrics after Home Laundering"
+hasDownloads: true
+downloadLinks:
+  - label: "PDF Teknik Master"
+    href: "/downloads/ilmek-boyu-gramaj-kumas-eni-proses-iliskisi.pdf"
+    fileType: "PDF"
+  - label: "DOCX Teknik Master"
+    href: "/downloads/ilmek-boyu-gramaj-kumas-eni-proses-iliskisi.docx"
+    fileType: "DOCX"
 ---
+
+# İlmek Boyu, Gramaj ve Kumaş Eni Arasındaki Proses İlişkisi
 
 ## 1. Amaç / Purpose
 
@@ -66,7 +76,7 @@ Bu koşullardan biri değişirse, ilmek boyu ile gramaj veya en arasındaki eği
 | `T` | İplik Lineer Yoğunluğu / Yarn Linear Density | tex |
 | `C` | Sıra Sıklığı / Courses per cm | sıra/cm |
 | `W` | Çubuk Sıklığı / Wales per cm | çubuk/cm |
-| `S` | İlmek Sıklığı / Stitch Density = `C x W` | ilmek/cm² |
+| `S` | İlmek Sıklığı / Stitch Density = `C × W` | ilmek/cm² |
 | `G` | Gramaj / Mass per Unit Area | g/m² |
 | `Mf` | Lineer Metre Ağırlığı / Mass per Linear Metre | g/m |
 | `B` | Kumaş Eni / Fabric Width | m |
@@ -95,204 +105,4 @@ Aynı iplik, yapı, makine ve bitim koşullarında ilmek boyu uzadığında kuma
 Tek iplik yolunun, ilgili sırada her aktif iğnede bir ilmek oluşturduğu temel durumda sıra boyu; aktif iğne sayısı ile ilmek boyunun çarpımıdır:
 
 ```text
-Lc = l x Na
-```
-
-Burada:
-
-- `Lc`: sıra boyu, mm/sıra
-- `l`: ilmek boyu, mm/ilmek
-- `Na`: o sırada örme yapan aktif iğne sayısı
-
-Sıra boyu, makinede iplik sevkinin ve ilmek boyunun saha kontrolünde güçlü bir parametredir. Ancak formül **besleyici / feeder ve iplik yolu bazında** uygulanmalıdır. Desen, iptal iğneleri, tuck/miss, plating, elastan veya bir sırada birden fazla iplik yolu varsa aktif ilmek sayısı ve her ipliğin tüketimi ayrı doğrulanmalıdır.
-
-## 6. Teorik Gramaj İlişkisi / Theoretical GSM Relationship
-
-Temel kütle yaklaşımı:
-
-```text
-G_teorik = (T x l x C x W) / 100
-```
-
-Burada:
-
-- `T`: tex
-- `l`: mm
-- `C`: sıra/cm
-- `W`: çubuk/cm
-- `G_teorik`: g/m²
-
-Bu ilişki, bir ilmeğin içerdiği iplik kütlesi ile birim alandaki ilmek sayısını birleştirir.
-
-İplik numarası `Ne` olarak verilmişse yaklaşık dönüşüm:
-
-```text
-tex = 590.5 / Ne
-```
-
-**Sınırlar:** Formül; tuck/miss, çok katlı iplik, plating, elastan, hav ipliği, şardonluk yapı, kimyasal add-on, lif kaybı ve relaksasyon etkileri için ek düzeltme gerektirebilir. Ölçülen gramajın yerine geçmez.
-
-## 7. Hesaplama Örneği / Worked Example
-
-Veriler:
-
-- İplik: 30 Ne pamuk
-- İlmek boyu: 2.80 mm
-- Sıra sıklığı: 20 sıra/cm
-- Çubuk sıklığı: 14 çubuk/cm
-- Relakse açık en: 1.68 m
-
-Önce ipliği tex sistemine çeviririz:
-
-```text
-T = 590.5 / 30 = 19.68 tex
-```
-
-İlmek sıklığı:
-
-```text
-S = 20 x 14 = 280 ilmek/cm²
-```
-
-Teorik gramaj:
-
-```text
-G_teorik = (19.68 x 2.80 x 20 x 14) / 100
-G_teorik = 154.3 g/m²
-```
-
-Lineer metre ağırlığı:
-
-```text
-Mf = G x B
-Mf = 154.3 x 1.68
-Mf = 259.2 g/m
-```
-
-Aynı lineer metre kütlesi korunurken en 1.74 m'ye açılırsa:
-
-```text
-G = Mf / B
-G = 259.2 / 1.74
-G = 149.0 g/m²
-```
-
-Bu örnek, gramajın yalnızca örme ayarıyla değil, **aynı kütlenin yayıldığı bitmiş alanla** da değiştiğini gösterir.
-
-## 8. En–Gramaj–Lineer Metre İlişkisi / Width–GSM–Linear Mass
-
-Aynı proses durumunda ölçülen lineer metre ağırlığı ile en arasındaki temel ilişki:
-
-```text
-Mf = G x B
-G = Mf / B
-B = Mf / G
-```
-
-Birimler:
-
-- `Mf`: g/m
-- `G`: g/m²
-- `B`: açık kumaş eni / open-width fabric width, m
-
-**Tüp kumaş ikazı:** `B` değeri tüp kumaşın serili düz eni / laid-flat tubular width ise, bir metre kumaşın iki yüzeyi bulunduğundan alan hesabı yaklaşık olarak `2 x B` üzerinden yapılır:
-
-```text
-Mf_tüp = G x 2 x B_düz
-G = Mf_tüp / (2 x B_düz)
-```
-
-Bu formül özellikle ramöz ve kompaktör sonrası gramaj değişimini yorumlarken yararlıdır. Ancak kenar kesimi, fire, kimyasal add-on, nem farkı veya lif kaybı varsa lineer kütle sabit kabul edilmemelidir. En ölçümünün açık en mi, tüp düz eni mi olduğu kayıt formunda mutlaka belirtilmelidir.
-
-## 9. Prosesler Arası Kütle–Alan Dengesi / Stage-to-Stage Mass–Area Balance
-
-Bir proses durumundan diğerine yaklaşık gramaj dönüşümü:
-
-```text
-G2 = G1 x Rm / (Rw x Rl)
-```
-
-Burada:
-
-- `Rm = M2 / M1`: kütle koruma oranı
-- `Rw = B2 / B1`: en oranı
-- `Rl = L2 / L1`: boy oranı
-
-Örnek:
-
-- Başlangıç gramajı: 180 g/m²
-- Kütle koruma oranı: 0.98
-- En oranı: 1.04
-- Boy oranı: 0.96
-
-```text
-G2 = 180 x 0.98 / (1.04 x 0.96)
-G2 = 176.7 g/m²
-```
-
-Bu yaklaşım; ön terbiye, boya, kurutma, ramöz ve kompaktör aşamalarında en-boy değişimi ile kütle değişimini aynı tabloda değerlendirmek için kullanılabilir.
-
-## 10. Ölçüm ve Numune Alma Planı / Measurement and Sampling Plan
-
-Aynı top veya aynı lot için aşağıdaki proses noktaları izlenmelidir:
-
-| Proses noktası | Zorunlu ölçümler |
-|---|---|
-| Makine çıkışı | Sıra boyu, ilmek boyu, tüp eni, çekim, besleme ayarı |
-| Relakse ham kumaş | En, gramaj, sıra/cm, çubuk/cm, spirallik |
-| Ön terbiye sonrası | En, gramaj, boy değişimi, pH, proses kaybı |
-| Boya sonrası | En, gramaj, çekme eğilimi, lot içi varyasyon |
-| Ramöz sonrası | Bitmiş en, overfeed, çıkış nemi, gramaj |
-| Kompaktör sonrası | En, gramaj, boy çekmesi, kompresyon ayarı |
-| Yıkama testi sonrası | En ve boy yönü boyutsal değişim, spirallik |
-
-Numuneler gerilimsiz ve tanımlı relaksasyon süresi sonunda ölçülmelidir. Gramaj karşılaştırmaları aynı kondisyonlama ve nem koşulunda yapılmalıdır.
-
-## 11. Hata–Kök Neden–Düzeltici Faaliyet / Defect–Root Cause–Corrective Action
-
-| Gözlenen durum | Olası kök nedenler | Doğrulama | Düzeltici faaliyet |
-|---|---|---|---|
-| Gramaj yüksek | İlmek boyu kısa; en dar; overfeed/kompaksiyon yüksek; iplik kalın; yaş proses çekmesi fazla | İlmek boyu, lineer metre ağırlığı, en ve sıklık birlikte ölçülür | Tek değişkenli kontrollü deneme; hedef en ve çekme korunarak ayar yapılır |
-| Gramaj düşük | İlmek boyu uzun; en fazla açık; kompaksiyon yetersiz; iplik ince; sıklık düşük | Tex/Ne, sıra boyu, C ve W, bitmiş en kontrol edilir | İplik ve yapı doğrulandıktan sonra besleme/çekim ve bitim ayarı kademeli düzeltilir |
-| En düşük | İlmek boyu kısa; çekim yüksek; yaş proses çekmesi; ramöz eni dar; kompaktör baskısı yüksek | Ham-relakse-boyalı-bitmiş en trendi çıkarılır | Sorunun başladığı proses noktası düzeltilir; yalnız ramözde en açılarak gizlenmez |
-| En yüksek, gramaj düşük | İlmek boyu uzun; ramöz eni fazla; overfeed düşük; kompaksiyon yetersiz | Lineer metre ağırlığı ile en aynı anda kontrol edilir | Hedef en, gramaj ve çekme birlikte optimize edilir |
-| Lot içi gramaj varyasyonu | Besleme farkı, iplik numarası/nem farkı, çekim dalgalanması, ramöz en/nem farkı | Besleyici bazlı sıra boyu ve top bazlı kontrol grafiği | Besleyici kalibrasyonu, iplik lot kontrolü ve proses SPC uygulanır |
-
-## 12. Saha Kontrol Sırası / Shop-Floor Control Sequence
-
-1. **İpliği doğrula:** hammadde, numara, büküm, lot ve nem.
-2. **Makineyi doğrula:** çap, incelik, aktif iğne, feeder, kam, pozitif sevk ve çekim.
-3. **Sıra boyunu ölç:** yalnız makine ayar ekranına güvenme.
-4. **Relakse ham kumaşı ölç:** makine çıkışındaki gergin eni hedef kabul etme.
-5. **Lineer metre ağırlığını gramajla birlikte izle:** yalnız GSM verisi kök nedeni göstermez.
-6. **Proses aşamalarını ayır:** örme hatasını ramözde, ramöz hatasını kompaktörde gizleme.
-7. **Tek değişkenli deneme yap:** birden çok ayarı aynı anda değiştirme.
-8. **Yıkama sonrası sonucu doğrula:** bitmiş en ve gramaj, boyutsal stabiliteyle birlikte kabul edilmelidir.
-
-## 13. Kabul Kriteri Hakkında Teknik İkaz
-
-Bu yayında evrensel bir “± ilmek boyu”, “± gramaj” veya “± en” toleransı verilmemiştir. Toleranslar;
-
-- ürün yapısı,
-- iplik ve elastan sistemi,
-- müşteri şartnamesi,
-- makine tekrarlanabilirliği,
-- proses kabiliyeti,
-- numune alma yöntemi
-
-esas alınarak işletmeye özel tanımlanmalıdır.
-
-## 14. Kaynaklar / References
-
-1. [CottonWorks — Stitch Length](https://cottonworks.com/encyclopedia-item/stitch-length/)
-2. [CottonWorks — Course Length](https://cottonworks.com/encyclopedia-item/course-length/)
-3. [CottonWorks — Knit Machinery](https://cottonworks.com/learning-hub/knitting/knit-machinery/)
-4. [CottonWorks — Shrinkage & Skewing](https://cottonworks.com/learning-hub/quality-assurance/shrinking-and-skewing/)
-5. [CottonWorks — Proper Processing of 100% Cotton Knit Fabrics](https://www.cottonworks.com/wp-content/uploads/2017/11/TRI_3011_Wet_Processing_of_100_Cotton_Knitted_Fabrics.pdf)
-6. [ASTM D3776/D3776M — Mass Per Unit Area of Fabric](https://www.astm.org/d3776_d3776m-20.html)
-7. [ISO 139:2005 — Standard Atmospheres for Conditioning and Testing](https://www.iso.org/standard/35179.html)
-8. [ISO 22198:2006 — Determination of Fabric Width and Length](https://www.iso.org/standard/40768.html)
-9. [ISO 3759:2011 — Preparation, Marking and Measuring for Dimensional Change](https://www.iso.org/standard/57309.html)
-10. [ISO 6330:2021 — Domestic Washing and Drying Procedures](https://www.iso.org/standard/75934.html)
-11. [AATCC TM135-2025 — Dimensional Changes after Home Laundering](https://members.aatcc.org/store/tm135/543/)
-12. [Flexible Theoretical Calculation of Loop Length and Area Density of Weft-Knitted Structures](https://www.mdpi.com/1996-1944/14/11/3059)
+Lc = l × Na
