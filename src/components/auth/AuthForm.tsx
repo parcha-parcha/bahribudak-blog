@@ -4,9 +4,9 @@ import type { Lang } from '@/lib/i18n'
 import { authPath, safeInternalPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import type { FormEvent, InputHTMLAttributes, ReactNode } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type AuthMode = 'login' | 'register'
 
@@ -17,16 +17,21 @@ interface AuthFormProps {
 
 export default function AuthForm({ lang, mode }: AuthFormProps) {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
   const isRegister = mode === 'register'
   const accountPath = authPath(lang, 'account')
-  const destination = safeInternalPath(
-    searchParams.get('next'),
-    accountPath,
-  )
+  const [destination, setDestination] = useState(accountPath)
+
+  useEffect(() => {
+    setDestination(
+      safeInternalPath(
+        new URLSearchParams(window.location.search).get('next'),
+        accountPath,
+      ),
+    )
+  }, [accountPath])
 
   const switchPath = authPath(
     lang,
