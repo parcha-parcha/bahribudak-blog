@@ -65,6 +65,10 @@ export default function Footer({ lang }: FooterProps) {
               label: 'Teknik Dokümanlar',
             },
             {
+              href: withLang('/uyelik'),
+              label: 'Üyelik',
+            },
+            {
               href: withLang(
                 '/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari',
               ),
@@ -127,6 +131,10 @@ export default function Footer({ lang }: FooterProps) {
             {
               href: withLang('/magazam'),
               label: 'Technical Documents',
+            },
+            {
+              href: withLang('/uyelik'),
+              label: 'Membership',
             },
             {
               href: withLang(
