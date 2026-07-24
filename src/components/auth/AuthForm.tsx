@@ -226,7 +226,7 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
                 {copy.eyebrow}
               </p>
 
-              <h2 className="mt-5 max-w-md text-3xl font-black leading-tight tracking-[-0.035em] md:text-4xl">
+              <h2 className="mt-5 max-w-md text-3xl font-black leading-tight tracking-[-0.035em] text-white md:text-4xl">
                 {copy.panelTitle}
               </h2>
 
