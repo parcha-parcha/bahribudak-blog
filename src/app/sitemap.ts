@@ -20,6 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
       },
       {
+        url: `${siteUrl}/${lang}/uyelik`,
+        changeFrequency: 'monthly',
+        priority: 0.82,
+      },
+      {
         url: `${siteUrl}/${lang}/about`,
         changeFrequency: 'monthly',
         priority: 0.72,
@@ -72,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
           changeFrequency: 'monthly',
           priority: 0.7,
-        }
+        },
       )
     }
 
@@ -85,7 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(post.revisionDate || post.date),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
-    }))
+    })),
   )
 
   return [...staticPages, ...postPages]
