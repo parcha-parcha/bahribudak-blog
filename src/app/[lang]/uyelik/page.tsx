@@ -187,7 +187,7 @@ export default async function MembershipPage({
             {copy.eyebrow}
           </p>
 
-          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] md:text-6xl">
+          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] text-white md:text-6xl">
             {copy.title}
           </h1>
 
