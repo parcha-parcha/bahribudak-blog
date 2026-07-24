@@ -63,6 +63,13 @@ export default function Header({ lang }: HeaderProps) {
           : 'Technical Documents',
     },
     {
+      href: `/${lang}/uyelik`,
+      label:
+        lang === 'tr'
+          ? 'Üyelik'
+          : 'Membership',
+    },
+    {
       href: `/${lang}/about`,
       label: t('nav.about'),
     },
