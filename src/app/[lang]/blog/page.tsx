@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import PostCard from '@/components/PostCard'
@@ -273,15 +273,15 @@ export default async function BlogPage({
       ? rawSort
       : 'newest'
 
-  const technicalPosts = getAllPosts(lang).filter(
+  const allPosts = getAllPosts(lang)
+
+  const technicalPosts = allPosts.filter(
     post =>
-      post.category === 'tekstil' ||
-      post.technicalPublication,
+      post.technicalPublication === true ||
+      Boolean(post.documentCode),
   )
 
-  const controlledTechnicalPosts = technicalPosts.filter(
-    post => post.technicalPublication,
-  )
+  const controlledTechnicalPosts = technicalPosts
 
   const technicalPublicationCount =
     controlledTechnicalPosts.length
