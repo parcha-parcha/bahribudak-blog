@@ -271,7 +271,35 @@ function parsePostFile(lang: Lang, filename: string): Post {
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(raw)
   const rt = readingTime(content)
-  const downloadLinks = extractDownloadLinks(data.downloads, content)
+ const frontmatterDownloadLinks: PostDownloadLink[] = Array.isArray(
+  data.downloadLinks,
+)
+  ? data.downloadLinks
+      .filter(
+        (link: unknown): link is Record<string, unknown> =>
+          Boolean(link) && typeof link === 'object',
+      )
+      .map(link => {
+        const href = String(link.href || '')
+
+        return {
+          label: String(link.label || fileTypeFromHref(href)),
+          href,
+          fileType: String(link.fileType || fileTypeFromHref(href)),
+        }
+      })
+      .filter(link => link.href.startsWith('/downloads/'))
+  : []
+
+const extractedDownloadLinks = extractDownloadLinks(data.downloads, content)
+
+const downloadLinks = [
+  ...frontmatterDownloadLinks,
+  ...extractedDownloadLinks,
+].filter(
+  (link, index, links) =>
+    links.findIndex(candidate => candidate.href === link.href) === index,
+)
   const hasDownloads = downloadLinks.length > 0
 
   return {
