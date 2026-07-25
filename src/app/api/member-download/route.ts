@@ -1,15 +1,23 @@
-import { findResourceByDownloadPath, getDownloadPathAccessLevel, type ResourceItem } from '@/lib/resources'
+import {
+  findResourceByDownloadPath,
+  getDownloadPathAccessLevel,
+  type ResourceItem,
+} from '@/lib/resources'
 import { authPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { readFile } from 'fs/promises'
 import { basename, join, normalize } from 'path'
-import { NextResponse, type NextRequest } from 'next/server'
-import type { SupabaseClient } from '@supabase/supabase-js'
+import {
+  NextResponse,
+  type NextRequest,
+} from 'next/server'
 
 export const runtime = 'nodejs'
 
-const historyCookieName = 'bb_member_download_history'
+const historyCookieName =
+  'bb_member_download_history'
 
 const contentTypes: Record<string, string> = {
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -19,19 +27,40 @@ const contentTypes: Record<string, string> = {
 }
 
 function getContentType(filename: string) {
-  const extension = filename.split('.').pop()?.toLocaleLowerCase('en-US')
-  return extension ? contentTypes[extension] ?? 'application/octet-stream' : 'application/octet-stream'
+  const extension = filename
+    .split('.')
+    .pop()
+    ?.toLocaleLowerCase('en-US')
+
+  return extension
+    ? contentTypes[extension] ??
+        'application/octet-stream'
+    : 'application/octet-stream'
 }
 
 function getFileType(filename: string) {
-  return filename.split('.').pop()?.toLocaleUpperCase('en-US') ?? 'FILE'
+  return (
+    filename
+      .split('.')
+      .pop()
+      ?.toLocaleUpperCase('en-US') ?? 'FILE'
+  )
 }
 
 function resolveDownloadPath(value: string | null) {
-  if (!value || !value.startsWith('/downloads/') || value.includes('..')) return null
+  if (
+    !value ||
+    !value.startsWith('/downloads/') ||
+    value.includes('..')
+  ) {
+    return null
+  }
 
   const normalized = normalize(value)
-  if (!normalized.startsWith('/downloads/')) return null
+
+  if (!normalized.startsWith('/downloads/')) {
+    return null
+  }
 
   return normalized
 }
@@ -42,7 +71,10 @@ function resolveLang(request: NextRequest) {
   if (referer) {
     try {
       const refererPath = new URL(referer).pathname
-      if (refererPath.startsWith('/en')) return 'en'
+
+      if (refererPath.startsWith('/en')) {
+        return 'en'
+      }
     } catch {
       return 'tr'
     }
@@ -51,12 +83,39 @@ function resolveLang(request: NextRequest) {
   return 'tr'
 }
 
-function redirectToLogin(request: NextRequest, nextPath: string) {
+function redirectToLogin(
+  request: NextRequest,
+  nextPath: string,
+) {
   const url = request.nextUrl.clone()
 
-  url.pathname = authPath(resolveLang(request), 'login')
+  url.pathname = authPath(
+    resolveLang(request),
+    'login',
+  )
   url.search = ''
   url.searchParams.set('next', nextPath)
+
+  return NextResponse.redirect(url)
+}
+
+function redirectToMembership(
+  request: NextRequest,
+  productCode: string,
+) {
+  const lang = resolveLang(request)
+  const url = request.nextUrl.clone()
+
+  url.pathname = `/${lang}/uyelik`
+  url.search = ''
+  url.searchParams.set(
+    'product',
+    productCode,
+  )
+  url.searchParams.set(
+    'reason',
+    'purchase-required',
+  )
 
   return NextResponse.redirect(url)
 }
@@ -68,11 +127,16 @@ type CookieHistoryItem = {
   downloadedAt: string
 }
 
-function parseCookieHistory(value: string | undefined) {
+function parseCookieHistory(
+  value: string | undefined,
+) {
   if (!value) return []
 
   try {
-    const parsed = JSON.parse(decodeURIComponent(value)) as CookieHistoryItem[]
+    const parsed = JSON.parse(
+      decodeURIComponent(value),
+    ) as CookieHistoryItem[]
+
     return Array.isArray(parsed) ? parsed : []
   } catch {
     return []
@@ -84,18 +148,55 @@ function buildCookieHistory(
   resource: ResourceItem | null,
   filename: string,
 ) {
-  const previous = parseCookieHistory(request.cookies.get(historyCookieName)?.value)
+  const previous = parseCookieHistory(
+    request.cookies.get(historyCookieName)?.value,
+  )
+
   const nextItem: CookieHistoryItem = {
     title: resource?.title.tr ?? filename,
-    fileType: resource?.format ?? getFileType(filename),
+    fileType:
+      resource?.format ?? getFileType(filename),
     filePath: filename,
     downloadedAt: new Date().toISOString(),
   }
 
   return [
     nextItem,
-    ...previous.filter((item) => item.filePath !== filename),
+    ...previous.filter(
+      item => item.filePath !== filename,
+    ),
   ].slice(0, 10)
+}
+
+async function hasActiveProductEntitlement(
+  supabase: SupabaseClient,
+  userId: string,
+  productCode: string,
+) {
+  const { data, error } = await supabase
+    .from('product_entitlements')
+    .select('status, expires_at')
+    .eq('user_id', userId)
+    .eq('product_code', productCode)
+    .eq('status', 'active')
+    .maybeSingle()
+
+  if (error || !data) {
+    return false
+  }
+
+  if (!data.expires_at) {
+    return true
+  }
+
+  const expiresAt = new Date(
+    data.expires_at,
+  ).getTime()
+
+  return (
+    Number.isFinite(expiresAt) &&
+    expiresAt > Date.now()
+  )
 }
 
 async function recordMemberDownload(
@@ -106,17 +207,21 @@ async function recordMemberDownload(
   userAgent: string | null,
 ) {
   if (resource) {
-    const { data: resourceRecord } = await supabase
-      .from('resources')
-      .select('id')
-      .eq('file_path', filename)
-      .maybeSingle()
+    const { data: resourceRecord } =
+      await supabase
+        .from('resources')
+        .select('id')
+        .eq('file_path', filename)
+        .maybeSingle()
 
     if (resourceRecord?.id) {
-      const { error } = await supabase.rpc('record_download_event', {
-        p_resource_id: resourceRecord.id,
-        p_user_agent: userAgent,
-      })
+      const { error } = await supabase.rpc(
+        'record_download_event',
+        {
+          p_resource_id: resourceRecord.id,
+          p_user_agent: userAgent,
+        },
+      )
 
       if (!error) return
     }
@@ -125,30 +230,66 @@ async function recordMemberDownload(
   const catalogSnapshot = {
     source: 'catalog',
     title: resource?.title.tr ?? filename,
-    fileType: resource?.format ?? getFileType(filename),
+    fileType:
+      resource?.format ?? getFileType(filename),
     filePath: filename,
     userAgent,
   }
 
-  await supabase.from('download_events').insert({
-    user_id: userId,
-    resource_id: null,
-    user_agent: `catalog-download:${JSON.stringify(catalogSnapshot)}`,
-  })
+  await supabase
+    .from('download_events')
+    .insert({
+      user_id: userId,
+      resource_id: null,
+      user_agent: `catalog-download:${JSON.stringify(
+        catalogSnapshot,
+      )}`,
+    })
 }
 
-export async function GET(request: NextRequest) {
-  const downloadPath = resolveDownloadPath(request.nextUrl.searchParams.get('path'))
+export async function GET(
+  request: NextRequest,
+) {
+  const downloadPath = resolveDownloadPath(
+    request.nextUrl.searchParams.get('path'),
+  )
+
   if (!downloadPath) {
-    return NextResponse.json({ error: 'Invalid download path.' }, { status: 400 })
+    return NextResponse.json(
+      {
+        error: 'Invalid download path.',
+      },
+      {
+        status: 400,
+      },
+    )
   }
 
-  if (getDownloadPathAccessLevel(downloadPath) !== 'member') {
-    return NextResponse.json({ error: 'Resource unavailable.' }, { status: 404 })
+  const accessLevel =
+    getDownloadPathAccessLevel(downloadPath)
+
+  if (
+    !accessLevel ||
+    accessLevel === 'premiumSoon'
+  ) {
+    return NextResponse.json(
+      {
+        error: 'Resource unavailable.',
+      },
+      {
+        status: 404,
+      },
+    )
   }
+
+  const resource =
+    findResourceByDownloadPath(downloadPath)
 
   if (!isSupabaseConfigured()) {
-    return redirectToLogin(request, downloadPath)
+    return redirectToLogin(
+      request,
+      downloadPath,
+    )
   }
 
   const supabase = await createClient()
@@ -157,14 +298,53 @@ export async function GET(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return redirectToLogin(request, downloadPath)
+    return redirectToLogin(
+      request,
+      downloadPath,
+    )
   }
 
-  const resource = findResourceByDownloadPath(downloadPath)
+  if (accessLevel === 'paid') {
+    const productCode =
+      resource?.productCode
+
+    if (!productCode) {
+      return NextResponse.json(
+        {
+          error:
+            'Paid resource configuration is incomplete.',
+        },
+        {
+          status: 500,
+        },
+      )
+    }
+
+    const hasEntitlement =
+      await hasActiveProductEntitlement(
+        supabase,
+        user.id,
+        productCode,
+      )
+
+    if (!hasEntitlement) {
+      return redirectToMembership(
+        request,
+        productCode,
+      )
+    }
+  }
 
   try {
     const filename = basename(downloadPath)
-    const file = await readFile(join(process.cwd(), 'public', 'downloads', filename))
+    const file = await readFile(
+      join(
+        process.cwd(),
+        'public',
+        'downloads',
+        filename,
+      ),
+    )
 
     await recordMemberDownload(
       supabase,
@@ -179,23 +359,45 @@ export async function GET(request: NextRequest) {
       headers: {
         'Cache-Control': 'private, no-store',
         'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Type': getContentType(filename),
+        'Content-Type':
+          getContentType(filename),
       },
     })
-    const cookieHistory = buildCookieHistory(request, resource, filename)
+
+    const cookieHistory =
+      buildCookieHistory(
+        request,
+        resource,
+        filename,
+      )
 
     if (cookieHistory.length > 0) {
-      response.cookies.set(historyCookieName, encodeURIComponent(JSON.stringify(cookieHistory)), {
-        httpOnly: true,
-        maxAge: 60 * 60 * 24 * 90,
-        path: '/',
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
-      })
+      response.cookies.set(
+        historyCookieName,
+        encodeURIComponent(
+          JSON.stringify(cookieHistory),
+        ),
+        {
+          httpOnly: true,
+          maxAge: 60 * 60 * 24 * 90,
+          path: '/',
+          sameSite: 'lax',
+          secure:
+            process.env.NODE_ENV ===
+            'production',
+        },
+      )
     }
 
     return response
   } catch {
-    return NextResponse.json({ error: 'Download unavailable.' }, { status: 404 })
+    return NextResponse.json(
+      {
+        error: 'Download unavailable.',
+      },
+      {
+        status: 404,
+      },
+    )
   }
 }
