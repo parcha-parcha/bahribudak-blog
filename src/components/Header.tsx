@@ -56,18 +56,18 @@ export default function Header({ lang }: HeaderProps) {
           : 'Technical Publications',
     },
     {
-      href: `/${lang}/magazam`,
+      href: `/${lang}/sablonlar/tekstil-teknik-dokumanlari`,
       label:
         lang === 'tr'
-          ? 'Teknik Dokümanlar'
-          : 'Technical Documents',
+          ? 'Ücretsiz Kaynaklar'
+          : 'Free Resources',
     },
     {
       href: `/${lang}/uyelik`,
       label:
         lang === 'tr'
-          ? 'Üyelik'
-          : 'Membership',
+          ? 'Ücretsiz Üyelik'
+          : 'Free Membership',
     },
     {
       href: `/${lang}/about`,

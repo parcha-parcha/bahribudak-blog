@@ -39,7 +39,7 @@ export default function DownloadCard({
   downloadUrl,
   isLocked = false,
   loginUrl = "/tr/login",
-  membershipLabel = "Üyelikle indir",
+  membershipLabel = "Ücretsiz üye ol ve indir",
   downloadLabel = "Dosyayı indir",
   className = "",
 }: DownloadCardProps) {
@@ -49,7 +49,7 @@ export default function DownloadCard({
     <section className={cardClassName}>
       <div className={styles.content}>
         <span className={styles.eyebrow}>
-          {isLocked ? "ÜYELİKLİ DOSYA" : "İNDİRİLEBİLİR DOSYA"}
+          {"ÜCRETSİZ TEKNİK DOSYA"}
         </span>
 
         <h3 className={styles.title}>{title}</h3>

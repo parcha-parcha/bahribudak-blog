@@ -240,7 +240,7 @@ export default async function AccountPage({
         membershipStatus: 'Üyelik durumu',
         freeMember: 'Ücretsiz Üye',
         membershipText:
-          'PDF yayınları doğrudan açabilir; DOCX ve PPTX dosyalarını hesabınızla indirebilirsiniz.',
+          'PDF, DOCX, XLSX ve PPTX dosyalarının tamamını ücretsiz üyeliğinizle indirebilirsiniz.',
         profileTitle: 'Profil bilgileri',
         profileText:
           'Hesabınızda görünen ad ve şirket bilgilerini güncelleyin.',
@@ -260,10 +260,10 @@ export default async function AccountPage({
         publications: 'Teknik Yayınları İncele',
         membership: 'Üyelik ve Erişim Bilgileri',
         documents: 'Teknik Dokümanları Aç',
-        professionalTitle: 'Profesyonel erişim',
-        comingSoon: 'Yakında',
+        professionalTitle: 'Ücretsiz teknik erişim',
+        comingSoon: 'Aktif',
         professionalText:
-          'Yeni yayın bildirimleri, toplu paketler ve genişletilmiş teknik kaynaklar için planlanan üyelik modeli.',
+          'Tüm teknik kaynaklar, yeni yayınlar ve tekrar indirme erişimi ücretsiz üyelik kapsamında sunulur.',
         historyTitle: 'İndirme geçmişim',
         historyText:
           'Son 10 indirme kaydınız burada görünür.',
@@ -302,10 +302,10 @@ export default async function AccountPage({
         publications: 'Browse Technical Publications',
         membership: 'Membership and Access Information',
         documents: 'Open Technical Documents',
-        professionalTitle: 'Professional access',
-        comingSoon: 'Coming Soon',
+        professionalTitle: 'Free technical access',
+        comingSoon: 'Active',
         professionalText:
-          'A planned membership model for new-publication alerts, bundled files and expanded technical resources.',
+          'All technical resources, new publications and repeat downloads are included in free membership.',
         historyTitle: 'My download history',
         historyText:
           'Your latest 10 download records appear here.',

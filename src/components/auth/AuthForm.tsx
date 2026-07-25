@@ -51,7 +51,7 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
             ? 'Teknik kaynaklara erişmek için hesap oluşturun'
             : 'Teknik kaynaklarınıza giriş yapın',
           subtitle: isRegister
-            ? 'Üyelik hesabınızı oluşturun. E-posta doğrulamasından sonra teknik dosyalara güvenli biçimde erişin.'
+            ? 'Ücretsiz üyelik hesabınızı oluşturun. E-posta doğrulamasından sonra tüm teknik dosyalara erişin.'
             : 'E-posta adresiniz ve parolanızla devam edin. Giriş tamamlandığında istediğiniz dosyaya otomatik olarak yönlendirilirsiniz.',
           name: 'Ad soyad',
           company: 'Şirket adı',
@@ -71,13 +71,13 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
             'İşlem tamamlanamadı. Bilgilerinizi kontrol edip tekrar deneyin.',
           secureAccess: 'Güvenli teknik yayın erişimi',
           secureAccessText:
-            'Üyelikli dosyalar yalnız doğrulanmış kullanıcı hesabıyla indirilebilir.',
-          pdfTitle: 'PDF Teknik Master',
+            'Tüm teknik dosyalar ücretsizdir ve doğrulanmış üyelik hesabıyla indirilebilir.',
+          pdfTitle: 'Tüm teknik dosyalar',
           pdfText:
-            'PDF dosyaları makale sayfasından doğrudan açılır veya indirilir.',
-          memberTitle: 'DOCX ve PPTX dosyaları',
+            'PDF, DOCX, XLSX ve PPTX dosyalarının tamamı ücretsiz üyelikle sunulur.',
+          memberTitle: 'Ücretsiz üyelik',
           memberText:
-            'Düzenlenebilir teknik dosyalar üyelik girişiyle korunur.',
+            'Tek hesapla tüm teknik kaynaklara ve yeni yayınlara erişin.',
           returnTitle: 'Otomatik geri dönüş',
           returnText:
             'Girişten sonra talep ettiğiniz dosyaya otomatik olarak dönersiniz.',
@@ -87,8 +87,8 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
           panelText:
             'Araştırma, saha uygulaması ve proses yönetimi dokümanlarına kontrollü erişim.',
           benefitOne: '13 standartlaştırılmış teknik yayın',
-          benefitTwo: 'PDF dosyalarına doğrudan erişim',
-          benefitThree: 'DOCX ve PPTX için üyelik koruması',
+          benefitTwo: 'Tüm dosya türlerine ücretsiz erişim',
+          benefitThree: 'Yeni teknik yayınlara düzenli erişim',
           benefitFour: 'Masaüstü ve mobil uyumlu indirme akışı',
         }
       : {

@@ -37,8 +37,8 @@ function fileTypeFromHref(href: string) {
 }
 
 function enhanceMemberDownloadLinks(html: string, lang: Lang) {
-  const memberFileLabel = lang === 'tr' ? 'Üyelikli dosya' : 'Member file'
-  const actionLabel = lang === 'tr' ? 'Üyelikle indir' : 'Member download'
+  const memberFileLabel = lang === 'tr' ? 'Ücretsiz teknik dosya' : 'Free technical file'
+  const actionLabel = lang === 'tr' ? 'Ücretsiz üye ol ve indir' : 'Create free account and download'
 
   return html.replace(
     /<a\b([^>]*?)href=(["'])(\/downloads\/[^"']+)\2([^>]*)>([\s\S]*?)<\/a>/gi,
@@ -301,7 +301,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   ? safeLang === 'tr' ? 'Üyelikle indir' : 'Member download'
                   : safeLang === 'tr' ? 'indir' : 'download'
                 const accessLabel = isMemberDownload
-                  ? safeLang === 'tr' ? 'Üyelikli dosya' : 'Member file'
+                  ? safeLang === 'tr' ? 'Ücretsiz teknik dosya' : 'Free technical file'
                   : download.fileType
 
                 return (

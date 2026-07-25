@@ -24,11 +24,11 @@ export default function Footer({ lang }: FooterProps) {
           tagline: 'Bilgiyle Kurulur. Sistemle Büyür.',
           summary:
             'Örgü, boya ve apre proseslerinde saha deneyimine dayalı teknik yayın, eğitim, dokümantasyon ve danışmanlık.',
-          ctaLabel: 'TEKNİK KAYNAK MERKEZİ',
+          ctaLabel: 'ÜCRETSİZ TEKNİK ÜYELİK',
           ctaTitle:
-            'Doğrulanmış teknik dokümanlara, kontrol listelerine ve proses formlarına ulaşın.',
-          ctaPrimary: 'Teknik Dokümanları İncele',
-          ctaSecondary: 'Teknik Talep Oluştur',
+            'Ücretsiz üye olun; doğrulanmış teknik dokümanlara, kontrol listelerine ve proses formlarına erişin.',
+          ctaPrimary: 'Ücretsiz Üye Ol',
+          ctaSecondary: 'Teknik Destek Talep Et',
           navigationTitle: 'Navigasyon',
           processTitle: 'Proses Alanları',
           resourcesTitle: 'Teknik Kaynaklar',
@@ -248,7 +248,7 @@ export default function Footer({ lang }: FooterProps) {
 
           <div className="flex flex-wrap gap-3">
             <Link
-              href={withLang('/magazam')}
+              href={withLang('/kayit')}
               className="inline-flex items-center justify-center rounded-full bg-[#2EA6D9] px-5 py-3 text-sm font-bold text-[#061A33] transition-colors hover:bg-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
             >
               {copy.ctaPrimary} →

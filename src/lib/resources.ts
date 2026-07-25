@@ -27,30 +27,16 @@ export type ResourceItem = {
 
 export const resourceCatalogDate = '2026-07-18'
 
-export function resolveResourceAccessLevel(item: ResourceItem): ResourceAccessLevel {
-  if (item.accessLevel) return item.accessLevel
-  if (item.format === 'DOCX' || item.format === 'PPTX') return 'member'
-  return 'free'
+export function resolveResourceAccessLevel(_item: ResourceItem): ResourceAccessLevel {
+  return 'member'
 }
 
 export function isMemberDownloadPath(pathname: string) {
-  const normalized = pathname.toLocaleLowerCase('en-US')
-
-  return (
-    normalized.startsWith('/downloads/') &&
-    (normalized.endsWith('.docx') || normalized.endsWith('.pptx'))
-  )
+  return pathname.toLocaleLowerCase('en-US').startsWith('/downloads/')
 }
 
 export function getDownloadPathAccessLevel(pathname: string): ResourceAccessLevel | null {
-  const resource = resources.find(
-    (item) => item.href === pathname && resolveResourceAccessLevel(item) !== 'free',
-  )
-
-  if (resource) return resolveResourceAccessLevel(resource)
-  if (isMemberDownloadPath(pathname)) return 'member'
-
-  return null
+  return isMemberDownloadPath(pathname) ? 'member' : null
 }
 
 export function findResourceByDownloadPath(pathname: string) {
@@ -411,7 +397,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-20",
     size: "14 MB",
     fileLanguage: 'tr',
-    accessLevel: 'premiumSoon',
     title: {
       tr: "RO Maliyet ve Geri Ödeme Carousel Sunumu",
       en: "RO Cost and Payback Carousel Deck",
@@ -431,7 +416,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-22",
     size: "6.2 MB",
     fileLanguage: 'tr',
-    accessLevel: 'paid',
     productCode: 'BB-507',
     title: {
       tr: "Tekstilde Ram Bacalarının Temizliği Master",
@@ -452,7 +436,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-22",
     size: "41 KB",
     fileLanguage: 'tr',
-    accessLevel: 'paid',
     productCode: 'BB-507',
     title: {
       tr: "Ram Bacası Temizliği — Düzenlenebilir Master",
@@ -473,7 +456,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-20",
     size: "18 MB",
     fileLanguage: 'tr',
-    accessLevel: 'premiumSoon',
     title: {
       tr: "Bikarbonat ve Reaktif Boyama Carousel Sunumu",
       en: "Bicarbonate and Reactive Dyeing Carousel Deck",
@@ -892,7 +874,6 @@ export const resources: ResourceItem[] = [
     catalogDate: resourceCatalogDate,
     size: "6.8 MB",
     fileLanguage: 'tr',
-    accessLevel: 'premiumSoon',
     title: {
       tr: "Tekstil Fabrikası Teknik Yönetim ve Proses Sistemi",
       en: "Textile Mill Technical Management and Process System",
@@ -912,7 +893,6 @@ export const resources: ResourceItem[] = [
     catalogDate: resourceCatalogDate,
     size: "513 KB",
     fileLanguage: 'tr',
-    accessLevel: 'premiumSoon',
     title: {
       tr: "Tekstil İşletmelerinde Mühendislik Formülleri",
       en: "Engineering Formulas for Textile Operations",

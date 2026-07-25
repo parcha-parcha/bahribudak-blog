@@ -95,14 +95,14 @@ export default async function HomePage({ params }: HomeProps) {
       ? {
           heroEyebrow: 'BAHRİ BUDAK • TEKSTİL TEKNİK BİLGİ MERKEZİ',
           heroTitle:
-            'Örgü kumaş, boya ve apre bilgisini üretim performansına dönüştürüyorum.',
+            'Sahadaki tekstil problemlerini net çözümlere dönüştürüyorum.',
           heroSummary:
-            'Endüstriyel örgü kumaş üretimi, boya, apre, laboratuvar, kalite ve üretim yönetimi alanlarında 35 yılı aşkın saha deneyimine dayalı teknik yayınlar, profesyonel dokümanlar ve uygulanabilir proses sistemleri.',
+            'Gerçek üretim problemlerini açık biçimde tanımlayan, uygulanabilir çözüm adımları sunan ve ücretsiz üyelikle erişilebilen teknik yayınlar, kontrol araçları ve saha rehberleri.',
           heroAlt:
             'Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi',
-          expertiseCta: 'Uzmanlık Alanlarını İncele',
-          publicationsCta: 'Teknik Yayınları Gör',
-          documentsCta: 'Teknik Dokümanlar',
+          expertiseCta: 'Ücretsiz Üye Ol',
+          publicationsCta: 'Teknik Destek Talep Et',
+          documentsCta: 'Ücretsiz Kaynaklar',
           experienceLabel: 'SAHA DENEYİMİ',
           experienceTitle:
             'Üretim zincirinin tamamında karşılığı olan teknik bilgi.',
@@ -127,10 +127,10 @@ export default async function HomePage({ params }: HomeProps) {
           ],
           documentsLabel: 'TEKNİK DOKÜMANLAR',
           documentsTitle:
-            'Doğrulanmış eğitim, kontrol ve proses dosyalarından oluşan profesyonel kaynak sistemi.',
+            'Ücretsiz üyelikle erişilen, sahada karşılığı olan teknik kaynak sistemi.',
           documentsText:
-            'Ana kaynak kataloğuyla eş zamanlı çalışan eğitim notlarına, kontrol listelerine, proses formlarına ve teknik başvuru dokümanlarına doğrudan erişin.',
-          documentsCtaMain: 'Teknik Doküman Merkezini Aç',
+            'Eğitim notları, kontrol listeleri, proses formları ve teknik başvuru dokümanlarının tamamına ücretsiz üyelikle erişin.',
+          documentsCtaMain: 'Ücretsiz Kaynak Merkezini Aç',
           resourceUnit: 'dosya',
           documentCards: {
             training: {
@@ -216,7 +216,7 @@ export default async function HomePage({ params }: HomeProps) {
             'Proses sorununu ölçülebilir bir çalışma kapsamına dönüştürelim.',
           contactText:
             'Örgü kumaş, boyahane, apre, laboratuvar, kalite veya teknik dokümantasyon ihtiyacınızı net bir kapsamla değerlendirebiliriz.',
-          contactCta: 'İletişime Geç',
+          contactCta: 'Teknik Destek Talep Et',
         }
       : {
           heroEyebrow: 'BAHRİ BUDAK • TEXTILE TECHNICAL KNOWLEDGE CENTER',
@@ -226,9 +226,9 @@ export default async function HomePage({ params }: HomeProps) {
             'Technical publications, professional documents and applicable process systems based on more than 35 years of field experience in knitted fabric production, dyeing, finishing, laboratory, quality and production management.',
           heroAlt:
             'Balance of water, chemistry and controlled production in textile processing',
-          expertiseCta: 'Explore Expertise Areas',
-          publicationsCta: 'View Technical Publications',
-          documentsCta: 'Technical Documents',
+          expertiseCta: 'Create Free Account',
+          publicationsCta: 'Request Technical Support',
+          documentsCta: 'Free Resources',
           experienceLabel: 'FIELD EXPERIENCE',
           experienceTitle:
             'Technical knowledge with a direct counterpart across the production chain.',
@@ -342,7 +342,7 @@ export default async function HomePage({ params }: HomeProps) {
             'Let us turn your process problem into a measurable work scope.',
           contactText:
             'We can define a clear scope for knitting, dyehouse, finishing, laboratory, quality or technical documentation requirements.',
-          contactCta: 'Contact',
+          contactCta: 'Request Technical Support',
         }
 
   const documentCards = documentCollections.map((collection) => {
@@ -391,19 +391,19 @@ export default async function HomePage({ params }: HomeProps) {
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link href={withLang('/uzmanlik')} className="btn-primary">
+              <Link href={withLang('/kayit')} className="btn-primary">
                 {copy.expertiseCta} →
               </Link>
 
               <Link
-                href={withLang('/blog')}
+                href={withLang('/contact')}
                 className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-navy"
               >
                 {copy.publicationsCta}
               </Link>
 
               <Link
-                href={withLang('/magazam')}
+                href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
                 className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-navy"
               >
                 {copy.documentsCta}

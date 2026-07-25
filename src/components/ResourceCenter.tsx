@@ -17,7 +17,7 @@ type Lang = "tr" | "en";
 type FilterValue<T extends string> = "all" | T;
 type SortValue = "catalog" | "title" | "format";
 
-const accessOrder: ResourceAccessLevel[] = ["free", "member", "paid", "premiumSoon"];
+const accessOrder: ResourceAccessLevel[] = ["member"];
 const areaOrder: ResourceArea[] = ["orgu", "boya", "apre", "ortak"];
 const groupOrder: ResourceGroup[] = [
   "training",
@@ -60,26 +60,26 @@ const copy = {
       management: "Yönetim Dokümanı",
     },
     access: {
-      free: "Ücretsiz",
-      member: "Üyelikle",
-      paid: "Profesyonel",
-      premiumSoon: "Ücretli aday",
+      free: "Ücretsiz üyelik",
+      member: "Ücretsiz üyelik",
+      paid: "Ücretsiz üyelik",
+      premiumSoon: "Ücretsiz üyelik",
     },
     accessHelp: {
-      free: "Doğrudan indirilebilir kaynak.",
-      member: "Giriş yapan üyeler için ayrılmış kaynak.",
-      paid: "Satın alma yetkisi bulunan hesaplar için ayrılmış kaynak.",
-      premiumSoon: "İleride ücretli paket olarak ayrılabilecek kaynak.",
+      free: "Ücretsiz hesap oluşturan üyeler için erişilebilir kaynak.",
+      member: "Ücretsiz hesap oluşturan üyeler için erişilebilir kaynak.",
+      paid: "Ücretsiz hesap oluşturan üyeler için erişilebilir kaynak.",
+      premiumSoon: "Ücretsiz hesap oluşturan üyeler için erişilebilir kaynak.",
     },
     resultSingle: "kaynak gösteriliyor",
     resultPlural: "kaynak gösteriliyor",
     activeFilters: "aktif filtre",
     download: "Dosyayı indir",
-    memberDownload: "Üyelikle indir",
-    paidDownload: "Profesyonel erişim",
-    signInToDownload: "Giriş yap / üyelikle indir",
-    signInForPaid: "Giriş yap / satın alma kontrolü",
-    requestAccess: "Talep oluştur",
+    memberDownload: "Ücretsiz indir",
+    paidDownload: "Ücretsiz indir",
+    signInToDownload: "Ücretsiz üye ol / indir",
+    signInForPaid: "Ücretsiz üye ol / indir",
+    requestAccess: "Ücretsiz üye ol",
     version: "Sürüm",
     catalogDate: "Katalog kaydı",
     size: "Dosya boyutu",
@@ -98,7 +98,7 @@ const copy = {
       "Arama metnini temizleyin veya filtrelerden birini “Tümü” konumuna alın.",
     clear: "Tüm filtreleri temizle",
     archiveNote:
-      "“Arşiv” etiketi taşıyan dosyalar referans amaçlıdır; erişim etiketleri ise ücretli/üyelikli indirme altyapısı için katalog hazırlığıdır.",
+      "Tüm teknik dosyalar ücretsizdir. İndirme için ücretsiz üyelik hesabıyla giriş yapılır.",
   },
   en: {
     search: "Search resources",
@@ -130,26 +130,26 @@ const copy = {
       management: "Management Document",
     },
     access: {
-      free: "Free",
-      member: "Member",
-      paid: "Professional",
-      premiumSoon: "Paid candidate",
+      free: "Free membership",
+      member: "Free membership",
+      paid: "Free membership",
+      premiumSoon: "Free membership",
     },
     accessHelp: {
-      free: "Directly downloadable resource.",
-      member: "Resource reserved for signed-in members.",
-      paid: "Resource reserved for accounts with an active purchase entitlement.",
-      premiumSoon: "Resource that can later become a paid package.",
+      free: "Available to users with a free membership account.",
+      member: "Available to users with a free membership account.",
+      paid: "Available to users with a free membership account.",
+      premiumSoon: "Available to users with a free membership account.",
     },
     resultSingle: "resource shown",
     resultPlural: "resources shown",
     activeFilters: "active filters",
     download: "Download file",
-    memberDownload: "Member download",
-    paidDownload: "Professional access",
-    signInToDownload: "Sign in / member download",
-    signInForPaid: "Sign in / check purchase access",
-    requestAccess: "Request access",
+    memberDownload: "Free download",
+    paidDownload: "Free download",
+    signInToDownload: "Create free account / download",
+    signInForPaid: "Create free account / download",
+    requestAccess: "Create free account",
     version: "Version",
     catalogDate: "Cataloged",
     size: "File size",
@@ -167,7 +167,7 @@ const copy = {
     noResultText: "Clear the search text or set one of the filters to “All”.",
     clear: "Clear all filters",
     archiveNote:
-      "Files marked “Archive” are for reference; access labels prepare the catalog for member and paid download infrastructure.",
+      "All technical files are free. Sign in with a free membership account to download.",
   },
 } as const;
 
@@ -242,17 +242,6 @@ function isArchiveResource(item: ResourceItem) {
 
 function memberDownloadPath(href: string) {
   return `/api/member-download?path=${encodeURIComponent(href)}`;
-}
-
-function premiumRequestPath(lang: Lang, item: ResourceItem) {
-  const params = new URLSearchParams({
-    request: "premium-resource",
-    resourceId: item.id,
-    resourceTitle: item.title[lang],
-    resourceFormat: item.format,
-  });
-
-  return `/${lang}/contact?${params.toString()}`;
 }
 
 export default function ResourceCenter({
@@ -701,13 +690,7 @@ export default function ResourceCenter({
                       <dd className="mt-1 flex flex-wrap items-center gap-2">
                         <span
                           className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.08em] ${
-                            accessLevel === "free"
-                              ? "bg-[#EAF7EF] text-[#247342]"
-                              : accessLevel === "member"
-                                ? "bg-[#EAF6FC] text-[#177DA8]"
-                                : accessLevel === "paid"
-                                  ? "bg-[#EDE9FE] text-[#5B21B6]"
-                                  : "bg-[#FFF8E1] text-[#8A6400]"
+                            "bg-[#EAF6FC] text-[#177DA8]"
                           }`}
                         >
                           {t.access[accessLevel]}
@@ -720,48 +703,22 @@ export default function ResourceCenter({
                   </dl>
 
                   <div className="mt-auto pt-6">
-                    {accessLevel === "premiumSoon" ? (
+                    {!isAuthenticated ? (
                       <a
-                        href={premiumRequestPath(lang, item)}
-                        aria-label={`${t.requestAccess}: ${item.title[lang]} (${item.format})`}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#8A6400] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#A47700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C94C] focus-visible:ring-offset-2"
+                        href={`${authPath(lang, "register")}?next=${encodeURIComponent(item.href)}`}
+                        aria-label={`${t.signInToDownload}: ${item.title[lang]} (${item.format})`}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#12365F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
                       >
-                        {t.requestAccess} · {item.format}
-                      </a>
-                    ) : (accessLevel === "member" || accessLevel === "paid") &&
-                      !isAuthenticated ? (
-                      <a
-                        href={`${authPath(lang, "login")}?next=${encodeURIComponent(item.href)}`}
-                        aria-label={`${
-                          accessLevel === "paid"
-                            ? t.signInForPaid
-                            : t.signInToDownload
-                        }: ${item.title[lang]} (${item.format})`}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
-                      >
-                        {accessLevel === "paid"
-                          ? t.signInForPaid
-                          : t.signInToDownload}{" "}
-                        · {item.format}
+                        {t.signInToDownload}
                       </a>
                     ) : (
                       <a
-                        href={
-                          accessLevel === "member" || accessLevel === "paid"
-                            ? memberDownloadPath(item.href)
-                            : item.href
-                        }
-                        download
-                        aria-label={`${t.download}: ${item.title[lang]} (${item.format})`}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                        href={memberDownloadPath(item.href)}
+                        aria-label={`${t.memberDownload}: ${item.title[lang]} (${item.format})`}
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#2EA6D9] px-5 py-3 text-sm font-bold text-[#071E3A] transition group-hover:bg-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
                       >
                         <DownloadIcon />
-                        {accessLevel === "paid"
-                          ? t.paidDownload
-                          : accessLevel === "member"
-                            ? t.memberDownload
-                            : t.download}{" "}
-                        · {item.format}
+                        {t.memberDownload} · {item.format}
                       </a>
                     )}
                   </div>
