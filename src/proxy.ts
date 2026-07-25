@@ -34,16 +34,6 @@ function redirectToLogin(request: NextRequest, cookiesToSet: Parameters<NextResp
   return response
 }
 
-function redirectToContact(request: NextRequest) {
-  const lang = resolveLang(request)
-  const url = request.nextUrl.clone()
-
-  url.pathname = `/${lang}/contact`
-  url.search = ''
-
-  return NextResponse.redirect(url)
-}
-
 function redirectToMemberDownload(
   request: NextRequest,
   cookiesToSet: Parameters<NextResponse['cookies']['set']>[],
@@ -63,7 +53,6 @@ export async function proxy(request: NextRequest) {
   const accessLevel = getDownloadPathAccessLevel(request.nextUrl.pathname)
 
   if (!accessLevel) return updateSession(request)
-  if (accessLevel === 'premiumSoon') return redirectToContact(request)
   if (!isSupabaseConfigured()) return redirectToLogin(request, [])
 
   let response = NextResponse.next({ request })

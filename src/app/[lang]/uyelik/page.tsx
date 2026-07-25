@@ -45,7 +45,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ lan
       ['03', 'İndirme geçmişi', 'Daha önce indirdiğiniz dosyalara hesabınız üzerinden yeniden erişim.'],
       ['04', 'Doğrudan destek', 'İçerikteki problemi işletmenizde yaşıyorsanız teknik değerlendirme talebi oluşturma.'],
     ],
-    principle: 'Ücretli ürün veya ücretli üyelik yoktur. Teknik kaynaklar ücretsiz üyelik kapsamında sunulur.',
+    principle: 'Tüm teknik kaynaklar ücretsiz üyelik kapsamında sunulur.',
   } : {
     eyebrow: 'FREE TECHNICAL MEMBERSHIP',
     title: 'Access all technical resources with one free account.',
@@ -60,7 +60,7 @@ export default async function MembershipPage({ params }: { params: Promise<{ lan
       ['03', 'Download history', 'Return to files you previously downloaded through your account.'],
       ['04', 'Direct support', 'Request a technical review when the same problem exists in your operation.'],
     ],
-    principle: 'There are no paid products or paid membership plans. Technical resources are provided through free membership.',
+    principle: 'All technical resources are provided through free membership.',
   }
 
   return (

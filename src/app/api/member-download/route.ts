@@ -99,27 +99,6 @@ function redirectToLogin(
   return NextResponse.redirect(url)
 }
 
-function redirectToMembership(
-  request: NextRequest,
-  productCode: string,
-) {
-  const lang = resolveLang(request)
-  const url = request.nextUrl.clone()
-
-  url.pathname = `/${lang}/uyelik`
-  url.search = ''
-  url.searchParams.set(
-    'product',
-    productCode,
-  )
-  url.searchParams.set(
-    'reason',
-    'purchase-required',
-  )
-
-  return NextResponse.redirect(url)
-}
-
 type CookieHistoryItem = {
   title: string
   fileType: string
@@ -166,37 +145,6 @@ function buildCookieHistory(
       item => item.filePath !== filename,
     ),
   ].slice(0, 10)
-}
-
-async function hasActiveProductEntitlement(
-  supabase: SupabaseClient,
-  userId: string,
-  productCode: string,
-) {
-  const { data, error } = await supabase
-    .from('product_entitlements')
-    .select('status, expires_at')
-    .eq('user_id', userId)
-    .eq('product_code', productCode)
-    .eq('status', 'active')
-    .maybeSingle()
-
-  if (error || !data) {
-    return false
-  }
-
-  if (!data.expires_at) {
-    return true
-  }
-
-  const expiresAt = new Date(
-    data.expires_at,
-  ).getTime()
-
-  return (
-    Number.isFinite(expiresAt) &&
-    expiresAt > Date.now()
-  )
 }
 
 async function recordMemberDownload(
@@ -268,10 +216,7 @@ export async function GET(
   const accessLevel =
     getDownloadPathAccessLevel(downloadPath)
 
-  if (
-    !accessLevel ||
-    accessLevel === 'premiumSoon'
-  ) {
+  if (!accessLevel) {
     return NextResponse.json(
       {
         error: 'Resource unavailable.',
@@ -304,36 +249,6 @@ export async function GET(
     )
   }
 
-  if (accessLevel === 'paid') {
-    const productCode =
-      resource?.productCode
-
-    if (!productCode) {
-      return NextResponse.json(
-        {
-          error:
-            'Paid resource configuration is incomplete.',
-        },
-        {
-          status: 500,
-        },
-      )
-    }
-
-    const hasEntitlement =
-      await hasActiveProductEntitlement(
-        supabase,
-        user.id,
-        productCode,
-      )
-
-    if (!hasEntitlement) {
-      return redirectToMembership(
-        request,
-        productCode,
-      )
-    }
-  }
 
   try {
     const filename = basename(downloadPath)

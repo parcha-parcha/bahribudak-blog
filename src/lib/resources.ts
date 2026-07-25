@@ -7,7 +7,7 @@ export type ResourceGroup =
   | 'calculation'
   | 'management'
 export type ResourceFormat = 'PDF' | 'XLSX' | 'DOCX' | 'PPTX'
-export type ResourceAccessLevel = 'free' | 'member' | 'paid' | 'premiumSoon'
+export type ResourceAccessLevel = 'member'
 
 export type ResourceItem = {
   id: string
@@ -20,7 +20,6 @@ export type ResourceItem = {
   size: string
   fileLanguage: 'tr' | 'en' | 'tr-en'
   accessLevel?: ResourceAccessLevel
-  productCode?: string
   title: { tr: string; en: string }
   description: { tr: string; en: string }
 }
@@ -416,7 +415,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-22",
     size: "6.2 MB",
     fileLanguage: 'tr',
-    productCode: 'BB-507',
     title: {
       tr: "Tekstilde Ram Bacalarının Temizliği Master",
       en: "Textile Stenter Exhaust Cleaning Master",
@@ -436,7 +434,6 @@ export const resources: ResourceItem[] = [
     catalogDate: "2026-07-22",
     size: "41 KB",
     fileLanguage: 'tr',
-    productCode: 'BB-507',
     title: {
       tr: "Ram Bacası Temizliği — Düzenlenebilir Master",
       en: "Stenter Exhaust Cleaning — Editable Master",
