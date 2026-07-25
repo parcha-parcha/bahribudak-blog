@@ -780,3 +780,91 @@ select:focus-visible {
   font-weight: 800;
   line-height: 1;
 }
+/* Teknik yayın içi dönüşüm çağrıları */
+.prose-bb .bb-publication-cta-group,
+.technical-prose .bb-publication-cta-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.prose-bb .bb-publication-cta-item,
+.technical-prose .bb-publication-cta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 170px;
+  padding: 1.35rem;
+  border: 1px solid #d8e2ec;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(11, 35, 67, 0.08);
+}
+
+.prose-bb .bb-publication-cta-item p,
+.technical-prose .bb-publication-cta-item p {
+  margin: 0;
+  color: #334a62;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.prose-bb .bb-publication-cta,
+.technical-prose .bb-publication-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #0b2343;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.prose-bb .bb-publication-cta:hover,
+.technical-prose .bb-publication-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(11, 35, 67, 0.16);
+  text-decoration: none;
+}
+
+.prose-bb .bb-publication-cta--primary,
+.technical-prose .bb-publication-cta--primary {
+  border-color: #2ea6d9;
+  background: #2ea6d9;
+  color: #071d36;
+}
+
+.prose-bb .bb-publication-cta--secondary,
+.technical-prose .bb-publication-cta--secondary {
+  background: #0b2343;
+  color: #ffffff;
+}
+
+@media (max-width: 760px) {
+  .prose-bb .bb-publication-cta-group,
+  .technical-prose .bb-publication-cta-group {
+    grid-template-columns: 1fr;
+  }
+
+  .prose-bb .bb-publication-cta-item,
+  .technical-prose .bb-publication-cta-item {
+    min-height: 0;
+  }
+
+  .prose-bb .bb-publication-cta,
+  .technical-prose .bb-publication-cta {
+    width: 100%;
+  }
+}
