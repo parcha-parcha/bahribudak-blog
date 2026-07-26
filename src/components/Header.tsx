@@ -116,7 +116,7 @@ export default function Header({ lang }: HeaderProps) {
         >
           <span className="flex h-[56px] w-[156px] items-center justify-start bg-transparent">
             <BrandLogo
-              variant="full"
+              variant="labeled"
               className="h-full w-full object-contain object-left"
               priority
             />
