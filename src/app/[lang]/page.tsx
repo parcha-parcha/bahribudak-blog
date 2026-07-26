@@ -443,7 +443,7 @@ export default async function HomePage({ params }: HomeProps) {
                 key={card.label}
                 className="flex min-h-[210px] flex-col justify-between rounded-[14px] border border-gray-border bg-white p-6 shadow-[0_10px_28px_rgba(17,19,21,0.06)]"
               >
-                <div className="text-5xl font-bold tracking-[-0.04em] text-accent-blue">
+                <div className="text-5xl font-bold tracking-[-0.04em] text-[#E45A2B]">
                   {card.value}
                 </div>
 
