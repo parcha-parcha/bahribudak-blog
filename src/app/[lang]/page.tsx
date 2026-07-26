@@ -419,7 +419,7 @@ export default async function HomePage({ params }: HomeProps) {
 
       <section className="bg-white text-navy">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[34px] bg-[#061A33] p-8 text-white md:p-10">
+          <div className="relative overflow-hidden rounded-[18px] bg-[#111315] p-8 text-white md:p-10">
             <div className="absolute inset-0 bb-pattern opacity-30" />
 
             <div className="relative">
@@ -441,7 +441,7 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.metrics.map((card) => (
               <div
                 key={card.label}
-                className="flex min-h-[210px] flex-col justify-between rounded-[28px] border border-gray-border p-6"
+                className="flex min-h-[210px] flex-col justify-between rounded-[14px] border border-gray-border bg-white p-6 shadow-[0_10px_28px_rgba(17,19,21,0.06)]"
               >
                 <div className="text-5xl font-bold tracking-[-0.04em] text-accent-blue">
                   {card.value}
@@ -459,7 +459,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-[#EAF6FC] text-navy">
+      <section className="bg-[#F6F4EF] text-navy">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <div className="mb-10 grid grid-cols-1 items-end gap-8 md:grid-cols-[1fr_auto]">
             <div>
@@ -491,10 +491,10 @@ export default async function HomePage({ params }: HomeProps) {
               return (
                 <article
                   key={card.key}
-                  className="group flex min-h-[340px] flex-col justify-between rounded-[30px] border border-[#C9E8F6] bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-[#2EA6D9]/70 hover:shadow-[0_18px_45px_rgba(11,35,67,0.12)]"
+                  className="group flex min-h-[340px] flex-col justify-between rounded-[14px] border border-[#E5E2DA] bg-white p-7 shadow-[0_10px_28px_rgba(17,19,21,0.06)] transition hover:-translate-y-1 hover:border-[#E45A2B]/70 hover:shadow-[0_18px_45px_rgba(17,19,21,0.10)]"
                 >
                   <div>
-                    <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-2xl bg-[#061A33] px-4 py-3 text-white">
+                    <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-lg bg-[#111315] px-4 py-3 text-white">
                       <span className="text-2xl font-black leading-none">
                         {card.count.toString().padStart(2, '0')}
                       </span>
@@ -503,7 +503,7 @@ export default async function HomePage({ params }: HomeProps) {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-bold leading-tight text-[#0B2343]">
+                    <h3 className="text-2xl font-bold leading-tight text-[#111315]">
                       {cardCopy.title}
                     </h3>
 
@@ -517,7 +517,7 @@ export default async function HomePage({ params }: HomeProps) {
                       {card.formats.map((format) => (
                         <span
                           key={format}
-                          className="rounded-full border border-[#B7DFF0] bg-[#F3FBFE] px-3 py-1 text-xs font-bold text-[#0B2343]"
+                          className="rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#111315]"
                         >
                           {format}
                         </span>
@@ -526,7 +526,7 @@ export default async function HomePage({ params }: HomeProps) {
 
                     <Link
                       href={withLang(card.href)}
-                      className="inline-flex items-center font-bold text-[#2EA6D9] transition group-hover:translate-x-1"
+                      className="inline-flex items-center font-bold text-[#E45A2B] transition group-hover:translate-x-1"
                     >
                       {cardCopy.linkLabel} →
                     </Link>
@@ -538,7 +538,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-[#F5F7FA] text-navy">
+      <section className="bg-[#F6F4EF] text-navy">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
           <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
@@ -564,7 +564,7 @@ export default async function HomePage({ params }: HomeProps) {
               ))}
             </div>
           ) : (
-            <div className="rounded-[28px] border border-gray-border bg-white py-20 text-center text-gray-text">
+            <div className="rounded-[16px] border border-gray-border bg-white py-20 text-center text-gray-text">
               <p className="font-medium">{copy.noPublications}</p>
             </div>
           )}
@@ -589,17 +589,17 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.focusAreas.map((area, index) => (
               <article
                 key={area.id}
-                className={`rounded-[30px] border bg-white p-7 ${
+                className={`rounded-[16px] border bg-white p-7 ${
                   index === 1
-                    ? 'border-[#2EA6D9]'
-                    : 'border-[#D8DDE5]'
+                    ? 'border-[#E45A2B]'
+                    : 'border-[#E5E2DA]'
                 }`}
               >
                 <div
-                  className={`mb-8 flex h-16 w-16 items-center justify-center rounded-full text-lg font-black ${
+                  className={`mb-8 flex h-16 w-16 items-center justify-center rounded-md text-lg font-black ${
                     index === 1
-                      ? 'bg-[#2EA6D9] text-[#0B2343]'
-                      : 'bg-[#0B2343] text-white'
+                      ? 'bg-[#E45A2B] text-[#111315]'
+                      : 'bg-[#111315] text-white'
                   }`}
                 >
                   {area.no}
@@ -615,8 +615,8 @@ export default async function HomePage({ params }: HomeProps) {
                   href={withLang(`/uzmanlik/${area.id}`)}
                   className={`mt-7 inline-flex font-bold ${
                     index === 1
-                      ? 'text-[#2EA6D9]'
-                      : 'text-[#0B2343]'
+                      ? 'text-[#E45A2B]'
+                      : 'text-[#111315]'
                   }`}
                 >
                   {copy.openExpertise} →
@@ -627,7 +627,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-[#061A33] text-white">
+      <section className="bg-[#111315] text-white">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
           <div className="mb-12 max-w-3xl">
             <p className="section-label text-white/60">
@@ -643,9 +643,9 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.methodSteps.map((step) => (
               <article
                 key={step.no}
-                className="rounded-[28px] border border-white/15 bg-white/6 p-7"
+                className="rounded-[16px] border border-white/15 bg-white/6 p-7"
               >
-                <span className="text-sm font-black tracking-[0.2em] text-[#5BBBE6]">
+                <span className="text-sm font-black tracking-[0.2em] text-[#F09A7C]">
                   {step.no}
                 </span>
 
