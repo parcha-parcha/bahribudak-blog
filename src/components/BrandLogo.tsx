@@ -25,24 +25,24 @@ export default function BrandLogo({
         : variant
 
   const ink = tone === 'light' ? '#FFFFFF' : '#111315'
-  const muted = tone === 'light' ? 'rgba(255,255,255,0.78)' : '#6F7782'
+  const muted = tone === 'light' ? 'rgba(255,255,255,0.82)' : '#6F7782'
   const divider =
-    tone === 'light' ? 'rgba(255,255,255,0.28)' : '#D8D5CD'
+    tone === 'light' ? 'rgba(255,255,255,0.30)' : '#D8D5CD'
   const accent = '#E45A2B'
 
   const viewBox =
     normalizedVariant === 'symbol'
       ? '0 0 80 80'
       : normalizedVariant === 'compact'
-        ? '0 0 330 80'
-        : '0 0 560 112'
+        ? '0 0 300 80'
+        : '0 0 470 96'
 
   const defaultClass =
     normalizedVariant === 'symbol'
       ? 'h-12 w-12'
       : normalizedVariant === 'compact'
         ? 'h-14 w-auto max-w-full'
-        : 'h-24 w-auto max-w-full'
+        : 'h-28 w-auto max-w-full'
 
   const title =
     normalizedVariant === 'symbol'
@@ -62,7 +62,7 @@ export default function BrandLogo({
       <g
         fill="none"
         strokeLinecap="square"
-        strokeWidth={normalizedVariant === 'full' ? 9 : 7}
+        strokeWidth={normalizedVariant === 'full' ? 10 : 7}
         aria-hidden="true"
       >
         <path d="M8 18H60" stroke={ink} />
@@ -75,7 +75,7 @@ export default function BrandLogo({
         <>
           <line
             x1="84"
-            y1={normalizedVariant === 'full' ? 8 : 10}
+            y1={normalizedVariant === 'full' ? 6 : 10}
             x2="84"
             y2={normalizedVariant === 'full' ? 72 : 68}
             stroke={divider}
@@ -85,12 +85,12 @@ export default function BrandLogo({
 
           <text
             x="104"
-            y={normalizedVariant === 'full' ? 38 : 35}
+            y={normalizedVariant === 'full' ? 39 : 35}
             fill={ink}
             fontFamily="Inter, Arial, sans-serif"
-            fontSize={normalizedVariant === 'full' ? 32 : 25}
+            fontSize={normalizedVariant === 'full' ? 35 : 25}
             fontWeight="650"
-            letterSpacing={normalizedVariant === 'full' ? 4.2 : 3.4}
+            letterSpacing={normalizedVariant === 'full' ? 4.5 : 3.4}
             aria-hidden="true"
           >
             BAHRİ BUDAK
@@ -100,12 +100,12 @@ export default function BrandLogo({
             <>
               <text
                 x="105"
-                y="66"
+                y="68"
                 fill={muted}
                 fontFamily="Inter, Arial, sans-serif"
-                fontSize="11"
+                fontSize="11.4"
                 fontWeight="650"
-                letterSpacing="1.55"
+                letterSpacing="1.45"
                 aria-hidden="true"
               >
                 TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
@@ -113,9 +113,9 @@ export default function BrandLogo({
 
               <line
                 x1="105"
-                y1="84"
-                x2="150"
-                y2="84"
+                y1="86"
+                x2="158"
+                y2="86"
                 stroke={accent}
                 strokeWidth="4"
                 aria-hidden="true"
