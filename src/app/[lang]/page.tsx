@@ -93,16 +93,16 @@ export default async function HomePage({ params }: HomeProps) {
   const copy =
     lang === 'tr'
       ? {
-          heroEyebrow: 'BAHRİ BUDAK • TEKSTİL TEKNİK BİLGİ MERKEZİ',
+          heroEyebrow: 'TEKNİK YAYINLAR • DANIŞMANLIK • TEKSTİL SİSTEMLERİ',
           heroTitle:
-            'Sahadaki tekstil problemlerini net çözümlere dönüştürüyorum.',
+            'Teknik bilgi. Saha deneyimi. Sistematik çözümler.',
           heroSummary:
-            'Gerçek üretim problemlerini açık biçimde tanımlayan, uygulanabilir çözüm adımları sunan ve ücretsiz üyelikle erişilebilen teknik yayınlar, kontrol araçları ve saha rehberleri.',
+            'Tekstil işletmeleri için doğrulanabilir teknik yayınlar, kontrol araçları, proses sistemleri ve saha odaklı danışmanlık çözümleri.',
           heroAlt:
             'Tekstil proseslerinde su, kimya ve kontrollü üretim dengesi',
-          expertiseCta: 'Ücretsiz Üye Ol',
+          expertiseCta: 'Teknik Yayınları İncele',
           publicationsCta: 'Teknik Destek Talep Et',
-          documentsCta: 'Ücretsiz Kaynaklar',
+          documentsCta: 'Ücretsiz Kaynaklara Eriş',
           experienceLabel: 'SAHA DENEYİMİ',
           experienceTitle:
             'Üretim zincirinin tamamında karşılığı olan teknik bilgi.',
@@ -219,16 +219,16 @@ export default async function HomePage({ params }: HomeProps) {
           contactCta: 'Teknik Destek Talep Et',
         }
       : {
-          heroEyebrow: 'BAHRİ BUDAK • TEXTILE TECHNICAL KNOWLEDGE CENTER',
+          heroEyebrow: 'TECHNICAL PUBLICATIONS • CONSULTING • TEXTILE SYSTEMS',
           heroTitle:
-            'I turn knitted fabric, dyeing and finishing knowledge into production performance.',
+            'Technical knowledge. Field experience. Systematic solutions.',
           heroSummary:
-            'Technical publications, professional documents and applicable process systems based on more than 35 years of field experience in knitted fabric production, dyeing, finishing, laboratory, quality and production management.',
+            'Verified technical publications, control tools, process systems and field-oriented consulting solutions for textile enterprises.',
           heroAlt:
             'Balance of water, chemistry and controlled production in textile processing',
-          expertiseCta: 'Create Free Account',
+          expertiseCta: 'Explore Technical Publications',
           publicationsCta: 'Request Technical Support',
-          documentsCta: 'Free Resources',
+          documentsCta: 'Access Free Resources',
           experienceLabel: 'FIELD EXPERIENCE',
           experienceTitle:
             'Technical knowledge with a direct counterpart across the production chain.',
@@ -367,51 +367,51 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative min-h-[500px] overflow-hidden bg-[#061A33] text-white md:min-h-[520px]">
+      <section className="relative min-h-[560px] overflow-hidden bg-[#111315] text-white md:min-h-[620px]">
         <img
           src="/images/hero-su-damlasi.jpg"
           alt={copy.heroAlt}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="absolute inset-0 h-full w-full object-cover opacity-48"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061A33] via-[#061A33]/82 to-[#061A33]/18" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 via-transparent to-[#061A33]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#111315] via-[#111315]/88 to-[#111315]/24" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/76 via-transparent to-[#111315]/28" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-8 md:py-9 lg:grid-cols-[minmax(0,1.4fr)_minmax(240px,0.5fr)] lg:py-8">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-12 md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-12 lg:py-16">
           <div>
-            <p className="mb-3 inline-flex rounded-full bg-white/16 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-white/95 shadow-sm">
+            <p className="mb-5 inline-flex border-l-4 border-[#E45A2B] pl-4 text-xs font-black uppercase tracking-[0.22em] text-white/78">
               {copy.heroEyebrow}
             </p>
 
-            <h1 className="max-w-[800px] text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-[52px] lg:text-[54px] 2xl:text-[62px]">
+            <h1 className="max-w-[760px] text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-[56px] lg:text-[60px] 2xl:text-[68px]">
               {copy.heroTitle}
             </h1>
 
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-[16px]">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/78 md:text-[18px]">
               {copy.heroSummary}
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link href={withLang('/kayit')} className="btn-primary">
+              <Link href={withLang('/blog')} className="btn-primary">
                 {copy.expertiseCta} →
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-navy"
+                className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.publicationsCta}
               </Link>
 
               <Link
                 href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
-                className="inline-flex items-center justify-center rounded-full border border-white/45 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-navy"
+                className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.documentsCta}
               </Link>
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[235px] sm:max-w-[255px] lg:mx-0 lg:justify-self-end">
+          <div className="mx-auto w-full max-w-[760px] lg:mx-0 lg:justify-self-end">
             <BBHomeLogoCard />
           </div>
         </div>
