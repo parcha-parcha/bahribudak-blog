@@ -16,12 +16,13 @@ export default function BrandLogo({
 
   return (
     <svg
-      viewBox={isLabeled ? '0 0 420 96' : '0 0 96 96'}
+      viewBox={isLabeled ? '0 0 640 96' : '0 0 96 96'}
       role="img"
       aria-labelledby={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}
       className={`${className || defaultClass} shrink-0`}
       xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'block', maxWidth: '100%' }}
+      preserveAspectRatio="xMinYMid meet"
+      style={{ display: 'block', maxWidth: '100%', overflow: 'visible' }}
     >
       <title id={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}>
         {isLabeled
@@ -29,7 +30,7 @@ export default function BrandLogo({
           : 'Bahri Budak'}
       </title>
 
-      {/* BB-OS sembolü: yayın, süreç ve ilerlemeyi temsil eden üç çizgi */}
+      {/* BB-OS sembolü: yayın, süreç ve ilerleme */}
       <g
         fill="none"
         strokeLinecap="square"
@@ -55,24 +56,24 @@ export default function BrandLogo({
 
           <text
             x="132"
-            y="45"
+            y="44"
             fill="#111315"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="30"
+            fontSize="29"
             fontWeight="600"
-            letterSpacing="5"
+            letterSpacing="4.6"
           >
             BAHRİ BUDAK
           </text>
 
           <text
             x="133"
-            y="69"
+            y="68"
             fill="#6F7782"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="10"
+            fontSize="9.5"
             fontWeight="600"
-            letterSpacing="2.2"
+            letterSpacing="1.6"
           >
             TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
           </text>
