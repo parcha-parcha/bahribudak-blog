@@ -449,40 +449,40 @@ export default async function BlogPage({
   }
 
   return (
-    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
-      <section className="border-b border-[#D8DEE8] bg-[#F3F6FA]">
+    <main className="bb-readable-page min-h-screen bg-[#F6F4EF] text-[#111315]">
+      <section className="border-b border-[#E5E2DA] bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.88fr_1.12fr]">
             <div>
-              <p className="section-label text-[#4C5561]">
+              <p className="section-label text-[#6F7782]">
                 {copy.eyebrow}
               </p>
 
-              <h1 className="mb-5 mt-3 text-5xl font-bold tracking-[-0.045em] text-[#0B2343] md:text-6xl">
+              <h1 className="mb-5 mt-3 text-5xl font-bold tracking-[-0.045em] text-[#111315] md:text-6xl">
                 {copy.title}
               </h1>
 
               <div
-                className="mb-7 h-1 w-16 bg-[#2EA6D9]"
+                className="mb-7 h-1 w-16 bg-[#E45A2B]"
                 aria-hidden="true"
               />
 
-              <p className="max-w-xl text-lg leading-relaxed text-[#4C5561]">
+              <p className="max-w-xl text-lg leading-relaxed text-[#6F7782]">
                 {copy.summary}
               </p>
             </div>
 
-            <div className="bb-publication-panel relative min-h-[310px] overflow-hidden rounded-[34px] border border-[#D8DEE8] bg-[#061A33] shadow-[0_24px_70px_rgba(11,35,67,0.18)]">
+            <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-[#111315] shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
               <img
                 src="/images/blog-endustriyel-proses.jpg"
                 alt={copy.imageAlt}
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#061A33]/96 via-[#061A33]/78 to-[#061A33]/48" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/96 via-[#111315]/82 to-[#111315]/52" />
 
               <div className="relative z-10 flex min-h-[310px] items-end p-6 md:p-8">
-                <div className="bb-publication-card max-w-[620px] rounded-[26px] border border-white/30 bg-[#061A33] px-6 py-5 shadow-2xl">
+                <div className="bb-publication-card max-w-[620px] rounded-[14px] border border-white/15 bg-[#111315]/92 px-6 py-5 backdrop-blur-sm">
                   <p className="bb-publication-kicker text-xs font-black tracking-[0.28em] text-white">
                     {copy.systemKicker}
                   </p>
@@ -491,7 +491,7 @@ export default async function BlogPage({
                     {copy.systemTitle}
                   </h2>
 
-                  <p className="bb-publication-copy mt-3 max-w-lg text-sm leading-relaxed text-[#EAF3FF] md:text-base">
+                  <p className="bb-publication-copy mt-3 max-w-lg text-sm leading-relaxed text-white/78 md:text-base">
                     {copy.systemText}
                   </p>
                 </div>
@@ -503,13 +503,13 @@ export default async function BlogPage({
             {metrics.map(metric => (
               <div
                 key={metric.label}
-                className="rounded-[22px] border border-[#D8DEE8] bg-white px-5 py-5 shadow-sm"
+                className="rounded-[14px] border border-[#E5E2DA] bg-white px-5 py-5 shadow-sm"
               >
-                <div className="text-3xl font-black tracking-[-0.04em] text-[#0B2343]">
+                <div className="text-3xl font-black tracking-[-0.04em] text-[#E45A2B]">
                   {numberFormatter.format(metric.value)}
                 </div>
 
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.1em] text-[#66717E]">
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.1em] text-[#6F7782]">
                   {metric.label}
                 </p>
               </div>
@@ -518,26 +518,26 @@ export default async function BlogPage({
         </div>
       </section>
 
-      <section className="border-b border-[#D8DEE8] bg-white">
+      <section className="border-b border-[#E5E2DA] bg-white">
         <div className="mx-auto max-w-7xl px-6 py-8">
-          <div className="rounded-[28px] border border-[#D8DEE8] bg-[#F7F9FC] p-5 md:p-7">
-            <div className="mb-6 grid grid-cols-1 gap-5 border-b border-[#D8DEE8] pb-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
+          <div className="rounded-[16px] border border-[#E5E2DA] bg-white p-5 md:p-7">
+            <div className="mb-6 grid grid-cols-1 gap-5 border-b border-[#E5E2DA] pb-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2A8EB8]">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                   {copy.controlPanelLabel}
                 </p>
 
-                <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-0.03em] text-[#0B2343] md:text-3xl">
+                <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-0.03em] text-[#111315] md:text-3xl">
                   {copy.controlPanelTitle}
                 </h2>
 
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#66717E]">
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#6F7782]">
                   {copy.controlPanelText}
                 </p>
               </div>
 
-              <div className="rounded-[22px] border border-[#D8DEE8] bg-white p-4 shadow-sm">
-                <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#66717E]">
+              <div className="rounded-[14px] border border-[#E5E2DA] bg-white p-4 shadow-sm">
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#6F7782]">
                   {copy.activeViewLabel}
                 </p>
 
@@ -545,7 +545,7 @@ export default async function BlogPage({
                   {activeViewItems.map(item => (
                     <span
                       key={item}
-                      className="rounded-full border border-[#D8DEE8] bg-[#F3F6FA] px-3 py-1 text-[11px] font-bold text-[#0B2343]"
+                      className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-[11px] font-bold text-[#111315]"
                     >
                       {item}
                     </span>
@@ -578,7 +578,7 @@ export default async function BlogPage({
               <div>
                 <label
                   htmlFor="publication-search"
-                  className="mb-2 block text-xs font-black uppercase tracking-[0.13em] text-[#4C5561]"
+                  className="mb-2 block text-xs font-black uppercase tracking-[0.13em] text-[#6F7782]"
                 >
                   {copy.searchLabel}
                 </label>
@@ -604,7 +604,7 @@ export default async function BlogPage({
                     type="search"
                     defaultValue={searchQuery}
                     placeholder={copy.searchPlaceholder}
-                    className="h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white pl-12 pr-4 text-sm text-[#0B2343] outline-none transition placeholder:text-[#8A949F] focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/10"
+                    className="h-12 w-full rounded-md border border-[#D8D5CD] bg-white pl-12 pr-4 text-sm text-[#111315] outline-none transition placeholder:text-[#8A949F] focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
                   />
                 </div>
               </div>
@@ -612,7 +612,7 @@ export default async function BlogPage({
               <div>
                 <label
                   htmlFor="publication-sort"
-                  className="mb-2 block text-xs font-black uppercase tracking-[0.13em] text-[#4C5561]"
+                  className="mb-2 block text-xs font-black uppercase tracking-[0.13em] text-[#6F7782]"
                 >
                   {copy.sortLabel}
                 </label>
@@ -621,7 +621,7 @@ export default async function BlogPage({
                   id="publication-sort"
                   name="sort"
                   defaultValue={activeSort}
-                  className="h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white px-4 text-sm font-semibold text-[#0B2343] outline-none transition focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/10"
+                  className="h-12 w-full rounded-md border border-[#D8D5CD] bg-white px-4 text-sm font-semibold text-[#111315] outline-none transition focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
                 >
                   <option value="newest">
                     {copy.newest}
@@ -638,7 +638,7 @@ export default async function BlogPage({
               <div className="flex items-end gap-3">
                 <button
                   type="submit"
-                  className="inline-flex h-12 flex-1 items-center justify-center rounded-2xl bg-[#0B2343] px-6 text-sm font-black text-white transition hover:bg-[#163A64] lg:flex-none"
+                  className="inline-flex h-12 flex-1 items-center justify-center rounded-md bg-[#0B2343] px-6 text-sm font-black text-white transition hover:bg-[#1A1F24] lg:flex-none"
                 >
                   {copy.searchButton}
                 </button>
@@ -646,7 +646,7 @@ export default async function BlogPage({
                 {hasActiveFilters && (
                   <Link
                     href={`/${lang}/blog`}
-                    className="inline-flex h-12 items-center justify-center rounded-2xl border border-[#C9D1DC] bg-white px-5 text-sm font-bold text-[#4C5561] transition hover:border-[#0B2343] hover:text-[#0B2343]"
+                    className="inline-flex h-12 items-center justify-center rounded-md border border-[#D8D5CD] bg-white px-5 text-sm font-bold text-[#6F7782] transition hover:border-[#111315] hover:text-[#111315]"
                   >
                     {copy.clearFilters}
                   </Link>
@@ -654,9 +654,9 @@ export default async function BlogPage({
               </div>
             </form>
 
-            <div className="mt-7 grid grid-cols-1 gap-6 border-t border-[#D8DEE8] pt-6 lg:grid-cols-[1fr_auto]">
+            <div className="mt-7 grid grid-cols-1 gap-6 border-t border-[#E5E2DA] pt-6 lg:grid-cols-[1fr_auto]">
               <div>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.13em] text-[#4C5561]">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.13em] text-[#6F7782]">
                   {copy.processLabel}
                 </p>
 
@@ -669,26 +669,26 @@ export default async function BlogPage({
                     aria-current={
                       !activeArea ? 'page' : undefined
                     }
-                    className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition ${
+                    className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 text-xs font-bold transition ${
                       !activeArea
-                        ? 'border-[#0B2343] bg-[#0B2343]'
-                        : 'border-[#D8DEE8] bg-white hover:border-[#0B2343]'
+                        ? 'border-[#111315] bg-[#111315]'
+                        : 'border-[#E5E2DA] bg-white hover:border-[#111315]'
                     }`}
                   >
                     <span
                       style={{
                         color: !activeArea
                           ? '#FFFFFF'
-                          : '#4C5561',
+                          : '#6F7782',
                       }}
                     >
                       {copy.allProcesses}
                     </span>
                     <span
-                      className={`rounded-full px-2 py-0.5 text-[10px] ${
+                      className={`rounded-md px-2 py-0.5 text-[10px] ${
                         !activeArea
                           ? 'bg-white/15 text-white'
-                          : 'bg-[#EAF0F6] text-[#4C5561]'
+                          : 'bg-[#F6F4EF] text-[#6F7782]'
                       }`}
                     >
                       {technicalPosts.length}
@@ -709,17 +709,17 @@ export default async function BlogPage({
                         aria-current={
                           isActive ? 'page' : undefined
                         }
-                        className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition ${
+                        className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 text-xs font-bold transition ${
                           isActive
-                            ? 'border-[#0B2343] bg-[#0B2343]'
-                            : 'border-[#D8DEE8] bg-white hover:border-[#0B2343]'
+                            ? 'border-[#111315] bg-[#111315]'
+                            : 'border-[#E5E2DA] bg-white hover:border-[#111315]'
                         }`}
                       >
                         <span
                           style={{
                             color: isActive
                               ? '#FFFFFF'
-                              : '#4C5561',
+                              : '#6F7782',
                           }}
                         >
                           {lang === 'tr'
@@ -728,10 +728,10 @@ export default async function BlogPage({
                         </span>
 
                         <span
-                          className={`rounded-full px-2 py-0.5 text-[10px] ${
+                          className={`rounded-md px-2 py-0.5 text-[10px] ${
                             isActive
                               ? 'bg-white/15 text-white'
-                              : 'bg-[#EAF0F6] text-[#4C5561]'
+                              : 'bg-[#F6F4EF] text-[#6F7782]'
                           }`}
                         >
                           {processCounts[item.slug]}
@@ -743,7 +743,7 @@ export default async function BlogPage({
               </div>
 
               <div>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.13em] text-[#4C5561]">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.13em] text-[#6F7782]">
                   {copy.statusLabel}
                 </p>
 
@@ -778,15 +778,15 @@ export default async function BlogPage({
                         aria-current={
                           isActive ? 'page' : undefined
                         }
-                        className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition ${
+                        className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 text-xs font-bold transition ${
                           isActive
-                            ? 'border-[#2EA6D9] bg-[#EAF6FC] text-[#075A7D]'
-                            : 'border-[#D8DEE8] bg-white text-[#4C5561] hover:border-[#2EA6D9] hover:text-[#075A7D]'
+                            ? 'border-[#E45A2B] bg-[#F8E4DC] text-[#A53C18]'
+                            : 'border-[#E5E2DA] bg-white text-[#6F7782] hover:border-[#E45A2B] hover:text-[#A53C18]'
                         }`}
                       >
                         <span>{item.label}</span>
 
-                        <span className="rounded-full bg-[#DCECF5] px-2 py-0.5 text-[10px] text-[#075A7D]">
+                        <span className="rounded-md bg-[#F8E4DC] px-2 py-0.5 text-[10px] text-[#A53C18]">
                           {item.count}
                         </span>
                       </Link>
@@ -800,15 +800,15 @@ export default async function BlogPage({
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-14">
-        <div className="mb-7 rounded-[28px] border border-[#D8DEE8] bg-white p-5 shadow-sm md:p-6">
+        <div className="mb-7 rounded-[16px] border border-[#E5E2DA] bg-white p-5 shadow-sm md:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.15em] text-[#2A8EB8]">
+            <p className="text-xs font-black uppercase tracking-[0.15em] text-[#E45A2B]">
               {copy.resultsLabel}
             </p>
 
             <h2
-              className="mt-2 text-2xl font-bold tracking-[-0.025em] text-[#0B2343]"
+              className="mt-2 text-2xl font-bold tracking-[-0.025em] text-[#111315]"
               aria-live="polite"
             >
               {numberFormatter.format(filteredPosts.length)}{' '}
@@ -822,7 +822,7 @@ export default async function BlogPage({
               {activeViewItems.map(item => (
                 <span
                   key={item}
-                  className="rounded-full border border-[#D8DEE8] bg-[#F7F9FC] px-3 py-1.5 text-xs font-bold text-[#4C5561]"
+                  className="rounded-md border border-[#E5E2DA] bg-white px-3 py-1.5 text-xs font-bold text-[#6F7782]"
                 >
                   {item}
                 </span>
@@ -842,8 +842,8 @@ export default async function BlogPage({
             ))}
           </div>
         ) : (
-          <div className="rounded-[30px] border border-[#D8DDE5] bg-white px-6 py-20 text-center shadow-sm">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FC] text-[#2A8EB8]">
+          <div className="rounded-[16px] border border-[#E5E2DA] bg-white px-6 py-20 text-center shadow-sm">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-[#EAF6FC] text-[#E45A2B]">
               <svg
                 width="28"
                 height="28"
@@ -859,17 +859,17 @@ export default async function BlogPage({
               </svg>
             </div>
 
-            <h2 className="mt-6 text-2xl font-bold text-[#0B2343]">
+            <h2 className="mt-6 text-2xl font-bold text-[#111315]">
               {copy.noResultsTitle}
             </h2>
 
-            <p className="mx-auto mt-3 max-w-xl leading-relaxed text-[#66717E]">
+            <p className="mx-auto mt-3 max-w-xl leading-relaxed text-[#6F7782]">
               {copy.noResultsText}
             </p>
 
             <Link
               href={`/${lang}/blog`}
-              className="mt-7 inline-flex items-center justify-center rounded-full bg-[#0B2343] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#163A64]"
+              className="mt-7 inline-flex items-center justify-center rounded-md bg-[#0B2343] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1A1F24]"
             >
               {copy.noResultsButton}
             </Link>
