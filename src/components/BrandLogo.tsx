@@ -1,4 +1,9 @@
-type BrandLogoVariant = 'symbol' | 'compact' | 'full'
+type BrandLogoVariant =
+  | 'symbol'
+  | 'compact'
+  | 'full'
+  | 'short'
+  | 'labeled'
 
 type BrandLogoProps = {
   variant?: BrandLogoVariant
@@ -12,6 +17,13 @@ export default function BrandLogo({
   className = '',
   tone = 'dark',
 }: BrandLogoProps) {
+  const normalizedVariant =
+    variant === 'short'
+      ? 'symbol'
+      : variant === 'labeled'
+        ? 'full'
+        : variant
+
   const ink = tone === 'light' ? '#FFFFFF' : '#111315'
   const muted = tone === 'light' ? 'rgba(255,255,255,0.78)' : '#6F7782'
   const divider =
@@ -19,21 +31,21 @@ export default function BrandLogo({
   const accent = '#E45A2B'
 
   const viewBox =
-    variant === 'symbol'
+    normalizedVariant === 'symbol'
       ? '0 0 80 80'
-      : variant === 'compact'
+      : normalizedVariant === 'compact'
         ? '0 0 330 80'
         : '0 0 560 112'
 
   const defaultClass =
-    variant === 'symbol'
+    normalizedVariant === 'symbol'
       ? 'h-12 w-12'
-      : variant === 'compact'
+      : normalizedVariant === 'compact'
         ? 'h-14 w-auto max-w-full'
         : 'h-24 w-auto max-w-full'
 
   const title =
-    variant === 'symbol'
+    normalizedVariant === 'symbol'
       ? 'Bahri Budak'
       : 'Bahri Budak — Teknik Yayınlar, Danışmanlık ve Tekstil Sistemleri'
 
@@ -50,7 +62,7 @@ export default function BrandLogo({
       <g
         fill="none"
         strokeLinecap="square"
-        strokeWidth={variant === 'full' ? 9 : 7}
+        strokeWidth={normalizedVariant === 'full' ? 9 : 7}
         aria-hidden="true"
       >
         <path d="M8 18H60" stroke={ink} />
@@ -59,13 +71,13 @@ export default function BrandLogo({
         <path d="M54 58H68" stroke={accent} />
       </g>
 
-      {variant !== 'symbol' && (
+      {normalizedVariant !== 'symbol' && (
         <>
           <line
             x1="84"
-            y1={variant === 'full' ? 8 : 10}
+            y1={normalizedVariant === 'full' ? 8 : 10}
             x2="84"
-            y2={variant === 'full' ? 72 : 68}
+            y2={normalizedVariant === 'full' ? 72 : 68}
             stroke={divider}
             strokeWidth="2"
             aria-hidden="true"
@@ -73,18 +85,18 @@ export default function BrandLogo({
 
           <text
             x="104"
-            y={variant === 'full' ? 38 : 35}
+            y={normalizedVariant === 'full' ? 38 : 35}
             fill={ink}
             fontFamily="Inter, Arial, sans-serif"
-            fontSize={variant === 'full' ? 32 : 25}
+            fontSize={normalizedVariant === 'full' ? 32 : 25}
             fontWeight="650"
-            letterSpacing={variant === 'full' ? 4.2 : 3.4}
+            letterSpacing={normalizedVariant === 'full' ? 4.2 : 3.4}
             aria-hidden="true"
           >
             BAHRİ BUDAK
           </text>
 
-          {variant === 'full' && (
+          {normalizedVariant === 'full' && (
             <>
               <text
                 x="105"
