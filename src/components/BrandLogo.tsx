@@ -1,5 +1,4 @@
-type BrandLogoProps = {
- type BrandLogoVariant = 'symbol' | 'compact' | 'full'
+type BrandLogoVariant = 'symbol' | 'compact' | 'full'
 
 type BrandLogoProps = {
   variant?: BrandLogoVariant
@@ -7,83 +6,111 @@ type BrandLogoProps = {
   priority?: boolean
   tone?: 'dark' | 'light'
 }
-  className?: string
-  priority?: boolean
-}
 
 export default function BrandLogo({
-  variant = 'short',
+  variant = 'compact',
   className = '',
+  tone = 'dark',
 }: BrandLogoProps) {
-  const isLabeled = variant === 'labeled'
+  const ink = tone === 'light' ? '#FFFFFF' : '#111315'
+  const muted = tone === 'light' ? 'rgba(255,255,255,0.78)' : '#6F7782'
+  const divider =
+    tone === 'light' ? 'rgba(255,255,255,0.28)' : '#D8D5CD'
+  const accent = '#E45A2B'
 
-  const defaultClass = isLabeled
-    ? 'h-14 w-auto max-w-full'
-    : 'h-12 w-12'
+  const viewBox =
+    variant === 'symbol'
+      ? '0 0 80 80'
+      : variant === 'compact'
+        ? '0 0 330 80'
+        : '0 0 560 112'
+
+  const defaultClass =
+    variant === 'symbol'
+      ? 'h-12 w-12'
+      : variant === 'compact'
+        ? 'h-14 w-auto max-w-full'
+        : 'h-24 w-auto max-w-full'
+
+  const title =
+    variant === 'symbol'
+      ? 'Bahri Budak'
+      : 'Bahri Budak — Teknik Yayınlar, Danışmanlık ve Tekstil Sistemleri'
 
   return (
     <svg
-      viewBox={isLabeled ? '0 0 420 96' : '0 0 96 96'}
+      viewBox={viewBox}
       role="img"
-      aria-labelledby={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}
+      aria-label={title}
       className={`${className || defaultClass} shrink-0`}
       xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'block', maxWidth: '100%' }}
+      preserveAspectRatio="xMinYMid meet"
+      style={{ display: 'block', maxWidth: '100%', overflow: 'visible' }}
     >
-      <title id={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}>
-        {isLabeled
-          ? 'Bahri Budak — Teknik Yayınlar, Danışmanlık ve Tekstil Sistemleri'
-          : 'Bahri Budak'}
-      </title>
-
-      {/* BB-OS sembolü: yayın, süreç ve ilerlemeyi temsil eden üç çizgi */}
       <g
         fill="none"
         strokeLinecap="square"
-        strokeWidth="8"
+        strokeWidth={variant === 'full' ? 9 : 7}
         aria-hidden="true"
       >
-        <path d="M12 24H74" stroke="#111315" />
-        <path d="M12 46H74" stroke="#111315" />
-        <path d="M12 68H58" stroke="#111315" />
-        <path d="M66 68H82" stroke="#E45A2B" />
+        <path d="M8 18H60" stroke={ink} />
+        <path d="M8 38H60" stroke={ink} />
+        <path d="M8 58H46" stroke={ink} />
+        <path d="M54 58H68" stroke={accent} />
       </g>
 
-      {isLabeled && (
-        <g aria-hidden="true">
+      {variant !== 'symbol' && (
+        <>
           <line
-            x1="108"
-            y1="16"
-            x2="108"
-            y2="80"
-            stroke="#D8D5CD"
+            x1="84"
+            y1={variant === 'full' ? 8 : 10}
+            x2="84"
+            y2={variant === 'full' ? 72 : 68}
+            stroke={divider}
             strokeWidth="2"
+            aria-hidden="true"
           />
 
           <text
-            x="132"
-            y="45"
-            fill="#111315"
+            x="104"
+            y={variant === 'full' ? 38 : 35}
+            fill={ink}
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="30"
-            fontWeight="600"
-            letterSpacing="5"
+            fontSize={variant === 'full' ? 32 : 25}
+            fontWeight="650"
+            letterSpacing={variant === 'full' ? 4.2 : 3.4}
+            aria-hidden="true"
           >
             BAHRİ BUDAK
           </text>
 
-          <text
-            x="133"
-            y="69"
-            fill="#6F7782"
-            fontFamily="Inter, Arial, sans-serif"
-            fontSize="10"
-            fontWeight="600"
-            letterSpacing="2.2"
-          >
-            TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
-          </text>
-        </g>
+          {variant === 'full' && (
+            <>
+              <text
+                x="105"
+                y="66"
+                fill={muted}
+                fontFamily="Inter, Arial, sans-serif"
+                fontSize="11"
+                fontWeight="650"
+                letterSpacing="1.55"
+                aria-hidden="true"
+              >
+                TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
+              </text>
+
+              <line
+                x1="105"
+                y1="84"
+                x2="150"
+                y2="84"
+                stroke={accent}
+                strokeWidth="4"
+                aria-hidden="true"
+              />
+            </>
+          )}
+        </>
       )}
     </svg>
   )
