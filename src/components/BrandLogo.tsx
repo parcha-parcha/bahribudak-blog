@@ -1,5 +1,12 @@
 type BrandLogoProps = {
-  variant?: 'short' | 'labeled'
+ type BrandLogoVariant = 'symbol' | 'compact' | 'full'
+
+type BrandLogoProps = {
+  variant?: BrandLogoVariant
+  className?: string
+  priority?: boolean
+  tone?: 'dark' | 'light'
+}
   className?: string
   priority?: boolean
 }
