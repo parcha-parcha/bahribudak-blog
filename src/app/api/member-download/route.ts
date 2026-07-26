@@ -157,7 +157,7 @@ async function recordMemberActivity(
     p_event_type: 'publication_download',
     p_resource_id: resourceId,
   p_publication_slug: null,
-    p_path: `/downloads/${filename}`,
+p_path: ['/downloads', filename].join('/'),
     p_source: 'member-download',
     p_metadata: {
       title: resource?.title.tr ?? filename,
