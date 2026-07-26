@@ -15,3 +15,4 @@ BB_KURUMSAL_TASARIM_DEGISIKLIK_NOTU.md
 # Local release archives
 release-backups/
 .npm-cache/
+supabase/.temp/
