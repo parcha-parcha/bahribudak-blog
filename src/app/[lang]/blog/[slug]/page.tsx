@@ -417,9 +417,17 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
 
         <div className="bb-dark-readable-panel mt-14 flex items-start gap-6 rounded-[14px] bg-[#111315] p-7 text-white md:p-8">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border-2 border-yellow-bb">
-            <span className="text-xl font-bold text-[#E45A2B]">BB</span>
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-white/15 bg-white/[0.03]">
+            <span className="flex flex-col gap-[5px]" aria-hidden="true">
+              <span className="block h-[5px] w-9 bg-white" />
+              <span className="block h-[5px] w-9 bg-white" />
+              <span className="flex items-center gap-[4px]">
+                <span className="block h-[5px] w-6 bg-white" />
+                <span className="block h-[5px] w-2 bg-[#E45A2B]" />
+              </span>
+            </span>
           </div>
+
           <div>
             <p className="mb-1 text-lg font-bold text-white">Bahri Budak</p>
             <p className="mb-4 text-sm leading-relaxed text-white/85">
@@ -431,7 +439,7 @@ export default async function PostPage({ params }: PostPageProps) {
               href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold text-[#F09A7C]"
+              className="text-sm font-bold text-[#F09A7C] transition hover:text-white"
             >
               LinkedIn →
             </a>
