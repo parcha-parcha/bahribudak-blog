@@ -55,6 +55,15 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
             : 'E-posta adresiniz ve parolanızla devam edin. Giriş tamamlandığında istediğiniz dosyaya otomatik olarak yönlendirilirsiniz.',
           name: 'Ad soyad',
           company: 'Şirket adı',
+          jobTitle: 'Görev / pozisyon',
+          interest: 'Ana ilgi alanı',
+          interestPlaceholder: 'İlgi alanı seçin',
+          terms:
+            'Üyelik koşullarını kabul ediyorum.',
+          privacyNotice:
+            'Kişisel verilerin işlenmesine ilişkin aydınlatma metnini okudum.',
+          marketing:
+            'Yeni teknik yayınlar ve hizmetler hakkında e-posta almak istiyorum (isteğe bağlı).',
           email: 'E-posta',
           password: 'Parola',
           submit: isRegister ? 'Hesap Oluştur' : 'Giriş Yap',
@@ -101,6 +110,15 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
             : 'Continue with your email address and password. After sign-in, you will automatically return to the requested file.',
           name: 'Full name',
           company: 'Company name',
+          jobTitle: 'Job title / position',
+          interest: 'Primary area of interest',
+          interestPlaceholder: 'Select an area of interest',
+          terms:
+            'I accept the membership terms.',
+          privacyNotice:
+            'I have read the privacy notice regarding the processing of personal data.',
+          marketing:
+            'I want to receive emails about new technical publications and services (optional).',
           email: 'Email',
           password: 'Password',
           submit: isRegister ? 'Create Account' : 'Sign In',
@@ -148,7 +166,22 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
     const form = new FormData(event.currentTarget)
     const email = String(form.get('email') ?? '').trim()
     const password = String(form.get('password') ?? '')
+    const membershipTerms =
+      form.get('membership_terms') === 'on'
+    const privacyNotice =
+      form.get('privacy_notice') === 'on'
+    const emailMarketing =
+      form.get('email_marketing') === 'on'
     const supabase = createClient()
+
+    if (
+      isRegister &&
+      (!membershipTerms || !privacyNotice)
+    ) {
+      setMessage(copy.error)
+      setLoading(false)
+      return
+    }
 
     try {
       if (isRegister) {
@@ -168,6 +201,18 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
               company_name: String(
                 form.get('company_name') ?? '',
               ).trim(),
+              job_title: String(
+                form.get('job_title') ?? '',
+              ).trim(),
+              interest_code: String(
+                form.get('interest_code') ?? '',
+              ).trim(),
+              preferred_language: lang,
+              membership_terms: membershipTerms,
+              privacy_notice: privacyNotice,
+              email_marketing: emailMarketing,
+              registration_source: 'membership-form',
+              legal_text_version: '2026-07-26-v1',
             },
           },
         })
@@ -286,18 +331,75 @@ export default function AuthForm({ lang, mode }: AuthFormProps) {
             onSubmit={handleSubmit}
           >
             {isRegister && (
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Field
-                  label={copy.name}
-                  name="full_name"
-                  autoComplete="name"
-                  required
-                />
-                <Field
-                  label={copy.company}
-                  name="company_name"
-                  autoComplete="organization"
-                />
+              <div className="space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field
+                    label={copy.name}
+                    name="full_name"
+                    autoComplete="name"
+                    required
+                  />
+                  <Field
+                    label={copy.company}
+                    name="company_name"
+                    autoComplete="organization"
+                  />
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field
+                    label={copy.jobTitle}
+                    name="job_title"
+                    autoComplete="organization-title"
+                  />
+                  <SelectField
+                    label={copy.interest}
+                    name="interest_code"
+                    placeholder={copy.interestPlaceholder}
+                    required
+                    options={
+                      lang === 'tr'
+                        ? [
+                            ['dyeing', 'Boya ve terbiye'],
+                            ['knitting', 'Örme'],
+                            ['textile_chemicals', 'Tekstil kimyasalları'],
+                            ['maintenance', 'Bakım ve teknik işletme'],
+                            ['energy_efficiency', 'Enerji verimliliği'],
+                            ['quality', 'Kalite'],
+                            ['fire_safety', 'Yangın güvenliği'],
+                            ['management', 'Yönetim ve organizasyon'],
+                          ]
+                        : [
+                            ['dyeing', 'Dyeing and finishing'],
+                            ['knitting', 'Knitting'],
+                            ['textile_chemicals', 'Textile chemicals'],
+                            ['maintenance', 'Maintenance and engineering'],
+                            ['energy_efficiency', 'Energy efficiency'],
+                            ['quality', 'Quality'],
+                            ['fire_safety', 'Fire safety'],
+                            ['management', 'Management and organization'],
+                          ]
+                    }
+                  />
+                </div>
+
+                <div className="space-y-3 rounded-2xl border border-[#D8DEE8] bg-[#F7F9FC] p-4">
+                  <CheckboxField
+                    name="membership_terms"
+                    required
+                  >
+                    {copy.terms}
+                  </CheckboxField>
+                  <CheckboxField
+                    name="privacy_notice"
+                    required
+                  >
+                    {copy.privacyNotice}
+                  </CheckboxField>
+                  <CheckboxField name="email_marketing">
+                    {copy.marketing}
+                  </CheckboxField>
+                </div>
               </div>
             )}
 
@@ -412,3 +514,61 @@ function Field({
     </label>
   )
 }
+
+function SelectField({
+  label,
+  name,
+  placeholder,
+  options,
+  required,
+}: {
+  label: string
+  name: string
+  placeholder: string
+  options: Array<[string, string]>
+  required?: boolean
+}) {
+  return (
+    <label className="block text-sm font-black text-[#0B2343]">
+      {label}
+      <select
+        name={name}
+        required={required}
+        defaultValue=""
+        className="mt-2 min-h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white px-4 font-normal text-[#0B2343] outline-none transition focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/12"
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map(([value, optionLabel]) => (
+          <option key={value} value={value}>
+            {optionLabel}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
+function CheckboxField({
+  name,
+  required,
+  children,
+}: {
+  name: string
+  required?: boolean
+  children: ReactNode
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-[#334155]">
+      <input
+        type="checkbox"
+        name={name}
+        required={required}
+        className="mt-1 h-4 w-4 shrink-0 rounded border-[#AEB8C5] accent-[#0B2343]"
+      />
+      <span>{children}</span>
+    </label>
+  )
+}
+
