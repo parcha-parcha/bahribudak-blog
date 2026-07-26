@@ -257,6 +257,9 @@ export default async function AccountPage({
         autoReturnText:
           'Giriş sonrasında talep edilen dosyaya dönülür.',
         quickLinks: 'Hızlı bağlantılar',
+        profileSettings: 'Profil Bilgilerimi Yönet',
+        interestSettings: 'İlgi Alanlarımı Yönet',
+        consentSettings: 'İletişim İzinlerimi Yönet',
         publications: 'Teknik Yayınları İncele',
         membership: 'Üyelik ve Erişim Bilgileri',
         documents: 'Teknik Dokümanları Aç',
@@ -299,6 +302,9 @@ export default async function AccountPage({
         autoReturnText:
           'After sign-in, you return to the requested file.',
         quickLinks: 'Quick links',
+        profileSettings: 'Manage Profile Details',
+        interestSettings: 'Manage Interests',
+        consentSettings: 'Manage Communication Consents',
         publications: 'Browse Technical Publications',
         membership: 'Membership and Access Information',
         documents: 'Open Technical Documents',
@@ -442,6 +448,30 @@ export default async function AccountPage({
               </h2>
 
               <div className="mt-5 grid gap-3">
+                <QuickLink
+                  href={
+                    lang === 'tr'
+                      ? '/tr/hesabim/profil'
+                      : '/en/account/profile'
+                  }
+                  label={copy.profileSettings}
+                />
+                <QuickLink
+                  href={
+                    lang === 'tr'
+                      ? '/tr/hesabim/tercihler'
+                      : '/en/account/preferences'
+                  }
+                  label={copy.interestSettings}
+                />
+                <QuickLink
+                  href={
+                    lang === 'tr'
+                      ? '/tr/hesabim/izinler'
+                      : '/en/account/consents'
+                  }
+                  label={copy.consentSettings}
+                />
                 <QuickLink href={`/${lang}/blog`} label={copy.publications} />
                 <QuickLink href={`/${lang}/uyelik`} label={copy.membership} />
                 <QuickLink href={`/${lang}/magazam`} label={copy.documents} />
