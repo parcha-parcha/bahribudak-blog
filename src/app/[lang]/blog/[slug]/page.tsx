@@ -188,18 +188,18 @@ export default async function PostPage({ params }: PostPageProps) {
         <header
           className={
             post.technicalPublication
-              ? 'mb-10 overflow-hidden rounded-[28px] border border-[#D8DDE5] bg-white shadow-sm'
+              ? 'mb-10 overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white shadow-[0_14px_36px_rgba(17,19,21,0.08)]'
               : 'max-w-4xl'
           }
         >
           {post.technicalPublication && post.coverImage && (
-            <div className="relative bg-[#061A33]">
+            <div className="relative bg-[#111315]">
               <img
                 src={post.coverImage}
                 alt={post.title}
                 className="mx-auto max-h-[520px] w-full object-contain"
               />
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#061A33]/55 to-transparent" aria-hidden="true" />
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#111315]/60 to-transparent" aria-hidden="true" />
             </div>
           )}
 
@@ -209,12 +209,12 @@ export default async function PostPage({ params }: PostPageProps) {
               {publicationTypeLabel}
             </span>
             {processLabel && (
-              <span className="rounded-full border border-[#2EA6D9]/40 bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
+              <span className="rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#111315]">
                 {processLabel}
               </span>
             )}
             {post.hasDownloads && (
-              <span className="rounded-full border border-[#F2C94C]/60 bg-[#FFF8E1] px-3 py-1 text-xs font-bold text-[#0B2343]">
+              <span className="rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#111315]">
                 {safeLang === 'tr' ? 'İndirilebilir Dosya' : 'Downloadable File'}
               </span>
             )}
@@ -223,17 +223,17 @@ export default async function PostPage({ params }: PostPageProps) {
           <h1 className="mb-6 text-4xl font-bold leading-tight text-navy md:text-5xl">
             {post.title}
           </h1>
-          <div className="mb-8 h-1 w-16 bg-yellow-bb" />
+          <div className="mb-8 h-1 w-16 bg-[#E45A2B]" />
 
-          <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#4C5561]">
+          <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#6F7782]">
             {post.excerpt}
           </p>
           </div>
         </header>
 
         {post.technicalPublication && (
-          <section className="technical-document-control mb-10 rounded-[24px] border border-[#D8DDE5] bg-[#F5F7FA] p-5 md:p-6">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#4C5561]">
+          <section className="technical-document-control mb-10 rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-5 md:p-6">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#6F7782]">
               {safeLang === 'tr' ? 'Doküman Kontrolü / Document Control' : 'Document Control / Doküman Kontrolü'}
             </p>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -258,7 +258,7 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
 
         {post.coverImage && !post.technicalPublication && (
-          <figure className="mb-10 overflow-hidden rounded-[24px] border border-[#D8DDE5] bg-white">
+          <figure className="mb-10 overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white">
             <img
               src={post.coverImage}
               alt={post.title}
@@ -276,10 +276,10 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
 
         {post.downloadLinks.length > 0 && (
-          <section className="mb-10 rounded-[24px] border border-[#D8DDE5] bg-[#F8FBFD] p-5 md:p-6">
+          <section className="mb-10 rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-5 md:p-6">
             <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
               <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#2EA6D9]">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#E45A2B]">
                   {safeLang === 'tr' ? 'Yayın dosyaları' : 'Publication files'}
                 </p>
                 <h2 className="text-2xl font-bold text-navy">
@@ -288,7 +288,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     : safeLang === 'tr' ? 'İndirilebilir Dosyalar' : 'Downloadable Files'}
                 </h2>
               </div>
-              <span className="rounded-full border border-[#F2C94C]/60 bg-[#FFF8E1] px-3 py-1 text-xs font-bold text-[#0B2343]">
+              <span className="rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#111315]">
                 {post.downloadLinks.length} {safeLang === 'tr' ? 'dosya' : 'files'}
               </span>
             </div>
@@ -309,21 +309,21 @@ export default async function PostPage({ params }: PostPageProps) {
                   key={download.href}
                   href={href}
                   download={isMemberDownload ? undefined : true}
-                  className="flex min-h-24 flex-col justify-between rounded-[18px] border border-[#D8DDE5] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#2EA6D9] hover:shadow-md"
+                  className="flex min-h-24 flex-col justify-between rounded-[12px] border border-[#E5E2DA] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#E45A2B] hover:shadow-md"
                 >
                   <span className="text-sm font-bold leading-snug">{download.label}</span>
                  {isMemberDownload ? (
   <span className="mt-4 flex flex-col items-start gap-2">
-    <span className="inline-flex w-fit rounded-full border border-[#B9DFEE] bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#177DA8]">
+    <span className="inline-flex w-fit rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#A53C18]">
       {accessLabel} · {download.fileType}
     </span>
 
-    <span className="inline-flex w-fit rounded-full bg-[#0B2343] px-3 py-2 text-xs font-bold text-white">
+    <span className="inline-flex w-fit rounded-md bg-[#111315] px-3 py-2 text-xs font-bold text-white">
       {actionLabel} →
     </span>
   </span>
 ) : (
-  <span className="mt-4 inline-flex w-fit rounded-full bg-[#EAF6FC] px-3 py-1 text-xs font-bold text-[#0B2343]">
+  <span className="mt-4 inline-flex w-fit rounded-md bg-[#F8E4DC] px-3 py-1 text-xs font-bold text-[#111315]">
     {download.fileType} {actionLabel} →
   </span>
 )}
@@ -337,14 +337,14 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="prose-bb technical-prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
 
         {post.standards && post.standards.length > 0 && (
-          <section className="mt-12 rounded-[24px] border border-[#D8DDE5] bg-[#F5F7FA] p-6">
-            <h2 className="mb-4 text-xl font-bold text-[#0B2343]">
+          <section className="mt-12 rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-6">
+            <h2 className="mb-4 text-xl font-bold text-[#111315]">
               {safeLang === 'tr' ? 'İlgili Standartlar / Referenced Standards' : 'Referenced Standards / İlgili Standartlar'}
             </h2>
-            <ul className="space-y-2 text-sm leading-relaxed text-[#4C5561]">
+            <ul className="space-y-2 text-sm leading-relaxed text-[#6F7782]">
               {post.standards.map(standard => (
                 <li key={standard} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2EA6D9]" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-md bg-[#2EA6D9]" />
                   <span>{standard}</span>
                 </li>
               ))}
@@ -355,7 +355,7 @@ export default async function PostPage({ params }: PostPageProps) {
         {post.tags.length > 0 && (
           <div className="mt-10 flex flex-wrap gap-2 border-t border-gray-border pt-8">
             {post.tags.map((tag: string) => (
-              <span key={tag} className="rounded-full border border-gray-border bg-gray-soft px-3 py-1 text-xs font-medium text-gray-text">
+              <span key={tag} className="rounded-md border border-gray-border bg-gray-soft px-3 py-1 text-xs font-medium text-gray-text">
                 #{tag}
               </span>
             ))}
@@ -366,7 +366,7 @@ export default async function PostPage({ params }: PostPageProps) {
           <section className="mt-14 border-t border-gray-border pt-10">
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#2EA6D9]">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#E45A2B]">
                   {safeLang === 'tr' ? 'Okumaya devam edin' : 'Continue reading'}
                 </p>
                 <h2 className="text-2xl font-bold text-navy md:text-3xl">
@@ -375,7 +375,7 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
               <Link
                 href={`/${lang}/blog`}
-                className="hidden text-sm font-bold text-navy hover:text-[#2EA6D9] md:inline"
+                className="hidden text-sm font-bold text-navy hover:text-[#E45A2B] md:inline"
               >
                 {safeLang === 'tr' ? 'Tüm yayınlar →' : 'All publications →'}
               </Link>
@@ -385,7 +385,7 @@ export default async function PostPage({ params }: PostPageProps) {
               {relatedPosts.map(related => (
                 <article
                   key={related.slug}
-                  className="overflow-hidden rounded-[20px] border border-[#D8DDE5] bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
+                  className="overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
                 >
                   {related.coverImage && (
                     <Link href={`/${lang}/blog/${related.slug}`} className="block">
@@ -397,16 +397,16 @@ export default async function PostPage({ params }: PostPageProps) {
                     </Link>
                   )}
                   <div className="p-5">
-                    <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2EA6D9]">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#E45A2B]">
                       {processAreaLabel(related.processArea, safeLang) ||
                         (safeLang === 'tr' ? 'Teknik Yayın' : 'Technical Publication')}
                     </p>
                     <h3 className="mb-3 text-lg font-bold leading-snug text-navy">
-                      <Link href={`/${lang}/blog/${related.slug}`} className="hover:text-[#2EA6D9]">
+                      <Link href={`/${lang}/blog/${related.slug}`} className="hover:text-[#E45A2B]">
                         {related.title}
                       </Link>
                     </h3>
-                    <p className="line-clamp-3 text-sm leading-relaxed text-[#4C5561]">
+                    <p className="line-clamp-3 text-sm leading-relaxed text-[#6F7782]">
                       {related.excerpt}
                     </p>
                   </div>
@@ -416,9 +416,9 @@ export default async function PostPage({ params }: PostPageProps) {
           </section>
         )}
 
-        <div className="bb-dark-readable-panel mt-14 flex items-start gap-6 rounded-[24px] bg-navy p-7 text-white md:p-8">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-yellow-bb">
-            <span className="text-xl font-bold text-yellow-bb">BB</span>
+        <div className="bb-dark-readable-panel mt-14 flex items-start gap-6 rounded-[14px] bg-[#111315] p-7 text-white md:p-8">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border-2 border-yellow-bb">
+            <span className="text-xl font-bold text-[#E45A2B]">BB</span>
           </div>
           <div>
             <p className="mb-1 text-lg font-bold text-white">Bahri Budak</p>
@@ -431,7 +431,7 @@ export default async function PostPage({ params }: PostPageProps) {
               href="https://www.linkedin.com/in/bahri-budak-052ab5b8"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold text-[#5BBBE6]"
+              className="text-sm font-bold text-[#F09A7C]"
             >
               LinkedIn →
             </a>
