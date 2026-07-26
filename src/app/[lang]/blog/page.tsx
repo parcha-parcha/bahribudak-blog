@@ -141,7 +141,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-        url: '/images/teknik-yayin-sistemi-tanitimi.png',
+          url: '/images/teknik-yayin-sistemi-tanitimi.png',
         },
       ],
     },
@@ -472,30 +472,12 @@ export default async function BlogPage({
               </p>
             </div>
 
-            <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-[#111315] shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
+            <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
               <img
-              src="/images/teknik-yayin-sistemi-tanitimi.png"
+                src="/images/teknik-yayin-sistemi-tanitimi.png"
                 alt={copy.imageAlt}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/96 via-[#111315]/82 to-[#111315]/52" />
-
-              <div className="relative z-10 flex min-h-[310px] items-end p-6 md:p-8">
-                <div className="bb-publication-card max-w-[620px] rounded-[14px] border border-white/15 bg-[#111315]/92 px-6 py-5 backdrop-blur-sm">
-                  <p className="bb-publication-kicker text-xs font-black tracking-[0.28em] text-white">
-                    {copy.systemKicker}
-                  </p>
-
-                  <h2 className="bb-publication-title mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
-                    {copy.systemTitle}
-                  </h2>
-
-                  <p className="bb-publication-copy mt-3 max-w-lg text-sm leading-relaxed text-white/78 md:text-base">
-                    {copy.systemText}
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
 
