@@ -11,12 +11,12 @@ export default function BrandLogo({
   const isLabeled = variant === 'labeled'
 
   const defaultClass = isLabeled
-    ? 'h-14 w-auto max-w-full'
+    ? 'h-16 w-auto max-w-full'
     : 'h-12 w-12'
 
   return (
     <svg
-      viewBox={isLabeled ? '0 0 360 80' : '0 0 80 80'}
+      viewBox={isLabeled ? '0 0 350 84' : '0 0 80 80'}
       role="img"
       aria-labelledby={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}
       className={`${className || defaultClass} shrink-0`}
@@ -31,6 +31,7 @@ export default function BrandLogo({
       </title>
 
       <g
+        transform={isLabeled ? 'translate(0 4)' : undefined}
         fill="none"
         strokeLinecap="square"
         strokeWidth="7"
@@ -43,7 +44,7 @@ export default function BrandLogo({
       </g>
 
       {isLabeled && (
-        <g aria-hidden="true">
+        <g transform="translate(0 4)" aria-hidden="true">
           <line
             x1="84"
             y1="12"
@@ -55,24 +56,24 @@ export default function BrandLogo({
 
           <text
             x="102"
-            y="35"
+            y="36"
             fill="#111315"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="24"
+            fontSize="25.5"
             fontWeight="650"
-            letterSpacing="3.6"
+            letterSpacing="3.4"
           >
             BAHRİ BUDAK
           </text>
 
           <text
             x="103"
-            y="55"
+            y="57"
             fill="#6F7782"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="7.2"
+            fontSize="7.8"
             fontWeight="650"
-            letterSpacing="1.15"
+            letterSpacing="1.05"
           >
             TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
           </text>
