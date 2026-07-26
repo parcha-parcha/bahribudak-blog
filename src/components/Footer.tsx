@@ -198,10 +198,10 @@ export default function Footer({ lang }: FooterProps) {
                   ? undefined
                   : 'noopener noreferrer'
               }
-              className="group inline-flex items-start gap-3 text-sm leading-6 text-white/72 transition-colors hover:text-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5BBBE6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
+              className="group inline-flex items-start gap-3 text-sm leading-6 text-white/72 transition-colors hover:text-[#F09A7C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
             >
               <span
-                className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2EA6D9] transition-transform group-hover:scale-125"
+                className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-sm bg-[#E45A2B] transition-transform group-hover:scale-125"
                 aria-hidden="true"
               />
               <span>{link.label}</span>
@@ -209,10 +209,10 @@ export default function Footer({ lang }: FooterProps) {
           ) : (
             <Link
               href={link.href}
-              className="group inline-flex items-start gap-3 text-sm leading-6 text-white/72 transition-colors hover:text-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5BBBE6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
+              className="group inline-flex items-start gap-3 text-sm leading-6 text-white/72 transition-colors hover:text-[#F09A7C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
             >
               <span
-                className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2EA6D9] transition-transform group-hover:scale-125"
+                className="mt-[0.58rem] h-1.5 w-1.5 shrink-0 rounded-sm bg-[#E45A2B] transition-transform group-hover:scale-125"
                 aria-hidden="true"
               />
               <span>{link.label}</span>
@@ -224,18 +224,18 @@ export default function Footer({ lang }: FooterProps) {
   )
 
   return (
-    <footer className="relative overflow-hidden bg-[#0B2343] text-white">
-      <div className="absolute inset-x-0 top-0 h-[3px] bg-[#2EA6D9]" />
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#2EA6D9]/10 blur-3xl" />
+    <footer className="relative overflow-hidden bg-[#111315] text-white">
+      <div className="absolute inset-x-0 top-0 h-[3px] bg-[#E45A2B]" />
+      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#E45A2B]/10 blur-3xl" />
       <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-white/[0.04] blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-12 md:py-14">
         <section
-          className="mb-12 grid gap-7 rounded-[2rem] border border-white/12 bg-white/[0.06] px-6 py-7 shadow-[0_20px_60px_rgba(0,0,0,0.16)] md:px-8 lg:grid-cols-[1fr_auto] lg:items-center"
+          className="mb-12 grid gap-7 rounded-[16px] border border-white/12 bg-white/[0.04] px-6 py-7 md:px-8 lg:grid-cols-[1fr_auto] lg:items-center"
           aria-labelledby="footer-resource-title"
         >
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5BBBE6]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#F09A7C]">
               {copy.ctaLabel}
             </p>
             <h2
@@ -249,14 +249,14 @@ export default function Footer({ lang }: FooterProps) {
           <div className="flex flex-wrap gap-3">
             <Link
               href={withLang('/kayit')}
-              className="inline-flex items-center justify-center rounded-full bg-[#2EA6D9] px-5 py-3 text-sm font-bold text-[#061A33] transition-colors hover:bg-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
+              className="inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#C94B20] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
             >
               {copy.ctaPrimary} →
             </Link>
 
             <Link
               href={withLang('/contact')}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#0B2343] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
+              className="inline-flex items-center justify-center rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
             >
               {copy.ctaSecondary}
             </Link>
@@ -267,7 +267,7 @@ export default function Footer({ lang }: FooterProps) {
           <div>
             <Link
               href={withLang('/')}
-              className="inline-flex rounded-[26px] bg-[#F5F7FA] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5BBBE6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B2343]"
+              className="inline-flex max-w-[460px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315]"
               aria-label={
                 lang === 'tr'
                   ? 'Bahri Budak ana sayfa'
@@ -275,12 +275,13 @@ export default function Footer({ lang }: FooterProps) {
               }
             >
               <BrandLogo
-                variant="labeled"
-                className="h-[180px] w-[180px] max-w-full md:h-[195px] md:w-[195px]"
+                variant="full"
+                tone="light"
+                className="h-auto w-full max-w-[440px]"
               />
             </Link>
 
-            <p className="mt-6 max-w-md text-lg font-semibold text-[#EAF6FC]">
+            <p className="mt-6 max-w-md text-lg font-semibold text-[#F6F4EF]">
               {copy.tagline}
             </p>
 
