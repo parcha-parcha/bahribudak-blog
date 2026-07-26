@@ -16,13 +16,13 @@ export default function BrandLogo({
 
   return (
     <svg
-      viewBox={isLabeled ? '0 0 640 96' : '0 0 96 96'}
+      viewBox={isLabeled ? '0 0 360 80' : '0 0 80 80'}
       role="img"
       aria-labelledby={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}
       className={`${className || defaultClass} shrink-0`}
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMid meet"
-      style={{ display: 'block', maxWidth: '100%', overflow: 'visible' }}
+      style={{ display: 'block', maxWidth: '100%' }}
     >
       <title id={isLabeled ? 'bb-logo-title-full' : 'bb-logo-title-short'}>
         {isLabeled
@@ -30,50 +30,49 @@ export default function BrandLogo({
           : 'Bahri Budak'}
       </title>
 
-      {/* BB-OS sembolü: yayın, süreç ve ilerleme */}
       <g
         fill="none"
         strokeLinecap="square"
-        strokeWidth="8"
+        strokeWidth="7"
         aria-hidden="true"
       >
-        <path d="M12 24H74" stroke="#111315" />
-        <path d="M12 46H74" stroke="#111315" />
-        <path d="M12 68H58" stroke="#111315" />
-        <path d="M66 68H82" stroke="#E45A2B" />
+        <path d="M8 19H60" stroke="#111315" />
+        <path d="M8 39H60" stroke="#111315" />
+        <path d="M8 59H46" stroke="#111315" />
+        <path d="M54 59H68" stroke="#E45A2B" />
       </g>
 
       {isLabeled && (
         <g aria-hidden="true">
           <line
-            x1="108"
-            y1="16"
-            x2="108"
-            y2="80"
+            x1="84"
+            y1="12"
+            x2="84"
+            y2="68"
             stroke="#D8D5CD"
             strokeWidth="2"
           />
 
           <text
-            x="132"
-            y="44"
+            x="102"
+            y="35"
             fill="#111315"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="29"
-            fontWeight="600"
-            letterSpacing="4.6"
+            fontSize="24"
+            fontWeight="650"
+            letterSpacing="3.6"
           >
             BAHRİ BUDAK
           </text>
 
           <text
-            x="133"
-            y="68"
+            x="103"
+            y="55"
             fill="#6F7782"
             fontFamily="Inter, Arial, sans-serif"
-            fontSize="9.5"
-            fontWeight="600"
-            letterSpacing="1.6"
+            fontSize="7.2"
+            fontWeight="650"
+            letterSpacing="1.15"
           >
             TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
           </text>
