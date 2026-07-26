@@ -8,7 +8,7 @@ import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { readFile } from 'fs/promises'
-import { basename, join, normalize } from 'path'
+import { basename, join, posix } from 'path'
 import {
   NextResponse,
   type NextRequest,
@@ -56,7 +56,7 @@ function resolveDownloadPath(value: string | null) {
     return null
   }
 
-  const normalized = normalize(value)
+ const normalized = posix.normalize(value)
 
   if (!normalized.startsWith('/downloads/')) {
     return null
@@ -147,6 +147,26 @@ function buildCookieHistory(
   ].slice(0, 10)
 }
 
+async function recordMemberActivity(
+  supabase: SupabaseClient,
+  resourceId: string | null,
+  resource: ResourceItem | null,
+  filename: string,
+) {
+  await supabase.rpc('record_member_activity', {
+    p_event_type: 'publication_download',
+    p_resource_id: resourceId,
+  p_publication_slug: null,
+p_path: ['/downloads', filename].join('/'),
+    p_source: 'member-download',
+    p_metadata: {
+      title: resource?.title.tr ?? filename,
+      file_type:
+        resource?.format ?? getFileType(filename),
+    },
+  })
+}
+
 async function recordMemberDownload(
   supabase: SupabaseClient,
   resource: ResourceItem | null,
@@ -154,6 +174,9 @@ async function recordMemberDownload(
   userId: string,
   userAgent: string | null,
 ) {
+  let resourceId: string | null = null
+  let downloadRecorded = false
+
   if (resource) {
     const { data: resourceRecord } =
       await supabase
@@ -162,37 +185,48 @@ async function recordMemberDownload(
         .eq('file_path', filename)
         .maybeSingle()
 
-    if (resourceRecord?.id) {
+    resourceId = resourceRecord?.id ?? null
+
+    if (resourceId) {
       const { error } = await supabase.rpc(
         'record_download_event',
         {
-          p_resource_id: resourceRecord.id,
+          p_resource_id: resourceId,
           p_user_agent: userAgent,
         },
       )
 
-      if (!error) return
+      downloadRecorded = !error
     }
   }
 
-  const catalogSnapshot = {
-    source: 'catalog',
-    title: resource?.title.tr ?? filename,
-    fileType:
-      resource?.format ?? getFileType(filename),
-    filePath: filename,
-    userAgent,
+  if (!downloadRecorded) {
+    const catalogSnapshot = {
+      source: 'catalog',
+      title: resource?.title.tr ?? filename,
+      fileType:
+        resource?.format ?? getFileType(filename),
+      filePath: filename,
+      userAgent,
+    }
+
+    await supabase
+      .from('download_events')
+      .insert({
+        user_id: userId,
+        resource_id: null,
+        user_agent: `catalog-download:${JSON.stringify(
+          catalogSnapshot,
+        )}`,
+      })
   }
 
-  await supabase
-    .from('download_events')
-    .insert({
-      user_id: userId,
-      resource_id: null,
-      user_agent: `catalog-download:${JSON.stringify(
-        catalogSnapshot,
-      )}`,
-    })
+  await recordMemberActivity(
+    supabase,
+    resourceId,
+    resource,
+    filename,
+  )
 }
 
 export async function GET(
@@ -248,7 +282,6 @@ export async function GET(
       downloadPath,
     )
   }
-
 
   try {
     const filename = basename(downloadPath)
