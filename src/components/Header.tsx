@@ -101,30 +101,30 @@ export default function Header({ lang }: HeaderProps) {
   }, [menuOpen])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#D8DDE5] bg-white/95 shadow-[0_8px_30px_rgba(11,35,67,0.06)] backdrop-blur-xl">
-      <div className="h-[3px] bg-[#2EA6D9]" />
+    <header className="sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
+      <div className="h-[3px] bg-[#E45A2B]" />
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 lg:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-6">
         <Link
           href={homePath}
-          className="flex shrink-0 items-center rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+          className="flex shrink-0 items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
           aria-label={
             lang === 'tr'
               ? 'Bahri Budak ana sayfa'
               : 'Bahri Budak home page'
           }
         >
-          <span className="flex h-[68px] w-[68px] items-center justify-center rounded-2xl bg-white">
+          <span className="flex h-[56px] w-[156px] items-center justify-start bg-transparent">
             <BrandLogo
-              variant="short"
-              className="h-full w-full"
+              variant="full"
+              className="h-full w-full object-contain object-left"
               priority
             />
           </span>
         </Link>
 
         <nav
-          className="hidden items-center gap-1 rounded-full border border-[#D8DDE5] bg-[#F5F7FA] px-2 py-1.5 xl:flex"
+          className="hidden items-center gap-1 border border-[#E5E2DA] bg-white px-2 py-1.5 xl:flex"
           aria-label={
             lang === 'tr'
               ? 'Ana navigasyon'
@@ -143,10 +143,10 @@ export default function Header({ lang }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 aria-current={active ? 'page' : undefined}
-                className={`whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-1 ${
+                className={`whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-1 ${
                   active
-                    ? 'bg-[#0B2343] text-white shadow-sm'
-                    : 'text-[#0B2343]/82 hover:bg-white hover:text-[#0B2343]'
+                    ? 'bg-[#111315] text-white shadow-sm'
+                    : 'text-[#111315]/82 hover:bg-white hover:text-[#111315]'
                 }`}
               >
                 {link.label}
@@ -160,12 +160,12 @@ export default function Header({ lang }: HeaderProps) {
 
           <AuthStatusLink
             lang={lang}
-            className="hidden min-h-10 items-center rounded-full bg-[#0B2343] px-4 text-xs font-bold text-white transition-colors hover:bg-[#12365E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2 sm:inline-flex"
+            className="hidden min-h-10 items-center rounded-md bg-[#111315] px-4 text-xs font-bold text-white transition-colors hover:bg-[#1A1F24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 sm:inline-flex"
           />
 
           <Link
             href={switchedPath}
-            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-[#D8DDE5] bg-white px-3 text-[11px] font-bold uppercase tracking-wider text-[#0B2343] transition-colors hover:border-[#2EA6D9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white px-3 text-[11px] font-bold uppercase tracking-wider text-[#111315] transition-colors hover:border-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
             aria-label={
               otherLang === 'en'
                 ? 'Switch to English'
@@ -181,7 +181,7 @@ export default function Header({ lang }: HeaderProps) {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#D8DDE5] bg-white text-[#0B2343] transition-colors hover:border-[#2EA6D9] hover:bg-[#F5F7FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2 xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#F6F4EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 xl:hidden"
             onClick={() => setMenuOpen((current) => !current)}
             aria-label={
               menuOpen
@@ -224,7 +224,7 @@ export default function Header({ lang }: HeaderProps) {
         <>
           <button
             type="button"
-            className="fixed inset-x-0 bottom-0 top-[87px] z-40 bg-[#061A33]/28 backdrop-blur-[2px] xl:hidden"
+            className="fixed inset-x-0 bottom-0 top-[87px] z-40 bg-[#111315]/30 backdrop-blur-[2px] xl:hidden"
             onClick={() => setMenuOpen(false)}
             aria-label={
               lang === 'tr'
@@ -236,7 +236,7 @@ export default function Header({ lang }: HeaderProps) {
 
           <div
             id={mobileMenuId}
-            className="relative z-50 border-t border-[#D8DDE5] bg-white px-4 py-4 shadow-[0_18px_45px_rgba(11,35,67,0.14)] xl:hidden"
+            className="relative z-50 border-t border-[#E5E2DA] bg-white px-4 py-4 shadow-[0_18px_45px_rgba(17,19,21,0.14)] xl:hidden"
           >
             <nav
               className="mx-auto max-w-7xl"
@@ -259,10 +259,10 @@ export default function Header({ lang }: HeaderProps) {
                       key={link.href}
                       href={link.href}
                       aria-current={active ? 'page' : undefined}
-                      className={`flex min-h-12 items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-inset ${
+                      className={`flex min-h-12 items-center justify-between rounded-md px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-inset ${
                         active
-                          ? 'bg-[#0B2343] text-white'
-                          : 'text-[#0B2343] hover:bg-[#EAF6FC]'
+                          ? 'bg-[#111315] text-white'
+                          : 'text-[#111315] hover:bg-[#F8E4DC]'
                       }`}
                       onClick={() => setMenuOpen(false)}
                     >
@@ -270,8 +270,8 @@ export default function Header({ lang }: HeaderProps) {
                       <span
                         className={`text-base ${
                           active
-                            ? 'text-[#5BBBE6]'
-                            : 'text-[#2EA6D9]'
+                            ? 'text-[#F09A7C]'
+                            : 'text-[#E45A2B]'
                         }`}
                         aria-hidden="true"
                       >
@@ -282,14 +282,14 @@ export default function Header({ lang }: HeaderProps) {
                 })}
                 <AuthStatusLink
                   lang={lang}
-                  className="flex min-h-12 items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-[#0B2343] transition-colors hover:bg-[#EAF6FC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-inset"
+                  className="flex min-h-12 items-center justify-between rounded-md px-4 py-3 text-sm font-semibold text-[#111315] transition-colors hover:bg-[#F8E4DC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-inset"
                   onClick={() => setMenuOpen(false)}
                   showArrow
                 />
               </div>
 
-              <div className="mt-4 flex items-center justify-between gap-4 border-t border-[#D8DDE5] pt-4 md:hidden">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#0B2343]/50">
+              <div className="mt-4 flex items-center justify-between gap-4 border-t border-[#E5E2DA] pt-4 md:hidden">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#111315]/50">
                   {lang === 'tr'
                     ? 'Sosyal bağlantılar'
                     : 'Social links'}
