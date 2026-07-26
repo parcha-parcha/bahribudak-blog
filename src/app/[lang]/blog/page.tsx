@@ -141,7 +141,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: '/images/blog-endustriyel-proses.jpg',
+        url: '/images/teknik-yayin-sistemi-tanitimi.png',
         },
       ],
     },
@@ -474,7 +474,7 @@ export default async function BlogPage({
 
             <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-[#111315] shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
               <img
-                src="/images/blog-endustriyel-proses.jpg"
+              src="/images/teknik-yayin-sistemi-tanitimi.png"
                 alt={copy.imageAlt}
                 className="absolute inset-0 h-full w-full object-cover"
               />
