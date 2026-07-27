@@ -339,7 +339,6 @@ export function getAllPosts(lang: Lang): PostMeta[] {
 
   return files
     .map(filename => parsePostFile(lang, filename))
-    .filter(post => post.category !== 'felsefe')
     .map(({ content: _content, ...meta }) => meta)
     .sort((a, b) => dateValue(b.date) - dateValue(a.date))
 }
@@ -383,7 +382,7 @@ export function getPost(
 
   const post = parsePostFile(lang, path.basename(target))
 
-  return post.category === 'felsefe' ? null : post
+  return post
 }
 
 export function getAllSlugs(lang: Lang): string[] {
@@ -396,10 +395,6 @@ export function getAllSlugs(lang: Lang): string[] {
     .filter(
       filename =>
         filename.endsWith('.mdx') || filename.endsWith('.md'),
-    )
-    .filter(
-      filename =>
-        parsePostFile(lang, filename).category !== 'felsefe',
     )
     .map(filename => filename.replace(/\.(mdx|md)$/, ''))
 }
