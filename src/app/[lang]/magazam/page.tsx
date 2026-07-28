@@ -268,38 +268,38 @@ export default async function ResourceCenterPage({
   return (
     <main
       id="page-top"
-      className="min-h-screen bg-[#F5F7FA] text-[#0B2343]"
+      className="min-h-screen bg-[#F6F4EF] text-[#111315]"
     >
-      <section className="relative overflow-hidden bg-[#061A33] text-white">
+      <section className="relative overflow-hidden bg-[#111315] text-[#F6F4EF]">
         <div className="absolute inset-0 bb-pattern opacity-35" />
-        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#2EA6D9]/15 blur-3xl" />
+        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#E45A2B]/12 blur-3xl" />
         <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#E45A2B]">
               {copy.eyebrow}
             </p>
 
-            <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white md:text-6xl">
+            <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-[#F6F4EF] md:text-6xl">
               {copy.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-7 text-white/78 md:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-7 text-[#E5E2DA] md:text-lg">
               {copy.intro}
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="#resource-catalog"
-                className="inline-flex items-center justify-center rounded-full bg-[#2EA6D9] px-6 py-3 text-sm font-bold text-[#061A33] transition hover:bg-[#5BBBE6]"
+                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
               >
                 {copy.primaryCta} →
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#061A33]"
+                className="inline-flex items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.secondaryCta}
               </Link>
@@ -310,12 +310,12 @@ export default async function ResourceCenterPage({
             {stats.map((item) => (
               <div
                 key={item.label}
-                className="rounded-3xl border border-white/12 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
+                className="rounded-3xl border border-white/15 bg-[#1A1D20]/88 px-4 py-5 text-center backdrop-blur"
               >
-                <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">
+                <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                   {item.value}
                 </p>
-                <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.10em] text-white/60">
+                <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.10em] text-[#E5E2DA]/75">
                   {item.label}
                 </p>
               </div>
@@ -327,15 +327,15 @@ export default async function ResourceCenterPage({
       <section className="mx-auto max-w-7xl px-6 py-14 md:py-20">
         <div className="mb-9 grid gap-6 md:grid-cols-[1fr_0.8fr] md:items-end">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.collectionLabel}
             </p>
-            <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.collectionTitle}
             </h2>
           </div>
 
-          <p className="text-sm leading-7 text-[#0B2343]/62">
+          <p className="text-sm leading-7 text-[#6F7782]">
             {copy.collectionText}
           </p>
         </div>
@@ -352,23 +352,23 @@ export default async function ResourceCenterPage({
               <Link
                 key={collection.key}
                 href={href}
-                className="group flex min-h-[325px] flex-col justify-between rounded-[1.75rem] border border-[#D8DDE5] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#2EA6D9]/60 hover:shadow-[0_18px_45px_rgba(11,35,67,0.12)]"
+                className="group flex min-h-[325px] flex-col justify-between rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#E45A2B]/60 hover:shadow-[0_18px_45px_rgba(17,19,21,0.12)]"
               >
                 <div>
-                  <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-2xl bg-[#061A33] px-4 py-3 text-white">
+                  <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-2xl bg-[#111315] px-4 py-3 text-[#F6F4EF]">
                     <span className="text-2xl font-black leading-none">
                       {collection.count.toString().padStart(2, '0')}
                     </span>
-                    <span className="mt-1 text-[9px] font-black uppercase tracking-[0.13em] text-white/60">
+                    <span className="mt-1 text-[9px] font-black uppercase tracking-[0.13em] text-[#E5E2DA]/70">
                       {copy.fileUnit}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold leading-tight text-[#0B2343]">
+                  <h3 className="text-xl font-bold leading-tight text-[#111315]">
                     {cardCopy.title}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-6 text-[#0B2343]/65">
+                  <p className="mt-4 text-sm leading-6 text-[#6F7782]">
                     {cardCopy.description}
                   </p>
                 </div>
@@ -378,14 +378,14 @@ export default async function ResourceCenterPage({
                     {collection.formats.map((format) => (
                       <span
                         key={format}
-                        className="rounded-full border border-[#B7DFF0] bg-[#F3FBFE] px-3 py-1 text-xs font-bold text-[#0B2343]"
+                        className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-xs font-bold text-[#111315]"
                       >
                         {format}
                       </span>
                     ))}
                   </div>
 
-                  <span className="inline-flex text-sm font-bold text-[#2EA6D9] transition group-hover:translate-x-1">
+                  <span className="inline-flex text-sm font-bold text-[#E45A2B] transition group-hover:translate-x-1">
                     {cardCopy.linkLabel} →
                   </span>
                 </div>
@@ -395,13 +395,13 @@ export default async function ResourceCenterPage({
         </div>
       </section>
 
-      <section className="border-y border-[#D8DDE5] bg-white">
+      <section className="border-y border-[#E5E2DA] bg-[#E5E2DA]">
         <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
           <div className="mb-9 max-w-3xl">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.workflowLabel}
             </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-2 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.workflowTitle}
             </h2>
           </div>
@@ -410,15 +410,15 @@ export default async function ResourceCenterPage({
             {copy.workflowSteps.map((step) => (
               <article
                 key={step.no}
-                className="rounded-[1.75rem] border border-[#D8DDE5] bg-[#F7FAFC] p-6"
+                className="rounded-[1.75rem] border border-[#E5E2DA] bg-[#F6F4EF] p-6"
               >
-                <span className="text-sm font-black tracking-[0.18em] text-[#2EA6D9]">
+                <span className="text-sm font-black tracking-[0.18em] text-[#E45A2B]">
                   {step.no}
                 </span>
-                <h3 className="mt-4 text-xl font-bold text-[#0B2343]">
+                <h3 className="mt-4 text-xl font-bold text-[#111315]">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-[#0B2343]/65">
+                <p className="mt-3 text-sm leading-7 text-[#6F7782]">
                   {step.text}
                 </p>
               </article>
@@ -430,22 +430,22 @@ export default async function ResourceCenterPage({
       <section className="mx-auto max-w-7xl px-6 py-14 md:py-20">
         <div
           id="resource-catalog"
-          className="scroll-mt-28 border-b border-[#D8DDE5] pb-7"
+          className="scroll-mt-28 border-b border-[#E5E2DA] pb-7"
         >
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                 {copy.catalogLabel}
               </p>
-              <h2 className="mt-2 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+              <h2 className="mt-2 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
                 {copy.catalogTitle}
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#0B2343]/62">
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#6F7782]">
                 {copy.catalogText}
               </p>
             </div>
 
-            <p className="text-xs font-semibold text-[#0B2343]/50">
+            <p className="text-xs font-semibold text-[#6F7782]">
               {copy.catalogDate}: {resourceCatalogDate}
             </p>
           </div>
@@ -456,10 +456,10 @@ export default async function ResourceCenterPage({
         </div>
       </section>
 
-      <section className="border-t border-[#D8DDE5] bg-white">
+      <section className="border-t border-[#E5E2DA] bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-[2rem] bg-[#0B2343] px-6 py-8 text-white md:px-10 md:py-10">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
+          <div className="rounded-[2rem] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.noteLabel}
             </p>
 
@@ -474,14 +474,14 @@ export default async function ResourceCenterPage({
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="#resource-catalog"
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#0B2343] transition hover:bg-[#EAF6FC]"
+                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-5 py-2.5 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
               >
                 {copy.backToTop}
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#0B2343]"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.requestCta}
               </Link>
