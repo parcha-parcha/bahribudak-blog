@@ -40,26 +40,23 @@ export default function PostCard({
   const publicationLabel =
     lang === 'tr' ? 'Teknik Yayın' : 'Technical Publication'
 
-  const revisionDateLabel =
-    lang === 'tr' ? 'Revizyon tarihi' : 'Revision date'
-
   const downloadableLabel =
     lang === 'tr' ? 'İndirilebilir dosya' : 'Downloadable file'
 
   return (
-    <article className="post-card group relative flex h-full flex-col overflow-hidden bg-white text-navy">
+    <article className="post-card group relative flex h-full flex-col overflow-hidden bg-white text-[#111315]">
       <div
         className={`post-card-accent h-1 w-full ${
           documentStatus === 'archive'
             ? 'bg-[#8C96A3]'
-            : 'bg-[#2EA6D9]'
+            : 'bg-[#E45A2B]'
         }`}
         aria-hidden="true"
       />
 
       {post.coverImage && (
         <div
-          className="relative w-full overflow-hidden bg-[#061A33]"
+          className="relative w-full overflow-hidden bg-[#F6F4EF]"
           style={{ aspectRatio: '16 / 9' }}
         >
           <img
@@ -67,15 +64,8 @@ export default function PostCard({
             alt={post.title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-contain transition-opacity duration-300 group-hover:opacity-95"
+            className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.01] group-hover:opacity-95"
           />
-
-          {post.technicalPublication && (
-            <div
-              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#061A33]/45 to-transparent"
-              aria-hidden="true"
-            />
-          )}
         </div>
       )}
 
@@ -87,23 +77,23 @@ export default function PostCard({
             </span>
 
             {post.technicalPublication && (
-              <span className="rounded-full border border-[#0B2343]/15 bg-[#F3F6FA] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#0B2343]">
+              <span className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#111315]">
                 {publicationLabel}
               </span>
             )}
 
             {post.technicalPublication && processLabel && (
-              <span className="rounded-full border border-[#2EA6D9]/35 bg-[#EAF6FC] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#0B2343]">
+              <span className="rounded-md border border-[#EDB9A7] bg-[#F8E4DC] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#A53C18]">
                 {processLabel}
               </span>
             )}
 
             {post.technicalPublication && (
               <span
-                className={`rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] ${
+                className={`rounded-md border px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] ${
                   documentStatus === 'archive'
                     ? 'border-[#B7BEC8] bg-[#F0F2F5] text-[#59616C]'
-                    : 'border-[#87CDEB] bg-[#E7F7FD] text-[#075A7D]'
+                    : 'border-[#EDB9A7] bg-[#FFF3EE] text-[#A53C18]'
                 }`}
               >
                 {statusLabel}
@@ -111,7 +101,7 @@ export default function PostCard({
             )}
 
             {post.hasDownloads && (
-              <span className="rounded-full border border-[#D9B85F]/40 bg-[#FFF8DF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#6B5415]">
+              <span className="rounded-md border border-[#D9B85F]/40 bg-[#FFF8DF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.11em] text-[#6B5415]">
                 {downloadableLabel}
               </span>
             )}
@@ -135,35 +125,7 @@ export default function PostCard({
           {post.excerpt}
         </p>
 
-        {post.technicalPublication &&
-          (post.documentCode ||
-            post.revision ||
-            post.revisionDate) && (
-            <div className="mb-5 rounded-2xl border border-[#DDE3EB] bg-[#F7F9FB] px-4 py-3">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-bold text-[#4C5561]">
-                {post.documentCode && (
-                  <span className="text-[#0B2343]">
-                    {post.documentCode}
-                  </span>
-                )}
-
-                {post.documentCode && post.revision && (
-                  <span aria-hidden="true">·</span>
-                )}
-
-                {post.revision && <span>{post.revision}</span>}
-              </div>
-
-              {post.revisionDate && (
-                <p className="mt-1 text-[11px] leading-relaxed text-[#6A7480]">
-                  {revisionDateLabel}:{' '}
-                  {formatDate(post.revisionDate, lang)}
-                </p>
-              )}
-            </div>
-          )}
-
-        <div className="mt-auto flex items-center justify-between gap-4 border-t border-gray-border pt-4">
+        <div className="mt-auto flex items-center justify-between gap-4 border-t border-[#E5E2DA] pt-4">
           <time
             dateTime={post.date}
             className="post-card-readtime text-xs font-medium"
