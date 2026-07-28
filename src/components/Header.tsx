@@ -29,7 +29,8 @@ function isPathActive(pathname: string, href: string, homePath: string) {
 export default function Header({ lang }: HeaderProps) {
   const t = useTranslations(lang)
   const pathname = usePathname()
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuState, setMenuState] = useState({ open: false, pathname })
+  const menuOpen = menuState.open && menuState.pathname === pathname
 
   const homePath = `/${lang}`
   const otherLang = lang === 'tr' ? 'en' : 'tr'
@@ -80,14 +81,12 @@ export default function Header({ lang }: HeaderProps) {
   ]
 
   useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
-
-  useEffect(() => {
     if (!menuOpen) return
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false)
+      if (event.key === 'Escape') {
+        setMenuState({ open: false, pathname })
+      }
     }
 
     const previousOverflow = document.body.style.overflow
@@ -98,7 +97,7 @@ export default function Header({ lang }: HeaderProps) {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleEscape)
     }
-  }, [menuOpen])
+  }, [menuOpen, pathname])
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
@@ -178,7 +177,12 @@ export default function Header({ lang }: HeaderProps) {
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#F6F4EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 xl:hidden"
-            onClick={() => setMenuOpen((current) => !current)}
+            onClick={() =>
+              setMenuState((current) => ({
+                open: current.pathname === pathname ? !current.open : true,
+                pathname,
+              }))
+            }
             aria-label={
               menuOpen
                 ? lang === 'tr'
@@ -221,7 +225,7 @@ export default function Header({ lang }: HeaderProps) {
           <button
             type="button"
             className="fixed inset-x-0 bottom-0 top-[87px] z-40 bg-[#111315]/30 backdrop-blur-[2px] xl:hidden"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => setMenuState({ open: false, pathname })}
             aria-label={
               lang === 'tr'
                 ? 'Menüyü kapat'
@@ -260,7 +264,7 @@ export default function Header({ lang }: HeaderProps) {
                           ? 'bg-[#111315] text-white'
                           : 'text-[#111315] hover:bg-[#F8E4DC]'
                       }`}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={() => setMenuState({ open: false, pathname })}
                     >
                       <span>{link.label}</span>
                       <span
@@ -279,7 +283,7 @@ export default function Header({ lang }: HeaderProps) {
                 <AuthStatusLink
                   lang={lang}
                   className="flex min-h-12 items-center justify-between rounded-md px-4 py-3 text-sm font-semibold text-[#111315] transition-colors hover:bg-[#F8E4DC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-inset"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => setMenuState({ open: false, pathname })}
                   showArrow
                 />
               </div>

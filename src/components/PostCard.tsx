@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import type { Lang } from '@/lib/i18n'
@@ -28,14 +29,12 @@ function formatDate(value: string, lang: Lang): string {
   })
 }
 
-export default function PostCard({
-  post,
-  lang,
-}: PostCardProps) {
+export default function PostCard({ post, lang }: PostCardProps) {
   const t = useTranslations(lang)
   const processLabel = processAreaLabel(post.processArea, lang)
   const documentStatus = resolveDocumentStatus(post.documentStatus)
   const statusLabel = documentStatusLabel(post.documentStatus, lang)
+  const categoryKey = `cat.${post.category}`
 
   const publicationLabel =
     lang === 'tr' ? 'Teknik Yayın' : 'Technical Publication'
@@ -59,12 +58,12 @@ export default function PostCard({
           className="relative w-full overflow-hidden bg-[#F6F4EF]"
           style={{ aspectRatio: '16 / 9' }}
         >
-          <img
+          <Image
             src={post.coverImage}
             alt={post.title}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.01] group-hover:opacity-95"
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover object-center transition duration-300 group-hover:scale-[1.01] group-hover:opacity-95"
           />
         </div>
       )}
@@ -73,7 +72,7 @@ export default function PostCard({
         <div className="mb-5 flex items-start justify-between gap-4">
           <div className="flex flex-wrap gap-2">
             <span className="cat-badge post-card-category relative z-10">
-              {t(`cat.${post.category}` as any)}
+              {t(categoryKey)}
             </span>
 
             {post.technicalPublication && (

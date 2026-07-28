@@ -186,9 +186,11 @@ function fileTypeFromHref(href: string): string {
 
 function collectMarkdownDownloadLinks(content: string): PostDownloadLink[] {
   const links: PostDownloadLink[] = []
-  const tokens = marked.lexer(content) as any[]
-  const visit = (token: any) => {
-    if (!token || typeof token !== 'object') return
+
+  const visit = (value: unknown): void => {
+    if (!value || typeof value !== 'object') return
+
+    const token = value as Record<string, unknown>
 
     if (
       token.type === 'link' &&
@@ -196,20 +198,25 @@ function collectMarkdownDownloadLinks(content: string): PostDownloadLink[] {
       token.href.startsWith('/downloads/')
     ) {
       links.push({
-        label: String(token.text || fileTypeFromHref(token.href)),
+        label:
+          typeof token.text === 'string' && token.text.trim()
+            ? token.text
+            : fileTypeFromHref(token.href),
         href: token.href,
         fileType: fileTypeFromHref(token.href),
       })
     }
 
     for (const key of ['tokens', 'items']) {
-      if (Array.isArray(token[key])) {
-        token[key].forEach(visit)
+      const children = token[key]
+
+      if (Array.isArray(children)) {
+        children.forEach(visit)
       }
     }
   }
 
-  tokens.forEach(visit)
+  marked.lexer(content).forEach(visit)
 
   return links
 }
@@ -339,7 +346,10 @@ export function getAllPosts(lang: Lang): PostMeta[] {
 
   return files
     .map(filename => parsePostFile(lang, filename))
-    .map(({ content: _content, ...meta }) => meta)
+    .map(({ content, ...meta }) => {
+      void content
+      return meta
+    })
     .sort((a, b) => dateValue(b.date) - dateValue(a.date))
 }
 

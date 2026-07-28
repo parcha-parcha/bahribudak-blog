@@ -99,9 +99,6 @@ for (const relativeDownload of [...downloadReferences].sort()) {
   }
 }
 
-const editableDownloadReferences = [...downloadReferences].filter(reference =>
-  /\.(docx|pptx)$/i.test(reference),
-)
 
 const resourcesSourcePath = path.join(root, 'src/lib/resources.ts')
 const resourcesSource = fs.existsSync(resourcesSourcePath)

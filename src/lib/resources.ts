@@ -26,7 +26,8 @@ export type ResourceItem = {
 
 export const resourceCatalogDate = '2026-07-18'
 
-export function resolveResourceAccessLevel(_item: ResourceItem): ResourceAccessLevel {
+export function resolveResourceAccessLevel(item: ResourceItem): ResourceAccessLevel {
+  void item
   return 'member'
 }
 

@@ -1,9 +1,10 @@
 import { notFound, permanentRedirect } from 'next/navigation'
 import { marked } from 'marked'
 import { documentStatusLabel, getPost, getAllSlugs, getRelatedPosts, processAreaLabel } from '@/lib/posts'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations as getTranslations } from '@/lib/i18n'
 import type { Lang } from '@/lib/i18n'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import ArticleSchema from '@/components/ArticleSchema'
 
@@ -135,7 +136,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const post = getPost(safeLang, slug)
   if (!post) notFound()
 
-  const t = useTranslations(safeLang)
+  const t = getTranslations(safeLang)
   const rawHtmlContent = await marked(post.content)
   const htmlContent = enhanceMemberDownloadLinks(String(rawHtmlContent), safeLang)
   const processLabel = processAreaLabel(post.processArea, safeLang)
@@ -152,9 +153,12 @@ export default async function PostPage({ params }: PostPageProps) {
       )
     : dateLabel
   const statusLabel = documentStatusLabel(post.documentStatus, safeLang)
+  const categoryKey = `cat.${post.category}`
   const publicationTypeLabel = post.technicalPublication
-    ? safeLang === 'tr' ? 'Teknik Yayın' : 'Technical Publication'
-    : t(`cat.${post.category}` as any)
+    ? safeLang === 'tr'
+      ? 'Teknik Yayın'
+      : 'Technical Publication'
+    : t(categoryKey)
 
   return (
     <>
@@ -194,10 +198,13 @@ export default async function PostPage({ params }: PostPageProps) {
         >
           {post.technicalPublication && post.coverImage && (
             <div className="relative bg-[#111315]">
-              <img
+              <Image
                 src={post.coverImage}
                 alt={post.title}
-                className="mx-auto max-h-[520px] w-full object-contain"
+                width={1200}
+                height={630}
+                className="mx-auto max-h-[520px] h-auto w-full object-contain"
+                priority
               />
               <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#111315]/60 to-transparent" aria-hidden="true" />
             </div>
@@ -259,10 +266,13 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {post.coverImage && !post.technicalPublication && (
           <figure className="mb-10 overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white">
-            <img
+            <Image
               src={post.coverImage}
               alt={post.title}
-              className="max-h-[620px] w-full object-contain"
+              width={1200}
+              height={630}
+              className="max-h-[620px] h-auto w-full object-contain"
+              priority
             />
           </figure>
         )}
@@ -389,9 +399,11 @@ export default async function PostPage({ params }: PostPageProps) {
                 >
                   {related.coverImage && (
                     <Link href={`/${lang}/blog/${related.slug}`} className="block">
-                      <img
+                      <Image
                         src={related.coverImage}
                         alt={related.title}
+                        width={600}
+                        height={350}
                         className="h-44 w-full object-cover"
                       />
                     </Link>

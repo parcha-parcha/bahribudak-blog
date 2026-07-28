@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import PostCard from '@/components/PostCard'
 import BBHomeLogoCard from '@/components/BBHomeLogoCard'
@@ -368,10 +369,12 @@ export default async function HomePage({ params }: HomeProps) {
   return (
     <>
       <section className="relative overflow-hidden bg-[#111315] text-white md:min-h-[620px]">
-        <img
+        <Image
           src="/images/hero-su-damlasi.jpg"
           alt={copy.heroAlt}
-          className="absolute inset-0 h-full w-full object-cover opacity-44 md:opacity-48"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-44 md:opacity-48"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#111315] via-[#111315]/92 to-[#111315]/48 md:via-[#111315]/88 md:to-[#111315]/24" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/76 via-transparent to-[#111315]/28" />

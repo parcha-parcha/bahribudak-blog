@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import PostCard from '@/components/PostCard'
@@ -473,10 +474,12 @@ export default async function BlogPage({
             </div>
 
             <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
-              <img
+              <Image
                 src="/images/teknik-yayin-sistemi-tanitimi.png"
                 alt={copy.imageAlt}
-                className="absolute inset-0 h-full w-full object-contain"
+                fill
+                sizes="(min-width: 1024px) 56vw, 100vw"
+                className="object-contain"
               />
             </div>
           </div>
