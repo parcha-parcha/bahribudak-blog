@@ -44,15 +44,15 @@ export default function Footer({ lang }: FooterProps) {
           processes: [
             {
               href: withLang('/uzmanlik/orgu'),
-              label: 'Örgü / Knitting',
+              label: 'Örgü',
             },
             {
               href: withLang('/uzmanlik/boya'),
-              label: 'Boya / Dyeing',
+              label: 'Boya',
             },
             {
               href: withLang('/uzmanlik/apre'),
-              label: 'Apre / Finishing',
+              label: 'Apre',
             },
           ] satisfies FooterLink[],
           resources: [
@@ -112,15 +112,15 @@ export default function Footer({ lang }: FooterProps) {
           processes: [
             {
               href: withLang('/uzmanlik/orgu'),
-              label: 'Knitting / Örgü',
+              label: 'Knitting',
             },
             {
               href: withLang('/uzmanlik/boya'),
-              label: 'Dyeing / Boya',
+              label: 'Dyeing',
             },
             {
               href: withLang('/uzmanlik/apre'),
-              label: 'Finishing / Apre',
+              label: 'Finishing',
             },
           ] satisfies FooterLink[],
           resources: [
