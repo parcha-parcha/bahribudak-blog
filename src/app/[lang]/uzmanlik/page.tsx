@@ -95,10 +95,10 @@ export default async function ExpertiseOverviewPage({
           src="/images/uzmanlik-hero-uretim-zinciri.png"
           alt=""
           fill
-          className="object-cover opacity-65"
+          className="object-cover opacity-58 grayscale-[18%] saturate-[72%] contrast-[1.04]"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/96 via-[#111315]/82 to-[#111315]/38" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/97 via-[#111315]/88 to-[#111315]/56" />
 
         <div className="relative mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
           <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#E45A2B]">
