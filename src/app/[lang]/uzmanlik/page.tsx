@@ -89,7 +89,7 @@ export default async function ExpertiseOverviewPage({
   } as const
 
   return (
-    <main className="bg-white text-[#0B2343]">
+    <main className="bg-[#F6F4EF] text-[#111315]">
       <section className="relative flex min-h-[500px] items-center overflow-hidden bg-[#111315] text-[#F6F4EF]">
         <Image
           src="/images/uzmanlik-hero-uretim-zinciri.png"
@@ -125,9 +125,9 @@ export default async function ExpertiseOverviewPage({
             return (
               <article
                 key={slug}
-                className="group flex min-h-[460px] flex-col overflow-hidden rounded-[30px] border border-[#D8DDE5] bg-white shadow-[0_18px_50px_rgba(11,35,67,0.06)]"
+                className="group flex min-h-[460px] flex-col overflow-hidden rounded-[30px] border border-[#E5E2DA] bg-white shadow-[0_18px_50px_rgba(17,19,21,0.06)]"
               >
-                <div className="relative h-48 overflow-hidden bg-[#F5F7FA]">
+                <div className="relative h-48 overflow-hidden bg-[#F6F4EF]">
                   <Image
                     src={area.heroImage}
                     alt={localized(area.heroImageAlt, lang)}
@@ -136,29 +136,29 @@ export default async function ExpertiseOverviewPage({
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/35 to-transparent" />
 
-                  <span className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-black text-[#0B2343]">
+                  <span className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#F6F4EF] text-sm font-black text-[#111315]">
                     {area.no}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-7">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#2EA6D9]">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#E45A2B]">
                     {localized(area.eyebrow, lang)}
                   </p>
 
-                  <h2 className="mb-4 text-2xl font-bold tracking-[-0.03em] text-[#0B2343]">
+                  <h2 className="mb-4 text-2xl font-bold tracking-[-0.03em] text-[#111315]">
                     {areaLabels[slug][lang]}
                   </h2>
 
-                  <p className="mb-7 text-sm leading-7 text-[#4C5561]">
+                  <p className="mb-7 text-sm leading-7 text-[#6F7782]">
                     {localized(area.summary, lang)}
                   </p>
 
                   <Link
                     href={`/${lang}/uzmanlik/${slug}`}
-                    className="mt-auto inline-flex items-center gap-2 font-bold text-[#0B2343] transition-colors hover:text-[#2EA6D9]"
+                    className="mt-auto inline-flex items-center gap-2 font-bold text-[#111315] transition-colors hover:text-[#E45A2B]"
                   >
                     {copy.open} →
                   </Link>
@@ -169,9 +169,9 @@ export default async function ExpertiseOverviewPage({
         </div>
       </section>
 
-      <section className="bg-[#EAF6FC]">
+      <section className="border-y border-[#E5E2DA] bg-[#E5E2DA]">
         <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
-          <div className="rounded-[30px] border border-white bg-white p-8 shadow-[0_18px_50px_rgba(11,35,67,0.06)] md:p-10">
+          <div className="rounded-[30px] border border-[#E5E2DA] bg-white p-8 shadow-[0_18px_50px_rgba(17,19,21,0.06)] md:p-10">
             <p className="mb-6 text-xs font-bold uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.chain}
             </p>
@@ -209,7 +209,7 @@ export default async function ExpertiseOverviewPage({
               ))}
             </div>
 
-            <p className="max-w-5xl text-lg font-semibold leading-8 text-[#0B2343] md:text-2xl md:leading-10">
+            <p className="max-w-5xl text-lg font-semibold leading-8 text-[#111315] md:text-2xl md:leading-10">
               {copy.chainText}
             </p>
           </div>
