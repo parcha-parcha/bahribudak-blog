@@ -92,7 +92,7 @@ export default async function ExpertiseOverviewPage({
     <main className="bg-white text-[#0B2343]">
       <section className="relative overflow-hidden bg-[#061A33] text-white">
         <Image
-          src="/images/hero-su-damlasi.jpg"
+          src="/images/uzmanlik-hero-uretim-zinciri.png"
           alt=""
           fill
           className="object-cover opacity-35"
