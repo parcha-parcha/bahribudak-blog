@@ -196,10 +196,10 @@ function FilterButton({
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2 ${
+      className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 ${
         active
-          ? "border-[#0B2343] bg-[#0B2343] text-white shadow-sm"
-          : "border-[#D8E0E8] bg-white text-[#0B2343]/[0.74] hover:border-[#2EA6D9] hover:text-[#0B2343]"
+          ? "border-[#111315] bg-[#111315] text-[#F6F4EF] shadow-sm"
+          : "border-[#E5E2DA] bg-white text-[#111315]/[0.74] hover:border-[#E45A2B] hover:text-[#111315]"
       }`}
     >
       <span>{children}</span>
@@ -207,8 +207,8 @@ function FilterButton({
         <span
           className={`inline-flex min-w-5 items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] ${
             active
-              ? "bg-white/[0.14] text-white"
-              : "bg-[#EEF3F7] text-[#0B2343]/[0.55]"
+              ? "bg-white/[0.14] text-[#F6F4EF]"
+              : "bg-[#E5E2DA] text-[#111315]/[0.55]"
           }`}
         >
           {count}
@@ -383,18 +383,18 @@ export default function ResourceCenter({
 
   return (
     <div>
-      <section className="rounded-[2rem] border border-[#D8E0E8] bg-white p-5 shadow-[0_14px_45px_rgba(11,35,67,0.06)] md:p-7">
+      <section className="rounded-[2rem] border border-[#E5E2DA] bg-white p-5 shadow-[0_14px_45px_rgba(17,19,21,0.06)] md:p-7">
         <div className="grid gap-7">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(220px,0.65fr)] lg:items-end">
             <div>
               <label
                 htmlFor="resource-search"
-                className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]"
+                className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]"
               >
                 {t.search}
               </label>
               <div className="relative">
-                <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-[#0B2343]/[0.42]">
+                <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-[#111315]/[0.42]">
                   <SearchIcon />
                 </span>
                 <input
@@ -403,14 +403,14 @@ export default function ResourceCenter({
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={t.searchPlaceholder}
-                  className="min-h-12 w-full rounded-2xl border border-[#D8E0E8] bg-[#F5F7FA] py-3 pl-12 pr-12 text-sm text-[#0B2343] outline-none transition placeholder:text-[#0B2343]/[0.38] focus:border-[#2EA6D9] focus:bg-white focus:ring-4 focus:ring-[#2EA6D9]/10"
+                  className="min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] py-3 pl-12 pr-12 text-sm text-[#111315] outline-none transition placeholder:text-[#111315]/[0.38] focus:border-[#E45A2B] focus:bg-white focus:ring-4 focus:ring-[#E45A2B]/12"
                 />
                 {query ? (
                   <button
                     type="button"
                     onClick={() => setQuery("")}
                     aria-label={t.clearSearch}
-                    className="absolute inset-y-0 right-3 my-auto inline-flex h-8 w-8 items-center justify-center rounded-full text-lg text-[#0B2343]/[0.48] transition hover:bg-[#EAF6FC] hover:text-[#0B2343] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9]"
+                    className="absolute inset-y-0 right-3 my-auto inline-flex h-8 w-8 items-center justify-center rounded-full text-lg text-[#111315]/[0.48] transition hover:bg-[#F6F4EF] hover:text-[#111315] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B]"
                   >
                     ×
                   </button>
@@ -421,7 +421,7 @@ export default function ResourceCenter({
             <div>
               <label
                 htmlFor="resource-sort"
-                className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]"
+                className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]"
               >
                 {t.sortLabel}
               </label>
@@ -429,7 +429,7 @@ export default function ResourceCenter({
                 id="resource-sort"
                 value={sort}
                 onChange={(event) => setSort(event.target.value as SortValue)}
-                className="min-h-12 w-full rounded-2xl border border-[#D8E0E8] bg-[#F5F7FA] px-4 py-3 text-sm font-semibold text-[#0B2343] outline-none transition focus:border-[#2EA6D9] focus:bg-white focus:ring-4 focus:ring-[#2EA6D9]/10"
+                className="min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] px-4 py-3 text-sm font-semibold text-[#111315] outline-none transition focus:border-[#E45A2B] focus:bg-white focus:ring-4 focus:ring-[#E45A2B]/12"
               >
                 <option value="catalog">{t.sort.catalog}</option>
                 <option value="title">{t.sort.title}</option>
@@ -438,11 +438,11 @@ export default function ResourceCenter({
             </div>
           </div>
 
-          <div className="h-px bg-[#E4EAF0]" />
+          <div className="h-px bg-[#E5E2DA]" />
 
           <div className="grid gap-6">
             <div>
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]">
                 {t.processFilter}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -468,7 +468,7 @@ export default function ResourceCenter({
 
             <div className="grid gap-6 xl:grid-cols-[1.25fr_0.45fr_0.55fr]">
               <div>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]">
                   {t.resourceFilter}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -493,7 +493,7 @@ export default function ResourceCenter({
               </div>
 
               <div>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]">
                   {t.formatFilter}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -518,7 +518,7 @@ export default function ResourceCenter({
               </div>
 
               <div>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/[0.55]">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#111315]/[0.55]">
                   {t.accessFilter}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -550,9 +550,9 @@ export default function ResourceCenter({
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <p
             aria-live="polite"
-            className="text-sm font-semibold text-[#0B2343]/[0.7]"
+            className="text-sm font-semibold text-[#111315]/[0.7]"
           >
-            <span className="font-black text-[#0B2343]">{filtered.length}</span>{" "}
+            <span className="font-black text-[#111315]">{filtered.length}</span>{" "}
             {resultLabel}
           </p>
 
@@ -560,14 +560,14 @@ export default function ResourceCenter({
             <button
               type="button"
               onClick={clearFilters}
-              className="inline-flex items-center rounded-full bg-[#EAF6FC] px-3 py-1.5 text-xs font-bold text-[#177DA8] transition hover:bg-[#D9EFF9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9]"
+              className="inline-flex items-center rounded-full bg-[#F6F4EF] px-3 py-1.5 text-xs font-bold text-[#E45A2B] transition hover:bg-[#E5E2DA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B]"
             >
               {activeFilterCount} {t.activeFilters} · {t.clear}
             </button>
           ) : null}
         </div>
 
-        <p className="max-w-2xl text-xs leading-5 text-[#0B2343]/[0.55]">
+        <p className="max-w-2xl text-xs leading-5 text-[#111315]/[0.55]">
           {t.archiveNote}
         </p>
       </div>
@@ -581,18 +581,18 @@ export default function ResourceCenter({
             return (
               <article
                 key={item.id}
-                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#D8E0E8] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#2EA6D9]/50 hover:shadow-[0_20px_55px_rgba(11,35,67,0.1)]"
+                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#E5E2DA] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#E45A2B]/50 hover:shadow-[0_20px_55px_rgba(17,19,21,0.10)]"
               >
-                <div className="flex items-center justify-between gap-3 border-b border-[#E7ECF1] bg-[#F8FAFC] px-6 py-4">
+                <div className="flex items-center justify-between gap-3 border-b border-[#E5E2DA] bg-[#F6F4EF] px-6 py-4">
                   <div className="flex min-w-0 flex-wrap items-center gap-2">
-                    <span className="text-[11px] font-black tracking-[0.14em] text-[#0B2343]/[0.38]">
+                    <span className="text-[11px] font-black tracking-[0.14em] text-[#111315]/[0.38]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="rounded-full bg-[#EAF6FC] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.1em] text-[#0B2343]">
+                    <span className="rounded-full bg-[#E5E2DA] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.1em] text-[#111315]">
                       {t.group[item.group]}
                     </span>
                   </div>
-                  <span className="shrink-0 rounded-full border border-[#2EA6D9]/30 bg-white px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#238DBB]">
+                  <span className="shrink-0 rounded-full border border-[#E45A2B]/40 bg-white px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#E45A2B]">
                     {item.format}
                   </span>
                 </div>
@@ -602,55 +602,55 @@ export default function ResourceCenter({
                     {item.areas.map((entry) => (
                       <span
                         key={entry}
-                        className="rounded-full border border-[#DDE5EC] px-3 py-1 text-[10px] font-bold text-[#0B2343]/[0.64]"
+                        className="rounded-full border border-[#E5E2DA] px-3 py-1 text-[10px] font-bold text-[#111315]/[0.64]"
                       >
                         {t.area[entry]}
                       </span>
                     ))}
                   </div>
 
-                  <h2 className="text-xl font-bold leading-snug tracking-[-0.02em] text-[#0B2343]">
+                  <h2 className="text-xl font-bold leading-snug tracking-[-0.02em] text-[#111315]">
                     {item.title[lang]}
                   </h2>
-                  <p className="mt-4 text-sm leading-6 text-[#0B2343]/[0.68]">
+                  <p className="mt-4 text-sm leading-6 text-[#111315]/[0.68]">
                     {item.description[lang]}
                   </p>
 
-                  <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-[#E2E8EE] pt-5 text-xs">
+                  <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-[#E5E2DA] pt-5 text-xs">
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.version}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {archived ? t.archive : item.version}
                       </dd>
                     </div>
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.catalogDate}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {item.catalogDate}
                       </dd>
                     </div>
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.size}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {item.size}
                       </dd>
                     </div>
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.fileLanguage}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {t.language[item.fileLanguage]}
                       </dd>
                     </div>
                     <div className="col-span-2">
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.status}
                       </dt>
                       <dd className="mt-1">
@@ -666,18 +666,18 @@ export default function ResourceCenter({
                       </dd>
                     </div>
                     <div className="col-span-2">
-                      <dt className="font-semibold text-[#0B2343]/[0.45]">
+                      <dt className="font-semibold text-[#111315]/[0.45]">
                         {t.accessStatus}
                       </dt>
                       <dd className="mt-1 flex flex-wrap items-center gap-2">
                         <span
                           className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.08em] ${
-                            "bg-[#EAF6FC] text-[#177DA8]"
+                            "bg-[#F6F4EF] text-[#E45A2B]"
                           }`}
                         >
                           {t.access[accessLevel]}
                         </span>
-                        <span className="text-[11px] leading-5 text-[#0B2343]/[0.55]">
+                        <span className="text-[11px] leading-5 text-[#111315]/[0.55]">
                           {t.accessHelp[accessLevel]}
                         </span>
                       </dd>
@@ -689,7 +689,7 @@ export default function ResourceCenter({
                       <a
                         href={`${authPath(lang, "register")}?next=${encodeURIComponent(item.href)}`}
                         aria-label={`${t.signInToDownload}: ${item.title[lang]} (${item.format})`}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#12365F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#111315] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition group-hover:bg-[#2A2E32] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
                       >
                         {t.signInToDownload}
                       </a>
@@ -697,7 +697,7 @@ export default function ResourceCenter({
                       <a
                         href={memberDownloadPath(item.href)}
                         aria-label={`${t.memberDownload}: ${item.title[lang]} (${item.format})`}
-                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#2EA6D9] px-5 py-3 text-sm font-bold text-[#071E3A] transition group-hover:bg-[#5BBBE6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E45A2B] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition group-hover:bg-[#C94E26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
                       >
                         <DownloadIcon />
                         {t.memberDownload} · {item.format}
@@ -710,20 +710,20 @@ export default function ResourceCenter({
           })}
         </section>
       ) : (
-        <section className="mt-6 rounded-[2rem] border border-dashed border-[#2EA6D9]/45 bg-[#EAF6FC]/60 px-6 py-14 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#238DBB] shadow-sm">
+        <section className="mt-6 rounded-[2rem] border border-dashed border-[#E45A2B]/45 bg-[#E5E2DA]/55 px-6 py-14 text-center">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#E45A2B] shadow-sm">
             <SearchIcon />
           </div>
-          <h2 className="mt-5 text-xl font-bold text-[#0B2343]">
+          <h2 className="mt-5 text-xl font-bold text-[#111315]">
             {t.noResultTitle}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#0B2343]/[0.65]">
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#111315]/[0.65]">
             {t.noResultText}
           </p>
           <button
             type="button"
             onClick={clearFilters}
-            className="mt-6 rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#238DBB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+            className="mt-6 rounded-full bg-[#111315] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
           >
             {t.clear}
           </button>
