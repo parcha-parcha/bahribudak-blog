@@ -41,18 +41,18 @@ const processAreas: {
 }[] = [
   {
     slug: 'orgu',
-    tr: 'Örgü Kumaş / Knitted Fabric',
-    en: 'Knitted Fabric / Örgü Kumaş',
+    tr: 'Örgü Kumaş',
+    en: 'Knitted Fabric',
   },
   {
     slug: 'boya',
-    tr: 'Boya / Dyeing',
-    en: 'Dyeing / Boya',
+    tr: 'Boya',
+    en: 'Dyeing',
   },
   {
     slug: 'apre',
-    tr: 'Apre / Finishing',
-    en: 'Finishing / Apre',
+    tr: 'Apre',
+    en: 'Finishing',
   },
 ]
 
