@@ -94,17 +94,17 @@ export default async function AboutPage({ params }: AboutProps) {
           chainAreas: [
             {
               no: '01',
-              title: 'Örgü / Knitting',
+              title: 'Örgü',
               text: 'İplik–kumaş ilişkisi, makine inceliği, ilmek boyu, gramaj, elastan besleme ve örme kaynaklı kalite riskleri.',
             },
             {
               no: '02',
-              title: 'Boya / Dyeing',
+              title: 'Boya',
               text: 'Ön terbiye, boyama, yıkama, HT jet proses kontrolü, reçete standardı ve renk–haslık performansı.',
             },
             {
               no: '03',
-              title: 'Apre / Finishing',
+              title: 'Apre',
               text: 'Ramöz, kompaktör, fikse, en-boy, gramaj, tuşe, boyutsal stabilite ve final kalite yönetimi.',
             },
           ],
@@ -214,17 +214,17 @@ export default async function AboutPage({ params }: AboutProps) {
           chainAreas: [
             {
               no: '01',
-              title: 'Knitting / Örgü',
+              title: 'Knitting',
               text: 'Yarn–fabric relationship, machine gauge, stitch length, GSM, elastane feeding and knitting-related quality risks.',
             },
             {
               no: '02',
-              title: 'Dyeing / Boya',
+              title: 'Dyeing',
               text: 'Pretreatment, dyeing, washing, HT jet control, recipe standardisation and colour–fastness performance.',
             },
             {
               no: '03',
-              title: 'Finishing / Apre',
+              title: 'Finishing',
               text: 'Stenter, compactor, heat setting, width, length, GSM, handle, dimensional stability and final quality.',
             },
           ],
@@ -295,43 +295,43 @@ export default async function AboutPage({ params }: AboutProps) {
         }
 
   return (
-    <main className="min-h-screen bg-[#F5F7FA] text-[#0B2343]">
-      <section className="relative overflow-hidden bg-[#061A33] text-white">
+    <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
+      <section className="relative overflow-hidden bg-[#111315] text-[#F6F4EF]">
         <div className="absolute inset-0 bb-pattern opacity-30" />
-        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#2EA6D9]/12 blur-3xl" />
+        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#E45A2B]/12 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#E45A2B]">
               {copy.eyebrow}
             </p>
 
-            <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.05] tracking-[-0.045em] text-white md:text-6xl">
+            <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.05] tracking-[-0.045em] text-[#F6F4EF] md:text-6xl">
               {copy.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-8 text-white/78 md:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-8 text-[#E5E2DA] md:text-lg">
               {copy.intro}
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href={withLang('/uzmanlik')}
-                className="inline-flex items-center justify-center rounded-full bg-[#2EA6D9] px-6 py-3 text-sm font-bold text-[#061A33] transition hover:bg-[#5BBBE6]"
+                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
               >
                 {copy.primaryCta} →
               </Link>
 
               <Link
                 href={withLang('/magazam')}
-                className="inline-flex items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#061A33]"
+                className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/35 px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
               >
                 {copy.secondaryCta}
               </Link>
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-5 backdrop-blur">
+          <div className="rounded-[2rem] border border-[#F6F4EF]/15 bg-white/[0.05] p-5 backdrop-blur">
             <div className="grid gap-5 sm:grid-cols-[150px_1fr] sm:items-center">
               <div className="relative mx-auto h-[150px] w-[150px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-white/10">
                 <Image
@@ -344,20 +344,20 @@ export default async function AboutPage({ params }: AboutProps) {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-white">Bahri Budak</h2>
-                <p className="mt-1 text-sm font-bold text-[#5BBBE6]">
+                <h2 className="text-2xl font-bold text-[#F6F4EF]">Bahri Budak</h2>
+                <p className="mt-1 text-sm font-bold text-[#E45A2B]">
                   {copy.role}
                 </p>
-                <p className="mt-4 text-sm leading-7 text-white/72">
+                <p className="mt-4 text-sm leading-7 text-[#E5E2DA]">
                   {copy.profile}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-xs text-white/70">
+                  <span className="rounded-full border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA]">
                     {copy.location}
                   </span>
                   <a
                     href="mailto:bahribudak@gmail.com"
-                    className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-xs text-white/70 transition hover:border-[#5BBBE6] hover:text-[#5BBBE6]"
+                    className="rounded-full border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA] transition hover:border-[#E45A2B] hover:text-[#E45A2B]"
                   >
                     bahribudak@gmail.com
                   </a>
@@ -369,12 +369,12 @@ export default async function AboutPage({ params }: AboutProps) {
               {copy.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-2xl border border-white/10 bg-[#061A33]/45 px-3 py-4 text-center"
+                  className="rounded-2xl border border-[#F6F4EF]/10 bg-black/20 px-3 py-4 text-center"
                 >
-                  <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">
+                  <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.08em] text-white/55">
+                  <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.08em] text-[#E5E2DA]/70">
                     {stat.label}
                   </p>
                 </div>
@@ -384,18 +384,18 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#F6F4EF]">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[0.78fr_1.22fr]">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.profileLabel}
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.profileTitle}
             </h2>
           </div>
 
-          <div className="space-y-5 text-[15px] leading-8 text-[#263B57]">
+          <div className="space-y-5 text-[15px] leading-8 text-[#6F7782]">
             {copy.profileParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -403,13 +403,13 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="border-y border-[#D8DDE5] bg-[#F5F7FA]">
+      <section className="border-y border-[#E5E2DA] bg-[#E5E2DA]">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <div className="mb-10 max-w-4xl">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.chainLabel}
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.chainTitle}
             </h2>
           </div>
@@ -418,15 +418,15 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.chainAreas.map((area) => (
               <article
                 key={area.no}
-                className="rounded-[1.75rem] border border-[#D8DDE5] bg-white p-6 shadow-sm"
+                className="rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-[0_14px_45px_rgba(17,19,21,0.06)]"
               >
-                <span className="text-sm font-black tracking-[0.18em] text-[#2EA6D9]">
+                <span className="text-sm font-black tracking-[0.18em] text-[#E45A2B]">
                   {area.no}
                 </span>
-                <h3 className="mt-4 text-2xl font-bold text-[#0B2343]">
+                <h3 className="mt-4 text-2xl font-bold text-[#111315]">
                   {area.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-[#4C5561]">
+                <p className="mt-4 text-sm leading-7 text-[#6F7782]">
                   {area.text}
                 </p>
               </article>
@@ -435,13 +435,13 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <div className="mb-10 max-w-4xl">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.experienceLabel}
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.experienceTitle}
             </h2>
           </div>
@@ -450,16 +450,16 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.experienceItems.map((item) => (
               <article
                 key={item.no}
-                className="grid gap-5 rounded-[1.75rem] border border-[#D8DDE5] bg-[#F8FAFC] p-6 sm:grid-cols-[64px_1fr]"
+                className="grid gap-5 rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-[0_14px_45px_rgba(17,19,21,0.05)] sm:grid-cols-[64px_1fr]"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#061A33] text-sm font-black text-white">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#111315] text-sm font-black text-[#F6F4EF]">
                   {item.no}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#0B2343]">
+                  <h3 className="text-xl font-bold text-[#111315]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#4C5561]">
+                  <p className="mt-3 text-sm leading-7 text-[#6F7782]">
                     {item.text}
                   </p>
                 </div>
@@ -469,13 +469,13 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="border-y border-[#D8DDE5] bg-[#F5F7FA]">
+      <section className="border-y border-[#E5E2DA] bg-[#E5E2DA]">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.expertiseLabel}
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {copy.expertiseTitle}
             </h2>
           </div>
@@ -484,10 +484,10 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.skills.map((skill) => (
               <div
                 key={skill}
-                className="flex items-start gap-3 rounded-2xl border border-[#D8DDE5] bg-white px-4 py-4 text-sm leading-6 text-[#263B57]"
+                className="flex items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-white px-4 py-4 text-sm leading-6 text-[#6F7782]"
               >
                 <span
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2EA6D9]"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E45A2B]"
                   aria-hidden="true"
                 />
                 <span>{skill}</span>
@@ -497,17 +497,17 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
                 {copy.publishingLabel}
               </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
                 {copy.publishingTitle}
               </h2>
-              <p className="mt-5 text-sm leading-8 text-[#4C5561]">
+              <p className="mt-5 text-sm leading-8 text-[#6F7782]">
                 {copy.publishingText}
               </p>
             </div>
@@ -516,16 +516,16 @@ export default async function AboutPage({ params }: AboutProps) {
               {copy.publishingCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className="grid gap-4 rounded-[1.5rem] border border-[#D8DDE5] bg-[#F8FAFC] p-5 sm:grid-cols-[52px_1fr]"
+                  className="grid gap-4 rounded-[1.5rem] border border-[#E5E2DA] bg-white p-5 shadow-[0_12px_36px_rgba(17,19,21,0.05)] sm:grid-cols-[52px_1fr]"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#2EA6D9] text-sm font-black text-[#061A33]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E45A2B] text-sm font-black text-[#F6F4EF]">
                     {String(index + 1).padStart(2, '0')}
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-[#0B2343]">
+                    <h3 className="text-lg font-bold text-[#111315]">
                       {card.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-7 text-[#4C5561]">
+                    <p className="mt-2 text-sm leading-7 text-[#6F7782]">
                       {card.text}
                     </p>
                   </div>
@@ -536,36 +536,36 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
-      <section className="bg-[#061A33] text-white">
+      <section className="bg-[#111315] text-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5BBBE6]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
             {copy.principleLabel}
           </p>
-          <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold text-[#F6F4EF] md:text-4xl">
             {copy.principleTitle}
           </h2>
-          <p className="mt-4 max-w-4xl text-base leading-8 text-white/75">
+          <p className="mt-4 max-w-4xl text-base leading-8 text-[#E5E2DA]">
             {copy.principleText}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href={withLang('/blog')}
-              className="inline-flex items-center justify-center rounded-full bg-[#2EA6D9] px-5 py-3 text-sm font-bold text-[#061A33] transition hover:bg-[#5BBBE6]"
+              className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
             >
               {copy.publicationsCta} →
             </Link>
 
             <Link
               href={withLang('/magazam')}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#061A33]"
+              className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
             >
               {copy.documentsCta}
             </Link>
 
             <Link
               href={withLang('/contact')}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#061A33]"
+              className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
             >
               {copy.contactCta}
             </Link>
