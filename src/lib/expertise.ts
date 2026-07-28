@@ -63,7 +63,7 @@ export const expertiseData: Record<ExpertiseSlug, ExpertiseData> = {
       tr: 'Örgü kumaş üretiminin amacı yalnızca kumaş oluşturmak değil; sonraki Ön Terbiye / Pretreatment, Boyama / Dyeing ve Apre / Finishing adımlarında öngörülebilir davranan, izlenebilir ve tekrarlanabilir bir yarı mamul oluşturmaktır.',
       en: 'The objective of knitted fabric production is not only to form fabric, but to produce a traceable and repeatable substrate that behaves predictably during pretreatment, dyeing and finishing.',
     },
-    heroImage: '/images/iplik-kalitesi-kimya.jpeg',
+    heroImage: '/images/uzmanlik-orgu-kumas-final.png',
     heroImageAlt: {
       tr: 'İplik bobinleri ve örme kumaş üzerinden iplik-kumaş kalite ilişkisi',
       en: 'Yarn packages and knitted fabric illustrating the yarn-to-fabric quality relationship',
@@ -160,7 +160,7 @@ export const expertiseData: Record<ExpertiseSlug, ExpertiseData> = {
       tr: 'Boyamanın amacı hedef rengi yalnızca bir kez tutturmak değil; elyaf ve kumaş yapısını koruyarak tonu, nüansı ve haslığı laboratuvardan işletmeye tekrarlanabilir biçimde taşımaktır.',
       en: 'The objective is not to hit the target shade once, but to transfer shade, nuance and fastness repeatably from laboratory to bulk while protecting fibre and fabric integrity.',
     },
-    heroImage: '/images/reaktif-boya-cover.jpg',
+    heroImage: '/images/uzmanlik-boya-final.png',
     heroImageAlt: {
       tr: 'Boyalı kumaş yüzeyinde renk ve ton sürekliliği',
       en: 'Colour and shade continuity on a dyed fabric surface',
@@ -266,7 +266,7 @@ export const expertiseData: Record<ExpertiseSlug, ExpertiseData> = {
       tr: 'Aprenin amacı kumaşı yalnızca kurutmak veya yumuşatmak değildir; hedef en-gramajı, çekmezliği, dönmeyi, tuşeyi ve varsa fonksiyonel özelliği doğrulanabilir bir final spesifikasyona taşımaktır.',
       en: 'The purpose of finishing is not merely drying or softening; it is to deliver target width-GSM, shrinkage, spirality, hand and any functional property against a verifiable final specification.',
     },
-    heroImage: '/images/selulaz-tuy-enzimi.jpg',
+    heroImage: '/images/uzmanlik-apre-ramoz-final.png',
     heroImageAlt: {
       tr: 'Örme kumaş yüzeyinde kimyasal ve mekanik apre etkisini temsil eden kumaş dokusu',
       en: 'Knitted fabric texture representing chemical and mechanical finishing effects',
