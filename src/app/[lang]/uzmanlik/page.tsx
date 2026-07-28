@@ -172,9 +172,42 @@ export default async function ExpertiseOverviewPage({
       <section className="bg-[#EAF6FC]">
         <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
           <div className="rounded-[30px] border border-white bg-white p-8 shadow-[0_18px_50px_rgba(11,35,67,0.06)] md:p-10">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#2EA6D9]">
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.chain}
             </p>
+
+            <div
+              className="mb-7 flex flex-wrap items-center gap-3 md:gap-5"
+              aria-label={
+                lang === 'tr'
+                  ? 'Örgü, boya ve apre üretim zinciri'
+                  : 'Knitting, dyeing and finishing production chain'
+              }
+            >
+              {[
+                lang === 'tr' ? 'ÖRGÜ' : 'KNITTING',
+                lang === 'tr' ? 'BOYA' : 'DYEING',
+                lang === 'tr' ? 'APRE' : 'FINISHING',
+              ].map((item, index, items) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 md:gap-5"
+                >
+                  <span className="inline-flex min-h-12 items-center justify-center rounded-md border border-[#111315] bg-[#111315] px-5 text-sm font-black tracking-[0.12em] text-[#F6F4EF]">
+                    {item}
+                  </span>
+
+                  {index < items.length - 1 && (
+                    <span
+                      className="text-2xl font-black text-[#E45A2B]"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
 
             <p className="max-w-5xl text-lg font-semibold leading-8 text-[#0B2343] md:text-2xl md:leading-10">
               {copy.chainText}
