@@ -134,16 +134,16 @@ export function processAreaLabel(
 
   const labels: Record<ProcessArea, Record<Lang, string>> = {
     orgu: {
-      tr: 'Örgü / Knitting',
-      en: 'Knitting / Örgü',
+      tr: 'Örgü',
+      en: 'Knitting',
     },
     boya: {
-      tr: 'Boya / Dyeing',
-      en: 'Dyeing / Boya',
+      tr: 'Boya',
+      en: 'Dyeing',
     },
     apre: {
-      tr: 'Apre / Finishing',
-      en: 'Finishing / Apre',
+      tr: 'Apre',
+      en: 'Finishing',
     },
   }
 
