@@ -120,7 +120,7 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Örgü kumaş, boya ve apre süreçleri.',
             },
             {
-              value: '01',
+              value: '1',
               label: 'teknik öncelik',
               text: 'Kanıtlanabilir, ölçülebilir ve uygulanabilir bilgi.',
             },
@@ -169,19 +169,19 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               id: 'orgu',
-              title: 'Örgü Kumaş / Knitted Fabric',
+              title: 'Örgü Kumaş',
               text: 'İplik-kumaş ilişkisi, yuvarlak örme, makine inceliği, gramaj, ilmek boyu, elastan besleme ve örme kaynaklı kalite riskleri.',
             },
             {
               no: '02',
               id: 'boya',
-              title: 'Boya / Dyeing',
+              title: 'Boya',
               text: 'Ön terbiye, boyama, yıkama, reçete standardı ve HT jet proses kontrolü.',
             },
             {
               no: '03',
               id: 'apre',
-              title: 'Apre / Finishing',
+              title: 'Apre',
               text: 'Ramöz, kompaktör, fikse, en-boy, gramaj, tuşe ve boyutsal stabilite.',
             },
           ],
@@ -246,7 +246,7 @@ export default async function HomePage({ params }: HomeProps) {
               text: 'Knitted fabric, dyeing and finishing processes.',
             },
             {
-              value: '01',
+              value: '1',
               label: 'technical priority',
               text: 'Evidence-based, measurable and applicable knowledge.',
             },
@@ -295,19 +295,19 @@ export default async function HomePage({ params }: HomeProps) {
             {
               no: '01',
               id: 'orgu',
-              title: 'Knitted Fabric / Örgü Kumaş',
+              title: 'Knitted Fabric',
               text: 'Yarn–fabric relationship, circular knitting, machine gauge, GSM, stitch length, elastane feeding and knitting-related quality risks.',
             },
             {
               no: '02',
               id: 'boya',
-              title: 'Dyeing / Boya',
+              title: 'Dyeing',
               text: 'Pretreatment, dyeing, washing, recipe standardisation and measurable control of HT jet processes.',
             },
             {
               no: '03',
               id: 'apre',
-              title: 'Finishing / Apre',
+              title: 'Finishing',
               text: 'Stenter, compactor, heat setting, width, length, GSM, handle and dimensional stability management.',
             },
           ],
@@ -367,59 +367,53 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative min-h-[560px] overflow-hidden bg-[#111315] text-white md:min-h-[620px]">
+      <section className="relative overflow-hidden bg-[#111315] text-white md:min-h-[620px]">
         <img
           src="/images/hero-su-damlasi.jpg"
           alt={copy.heroAlt}
-          className="absolute inset-0 h-full w-full object-cover opacity-48"
+          className="absolute inset-0 h-full w-full object-cover opacity-44 md:opacity-48"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111315] via-[#111315]/88 to-[#111315]/24" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#111315] via-[#111315]/92 to-[#111315]/48 md:via-[#111315]/88 md:to-[#111315]/24" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/76 via-transparent to-[#111315]/28" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-12 md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-12 lg:py-16">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-10 md:gap-10 md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-12 lg:py-16">
           <div>
-            <p className="mb-5 inline-flex border-l-4 border-[#E45A2B] pl-4 text-xs font-black uppercase tracking-[0.22em] text-white/78">
+            <p className="mb-4 flex max-w-full border-l-4 border-[#E45A2B] pl-4 text-xs font-black uppercase leading-5 tracking-[0.18em] text-white/82 md:mb-5 md:inline-flex md:tracking-[0.22em]">
               {copy.heroEyebrow}
             </p>
 
-            <h1 className="max-w-[760px] text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-[56px] lg:text-[60px] 2xl:text-[68px]">
+            <h1 className="max-w-[760px] text-[38px] font-bold leading-[1.04] tracking-[-0.04em] text-white sm:text-5xl md:text-[56px] lg:text-[60px] 2xl:text-[68px]">
               {copy.heroTitle}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/78 md:text-[18px]">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:mt-6 md:text-[18px] md:leading-8">
               {copy.heroSummary}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link href={withLang('/blog')} className="btn-primary">
+            <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link href={withLang('/blog')} className="btn-primary w-full sm:w-auto">
                 {copy.expertiseCta} →
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315]"
+                className="inline-flex w-full items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315] sm:w-auto"
               >
                 {copy.publicationsCta}
               </Link>
 
-              <Link
-                href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
-                className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315]"
-              >
-                {copy.documentsCta}
-              </Link>
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[760px] lg:mx-0 lg:justify-self-end">
+          <div className="mx-auto hidden w-full max-w-[760px] lg:block lg:mx-0 lg:justify-self-end">
             <BBHomeLogoCard />
           </div>
         </div>
       </section>
 
       <section className="bg-white text-navy">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[18px] bg-[#111315] p-8 text-white md:p-10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-12 md:gap-12 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative overflow-hidden rounded-[18px] bg-[#111315] p-7 text-white md:p-10">
             <div className="absolute inset-0 bb-pattern opacity-30" />
 
             <div className="relative">
@@ -427,7 +421,7 @@ export default async function HomePage({ params }: HomeProps) {
                 {copy.experienceLabel}
               </p>
 
-              <h2 className="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl">
+              <h2 className="mb-5 text-3xl font-bold leading-tight text-white sm:text-4xl md:mb-6 md:text-5xl">
                 {copy.experienceTitle}
               </h2>
 
@@ -441,7 +435,7 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.metrics.map((card) => (
               <div
                 key={card.label}
-                className="flex min-h-[210px] flex-col justify-between rounded-[14px] border border-gray-border bg-white p-6 shadow-[0_10px_28px_rgba(17,19,21,0.06)]"
+                className="flex min-h-[160px] flex-col justify-between rounded-[14px] border border-gray-border bg-white p-6 shadow-[0_10px_28px_rgba(17,19,21,0.06)] sm:min-h-[190px] lg:min-h-[210px]"
               >
                 <div className="text-5xl font-bold tracking-[-0.04em] text-[#E45A2B]">
                   {card.value}
