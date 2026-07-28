@@ -490,7 +490,7 @@ export default async function HomePage({ params }: HomeProps) {
                   <div>
                     <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-lg bg-[#111315] px-4 py-3 text-white">
                       <span className="text-2xl font-black leading-none">
-                        {card.count.toString().padStart(2, '0')}
+                        {card.count}
                       </span>
                       <span className="mt-1 text-[9px] font-black uppercase tracking-[0.13em] text-white/60">
                         {copy.resourceUnit}
