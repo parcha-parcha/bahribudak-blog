@@ -90,26 +90,28 @@ export default async function ExpertiseOverviewPage({
 
   return (
     <main className="bg-white text-[#0B2343]">
-      <section className="relative overflow-hidden bg-[#061A33] text-white">
+      <section className="relative flex min-h-[500px] items-center overflow-hidden bg-[#111315] text-[#F6F4EF]">
         <Image
           src="/images/uzmanlik-hero-uretim-zinciri.png"
           alt=""
           fill
-          className="object-cover opacity-35"
+          className="object-cover opacity-65"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061A33] via-[#061A33]/90 to-[#12365E]/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/96 via-[#111315]/82 to-[#111315]/38" />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
-          <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#5BBBE6]">
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#E45A2B]">
             {copy.eyebrow}
           </p>
 
-          <h1 className="max-w-5xl text-4xl font-bold leading-[1.05] tracking-[-0.045em] text-white md:text-6xl">
+          <div className="mb-5 h-[3px] w-16 bg-[#E45A2B]" aria-hidden="true" />
+
+          <h1 className="max-w-4xl text-4xl font-bold leading-[1.05] tracking-[-0.045em] text-[#F6F4EF] md:text-6xl">
             {copy.title}
           </h1>
 
-          <p className="mt-6 max-w-4xl text-base leading-8 text-white/82 md:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#E5E2DA] md:text-lg">
             {copy.summary}
           </p>
         </div>
