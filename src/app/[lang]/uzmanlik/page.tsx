@@ -134,7 +134,7 @@ export default async function ExpertiseOverviewPage({
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061A33]/35 to-transparent" />
 
                   <span className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-black text-[#0B2343]">
                     {area.no}
