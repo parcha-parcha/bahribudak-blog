@@ -41,7 +41,7 @@ export default async function MembershipPage({
   const tr = lang === 'tr'
   const registerHref = tr ? '/tr/kayit' : '/en/register'
   const loginHref = tr ? '/tr/giris' : '/en/login'
-  const resourcesHref = `/${lang}/sablonlar/tekstil-teknik-dokumanlari`
+  const resourcesHref = `/${lang}/magazam#resource-catalog`
   const contactHref = `/${lang}/contact`
 
   const copy = tr
