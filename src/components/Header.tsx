@@ -175,10 +175,6 @@ export default function Header({ lang }: HeaderProps) {
             {otherLang === 'en' ? 'EN' : 'TR'}
           </Link>
 
-          <div className="hidden md:flex">
-            <BBHeaderSocialLinks />
-          </div>
-
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#F6F4EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 xl:hidden"
