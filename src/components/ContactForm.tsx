@@ -17,10 +17,10 @@ interface ContactFormProps {
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const fieldClassName =
-  'w-full rounded-xl border border-[#D8DDE5] bg-white px-4 py-3 text-sm text-[#0B2343] outline-none transition placeholder:text-[#0B2343]/35 focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/10'
+  'w-full rounded-xl border border-[#E5E2DA] bg-white px-4 py-3 text-sm text-[#111315] outline-none transition placeholder:text-[#6F7782]/65 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12'
 
 const labelClassName =
-  'mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/55'
+  'mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#6F7782]'
 
 export default function ContactForm({ lang, initialValues }: ContactFormProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -79,18 +79,18 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
 
   const processAreas = tr
     ? [
-        'Örgü / Knitting',
-        'Boya / Dyeing',
-        'Apre / Finishing',
+        'Örgü',
+        'Boya',
+        'Apre',
         'Laboratuvar ve kalite',
         'Üretim ve fabrika yönetimi',
         'Teknik dokümantasyon',
         'Birden fazla alan',
       ]
     : [
-        'Knitting / Örgü',
-        'Dyeing / Boya',
-        'Finishing / Apre',
+        'Knitting',
+        'Dyeing',
+        'Finishing',
         'Laboratory and quality',
         'Production and factory management',
         'Technical documentation',
@@ -99,24 +99,24 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
 
   return (
     <section
-      className="rounded-[2rem] border border-[#D8DDE5] bg-white p-6 shadow-[0_18px_55px_rgba(11,35,67,0.08)] md:p-8"
+      className="rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-[0_18px_55px_rgba(17,19,21,0.08)] md:p-8"
       aria-labelledby="contact-form-title"
     >
       <div className="mb-8">
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2EA6D9]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
           {tr ? 'TEKNİK TALEP FORMU' : 'TECHNICAL REQUEST FORM'}
         </p>
 
         <h2
           id="contact-form-title"
-          className="mt-3 text-2xl font-bold tracking-[-0.025em] text-[#0B2343] md:text-3xl"
+          className="mt-3 text-2xl font-bold tracking-[-0.025em] text-[#111315] md:text-3xl"
         >
           {tr
             ? 'Çalışma kapsamını net bilgilerle iletin.'
             : 'Describe the work scope with clear information.'}
         </h2>
 
-        <p className="mt-3 text-sm leading-7 text-[#0B2343]/62">
+        <p className="mt-3 text-sm leading-7 text-[#6F7782]">
           {tr
             ? 'Zorunlu alanları doldurun. Makine, kumaş, proses, hata veya hedef bilgilerini mümkün olduğunca somut yazın.'
             : 'Complete the required fields. Describe machinery, fabric, process, defect or target information as clearly as possible.'}
@@ -135,11 +135,11 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
             ✓
           </div>
 
-          <h3 className="mt-4 text-xl font-bold text-[#0B2343]">
+          <h3 className="mt-4 text-xl font-bold text-[#111315]">
             {tr ? 'Talebiniz iletildi.' : 'Your request has been sent.'}
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-[#0B2343]/65">
+          <p className="mt-2 text-sm leading-6 text-[#6F7782]">
             {tr
               ? 'İçerik ve kapsam değerlendirildikten sonra e-posta üzerinden dönüş yapılacaktır.'
               : 'You will receive a response by email after the content and scope have been reviewed.'}
@@ -148,7 +148,7 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
           <button
             type="button"
             onClick={() => setStatus('idle')}
-            className="mt-6 text-sm font-bold text-[#0B2343] underline decoration-[#2EA6D9] decoration-2 underline-offset-4"
+            className="mt-6 text-sm font-bold text-[#111315] underline decoration-[#E45A2B] decoration-2 underline-offset-4 transition hover:text-[#E45A2B]"
           >
             {tr ? 'Yeni talep gönder' : 'Send another request'}
           </button>
@@ -342,7 +342,7 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
               defaultValue={initialValues?.message}
               className={`${fieldClassName} resize-y`}
             />
-            <p className="mt-2 text-xs leading-5 text-[#0B2343]/45">
+            <p className="mt-2 text-xs leading-5 text-[#6F7782]">
               {tr
                 ? 'Azami 3000 karakter. Hassas üretim verilerini veya ticari sırları paylaşmayın.'
                 : 'Maximum 3000 characters. Do not share sensitive production data or trade secrets.'}
@@ -365,22 +365,22 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
               defaultValue={initialValues?.referenceUrl}
               className={fieldClassName}
             />
-            <p className="mt-2 text-xs leading-5 text-[#0B2343]/45">
+            <p className="mt-2 text-xs leading-5 text-[#6F7782]">
               {tr
                 ? 'Gerekliyse erişilebilir bir doküman veya görsel bağlantısı ekleyin.'
                 : 'Add an accessible document or image link when relevant.'}
             </p>
           </div>
 
-          <label className="flex items-start gap-3 rounded-xl border border-[#D8DDE5] bg-[#F8FAFC] p-4">
+          <label className="flex items-start gap-3 rounded-xl border border-[#E5E2DA] bg-[#F6F4EF] p-4">
             <input
               type="checkbox"
               name="consent"
               value="accepted"
               required
-              className="mt-1 h-4 w-4 shrink-0 accent-[#2EA6D9]"
+              className="mt-1 h-4 w-4 shrink-0 accent-[#E45A2B]"
             />
-            <span className="text-xs leading-6 text-[#0B2343]/62">
+            <span className="text-xs leading-6 text-[#6F7782]">
               {tr
                 ? 'Formda paylaştığım bilgilerin yalnızca iletişim talebimin değerlendirilmesi ve yanıtlanması amacıyla kullanılmasını kabul ediyorum.'
                 : 'I agree that the information submitted in this form may be used only to review and respond to my contact request.'}
@@ -401,7 +401,7 @@ export default function ContactForm({ lang, initialValues }: ContactFormProps) {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2EA6D9] px-6 py-3.5 text-sm font-bold text-[#061A33] transition hover:bg-[#5BBBE6] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#E45A2B] px-6 py-3.5 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === 'loading'
               ? tr
