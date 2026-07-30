@@ -323,20 +323,20 @@ export default async function ChecklistsPage({
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F7FA] text-[#0B2343]">
+    <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <section className="relative overflow-hidden bg-[#061A33] text-white">
+      <section className="relative overflow-hidden bg-[#111315] text-white">
         <div className="absolute inset-0 bb-pattern opacity-35" />
-        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#2EA6D9]/15 blur-3xl" />
+        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#E45A2B]/15 blur-3xl" />
         <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div>
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#E45A2B]">
               {t.eyebrow}
             </p>
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white md:text-6xl">
@@ -363,7 +363,7 @@ export default async function ChecklistsPage({
                 key={item.label}
                 className="rounded-3xl border border-white/10 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
               >
-                <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">
+                <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                   {item.value}
                 </p>
                 <p className="mt-2 text-[10px] font-bold uppercase leading-4 tracking-[0.10em] text-white/60">
@@ -377,14 +377,14 @@ export default async function ChecklistsPage({
 
       <section className="mx-auto max-w-7xl px-6 py-14">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+          <article className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.systemLabel}
             </p>
-            <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+            <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
               {t.systemTitle}
             </h2>
-            <p className="mt-5 max-w-4xl text-sm leading-7 text-[#0B2343]/72 md:text-base">
+            <p className="mt-5 max-w-4xl text-sm leading-7 text-[#111315]/72 md:text-base">
               {t.systemText}
             </p>
 
@@ -392,12 +392,12 @@ export default async function ChecklistsPage({
               {t.benefits.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-[#2EA6D9]/20 bg-[#F5F7FA] p-4"
+                  className="rounded-2xl border border-[#E45A2B]/20 bg-[#F6F4EF] p-4"
                 >
-                  <h3 className="text-sm font-bold text-[#0B2343]">
+                  <h3 className="text-sm font-bold text-[#111315]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-[#0B2343]/65">
+                  <p className="mt-2 text-xs leading-5 text-[#111315]/65">
                     {item.text}
                   </p>
                 </div>
@@ -405,18 +405,18 @@ export default async function ChecklistsPage({
             </div>
           </article>
 
-          <aside className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+          <aside className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.usageAreasLabel}
             </p>
             <div className="mt-5 grid gap-3">
               {t.usageAreas.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-2xl bg-[#F5F7FA] px-4 py-3"
+                  className="flex items-center gap-3 rounded-2xl bg-[#F6F4EF] px-4 py-3"
                 >
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-[#2EA6D9]" />
-                  <span className="text-sm font-semibold text-[#0B2343]/80">
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-[#E45A2B]" />
+                  <span className="text-sm font-semibold text-[#111315]/80">
                     {item}
                   </span>
                 </div>
@@ -425,14 +425,14 @@ export default async function ChecklistsPage({
           </aside>
         </div>
 
-        <div className="mt-14 border-b border-[#D8DDE5] pb-7">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+        <div className="mt-14 border-b border-[#E5E2DA] pb-7">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
             {t.catalogLabel}
           </p>
-          <h2 className="mt-2 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+          <h2 className="mt-2 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
             {t.catalogTitle}
           </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-6 text-[#0B2343]/65">
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-[#111315]/65">
             {t.catalogText}
           </p>
         </div>
@@ -449,30 +449,30 @@ export default async function ChecklistsPage({
             return (
               <article
                 key={resource.id}
-                className="group flex h-full flex-col rounded-[2rem] border border-[#D8DDE5] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#2EA6D9]/50 hover:shadow-[0_16px_45px_rgba(11,35,67,0.10)] md:p-7"
+                className="group flex h-full flex-col rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#E45A2B]/50 hover:shadow-[0_16px_45px_rgba(17,19,21,0.10)] md:p-7"
               >
                 <div className="mb-5 flex items-start justify-between gap-4">
-                  <span className="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-2xl bg-[#061A33] px-3 text-base font-black text-white">
+                  <span className="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-2xl bg-[#111315] px-3 text-base font-black text-white">
                     {meta.no}
                   </span>
 
                   <div className="flex flex-wrap justify-end gap-2">
-                    <span className="rounded-full bg-[#EAF6FC] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.11em] text-[#0B2343]">
+                    <span className="rounded-full bg-[#F3E7E0] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.11em] text-[#111315]">
                       {t.downloadable}
                     </span>
-                    <span className="rounded-full border border-[#2EA6D9]/30 px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#2EA6D9]">
+                    <span className="rounded-full border border-[#E45A2B]/30 px-3 py-1.5 text-[10px] font-black tracking-[0.12em] text-[#E45A2B]">
                       {resource.version}
                     </span>
                   </div>
                 </div>
 
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2EA6D9]">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#E45A2B]">
                   {meta.category[lang]}
                 </p>
-                <h3 className="mt-2 text-2xl font-bold leading-tight text-[#0B2343]">
+                <h3 className="mt-2 text-2xl font-bold leading-tight text-[#111315]">
                   {resource.title[lang]}
                 </h3>
-                <p className="mt-4 text-sm leading-6 text-[#0B2343]/70">
+                <p className="mt-4 text-sm leading-6 text-[#111315]/70">
                   {resource.description[lang]}
                 </p>
 
@@ -480,22 +480,22 @@ export default async function ChecklistsPage({
                   {detailItems.map((detail) => (
                     <span
                       key={detail}
-                      className="rounded-full border border-[#D8DDE5] bg-[#F5F7FA] px-3 py-1.5 text-xs font-semibold text-[#0B2343]/68"
+                      className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/68"
                     >
                       {detail}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-5 border-t border-[#D8DDE5] pt-5">
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/45">
+                <div className="mt-5 border-t border-[#E5E2DA] pt-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-[#111315]/45">
                     {t.contentTags}
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-2">
                     {meta.tags[lang].map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-semibold text-[#0B2343]/62"
+                        className="text-xs font-semibold text-[#111315]/62"
                       >
                         {tag}
                       </span>
@@ -503,28 +503,28 @@ export default async function ChecklistsPage({
                   </div>
                 </div>
 
-                <dl className="mt-5 grid grid-cols-3 gap-3 rounded-2xl bg-[#F5F7FA] p-4 text-xs">
+                <dl className="mt-5 grid grid-cols-3 gap-3 rounded-2xl bg-[#F6F4EF] p-4 text-xs">
                   <div>
-                    <dt className="font-semibold text-[#0B2343]/45">
+                    <dt className="font-semibold text-[#111315]/45">
                       {t.version}
                     </dt>
-                    <dd className="mt-1 font-bold text-[#0B2343]">
+                    <dd className="mt-1 font-bold text-[#111315]">
                       {resource.version}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#0B2343]/45">
+                    <dt className="font-semibold text-[#111315]/45">
                       {t.fileSize}
                     </dt>
-                    <dd className="mt-1 font-bold text-[#0B2343]">
+                    <dd className="mt-1 font-bold text-[#111315]">
                       {resource.size}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#0B2343]/45">
+                    <dt className="font-semibold text-[#111315]/45">
                       {t.fileLanguage}
                     </dt>
-                    <dd className="mt-1 font-bold text-[#0B2343]">
+                    <dd className="mt-1 font-bold text-[#111315]">
                       {resolveFileLanguage(resource, lang)}
                     </dd>
                   </div>
@@ -535,7 +535,7 @@ export default async function ChecklistsPage({
                     href={resource.href}
                     download
                     aria-label={`${t.download}: ${resource.title[lang]}`}
-                    className="inline-flex w-full items-center justify-center rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2EA6D9] focus:outline-none focus:ring-2 focus:ring-[#2EA6D9] focus:ring-offset-2"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-[#111315] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#E45A2B] focus:outline-none focus:ring-2 focus:ring-[#E45A2B] focus:ring-offset-2"
                   >
                     {t.download}
                   </a>
@@ -545,8 +545,8 @@ export default async function ChecklistsPage({
           })}
         </section>
 
-        <section className="mt-12 rounded-[2rem] bg-[#0B2343] px-6 py-8 text-white md:px-10 md:py-10">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
+        <section className="mt-12 rounded-[2rem] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
             {t.usageLabel}
           </p>
           <h2 className="mt-3 max-w-4xl text-2xl font-bold text-white md:text-3xl">
@@ -559,13 +559,13 @@ export default async function ChecklistsPage({
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href={`/${lang}/magazam`}
-              className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#0B2343] transition hover:bg-[#5BBBE6] hover:text-white"
+              className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#111315] transition hover:bg-[#E45A2B] hover:text-white"
             >
               {t.back}
             </Link>
             <Link
               href={`/${lang}/contact`}
-              className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#0B2343]"
+              className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#111315]"
             >
               {t.contact}
             </Link>
