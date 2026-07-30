@@ -319,15 +319,15 @@ export default async function ProcessFormsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-[#F3F6FA] text-[#0B2343]">
-        <section className="relative overflow-hidden bg-[#061A33] text-white">
+      <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
+        <section className="relative overflow-hidden bg-[#111315] text-white">
           <div className="absolute inset-0 bb-pattern opacity-35" />
-          <div className="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-[#2EA6D9]/15 blur-3xl" />
+          <div className="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-[#E45A2B]/15 blur-3xl" />
           <div className="absolute -bottom-44 -left-28 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
           <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
             <div>
-              <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#5BBBE6]">
+              <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#E45A2B]">
                 {t.eyebrow}
               </p>
               <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white md:text-6xl">
@@ -344,7 +344,7 @@ export default async function ProcessFormsPage({
                   key={stat.label}
                   className="rounded-3xl border border-white/10 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
                 >
-                  <p className="text-2xl font-black text-[#5BBBE6] md:text-3xl">
+                  <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                     {stat.value}
                   </p>
                   <p className="mt-2 text-[10px] font-black uppercase leading-4 tracking-[0.1em] text-white/60">
@@ -358,14 +358,14 @@ export default async function ProcessFormsPage({
 
         <section className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+            <article className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                 {t.systemLabel}
               </p>
-              <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+              <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
                 {t.systemTitle}
               </h2>
-              <p className="mt-5 max-w-4xl text-sm leading-7 text-[#0B2343]/75 md:text-base">
+              <p className="mt-5 max-w-4xl text-sm leading-7 text-[#111315]/75 md:text-base">
                 {t.systemText}
               </p>
 
@@ -373,12 +373,12 @@ export default async function ProcessFormsPage({
                 {t.benefits.map((benefit) => (
                   <div
                     key={benefit.title}
-                    className="rounded-2xl border border-[#2EA6D9]/20 bg-[#F3F6FA] p-4"
+                    className="rounded-2xl border border-[#E45A2B]/20 bg-[#F6F4EF] p-4"
                   >
-                    <h3 className="text-sm font-bold text-[#0B2343]">
+                    <h3 className="text-sm font-bold text-[#111315]">
                       {benefit.title}
                     </h3>
-                    <p className="mt-2 text-xs leading-6 text-[#0B2343]/65">
+                    <p className="mt-2 text-xs leading-6 text-[#111315]/65">
                       {benefit.text}
                     </p>
                   </div>
@@ -386,8 +386,8 @@ export default async function ProcessFormsPage({
               </div>
             </article>
 
-            <aside className="rounded-[2rem] border border-[#D8DDE5] bg-white p-7 shadow-sm md:p-9">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+            <aside className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                 {t.usersLabel}
               </p>
 
@@ -395,13 +395,13 @@ export default async function ProcessFormsPage({
                 {t.users.map((user) => (
                   <div
                     key={user}
-                    className="flex items-center gap-3 rounded-2xl bg-[#F3F6FA] px-4 py-3"
+                    className="flex items-center gap-3 rounded-2xl bg-[#F6F4EF] px-4 py-3"
                   >
                     <span
                       aria-hidden="true"
-                      className="h-2 w-2 shrink-0 rounded-full bg-[#2EA6D9]"
+                      className="h-2 w-2 shrink-0 rounded-full bg-[#E45A2B]"
                     />
-                    <span className="text-sm font-semibold text-[#0B2343]/80">
+                    <span className="text-sm font-semibold text-[#111315]/80">
                       {user}
                     </span>
                   </div>
@@ -410,28 +410,28 @@ export default async function ProcessFormsPage({
 
               <Link
                 href={`/${lang}/contact`}
-                className="mt-7 inline-flex rounded-full bg-[#0B2343] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#2EA6D9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EA6D9]"
+                className="mt-7 inline-flex rounded-full bg-[#111315] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#E45A2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E45A2B]"
               >
                 {t.customRequest}
               </Link>
             </aside>
           </div>
 
-          <div className="mt-14 border-b border-[#D8DDE5] pb-8">
+          <div className="mt-14 border-b border-[#E5E2DA] pb-8">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2EA6D9]">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                   {t.catalogLabel}
                 </p>
-                <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#0B2343] md:text-4xl">
+                <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#111315] md:text-4xl">
                   {t.catalogTitle}
                 </h2>
-                <p className="mt-4 max-w-3xl text-sm leading-7 text-[#0B2343]/60">
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-[#111315]/60">
                   {t.catalogText}
                 </p>
               </div>
 
-              <p className="shrink-0 text-xs font-semibold text-[#0B2343]/50">
+              <p className="shrink-0 text-xs font-semibold text-[#111315]/50">
                 {t.catalogDate}: {resourceCatalogDate}
               </p>
             </div>
@@ -446,24 +446,24 @@ export default async function ProcessFormsPage({
               return (
                 <article
                   key={item.id}
-                  className="group flex h-full flex-col rounded-[2rem] border border-[#D8DDE5] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#2EA6D9]/60 hover:shadow-[0_16px_45px_rgba(11,35,67,0.10)] md:p-7"
+                  className="group flex h-full flex-col rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#E45A2B]/60 hover:shadow-[0_16px_45px_rgba(17,19,21,0.10)] md:p-7"
                 >
                   <div className="mb-6 flex items-start justify-between gap-4">
-                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#061A33] text-base font-black text-white">
+                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#111315] text-base font-black text-white">
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
 
                     <div className="flex flex-wrap justify-end gap-2">
-                      <span className="rounded-full bg-[#EAF6FC] px-3 py-2 text-[10px] font-black uppercase tracking-[0.12em] text-[#0B2343]">
+                      <span className="rounded-full bg-[#F3E7E0] px-3 py-2 text-[10px] font-black uppercase tracking-[0.12em] text-[#111315]">
                         {t.status}
                       </span>
-                      <span className="rounded-full border border-[#2EA6D9]/35 px-3 py-2 text-[10px] font-black tracking-[0.12em] text-[#2EA6D9]">
+                      <span className="rounded-full border border-[#E45A2B]/35 px-3 py-2 text-[10px] font-black tracking-[0.12em] text-[#E45A2B]">
                         {item.version}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2EA6D9]">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#E45A2B]">
                     {lang === 'tr'
                       ? [
                           'Boyahane üretim ve proses takibi',
@@ -479,37 +479,37 @@ export default async function ProcessFormsPage({
                         ][index]}
                   </p>
 
-                  <h3 className="mt-3 text-2xl font-bold leading-tight tracking-[-0.025em] text-[#0B2343]">
+                  <h3 className="mt-3 text-2xl font-bold leading-tight tracking-[-0.025em] text-[#111315]">
                     {item.title[lang]}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-[#0B2343]/70">
+                  <p className="mt-4 text-sm leading-7 text-[#111315]/70">
                     {item.description[lang]}
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="rounded-full border border-[#D8DDE5] bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-[#0B2343]/75">
+                    <span className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/75">
                       {item.format}
                     </span>
                     {details.map((detail) => (
                       <span
                         key={detail}
-                        className="rounded-full border border-[#D8DDE5] bg-[#F3F6FA] px-3 py-1.5 text-xs font-semibold text-[#0B2343]/75"
+                        className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/75"
                       >
                         {detail}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-5 border-t border-[#D8DDE5] pt-5">
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#0B2343]/45">
+                  <div className="mt-5 border-t border-[#E5E2DA] pt-5">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#111315]/45">
                       {t.contentTags}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
                       {tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs font-semibold text-[#0B2343]/70"
+                          className="text-xs font-semibold text-[#111315]/70"
                         >
                           {tag}
                         </span>
@@ -517,28 +517,28 @@ export default async function ProcessFormsPage({
                     </div>
                   </div>
 
-                  <dl className="mt-6 grid grid-cols-3 gap-4 rounded-2xl bg-[#F3F6FA] px-4 py-4 text-xs">
+                  <dl className="mt-6 grid grid-cols-3 gap-4 rounded-2xl bg-[#F6F4EF] px-4 py-4 text-xs">
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/45">
+                      <dt className="font-semibold text-[#111315]/45">
                         {t.version}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {item.version}
                       </dd>
                     </div>
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/45">
+                      <dt className="font-semibold text-[#111315]/45">
                         {t.size}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {item.size}
                       </dd>
                     </div>
                     <div>
-                      <dt className="font-semibold text-[#0B2343]/45">
+                      <dt className="font-semibold text-[#111315]/45">
                         {t.language}
                       </dt>
-                      <dd className="mt-1 font-bold text-[#0B2343]">
+                      <dd className="mt-1 font-bold text-[#111315]">
                         {getFileLanguageLabel(item.fileLanguage, lang)}
                       </dd>
                     </div>
@@ -549,7 +549,7 @@ export default async function ProcessFormsPage({
                       href={item.href}
                       download
                       aria-label={`${t.download}: ${item.title[lang]}`}
-                      className="inline-flex w-full items-center justify-center rounded-full bg-[#0B2343] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2EA6D9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EA6D9]"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-[#111315] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#E45A2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E45A2B]"
                     >
                       {t.download}
                     </a>
@@ -559,8 +559,8 @@ export default async function ProcessFormsPage({
             })}
           </div>
 
-          <section className="mt-10 rounded-[2rem] border border-[#2EA6D9]/20 bg-[#061A33] px-7 py-9 text-white shadow-sm md:px-10">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5BBBE6]">
+          <section className="mt-10 rounded-[2rem] border border-[#E45A2B]/20 bg-[#111315] px-7 py-9 text-white shadow-sm md:px-10">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.usageLabel}
             </p>
             <h2 className="mt-3 max-w-4xl text-2xl font-bold text-white md:text-3xl">
@@ -573,13 +573,13 @@ export default async function ProcessFormsPage({
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href={`/${lang}/magazam`}
-                className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#0B2343] transition hover:bg-[#2EA6D9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#111315] transition hover:bg-[#E45A2B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {t.back}
               </Link>
               <Link
                 href={`/${lang}/contact`}
-                className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#0B2343] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#111315] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {t.contact}
               </Link>
