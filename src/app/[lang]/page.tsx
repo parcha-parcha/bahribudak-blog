@@ -399,7 +399,7 @@ export default async function HomePage({ params }: HomeProps) {
               </Link>
 
               <Link
-                href={withLang('/contact')}
+              href={withLang('/teknik-hizmetler')}
                 className="inline-flex w-full items-center justify-center rounded-md border border-white/35 px-6 py-3 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#111315] sm:w-auto"
               >
                 {copy.publicationsCta}
