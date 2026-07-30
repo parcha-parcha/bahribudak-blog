@@ -16,6 +16,7 @@ const requiredFiles = [
   'src/app/sitemap.ts',
   'src/lib/translatedRoutes.ts',
   'src/lib/resources.ts',
+  'config/private-downloads.json',
 ]
 
 function fail(message) {
@@ -92,10 +93,112 @@ for (const filePath of sourceFiles) {
   }
 }
 
-for (const relativeDownload of [...downloadReferences].sort()) {
-  const publicFile = path.join(root, 'public', 'downloads', relativeDownload)
-  if (!fs.existsSync(publicFile)) {
-    fail(`Kırık indirme bağlantısı: /downloads/${relativeDownload}`)
+const privateDownloadManifestPath = path.join(
+  root,
+  'config/private-downloads.json',
+)
+const privateDownloadFiles = new Set()
+
+if (fs.existsSync(privateDownloadManifestPath)) {
+  try {
+    const manifest = JSON.parse(
+      fs.readFileSync(
+        privateDownloadManifestPath,
+        'utf8',
+      ),
+    )
+
+    const files = Array.isArray(manifest.files)
+      ? manifest.files
+      : []
+
+    if (files.length === 0) {
+      fail('Private Blob manifesti boş.')
+    }
+
+    if (manifest.fileCount !== files.length) {
+      fail(
+        `Private Blob manifest dosya sayısı eşleşmiyor: ${manifest.fileCount} / ${files.length}`,
+      )
+    }
+
+    for (const pathname of files) {
+      if (
+        typeof pathname !== 'string' ||
+        !pathname.startsWith('downloads/') ||
+        pathname.includes('..')
+      ) {
+        fail(
+          `Private Blob manifestinde geçersiz yol: ${String(pathname)}`,
+        )
+        continue
+      }
+
+      privateDownloadFiles.add(pathname)
+    }
+  } catch (error) {
+    fail(
+      `Private Blob manifesti okunamadı: ${error.message}`,
+    )
+  }
+}
+
+const publicDownloadFiles = walk(
+  path.join(root, 'public', 'downloads'),
+)
+
+if (publicDownloadFiles.length > 0) {
+  fail(
+    'public/downloads içinde herkese açık indirme dosyaları bulundu.',
+  )
+}
+
+const memberDownloadRoutePath = path.join(
+  root,
+  'src/app/api/member-download/route.ts',
+)
+
+if (!fs.existsSync(memberDownloadRoutePath)) {
+  fail('Üyelik kontrollü indirme rotası bulunamadı.')
+} else {
+  const routeSource = fs.readFileSync(
+    memberDownloadRoutePath,
+    'utf8',
+  )
+
+  const usesPrivateBlob =
+    routeSource.includes("from '@vercel/blob'") &&
+    /\bget\s*\(/.test(routeSource) &&
+    /access:\s*['"]private['"]/.test(routeSource)
+
+  if (!usesPrivateBlob) {
+    fail(
+      'Üyelik kontrollü indirme rotası Private Blob kullanmıyor.',
+    )
+  }
+}
+
+for (
+  const relativeDownload of
+    [...downloadReferences].sort()
+) {
+  if (
+    relativeDownload.includes('..') ||
+    relativeDownload.includes('\\')
+  ) {
+    fail(
+      `Geçersiz indirme yolu: /downloads/${relativeDownload}`,
+    )
+    continue
+  }
+
+  const blobPath =
+    `downloads/${relativeDownload}`
+
+  if (!privateDownloadFiles.has(blobPath)) {
+    fail(
+      `Private Blob manifestinde bulunmayan indirme bağlantısı: /downloads/${relativeDownload}`,
+    )
   }
 }
 
@@ -227,7 +330,7 @@ if (downloadReferences.size === 0) {
 console.log('Bahri Budak site doğrulama özeti')
 console.log(`- Sürüm: ${version || 'tanımsız'}`)
 console.log(`- Teknik yayın eşleşmesi: ${routePairs.length}`)
-console.log(`- Doğrulanan indirme bağlantısı: ${downloadReferences.size}`)
+console.log(`- Doğrulanan özel indirme referansı: ${downloadReferences.size}`)
 console.log(`- Taranan kaynak dosyası: ${sourceFiles.length}`)
 
 for (const warning of warnings) {

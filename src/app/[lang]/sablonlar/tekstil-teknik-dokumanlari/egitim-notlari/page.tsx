@@ -478,7 +478,6 @@ export default async function TrainingNotesPage({
           name: resource.title[lang],
           description: resource.description[lang],
           encodingFormat: 'application/pdf',
-          contentUrl: `https://bahribudak.com${resource.href}`,
         },
       })),
     },
@@ -662,8 +661,7 @@ export default async function TrainingNotesPage({
 
                 <div className="mt-auto pt-6">
                   <a
-                    href={resource.href}
-                    download
+                    href={`/api/member-download?path=${encodeURIComponent(resource.href)}`}
                     aria-label={`${t.download}: ${resource.title[lang]}`}
                     className="inline-flex w-full items-center justify-center rounded-full bg-[#111315] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#E45A2B] focus:outline-none focus:ring-2 focus:ring-[#E45A2B] focus:ring-offset-2"
                   >

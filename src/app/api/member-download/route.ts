@@ -7,8 +7,8 @@ import { authPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { readFile } from 'fs/promises'
-import { basename, join, posix } from 'path'
+import { get } from '@vercel/blob'
+import { basename, posix } from 'path'
 import {
   NextResponse,
   type NextRequest,
@@ -285,14 +285,20 @@ export async function GET(
 
   try {
     const filename = basename(downloadPath)
-    const file = await readFile(
-      join(
-        process.cwd(),
-        'public',
-        'downloads',
-        filename,
-      ),
-    )
+    const blobResult = await get(`downloads/${filename}`, {
+      access: 'private',
+    })
+
+    if (!blobResult || blobResult.statusCode !== 200) {
+      return NextResponse.json(
+        {
+          error: 'Download unavailable.',
+        },
+        {
+          status: 404,
+        },
+      )
+    }
 
     await recordMemberDownload(
       supabase,
@@ -302,12 +308,13 @@ export async function GET(
       request.headers.get('user-agent'),
     )
 
-    const response = new NextResponse(file, {
+    const response = new NextResponse(blobResult.stream, {
       status: 200,
       headers: {
         'Cache-Control': 'private, no-store',
         'Content-Disposition': `attachment; filename="${filename}"`,
         'Content-Type':
+          blobResult.blob.contentType ??
           getContentType(filename),
       },
     })
