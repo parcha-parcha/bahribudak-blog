@@ -106,6 +106,9 @@ async function updateTechnicalLead(formData: FormData) {
   const ownerNote = String(formData.get('owner_note') ?? '')
     .trim()
     .slice(0, 4000)
+  const returnQuery = sanitizeReturnQuery(
+    String(formData.get('return_query') ?? ''),
+  )
 
   if (!id) {
     throw new Error('Talep kimliği bulunamadı.')
@@ -135,6 +138,11 @@ async function updateTechnicalLead(formData: FormData) {
 
   revalidatePath(`/${lang}/yonetim/talepler`)
   revalidatePath(`/${lang}/yonetim/uyelik`)
+
+  const destination = new URLSearchParams(returnQuery)
+  destination.set('saved', '1')
+
+  redirect(`/${lang}/yonetim/talepler?${destination.toString()}`)
 }
 
 export default async function TechnicalRequestsPage({
@@ -142,7 +150,14 @@ export default async function TechnicalRequestsPage({
   searchParams,
 }: {
   params: Promise<{ lang: string }>
-  searchParams: Promise<{ status?: string }>
+  searchParams: Promise<{
+    status?: string
+    priority?: string
+    q?: string
+    from?: string
+    to?: string
+    saved?: string
+  }>
 }) {
   const { lang: rawLang } = await params
   const lang = rawLang === 'en' ? 'en' : 'tr'
@@ -153,12 +168,30 @@ export default async function TechnicalRequestsPage({
 
   await requireAdmin(lang)
 
-  const { status: requestedStatus } = await searchParams
+  const {
+    status: requestedStatus,
+    priority: requestedPriority,
+    q: requestedQuery,
+    from: requestedFrom,
+    to: requestedTo,
+    saved,
+  } = await searchParams
+
   const selectedStatus =
     requestedStatus &&
     statusValues.has(requestedStatus as LeadStatus)
       ? (requestedStatus as LeadStatus)
       : null
+
+  const selectedPriority =
+    requestedPriority &&
+    priorityValues.has(requestedPriority as LeadPriority)
+      ? (requestedPriority as LeadPriority)
+      : null
+
+  const searchQuery = String(requestedQuery ?? '').trim().slice(0, 120)
+  const fromDate = normalizeDateInput(requestedFrom)
+  const toDate = normalizeDateInput(requestedTo)
 
   const admin = createAdminClient()
 
@@ -193,17 +226,63 @@ export default async function TechnicalRequestsPage({
     .order('created_at', { ascending: false })
     .limit(250)
 
-  if (selectedStatus) {
-    query = query.eq('status', selectedStatus)
-  }
-
   const { data, error } = await query
 
   if (error) {
     throw new Error(`Teknik talepler alınamadı: ${error.message}`)
   }
 
-  const leads = (data ?? []) as unknown as TechnicalLead[]
+  const allLeads = (data ?? []) as unknown as TechnicalLead[]
+
+  const leads = allLeads.filter(lead => {
+    if (selectedStatus && lead.status !== selectedStatus) return false
+    if (selectedPriority && lead.priority !== selectedPriority) return false
+
+    const createdAt = new Date(lead.created_at)
+
+    if (fromDate) {
+      const fromBoundary = new Date(`${fromDate}T00:00:00`)
+      if (createdAt < fromBoundary) return false
+    }
+
+    if (toDate) {
+      const toBoundary = new Date(`${toDate}T23:59:59.999`)
+      if (createdAt > toBoundary) return false
+    }
+
+    if (searchQuery) {
+      const haystack = [
+        lead.email,
+        lead.full_name,
+        lead.company_name,
+        lead.role_title,
+        lead.subject,
+        lead.message,
+        lead.request_type,
+        lead.process_area,
+        lead.problem_category,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLocaleLowerCase('tr-TR')
+
+      if (!haystack.includes(searchQuery.toLocaleLowerCase('tr-TR'))) {
+        return false
+      }
+    }
+
+    return true
+  })
+
+  const filterParams = new URLSearchParams()
+
+  if (selectedStatus) filterParams.set('status', selectedStatus)
+  if (selectedPriority) filterParams.set('priority', selectedPriority)
+  if (searchQuery) filterParams.set('q', searchQuery)
+  if (fromDate) filterParams.set('from', fromDate)
+  if (toDate) filterParams.set('to', toDate)
+
+  const returnQuery = filterParams.toString()
 
   const counts = statusOptions.reduce<Record<LeadStatus, number>>(
     (accumulator, option) => {
@@ -260,6 +339,12 @@ export default async function TechnicalRequestsPage({
           </div>
         </section>
 
+        {saved === '1' && (
+          <div className="mt-6 rounded-2xl border border-[#9AD9BF] bg-[#EAF8F1] px-5 py-4 text-sm font-black text-[#087A55]">
+            Takip bilgileri başarıyla kaydedildi.
+          </div>
+        )}
+
         <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard label="Listelenen talepler" value={leads.length} />
           <MetricCard label="Yeni" value={counts.new} />
@@ -274,9 +359,95 @@ export default async function TechnicalRequestsPage({
         </section>
 
         <section className="mt-6 rounded-[1.5rem] border border-[#E5E2DA] bg-white p-4 shadow-sm md:p-5">
-          <div className="flex flex-wrap gap-2">
+          <form
+            method="get"
+            action="/tr/yonetim/talepler"
+            className="grid gap-4 lg:grid-cols-[1.4fr_0.7fr_0.7fr_0.7fr_auto]"
+          >
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-[#6F7782]">
+                Arama
+              </span>
+              <input
+                type="search"
+                name="q"
+                defaultValue={searchQuery}
+                placeholder="E-posta, ad, firma, konu veya açıklama"
+                className="mt-2 min-h-12 w-full rounded-xl border border-[#D8D4CC] bg-white px-4 text-sm text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
+              />
+            </label>
+
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-[#6F7782]">
+                Öncelik
+              </span>
+              <select
+                name="priority"
+                defaultValue={selectedPriority ?? ''}
+                className="mt-2 min-h-12 w-full rounded-xl border border-[#D8D4CC] bg-white px-4 text-sm font-bold text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
+              >
+                <option value="">Tümü</option>
+                {priorityOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-[#6F7782]">
+                Başlangıç
+              </span>
+              <input
+                type="date"
+                name="from"
+                defaultValue={fromDate ?? ''}
+                className="mt-2 min-h-12 w-full rounded-xl border border-[#D8D4CC] bg-white px-4 text-sm font-bold text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
+              />
+            </label>
+
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-[#6F7782]">
+                Bitiş
+              </span>
+              <input
+                type="date"
+                name="to"
+                defaultValue={toDate ?? ''}
+                className="mt-2 min-h-12 w-full rounded-xl border border-[#D8D4CC] bg-white px-4 text-sm font-bold text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
+              />
+            </label>
+
+            {selectedStatus && (
+              <input type="hidden" name="status" value={selectedStatus} />
+            )}
+
+            <div className="flex items-end gap-2">
+              <button
+                type="submit"
+                className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl bg-[#E45A2B] px-5 text-sm font-black text-white transition hover:bg-[#C94D24]"
+              >
+                Filtrele
+              </button>
+
+              <Link
+                href="/tr/yonetim/talepler"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#D8D4CC] px-4 text-sm font-black text-[#111315] transition hover:border-[#E45A2B]"
+              >
+                Temizle
+              </Link>
+            </div>
+          </form>
+
+          <div className="mt-5 flex flex-wrap gap-2 border-t border-[#E5E2DA] pt-5">
             <FilterLink
-              href="/tr/yonetim/talepler"
+              href={buildFilterHref({
+                priority: selectedPriority,
+                q: searchQuery,
+                from: fromDate,
+                to: toDate,
+              })}
               active={!selectedStatus}
               label="Tümü"
             />
@@ -284,7 +455,13 @@ export default async function TechnicalRequestsPage({
             {statusOptions.map(option => (
               <FilterLink
                 key={option.value}
-                href={`/tr/yonetim/talepler?status=${option.value}`}
+                href={buildFilterHref({
+                  status: option.value,
+                  priority: selectedPriority,
+                  q: searchQuery,
+                  from: fromDate,
+                  to: toDate,
+                })}
                 active={selectedStatus === option.value}
                 label={option.label}
               />
@@ -390,6 +567,11 @@ export default async function TechnicalRequestsPage({
                 >
                   <input type="hidden" name="id" value={lead.id} />
                   <input type="hidden" name="lang" value={lang} />
+                  <input
+                    type="hidden"
+                    name="return_query"
+                    value={returnQuery}
+                  />
 
                   <label className="block text-xs font-black uppercase tracking-[0.14em] text-[#111315]/60">
                     Durum
@@ -554,6 +736,63 @@ function PriorityBadge({
       {label}
     </span>
   )
+}
+
+function normalizeDateInput(value: string | undefined) {
+  if (!value) return null
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null
+}
+
+function sanitizeReturnQuery(value: string) {
+  const input = new URLSearchParams(value)
+  const output = new URLSearchParams()
+
+  const status = input.get('status')
+  const priority = input.get('priority')
+  const q = input.get('q')
+  const from = input.get('from')
+  const to = input.get('to')
+
+  if (status && statusValues.has(status as LeadStatus)) {
+    output.set('status', status)
+  }
+
+  if (priority && priorityValues.has(priority as LeadPriority)) {
+    output.set('priority', priority)
+  }
+
+  if (q) output.set('q', q.slice(0, 120))
+  if (normalizeDateInput(from ?? undefined)) output.set('from', from!)
+  if (normalizeDateInput(to ?? undefined)) output.set('to', to!)
+
+  return output.toString()
+}
+
+function buildFilterHref({
+  status,
+  priority,
+  q,
+  from,
+  to,
+}: {
+  status?: LeadStatus | null
+  priority?: LeadPriority | null
+  q?: string | null
+  from?: string | null
+  to?: string | null
+}) {
+  const params = new URLSearchParams()
+
+  if (status) params.set('status', status)
+  if (priority) params.set('priority', priority)
+  if (q) params.set('q', q)
+  if (from) params.set('from', from)
+  if (to) params.set('to', to)
+
+  const query = params.toString()
+  return query
+    ? `/tr/yonetim/talepler?${query}`
+    : '/tr/yonetim/talepler'
 }
 
 function formatDate(value: string) {
