@@ -117,7 +117,7 @@ export default async function TechnicalServicesPage({ params }: Props) {
           <p className="border-l-4 border-[#E45A2B] pl-4 text-xs font-black uppercase tracking-[0.2em] text-white/75">
             {copy.eyebrow}
           </p>
-          <h1 className="mt-6 max-w-5xl text-4xl font-bold leading-tight tracking-[-0.04em] md:text-6xl">
+          <h1 className="mt-6 max-w-5xl text-4xl font-bold leading-tight tracking-[-0.04em] text-white md:text-6xl">
             {copy.title}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/78">
