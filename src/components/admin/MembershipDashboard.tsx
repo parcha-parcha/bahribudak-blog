@@ -4,6 +4,10 @@ import { hasAdminRole } from '@/lib/admin-access'
 import { createAdminClient } from '@/utils/supabase/admin'
 import { createClient } from '@/utils/supabase/server'
 import Link from 'next/link'
+
+import MemberDirectory, {
+  type MemberDirectoryItem,
+} from './MemberDirectory'
 import { redirect } from 'next/navigation'
 
 type MetricCard = {
@@ -33,6 +37,25 @@ type RecentActivity = {
 type SegmentRow = {
   segment_code: string
   count: number
+}
+
+
+type MemberProfileRow = {
+  user_id: string
+  membership_status: 'active' | 'inactive' | 'blocked' | 'deleted'
+  email_verified_at: string | null
+  last_activity_at: string | null
+  created_at: string
+}
+
+type MemberSegmentAssignment = {
+  user_id: string
+  segment_code: string
+}
+
+type MemberActivitySummaryRow = {
+  user_id: string | null
+  event_type: string
 }
 
 export default async function MembershipDashboard({
@@ -86,6 +109,9 @@ export default async function MembershipDashboard({
     recentLeadsResult,
     recentActivityResult,
     segmentsResult,
+    memberProfilesResult,
+    memberSegmentsResult,
+    memberActivitySummaryResult,
   ] = await Promise.all([
     admin.auth.admin.listUsers({
       page: 1,
@@ -162,6 +188,17 @@ export default async function MembershipDashboard({
     admin
       .from('member_segments')
       .select('segment_code'),
+    admin
+      .from('member_profiles')
+      .select(
+        'user_id, membership_status, email_verified_at, last_activity_at, created_at',
+      ),
+    admin
+      .from('member_segments')
+      .select('user_id, segment_code'),
+    admin
+      .from('member_activity_events')
+      .select('user_id, event_type'),
   ])
 
   const segmentMap = new Map<string, number>()
@@ -218,6 +255,9 @@ export default async function MembershipDashboard({
         segments: 'Üye segmentleri',
         recentLeads: 'Son danışmanlık talepleri',
         recentActivity: 'Son aktiviteler',
+        memberDirectory: 'Üye yönetimi',
+        memberDirectoryText:
+          'Üyeleri arayın; üyelik, doğrulama ve segment bilgilerini tek ekranda inceleyin.',
         empty: 'Kayıt bulunmuyor.',
         priority: 'Öncelik',
         status: 'Durum',
@@ -254,6 +294,9 @@ export default async function MembershipDashboard({
         segments: 'Member segments',
         recentLeads: 'Recent consultancy requests',
         recentActivity: 'Recent activities',
+        memberDirectory: 'Member management',
+        memberDirectoryText:
+          'Search members and review membership, verification and segment data in one screen.',
         empty: 'No records found.',
         priority: 'Priority',
         status: 'Status',
@@ -313,6 +356,78 @@ export default async function MembershipDashboard({
   const recentActivity =
     (recentActivityResult.data ?? []) as RecentActivity[]
 
+  const memberProfiles = (
+    memberProfilesResult.data ?? []
+  ) as MemberProfileRow[]
+  const memberSegments = (
+    memberSegmentsResult.data ?? []
+  ) as MemberSegmentAssignment[]
+  const memberActivities = (
+    memberActivitySummaryResult.data ?? []
+  ) as MemberActivitySummaryRow[]
+
+  const profileByUserId = new Map(
+    memberProfiles.map(profile => [profile.user_id, profile]),
+  )
+
+  const segmentsByUserId = new Map<string, string[]>()
+
+  for (const assignment of memberSegments) {
+    const existing = segmentsByUserId.get(assignment.user_id) ?? []
+    existing.push(assignment.segment_code)
+    segmentsByUserId.set(assignment.user_id, existing)
+  }
+
+  const activityByUserId = new Map<
+    string,
+    { total: number; downloads: number }
+  >()
+
+  for (const activity of memberActivities) {
+    if (!activity.user_id) continue
+
+    const current = activityByUserId.get(activity.user_id) ?? {
+      total: 0,
+      downloads: 0,
+    }
+
+    current.total += 1
+
+    if (activity.event_type === 'publication_download') {
+      current.downloads += 1
+    }
+
+    activityByUserId.set(activity.user_id, current)
+  }
+
+  const members: MemberDirectoryItem[] = (
+    usersResult.data?.users ?? []
+  )
+    .map(authUser => {
+      const profile = profileByUserId.get(authUser.id)
+      const activity = activityByUserId.get(authUser.id)
+      const metadata = authUser.user_metadata ?? {}
+
+      return {
+        id: authUser.id,
+        email: authUser.email ?? '—',
+        fullName: String(metadata.full_name ?? ''),
+        companyName: String(metadata.company_name ?? ''),
+        membershipStatus:
+          profile?.membership_status ?? 'active',
+        verified: Boolean(
+          authUser.email_confirmed_at ?? profile?.email_verified_at,
+        ),
+        createdAt: authUser.created_at,
+        lastSignInAt: authUser.last_sign_in_at ?? null,
+        lastActivityAt: profile?.last_activity_at ?? null,
+        segments: (segmentsByUserId.get(authUser.id) ?? []).sort(),
+        activityCount: activity?.total ?? 0,
+        downloadCount: activity?.downloads ?? 0,
+      }
+    })
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
   return (
     <main className="min-h-screen bg-[#F3F6FA] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-7xl">
@@ -353,6 +468,21 @@ export default async function MembershipDashboard({
               </p>
             </article>
           ))}
+        </section>
+
+        <section className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm md:p-8">
+          <div>
+            <h2 className="text-2xl font-black text-[#0B2343]">
+              {copy.memberDirectory}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-7 text-[#66717E]">
+              {copy.memberDirectoryText}
+            </p>
+          </div>
+
+          <div className="mt-6">
+            <MemberDirectory members={members} lang={lang} />
+          </div>
         </section>
 
         <section className="mt-6 grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
