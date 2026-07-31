@@ -1,6 +1,7 @@
 'use client'
 
 import type { Lang } from '@/lib/i18n'
+import { createClient } from '@/utils/supabase/client'
 import { useState } from 'react'
 
 interface ContactFormProps {
@@ -29,6 +30,38 @@ export default function ContactForm({ lang }: ContactFormProps) {
     const data = new FormData(form)
 
     try {
+      const supabase = createClient()
+      const { error: databaseError } = await supabase.rpc(
+        'submit_public_technical_request',
+        {
+          p_email: String(data.get('email') ?? '').trim(),
+          p_full_name: String(data.get('name') ?? '').trim(),
+          p_company_name: String(data.get('company') ?? '').trim(),
+          p_role_title: String(data.get('role') ?? '').trim(),
+          p_request_type: String(data.get('requestType') ?? '').trim(),
+          p_process_area: String(data.get('processArea') ?? '').trim(),
+          p_problem_category: String(
+            data.get('problemCategory') ?? '',
+          ).trim(),
+          p_occurrence_frequency: String(
+            data.get('frequency') ?? '',
+          ).trim(),
+          p_support_preference: String(
+            data.get('supportPreference') ?? '',
+          ).trim(),
+          p_subject: String(data.get('subject') ?? '').trim(),
+          p_message: String(data.get('message') ?? '').trim(),
+          p_reference_url: String(
+            data.get('referenceUrl') ?? '',
+          ).trim(),
+          p_language: lang,
+          p_source: `/${lang}/contact`,
+          p_consent_accepted: data.get('consent') === 'accepted',
+        },
+      )
+
+      if (databaseError) throw databaseError
+
       const response = await fetch(
         'https://formspree.io/f/xkoypknn',
         {
@@ -40,10 +73,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
         },
       )
 
-      if (!response.ok) {
-        setStatus('error')
-        return
-      }
+      if (!response.ok) throw new Error('Formspree submission failed')
 
       form.reset()
       setStatus('success')
