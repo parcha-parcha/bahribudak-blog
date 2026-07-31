@@ -1,5 +1,6 @@
 import type { Lang } from '@/lib/i18n'
 import { authPath } from '@/lib/auth'
+import { getAdminRole } from '@/lib/admin-access'
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
@@ -128,6 +129,9 @@ export default async function AccountPage({
       .order('downloaded_at', { ascending: false })
       .limit(20),
   ])
+
+  const adminRole = await getAdminRole(user.id, user.email)
+  const canManage = adminRole === 'admin' || adminRole === 'super_admin'
 
   const tr = lang === 'tr'
   const fullName =
@@ -263,6 +267,10 @@ export default async function AccountPage({
         publications: 'Teknik Yayınları İncele',
         membership: 'Üyelik ve Erişim Bilgileri',
         documents: 'Teknik Dokümanları Aç',
+        managementTitle: 'Yönetim bağlantıları',
+        membershipManagement: 'Üyelik ve Dönüşüm Raporları',
+        requestManagement: 'Teknik Talepler Yönetimi',
+        roleLabel: 'Yönetici rolü',
         professionalTitle: 'Ücretsiz teknik erişim',
         comingSoon: 'Aktif',
         professionalText:
@@ -308,6 +316,10 @@ export default async function AccountPage({
         publications: 'Browse Technical Publications',
         membership: 'Membership and Access Information',
         documents: 'Open Technical Documents',
+        managementTitle: 'Management links',
+        membershipManagement: 'Membership and Conversion Reports',
+        requestManagement: 'Technical Request Management',
+        roleLabel: 'Administrator role',
         professionalTitle: 'Free technical access',
         comingSoon: 'Active',
         professionalText:
@@ -477,6 +489,36 @@ export default async function AccountPage({
                 <QuickLink href={`/${lang}/magazam`} label={copy.documents} />
               </div>
             </article>
+
+            {canManage && (
+              <article className="rounded-[2rem] border border-[#E5E2DA] bg-[#111315] p-6 text-white shadow-sm">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
+                      BB-OS
+                    </p>
+                    <h2 className="mt-2 text-xl font-black text-white">
+                      {copy.managementTitle}
+                    </h2>
+                  </div>
+
+                  <span className="rounded-full border border-white/20 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.08em] text-white/80">
+                    {copy.roleLabel}: {adminRole}
+                  </span>
+                </div>
+
+                <div className="mt-5 grid gap-3">
+                  <ManagementLink
+                    href={`/${lang}/yonetim/uyelik`}
+                    label={copy.membershipManagement}
+                  />
+                  <ManagementLink
+                    href={`/${lang}/yonetim/talepler`}
+                    label={copy.requestManagement}
+                  />
+                </div>
+              </article>
+            )}
           </div>
         </div>
 
@@ -586,6 +628,24 @@ function QuickLink({
       <span className="text-[#2EA6D9]" aria-hidden="true">
         →
       </span>
+    </Link>
+  )
+}
+
+function ManagementLink({
+  href,
+  label,
+}: {
+  href: string
+  label: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex min-h-12 items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-4 text-sm font-black text-white transition hover:border-[#E45A2B] hover:bg-[#E45A2B]"
+    >
+      <span>{label}</span>
+      <span aria-hidden="true">→</span>
     </Link>
   )
 }
