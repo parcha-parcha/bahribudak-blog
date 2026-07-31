@@ -20,22 +20,30 @@ type ProfileValues = {
 const interestOptions = {
   tr: [
     ['dyeing', 'Boya ve terbiye'],
+    ['finishing', 'Apre ve terbiye'],
     ['knitting', 'Örme'],
-    ['textile_chemicals', 'Tekstil kimyasalları'],
+    ['laboratory', 'Laboratuvar ve reçete'],
+    ['quality', 'Kalite ve proses kontrolü'],
     ['maintenance', 'Bakım ve teknik işletme'],
-    ['energy_efficiency', 'Enerji verimliliği'],
-    ['quality', 'Kalite'],
-    ['fire_safety', 'Yangın güvenliği'],
+    ['energy_efficiency', 'Enerji ve verimlilik'],
+    ['water_quality', 'Su kalitesi ve yardımcı işletmeler'],
+    ['textile_chemicals', 'Tekstil kimyasalları'],
+    ['fire_safety', 'Yangın güvenliği ve risk yönetimi'],
+    ['documentation', 'Teknik dokümantasyon ve sistem kurma'],
     ['management', 'Yönetim ve organizasyon'],
   ],
   en: [
-    ['dyeing', 'Dyeing and finishing'],
+    ['dyeing', 'Dyeing and wet processing'],
+    ['finishing', 'Finishing'],
     ['knitting', 'Knitting'],
-    ['textile_chemicals', 'Textile chemicals'],
+    ['laboratory', 'Laboratory and recipes'],
+    ['quality', 'Quality and process control'],
     ['maintenance', 'Maintenance and engineering'],
-    ['energy_efficiency', 'Energy efficiency'],
-    ['quality', 'Quality'],
-    ['fire_safety', 'Fire safety'],
+    ['energy_efficiency', 'Energy and efficiency'],
+    ['water_quality', 'Water quality and utilities'],
+    ['textile_chemicals', 'Textile chemicals'],
+    ['fire_safety', 'Fire safety and risk management'],
+    ['documentation', 'Technical documentation and system setup'],
     ['management', 'Management and organization'],
   ],
 } as const
@@ -69,14 +77,14 @@ export default function MemberSettingsForm({
         error: 'İşlem tamamlanamadı. Lütfen tekrar deneyin.',
         fullName: 'Ad soyad',
         companyName: 'Şirket adı',
-        jobTitle: 'Görev / pozisyon',
-        department: 'Departman',
+        jobTitle: 'Görev / ünvan',
+        department: 'Çalışılan proses',
         city: 'Şehir',
         countryCode: 'Ülke kodu',
         language: 'Tercih edilen dil',
         email: 'E-posta',
         interestsHelp:
-          'Bir veya birden fazla teknik konu seçebilirsiniz.',
+          'En çok ilgilendiğiniz teknik konuları seçin. Bu bilgiler içerik ve doküman önerilerini kişiselleştirmek için kullanılır.',
         emailMarketing:
           'Yeni teknik yayınlar ve hizmetler hakkında e-posta almak istiyorum.',
         consentNote:
@@ -89,14 +97,14 @@ export default function MemberSettingsForm({
         error: 'The operation could not be completed. Please try again.',
         fullName: 'Full name',
         companyName: 'Company name',
-        jobTitle: 'Job title / position',
-        department: 'Department',
+        jobTitle: 'Job title / role',
+        department: 'Primary process / department',
         city: 'City',
         countryCode: 'Country code',
         language: 'Preferred language',
         email: 'Email',
         interestsHelp:
-          'You may select one or more technical subjects.',
+          'Select the technical subjects you are most interested in. These preferences are used to personalize content and document recommendations.',
         emailMarketing:
           'I want to receive emails about new technical publications and services.',
         consentNote:
@@ -248,12 +256,12 @@ export default function MemberSettingsForm({
             />
           </div>
 
-          <label className="block text-sm font-black text-[#0B2343]">
+          <label className="block text-sm font-black text-[#111315]">
             {copy.language}
             <select
               name="preferred_language"
               defaultValue={profile.preferredLanguage}
-              className="mt-2 min-h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white px-4 font-normal text-[#0B2343] outline-none focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/12"
+              className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
             >
               <option value="tr">Türkçe</option>
               <option value="en">English</option>
@@ -271,21 +279,21 @@ export default function MemberSettingsForm({
 
       {section === 'preferences' && (
         <>
-          <p className="text-sm leading-7 text-[#4C5561]">
+          <p className="text-sm leading-7 text-[#6F7782]">
             {copy.interestsHelp}
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {interestOptions[lang].map(([value, label]) => (
               <label
                 key={value}
-                className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#D8DEE8] bg-[#F8FAFC] p-4 text-sm font-semibold text-[#0B2343]"
+                className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
               >
                 <input
                   type="checkbox"
                   name="interest_code"
                   value={value}
                   defaultChecked={interests.includes(value)}
-                  className="mt-0.5 h-4 w-4 accent-[#0B2343]"
+                  className="mt-0.5 h-4 w-4 accent-[#E45A2B]"
                 />
                 <span>{label}</span>
               </label>
@@ -296,18 +304,18 @@ export default function MemberSettingsForm({
 
       {section === 'consents' && (
         <>
-          <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#B9DFF0] bg-[#EAF6FC] p-5 text-sm font-semibold leading-6 text-[#0B2343]">
+          <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm font-semibold leading-6 text-[#111315]">
             <input
               type="checkbox"
               name="email_marketing"
               defaultChecked={
                 consents.email_marketing === true
               }
-              className="mt-1 h-4 w-4 accent-[#0B2343]"
+              className="mt-1 h-4 w-4 accent-[#E45A2B]"
             />
             <span>{copy.emailMarketing}</span>
           </label>
-          <p className="text-xs leading-6 text-[#66717E]">
+          <p className="text-xs leading-6 text-[#6F7782]">
             {copy.consentNote}
           </p>
         </>
@@ -317,7 +325,7 @@ export default function MemberSettingsForm({
         <p
           role="status"
           aria-live="polite"
-          className="rounded-2xl border border-[#B7DDED] bg-[#EAF6FC] p-4 text-sm font-semibold text-[#0B2343]"
+          className="rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
         >
           {message}
         </p>
@@ -326,7 +334,7 @@ export default function MemberSettingsForm({
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#0B2343] px-6 text-sm font-black text-white transition hover:bg-[#163A64] disabled:cursor-wait disabled:opacity-60"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#111315] px-6 text-sm font-black text-white transition hover:bg-[#C94D24] disabled:cursor-wait disabled:opacity-60"
       >
         {loading ? copy.saving : copy.save}
       </button>
@@ -342,11 +350,11 @@ function Field({
   name: string
 }) {
   return (
-    <label className="block text-sm font-black text-[#0B2343]">
+    <label className="block text-sm font-black text-[#111315]">
       {label}
       <input
         {...props}
-        className="mt-2 min-h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white px-4 font-normal text-[#0B2343] outline-none transition disabled:bg-[#F1F5F9] disabled:text-[#64748B] focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/12"
+        className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition disabled:bg-[#F6F4EF] disabled:text-[#6F7782] focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
       />
     </label>
   )
