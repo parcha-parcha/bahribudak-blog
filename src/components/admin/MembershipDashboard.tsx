@@ -1,6 +1,6 @@
 import type { Lang } from '@/lib/i18n'
 import { authPath } from '@/lib/auth'
-import { isAdminEmail } from '@/lib/admin-access'
+import { hasAdminRole } from '@/lib/admin-access'
 import { createAdminClient } from '@/utils/supabase/admin'
 import { createClient } from '@/utils/supabase/server'
 import Link from 'next/link'
@@ -58,7 +58,12 @@ export default async function MembershipDashboard({
     )
   }
 
-  if (!isAdminEmail(user.email)) {
+  if (
+    !(await hasAdminRole(user.id, user.email, [
+      'admin',
+      'super_admin',
+    ]))
+  ) {
     redirect(authPath(lang, 'account'))
   }
 
