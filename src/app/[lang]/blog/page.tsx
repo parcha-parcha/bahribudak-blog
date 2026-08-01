@@ -408,7 +408,7 @@ export default async function BlogPage({
 
   const metrics = [
     {
-      value: technicalPosts.length,
+      value: allPosts.length,
       label: copy.totalPublications,
     },
     {
