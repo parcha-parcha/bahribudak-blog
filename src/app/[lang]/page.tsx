@@ -254,10 +254,10 @@ export default async function HomePage({ params }: HomeProps) {
           ],
           documentsLabel: 'TECHNICAL DOCUMENTS',
           documentsTitle:
-            'A professional resource system of verified training, control and process files.',
+            'A practical technical resource system available with free membership.',
           documentsText:
-            'Access training notes, checklists, process forms and technical reference documents synchronized with the main resource catalog.',
-          documentsCtaMain: 'Open Technical Documents Center',
+            'Access training notes, checklists, process forms and technical reference documents through free membership.',
+          documentsCtaMain: 'Open Free Resource Center',
           resourceUnit: 'files',
           documentCards: {
             training: {
