@@ -13,6 +13,7 @@ const blogSlugPairs = [
     tr: 'ramoz-kompaktor-sonrasi-boyutsal-stabilite-yonetimi',
     en: 'dimensional-stability-management-after-stenter-and-compactor',
   },
+  
 ] as const
 
 /**
