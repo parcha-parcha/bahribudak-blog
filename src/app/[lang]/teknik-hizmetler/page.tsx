@@ -96,13 +96,13 @@ export default async function TechnicalServicesPage({ params }: Props) {
             ['01', 'Preliminary Technical Assessment', 'The scope of the problem, available data and required work method are defined.', ['Assessment note', 'Missing-data list', 'Recommended work scope']],
             ['02', 'Remote Process Analysis', 'Recipes, machine parameters, analysis results and production records are reviewed remotely.', ['Root-cause analysis', 'Corrective action plan', 'Revised control form']],
             ['03', 'On-Site Technical Review', 'Production flow, machinery, practices and records are assessed at the facility.', ['Site review report', 'Risk and nonconformity list', 'Prioritised action plan']],
-            ['04', 'Technical System Implementation', 'Company-specific SOPs, checklists, process forms and documentation systems are prepared.', ['Editable DOCX/XLSX files', 'Controlled PDF set', 'Training materials']],
+            ['04', 'Technical System Implementation', 'Company-specific SOPs, checklists, process forms and documentation systems are prepared.', ['Editable DOCX/XLSX files', 'Controlled PDF set', 'Training and implementation materials']],
           ],
           methodTitle: 'Working method',
           steps: ['Technical request', 'Preliminary assessment', 'Scope definition', 'Data or site review', 'Root-cause analysis', 'Action plan', 'Result verification'],
           privacyTitle: 'Confidentiality and technical data',
           privacy:
-            'Recipes, cost data, production records, analyses and process information are used only for technical assessment and are not shared without written permission.',
+            'Recipes, cost data, production records, analyses and process information are used only for technical assessment. Company names and commercial data are not published or shared with third parties without written permission.',
           finalTitle: 'Start by defining your technical problem.',
           finalText:
             'Share the problem, related process and available records. The appropriate work method will be determined after the preliminary assessment.',
