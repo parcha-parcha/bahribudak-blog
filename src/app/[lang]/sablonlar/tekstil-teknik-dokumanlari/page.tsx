@@ -977,7 +977,7 @@ export default async function TechnicalDocumentsPage({
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                href={`/${lang}/magazam`}
+                href={`/${lang}/sablonlar/tekstil-teknik-dokumanlari`}
                 className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#111315] transition hover:bg-[#E45A2B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {t.back}
