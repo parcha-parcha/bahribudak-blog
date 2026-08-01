@@ -1,7 +1,7 @@
 {
     "storage":  "vercel-private-blob",
     "prefix":  "downloads/",
-    "fileCount":  109,
+    "fileCount":  111,
     "files":  [
                   "downloads/20-000-kg-boyahane-ro-kapasite-secimi-carousel-v1.0.pdf",
                   "downloads/20-000-kg-boyahane-ro-kapasite-secimi-carousel-v1.0.pptx",
@@ -38,6 +38,8 @@
                   "downloads/BBOS-RTM-v1-0_Master.docx",
                   "downloads/BBOS-RTM-v1-0_Master.pdf",
                   "downloads/BBOS-RTM-v1-0_Sunum.pptx",
+                  "downloads/BBOS-RTM-v1-1_Carousel.pdf",
+                  "downloads/BBOS-RTM-v1-1_Sunum.pptx",
                   "downloads/bb-ty-01-pamuk-polyester-multifibre-naylon-kirlenmesi.docx",
                   "downloads/bb-ty-01-pamuk-polyester-multifibre-naylon-kirlenmesi.pdf",
                   "downloads/boyahanede-5-kritik-analiz.pdf",
