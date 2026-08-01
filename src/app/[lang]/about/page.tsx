@@ -323,7 +323,7 @@ export default async function AboutPage({ params }: AboutProps) {
               </Link>
 
               <Link
-                href={withLang('/magazam')}
+                href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
                 className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/35 px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
               >
                 {copy.secondaryCta}
@@ -557,7 +557,7 @@ export default async function AboutPage({ params }: AboutProps) {
             </Link>
 
             <Link
-              href={withLang('/magazam')}
+              href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
               className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
             >
               {copy.documentsCta}
