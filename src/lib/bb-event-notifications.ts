@@ -26,6 +26,11 @@ type QueueRow = {
   metadata: Record<string, unknown> | null
 }
 
+type DownloadQueueRow = QueueRow & {
+  status: string
+  inserted: boolean
+}
+
 function maskEmail(value: string | null | undefined) {
   if (!value) return null
   const [local, domain] = value.split('@')
@@ -152,35 +157,67 @@ export async function enqueueAndSendBbEvent(payload: EventPayload) {
   const occurredAt = payload.occurredAt ?? new Date().toISOString()
   const eventId = randomUUID()
 
-  const { data, error } = await admin
-    .from('bb_event_queue')
-    .upsert(
-      {
-        id: eventId,
-        event_type: payload.eventType,
-        dedupe_key: payload.dedupeKey,
-        occurred_at: occurredAt,
-        user_id: payload.userId ?? null,
-        masked_email: maskEmail(payload.email),
-        resource_path: payload.resourcePath ?? null,
-        resource_title: payload.resourceTitle ?? null,
-        metadata: payload.metadata ?? {},
-        status: 'pending',
-      },
-      {
-        onConflict: 'dedupe_key',
-        ignoreDuplicates: true,
-      },
-    )
-    .select(
-      'id,event_type,occurred_at,masked_email,resource_path,resource_title,metadata,status',
-    )
-    .maybeSingle()
+  const maskedEmail = maskEmail(payload.email)
+  let row: QueueRow & { status: string }
 
-  if (error) throw error
-  if (!data) return { duplicate: true as const }
+  if (payload.eventType === 'publication_download') {
+    const { data, error } = await admin
+      .rpc('enqueue_bb_download_event', {
+        p_event_id: eventId,
+        p_dedupe_key: payload.dedupeKey,
+        p_occurred_at: occurredAt,
+        p_user_id: payload.userId ?? null,
+        p_masked_email: maskedEmail,
+        p_resource_path: payload.resourcePath ?? null,
+        p_resource_title: payload.resourceTitle ?? null,
+        p_metadata: payload.metadata ?? {},
+      })
+      .single()
 
-  const row = data as QueueRow & { status: string }
+    if (error) throw error
+    if (!data) return { duplicate: true as const }
+
+    const downloadRow = data as DownloadQueueRow
+
+    if (!downloadRow.inserted) {
+      return {
+        duplicate: true as const,
+        eventId: downloadRow.id,
+      }
+    }
+
+    row = downloadRow
+  } else {
+    const { data, error } = await admin
+      .from('bb_event_queue')
+      .upsert(
+        {
+          id: eventId,
+          event_type: payload.eventType,
+          dedupe_key: payload.dedupeKey,
+          occurred_at: occurredAt,
+          user_id: payload.userId ?? null,
+          masked_email: maskedEmail,
+          resource_path: payload.resourcePath ?? null,
+          resource_title: payload.resourceTitle ?? null,
+          metadata: payload.metadata ?? {},
+          status: 'pending',
+        },
+        {
+          onConflict: 'dedupe_key',
+          ignoreDuplicates: true,
+        },
+      )
+      .select(
+        'id,event_type,occurred_at,masked_email,resource_path,resource_title,metadata,status',
+      )
+      .maybeSingle()
+
+    if (error) throw error
+    if (!data) return { duplicate: true as const }
+
+    row = data as QueueRow & { status: string }
+  }
 
   try {
     const result = await sendEmail(row)
