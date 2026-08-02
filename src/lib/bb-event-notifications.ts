@@ -31,7 +31,7 @@ function maskEmail(value: string | null | undefined) {
   const [local, domain] = value.split('@')
   if (!domain) return '***'
   const visible = local.slice(0, 1)
-  return `${visible}${'*'.repeat(Math.max(3, local.length - 1))}@${domain}`
+  return `${visible}${'*'.repeat(Math.max(3, local.length - 1))}@${domain.toLocaleLowerCase('tr-TR')}`
 }
 
 function htmlEscape(value: string) {
@@ -46,17 +46,36 @@ function htmlEscape(value: string) {
 function eventLabel(eventType: BbEventType) {
   return eventType === 'member_registered'
     ? 'Yeni ücretsiz üyelik'
-    : 'Yeni doküman indirmesi'
+    : 'Yeni doküman indirildi'
 }
 
 function eventSubject(row: QueueRow) {
   return `[bahribudak.com] ${eventLabel(row.event_type)}`
 }
 
+function formatTurkeyDateTime(value: string) {
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return value
+  }
+
+  return new Intl.DateTimeFormat('tr-TR', {
+    timeZone: 'Europe/Istanbul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(date)
+}
+
 function eventHtml(row: QueueRow) {
   const details = [
     ['Olay', eventLabel(row.event_type)],
-    ['Tarih-saat', row.occurred_at],
+    ['Tarih-saat', formatTurkeyDateTime(row.occurred_at)],
     ['Olay kimliği', row.id],
     ['Üye', row.masked_email ?? 'Bilgi yok'],
     ['İçerik / dosya', row.resource_title ?? row.resource_path ?? 'Bilgi yok'],
@@ -111,14 +130,18 @@ async function sendEmail(row: QueueRow) {
 export function createDownloadDedupeKey(args: {
   userId: string
   resourcePath: string
-  requestId?: string | null
+  occurredAt?: Date
 }) {
-  const minute = new Date().toISOString().slice(0, 16)
+  const occurredAt = args.occurredAt ?? new Date()
+  const fiveMinuteWindow = Math.floor(
+    occurredAt.getTime() / (5 * 60 * 1000),
+  )
+
   const source = [
     'publication_download',
     args.userId,
     args.resourcePath,
-    args.requestId ?? minute,
+    fiveMinuteWindow.toString(),
   ].join('|')
 
   return createHash('sha256').update(source).digest('hex')

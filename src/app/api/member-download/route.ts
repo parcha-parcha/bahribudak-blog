@@ -317,7 +317,6 @@ export async function GET(
       dedupeKey: createDownloadDedupeKey({
         userId: user.id,
         resourcePath: downloadPath,
-        requestId: request.headers.get('x-vercel-id'),
       }),
       userId: user.id,
       email: user.email,
