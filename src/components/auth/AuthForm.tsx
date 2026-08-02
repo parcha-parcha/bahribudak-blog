@@ -225,15 +225,13 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
           return
         }
 
-        if (data.user) {
+        if (data.session) {
           fetch('/api/bb-events/member-registration', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              Accept: 'application/json',
             },
-            body: JSON.stringify({
-              userId: data.user.id,
-            }),
+            credentials: 'same-origin',
             keepalive: true,
           }).catch(notificationError => {
             console.warn(
@@ -241,9 +239,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
               notificationError,
             )
           })
-        }
 
-        if (data.session) {
           router.replace(destination)
           router.refresh()
           return

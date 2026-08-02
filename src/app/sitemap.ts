@@ -56,30 +56,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
     ]
 
-    if (lang === 'tr') {
-      localizedPages.push(
-        {
-          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari`,
-          changeFrequency: 'monthly',
-          priority: 0.72,
-        },
-        {
-          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
-          changeFrequency: 'monthly',
-          priority: 0.7,
-        },
-        {
-          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
-          changeFrequency: 'monthly',
-          priority: 0.7,
-        },
-        {
-          url: `${siteUrl}/tr/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
-          changeFrequency: 'monthly',
-          priority: 0.7,
-        },
-      )
-    }
+    localizedPages.push(
+      {
+        url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari`,
+        changeFrequency: 'monthly',
+        priority: 0.72,
+      },
+      {
+        url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/egitim-notlari`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      },
+      {
+        url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/proses-formlari`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      },
+      {
+        url: `${siteUrl}/${lang}/sablonlar/tekstil-teknik-dokumanlari/kontrol-listeleri`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      },
+    )
 
     return localizedPages
   })
