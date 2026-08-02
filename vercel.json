@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/daily-event-summary",
+      "schedule": "15 20 * * *"
+    }
+  ]
+}

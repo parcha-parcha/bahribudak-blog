@@ -4,6 +4,10 @@ import {
   type ResourceItem,
 } from '@/lib/resources'
 import { authPath } from '@/lib/auth'
+import {
+  createDownloadDedupeKey,
+  enqueueAndSendBbEvent,
+} from '@/lib/bb-event-notifications'
 import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
 import type { SupabaseClient } from '@supabase/supabase-js'
@@ -307,6 +311,28 @@ export async function GET(
       user.id,
       request.headers.get('user-agent'),
     )
+
+    const notificationResult = await enqueueAndSendBbEvent({
+      eventType: 'publication_download',
+      dedupeKey: createDownloadDedupeKey({
+        userId: user.id,
+        resourcePath: downloadPath,
+      }),
+      userId: user.id,
+      email: user.email,
+      resourcePath: downloadPath,
+      resourceTitle: resource?.title.tr ?? filename,
+      metadata: {
+        file_type: resource?.format ?? getFileType(filename),
+        source: 'member-download',
+      },
+    })
+
+    if ('notificationFailed' in notificationResult) {
+      console.warn('Download completed but notification failed', {
+        eventId: notificationResult.eventId,
+      })
+    }
 
     const response = new NextResponse(blobResult.stream, {
       status: 200,

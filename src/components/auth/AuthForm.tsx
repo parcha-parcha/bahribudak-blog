@@ -225,6 +225,24 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
           return
         }
 
+        if (data.user) {
+          fetch('/api/bb-events/member-registration', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: data.user.id,
+            }),
+            keepalive: true,
+          }).catch(notificationError => {
+            console.warn(
+              'Membership notification request failed.',
+              notificationError,
+            )
+          })
+        }
+
         if (data.session) {
           router.replace(destination)
           router.refresh()
