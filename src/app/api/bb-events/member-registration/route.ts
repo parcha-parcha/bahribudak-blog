@@ -1,71 +1,53 @@
-import { enqueueAndSendBbEvent } from '@/lib/bb-event-notifications'
-import { createAdminClient } from '@/utils/supabase/admin'
+import { enqueueMemberRegistrationNotification } from '@/lib/member-registration-notification'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { isSameOriginRequest } from '@/lib/request-security'
+import { createClient } from '@/utils/supabase/server'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export const runtime = 'nodejs'
 
-const USER_LOOKUP_ATTEMPTS = 6
-const USER_LOOKUP_DELAY_MS = 400
-
-function wait(milliseconds: number) {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
-
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as {
-      userId?: string
-    }
-
-    if (!body.userId) {
-      return NextResponse.json({ error: 'userId gerekli.' }, { status: 400 })
-    }
-
-    const admin = createAdminClient()
-    let user = null
-    let lookupError: Error | null = null
-
-    for (let attempt = 1; attempt <= USER_LOOKUP_ATTEMPTS; attempt += 1) {
-      const result = await admin.auth.admin.getUserById(body.userId)
-
-      if (result.data.user) {
-        user = result.data.user
-        lookupError = null
-        break
-      }
-
-      lookupError = result.error ?? new Error('Üye henüz okunabilir durumda değil.')
-
-      if (attempt < USER_LOOKUP_ATTEMPTS) {
-        await wait(USER_LOOKUP_DELAY_MS)
-      }
-    }
-
-    if (!user) {
-      console.error('Member registration user lookup failed', {
-        userId: body.userId,
-        error: lookupError?.message ?? 'Üye bulunamadı.',
-      })
-
+    if (!isSameOriginRequest(request)) {
       return NextResponse.json(
-        { error: 'Üye kaydı henüz doğrulanamadı. Bildirim daha sonra tekrar denenebilir.' },
-        { status: 503 },
+        { error: 'İstek kaynağı doğrulanamadı.' },
+        { status: 403 },
       )
     }
 
-    const result = await enqueueAndSendBbEvent({
-      eventType: 'member_registered',
-      dedupeKey: `member_registered:${user.id}`,
-      occurredAt: user.created_at,
-      userId: user.id,
-      email: user.email,
-      metadata: {
-        registration_source:
-          user.user_metadata?.registration_source ?? 'membership-form',
-        preferred_language:
-          user.user_metadata?.preferred_language ?? 'tr',
-      },
+    const supabase = await createClient()
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
+
+    if (userError || !user) {
+      return NextResponse.json(
+        { error: 'Oturum doğrulanamadı.' },
+        { status: 401 },
+      )
+    }
+
+    const rateLimit = await checkRateLimit({
+      key: `rate-limit:member-registration:${user.id}`,
+      limit: 5,
+      windowSeconds: 10 * 60,
     })
+
+    if (rateLimit.limited) {
+      return NextResponse.json(
+        { error: 'Çok fazla istek gönderildi.' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': '600',
+          },
+        },
+      )
+    }
+
+    const result =
+      await enqueueMemberRegistrationNotification(user)
 
     return NextResponse.json({ ok: true, ...result })
   } catch (error) {

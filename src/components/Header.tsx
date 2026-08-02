@@ -100,10 +100,10 @@ export default function Header({ lang }: HeaderProps) {
   }, [menuOpen, pathname])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
+    <header className="relative sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
       <div className="h-[3px] bg-[#E45A2B]" />
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-4 sm:py-3 lg:px-6">
         <Link
           href={homePath}
           className="flex shrink-0 items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
@@ -113,10 +113,10 @@ export default function Header({ lang }: HeaderProps) {
               : 'Bahri Budak home page'
           }
         >
-          <span className="flex h-[56px] w-[156px] items-center justify-start bg-transparent">
+          <span className="flex h-[48px] w-[128px] items-center justify-start bg-transparent sm:h-[56px] sm:w-[156px]">
             <BrandLogo
               variant="full"
-              className="h-[52px] w-auto object-contain object-left"
+              className="h-[44px] w-auto object-contain object-left sm:h-[52px]"
               priority
             />
           </span>
@@ -154,7 +154,7 @@ export default function Header({ lang }: HeaderProps) {
           })}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <SearchButton lang={lang} />
 
           <AuthStatusLink
@@ -164,7 +164,7 @@ export default function Header({ lang }: HeaderProps) {
 
           <Link
             href={switchedPath}
-            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white px-3 text-[11px] font-bold uppercase tracking-wider text-[#111315] transition-colors hover:border-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
+            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white px-2 text-[11px] font-bold uppercase tracking-wider text-[#111315] transition-colors hover:border-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2 sm:px-3"
             aria-label={
               otherLang === 'en'
                 ? 'Switch to English'
@@ -224,7 +224,7 @@ export default function Header({ lang }: HeaderProps) {
         <>
           <button
             type="button"
-            className="fixed inset-x-0 bottom-0 top-[87px] z-40 bg-[#111315]/30 backdrop-blur-[2px] xl:hidden"
+            className="absolute inset-x-0 top-full z-40 h-dvh bg-[#111315]/30 backdrop-blur-[2px] xl:hidden"
             onClick={() => setMenuState({ open: false, pathname })}
             aria-label={
               lang === 'tr'
@@ -236,7 +236,7 @@ export default function Header({ lang }: HeaderProps) {
 
           <div
             id={mobileMenuId}
-            className="relative z-50 border-t border-[#E5E2DA] bg-white px-4 py-4 shadow-[0_18px_45px_rgba(17,19,21,0.14)] xl:hidden"
+            className="relative z-50 border-t border-[#E5E2DA] bg-white px-3 py-4 shadow-[0_18px_45px_rgba(17,19,21,0.14)] sm:px-4 xl:hidden"
           >
             <nav
               className="mx-auto max-w-7xl"
