@@ -276,17 +276,8 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
 
   return (
     <section className="min-h-[calc(100vh-5rem)] bg-[#F6F4EF] px-4 py-10 md:px-6 md:py-16">
-      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[2rem] border border-[#E5E2DA] bg-white shadow-[0_28px_80px_rgba(17,19,21,0.14)] lg:grid-cols-[0.92fr_1.08fr]">
+      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-lg border border-[#E5E2DA] bg-white lg:grid-cols-[0.92fr_1.08fr]">
         <aside className="relative overflow-hidden bg-[#111315] px-6 py-9 text-white md:px-10 md:py-12 lg:min-h-[720px]">
-          <div
-            className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/10"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute -bottom-28 -left-24 h-80 w-80 rounded-full border border-[#E45A2B]/35"
-            aria-hidden="true"
-          />
-
           <div className="relative z-10 flex h-full flex-col">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
@@ -310,7 +301,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
             </div>
 
             <div className="mt-auto pt-10">
-              <div className="rounded-[1.4rem] border border-white/15 bg-white/5 p-5 backdrop-blur">
+              <div className="rounded-md border border-white/15 bg-white/5 p-5">
                 <p className="text-sm font-black text-white">
                   {copy.secureAccess}
                 </p>
@@ -323,7 +314,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
         </aside>
 
         <div className="px-6 py-9 md:px-10 md:py-12 lg:px-14">
-          <div className="mb-8 h-1.5 w-16 rounded-full bg-[#E45A2B]" />
+          <div className="mb-8 h-1.5 w-16 bg-[#E45A2B]" />
 
           <h1 className="max-w-xl text-3xl font-black leading-tight tracking-[-0.035em] text-[#111315] md:text-4xl">
             {copy.title}
@@ -405,7 +396,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
                   />
                 </div>
 
-                <div className="space-y-3 rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4">
+                <div className="space-y-3 rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-4">
                   <CheckboxField
                     name="membership_terms"
                     required
@@ -450,7 +441,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
               <p
                 role="status"
                 aria-live="polite"
-                className="rounded-2xl border border-[#E45A2B]/35 bg-[#F6F4EF] p-4 text-sm font-semibold leading-6 text-[#111315]"
+                className="rounded-md border border-[#E45A2B]/35 bg-[#F6F4EF] p-4 text-sm font-semibold leading-6 text-[#111315]"
               >
                 {message}
               </p>
@@ -459,7 +450,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex min-h-13 w-full items-center justify-center rounded-full bg-[#111315] px-6 py-3.5 text-sm font-black text-white transition hover:bg-[#E45A2B] focus:outline-none focus:ring-4 focus:ring-[#E45A2B]/25 disabled:cursor-wait disabled:opacity-60"
+              className="inline-flex min-h-13 w-full items-center justify-center rounded-md bg-[#111315] px-6 py-3.5 text-sm font-black text-white transition hover:bg-[#2A2E32] focus:outline-none focus:ring-4 focus:ring-[#E45A2B]/25 disabled:cursor-wait disabled:opacity-60"
             >
               {loading ? copy.loading : copy.submit}
             </button>
@@ -486,9 +477,9 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
 
 function Benefit({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+    <div className="flex items-start gap-3 rounded-md border border-white/10 bg-white/[0.04] px-4 py-3">
       <span
-        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E45A2B] text-xs font-black text-white"
+        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-[#E45A2B] text-xs font-black text-[#111315]"
         aria-hidden="true"
       >
         ✓
@@ -508,7 +499,7 @@ function InfoCard({
   text: string
 }) {
   return (
-    <div className="rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4">
+    <div className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-4">
       <p className="text-xs font-black leading-5 text-[#111315]">
         {title}
       </p>
@@ -531,7 +522,7 @@ function Field({
       {label}
       <input
         {...inputProps}
-        className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition placeholder:text-[#6F7782]/65 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12 [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0_1000px_#FFFFFF_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:#111315]"
+        className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition placeholder:text-[#6F7782]/65 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12 [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0_1000px_#FFFFFF_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:#111315]"
       />
     </label>
   )
@@ -557,7 +548,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
+        className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
       >
         <option value="" disabled>
           {placeholder}

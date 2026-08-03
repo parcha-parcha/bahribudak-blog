@@ -261,7 +261,7 @@ export default function MemberSettingsForm({
             <select
               name="preferred_language"
               defaultValue={profile.preferredLanguage}
-              className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
+              className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
             >
               <option value="tr">Türkçe</option>
               <option value="en">English</option>
@@ -286,7 +286,7 @@ export default function MemberSettingsForm({
             {interestOptions[lang].map(([value, label]) => (
               <label
                 key={value}
-                className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
+                className="flex cursor-pointer items-start gap-3 rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
               >
                 <input
                   type="checkbox"
@@ -304,7 +304,7 @@ export default function MemberSettingsForm({
 
       {section === 'consents' && (
         <>
-          <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm font-semibold leading-6 text-[#111315]">
+          <label className="flex cursor-pointer items-start gap-3 rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm font-semibold leading-6 text-[#111315]">
             <input
               type="checkbox"
               name="email_marketing"
@@ -325,7 +325,7 @@ export default function MemberSettingsForm({
         <p
           role="status"
           aria-live="polite"
-          className="rounded-2xl border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
+          className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-4 text-sm font-semibold text-[#111315]"
         >
           {message}
         </p>
@@ -334,7 +334,7 @@ export default function MemberSettingsForm({
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#111315] px-6 text-sm font-black text-white transition hover:bg-[#C94D24] disabled:cursor-wait disabled:opacity-60"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[#111315] px-6 text-sm font-black text-white transition hover:bg-[#2A2E32] disabled:cursor-wait disabled:opacity-60"
       >
         {loading ? copy.saving : copy.save}
       </button>
@@ -354,7 +354,7 @@ function Field({
       {label}
       <input
         {...props}
-        className="mt-2 min-h-12 w-full rounded-2xl border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition disabled:bg-[#F6F4EF] disabled:text-[#6F7782] focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
+        className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition disabled:bg-[#F6F4EF] disabled:text-[#6F7782] focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12"
       />
     </label>
   )

@@ -96,27 +96,27 @@ export default async function MemberSettingsPage({
       }
 
   return (
-    <main className="min-h-screen bg-[#F3F6FA] px-4 py-10 md:px-6 md:py-14">
+    <main className="min-h-screen bg-[#F6F4EF] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-4xl">
-        <section className="rounded-[2rem] bg-[#071E3A] p-7 text-white shadow-[0_24px_70px_rgba(11,35,67,0.16)] md:p-9">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65C6EA]">
+        <section className="rounded-lg bg-[#111315] p-7 text-white md:p-9">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
             {copy.eyebrow}
           </p>
           <h1 className="mt-3 text-3xl font-black tracking-[-0.035em] text-white md:text-4xl">
             {copy.title}
           </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#DCE8F5]">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#F6F4EF]/75">
             {copy.summary}
           </p>
           <Link
             href={authPath(lang, 'account')}
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#071E3A]"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#111315]"
           >
             ← {copy.back}
           </Link>
         </section>
 
-        <section className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm md:p-8">
+        <section className="mt-6 rounded-lg border border-[#E5E2DA] bg-white p-6 md:p-8">
           <MemberSettingsForm
             lang={lang}
             section={section}

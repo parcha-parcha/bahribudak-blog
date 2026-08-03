@@ -58,33 +58,29 @@ export default async function ConsultancyRequestPage({
       }
 
   return (
-    <main className="min-h-screen bg-[#F3F6FA] px-4 py-10 md:px-6 md:py-14">
+    <main className="min-h-screen bg-[#F6F4EF] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-5xl">
-        <section className="relative overflow-hidden rounded-[2rem] bg-[#071E3A] p-7 text-white shadow-[0_24px_70px_rgba(11,35,67,0.16)] md:p-10">
-          <div
-            className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/10"
-            aria-hidden="true"
-          />
+        <section className="relative overflow-hidden rounded-lg bg-[#111315] p-7 text-white md:p-10">
           <div className="relative z-10">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65C6EA]">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
               {copy.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-3xl font-black tracking-[-0.035em] text-white md:text-5xl">
               {copy.title}
             </h1>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#DCE8F5] md:text-base">
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#F6F4EF]/75 md:text-base">
               {copy.summary}
             </p>
             <Link
               href={authPath(lang, 'account')}
-              className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#071E3A]"
+              className="mt-7 inline-flex min-h-11 items-center justify-center rounded-md border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#111315]"
             >
               ← {copy.back}
             </Link>
           </div>
         </section>
 
-        <section className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm md:p-9">
+        <section className="mt-6 rounded-lg border border-[#E5E2DA] bg-white p-6 md:p-9">
           <ConsultancyRequestForm
             lang={lang}
             initialValues={{
@@ -99,7 +95,7 @@ export default async function ConsultancyRequestPage({
           />
         </section>
 
-        <p className="mt-5 text-center text-xs leading-6 text-[#66717E]">
+        <p className="mt-5 text-center text-xs leading-6 text-[#6F7782]">
           {copy.security}
         </p>
       </div>
