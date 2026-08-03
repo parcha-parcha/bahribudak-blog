@@ -101,7 +101,7 @@ export default function Header({ lang }: HeaderProps) {
 
   return (
     <header className="relative sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
-      <div className="h-[3px] bg-[#E45A2B]" />
+      <div className="h-0.5 bg-[#E45A2B]" />
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-4 sm:py-3 lg:px-6">
         <Link
@@ -113,17 +113,17 @@ export default function Header({ lang }: HeaderProps) {
               : 'Bahri Budak home page'
           }
         >
-          <span className="flex h-[48px] w-[128px] items-center justify-start bg-transparent sm:h-[56px] sm:w-[156px]">
+          <span className="flex h-[48px] w-[176px] items-center justify-start bg-transparent sm:h-[56px] sm:w-[196px]">
             <BrandLogo
-              variant="full"
-              className="h-[44px] w-auto object-contain object-left sm:h-[52px]"
+              variant="compact"
+              className="h-[42px] w-auto object-contain object-left sm:h-[46px]"
               priority
             />
           </span>
         </Link>
 
         <nav
-          className="hidden items-center gap-1 border border-[#E5E2DA] bg-white px-2 py-1.5 xl:flex"
+          className="hidden items-center gap-1 bg-transparent px-1 py-1.5 xl:flex"
           aria-label={
             lang === 'tr'
               ? 'Ana navigasyon'
@@ -142,10 +142,10 @@ export default function Header({ lang }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 aria-current={active ? 'page' : undefined}
-                className={`whitespace-nowrap rounded-md px-3 py-2 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-1 ${
+                className={`whitespace-nowrap border-b-2 border-transparent px-3 py-2 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-1 ${
                   active
-                    ? 'bg-[#111315] text-white shadow-sm'
-                    : 'text-[#111315]/82 hover:bg-white hover:text-[#111315]'
+                    ? 'border-[#E45A2B] text-[#111315]'
+                    : 'text-[#111315]/70 hover:border-[#E5E2DA] hover:text-[#111315]'
                 }`}
               >
                 {link.label}
@@ -270,7 +270,7 @@ export default function Header({ lang }: HeaderProps) {
                       <span
                         className={`text-base ${
                           active
-                            ? 'text-[#F09A7C]'
+                            ? 'text-[#E45A2B]'
                             : 'text-[#E45A2B]'
                         }`}
                         aria-hidden="true"

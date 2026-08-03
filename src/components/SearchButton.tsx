@@ -70,7 +70,7 @@ export default function SearchButton({ lang }: SearchButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D7E0EA] bg-white text-[#0B2343] shadow-sm transition-colors hover:border-[#2EA6D9] hover:bg-[#EAF6FC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#E5E2DA] bg-white text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#F6F4EF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
         aria-label={copy.button}
         title={copy.button}
       >
@@ -90,7 +90,7 @@ export default function SearchButton({ lang }: SearchButtonProps) {
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#061A33]/72 px-4 pt-[12vh] backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#111315]/72 px-4 pt-[12vh] backdrop-blur-sm"
           role="presentation"
           onMouseDown={(event) => {
             if (event.currentTarget === event.target) setOpen(false)
@@ -100,26 +100,26 @@ export default function SearchButton({ lang }: SearchButtonProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="site-search-title"
-            className="w-full max-w-2xl rounded-[28px] border border-white/15 bg-white p-5 shadow-[0_32px_100px_rgba(6,26,51,0.35)] sm:p-7"
+            className="w-full max-w-2xl rounded-lg border border-[#E5E2DA] bg-white p-5 shadow-[0_32px_100px_rgba(17,19,21,0.30)] sm:p-7"
           >
             <div className="mb-5 flex items-start justify-between gap-5">
               <div>
-                <p className="mb-1 text-xs font-black uppercase tracking-[0.2em] text-[#2EA6D9]">
+                <p className="mb-1 text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
                   Bahri Budak
                 </p>
                 <h2
                   id="site-search-title"
-                  className="text-2xl font-extrabold tracking-[-0.03em] text-[#0B2343]"
+                  className="text-2xl font-extrabold tracking-[-0.03em] text-[#111315]"
                 >
                   {copy.title}
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-[#4C5561]">{copy.help}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#6F7782]">{copy.help}</p>
               </div>
 
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#D7E0EA] text-[#0B2343] transition-colors hover:bg-[#EAF6FC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9]"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[#E5E2DA] text-[#111315] transition-colors hover:bg-[#F6F4EF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B]"
                 aria-label={copy.close}
               >
                 <svg
@@ -150,11 +150,11 @@ export default function SearchButton({ lang }: SearchButtonProps) {
                 placeholder={copy.placeholder}
                 autoComplete="off"
                 maxLength={120}
-                className="min-h-[52px] flex-1 rounded-2xl border border-[#D7E0EA] bg-[#F8FAFC] px-4 py-3 text-base text-[#0B2343] outline-none transition placeholder:text-[#4C5561]/70 focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/15"
+                className="min-h-[52px] flex-1 rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-4 py-3 text-base text-[#111315] outline-none transition placeholder:text-[#6F7782]/70 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/15"
               />
               <button
                 type="submit"
-                className="min-h-[52px] rounded-2xl bg-[#0B2343] px-7 py-3 font-bold text-white transition-colors hover:bg-[#12365E] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+                className="min-h-[52px] rounded-md bg-[#111315] px-7 py-3 font-bold text-white transition-colors hover:bg-[#1A1F24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
               >
                 {copy.submit}
               </button>

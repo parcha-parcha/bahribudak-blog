@@ -38,7 +38,7 @@ export default function AuthStatusLink({ lang, className, onClick, showArrow = f
   return (
     <Link href={authPath(lang, isAuthenticated ? 'account' : 'login')} className={className} onClick={onClick}>
       <span>{label}</span>
-      {showArrow && <span className="text-base text-[#2EA6D9]" aria-hidden="true">→</span>}
+      {showArrow && <span className="text-base text-[#E45A2B]" aria-hidden="true">→</span>}
     </Link>
   )
 }
