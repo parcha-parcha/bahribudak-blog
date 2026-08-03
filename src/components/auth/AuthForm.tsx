@@ -2,11 +2,12 @@
 
 import type { Lang } from '@/lib/i18n'
 import { authPath, safeInternalPath } from '@/lib/auth'
+import { captureRequestAttribution } from '@/lib/request-attribution'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import type { FormEvent, InputHTMLAttributes, ReactNode } from 'react'
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 type AuthMode = 'login' | 'register'
 
@@ -28,6 +29,10 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    captureRequestAttribution()
+  }, [])
 
   const isRegister = mode === 'register'
   const accountPath = authPath(lang, 'account')

@@ -1,8 +1,12 @@
 'use client'
 
 import type { Lang } from '@/lib/i18n'
+import {
+  captureRequestAttribution,
+  requestAttributionToFormData,
+} from '@/lib/request-attribution'
 import { createClient } from '@/utils/supabase/client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ContactFormProps {
   lang: Lang
@@ -20,6 +24,10 @@ export default function ContactForm({ lang }: ContactFormProps) {
   const [status, setStatus] = useState<FormStatus>('idle')
   const tr = lang === 'tr'
 
+  useEffect(() => {
+    captureRequestAttribution()
+  }, [])
+
   async function handleSubmit(
     event: React.FormEvent<HTMLFormElement>,
   ) {
@@ -28,6 +36,9 @@ export default function ContactForm({ lang }: ContactFormProps) {
 
     const form = event.currentTarget
     const data = new FormData(form)
+    const attribution = requestAttributionToFormData(
+      captureRequestAttribution(),
+    )
 
     try {
       const response = await fetch(
@@ -39,9 +50,10 @@ export default function ContactForm({ lang }: ContactFormProps) {
             Accept: 'application/json',
           },
           credentials: 'same-origin',
-          body: JSON.stringify(
-            Object.fromEntries(data.entries()),
-          ),
+          body: JSON.stringify({
+            ...Object.fromEntries(data.entries()),
+            ...attribution,
+          }),
         },
       )
 

@@ -1,9 +1,10 @@
 'use client'
 
 import type { Lang } from '@/lib/i18n'
+import { captureRequestAttribution } from '@/lib/request-attribution'
 import { createClient } from '@/utils/supabase/client'
 import type { FormEvent } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
@@ -79,6 +80,10 @@ export default function ConsultancyRequestForm({
     useState<FormStatus>('idle')
   const [message, setMessage] =
     useState<string | null>(null)
+
+  useEffect(() => {
+    captureRequestAttribution()
+  }, [])
 
   const copy = tr
     ? {
@@ -163,6 +168,7 @@ export default function ConsultancyRequestForm({
     setMessage(null)
 
     const form = new FormData(formElement)
+    const attribution = captureRequestAttribution()
     const supabase = createClient()
 
     const { error } = await supabase.rpc(
@@ -199,6 +205,13 @@ export default function ConsultancyRequestForm({
           lang === 'tr'
             ? '/tr/hesabim/destek-talebi'
             : '/en/account/support-request',
+        p_utm_source: attribution.utm_source,
+        p_utm_medium: attribution.utm_medium,
+        p_utm_campaign: attribution.utm_campaign,
+        p_utm_content: attribution.utm_content,
+        p_landing_page: attribution.landing_page,
+        p_referrer: attribution.referrer,
+        p_source_post: attribution.source_post,
       },
     )
 
