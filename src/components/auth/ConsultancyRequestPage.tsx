@@ -2,9 +2,8 @@ import type { Lang } from '@/lib/i18n'
 import { authPath } from '@/lib/auth'
 import { createClient } from '@/utils/supabase/server'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
-
 import ConsultancyRequestForm from './ConsultancyRequestForm'
+import RequestAttributionRedirect from './RequestAttributionRedirect'
 
 export default async function ConsultancyRequestPage({
   lang,
@@ -23,10 +22,11 @@ export default async function ConsultancyRequestPage({
       : '/en/account/support-request'
 
   if (!user) {
-    redirect(
-      `${authPath(lang, 'login')}?next=${encodeURIComponent(
-        pagePath,
-      )}`,
+    return (
+      <RequestAttributionRedirect
+        lang={lang}
+        fallbackPath={pagePath}
+      />
     )
   }
 

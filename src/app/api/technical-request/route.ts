@@ -68,6 +68,13 @@ async function sendFormspreeNotification(args: {
   message: string
   referenceUrl: string
   source: string
+  utmSource: string
+  utmMedium: string
+  utmCampaign: string
+  utmContent: string
+  landingPage: string
+  referrer: string
+  sourcePost: string
 }) {
   const form = new FormData()
 
@@ -91,6 +98,13 @@ async function sendFormspreeNotification(args: {
   form.set('subject', args.subject)
   form.set('message', args.message)
   form.set('referenceUrl', args.referenceUrl)
+  form.set('utm_source', args.utmSource)
+  form.set('utm_medium', args.utmMedium)
+  form.set('utm_campaign', args.utmCampaign)
+  form.set('utm_content', args.utmContent)
+  form.set('landing_page', args.landingPage)
+  form.set('referrer', args.referrer)
+  form.set('source_post', args.sourcePost)
 
   const response = await fetch(
     'https://formspree.io/f/xkoypknn',
@@ -161,6 +175,17 @@ export async function POST(request: NextRequest) {
   const message = text(body.message, 3_000)
   const rawReferenceUrl = text(body.referenceUrl, 500)
   const referenceUrl = normalizeReferenceUrl(rawReferenceUrl)
+  const utmSource = text(body.utm_source, 2_048)
+  const utmMedium = text(body.utm_medium, 2_048)
+  const utmCampaign = text(body.utm_campaign, 2_048)
+  const utmContent = text(body.utm_content, 2_048)
+  const landingPage = normalizeReferenceUrl(
+    text(body.landing_page, 2_048),
+  )
+  const referrer = normalizeReferenceUrl(
+    text(body.referrer, 2_048),
+  )
+  const sourcePost = text(body.source_post, 2_048)
   const consentAccepted = body.consent === 'accepted'
 
   if (
@@ -202,6 +227,13 @@ export async function POST(request: NextRequest) {
         p_language: lang,
         p_source: source,
         p_consent_accepted: consentAccepted,
+        p_utm_source: utmSource,
+        p_utm_medium: utmMedium,
+        p_utm_campaign: utmCampaign,
+        p_utm_content: utmContent,
+        p_landing_page: landingPage,
+        p_referrer: referrer,
+        p_source_post: sourcePost,
       },
     )
 
@@ -233,6 +265,13 @@ export async function POST(request: NextRequest) {
       message,
       referenceUrl,
       source,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      utmContent,
+      landingPage,
+      referrer,
+      sourcePost,
     })
   } catch (error) {
     console.error('Technical request notification failed', {
