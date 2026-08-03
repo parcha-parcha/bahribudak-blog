@@ -72,13 +72,13 @@ export default function DownloadButton({ resourceId, lang, className = '' }: Dow
         type="button"
         onClick={handleDownload}
         disabled={loading}
-        className={`inline-flex items-center justify-center rounded-full bg-[#0B2343] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#112A56] disabled:cursor-not-allowed disabled:opacity-70 ${className}`}
+        className={`inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-4 py-2 text-sm font-bold text-[#111315] transition hover:bg-[#C94D24] disabled:cursor-not-allowed disabled:opacity-70 ${className}`}
         aria-live="polite"
       >
         {loading ? labels.loading : labels.button}
       </button>
       {status ? (
-        <p className="text-sm text-[#4C5561]" aria-live="polite">
+        <p className="text-sm text-[#6F7782]" aria-live="polite">
           {status}
         </p>
       ) : null}

@@ -23,7 +23,7 @@ export default function NewsTicker() {
 
   if (loading) {
     return (
-      <div style={{ background: '#0B2343', borderBottom: '1px solid rgba(46,166,217,0.18)' }}
+      <div style={{ background: '#111315', borderBottom: '1px solid rgba(228,90,43,0.28)' }}
         className="flex items-center px-4 py-2 gap-3">
         <span className="text-xs font-bold tracking-widest uppercase flex-shrink-0"
           style={{ color: '#2EA6D9' }}>● HABERLER</span>
@@ -39,7 +39,7 @@ export default function NewsTicker() {
 
   return (
     <div
-      style={{ background: '#0B2343', borderBottom: '1px solid rgba(46,166,217,0.18)', overflow: 'hidden' }}
+      style={{ background: '#111315', borderBottom: '1px solid rgba(228,90,43,0.28)', overflow: 'hidden' }}
       className="flex items-center"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -48,12 +48,12 @@ export default function NewsTicker() {
       <div
         className="flex items-center gap-2 px-4 py-2.5 flex-shrink-0 z-10"
         style={{
-          background: '#2EA6D9',
+          background: '#E45A2B',
           minWidth: '110px',
           justifyContent: 'center',
         }}
       >
-        <span className="text-[10px] font-black tracking-widest uppercase" style={{ color: '#0B2343' }}>
+        <span className="text-[10px] font-black tracking-widest uppercase" style={{ color: '#111315' }}>
           ● HABERLER
         </span>
       </div>
@@ -81,9 +81,9 @@ export default function NewsTicker() {
               <span
                 className="text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 rounded flex-shrink-0"
                 style={{
-                  background: item.lang === 'tr' ? 'rgba(46,166,217,0.18)' : 'rgba(255,255,255,0.08)',
-                  color: item.lang === 'tr' ? '#2EA6D9' : 'rgba(255,255,255,0.5)',
-                  border: item.lang === 'tr' ? '1px solid rgba(245,197,24,0.2)' : '1px solid rgba(255,255,255,0.1)',
+                  background: item.lang === 'tr' ? 'rgba(228,90,43,0.16)' : 'rgba(255,255,255,0.08)',
+                  color: item.lang === 'tr' ? '#E45A2B' : 'rgba(255,255,255,0.5)',
+                  border: item.lang === 'tr' ? '1px solid rgba(228,90,43,0.28)' : '1px solid rgba(255,255,255,0.1)',
                 }}
               >
                 {item.source}

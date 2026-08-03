@@ -64,24 +64,19 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
 
   return (
     <div
-      className="w-full overflow-hidden rounded-xl"
-      style={{
-        maxWidth: '260px',
-        background: '#0B2343',
-        border: '1px solid rgba(245,197,24,0.2)',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-      }}
+      className="w-full overflow-hidden border border-[#E5E2DA] bg-[#111315]"
+      style={{ maxWidth: '260px' }}
     >
       <div
         className="flex items-center justify-between px-4 py-2.5"
         style={{
-          background: 'rgba(245,197,24,0.12)',
-          borderBottom: '1px solid rgba(46,166,217,0.18)',
+          background: 'rgba(228,90,43,0.12)',
+          borderBottom: '1px solid rgba(229,226,218,0.18)',
         }}
       >
         <span
           className="text-xs font-bold tracking-wide"
-          style={{ color: '#2EA6D9' }}
+          style={{ color: '#E45A2B' }}
         >
           {months[month]}
         </span>
@@ -116,8 +111,8 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
             style={
               cell === day
                 ? {
-                    background: '#2EA6D9',
-                    color: '#0B2343',
+                    background: '#E45A2B',
+                    color: '#111315',
                     fontWeight: 800,
                     borderRadius: '6px',
                   }
@@ -137,7 +132,7 @@ export default function MiniCalendar({ lang = 'tr' }: { lang?: string }) {
       >
         <div
           className="h-1.5 w-1.5 shrink-0 rounded-full"
-          style={{ background: '#2EA6D9' }}
+          style={{ background: '#E45A2B' }}
         />
         <span
           className="text-[11px] font-medium"
