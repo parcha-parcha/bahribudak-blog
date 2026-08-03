@@ -118,10 +118,10 @@ export function useTranslations(lang: Lang | string | undefined) {
 }
 
 export const categories = [
-  { slug: 'tekstil', color: '#2EA6D9' },
-  { slug: 'uretim-yonetim', color: '#12365E' },
-  { slug: 'kisisel-gelisim', color: '#3B9C8C' },
-  { slug: 'sektorel-analiz', color: '#B7832F' },
+  { slug: 'tekstil', color: '#E45A2B' },
+  { slug: 'uretim-yonetim', color: '#111315' },
+  { slug: 'kisisel-gelisim', color: '#6F7782' },
+  { slug: 'sektorel-analiz', color: '#E5E2DA' },
 ] as const
 
 export type Category = typeof categories[number]['slug']
