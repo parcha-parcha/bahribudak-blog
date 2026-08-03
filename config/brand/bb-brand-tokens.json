@@ -1,0 +1,17 @@
+{
+  "brand": "Bahri Budak",
+  "system": "BB-OS",
+  "colors": {
+    "graphiteBlack": "#111315",
+    "warmWhite": "#F6F4EF",
+    "slateGray": "#6F7782",
+    "signalOrange": "#E45A2B",
+    "softGray": "#E5E2DA"
+  },
+  "fonts": {
+    "display": "Acumin Pro",
+    "body": "Acumin Pro",
+    "digitalFallback": "Inter",
+    "technical": "IBM Plex Mono"
+  }
+}
