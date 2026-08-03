@@ -1,27 +1,34 @@
 # Bahri Budak Logo Dosyaları
 
-Bu klasör mevcut logo varlıklarını içerir.
+Bu klasör önceki dönemlerden kalan logo varlıklarını içerir.
 
 ## Güncel yönetim durumu
 
-Faz 3 logo doğrulaması tamamlanana kadar bu klasördeki dosyalar **mevcut/legacy varlık** statüsündedir. Dosya adlarının repository içinde bulunması tek başına güncel kurumsal onay anlamına gelmez.
+Faz 3 logo, header ve footer doğrulaması tamamlanmıştır. Bu klasördeki PNG ve SVG dosyaları **legacy/arşiv varlık** statüsündedir. Dosyaların repository içinde tutulması güncel kurumsal onay veya aktif kullanım anlamına gelmez.
+
+Yeni arayüz ve yapılandırılmış veri çalışmalarında bu dosyalara yeni referans eklenmez. Mevcut görsel kimlik; üç yatay çizgi, alt sağ Signal Orange vurgu, “BAHRİ BUDAK” wordmark ve onaylı tanımlayıcı satır üzerinden yönetilir.
 
 ## Kullanım kuralı
 
 - Yeni logo veya BB monogramı çizilmez.
 - Logo parçaları yeniden dizilmez.
-- Renkler palet dışında değiştirilmez.
+- Renkler onaylı palet dışında değiştirilmez.
 - Efekt, gölge, gradient, kabartma veya parıltı uygulanmaz.
-- Logo dijitalde 120 px’den, baskıda 24 mm’den küçük kullanılmaz.
-- Onaylı sembol; üç yatay çizgi ve alt sağ Signal Orange vurgu çizgisinden oluşur.
-- Wordmark ve tanımlayıcı satır oranları resmî master SVG doğrulanmadan değiştirilmez.
+- Legacy dosyalar runtime, metadata veya yapılandırılmış veri kaynağı olarak kullanılmaz.
+- Resmî master varlık değişikliği yalnızca ayrı bir kurumsal kimlik onayıyla yapılır.
 
-## Faz 3 doğrulama çıktısı
+## Dosya statüsü
 
-Her dosya için aşağıdaki durum kaydedilecektir:
+Aşağıdaki dosya grupları arşiv amacıyla korunur ve yeni kullanım için seçilmez:
 
-- Onaylı
-- Arşivlenecek
-- Yinelenen
-- Kullanım dışı
-- Yeniden dışa aktarılacak
+- `bb-logo-amblem.*`
+- `bb-logo-dikey.*`
+- `bb-logo-dikey-negatif.*`
+- `bb-logo-kisa-kurumsal.*`
+- `bb-logo-tanimli-kurumsal.*`
+- `bb-logo-yatay.*`
+- `bb-logo-yatay-negatif.*`
+
+## Yapılandırılmış veri kuralı
+
+`ArticleSchema` yayıncı bilgisinde marka adı `Bahri Budak` olarak kullanılır. Onaylı bağımsız logo master varlığı oluşturulana kadar `publisher.logo` alanı eklenmez.

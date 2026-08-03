@@ -334,17 +334,12 @@ export default async function AccountPage({
       }
 
   return (
-    <section className="min-h-screen bg-[#F3F6FA] px-4 py-10 md:px-6 md:py-14">
+    <section className="min-h-screen bg-[#F6F4EF] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-6xl">
-        <div className="relative mb-7 overflow-hidden rounded-[2rem] bg-[#071E3A] p-7 text-white shadow-[0_24px_70px_rgba(11,35,67,0.16)] md:p-9">
-          <div
-            className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/10"
-            aria-hidden="true"
-          />
-
-          <div className="relative z-10 flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+        <div className="mb-7 rounded-[14px] bg-[#111315] p-7 text-white md:p-9">
+          <div className="flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65C6EA]">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
                 {copy.eyebrow}
               </p>
 
@@ -356,7 +351,7 @@ export default async function AccountPage({
                 {copy.welcome}
               </p>
 
-              <p className="mt-2 max-w-2xl text-sm leading-7 text-[#DCE8F5]">
+              <p className="mt-2 max-w-2xl text-sm leading-7 text-white/75">
                 {copy.summary}
               </p>
             </div>
@@ -366,23 +361,23 @@ export default async function AccountPage({
         </div>
 
         <div className="mb-7 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-          <article className="rounded-[2rem] border border-[#B9DFF0] bg-white p-6 shadow-sm md:p-8">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6 md:p-8">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2A8EB8]">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                   {copy.membershipStatus}
                 </p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] text-[#0B2343]">
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] text-[#111315]">
                   {copy.freeMember}
                 </h2>
               </div>
 
-              <span className="rounded-full border border-[#B9DFF0] bg-[#EAF6FC] px-4 py-2 text-xs font-black text-[#075A7D]">
+              <span className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-4 py-2 text-xs font-black text-[#111315]">
                 {copy.freeMember}
               </span>
             </div>
 
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4C5561]">
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-[#6F7782]">
               {copy.membershipText}
             </p>
 
@@ -393,29 +388,29 @@ export default async function AccountPage({
             </div>
           </article>
 
-          <article className="rounded-[2rem] border border-[#D8DEE8] bg-[#F8FAFC] p-6 md:p-8">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-6 md:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#66717E]">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#6F7782]">
                   {copy.professionalTitle}
                 </p>
-                <h2 className="mt-3 text-2xl font-black text-[#0B2343]">
+                <h2 className="mt-3 text-2xl font-black text-[#111315]">
                   {copy.comingSoon}
                 </h2>
               </div>
 
-              <span className="rounded-full border border-[#D8DEE8] bg-white px-3 py-1.5 text-[11px] font-black text-[#66717E]">
+              <span className="rounded-md border border-[#E5E2DA] bg-white px-3 py-1.5 text-[11px] font-black text-[#6F7782]">
                 {copy.comingSoon}
               </span>
             </div>
 
-            <p className="mt-4 text-sm leading-7 text-[#4C5561]">
+            <p className="mt-4 text-sm leading-7 text-[#6F7782]">
               {copy.professionalText}
             </p>
 
             <Link
               href={`/${lang}/uyelik`}
-              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-[#0B2343] px-5 text-sm font-black text-[#0B2343] transition hover:bg-[#0B2343] hover:text-white"
+              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-[#111315] px-5 text-sm font-black text-[#111315] transition hover:bg-[#111315] hover:text-white"
             >
               {copy.membership}
             </Link>
@@ -423,12 +418,12 @@ export default async function AccountPage({
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <article className="rounded-[2rem] border border-[#D8DEE8] bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-black text-[#0B2343]">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6 md:p-8">
+            <h2 className="text-2xl font-black text-[#111315]">
               {copy.profileTitle}
             </h2>
 
-            <p className="mt-2 text-sm leading-7 text-[#4C5561]">
+            <p className="mt-2 text-sm leading-7 text-[#6F7782]">
               {copy.profileText}
             </p>
 
@@ -442,8 +437,8 @@ export default async function AccountPage({
           </article>
 
           <div className="space-y-6">
-            <article className="rounded-[2rem] border border-[#D8DEE8] bg-white p-6">
-              <h2 className="text-xl font-black text-[#0B2343]">
+            <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6">
+              <h2 className="text-xl font-black text-[#111315]">
                 {copy.accountSummary}
               </h2>
 
@@ -454,8 +449,8 @@ export default async function AccountPage({
               </dl>
             </article>
 
-            <article className="rounded-[2rem] border border-[#D8DEE8] bg-white p-6">
-              <h2 className="text-xl font-black text-[#0B2343]">
+            <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6">
+              <h2 className="text-xl font-black text-[#111315]">
                 {copy.quickLinks}
               </h2>
 
@@ -491,7 +486,7 @@ export default async function AccountPage({
             </article>
 
             {canManage && (
-              <article className="rounded-[2rem] border border-[#E5E2DA] bg-[#111315] p-6 text-white shadow-sm">
+              <article className="rounded-[14px] border border-[#E5E2DA] bg-[#111315] p-6 text-white">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
@@ -502,7 +497,7 @@ export default async function AccountPage({
                     </h2>
                   </div>
 
-                  <span className="rounded-full border border-white/20 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.08em] text-white/80">
+                  <span className="rounded-md border border-white/20 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.08em] text-white/80">
                     {copy.roleLabel}: {adminRole}
                   </span>
                 </div>
@@ -522,28 +517,28 @@ export default async function AccountPage({
           </div>
         </div>
 
-        <article className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 md:p-8">
+        <article className="mt-6 rounded-[14px] border border-[#E5E2DA] bg-white p-6 md:p-8">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-black text-[#0B2343]">
+              <h2 className="text-2xl font-black text-[#111315]">
                 {copy.historyTitle}
               </h2>
-              <p className="mt-2 text-sm leading-7 text-[#4C5561]">
+              <p className="mt-2 text-sm leading-7 text-[#6F7782]">
                 {copy.historyText}
               </p>
             </div>
 
-            <span className="rounded-full bg-[#F3F6FA] px-4 py-2 text-xs font-black text-[#4C5561]">
+            <span className="rounded-md bg-[#F6F4EF] px-4 py-2 text-xs font-black text-[#6F7782]">
               {downloadHistory.length}/10
             </span>
           </div>
 
           {downloadHistoryError ? (
-            <p className="mt-5 rounded-2xl border border-[#E4B4C3] bg-[#FFF2F5] p-4 text-sm font-semibold text-[#8B1E3F]">
+            <p className="mt-5 rounded-lg border border-[#E4B4C3] bg-[#FFF2F5] p-4 text-sm font-semibold text-[#8B1E3F]">
               {copy.historyError}
             </p>
           ) : downloadHistory.length === 0 ? (
-            <div className="mt-5 rounded-2xl bg-[#F5F7FA] p-5 text-sm text-[#4C5561]">
+            <div className="mt-5 rounded-lg border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm text-[#6F7782]">
               {copy.noHistory}
             </div>
           ) : (
@@ -551,21 +546,21 @@ export default async function AccountPage({
               {downloadHistory.map(item => (
                 <li
                   key={`${item.resourceId}-${item.downloadedAt}`}
-                  className="rounded-2xl border border-[#D8DEE8] bg-[#F8FBFD] p-4"
+                  className="rounded-lg border border-[#E5E2DA] bg-white p-4"
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <div className="font-black text-[#0B2343]">
+                      <div className="font-black text-[#111315]">
                         {item.title}
                       </div>
-                      <div className="mt-1 text-sm text-[#4C5561]">
+                      <div className="mt-1 text-sm text-[#6F7782]">
                         {item.fileType} · {item.downloadedAt}
                       </div>
                     </div>
 
                     {item.downloadPath && (
                       <a
-                        className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-full bg-[#0B2343] px-4 text-xs font-black text-white transition hover:bg-[#163B68] focus:outline-none focus:ring-2 focus:ring-[#5BBBE6] focus:ring-offset-2"
+                        className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-md bg-[#111315] px-4 text-xs font-black text-white transition hover:bg-[#1A1F24] focus:outline-none focus:ring-2 focus:ring-[#E45A2B] focus:ring-offset-2"
                         href={`/api/member-download?path=${encodeURIComponent(item.downloadPath)}`}
                       >
                         {copy.downloadAgain}
@@ -590,9 +585,9 @@ function AccessCard({
   text: string
 }) {
   return (
-    <div className="rounded-2xl border border-[#D8DEE8] bg-[#F7F9FC] p-4">
-      <p className="text-sm font-black text-[#0B2343]">{title}</p>
-      <p className="mt-1 text-xs leading-5 text-[#66717E]">{text}</p>
+    <div className="rounded-lg border border-[#E5E2DA] bg-[#F6F4EF] p-4">
+      <p className="text-sm font-black text-[#111315]">{title}</p>
+      <p className="mt-1 text-xs leading-5 text-[#6F7782]">{text}</p>
     </div>
   )
 }
@@ -606,8 +601,8 @@ function SummaryRow({
 }) {
   return (
     <div>
-      <dt className="font-black text-[#4C5561]">{label}</dt>
-      <dd className="mt-1 break-all text-[#0B2343]">{value}</dd>
+      <dt className="font-black text-[#6F7782]">{label}</dt>
+      <dd className="mt-1 break-all text-[#111315]">{value}</dd>
     </div>
   )
 }
@@ -622,10 +617,10 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="flex min-h-12 items-center justify-between rounded-2xl border border-[#D8DEE8] bg-[#F8FAFC] px-4 text-sm font-black text-[#0B2343] transition hover:border-[#2EA6D9] hover:bg-[#EAF6FC]"
+      className="flex min-h-12 items-center justify-between rounded-lg border border-[#E5E2DA] bg-[#F6F4EF] px-4 text-sm font-black text-[#111315] transition hover:border-[#E45A2B] hover:bg-white"
     >
       <span>{label}</span>
-      <span className="text-[#2EA6D9]" aria-hidden="true">
+      <span className="text-[#E45A2B]" aria-hidden="true">
         →
       </span>
     </Link>
@@ -642,7 +637,7 @@ function ManagementLink({
   return (
     <Link
       href={href}
-      className="flex min-h-12 items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-4 text-sm font-black text-white transition hover:border-[#E45A2B] hover:bg-[#E45A2B]"
+      className="flex min-h-12 items-center justify-between rounded-lg border border-white/15 bg-white/5 px-4 text-sm font-black text-white transition hover:border-[#E45A2B] hover:bg-[#E45A2B]"
     >
       <span>{label}</span>
       <span aria-hidden="true">→</span>
