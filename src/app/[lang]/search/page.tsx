@@ -88,14 +88,14 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
       : ['reactive dyeing', 'pH', 'fastness', 'energy', 'recipe', 'dimensional stability']
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#0B2343]">
-      <section className="border-b border-[#D8DDE5] bg-white">
+    <div className="min-h-screen bg-[#F6F4EF] text-[#111315]">
+      <section className="border-b border-[#E5E2DA] bg-white">
         <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
           <p className="section-label">{copy.eyebrow}</p>
-          <h1 className="mt-3 text-4xl font-extrabold tracking-[-0.04em] text-[#0B2343] md:text-6xl">
+          <h1 className="mt-3 text-4xl font-extrabold tracking-[-0.04em] text-[#111315] md:text-6xl">
             {copy.title}
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#4C5561]">
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#414950]">
             {copy.description}
           </p>
 
@@ -103,7 +103,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
             action={`/${lang}/search`}
             method="get"
             role="search"
-            className="mt-9 flex flex-col gap-3 rounded-[24px] border border-[#D8DDE5] bg-[#F8FAFC] p-3 shadow-[0_12px_36px_rgba(11,35,67,0.07)] sm:flex-row"
+            className="mt-9 flex flex-col gap-3 rounded-lg border border-[#E5E2DA] bg-white p-3 sm:flex-row"
           >
             <label htmlFor="search-page-input" className="sr-only">
               {copy.title}
@@ -116,11 +116,11 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
               placeholder={copy.placeholder}
               autoComplete="off"
               maxLength={120}
-              className="min-h-[52px] flex-1 rounded-2xl border border-[#D8DDE5] bg-white px-5 py-3.5 text-base text-[#0B2343] outline-none transition placeholder:text-[#4C5561]/70 focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/15"
+              className="min-h-[52px] flex-1 rounded-md border border-[#E5E2DA] bg-white px-5 py-3.5 text-base text-[#111315] outline-none transition placeholder:text-[#6F7782] focus:border-[#E45A2B] focus:ring-2 focus:ring-[#E45A2B]/20"
             />
             <button
               type="submit"
-              className="min-h-[52px] rounded-2xl bg-[#0B2343] px-8 py-3.5 font-bold text-white transition-colors hover:bg-[#12365E] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2EA6D9] focus-visible:ring-offset-2"
+              className="min-h-[52px] rounded-md bg-[#111315] px-8 py-3.5 font-bold text-white transition-colors hover:bg-[#1A1F24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
             >
               {copy.submit}
             </button>
@@ -128,7 +128,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
 
           {!query && (
             <div className="mt-7">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#4C5561]">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#6F7782]">
                 {copy.suggestions}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -136,7 +136,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                   <Link
                     key={suggestion}
                     href={`/${lang}/search?q=${encodeURIComponent(suggestion)}`}
-                    className="rounded-full border border-[#D8DDE5] bg-white px-4 py-2 text-sm font-semibold text-[#0B2343] transition-colors hover:border-[#2EA6D9] hover:bg-[#EAF6FC]"
+                    className="rounded-md border border-[#E5E2DA] bg-white px-4 py-2 text-sm font-semibold text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#F8E4DC]"
                   >
                     {suggestion}
                   </Link>
@@ -150,14 +150,14 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
       <section className="mx-auto max-w-5xl px-6 py-12 md:py-16">
         {query ? (
           <>
-            <div className="mb-7 flex flex-col gap-2 border-b border-[#D8DDE5] pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mb-7 flex flex-col gap-2 border-b border-[#E5E2DA] pb-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#4C5561]">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#6F7782]">
                   {copy.resultPrefix}
                 </p>
-                <h2 className="mt-1 text-2xl font-extrabold text-[#0B2343]">“{query}”</h2>
+                <h2 className="mt-1 text-2xl font-extrabold text-[#111315]">“{query}”</h2>
               </div>
-              <p className="text-sm font-semibold text-[#4C5561]">
+              <p className="text-sm font-semibold text-[#6F7782]">
                 {results.length} {copy.resultSuffix}
               </p>
             </div>
@@ -167,10 +167,10 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                 {results.map((result) => (
                   <article
                     key={`${result.type}-${result.href}`}
-                    className="rounded-[24px] border border-[#D8DDE5] bg-white p-6 shadow-[0_8px_28px_rgba(11,35,67,0.06)] transition hover:-translate-y-0.5 hover:border-[#2EA6D9] hover:shadow-[0_14px_38px_rgba(11,35,67,0.10)] md:p-7"
+                    className="rounded-lg border border-[#E5E2DA] bg-white p-6 transition-colors hover:border-[#E45A2B] md:p-7"
                   >
-                    <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#4C5561]">
-                      <span className="rounded-full bg-[#EAF6FC] px-3 py-1 text-[#0B2343]">
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#6F7782]">
+                      <span className="rounded-md bg-[#F8E4DC] px-3 py-1 text-[#A53C18]">
                         {categoryLabel(result.category, lang)}
                       </span>
                       {result.date && (
@@ -191,19 +191,19 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                       )}
                     </div>
 
-                    <h3 className="mt-4 text-2xl font-extrabold leading-tight tracking-[-0.025em] text-[#0B2343]">
-                      <Link href={result.href} className="hover:text-[#2EA6D9]">
+                    <h3 className="mt-4 text-2xl font-extrabold leading-tight tracking-[-0.025em] text-[#111315]">
+                      <Link href={result.href} className="hover:text-[#E45A2B]">
                         {result.title}
                       </Link>
                     </h3>
 
-                    <p className="mt-3 max-w-4xl leading-relaxed text-[#4C5561]">
+                    <p className="mt-3 max-w-4xl leading-relaxed text-[#414950]">
                       {result.excerpt}
                     </p>
 
                     <Link
                       href={result.href}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#0B2343] hover:text-[#2EA6D9]"
+                      className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-[#111315] hover:text-[#E45A2B]"
                     >
                       {copy.read}
                       <span aria-hidden="true">→</span>
@@ -212,18 +212,18 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                 ))}
               </div>
             ) : (
-              <div className="rounded-[28px] border border-[#D8DDE5] bg-white px-6 py-16 text-center">
-                <h2 className="text-2xl font-extrabold text-[#0B2343]">{copy.noResult}</h2>
-                <p className="mt-3 text-[#4C5561]">{copy.noResultHelp}</p>
+              <div className="rounded-lg border border-[#E5E2DA] bg-white px-6 py-16 text-center">
+                <h2 className="text-2xl font-extrabold text-[#111315]">{copy.noResult}</h2>
+                <p className="mt-3 text-[#414950]">{copy.noResultHelp}</p>
               </div>
             )}
           </>
         ) : (
-          <div className="rounded-[28px] border border-[#D8DDE5] bg-white px-6 py-16 text-center">
+          <div className="rounded-lg border border-[#E5E2DA] bg-white px-6 py-16 text-center">
             <svg
               viewBox="0 0 24 24"
               aria-hidden="true"
-              className="mx-auto h-12 w-12 text-[#2EA6D9]"
+              className="mx-auto h-12 w-12 text-[#E45A2B]"
               fill="none"
               stroke="currentColor"
               strokeWidth="1.7"
@@ -232,7 +232,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.4-3.4" />
             </svg>
-            <p className="mt-5 text-lg font-semibold text-[#4C5561]">{copy.start}</p>
+            <p className="mt-5 text-lg font-semibold text-[#414950]">{copy.start}</p>
           </div>
         )}
       </section>

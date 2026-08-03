@@ -26,7 +26,7 @@ export default function PostCard({ post, lang }: PostCardProps) {
             </span>
 
             {post.technicalPublication && processLabel && (
-              <span className="rounded-full border border-[#2EA6D9]/35 bg-[#EAF6FC] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0B2343]">
+              <span className="rounded-md border border-[#E45A2B]/35 bg-[#F8E4DC] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#111315]">
                 {processLabel}
               </span>
             )}

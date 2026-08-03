@@ -144,8 +144,8 @@ export default async function ServicesPage({ params }: ServicesProps) {
         }
 
   return (
-    <main className="bb-readable-page min-h-screen bg-[#F3F6FA] text-[#0B2343]">
-      <section className="bg-[#061A33] text-white">
+    <main className="bb-readable-page min-h-screen bg-[#F6F4EF] text-[#111315]">
+      <section className="bg-[#111315] text-white">
         <div className="mx-auto max-w-6xl px-6 py-14 md:py-18">
           <p className="section-label text-white/60">{copy.eyebrow}</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">{copy.title}</h1>
@@ -156,9 +156,9 @@ export default async function ServicesPage({ params }: ServicesProps) {
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {copy.services.map(service => (
-            <article key={service.no} className="rounded-[26px] border border-gray-border bg-white p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-card">
+            <article key={service.no} className="rounded-lg border border-[#E5E2DA] bg-white p-7 transition-colors hover:border-[#E45A2B]/60">
               <div className="mb-5 flex items-start gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent-blue/40 font-black tracking-wider text-accent-blue">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-[#E45A2B]/40 font-black tracking-wider text-[#E45A2B]">
                   {service.no}
                 </div>
                 <div>
@@ -166,10 +166,10 @@ export default async function ServicesPage({ params }: ServicesProps) {
                   <p className="text-sm font-semibold text-gray-text">{service.subtitle}</p>
                 </div>
               </div>
-              <p className="mb-5 leading-relaxed text-[#263B57]">{service.description}</p>
+              <p className="mb-5 leading-relaxed text-[#414950]">{service.description}</p>
               <div className="flex flex-wrap gap-2">
                 {service.details.map(item => (
-                  <span key={item} className="rounded-full border border-gray-border bg-[#F3F6FA] px-3 py-1 text-xs font-semibold text-[#263B57]">
+                  <span key={item} className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-xs font-semibold text-[#414950]">
                     {item}
                   </span>
                 ))}
@@ -180,13 +180,13 @@ export default async function ServicesPage({ params }: ServicesProps) {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="rounded-[28px] bg-[#061A33] p-8 text-white md:p-10">
+        <div className="rounded-lg bg-[#111315] p-8 text-white md:p-10">
           <p className="section-label text-white/60">{copy.whyLabel}</p>
           <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">{copy.whyTitle}</h2>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
             {copy.reasons.map((reason, index) => (
-              <div key={reason} className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/7 p-5">
-                <span className="font-black tracking-wider text-accent-blue">{String(index + 1).padStart(2, '0')}</span>
+              <div key={reason} className="flex items-start gap-4 rounded-md border border-white/15 bg-white/7 p-5">
+                <span className="font-black tracking-wider text-[#E45A2B]">{String(index + 1).padStart(2, '0')}</span>
                 <p className="font-medium leading-relaxed text-white/85">{reason}</p>
               </div>
             ))}
