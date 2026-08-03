@@ -50,12 +50,8 @@ export default function ArticleSchema({
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Bahri Budak Tekstil Proses Danışmanlığı',
+      name: 'Bahri Budak',
       url: siteUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteUrl}/brand/bb-logo-yatay.png`,
-      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
