@@ -31,9 +31,9 @@ export default function RequestAttributionRedirect({
   }, [fallbackPath, lang, router])
 
   return (
-    <main className="flex min-h-[60vh] items-center justify-center bg-[#F3F6FA] px-4 py-12">
+    <main className="flex min-h-[60vh] items-center justify-center bg-[#F6F4EF] px-4 py-12">
       <p
-        className="rounded-2xl border border-[#D8DEE8] bg-white px-6 py-5 text-sm font-semibold text-[#071E3A] shadow-sm"
+        className="rounded-md border border-[#E5E2DA] bg-white px-6 py-5 text-sm font-semibold text-[#111315]"
         role="status"
         aria-live="polite"
       >

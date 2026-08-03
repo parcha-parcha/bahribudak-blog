@@ -15,10 +15,10 @@ type InitialValues = {
 }
 
 const fieldClassName =
-  'mt-2 min-h-12 w-full rounded-2xl border border-[#C9D1DC] bg-white px-4 font-normal text-[#0B2343] outline-none transition placeholder:text-[#8A949F] focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/12'
+  'mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 font-normal text-[#111315] outline-none transition placeholder:text-[#6F7782]/70 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/12'
 
 const labelClassName =
-  'block text-sm font-black text-[#0B2343]'
+  'block text-sm font-black text-[#111315]'
 
 const requestTypes = {
   tr: [
@@ -228,25 +228,25 @@ export default function ConsultancyRequestForm({
   if (status === 'success') {
     return (
       <div
-        className="rounded-[1.5rem] border border-emerald-200 bg-emerald-50 p-8 text-center"
+        className="rounded-lg border border-emerald-200 bg-emerald-50 p-8 text-center"
         role="status"
       >
         <div
-          className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-xl font-bold text-white"
+          className="mx-auto flex h-12 w-12 items-center justify-center rounded-md bg-emerald-600 text-xl font-bold text-white"
           aria-hidden="true"
         >
           ✓
         </div>
-        <h2 className="mt-4 text-2xl font-black text-[#0B2343]">
+        <h2 className="mt-4 text-2xl font-black text-[#111315]">
           {copy.successTitle}
         </h2>
-        <p className="mt-2 text-sm leading-7 text-[#0B2343]/65">
+        <p className="mt-2 text-sm leading-7 text-[#6F7782]">
           {copy.successText}
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 text-sm font-black text-[#0B2343] underline decoration-[#2EA6D9] decoration-2 underline-offset-4"
+          className="mt-6 text-sm font-black text-[#111315] underline decoration-[#E45A2B] decoration-2 underline-offset-4"
         >
           {copy.another}
         </button>
@@ -256,7 +256,7 @@ export default function ConsultancyRequestForm({
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
-      <p className="rounded-2xl border border-[#B9DFF0] bg-[#EAF6FC] p-5 text-sm leading-7 text-[#0B2343]">
+      <p className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm leading-7 text-[#111315]">
         {copy.intro}
       </p>
 
@@ -353,11 +353,11 @@ export default function ConsultancyRequestForm({
         />
       </label>
 
-      <label className="flex items-start gap-3 rounded-2xl border border-[#D8DEE8] bg-[#F8FAFC] p-5 text-sm leading-6 text-[#334155]">
+      <label className="flex items-start gap-3 rounded-md border border-[#E5E2DA] bg-[#F6F4EF] p-5 text-sm leading-6 text-[#6F7782]">
         <input
           type="checkbox"
           required
-          className="mt-1 h-4 w-4 shrink-0 accent-[#0B2343]"
+          className="mt-1 h-4 w-4 shrink-0 accent-[#E45A2B]"
         />
         <span>{copy.consent}</span>
       </label>
@@ -374,7 +374,7 @@ export default function ConsultancyRequestForm({
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#0B2343] px-6 text-sm font-black text-white transition hover:bg-[#163A64] disabled:cursor-wait disabled:opacity-60"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[#111315] px-6 text-sm font-black text-white transition hover:bg-[#2A2E32] disabled:cursor-wait disabled:opacity-60"
       >
         {status === 'loading'
           ? copy.loading
