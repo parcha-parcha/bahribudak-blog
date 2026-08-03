@@ -146,7 +146,35 @@ export default async function AboutPage({ params }: AboutProps) {
             'Su, enerji, yardımcı işletmeler ve kaynak yönetimi',
             'Hata, kök neden ve düzeltici faaliyet sistemleri',
           ],
-          publishingLabel: 'TEKNİK YAYIN YAKLAŞIMI',
+          trustLabel: 'UZMANLIK GÜVENİ, YETKİNLİK VE SINIR YÖNETİMİ',
+          trustTitle:
+            'Teknik değerlendirmede güven; açık kaynak ayrımı, ölçülebilirlik ve doğru yetki sınırıyla kurulur.',
+          trustIntro:
+            'Çalışmalar; saha deneyimi, doğrulanabilir teknik kaynaklar ve işletmeye özgü veriler ayrı katmanlar hâlinde değerlendirilerek hazırlanır.',
+          trustItems: [
+            'Teknik kaynak bilgisi ile saha deneyimi notları birbirinden açıkça ayrılır.',
+            'Öneriler; ölçülebilir proses verileri, kontrol noktaları ve uygulanabilir kayıt sistemiyle desteklenir.',
+            'İşletmeye özgü makine, reçete, güvenlik ve mevzuat şartları sahada ayrıca doğrulanır.',
+            'Resmî uygunluk, mühendislik hesabı veya yetkili imza gerektiren işler ilgili yetkili uzmanlarla yürütülür.',
+          ],
+          scopeTitle: 'Çalışma ve destek kapsamı',
+          scopeItems: [
+            'Tekstil proses analizi ve iyileştirme planı',
+            'Teknik dokümantasyon, kontrol listesi ve kayıt sistemi',
+            'A3–PDCA temelli problem çözme ve kök neden analizi',
+            'Kalite, izlenebilirlik, eğitim ve standardizasyon çalışmaları',
+            'Kaynak, kapasite ve verimlilik değerlendirmesi',
+            'Teknik yayın ve kurumsal bilgi yönetimi',
+          ],
+          boundaryTitle: 'Yetki gerektiren ve kapsam dışında kalan işler',
+          boundaryItems: [
+            'Resmî mühendislik projesi ve yetkili mühendislik hesabı',
+            'Yangın, elektrik, çevre veya iş güvenliği uygunluk raporu',
+            'Yetkili laboratuvar, CE veya mevzuata bağlı resmî onay',
+            'Hukuki bilirkişilik ve bağlayıcı resmî görüş',
+          ],
+          trustDisclaimer:
+            'Bu sitedeki içerikler genel teknik bilgi, eğitim, saha kontrolü ve proses geliştirme amacı taşır. İşletmeye özgü uygulamalar; makine, proses, güvenlik, mevzuat ve mühendislik şartlarına göre ilgili yetkili kişiler tarafından ayrıca doğrulanmalıdır.',          publishingLabel: 'TEKNİK YAYIN YAKLAŞIMI',
           publishingTitle:
             'Saha bilgisini uygulanabilir ve doğrulanabilir dokümana dönüştürmek',
           publishingText:
@@ -266,7 +294,35 @@ export default async function AboutPage({ params }: AboutProps) {
             'Water, energy, utilities and resource management',
             'Defect, root-cause and corrective-action systems',
           ],
-          publishingLabel: 'TECHNICAL PUBLISHING APPROACH',
+          trustLabel: 'EXPERTISE TRUST, COMPETENCE AND SCOPE MANAGEMENT',
+          trustTitle:
+            'Technical trust is built through clear source separation, measurable evidence and appropriate professional boundaries.',
+          trustIntro:
+            'Each assignment distinguishes field experience, verifiable technical sources and plant-specific data as separate evidence layers.',
+          trustItems: [
+            'Technical source information and field-experience notes are identified separately.',
+            'Recommendations are supported by measurable process data, control points and usable records.',
+            'Plant-specific machinery, recipes, safety conditions and regulatory requirements must be verified on site.',
+            'Official compliance, engineering calculations or authorised sign-off are handled with the relevant licensed professionals.',
+          ],
+          scopeTitle: 'Working and support scope',
+          scopeItems: [
+            'Textile process analysis and improvement planning',
+            'Technical documentation, checklists and record systems',
+            'A3–PDCA problem solving and root-cause analysis',
+            'Quality, traceability, training and standardisation',
+            'Resource, capacity and efficiency assessment',
+            'Technical publishing and corporate knowledge management',
+          ],
+          boundaryTitle: 'Authorised work and excluded scope',
+          boundaryItems: [
+            'Official engineering projects and licensed engineering calculations',
+            'Fire, electrical, environmental or occupational-safety compliance reports',
+            'Accredited laboratory, CE or regulatory approvals',
+            'Legal expert-witness services or binding official opinions',
+          ],
+          trustDisclaimer:
+            'The content on this site is provided for general technical information, training, field control and process-improvement purposes. Plant-specific applications must also be verified by the relevant authorised professionals against machinery, process, safety, regulatory and engineering requirements.',          publishingLabel: 'TECHNICAL PUBLISHING APPROACH',
           publishingTitle:
             'Converting field knowledge into practical and verifiable documentation',
           publishingText:
@@ -497,6 +553,61 @@ export default async function AboutPage({ params }: AboutProps) {
         </div>
       </section>
 
+      <section className="border-y border-[#E5E2DA] bg-[#111315] text-[#F6F4EF]">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <div className="max-w-4xl">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
+              {copy.trustLabel}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] md:text-4xl">
+              {copy.trustTitle}
+            </h2>
+            <p className="mt-5 text-sm leading-8 text-[#E5E2DA]">
+              {copy.trustIntro}
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            <article className="rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-6">
+              <h3 className="text-xl font-bold">{copy.scopeTitle}</h3>
+              <ul className="mt-5 space-y-3">
+                {copy.scopeItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#E5E2DA]">
+                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E45A2B]" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-6">
+              <h3 className="text-xl font-bold">{copy.boundaryTitle}</h3>
+              <ul className="mt-5 space-y-3">
+                {copy.boundaryItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#E5E2DA]">
+                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E45A2B]" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+
+          <div className="mt-5 rounded-[1.5rem] border border-[#E45A2B]/35 bg-[#E45A2B]/10 p-5">
+            <ul className="grid gap-3 md:grid-cols-2">
+              {copy.trustItems.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#F6F4EF]">
+                  <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E45A2B]" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 border-t border-white/10 pt-5 text-xs leading-6 text-[#E5E2DA]/80">
+              {copy.trustDisclaimer}
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
