@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import PostCard from '@/components/PostCard'
-import BBHomeLogoCard from '@/components/BBHomeLogoCard'
 import { getAllPosts } from '@/lib/posts'
 import { isLang, type Lang } from '@/lib/i18n'
 import {
@@ -368,19 +367,18 @@ export default async function HomePage({ params }: HomeProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#111315] text-white md:min-h-[620px]">
+      <section className="relative overflow-hidden bg-[#111315] text-white">
         <Image
           src="/images/hero-su-damlasi.jpg"
           alt={copy.heroAlt}
           fill
           sizes="100vw"
-          className="object-cover opacity-44 md:opacity-48"
+          className="object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111315] via-[#111315]/92 to-[#111315]/48 md:via-[#111315]/88 md:to-[#111315]/24" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/76 via-transparent to-[#111315]/28" />
+        <div className="absolute inset-0 bg-[#111315]/82" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 py-10 md:gap-10 md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-12 lg:py-16">
-          <div>
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-16 md:min-h-[560px] md:py-20 lg:py-24">
+          <div className="max-w-4xl">
             <p className="mb-4 flex max-w-full border-l-4 border-[#E45A2B] pl-4 text-xs font-black uppercase leading-5 tracking-[0.18em] text-white/82 md:mb-5 md:inline-flex md:tracking-[0.22em]">
               {copy.heroEyebrow}
             </p>
@@ -408,18 +406,13 @@ export default async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div className="mx-auto hidden w-full max-w-[760px] lg:block lg:mx-0 lg:justify-self-end">
-            <BBHomeLogoCard />
-          </div>
         </div>
       </section>
 
       <section className="bg-white text-navy">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-12 md:gap-12 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[18px] bg-[#111315] p-7 text-white md:p-10">
-            <div className="absolute inset-0 bb-pattern opacity-30" />
-
-            <div className="relative">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-8 px-6 py-16 md:gap-12 md:py-20 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="border-l-4 border-[#E45A2B] bg-[#111315] p-7 text-white md:p-10">
+            <div>
               <p className="section-label mb-5 text-white/55">
                 {copy.experienceLabel}
               </p>
@@ -438,7 +431,7 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.metrics.map((card) => (
               <div
                 key={card.label}
-                className="flex min-h-[160px] flex-col justify-between rounded-[14px] border border-gray-border bg-white p-6 shadow-[0_10px_28px_rgba(17,19,21,0.06)] sm:min-h-[190px] lg:min-h-[210px]"
+                className="flex min-h-[160px] flex-col justify-between border border-gray-border bg-white p-6 sm:min-h-[190px] lg:min-h-[210px]"
               >
                 <div className="text-5xl font-bold tracking-[-0.04em] text-[#E45A2B]">
                   {card.value}
@@ -488,10 +481,10 @@ export default async function HomePage({ params }: HomeProps) {
               return (
                 <article
                   key={card.key}
-                  className="group flex min-h-[340px] flex-col justify-between rounded-[14px] border border-[#E5E2DA] bg-white p-7 shadow-[0_10px_28px_rgba(17,19,21,0.06)] transition hover:-translate-y-1 hover:border-[#E45A2B]/70 hover:shadow-[0_18px_45px_rgba(17,19,21,0.10)]"
+                  className="group flex min-h-[340px] flex-col justify-between border border-[#E5E2DA] bg-white p-7 transition-colors hover:border-[#E45A2B]"
                 >
                   <div>
-                    <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-lg bg-[#111315] px-4 py-3 text-white">
+                    <div className="mb-6 inline-flex min-w-[82px] flex-col border-l-4 border-[#E45A2B] bg-[#111315] px-4 py-3 text-white">
                       <span className="text-2xl font-black leading-none">
                         {card.count}
                       </span>
@@ -561,7 +554,7 @@ export default async function HomePage({ params }: HomeProps) {
               ))}
             </div>
           ) : (
-            <div className="rounded-[16px] border border-gray-border bg-white py-20 text-center text-gray-text">
+            <div className="border border-gray-border bg-white py-20 text-center text-gray-text">
               <p className="font-medium">{copy.noPublications}</p>
             </div>
           )}
@@ -583,21 +576,13 @@ export default async function HomePage({ params }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {copy.focusAreas.map((area, index) => (
+            {copy.focusAreas.map((area) => (
               <article
                 key={area.id}
-                className={`rounded-[16px] border bg-white p-7 ${
-                  index === 1
-                    ? 'border-[#E45A2B]'
-                    : 'border-[#E5E2DA]'
-                }`}
+                className="border border-[#E5E2DA] bg-white p-7 transition-colors hover:border-[#E45A2B]"
               >
                 <div
-                  className={`mb-8 flex h-16 w-16 items-center justify-center rounded-md text-lg font-black ${
-                    index === 1
-                      ? 'bg-[#E45A2B] text-[#111315]'
-                      : 'bg-[#111315] text-white'
-                  }`}
+                  className="mb-8 flex h-16 w-16 items-center justify-center border-l-4 border-[#E45A2B] bg-[#111315] text-lg font-black text-white"
                 >
                   {area.no}
                 </div>
@@ -610,11 +595,7 @@ export default async function HomePage({ params }: HomeProps) {
 
                 <Link
                   href={withLang(`/uzmanlik/${area.id}`)}
-                  className={`mt-7 inline-flex font-bold ${
-                    index === 1
-                      ? 'text-[#E45A2B]'
-                      : 'text-[#111315]'
-                  }`}
+                  className="mt-7 inline-flex font-bold text-[#E45A2B]"
                 >
                   {copy.openExpertise} →
                 </Link>
@@ -640,9 +621,9 @@ export default async function HomePage({ params }: HomeProps) {
             {copy.methodSteps.map((step) => (
               <article
                 key={step.no}
-                className="rounded-[16px] border border-white/15 bg-white/6 p-7"
+                className="border border-white/15 border-l-[#E45A2B] bg-transparent p-7"
               >
-                <span className="text-sm font-black tracking-[0.2em] text-[#F09A7C]">
+                <span className="text-sm font-black tracking-[0.2em] text-[#E45A2B]">
                   {step.no}
                 </span>
 
@@ -659,7 +640,7 @@ export default async function HomePage({ params }: HomeProps) {
         </div>
       </section>
 
-      <section className="bg-white text-navy">
+      <section className="border-t border-[#E5E2DA] bg-white text-navy">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-16 md:grid-cols-[1fr_auto] md:py-20">
           <div>
             <p className="section-label">{copy.contactLabel}</p>
