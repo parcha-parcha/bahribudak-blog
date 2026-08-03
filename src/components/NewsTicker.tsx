@@ -26,7 +26,7 @@ export default function NewsTicker() {
       <div style={{ background: '#111315', borderBottom: '1px solid rgba(228,90,43,0.28)' }}
         className="flex items-center px-4 py-2 gap-3">
         <span className="text-xs font-bold tracking-widest uppercase flex-shrink-0"
-          style={{ color: '#2EA6D9' }}>● HABERLER</span>
+          style={{ color: '#E45A2B' }}>● HABERLER</span>
         <span className="text-white/30 text-xs animate-pulse">Yükleniyor...</span>
       </div>
     )
@@ -93,7 +93,7 @@ export default function NewsTicker() {
                 {item.title}
               </span>
               {/* Ayırıcı */}
-              <span className="mx-3" style={{ color: 'rgba(46,166,217,0.30)' }}>✦</span>
+              <span className="mx-3" style={{ color: 'rgba(228,90,43,0.30)' }}>✦</span>
             </a>
           ))}
         </div>

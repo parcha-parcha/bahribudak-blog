@@ -14,18 +14,18 @@ interface NewsItem {
 }
 
 const SOURCE_COLORS: Record<string, string> = {
-  'Hürriyet': '#0B2343',
-  'NTV': '#0B2343',
-  'TRT Haber': '#0B2343',
-  'BBC Türkçe': '#0B2343',
-  'DW Türkçe': '#0B2343',
-  'Al Jazeera TR': '#0B2343',
-  'BBC World': '#0B2343',
-  'Guardian': '#0B2343',
-  'DW English': '#0B2343',
-  'Al Jazeera': '#0B2343',
-  'Reuters': '#0B2343',
-  'Euronews': '#0B2343',
+  'Hürriyet': '#111315',
+  'NTV': '#111315',
+  'TRT Haber': '#111315',
+  'BBC Türkçe': '#111315',
+  'DW Türkçe': '#111315',
+  'Al Jazeera TR': '#111315',
+  'BBC World': '#111315',
+  'Guardian': '#111315',
+  'DW English': '#111315',
+  'Al Jazeera': '#111315',
+  'Reuters': '#111315',
+  'Euronews': '#111315',
 }
 
 type FilterType = 'all' | 'tr' | 'en' | 'textile'
@@ -94,16 +94,16 @@ export default function HaberlerPage() {
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
+            className="rounded-md px-4 py-1.5 text-sm font-semibold transition-colors"
             style={filter === f.key
-              ? { background: '#0B2343', color: '#FFFFFF', border: '1px solid #0B2343' }
-              : { background: '#FFFFFF', color: '#5D5F63', border: '1px solid #D8DDE5' }
+              ? { background: '#111315', color: '#FFFFFF', border: '1px solid #111315' }
+              : { background: '#FFFFFF', color: '#6F7782', border: '1px solid #E5E2DA' }
             }
           >
             {f.label}
             {f.key === 'textile' && textileCount > 0 && (
-              <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full"
-                style={{ background: '#EAF6FC', color: '#0B2343' }}>
+              <span className="ml-1.5 rounded-md px-1.5 py-0.5 text-[10px]"
+                style={{ background: '#F8E4DC', color: '#A53C18' }}>
                 {textileCount}
               </span>
             )}
@@ -133,10 +133,10 @@ export default function HaberlerPage() {
               href={item.link || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="bb-news-card group rounded-xl border p-5 hover:shadow-card transition-all block"
+              className="bb-news-card group block rounded-lg border p-5 transition-colors"
               style={{
                 textDecoration: 'none',
-                borderColor: item.category === 'textile' ? '#2EA6D9' : '#D8DDE5',
+                borderColor: item.category === 'textile' ? '#E45A2B' : '#E5E2DA',
                 background: '#ffffff',
               }}
             >
@@ -144,21 +144,21 @@ export default function HaberlerPage() {
               <div className="flex items-center gap-2 mb-3">
                 <span
                   className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ background: item.category === 'textile' ? '#2EA6D9' : (SOURCE_COLORS[item.source] || '#6b7280') }}
+                  style={{ background: item.category === 'textile' ? '#E45A2B' : (SOURCE_COLORS[item.source] || '#6F7782') }}
                 />
                 <span
                   className="text-[11px] font-bold tracking-wide uppercase"
-                  style={{ color: item.category === 'textile' ? '#0B2343' : (SOURCE_COLORS[item.source] || '#5D5F63') }}
+                  style={{ color: item.category === 'textile' ? '#111315' : (SOURCE_COLORS[item.source] || '#6F7782') }}
                 >
                   {item.source}
                 </span>
-                <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded"
+                <span className="ml-auto rounded-md px-1.5 py-0.5 text-[9px]"
                   style={
                     item.category === 'textile'
-                      ? { background: '#EAF6FC', color: '#0B2343' }
+                      ? { background: '#F8E4DC', color: '#A53C18' }
                       : item.lang === 'tr'
-                        ? { background: '#F3F6FA', color: '#0B2343' }
-                        : { background: '#F3F6FA', color: '#5D5F63' }
+                        ? { background: '#F6F4EF', color: '#111315' }
+                        : { background: '#F6F4EF', color: '#6F7782' }
                   }>
                   {item.category === 'textile' ? 'TEKSTİL' : item.lang === 'tr' ? 'TR' : 'EN'}
                 </span>
