@@ -23,7 +23,7 @@ export default function BBHeaderSocialLinks() {
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className="rounded-full border border-[#D7E0EA] bg-white/80 px-3 py-1.5 text-[12px] font-bold text-navy shadow-sm transition-colors hover:border-[#2EA6D9] hover:bg-[#2EA6D9] hover:text-white"
+          className="rounded-md border border-[#E5E2DA] bg-white px-3 py-1.5 text-[12px] font-bold text-[#111315] transition-colors hover:border-[#E45A2B] hover:bg-[#E45A2B] hover:text-[#111315] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
         >
           {item.label}
         </a>

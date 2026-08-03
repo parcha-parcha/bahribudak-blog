@@ -35,7 +35,7 @@ export default function BrandLogo({
       ? '0 0 80 80'
       : normalizedVariant === 'compact'
         ? '0 0 300 80'
-        : '0 0 470 96'
+        : '0 0 470 80'
 
   const defaultClass =
     normalizedVariant === 'symbol'
@@ -87,9 +87,9 @@ export default function BrandLogo({
             x="104"
             y={normalizedVariant === 'full' ? 39 : 35}
             fill={ink}
-            fontFamily="Inter, Arial, sans-serif"
+            fontFamily="Acumin Pro, Inter, Arial, sans-serif"
             fontSize={normalizedVariant === 'full' ? 35 : 25}
-            fontWeight="650"
+            fontWeight="600"
             letterSpacing={normalizedVariant === 'full' ? 4.5 : 3.4}
             aria-hidden="true"
           >
@@ -102,24 +102,15 @@ export default function BrandLogo({
                 x="105"
                 y="68"
                 fill={muted}
-                fontFamily="Inter, Arial, sans-serif"
+                fontFamily="Acumin Pro, Inter, Arial, sans-serif"
                 fontSize="11.4"
-                fontWeight="650"
+                fontWeight="600"
                 letterSpacing="1.45"
                 aria-hidden="true"
               >
                 TEKNİK YAYINLAR · DANIŞMANLIK · TEKSTİL SİSTEMLERİ
               </text>
 
-              <line
-                x1="105"
-                y1="86"
-                x2="158"
-                y2="86"
-                stroke={accent}
-                strokeWidth="4"
-                aria-hidden="true"
-              />
             </>
           )}
         </>
