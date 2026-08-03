@@ -33,8 +33,8 @@
   --gray-border: #D8D5CD;
 
   /* Tipografi */
-  --bb-font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --bb-font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --bb-font-display: "Acumin Pro", "Inter", Arial, sans-serif;
+  --bb-font-body: "Acumin Pro", "Inter", Arial, sans-serif;
   --bb-font-technical: "IBM Plex Mono", Consolas, monospace;
 
   /* Boşluk ve arayüz */
@@ -61,7 +61,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--bb-font-body);
+    font-family: var(--bb-font-display);
     font-weight: 700;
     color: var(--navy);
     line-height: 1.2;
