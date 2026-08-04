@@ -192,7 +192,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <header
           className={
             post.technicalPublication
-              ? 'mb-10 overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white shadow-[0_14px_36px_rgba(17,19,21,0.08)]'
+              ? 'mb-10 overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white'
               : 'max-w-4xl'
           }
         >
@@ -206,7 +206,6 @@ export default async function PostPage({ params }: PostPageProps) {
                 className="mx-auto max-h-[520px] h-auto w-full object-contain"
                 priority
               />
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#111315]/60 to-transparent" aria-hidden="true" />
             </div>
           )}
 
@@ -319,7 +318,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   key={download.href}
                   href={href}
                   download={isMemberDownload ? undefined : true}
-                  className="flex min-h-24 flex-col justify-between rounded-[12px] border border-[#E5E2DA] bg-white p-4 text-navy transition hover:-translate-y-0.5 hover:border-[#E45A2B] hover:shadow-md"
+                  className="flex min-h-24 flex-col justify-between rounded-[12px] border border-[#E5E2DA] bg-white p-4 text-navy transition hover:border-[#E45A2B]"
                 >
                   <span className="text-sm font-bold leading-snug">{download.label}</span>
                  {isMemberDownload ? (
@@ -354,7 +353,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <ul className="space-y-2 text-sm leading-relaxed text-[#6F7782]">
               {post.standards.map(standard => (
                 <li key={standard} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-md bg-[#2EA6D9]" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-md bg-[#E45A2B]" />
                   <span>{standard}</span>
                 </li>
               ))}
@@ -395,7 +394,7 @@ export default async function PostPage({ params }: PostPageProps) {
               {relatedPosts.map(related => (
                 <article
                   key={related.slug}
-                  className="overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
+                  className="overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white transition"
                 >
                   {related.coverImage && (
                     <Link href={`/${lang}/blog/${related.slug}`} className="block">

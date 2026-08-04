@@ -431,7 +431,7 @@ export default async function MembershipDashboard({
   return (
     <main className="min-h-screen bg-[#F3F6FA] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-7xl">
-        <section className="rounded-[2rem] bg-[#071E3A] p-7 text-white shadow-[0_24px_70px_rgba(11,35,67,0.16)] md:p-10">
+        <section className="rounded-[14px] bg-[#111315] p-7 text-white md:p-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65C6EA]">
             {copy.eyebrow}
           </p>
@@ -443,7 +443,7 @@ export default async function MembershipDashboard({
           </p>
           <Link
             href={authPath(lang, 'account')}
-            className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#071E3A]"
+            className="mt-7 inline-flex min-h-11 items-center justify-center rounded-md border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#111315]"
           >
             ← {copy.account}
           </Link>
@@ -453,12 +453,12 @@ export default async function MembershipDashboard({
           {metrics.map(metric => (
             <article
               key={metric.label}
-              className="rounded-[1.5rem] border border-[#D8DEE8] bg-white p-6 shadow-sm"
+              className="rounded-[14px] border border-[#E5E2DA] bg-white p-6"
             >
-              <p className="text-sm font-black text-[#0B2343]/65">
+              <p className="text-sm font-black text-[#111315]/65">
                 {metric.label}
               </p>
-              <p className="mt-3 text-4xl font-black tracking-[-0.04em] text-[#0B2343]">
+              <p className="mt-3 text-4xl font-black tracking-[-0.04em] text-[#111315]">
                 {metric.value.toLocaleString(
                   tr ? 'tr-TR' : 'en-US',
                 )}
@@ -470,9 +470,9 @@ export default async function MembershipDashboard({
           ))}
         </section>
 
-        <section className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm md:p-8">
+        <section className="mt-6 rounded-[14px] border border-[#E5E2DA] bg-white p-6 md:p-8">
           <div>
-            <h2 className="text-2xl font-black text-[#0B2343]">
+            <h2 className="text-2xl font-black text-[#111315]">
               {copy.memberDirectory}
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-7 text-[#66717E]">
@@ -486,8 +486,8 @@ export default async function MembershipDashboard({
         </section>
 
         <section className="mt-6 grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
-          <article className="rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-black text-[#0B2343]">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6">
+            <h2 className="text-xl font-black text-[#111315]">
               {copy.segments}
             </h2>
             <div className="mt-5 space-y-3">
@@ -497,10 +497,10 @@ export default async function MembershipDashboard({
                     key={segment.segment_code}
                     className="flex items-center justify-between rounded-2xl bg-[#F8FAFC] px-4 py-3"
                   >
-                    <span className="text-sm font-bold text-[#0B2343]">
+                    <span className="text-sm font-bold text-[#111315]">
                       {segment.segment_code}
                     </span>
-                    <span className="rounded-full bg-[#DFF3FB] px-3 py-1 text-xs font-black text-[#0B2343]">
+                    <span className="rounded-md bg-[#F8E4DC] px-3 py-1 text-xs font-black text-[#111315]">
                       {segment.count}
                     </span>
                   </div>
@@ -513,8 +513,8 @@ export default async function MembershipDashboard({
             </div>
           </article>
 
-          <article className="rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-black text-[#0B2343]">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-6">
+            <h2 className="text-xl font-black text-[#111315]">
               {copy.recentLeads}
             </h2>
             <div className="mt-5 overflow-x-auto">
@@ -540,7 +540,7 @@ export default async function MembershipDashboard({
                       className="border-b border-[#EEF2F6]"
                     >
                       <td className="px-3 py-4">
-                        <p className="font-black text-[#0B2343]">
+                        <p className="font-black text-[#111315]">
                           {lead.full_name ?? '—'}
                         </p>
                         <p className="mt-1 text-xs text-[#66717E]">
@@ -575,8 +575,8 @@ export default async function MembershipDashboard({
           </article>
         </section>
 
-        <section className="mt-6 rounded-[2rem] border border-[#D8DEE8] bg-white p-6 shadow-sm">
-          <h2 className="text-xl font-black text-[#0B2343]">
+        <section className="mt-6 rounded-[14px] border border-[#E5E2DA] bg-white p-6">
+          <h2 className="text-xl font-black text-[#111315]">
             {copy.recentActivity}
           </h2>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -585,7 +585,7 @@ export default async function MembershipDashboard({
                 key={item.id}
                 className="rounded-2xl bg-[#F8FAFC] p-4"
               >
-                <p className="text-sm font-black text-[#0B2343]">
+                <p className="text-sm font-black text-[#111315]">
                   {item.event_type}
                 </p>
                 <p className="mt-2 break-all text-xs leading-5 text-[#66717E]">

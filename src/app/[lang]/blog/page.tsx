@@ -473,7 +473,7 @@ export default async function BlogPage({
               </p>
             </div>
 
-            <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white shadow-[0_24px_70px_rgba(17,19,21,0.14)]">
+            <div className="bb-publication-panel relative min-h-[320px] overflow-hidden rounded-[16px] border border-[#E5E2DA] bg-white">
               <Image
                 src="/images/teknik-yayin-sistemi-tanitimi.png"
                 alt={copy.imageAlt}
@@ -623,7 +623,7 @@ export default async function BlogPage({
               <div className="flex items-end gap-3">
                 <button
                   type="submit"
-                  className="inline-flex h-12 flex-1 items-center justify-center rounded-md bg-[#0B2343] px-6 text-sm font-black text-white transition hover:bg-[#1A1F24] lg:flex-none"
+                  className="inline-flex h-12 flex-1 items-center justify-center rounded-md bg-[#111315] px-6 text-sm font-black text-white transition hover:bg-[#1A1F24] lg:flex-none"
                 >
                   {copy.searchButton}
                 </button>
@@ -828,7 +828,7 @@ export default async function BlogPage({
           </div>
         ) : (
           <div className="rounded-[16px] border border-[#E5E2DA] bg-white px-6 py-20 text-center shadow-sm">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-[#EAF6FC] text-[#E45A2B]">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-[#F8E4DC] text-[#E45A2B]">
               <svg
                 width="28"
                 height="28"
@@ -854,7 +854,7 @@ export default async function BlogPage({
 
             <Link
               href={`/${lang}/blog`}
-              className="mt-7 inline-flex items-center justify-center rounded-md bg-[#0B2343] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1A1F24]"
+              className="mt-7 inline-flex items-center justify-center rounded-md bg-[#111315] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1A1F24]"
             >
               {copy.noResultsButton}
             </Link>

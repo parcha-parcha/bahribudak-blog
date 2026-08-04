@@ -591,9 +591,6 @@ export default async function TechnicalDocumentsPage({
 
       <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
         <section className="relative overflow-hidden bg-[#111315] text-white">
-          <div className="absolute inset-0 bb-pattern opacity-35" />
-          <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#E45A2B]/15 blur-3xl" />
-          <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
           <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
             <div>
@@ -614,7 +611,7 @@ export default async function TechnicalDocumentsPage({
               {t.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-3xl border border-white/10 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
+                  className="rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-5 text-center"
                 >
                   <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                     {stat.value}
@@ -630,7 +627,7 @@ export default async function TechnicalDocumentsPage({
 
         <section className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+            <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                 {t.structureLabel}
               </p>
@@ -660,7 +657,7 @@ export default async function TechnicalDocumentsPage({
               </div>
             </article>
 
-            <aside className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+            <aside className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
                 {t.usersLabel}
               </p>
@@ -715,7 +712,7 @@ export default async function TechnicalDocumentsPage({
                   <Link
                     key={collection.href}
                     href={`/${lang}${collection.href}`}
-                    className="group flex min-h-[270px] flex-col justify-between rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#E45A2B]/60 hover:shadow-[0_16px_45px_rgba(17,19,21,0.10)]"
+                    className="group flex min-h-[270px] flex-col justify-between rounded-[14px] border border-[#E5E2DA] bg-white p-6 transition hover:border-[#E45A2B]/60"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-4">
@@ -776,7 +773,7 @@ export default async function TechnicalDocumentsPage({
               return (
                 <article
                   key={item.id}
-                  className="group flex h-full flex-col rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#E45A2B]/60 hover:shadow-[0_16px_45px_rgba(17,19,21,0.10)] md:p-7"
+                  className="group flex h-full flex-col rounded-[14px] border border-[#E5E2DA] bg-white p-6 transition hover:border-[#E45A2B]/60 md:p-7"
                 >
                   <div className="mb-6 flex items-start justify-between gap-4">
                     <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#111315] text-base font-black text-white">
@@ -809,7 +806,7 @@ export default async function TechnicalDocumentsPage({
                     {details.map((detail) => (
                       <span
                         key={detail}
-                        className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/75"
+                        className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/75"
                       >
                         {detail}
                       </span>
@@ -891,7 +888,7 @@ export default async function TechnicalDocumentsPage({
               {t.modules.map((module) => (
                 <article
                   key={module.no}
-                  className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9"
+                  className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9"
                 >
                   <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div>
@@ -962,7 +959,7 @@ export default async function TechnicalDocumentsPage({
             </div>
           </div>
 
-          <section className="mt-10 rounded-[2rem] border border-[#E45A2B]/20 bg-[#111315] px-7 py-9 text-white shadow-sm md:px-10">
+          <section className="mt-10 rounded-[14px] border border-[#E45A2B]/20 bg-[#111315] px-7 py-9 text-white md:px-10">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.usageLabel}
             </p>
