@@ -78,9 +78,9 @@ export default function HaberlerPage() {
       <div className="mb-10">
         <p className="section-label mb-2">Dünya & Türkiye & Tekstil</p>
         <h1 className="text-4xl font-bold text-navy mb-3 bb-news-title">
-          Günün <span className="text-accent-blue">Haberleri</span>
+          Günün <span className="text-[#E45A2B]">Haberleri</span>
         </h1>
-        <div className="w-12 h-1 bg-yellow-bb mb-4" />
+        <div className="w-12 h-1 bg-[#E45A2B] mb-4" />
         {updatedAt && (
           <p className="text-xs bb-news-muted">
             Son güncelleme: {formatTime(updatedAt)} — Her saatte otomatik yenilenir
@@ -181,7 +181,7 @@ export default function HaberlerPage() {
                 {item.publishedAt ? (
                   <span className="bb-news-date text-[10px]">{formatDate(item.publishedAt)}</span>
                 ) : <span />}
-                <span className="text-accent-blue text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span className="text-[#E45A2B] text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </div>
             </a>
           ))}
