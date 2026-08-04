@@ -353,8 +353,6 @@ export default async function AboutPage({ params }: AboutProps) {
   return (
     <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
       <section className="relative overflow-hidden bg-[#111315] text-[#F6F4EF]">
-        <div className="absolute inset-0 bb-pattern opacity-30" />
-        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#E45A2B]/12 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
@@ -373,23 +371,23 @@ export default async function AboutPage({ params }: AboutProps) {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href={withLang('/uzmanlik')}
-                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
+                className="inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94B20]"
               >
                 {copy.primaryCta} →
               </Link>
 
               <Link
                 href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
-                className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/35 px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
+                className="inline-flex items-center justify-center rounded-md border border-[#F6F4EF]/35 px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
               >
                 {copy.secondaryCta}
               </Link>
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-[#F6F4EF]/15 bg-white/[0.05] p-5 backdrop-blur">
+          <div className="rounded-[14px] border border-[#F6F4EF]/15 bg-white/[0.05] p-5">
             <div className="grid gap-5 sm:grid-cols-[150px_1fr] sm:items-center">
-              <div className="relative mx-auto h-[150px] w-[150px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-white/10">
+              <div className="relative mx-auto h-[150px] w-[150px] overflow-hidden rounded-[12px] border border-white/15 bg-white/10">
                 <Image
                   src="/images/bahri-budak.jpeg"
                   alt={copy.portraitAlt}
@@ -408,12 +406,12 @@ export default async function AboutPage({ params }: AboutProps) {
                   {copy.profile}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA]">
+                  <span className="rounded-md border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA]">
                     {copy.location}
                   </span>
                   <a
                     href="mailto:bahribudak@gmail.com"
-                    className="rounded-full border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA] transition hover:border-[#E45A2B] hover:text-[#E45A2B]"
+                    className="rounded-md border border-[#F6F4EF]/15 bg-white/[0.04] px-3 py-1 text-xs text-[#E5E2DA] transition hover:border-[#E45A2B] hover:text-[#E45A2B]"
                   >
                     bahribudak@gmail.com
                   </a>
@@ -425,7 +423,7 @@ export default async function AboutPage({ params }: AboutProps) {
               {copy.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-2xl border border-[#F6F4EF]/10 bg-black/20 px-3 py-4 text-center"
+                  className="rounded-md border border-[#F6F4EF]/10 bg-black/20 px-3 py-4 text-center"
                 >
                   <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                     {stat.value}
@@ -474,7 +472,7 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.chainAreas.map((area) => (
               <article
                 key={area.no}
-                className="rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-[0_14px_45px_rgba(17,19,21,0.06)]"
+                className="rounded-[14px] border border-[#E5E2DA] bg-white p-6"
               >
                 <span className="text-sm font-black tracking-[0.18em] text-[#E45A2B]">
                   {area.no}
@@ -506,9 +504,9 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.experienceItems.map((item) => (
               <article
                 key={item.no}
-                className="grid gap-5 rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-[0_14px_45px_rgba(17,19,21,0.05)] sm:grid-cols-[64px_1fr]"
+                className="grid gap-5 rounded-[14px] border border-[#E5E2DA] bg-white p-6 sm:grid-cols-[64px_1fr]"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#111315] text-sm font-black text-[#F6F4EF]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-md bg-[#111315] text-sm font-black text-[#F6F4EF]">
                   {item.no}
                 </div>
                 <div>
@@ -540,7 +538,7 @@ export default async function AboutPage({ params }: AboutProps) {
             {copy.skills.map((skill) => (
               <div
                 key={skill}
-                className="flex items-start gap-3 rounded-2xl border border-[#E5E2DA] bg-white px-4 py-4 text-sm leading-6 text-[#6F7782]"
+                className="flex items-start gap-3 rounded-md border border-[#E5E2DA] bg-white px-4 py-4 text-sm leading-6 text-[#6F7782]"
               >
                 <span
                   className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E45A2B]"
@@ -568,7 +566,7 @@ export default async function AboutPage({ params }: AboutProps) {
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <article className="rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-6">
+            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6">
               <h3 className="text-xl font-bold">{copy.scopeTitle}</h3>
               <ul className="mt-5 space-y-3">
                 {copy.scopeItems.map((item) => (
@@ -580,7 +578,7 @@ export default async function AboutPage({ params }: AboutProps) {
               </ul>
             </article>
 
-            <article className="rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-6">
+            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6">
               <h3 className="text-xl font-bold">{copy.boundaryTitle}</h3>
               <ul className="mt-5 space-y-3">
                 {copy.boundaryItems.map((item) => (
@@ -593,7 +591,7 @@ export default async function AboutPage({ params }: AboutProps) {
             </article>
           </div>
 
-          <div className="mt-5 rounded-[1.5rem] border border-[#E45A2B]/35 bg-[#E45A2B]/10 p-5">
+          <div className="mt-5 rounded-[12px] border border-[#E45A2B]/35 bg-[#E45A2B]/10 p-5">
             <ul className="grid gap-3 md:grid-cols-2">
               {copy.trustItems.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#F6F4EF]">
@@ -627,9 +625,9 @@ export default async function AboutPage({ params }: AboutProps) {
               {copy.publishingCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className="grid gap-4 rounded-[1.5rem] border border-[#E5E2DA] bg-white p-5 shadow-[0_12px_36px_rgba(17,19,21,0.05)] sm:grid-cols-[52px_1fr]"
+                  className="grid gap-4 rounded-[12px] border border-[#E5E2DA] bg-white p-5 sm:grid-cols-[52px_1fr]"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E45A2B] text-sm font-black text-[#F6F4EF]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-[#E45A2B] text-sm font-black text-[#F6F4EF]">
                     {String(index + 1).padStart(2, '0')}
                   </div>
                   <div>
@@ -662,21 +660,21 @@ export default async function AboutPage({ params }: AboutProps) {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href={withLang('/blog')}
-              className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
+              className="inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94B20]"
             >
               {copy.publicationsCta} →
             </Link>
 
             <Link
               href={withLang('/sablonlar/tekstil-teknik-dokumanlari')}
-              className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
+              className="inline-flex items-center justify-center rounded-md border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
             >
               {copy.documentsCta}
             </Link>
 
             <Link
               href={withLang('/contact')}
-              className="inline-flex items-center justify-center rounded-full border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
+              className="inline-flex items-center justify-center rounded-md border border-[#F6F4EF]/30 px-5 py-3 text-sm font-bold text-[#F6F4EF] transition hover:border-[#F6F4EF] hover:bg-[#F6F4EF] hover:text-[#111315]"
             >
               {copy.contactCta}
             </Link>

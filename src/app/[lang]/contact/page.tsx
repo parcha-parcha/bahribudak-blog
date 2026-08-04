@@ -188,8 +188,6 @@ export default async function ContactPage({ params }: ContactProps) {
   return (
     <main className="min-h-screen bg-[#F6F4EF] text-[#111315]">
       <section className="relative overflow-hidden bg-[#111315] text-[#F6F4EF]">
-        <div className="absolute inset-0 bb-pattern opacity-30" />
-        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#E45A2B]/12 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-20">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-[#E45A2B]">
@@ -208,7 +206,7 @@ export default async function ContactPage({ params }: ContactProps) {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-6 py-14 md:py-16 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
         <aside className="space-y-6 lg:sticky lg:top-28">
-          <section className="rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6">
+          <section className="rounded-[14px] border border-[#E5E2DA] bg-white p-6">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.directLabel}
             </p>
@@ -270,7 +268,7 @@ export default async function ContactPage({ params }: ContactProps) {
             </div>
           </section>
 
-          <section className="rounded-[1.75rem] bg-[#111315] p-6 text-[#F6F4EF]">
+          <section className="rounded-[14px] bg-[#111315] p-6 text-[#F6F4EF]">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.preparationLabel}
             </p>
@@ -315,7 +313,7 @@ export default async function ContactPage({ params }: ContactProps) {
             {copy.scopes.map((scope) => (
               <article
                 key={scope.no}
-                className="rounded-[1.5rem] border border-[#E5E2DA] bg-white p-5 shadow-[0_12px_36px_rgba(17,19,21,0.05)]"
+                className="rounded-[12px] border border-[#E5E2DA] bg-white p-5"
               >
                 <span className="text-sm font-black tracking-[0.16em] text-[#E45A2B]">
                   {scope.no}
@@ -348,7 +346,7 @@ export default async function ContactPage({ params }: ContactProps) {
             {copy.responseSteps.map((step) => (
               <article
                 key={step.no}
-                className="rounded-[1.5rem] border border-[#E5E2DA] bg-white p-5 shadow-[0_12px_36px_rgba(17,19,21,0.05)]"
+                className="rounded-[12px] border border-[#E5E2DA] bg-white p-5"
               >
                 <span className="text-sm font-black tracking-[0.16em] text-[#E45A2B]">
                   {step.no}
