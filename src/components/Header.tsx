@@ -100,7 +100,7 @@ export default function Header({ lang }: HeaderProps) {
   }, [menuOpen, pathname])
 
   return (
-    <header className="relative sticky top-0 z-50 border-b border-[#E5E2DA] bg-white/95 shadow-[0_8px_30px_rgba(17,19,21,0.06)] backdrop-blur-xl">
+    <header className="relative sticky top-0 z-50 border-b border-[#E5E2DA] bg-white">
       <div className="h-0.5 bg-[#E45A2B]" />
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-4 sm:py-3 lg:px-6">
@@ -224,7 +224,7 @@ export default function Header({ lang }: HeaderProps) {
         <>
           <button
             type="button"
-            className="absolute inset-x-0 top-full z-40 h-dvh bg-[#111315]/30 backdrop-blur-[2px] xl:hidden"
+            className="absolute inset-x-0 top-full z-40 h-dvh bg-[#111315]/40 xl:hidden"
             onClick={() => setMenuState({ open: false, pathname })}
             aria-label={
               lang === 'tr'
@@ -236,7 +236,7 @@ export default function Header({ lang }: HeaderProps) {
 
           <div
             id={mobileMenuId}
-            className="relative z-50 border-t border-[#E5E2DA] bg-white px-3 py-4 shadow-[0_18px_45px_rgba(17,19,21,0.14)] sm:px-4 xl:hidden"
+            className="relative z-50 border-t border-[#E5E2DA] bg-white px-3 py-4 sm:px-4 xl:hidden"
           >
             <nav
               className="mx-auto max-w-7xl"

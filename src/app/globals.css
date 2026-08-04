@@ -14,7 +14,6 @@
   /* Eski sınıflarla geriye dönük uyumluluk */
   --bb-navy: var(--bb-graphite-black);
   --bb-navy-2: var(--bb-deep-ink);
-  --bb-process-blue: var(--bb-signal-orange);
   --bb-sky: var(--bb-signal-orange);
   --bb-ice: #F8E4DC;
   --bb-paper: var(--bb-warm-white);

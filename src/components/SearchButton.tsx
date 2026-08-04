@@ -90,7 +90,7 @@ export default function SearchButton({ lang }: SearchButtonProps) {
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#111315]/72 px-4 pt-[12vh] backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#111315]/72 px-4 pt-[12vh]"
           role="presentation"
           onMouseDown={(event) => {
             if (event.currentTarget === event.target) setOpen(false)
@@ -100,7 +100,7 @@ export default function SearchButton({ lang }: SearchButtonProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="site-search-title"
-            className="w-full max-w-2xl rounded-lg border border-[#E5E2DA] bg-white p-5 shadow-[0_32px_100px_rgba(17,19,21,0.30)] sm:p-7"
+            className="w-full max-w-2xl rounded-lg border border-[#E5E2DA] bg-white p-5 sm:p-7"
           >
             <div className="mb-5 flex items-start justify-between gap-5">
               <div>
