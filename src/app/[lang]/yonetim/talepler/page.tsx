@@ -307,7 +307,7 @@ export default async function TechnicalRequestsPage({
   return (
     <main className="min-h-screen bg-[#F6F4EF] px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-7xl">
-        <section className="rounded-[2rem] bg-[#111315] p-7 text-white shadow-[0_24px_70px_rgba(17,19,21,0.16)] md:p-10">
+        <section className="rounded-[14px] bg-[#111315] p-7 text-white md:p-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#E45A2B]">
             BB-OS YÖNETİM
           </p>
@@ -325,7 +325,7 @@ export default async function TechnicalRequestsPage({
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/tr/yonetim/uyelik"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#111315]"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-white/25 px-5 text-sm font-black text-white transition hover:bg-white hover:text-[#111315]"
             >
               ← Üyelik paneline dön
             </Link>
@@ -358,7 +358,7 @@ export default async function TechnicalRequestsPage({
           />
         </section>
 
-        <section className="mt-6 rounded-[1.5rem] border border-[#E5E2DA] bg-white p-4 shadow-sm md:p-5">
+        <section className="mt-6 rounded-[1.5rem] border border-[#E5E2DA] bg-white p-4 md:p-5">
           <form
             method="get"
             action="/tr/yonetim/talepler"
@@ -473,7 +473,7 @@ export default async function TechnicalRequestsPage({
           {leads.map(lead => (
             <article
               key={lead.id}
-              className="overflow-hidden rounded-[1.75rem] border border-[#E5E2DA] bg-white shadow-[0_12px_35px_rgba(17,19,21,0.06)]"
+              className="overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white"
             >
               <div className="grid gap-5 border-b border-[#E5E2DA] bg-[#111315] p-6 text-white lg:grid-cols-[1fr_auto] lg:items-start">
                 <div>
@@ -637,7 +637,7 @@ export default async function TechnicalRequestsPage({
           ))}
 
           {leads.length === 0 && (
-            <div className="rounded-[1.75rem] border border-[#E5E2DA] bg-white p-10 text-center shadow-sm">
+            <div className="rounded-[14px] border border-[#E5E2DA] bg-white p-10 text-center">
               <p className="text-lg font-black text-[#111315]">
                 Bu filtrede teknik talep bulunmuyor.
               </p>
@@ -657,7 +657,7 @@ function MetricCard({
   value: number
 }) {
   return (
-    <article className="rounded-[1.5rem] border border-[#E5E2DA] bg-white p-6 shadow-sm">
+    <article className="rounded-[1.5rem] border border-[#E5E2DA] bg-white p-6">
       <p className="text-sm font-black text-[#111315]/60">
         {label}
       </p>
@@ -683,7 +683,7 @@ function FilterLink({
       className={
         active
           ? 'rounded-full bg-[#111315] px-4 py-2 text-xs font-black text-white'
-          : 'rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-4 py-2 text-xs font-black text-[#111315] transition hover:border-[#E45A2B]'
+          : 'rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-4 py-2 text-xs font-black text-[#111315] transition hover:border-[#E45A2B]'
       }
     >
       {label}

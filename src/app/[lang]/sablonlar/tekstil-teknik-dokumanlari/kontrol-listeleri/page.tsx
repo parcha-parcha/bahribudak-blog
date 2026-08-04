@@ -329,9 +329,6 @@ export default async function ChecklistsPage({
       />
 
       <section className="relative overflow-hidden bg-[#111315] text-white">
-        <div className="absolute inset-0 bb-pattern opacity-35" />
-        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#E45A2B]/15 blur-3xl" />
-        <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div>
@@ -360,7 +357,7 @@ export default async function ChecklistsPage({
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-3xl border border-white/10 bg-white/[0.07] px-4 py-5 text-center backdrop-blur"
+                className="rounded-[14px] border border-white/10 bg-white/[0.06] px-4 py-5 text-center"
               >
                 <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                   {item.value}
@@ -376,7 +373,7 @@ export default async function ChecklistsPage({
 
       <section className="mx-auto max-w-7xl px-6 py-14">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.systemLabel}
             </p>
@@ -404,7 +401,7 @@ export default async function ChecklistsPage({
             </div>
           </article>
 
-          <aside className="rounded-[2rem] border border-[#E5E2DA] bg-white p-7 shadow-sm md:p-9">
+          <aside className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {t.usageAreasLabel}
             </p>
@@ -448,7 +445,7 @@ export default async function ChecklistsPage({
             return (
               <article
                 key={resource.id}
-                className="group flex h-full flex-col rounded-[2rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#E45A2B]/50 hover:shadow-[0_16px_45px_rgba(17,19,21,0.10)] md:p-7"
+                className="group flex h-full flex-col rounded-[14px] border border-[#E5E2DA] bg-white p-6 transition hover:border-[#E45A2B]/50 md:p-7"
               >
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <span className="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-2xl bg-[#111315] px-3 text-base font-black text-white">
@@ -479,7 +476,7 @@ export default async function ChecklistsPage({
                   {detailItems.map((detail) => (
                     <span
                       key={detail}
-                      className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/68"
+                      className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1.5 text-xs font-semibold text-[#111315]/68"
                     >
                       {detail}
                     </span>
@@ -543,7 +540,7 @@ export default async function ChecklistsPage({
           })}
         </section>
 
-        <section className="mt-12 rounded-[2rem] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
+        <section className="mt-12 rounded-[14px] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
             {t.usageLabel}
           </p>

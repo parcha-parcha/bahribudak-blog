@@ -150,7 +150,7 @@ export default function MemberDirectory({
             value={query}
             onChange={event => setQuery(event.target.value)}
             placeholder={copy.searchPlaceholder}
-            className="mt-2 min-h-12 w-full rounded-xl border border-[#D8DEE8] bg-white px-4 text-sm text-[#0B2343] outline-none transition focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/10"
+            className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 text-sm text-[#111315] outline-none transition focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
           />
         </label>
 
@@ -190,7 +190,7 @@ export default function MemberDirectory({
       </div>
 
       <div className="mt-5 flex items-center justify-between rounded-2xl bg-[#F3F6FA] px-4 py-3 text-sm">
-        <span className="font-black text-[#0B2343]">
+        <span className="font-black text-[#111315]">
           {filteredMembers.length} {copy.result}
         </span>
         <span className="text-[#66717E]">
@@ -202,12 +202,12 @@ export default function MemberDirectory({
         {filteredMembers.map(member => (
           <article
             key={member.id}
-            className="rounded-2xl border border-[#D8DEE8] bg-[#F8FAFC] p-5"
+            className="rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-5"
           >
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="text-lg font-black text-[#0B2343]">
+                  <h3 className="text-lg font-black text-[#111315]">
                     {member.fullName || member.email}
                   </h3>
                   <StatusBadge
@@ -227,7 +227,7 @@ export default function MemberDirectory({
                   </span>
                 </div>
 
-                <p className="mt-2 break-all text-sm font-bold text-[#0B2343]">
+                <p className="mt-2 break-all text-sm font-bold text-[#111315]">
                   {member.email}
                 </p>
                 <p className="mt-1 text-sm text-[#66717E]">
@@ -262,7 +262,7 @@ export default function MemberDirectory({
                 member.segments.map(item => (
                   <span
                     key={item}
-                    className="rounded-full bg-[#DFF3FB] px-3 py-1 text-xs font-black text-[#0B2343]"
+                    className="rounded-md bg-[#F8E4DC] px-3 py-1 text-xs font-black text-[#111315]"
                   >
                     {item}
                   </span>
@@ -312,7 +312,7 @@ function FilterSelect({
       <select
         value={value}
         onChange={event => onChange(event.target.value)}
-        className="mt-2 min-h-12 w-full rounded-xl border border-[#D8DEE8] bg-white px-4 text-sm font-bold text-[#0B2343] outline-none transition focus:border-[#2EA6D9] focus:ring-4 focus:ring-[#2EA6D9]/10"
+        className="mt-2 min-h-12 w-full rounded-md border border-[#E5E2DA] bg-white px-4 text-sm font-bold text-[#111315] outline-none transition focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10"
       >
         {options.map(([optionValue, optionLabel]) => (
           <option key={optionValue} value={optionValue}>
@@ -339,7 +339,7 @@ function StatusBadge({
   }
 
   return (
-    <span className="rounded-full border border-[#D8DEE8] bg-white px-3 py-1 text-xs font-black text-[#0B2343]">
+    <span className="rounded-md border border-[#E5E2DA] bg-white px-3 py-1 text-xs font-black text-[#111315]">
       {labels[status]}
     </span>
   )
@@ -354,7 +354,7 @@ function MiniMetric({
 }) {
   return (
     <div className="min-w-24 rounded-xl bg-white p-3 text-center">
-      <p className="text-xl font-black text-[#0B2343]">{value}</p>
+      <p className="text-xl font-black text-[#111315]">{value}</p>
       <p className="mt-1 text-[11px] font-bold text-[#66717E]">
         {label}
       </p>
@@ -373,7 +373,7 @@ function DateMetric({
 }) {
   return (
     <div className="min-w-28 rounded-xl bg-white p-3 text-center">
-      <p className="text-xs font-black text-[#0B2343]">
+      <p className="text-xs font-black text-[#111315]">
         {value ? formatDate(value, lang) : '—'}
       </p>
       <p className="mt-1 text-[11px] font-bold text-[#66717E]">
