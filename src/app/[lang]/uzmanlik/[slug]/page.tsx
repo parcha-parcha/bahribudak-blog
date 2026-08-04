@@ -164,7 +164,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
           className="object-cover opacity-70"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/97 via-[#111315]/86 to-[#111315]/42" />
+        <div className="absolute inset-0 bg-[#111315]/82" />
 
         <div className="relative mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
           <Link
@@ -190,7 +190,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
         </div>
       </section>
 
-      <section className="border-b border-[#D8DDE5] bg-[#F6F4EF]">
+      <section className="border-b border-[#E5E2DA] bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-10">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#E45A2B]">
             {copy.processPurpose}
@@ -203,13 +203,13 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
 
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <article className="rounded-[30px] border border-[#D8DDE5] bg-white p-7 shadow-[0_18px_50px_rgba(11,35,67,0.06)] md:p-9">
+          <article className="rounded-[14px] border border-[#E5E2DA] bg-white p-7 md:p-9">
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#E45A2B]">
               01 · {copy.machinery}
             </p>
             <ul className="space-y-4">
               {data.machines.map(item => (
-                <li key={localized(item, lang)} className="flex gap-3 text-sm leading-7 text-[#263B57] md:text-base">
+                <li key={localized(item, lang)} className="flex gap-3 text-sm leading-7 text-[#6F7782] md:text-base">
                   <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#E45A2B]" />
                   <span>{localized(item, lang)}</span>
                 </li>
@@ -217,7 +217,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
             </ul>
           </article>
 
-          <article className="rounded-[30px] bg-[#111315] p-7 text-white shadow-[0_18px_50px_rgba(11,35,67,0.16)] md:p-9">
+          <article className="rounded-[14px] bg-[#111315] p-7 text-white md:p-9">
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#E45A2B]">
               02 · {copy.parameters}
             </p>
@@ -242,7 +242,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
             {data.controlPoints.map((item, index) => (
               <div
                 key={localized(item, lang)}
-                className="rounded-[24px] border border-white bg-white p-6 shadow-[0_12px_35px_rgba(11,35,67,0.06)]"
+                className="rounded-[12px] border border-[#E5E2DA] bg-white p-6"
               >
                 <p className="mb-3 text-xs font-black tracking-[0.2em] text-[#E45A2B]">
                   {String(index + 1).padStart(2, '0')}
@@ -270,10 +270,10 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
           {data.defects.map((defect, index) => (
             <article
               key={localized(defect.name, lang)}
-              className="overflow-hidden rounded-[28px] border border-[#D8DDE5] bg-white"
+              className="overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white"
             >
-              <div className="flex items-center gap-4 border-b border-[#D8DDE5] bg-[#F6F4EF] px-6 py-5 md:px-8">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#111315] text-sm font-bold text-white">
+              <div className="flex items-center gap-4 border-b border-[#E5E2DA] bg-[#F6F4EF] px-6 py-5 md:px-8">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#111315] text-sm font-bold text-white">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-lg font-bold text-[#111315] md:text-xl">
@@ -281,19 +281,19 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
                 </h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3">
-                <div className="border-b border-[#D8DDE5] p-6 md:border-b-0 md:border-r md:p-8">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#4C5561]">
+                <div className="border-b border-[#E5E2DA] p-6 md:border-b-0 md:border-r md:p-8">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#6F7782]">
                     {copy.symptom}
                   </p>
-                  <p className="text-sm leading-7 text-[#263B57]">
+                  <p className="text-sm leading-7 text-[#6F7782]">
                     {localized(defect.symptom, lang)}
                   </p>
                 </div>
-                <div className="border-b border-[#D8DDE5] p-6 md:border-b-0 md:border-r md:p-8">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#B7832F]">
+                <div className="border-b border-[#E5E2DA] p-6 md:border-b-0 md:border-r md:p-8">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#6F7782]">
                     {copy.rootCause}
                   </p>
-                  <p className="text-sm leading-7 text-[#263B57]">
+                  <p className="text-sm leading-7 text-[#6F7782]">
                     {localized(defect.rootCause, lang)}
                   </p>
                 </div>
@@ -301,7 +301,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#E45A2B]">
                     {copy.corrective}
                   </p>
-                  <p className="text-sm leading-7 text-[#263B57]">
+                  <p className="text-sm leading-7 text-[#6F7782]">
                     {localized(defect.correctiveAction, lang)}
                   </p>
                 </div>
@@ -332,9 +332,9 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
               return (
                 <article
                   key={resource.href}
-                  className="flex min-h-[250px] flex-col rounded-[28px] border border-[#D8DDE5] bg-white p-7"
+                  className="flex min-h-[250px] flex-col rounded-[14px] border border-[#E5E2DA] bg-white p-7"
                 >
-                  <div className="mb-6 inline-flex w-fit rounded-full bg-[#F6F4EF] px-3 py-1 text-xs font-bold text-[#111315]">
+                  <div className="mb-6 inline-flex w-fit rounded-md bg-[#F6F4EF] px-3 py-1 text-xs font-bold text-[#111315]">
                     {resource.type === 'ARTICLE'
                       ? lang === 'tr'
                         ? 'MAKALE'
@@ -344,7 +344,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
                   <h3 className="mb-3 text-xl font-bold leading-7 text-[#111315]">
                     {localized(resource.title, lang)}
                   </h3>
-                  <p className="mb-6 text-sm leading-7 text-[#4C5561]">
+                  <p className="mb-6 text-sm leading-7 text-[#6F7782]">
                     {localized(resource.description, lang)}
                   </p>
                   <a
@@ -401,7 +401,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
                   href={reference.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#E45A2B] hover:text-[#E45A2B]"
+                  className="rounded-md border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#E45A2B] hover:text-[#E45A2B]"
                 >
                   {reference.organization}: {reference.title}
                 </a>
@@ -409,7 +409,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-white/15 bg-white/5 p-6">
+          <div className="rounded-[12px] border border-white/15 bg-white/5 p-6">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.photo}
             </p>
@@ -422,7 +422,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#4C5561]">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#6F7782]">
             {copy.next}
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -432,7 +432,7 @@ export default async function ExpertiseDetailPage({ params }: ExpertisePageProps
                 <Link
                   key={areaSlug}
                   href={`/${lang}/uzmanlik/${areaSlug}`}
-                  className="group rounded-[24px] border border-[#D8DDE5] p-6 transition-all hover:-translate-y-1 hover:border-[#E45A2B] hover:shadow-[0_16px_42px_rgba(11,35,67,0.08)]"
+                  className="group rounded-[12px] border border-[#E5E2DA] p-6 transition-colors hover:border-[#E45A2B]"
                 >
                   <p className="mb-3 text-xs font-black tracking-[0.2em] text-[#E45A2B]">
                     {area.no}

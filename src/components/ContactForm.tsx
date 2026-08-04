@@ -15,7 +15,7 @@ interface ContactFormProps {
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const fieldClassName =
-  'w-full rounded-xl border border-[#D8D4CC] bg-white px-4 py-3 text-sm text-[#111315] outline-none transition placeholder:text-[#111315]/35 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10'
+  'w-full rounded-xl border border-[#E5E2DA] bg-white px-4 py-3 text-sm text-[#111315] outline-none transition placeholder:text-[#111315]/35 focus:border-[#E45A2B] focus:ring-4 focus:ring-[#E45A2B]/10'
 
 const labelClassName =
   'mb-2 block text-xs font-black uppercase tracking-[0.14em] text-[#111315]/58'
@@ -150,7 +150,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
 
   return (
     <section
-      className="rounded-[18px] border border-[#E5E2DA] bg-white p-6 shadow-[0_18px_55px_rgba(17,19,21,0.08)] md:p-8"
+      className="rounded-[14px] border border-[#E5E2DA] bg-white p-6 md:p-8"
       aria-labelledby="contact-form-title"
     >
       <div className="mb-8">
@@ -524,7 +524,7 @@ export default function ContactForm({ lang }: ContactFormProps) {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#E45A2B] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C94D24] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#E45A2B] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C94B20] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === 'loading'
               ? tr

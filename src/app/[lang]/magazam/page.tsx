@@ -271,9 +271,6 @@ export default async function ResourceCenterPage({
       className="min-h-screen bg-[#F6F4EF] text-[#111315]"
     >
       <section className="relative overflow-hidden bg-[#111315] text-[#F6F4EF]">
-        <div className="absolute inset-0 bb-pattern opacity-35" />
-        <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full bg-[#E45A2B]/12 blur-3xl" />
-        <div className="absolute -bottom-44 -left-32 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
@@ -292,14 +289,14 @@ export default async function ResourceCenterPage({
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="#resource-catalog"
-                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
+                className="inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-6 py-3 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94B20]"
               >
                 {copy.primaryCta} →
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
+                className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-3 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.secondaryCta}
               </Link>
@@ -310,7 +307,7 @@ export default async function ResourceCenterPage({
             {stats.map((item) => (
               <div
                 key={item.label}
-                className="rounded-3xl border border-white/15 bg-[#1A1D20]/88 px-4 py-5 text-center backdrop-blur"
+                className="rounded-[12px] border border-white/15 bg-[#1A1F24]/88 px-4 py-5 text-center"
               >
                 <p className="text-2xl font-black text-[#E45A2B] md:text-3xl">
                   {item.value}
@@ -352,7 +349,7 @@ export default async function ResourceCenterPage({
               <Link
                 key={collection.key}
                 href={href}
-                className="group flex min-h-[325px] flex-col justify-between rounded-[1.75rem] border border-[#E5E2DA] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#E45A2B]/60 hover:shadow-[0_18px_45px_rgba(17,19,21,0.12)]"
+                className="flex min-h-[325px] flex-col justify-between rounded-[14px] border border-[#E5E2DA] bg-white p-6 transition-colors hover:border-[#E45A2B]/60"
               >
                 <div>
                   <div className="mb-6 inline-flex min-w-[82px] flex-col rounded-2xl bg-[#111315] px-4 py-3 text-[#F6F4EF]">
@@ -378,7 +375,7 @@ export default async function ResourceCenterPage({
                     {collection.formats.map((format) => (
                       <span
                         key={format}
-                        className="rounded-full border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-xs font-bold text-[#111315]"
+                        className="rounded-md border border-[#E5E2DA] bg-[#F6F4EF] px-3 py-1 text-xs font-bold text-[#111315]"
                       >
                         {format}
                       </span>
@@ -410,7 +407,7 @@ export default async function ResourceCenterPage({
             {copy.workflowSteps.map((step) => (
               <article
                 key={step.no}
-                className="rounded-[1.75rem] border border-[#E5E2DA] bg-[#F6F4EF] p-6"
+                className="rounded-[14px] border border-[#E5E2DA] bg-[#F6F4EF] p-6"
               >
                 <span className="text-sm font-black tracking-[0.18em] text-[#E45A2B]">
                   {step.no}
@@ -458,7 +455,7 @@ export default async function ResourceCenterPage({
 
       <section className="border-t border-[#E5E2DA] bg-[#F6F4EF]">
         <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-[2rem] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
+          <div className="rounded-[14px] bg-[#111315] px-6 py-8 text-white md:px-10 md:py-10">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#E45A2B]">
               {copy.noteLabel}
             </p>
@@ -474,14 +471,14 @@ export default async function ResourceCenterPage({
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="#resource-catalog"
-                className="inline-flex items-center justify-center rounded-full bg-[#E45A2B] px-5 py-2.5 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94E26]"
+                className="inline-flex items-center justify-center rounded-md bg-[#E45A2B] px-5 py-2.5 text-sm font-bold text-[#F6F4EF] transition hover:bg-[#C94B20]"
               >
                 {copy.backToTop}
               </Link>
 
               <Link
                 href={withLang('/contact')}
-                className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
+                className="inline-flex items-center justify-center rounded-md border border-white/30 px-5 py-2.5 text-sm font-bold text-white transition hover:border-white hover:bg-white hover:text-[#111315]"
               >
                 {copy.requestCta}
               </Link>

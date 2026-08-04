@@ -98,7 +98,7 @@ export default async function ExpertiseOverviewPage({
           className="object-cover opacity-58 grayscale-[18%] saturate-[72%] contrast-[1.04]"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111315]/97 via-[#111315]/88 to-[#111315]/56" />
+        <div className="absolute inset-0 bg-[#111315]/82" />
 
         <div className="relative mx-auto w-full max-w-7xl px-6 py-16 md:py-24">
           <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#E45A2B]">
@@ -125,20 +125,20 @@ export default async function ExpertiseOverviewPage({
             return (
               <article
                 key={slug}
-                className="group flex min-h-[460px] flex-col overflow-hidden rounded-[30px] border border-[#E5E2DA] bg-white shadow-[0_18px_50px_rgba(17,19,21,0.06)]"
+                className="flex min-h-[460px] flex-col overflow-hidden rounded-[14px] border border-[#E5E2DA] bg-white"
               >
                 <div className="relative h-48 overflow-hidden bg-[#F6F4EF]">
                   <Image
                     src={area.heroImage}
                     alt={localized(area.heroImageAlt, lang)}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111315]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-[#111315]/18" />
 
-                  <span className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#F6F4EF] text-sm font-black text-[#111315]">
+                  <span className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-md bg-[#F6F4EF] text-sm font-black text-[#111315]">
                     {area.no}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default async function ExpertiseOverviewPage({
 
       <section className="border-y border-[#E5E2DA] bg-[#E5E2DA]">
         <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
-          <div className="rounded-[30px] border border-[#E5E2DA] bg-white p-8 shadow-[0_18px_50px_rgba(17,19,21,0.06)] md:p-10">
+          <div className="rounded-[14px] border border-[#E5E2DA] bg-white p-8 md:p-10">
             <p className="mb-6 text-xs font-bold uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.chain}
             </p>
