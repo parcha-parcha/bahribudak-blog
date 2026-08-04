@@ -557,17 +557,17 @@ export default async function AboutPage({ params }: AboutProps) {
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E45A2B]">
               {copy.trustLabel}
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] md:text-4xl">
+            <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-[-0.035em] text-[#F6F4EF] md:text-4xl">
               {copy.trustTitle}
             </h2>
-            <p className="mt-5 text-sm leading-8 text-[#E5E2DA]">
+            <p className="mt-5 max-w-3xl text-sm leading-8 text-[#E5E2DA]">
               {copy.trustIntro}
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6">
-              <h3 className="text-xl font-bold">{copy.scopeTitle}</h3>
+            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6 text-[#F6F4EF]">
+              <h3 className="text-xl font-bold text-[#F6F4EF]">{copy.scopeTitle}</h3>
               <ul className="mt-5 space-y-3">
                 {copy.scopeItems.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#E5E2DA]">
@@ -578,8 +578,8 @@ export default async function AboutPage({ params }: AboutProps) {
               </ul>
             </article>
 
-            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6">
-              <h3 className="text-xl font-bold">{copy.boundaryTitle}</h3>
+            <article className="rounded-[14px] border border-white/10 bg-white/[0.05] p-6 text-[#F6F4EF]">
+              <h3 className="text-xl font-bold text-[#F6F4EF]">{copy.boundaryTitle}</h3>
               <ul className="mt-5 space-y-3">
                 {copy.boundaryItems.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm leading-7 text-[#E5E2DA]">
