@@ -80,7 +80,7 @@ export async function generateMetadata({
       url: `${siteUrl}/${lang}`,
       title,
       description,
-      images: [{ url: '/images/hero-su-damlasi.jpg' }],
+      images: [{ url: '/images/uzmanlik-hero-uretim-zinciri.png' }],
     },
   }
 }
@@ -369,13 +369,14 @@ export default async function HomePage({ params }: HomeProps) {
     <>
       <section className="relative overflow-hidden bg-[#111315] text-white">
         <Image
-          src="/images/hero-su-damlasi.jpg"
+          src="/images/uzmanlik-hero-uretim-zinciri.png"
           alt={copy.heroAlt}
           fill
           sizes="100vw"
-          className="object-cover opacity-30"
+          loading="eager"
+          className="object-cover object-center opacity-60"
         />
-        <div className="absolute inset-0 bg-[#111315]/82" />
+        <div className="absolute inset-0 bg-[#111315]/68" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-16 md:min-h-[560px] md:py-20 lg:py-24">
           <div className="max-w-4xl">
