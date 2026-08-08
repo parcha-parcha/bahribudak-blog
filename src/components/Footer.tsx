@@ -170,18 +170,26 @@ export default function Footer({ lang }: FooterProps) {
     },
   ]
 
-  const socialLinks: FooterLink[] = [
-    {
-      href: 'https://www.linkedin.com/in/bahri-budak-052ab5b8',
-      label: 'LinkedIn',
-      external: true,
-    },
-    {
-      href: 'https://www.instagram.com/bahribudak/',
-      label: 'Instagram',
-      external: true,
-    },
-  ]
+ const socialLinks: FooterLink[] = [
+  {
+    href: 'https://www.linkedin.com/in/bahri-budak-052ab5b8',
+    label: 'LinkedIn',
+    external: true,
+  },
+  {
+    href: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7491867907145195520',
+    label:
+      lang === 'tr'
+        ? 'LinkedIn Bültenine Abone Ol'
+        : 'Subscribe to LinkedIn Newsletter',
+    external: true,
+  },
+  {
+    href: 'https://www.instagram.com/bahribudak/',
+    label: 'Instagram',
+    external: true,
+  },
+]
 
   const renderLinks = (links: FooterLink[]) => (
     <ul className="space-y-3">
