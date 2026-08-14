@@ -136,7 +136,6 @@ export async function proxy(request: NextRequest) {
 
     if (
       role === 'super_admin' &&
-      process.env.BB_ADMIN_MFA_REQUIRED === 'true' &&
       !isAdminSecurityPath(request.nextUrl.pathname)
     ) {
       const { data: assurance } =
