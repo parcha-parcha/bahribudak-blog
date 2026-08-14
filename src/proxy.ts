@@ -7,8 +7,9 @@ import { supabaseCookieOptions } from '@/utils/supabase/cookie-options'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
 
 function resolveLang(request: NextRequest) {
-  const referer = request.headers.get('referer')
+  if (request.nextUrl.pathname.startsWith('/en/')) return 'en'
 
+  const referer = request.headers.get('referer')
   if (referer) {
     try {
       const refererPath = new URL(referer).pathname
@@ -21,16 +22,50 @@ function resolveLang(request: NextRequest) {
   return 'tr'
 }
 
-function redirectToLogin(request: NextRequest, cookiesToSet: Parameters<NextResponse['cookies']['set']>[]) {
+function isAdminPath(pathname: string) {
+  return (
+    pathname.startsWith('/tr/yonetim/') ||
+    pathname.startsWith('/en/admin/')
+  )
+}
+
+function isAdminSecurityPath(pathname: string) {
+  return pathname === '/tr/yonetim/guvenlik'
+}
+
+function redirectToLogin(
+  request: NextRequest,
+  cookiesToSet: Parameters<NextResponse['cookies']['set']>[],
+) {
   const lang = resolveLang(request)
   const url = request.nextUrl.clone()
 
   url.pathname = authPath(lang, 'login')
   url.search = ''
-  url.searchParams.set('next', `${request.nextUrl.pathname}${request.nextUrl.search}`)
+  url.searchParams.set(
+    'next',
+    `${request.nextUrl.pathname}${request.nextUrl.search}`,
+  )
 
   const response = NextResponse.redirect(url)
-  cookiesToSet.forEach((cookie) => response.cookies.set(...cookie))
+  cookiesToSet.forEach(cookie => response.cookies.set(...cookie))
+  return response
+}
+
+function redirectToAdminSecurity(
+  request: NextRequest,
+  cookiesToSet: Parameters<NextResponse['cookies']['set']>[],
+) {
+  const url = request.nextUrl.clone()
+  url.pathname = '/tr/yonetim/guvenlik'
+  url.search = ''
+  url.searchParams.set(
+    'next',
+    `${request.nextUrl.pathname}${request.nextUrl.search}`,
+  )
+
+  const response = NextResponse.redirect(url)
+  cookiesToSet.forEach(cookie => response.cookies.set(...cookie))
   return response
 }
 
@@ -45,15 +80,23 @@ function redirectToMemberDownload(
   url.searchParams.set('path', request.nextUrl.pathname)
 
   const response = NextResponse.redirect(url)
-  cookiesToSet.forEach((cookie) => response.cookies.set(...cookie))
+  cookiesToSet.forEach(cookie => response.cookies.set(...cookie))
   return response
 }
 
 export async function proxy(request: NextRequest) {
-  const accessLevel = getDownloadPathAccessLevel(request.nextUrl.pathname)
+  const accessLevel = getDownloadPathAccessLevel(
+    request.nextUrl.pathname,
+  )
+  const adminPath = isAdminPath(request.nextUrl.pathname)
 
-  if (!accessLevel) return updateSession(request)
-  if (!isSupabaseConfigured()) return redirectToLogin(request, [])
+  if (!accessLevel && !adminPath) {
+    return updateSession(request)
+  }
+
+  if (!isSupabaseConfigured()) {
+    return redirectToLogin(request, [])
+  }
 
   let response = NextResponse.next({ request })
   const cookiesToSet: Parameters<NextResponse['cookies']['set']>[] = []
@@ -66,10 +109,14 @@ export async function proxy(request: NextRequest) {
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll(nextCookies) {
-          nextCookies.forEach(({ name, value }) => request.cookies.set(name, value))
+          nextCookies.forEach(({ name, value }) =>
+            request.cookies.set(name, value),
+          )
           response = NextResponse.next({ request })
           nextCookies.forEach(({ name, value, options }) => {
-            const cookie = [name, value, options] as Parameters<NextResponse['cookies']['set']>
+            const cookie = [name, value, options] as Parameters<
+              NextResponse['cookies']['set']
+            >
             cookiesToSet.push(cookie)
             response.cookies.set(...cookie)
           })
@@ -83,6 +130,25 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   if (!user) return redirectToLogin(request, cookiesToSet)
+
+  if (adminPath) {
+    const { data: role } = await supabase.rpc('current_admin_role')
+
+    if (
+      role === 'super_admin' &&
+      process.env.BB_ADMIN_MFA_REQUIRED === 'true' &&
+      !isAdminSecurityPath(request.nextUrl.pathname)
+    ) {
+      const { data: assurance } =
+        await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+
+      if (!assurance || assurance.currentLevel !== 'aal2') {
+        return redirectToAdminSecurity(request, cookiesToSet)
+      }
+    }
+
+    return response
+  }
 
   return redirectToMemberDownload(request, cookiesToSet)
 }
