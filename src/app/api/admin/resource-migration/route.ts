@@ -20,6 +20,17 @@ const contentTypes = {
   PPTX: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 } as const
 
+function isSameOrigin(request: Request) {
+  const origin = request.headers.get('origin')
+  if (!origin) return false
+
+  try {
+    return new URL(origin).origin === new URL(request.url).origin
+  } catch {
+    return false
+  }
+}
+
 async function requireSuperAdminAal2() {
   const supabase = await createClient()
   const {
@@ -87,6 +98,13 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) {
+    return NextResponse.json(
+      { error: 'Cross-origin request rejected.' },
+      { status: 403, headers: noStoreHeaders },
+    )
+  }
+
   const user = await requireSuperAdminAal2()
   if (!user) {
     return NextResponse.json(
