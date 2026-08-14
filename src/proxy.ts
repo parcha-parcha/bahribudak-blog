@@ -24,7 +24,9 @@ function resolveLang(request: NextRequest) {
 
 function isAdminPath(pathname: string) {
   return (
+    pathname === '/tr/yonetim' ||
     pathname.startsWith('/tr/yonetim/') ||
+    pathname === '/en/admin' ||
     pathname.startsWith('/en/admin/')
   )
 }
