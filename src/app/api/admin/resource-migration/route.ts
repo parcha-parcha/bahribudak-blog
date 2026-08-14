@@ -167,7 +167,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const { data: resourceRow, error: resourceError } = await admin
+    const { error: upsertError } = await admin
       .from('resources')
       .upsert(
         {
@@ -179,16 +179,26 @@ export async function POST(request: Request) {
           file_type: contentType,
           access_type: 'member',
           is_active: true,
-          updated_at: new Date().toISOString(),
         },
         { onConflict: 'slug' },
       )
-      .select('id, slug, file_path')
-      .single()
 
-    if (resourceError || !resourceRow) {
+    if (upsertError) {
       return NextResponse.json(
-        { error: 'Resource record upsert failed.' },
+        { error: `Resource record upsert failed: ${upsertError.message}` },
+        { status: 500, headers: noStoreHeaders },
+      )
+    }
+
+    const { data: resourceRow, error: selectError } = await admin
+      .from('resources')
+      .select('id, slug, file_path')
+      .eq('slug', item.id)
+      .maybeSingle()
+
+    if (selectError || !resourceRow) {
+      return NextResponse.json(
+        { error: `Resource record lookup failed: ${selectError?.message ?? 'row missing'}` },
         { status: 500, headers: noStoreHeaders },
       )
     }
