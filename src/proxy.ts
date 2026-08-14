@@ -142,7 +142,7 @@ export async function proxy(request: NextRequest) {
       const { data: assurance } =
         await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
 
-      if (assurance.currentLevel !== 'aal2') {
+      if (!assurance || assurance.currentLevel !== 'aal2') {
         return redirectToAdminSecurity(request, cookiesToSet)
       }
     }
