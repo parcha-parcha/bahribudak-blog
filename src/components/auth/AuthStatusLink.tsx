@@ -13,32 +13,73 @@ interface AuthStatusLinkProps {
   showArrow?: boolean
 }
 
-export default function AuthStatusLink({ lang, className, onClick, showArrow = false }: AuthStatusLinkProps) {
+export default function AuthStatusLink({
+  lang,
+  className,
+  onClick,
+  showArrow = false,
+}: AuthStatusLinkProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false)
 
   useEffect(() => {
     const supabase = createClient()
     let active = true
-    void supabase.auth.getSession().then(({ data }) => {
-      if (active) setIsAuthenticated(Boolean(data.session))
+
+    async function refreshAccess() {
+      const { data } = await supabase.auth.getSession()
+      if (!active) return
+
+      const authenticated = Boolean(data.session)
+      setIsAuthenticated(authenticated)
+
+      if (!authenticated) {
+        setIsSuperAdmin(false)
+        return
+      }
+
+      const { data: role } = await supabase.rpc('current_admin_role')
+      if (active) setIsSuperAdmin(role === 'super_admin')
+    }
+
+    void refreshAccess()
+
+    const { data } = supabase.auth.onAuthStateChange(() => {
+      void refreshAccess()
     })
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(Boolean(session))
-    })
+
     return () => {
       active = false
       data.subscription.unsubscribe()
     }
   }, [])
 
-  const label = isAuthenticated
-    ? lang === 'tr' ? 'Hesabım' : 'Account'
-    : lang === 'tr' ? 'Giriş Yap' : 'Login'
+  const href = isSuperAdmin
+    ? lang === 'tr'
+      ? '/tr/yonetim'
+      : '/en/admin'
+    : authPath(lang, isAuthenticated ? 'account' : 'login')
+
+  const label = isSuperAdmin
+    ? lang === 'tr'
+      ? 'Yönetim Paneli'
+      : 'Admin Panel'
+    : isAuthenticated
+      ? lang === 'tr'
+        ? 'Hesabım'
+        : 'Account'
+      : lang === 'tr'
+        ? 'Giriş Yap'
+        : 'Login'
 
   return (
-    <Link href={authPath(lang, isAuthenticated ? 'account' : 'login')} className={className} onClick={onClick}>
+    <Link href={href} className={className} onClick={onClick}>
       <span>{label}</span>
-      {showArrow && <span className="text-base text-[#E45A2B]" aria-hidden="true">→</span>}
+      {showArrow && (
+        <span className="text-base text-[#E45A2B]" aria-hidden="true">
+          →
+        </span>
+      )}
     </Link>
   )
 }
