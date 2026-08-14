@@ -10,7 +10,7 @@ import {
 } from '@/lib/bb-event-notifications'
 import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
-import type { SupabaseClient } from '@supabase/supabase-js'
+import type { SupabaseClient, User } from '@supabase/supabase-js'
 import { get } from '@vercel/blob'
 import { basename, posix } from 'path'
 import {
@@ -60,7 +60,7 @@ function resolveDownloadPath(value: string | null) {
     return null
   }
 
- const normalized = posix.normalize(value)
+  const normalized = posix.normalize(value)
 
   if (!normalized.startsWith('/downloads/')) {
     return null
@@ -160,8 +160,8 @@ async function recordMemberActivity(
   await supabase.rpc('record_member_activity', {
     p_event_type: 'publication_download',
     p_resource_id: resourceId,
-  p_publication_slug: null,
-p_path: ['/downloads', filename].join('/'),
+    p_publication_slug: null,
+    p_path: ['/downloads', filename].join('/'),
     p_source: 'member-download',
     p_metadata: {
       title: resource?.title.tr ?? filename,
@@ -186,7 +186,7 @@ async function recordMemberDownload(
       await supabase
         .from('resources')
         .select('id')
-        .eq('file_path', filename)
+        .eq('slug', resource.id)
         .maybeSingle()
 
     resourceId = resourceRecord?.id ?? null
@@ -231,6 +231,93 @@ async function recordMemberDownload(
     resource,
     filename,
   )
+}
+
+async function buildDownloadResponse({
+  request,
+  supabase,
+  resource,
+  filename,
+  user,
+  body,
+  contentType,
+  source,
+}: {
+  request: NextRequest
+  supabase: SupabaseClient
+  resource: ResourceItem | null
+  filename: string
+  user: User
+  body: BodyInit
+  contentType: string
+  source: 'supabase-storage' | 'vercel-blob'
+}) {
+  await recordMemberDownload(
+    supabase,
+    resource,
+    filename,
+    user.id,
+    request.headers.get('user-agent'),
+  )
+
+  const downloadPath = `/downloads/${filename}`
+  const notificationResult = await enqueueAndSendBbEvent({
+    eventType: 'publication_download',
+    dedupeKey: createDownloadDedupeKey({
+      userId: user.id,
+      resourcePath: downloadPath,
+    }),
+    userId: user.id,
+    email: user.email,
+    resourcePath: downloadPath,
+    resourceTitle: resource?.title.tr ?? filename,
+    metadata: {
+      file_type: resource?.format ?? getFileType(filename),
+      source,
+    },
+  })
+
+  if ('notificationFailed' in notificationResult) {
+    console.warn('Download completed but notification failed', {
+      eventId: notificationResult.eventId,
+    })
+  }
+
+  const response = new NextResponse(body, {
+    status: 200,
+    headers: {
+      'Cache-Control': 'private, no-store',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Content-Type': contentType,
+    },
+  })
+
+  const cookieHistory =
+    buildCookieHistory(
+      request,
+      resource,
+      filename,
+    )
+
+  if (cookieHistory.length > 0) {
+    response.cookies.set(
+      historyCookieName,
+      encodeURIComponent(
+        JSON.stringify(cookieHistory),
+      ),
+      {
+        httpOnly: true,
+        maxAge: 60 * 60 * 24 * 90,
+        path: '/',
+        sameSite: 'lax',
+        secure:
+          process.env.NODE_ENV ===
+          'production',
+      },
+    )
+  }
+
+  return response
 }
 
 export async function GET(
@@ -289,6 +376,35 @@ export async function GET(
 
   try {
     const filename = basename(downloadPath)
+
+    if (resource) {
+      const { data: migratedResource } = await supabase
+        .from('resources')
+        .select('id, storage_bucket, file_path, file_type, is_active')
+        .eq('slug', resource.id)
+        .eq('is_active', true)
+        .maybeSingle()
+
+      if (migratedResource) {
+        const { data: storedFile, error: storageError } = await supabase.storage
+          .from(migratedResource.storage_bucket)
+          .download(migratedResource.file_path)
+
+        if (!storageError && storedFile) {
+          return buildDownloadResponse({
+            request,
+            supabase,
+            resource,
+            filename,
+            user,
+            body: storedFile,
+            contentType: migratedResource.file_type || getContentType(filename),
+            source: 'supabase-storage',
+          })
+        }
+      }
+    }
+
     const blobResult = await get(`downloads/${filename}`, {
       access: 'private',
     })
@@ -304,73 +420,18 @@ export async function GET(
       )
     }
 
-    await recordMemberDownload(
+    return buildDownloadResponse({
+      request,
       supabase,
       resource,
       filename,
-      user.id,
-      request.headers.get('user-agent'),
-    )
-
-    const notificationResult = await enqueueAndSendBbEvent({
-      eventType: 'publication_download',
-      dedupeKey: createDownloadDedupeKey({
-        userId: user.id,
-        resourcePath: downloadPath,
-      }),
-      userId: user.id,
-      email: user.email,
-      resourcePath: downloadPath,
-      resourceTitle: resource?.title.tr ?? filename,
-      metadata: {
-        file_type: resource?.format ?? getFileType(filename),
-        source: 'member-download',
-      },
+      user,
+      body: blobResult.stream,
+      contentType:
+        blobResult.blob.contentType ??
+        getContentType(filename),
+      source: 'vercel-blob',
     })
-
-    if ('notificationFailed' in notificationResult) {
-      console.warn('Download completed but notification failed', {
-        eventId: notificationResult.eventId,
-      })
-    }
-
-    const response = new NextResponse(blobResult.stream, {
-      status: 200,
-      headers: {
-        'Cache-Control': 'private, no-store',
-        'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Type':
-          blobResult.blob.contentType ??
-          getContentType(filename),
-      },
-    })
-
-    const cookieHistory =
-      buildCookieHistory(
-        request,
-        resource,
-        filename,
-      )
-
-    if (cookieHistory.length > 0) {
-      response.cookies.set(
-        historyCookieName,
-        encodeURIComponent(
-          JSON.stringify(cookieHistory),
-        ),
-        {
-          httpOnly: true,
-          maxAge: 60 * 60 * 24 * 90,
-          path: '/',
-          sameSite: 'lax',
-          secure:
-            process.env.NODE_ENV ===
-            'production',
-        },
-      )
-    }
-
-    return response
   } catch {
     return NextResponse.json(
       {
