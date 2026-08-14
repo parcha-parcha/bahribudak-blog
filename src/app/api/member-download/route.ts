@@ -260,7 +260,7 @@ async function buildDownloadResponse({
     request.headers.get('user-agent'),
   )
 
-  const downloadPath = `/downloads/${filename}`
+  const downloadPath = ['/downloads', filename].join('/')
   const notificationResult = await enqueueAndSendBbEvent({
     eventType: 'publication_download',
     dedupeKey: createDownloadDedupeKey({
