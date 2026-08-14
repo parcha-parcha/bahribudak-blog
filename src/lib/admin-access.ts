@@ -8,29 +8,14 @@ const validRoles = new Set<AdminRole>([
   'super_admin',
 ])
 
-export function getAdminEmails() {
-  return new Set(
-    (process.env.ADMIN_EMAILS ?? '')
-      .split(',')
-      .map(value => value.trim().toLowerCase())
-      .filter(Boolean),
-  )
-}
-
-export function isAdminEmail(
-  email: string | null | undefined,
-) {
-  if (!email) return false
-
-  return getAdminEmails().has(
-    email.trim().toLowerCase(),
-  )
-}
-
 export async function getAdminRole(
   userId: string,
-  email: string | null | undefined,
+  _email?: string | null,
 ): Promise<AdminRole | null> {
+  // BB-ADM-01: admin_roles is the single authorization source.
+  // The email argument remains temporarily for call-site compatibility only.
+  void _email
+
   const admin = createAdminClient()
 
   const { data, error } = await admin
@@ -45,11 +30,6 @@ export async function getAdminRole(
     validRoles.has(data.role as AdminRole)
   ) {
     return data.role as AdminRole
-  }
-
-  // Geçiş döneminde mevcut ADMIN_EMAILS erişimini yedek olarak korur.
-  if (isAdminEmail(email)) {
-    return 'super_admin'
   }
 
   return null
