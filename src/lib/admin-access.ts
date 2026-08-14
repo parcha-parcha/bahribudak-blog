@@ -1,4 +1,5 @@
 import { createAdminClient } from '@/utils/supabase/admin'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
 export type AdminRole = 'editor' | 'admin' | 'super_admin'
 
@@ -43,4 +44,28 @@ export async function hasAdminRole(
   const role = await getAdminRole(userId, email)
 
   return role !== null && allowedRoles.includes(role)
+}
+
+export function isAdminMfaRequired() {
+  return process.env.BB_ADMIN_MFA_REQUIRED === 'true'
+}
+
+export async function hasAdminMfaAssurance(
+  supabase: SupabaseClient,
+) {
+  const { data, error } =
+    await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+
+  return !error && data.currentLevel === 'aal2'
+}
+
+export async function requiresAdminMfaRedirect(args: {
+  supabase: SupabaseClient
+  role: AdminRole
+}) {
+  if (args.role !== 'super_admin' || !isAdminMfaRequired()) {
+    return false
+  }
+
+  return !(await hasAdminMfaAssurance(args.supabase))
 }
