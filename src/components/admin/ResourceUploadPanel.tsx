@@ -6,6 +6,7 @@ type UploadItem = {
   slug: string
   label: string
   filename: string
+  accept: string
 }
 
 const cuproItems: UploadItem[] = [
@@ -13,21 +14,25 @@ const cuproItems: UploadItem[] = [
     slug: 'cupro-reaktif-boyama-master-pdf',
     label: 'Master PDF',
     filename: 'bbos-cupro-reaktif-boyama-tr-master-v1-0.pdf',
+    accept: '.pdf',
   },
   {
     slug: 'cupro-reaktif-boyama-master-docx',
     label: 'Düzenlenebilir Master DOCX',
     filename: 'bbos-cupro-reaktif-boyama-tr-master-v1-0.docx',
+    accept: '.docx',
   },
   {
     slug: 'cupro-reaktif-boyama-presentation-pptx',
     label: 'Düzenlenebilir PPTX',
     filename: 'bbos-cupro-reaktif-boyama-tr-presentation-v1-0.pptx',
+    accept: '.pptx',
   },
   {
     slug: 'cupro-reaktif-boyama-carousel-pdf',
     label: 'Carousel PDF',
     filename: 'bbos-cupro-reaktif-boyama-tr-carousel-v1-0.pdf',
+    accept: '.pdf',
   },
 ]
 
@@ -36,14 +41,6 @@ export default function ResourceUploadPanel() {
 
   async function upload(item: UploadItem, file: File | null) {
     if (!file) return
-
-    if (file.name !== item.filename) {
-      setStates(prev => ({
-        ...prev,
-        [item.slug]: `Dosya adı yanlış. Beklenen: ${item.filename}`,
-      }))
-      return
-    }
 
     setStates(prev => ({ ...prev, [item.slug]: 'Yükleniyor…' }))
 
@@ -59,12 +56,13 @@ export default function ResourceUploadPanel() {
       const body = (await response.json()) as {
         ok?: boolean
         error?: string
+        storedAs?: string
       }
 
       setStates(prev => ({
         ...prev,
         [item.slug]: response.ok && body.ok
-          ? 'Yüklendi ve doğrulandı.'
+          ? `Yüklendi ve doğrulandı: ${body.storedAs || item.filename}`
           : body.error || 'Yükleme başarısız.',
       }))
     } catch {
@@ -87,7 +85,10 @@ export default function ResourceUploadPanel() {
               <h2 className="text-lg font-black text-[#111315]">
                 {item.label}
               </h2>
-              <p className="mt-1 break-all text-xs text-[#66717E]">
+              <p className="mt-1 text-xs text-[#66717E]">
+                Seçtiğiniz dosya Storage'a şu adla kaydedilir:
+              </p>
+              <p className="mt-1 break-all text-xs font-bold text-[#111315]">
                 {item.filename}
               </p>
               {states[item.slug] ? (
@@ -102,7 +103,7 @@ export default function ResourceUploadPanel() {
               <input
                 className="sr-only"
                 type="file"
-                accept=".pdf,.docx,.pptx"
+                accept={item.accept}
                 onChange={event => {
                   const file = event.target.files?.[0] ?? null
                   void upload(item, file)
