@@ -12,8 +12,8 @@ type UploadItem = {
 const cuproItems: UploadItem[] = [
   {
     slug: 'cupro-reaktif-boyama-master-pdf',
-    label: 'Master PDF',
-    filename: 'bbos-cupro-reaktif-boyama-tr-master-v1-0.pdf',
+    label: 'Master PDF v1.3.2',
+    filename: 'bbos-cupro-reaktif-boyama-tr-master-v1-3-2.pdf',
     accept: '.pdf',
   },
   {
