@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   quality:
-    name: Doğrulama, TypeScript ve Üretim Derlemesi
+    name: Doğrulama, Güvenlik, TypeScript ve Üretim Derlemesi
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -29,6 +29,9 @@ jobs:
 
       - name: Bağımlılıkları kur
         run: npm ci
+
+      - name: Kritik üretim bağımlılığı açıklarını tara
+        run: npm audit --omit=dev --audit-level=critical
 
       - name: Site kalite kontrolünü çalıştır
         run: npm run quality
