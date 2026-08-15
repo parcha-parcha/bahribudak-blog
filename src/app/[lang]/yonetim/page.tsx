@@ -24,9 +24,9 @@ const cards = [
     href: '/tr/yonetim/uyelik#aktiviteler',
   },
   {
-    title: 'Yayın Dosyaları',
+    title: 'Yayın Dosyaları / G13-YED',
     description:
-      'Teknik yayın dosyalarını katalog kaydıyla doğrulayarak private Supabase Storage alanına yükleyin.',
+      'Teknik yayın dosyalarını private Storage alanına yükleyin ve FINAL PASS öncesi zorunlu yayın erişim kapanış kontrollerini uygulayın.',
     href: '/tr/yonetim/kaynak-yukleme',
   },
   {

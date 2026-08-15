@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "gate": "BB-OS G13-YED",
+  "description": "BB-OS publication access verification registry. Each registered publication must pass code/catalog checks in CI and production/member evidence before final PASS.",
+  "publications": [
+    {
+      "id": "cupro-reaktif-boyama",
+      "documentCode": "BB-OS-BOYA-CUPRO-001",
+      "trSlug": "cupro-kumaslarda-reaktif-boyama",
+      "enSlug": "reactive-dyeing-of-cupro-fabrics",
+      "accessLevel": "member",
+      "resourceIds": [
+        "cupro-reaktif-boyama-master-pdf",
+        "cupro-reaktif-boyama-master-docx",
+        "cupro-reaktif-boyama-presentation-pptx",
+        "cupro-reaktif-boyama-carousel-pdf"
+      ],
+      "requiredDownloads": [
+        "/downloads/bbos-cupro-reaktif-boyama-tr-master-v1-3-2.pdf",
+        "/downloads/bbos-cupro-reaktif-boyama-tr-master-v1-0.docx",
+        "/downloads/bbos-cupro-reaktif-boyama-tr-presentation-v1-0.pptx",
+        "/downloads/bbos-cupro-reaktif-boyama-tr-carousel-v1-0.pdf"
+      ]
+    }
+  ]
+}

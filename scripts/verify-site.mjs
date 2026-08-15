@@ -17,6 +17,7 @@ const requiredFiles = [
   'src/lib/translatedRoutes.ts',
   'src/lib/resources.ts',
   'config/private-downloads.json',
+  'config/bb-os-publication-gates.json',
 ]
 
 function fail(message) {
@@ -143,6 +144,45 @@ if (fs.existsSync(privateDownloadManifestPath)) {
   }
 }
 
+const publicationGateRegistryPath = path.join(
+  root,
+  'config/bb-os-publication-gates.json',
+)
+const supabaseRegistryDownloadFiles = new Set()
+
+if (fs.existsSync(publicationGateRegistryPath)) {
+  try {
+    const registry = JSON.parse(
+      fs.readFileSync(publicationGateRegistryPath, 'utf8'),
+    )
+
+    const publications = Array.isArray(registry.publications)
+      ? registry.publications
+      : []
+
+    for (const publication of publications) {
+      const downloads = Array.isArray(publication.requiredDownloads)
+        ? publication.requiredDownloads
+        : []
+
+      for (const pathname of downloads) {
+        if (
+          typeof pathname !== 'string' ||
+          !pathname.startsWith('/downloads/') ||
+          pathname.includes('..')
+        ) {
+          fail(`BB-OS yayın gate registry içinde geçersiz yol: ${String(pathname)}`)
+          continue
+        }
+
+        supabaseRegistryDownloadFiles.add(pathname.slice(1))
+      }
+    }
+  } catch (error) {
+    fail(`BB-OS yayın gate registry okunamadı: ${error.message}`)
+  }
+}
+
 const publicDownloadFiles = walk(
   path.join(root, 'public', 'downloads'),
 )
@@ -171,9 +211,14 @@ if (!fs.existsSync(memberDownloadRoutePath)) {
     /\bget\s*\(/.test(routeSource) &&
     /access:\s*['"]private['"]/.test(routeSource)
 
-  if (!usesPrivateBlob) {
+  const usesSupabaseStorage =
+    routeSource.includes(".from('resources')") &&
+    routeSource.includes('.storage') &&
+    routeSource.includes('.download(')
+
+  if (!usesPrivateBlob && !usesSupabaseStorage) {
     fail(
-      'Üyelik kontrollü indirme rotası Private Blob kullanmıyor.',
+      'Üyelik kontrollü indirme rotası desteklenen private storage akışını kullanmıyor.',
     )
   }
 }
@@ -192,16 +237,17 @@ for (
     continue
   }
 
-  const blobPath =
-    `downloads/${relativeDownload}`
+  const privatePath = `downloads/${relativeDownload}`
 
-  if (!privateDownloadFiles.has(blobPath)) {
+  if (
+    !privateDownloadFiles.has(privatePath) &&
+    !supabaseRegistryDownloadFiles.has(privatePath)
+  ) {
     fail(
-      `Private Blob manifestinde bulunmayan indirme bağlantısı: /downloads/${relativeDownload}`,
+      `Private download manifest/BB-OS registry içinde bulunmayan indirme bağlantısı: /downloads/${relativeDownload}`,
     )
   }
 }
-
 
 const resourcesSourcePath = path.join(root, 'src/lib/resources.ts')
 const resourcesSource = fs.existsSync(resourcesSourcePath)
@@ -331,6 +377,7 @@ console.log('Bahri Budak site doğrulama özeti')
 console.log(`- Sürüm: ${version || 'tanımsız'}`)
 console.log(`- Teknik yayın eşleşmesi: ${routePairs.length}`)
 console.log(`- Doğrulanan özel indirme referansı: ${downloadReferences.size}`)
+console.log(`- Supabase G13 registry indirme yolu: ${supabaseRegistryDownloadFiles.size}`)
 console.log(`- Taranan kaynak dosyası: ${sourceFiles.length}`)
 
 for (const warning of warnings) {
