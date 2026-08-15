@@ -51,6 +51,9 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
       ? switchPath
       : `${switchPath}?next=${encodeURIComponent(destination)}`
 
+  const recoveryHref =
+    lang === 'tr' ? '/tr/parolami-unuttum' : '/en/forgot-password'
+
   const copy =
     lang === 'tr'
       ? {
@@ -74,6 +77,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
             'Yeni teknik yayınlar ve hizmetler hakkında e-posta almak istiyorum (isteğe bağlı).',
           email: 'E-posta',
           password: 'Parola',
+          forgotPassword: 'Parolamı unuttum?',
           submit: isRegister ? 'Hesap Oluştur' : 'Giriş Yap',
           loading: 'İşleniyor…',
           switchText: isRegister
@@ -129,6 +133,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
             'I want to receive emails about new technical publications and services (optional).',
           email: 'Email',
           password: 'Password',
+          forgotPassword: 'Forgot your password?',
           submit: isRegister ? 'Create Account' : 'Sign In',
           loading: 'Working…',
           switchText: isRegister
@@ -424,18 +429,31 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
               required
             />
 
-            <Field
-              label={copy.password}
-              name="password"
-              type="password"
-              autoComplete={
-                isRegister
-                  ? 'new-password'
-                  : 'current-password'
-              }
-              required
-              minLength={8}
-            />
+            <div>
+              <Field
+                label={copy.password}
+                name="password"
+                type="password"
+                autoComplete={
+                  isRegister
+                    ? 'new-password'
+                    : 'current-password'
+                }
+                required
+                minLength={8}
+              />
+
+              {!isRegister && (
+                <div className="mt-2 flex justify-end">
+                  <Link
+                    className="text-sm font-black text-[#111315] underline decoration-[#E45A2B] decoration-2 underline-offset-4 transition hover:text-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
+                    href={recoveryHref}
+                  >
+                    {copy.forgotPassword}
+                  </Link>
+                </div>
+              )}
+            </div>
 
             {message && (
               <p
@@ -584,4 +602,3 @@ function CheckboxField({
     </label>
   )
 }
-
