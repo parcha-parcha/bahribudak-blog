@@ -8,6 +8,8 @@ import {
   createDownloadDedupeKey,
   enqueueAndSendBbEvent,
 } from '@/lib/bb-event-notifications'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { getRequestIp } from '@/lib/request-security'
 import { createClient } from '@/utils/supabase/server'
 import { isSupabaseConfigured } from '@/utils/supabase/env'
 import type { SupabaseClient, User } from '@supabase/supabase-js'
@@ -22,6 +24,10 @@ export const runtime = 'nodejs'
 
 const historyCookieName =
   'bb_member_download_history'
+
+const memberDownloadWindowSeconds = 60
+const memberDownloadUserLimit = 10
+const memberDownloadIpLimit = 30
 
 const contentTypes: Record<string, string> = {
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -101,6 +107,43 @@ function redirectToLogin(
   url.searchParams.set('next', nextPath)
 
   return NextResponse.redirect(url)
+}
+
+function rateLimitResponse() {
+  return NextResponse.json(
+    {
+      error: 'Too many download requests. Please try again shortly.',
+    },
+    {
+      status: 429,
+      headers: {
+        'Cache-Control': 'private, no-store',
+        'Retry-After': String(memberDownloadWindowSeconds),
+      },
+    },
+  )
+}
+
+async function enforceMemberDownloadRateLimit(
+  request: NextRequest,
+  userId: string,
+) {
+  const ip = getRequestIp(request)
+
+  const [userLimit, ipLimit] = await Promise.all([
+    checkRateLimit({
+      key: `rate:member-download:user:${userId}`,
+      limit: memberDownloadUserLimit,
+      windowSeconds: memberDownloadWindowSeconds,
+    }),
+    checkRateLimit({
+      key: `rate:member-download:ip:${ip}`,
+      limit: memberDownloadIpLimit,
+      windowSeconds: memberDownloadWindowSeconds,
+    }),
+  ])
+
+  return userLimit.limited || ipLimit.limited
 }
 
 type CookieHistoryItem = {
@@ -372,6 +415,10 @@ export async function GET(
       request,
       downloadPath,
     )
+  }
+
+  if (await enforceMemberDownloadRateLimit(request, user.id)) {
+    return rateLimitResponse()
   }
 
   try {

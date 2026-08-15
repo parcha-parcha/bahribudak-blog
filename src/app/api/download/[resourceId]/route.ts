@@ -1,8 +1,13 @@
+import { checkRateLimit } from '@/lib/rate-limit'
+import { getRequestIp } from '@/lib/request-security'
 import { evaluateResourceAccess } from '@/lib/resources/access'
 import { createClient } from '@/utils/supabase/server'
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const downloadWindowSeconds = 60
+const downloadUserLimit = 10
+const downloadIpLimit = 30
 
 function isValidUuid(value: string) {
   return UUID_PATTERN.test(value)
@@ -12,8 +17,32 @@ const noStoreHeaders = {
   'Cache-Control': 'no-store',
 }
 
+async function isRateLimited(request: NextRequest, userId?: string) {
+  const ip = getRequestIp(request)
+  const checks = [
+    checkRateLimit({
+      key: `rate:download:ip:${ip}`,
+      limit: downloadIpLimit,
+      windowSeconds: downloadWindowSeconds,
+    }),
+  ]
+
+  if (userId) {
+    checks.push(
+      checkRateLimit({
+        key: `rate:download:user:${userId}`,
+        limit: downloadUserLimit,
+        windowSeconds: downloadWindowSeconds,
+      }),
+    )
+  }
+
+  const results = await Promise.all(checks)
+  return results.some(result => result.limited)
+}
+
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ resourceId: string }> },
 ) {
   const { resourceId } = await params
@@ -29,6 +58,19 @@ export async function GET(
   const {
     data: { user },
   } = await supabase.auth.getUser()
+
+  if (await isRateLimited(request, user?.id)) {
+    return NextResponse.json(
+      { error: 'Too many download requests. Please try again shortly.' },
+      {
+        status: 429,
+        headers: {
+          ...noStoreHeaders,
+          'Retry-After': String(downloadWindowSeconds),
+        },
+      },
+    )
+  }
 
   const { data: accessRow, error: accessError } = await supabase.rpc('get_resource_access_for_download', {
     p_resource_id: resourceId,
