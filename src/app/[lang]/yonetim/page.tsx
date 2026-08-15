@@ -24,6 +24,12 @@ const cards = [
     href: '/tr/yonetim/uyelik#aktiviteler',
   },
   {
+    title: 'Yayın Dosyaları',
+    description:
+      'Teknik yayın dosyalarını katalog kaydıyla doğrulayarak private Supabase Storage alanına yükleyin.',
+    href: '/tr/yonetim/kaynak-yukleme',
+  },
+  {
     title: 'Güvenlik / BB-ADM-01',
     description:
       'Super Admin MFA durumunu ve oturum güvence seviyesini kontrol edin.',
@@ -81,7 +87,7 @@ export default async function ManagementHub({
                 Yönetim Paneli
               </h1>
               <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
-                Üyelik, teknik talepler, indirme aktiviteleri ve Super Admin güvenliğini tek merkezden yönetin.
+                Üyelik, teknik talepler, indirme aktiviteleri, yayın dosyaları ve Super Admin güvenliğini tek merkezden yönetin.
               </p>
             </div>
 
