@@ -9,11 +9,11 @@ import {
 const cuproResources: ResourceItem[] = [
   {
     id: 'cupro-reaktif-boyama-master-pdf',
-    href: '/downloads/bbos-cupro-reaktif-boyama-tr-master-v1-0.pdf',
+    href: '/downloads/bbos-cupro-reaktif-boyama-tr-master-v1-3-2.pdf',
     areas: ['boya'],
     group: 'technical',
     format: 'PDF',
-    version: 'V1.0',
+    version: 'V1.3.2',
     catalogDate: '2026-08-15',
     size: '1.3 MB',
     fileLanguage: 'tr',
@@ -22,8 +22,8 @@ const cuproResources: ResourceItem[] = [
       en: 'Reactive Dyeing of Cupro Fabrics — Master PDF',
     },
     description: {
-      tr: 'Cupro reaktif boyama teknik yayınının final Master PDF sürümü.',
-      en: 'Final Master PDF edition of the Cupro reactive dyeing technical publication.',
+      tr: 'Cupro reaktif boyama teknik yayınının son kontrollü Master PDF sürümü.',
+      en: 'Latest controlled Master PDF edition of the Cupro reactive dyeing technical publication.',
     },
   },
   {
