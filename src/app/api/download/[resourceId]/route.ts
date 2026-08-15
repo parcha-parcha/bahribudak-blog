@@ -2,7 +2,7 @@ import { checkRateLimit } from '@/lib/rate-limit'
 import { getRequestIp } from '@/lib/request-security'
 import { evaluateResourceAccess } from '@/lib/resources/access'
 import { createClient } from '@/utils/supabase/server'
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const downloadWindowSeconds = 60
@@ -17,8 +17,8 @@ const noStoreHeaders = {
   'Cache-Control': 'no-store',
 }
 
-async function isRateLimited(request: Request, userId?: string) {
-  const ip = getRequestIp(request as never)
+async function isRateLimited(request: NextRequest, userId?: string) {
+  const ip = getRequestIp(request)
   const checks = [
     checkRateLimit({
       key: `rate:download:ip:${ip}`,
@@ -42,7 +42,7 @@ async function isRateLimited(request: Request, userId?: string) {
 }
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ resourceId: string }> },
 ) {
   const { resourceId } = await params
