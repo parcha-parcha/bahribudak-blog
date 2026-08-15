@@ -2,7 +2,7 @@ import { resources } from '@/lib/resources'
 import { getAdminRole } from '@/lib/admin-access'
 import { createAdminClient } from '@/utils/supabase/admin'
 import { createClient } from '@/utils/supabase/server'
-import { basename } from 'path'
+import { basename, extname } from 'path'
 import { NextResponse } from 'next/server'
 
 export const runtime = 'nodejs'
@@ -92,9 +92,12 @@ export async function POST(request: Request) {
   }
 
   const expectedFilename = basename(resource.href)
-  if (file.name !== expectedFilename) {
+  const expectedExtension = extname(expectedFilename).toLocaleLowerCase('en-US')
+  const uploadedExtension = extname(file.name).toLocaleLowerCase('en-US')
+
+  if (!uploadedExtension || uploadedExtension !== expectedExtension) {
     return NextResponse.json(
-      { error: `Expected filename: ${expectedFilename}` },
+      { error: `Expected file type: ${expectedExtension || resource.format}` },
       { status: 400, headers: noStoreHeaders },
     )
   }
@@ -161,6 +164,7 @@ export async function POST(request: Request) {
       resourceId: row.id,
       slug: row.slug,
       filePath: row.file_path,
+      storedAs: expectedFilename,
     },
     { status: 200, headers: noStoreHeaders },
   )
