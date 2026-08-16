@@ -21,6 +21,25 @@
         "/downloads/bbos-cupro-reaktif-boyama-tr-presentation-v1-0.pptx",
         "/downloads/bbos-cupro-reaktif-boyama-tr-carousel-v1-0.pdf"
       ]
+    },
+    {
+      "id": "cupro-karisimlari",
+      "documentCode": "BB-OS-BOYA-CUPRO-002",
+      "trSlug": "cupro-karisimlari-polyester-modal-lyocell",
+      "enSlug": "cupro-blends-polyester-modal-lyocell",
+      "accessLevel": "member",
+      "resourceIds": [
+        "cupro-karisimlari-master-pdf",
+        "cupro-karisimlari-master-docx",
+        "cupro-karisimlari-presentation-pptx",
+        "cupro-karisimlari-carousel-pdf"
+      ],
+      "requiredDownloads": [
+        "/downloads/bbos-cupro-karisimlari-tr-master-r05.pdf",
+        "/downloads/bbos-cupro-karisimlari-tr-master-r05.docx",
+        "/downloads/bbos-cupro-karisimlari-tr-presentation-r05.pptx",
+        "/downloads/bbos-cupro-karisimlari-tr-carousel-r05.pdf"
+      ]
     }
   ]
 }
