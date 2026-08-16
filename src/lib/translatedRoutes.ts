@@ -21,6 +21,10 @@ const blogSlugPairs = [
     tr: 'cupro-kumaslarda-reaktif-boyama',
     en: 'reactive-dyeing-of-cupro-fabrics',
   },
+  {
+    tr: 'cupro-karisimlari-polyester-modal-lyocell',
+    en: 'cupro-blends-polyester-modal-lyocell',
+  },
 ] as const
 
 /**
