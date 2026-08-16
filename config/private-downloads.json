@@ -1,7 +1,7 @@
 {
     "storage":  "vercel-private-blob",
     "prefix":  "downloads/",
-    "fileCount":  111,
+    "fileCount":  115,
     "files":  [
                   "downloads/20-000-kg-boyahane-ro-kapasite-secimi-carousel-v1.0.pdf",
                   "downloads/20-000-kg-boyahane-ro-kapasite-secimi-carousel-v1.0.pptx",
@@ -113,6 +113,10 @@
                   "downloads/tekstil-isletmelerinde-muhendislik-formulleri.pdf",
                   "downloads/turkuaz-reaktif-boyama-proses.pdf",
                   "downloads/turkuaz-yesil-reaktif-boyamada-islatici-secimi-teknik-not-r1.docx.docx",
-                  "downloads/yikama-ve-final-kontrol-listesi-kurumsal-r1.xlsx"
+                  "downloads/yikama-ve-final-kontrol-listesi-kurumsal-r1.xlsx",
+                  "downloads/bbos-cupro-karisimlari-tr-master-r05.pdf",
+                  "downloads/bbos-cupro-karisimlari-tr-master-r05.docx",
+                  "downloads/bbos-cupro-karisimlari-tr-presentation-r05.pptx",
+                  "downloads/bbos-cupro-karisimlari-tr-carousel-r05.pdf"
               ]
 }
