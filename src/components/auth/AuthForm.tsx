@@ -54,6 +54,9 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
   const recoveryHref =
     lang === 'tr' ? '/tr/parolami-unuttum' : '/en/forgot-password'
 
+  const termsHref =
+    lang === 'tr' ? '/tr/uyelik-kosullari' : '/en/membership-terms'
+
   const copy =
     lang === 'tr'
       ? {
@@ -225,7 +228,7 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
               privacy_notice: privacyNotice,
               email_marketing: emailMarketing,
               registration_source: 'membership-form',
-              legal_text_version: '2026-07-26-v1',
+              legal_text_version: '2026-08-17-v2',
             },
           },
         })
@@ -406,7 +409,17 @@ function AuthFormContent({ lang, mode }: AuthFormProps) {
                     name="membership_terms"
                     required
                   >
-                    {copy.terms}
+                    <Link
+                      href={termsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-black text-[#111315] underline decoration-[#E45A2B] decoration-2 underline-offset-4 transition hover:text-[#E45A2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E45A2B] focus-visible:ring-offset-2"
+                    >
+                      {lang === 'tr' ? 'Üyelik Koşulları' : 'Membership Terms'}
+                    </Link>{' '}
+                    {lang === 'tr'
+                      ? 'metnini okudum ve kabul ediyorum.'
+                      : 'have been read and accepted.'}
                   </CheckboxField>
                   <CheckboxField
                     name="privacy_notice"
