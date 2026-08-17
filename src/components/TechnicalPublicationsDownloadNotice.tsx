@@ -5,8 +5,12 @@ import { usePathname } from 'next/navigation'
 
 export default function TechnicalPublicationsDownloadNotice() {
   const pathname = usePathname()
-  const lang = pathname.startsWith('/en/') ? 'en' : 'tr'
-  const isCatalog = pathname === '/tr/blog' || pathname === '/en/blog'
+  const normalizedPathname =
+    pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
+  const lang = normalizedPathname.startsWith('/en/') ? 'en' : 'tr'
+  const isCatalog =
+    normalizedPathname === '/tr/blog' ||
+    normalizedPathname === '/en/blog'
 
   if (!isCatalog) return null
 
